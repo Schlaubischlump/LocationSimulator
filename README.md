@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/Users/David/Desktop/LocationSimulator/LocationSimulator/Assets.xcassets/AppIcon.appiconset/AppIcon_256.png" width="128px">
+  <img src="LocationSimulator/Assets.xcassets/AppIcon.appiconset/AppIcon_256.png" width="128px">
   <h2 align="center">LocationSimulator</h2>
 </div>
 
@@ -67,7 +67,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
   - Long click the walk button to enabled auto move. Click again to disable auto move.    
   	<img src="Preview/automove.png" height="60">
   - Long click on a new point on the map while you are spoofing the location to show the navigation prompt.    
-    <img src="Preview/navpromt.png" width="200">
+    <img src="Preview/navprompt.png" width="200">
   - Use the left and right arrow keys to change the direction of movement. Use up and down to move.
 
 ### Stop spoofing:
