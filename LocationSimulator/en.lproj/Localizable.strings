@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  LocationSimulator
+/*
+ Localizable.strings
+ LocationSimulator
 
-  Created by David Klopp on 16.08.19.
-  Copyright © 2019 David Klopp. All rights reserved.
-*/
+ Created by David Klopp on 16.08.19.
+ Copyright © 2019 David Klopp. All rights reserved.
+ */
 
 // General
 "CURRENT_LOCATION" = "Current Location";
@@ -27,7 +27,7 @@
 "LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
 "LOCATION_CHANGE_ERROR_MSG" = "Could not change the location.";
 "PERMISSION_ERROR_MSG" = "Can not access Application Support folder.";
-"DEVDISK_DOWNLOAD_ERROR_MSG" = "Could not find a valid download link for the corresponding DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature.";
+"NO_DEVDISK_DOWNLOAD_ERROR_MSG" = "Could not find a valid download link for the corresponding DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature.";
 "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Failed to download DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature";
 
 // Information alerts
