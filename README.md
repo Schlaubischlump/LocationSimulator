@@ -76,4 +76,4 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 
 ## License
 
-The whole project is licensed under the [MIT License](LocationSimulator/LICENSE) unless specified otherwise in the specific subdirectories.
+The whole project is licensed under the [MIT License](LICENSE) unless specified otherwise in the specific subdirectories.
