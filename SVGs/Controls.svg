@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511 511" width="511" height="511">
+	<style>
+		tspan { white-space:pre }
+		.shp1 { fill: #5999e4 } 
+		.shp2 { fill: #bfbfbf } 
+	</style>
+	<path id="Shape 2" class="shp1" d="M287.92 84.79L221.77 85.09L254.89 21L287.92 84.79Z" />
+	<g id="Folder 1">
+		<path id="Shape 3" class="shp2" d="M35.99 245.29L75.99 245.24L76.01 265.24L36.01 265.29L35.99 245.29Z" />
+		<path id="Shape 3 copy" class="shp2" d="M436.99 244.76L476.99 244.71L477.01 264.71L437.01 264.76L436.99 244.76Z" />
+		<path id="Shape 3 copy 2" class="shp2" d="M245.24 450.01L265.24 449.99L265.3 489.99L245.3 490.01L245.24 450.01Z" />
+	</g>
+</svg>
