@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-class AutoCompletePopover: NSPanel {
+class AutoCompletePopover: NSWindow {
     private var localMouseDownEventMonitor: Any?
 
     private var lostFocusObserver: Any?
@@ -23,7 +23,7 @@ class AutoCompletePopover: NSPanel {
         let effectView = NSVisualEffectView(frame: self.contentView!.bounds)
         effectView.autoresizingMask = [.height, .width]
         effectView.appearance = self.appearance
-        effectView.blendingMode = .behindWindow
+        effectView.blendingMode = .withinWindow
 
         // insert the effectView as the lowest view inside the contentView view hierachy
         let subviews = self.contentView?.subviews
@@ -39,7 +39,6 @@ class AutoCompletePopover: NSPanel {
         self.hasShadow = true
         self.isMovable = false
         self.isMovableByWindowBackground = false
-        self.isFloatingPanel = true
     }
 
     override var canBecomeKey: Bool {
@@ -55,9 +54,7 @@ class AutoCompletePopover: NSPanel {
     }
 
     func show(relativeTo positioningRect: NSRect, of positioningView: NSView) {
-        guard let window = positioningView.window else {
-            return
-        }
+        guard let window = positioningView.window else { return }
 
         // position window below the positioningView
         let winFrame: NSRect = window.frame
@@ -68,7 +65,9 @@ class AutoCompletePopover: NSPanel {
         popupOrigin.y = winFrame.minY + posFrame.maxY - positioningRect.maxY - self.frame.height - 2.0
         self.setFrameOrigin(popupOrigin)
 
-        window.addChildWindow(self, ordered: .above)
+        if self.parent != window {
+            window.addChildWindow(self, ordered: .above)
+        }
 
         // catch all click events outside the window to dismiss it
         self.localMouseDownEventMonitor = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]) { [unowned self] (event) -> NSEvent? in
@@ -80,14 +79,14 @@ class AutoCompletePopover: NSPanel {
 
             // if the window was clicked outside its toolbar then dismiss the popup
             if win != self && win.contentView?.hitTest(event.locationInWindow) != nil {
-                self.close()
+                self.hide()
             }
             return event
         }
 
         // if the window looses focus we need to dismiss the suggestion window as well
         self.lostFocusObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { [unowned self] notification  in
-                self.close()
+                self.hide()
         }
     }
 
@@ -103,8 +102,13 @@ class AutoCompletePopover: NSPanel {
         }
     }
 
-    override func close() {
+    func hide() {
         self.cleanupMonitoring()
+        self.orderOut(self)
+    }
+
+    override func close() {
+        self.hide()
         super.close()
     }
 

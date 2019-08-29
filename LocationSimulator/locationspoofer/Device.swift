@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 
+
 /// Error messages while connecting a device.
 enum DeviceError: Error {
     case pair(_ message: String)
@@ -17,6 +18,7 @@ enum DeviceError: Error {
     case devDiskImageMount(_ message: String, iOSVersion: String)
     case productVersion(_ message: String)
 }
+
 
 /// Notifications when a device is connected / paired / disconnected.
 extension Notification.Name {
@@ -50,26 +52,20 @@ class Device: NSObject {
             guard let event_t = event?.pointee else { return }
             guard let udid_t = event_t.udid else { return }
 
-            // fallback to udid if we can not read the device name
             let udid = String(cString: udid_t)
-            var name: String = udid
+            var name: String = ""
             var notificationName: Notification.Name? = nil
 
             switch(event_t.event) {
-                case IDEVICE_DEVICE_ADD:
-                    notificationName = .DeviceConnected
+                case IDEVICE_DEVICE_ADD, IDEVICE_DEVICE_PAIRED:
+                    notificationName = (event_t.event == IDEVICE_DEVICE_ADD) ? .DeviceConnected : .DevicePaired
                     if let res = deviceName(udid) {
                         name = String(cString: res)
                         break
                     }
-                    // if we can not read the device name it's a good indicator that the pairing did not work
-                    return
-                case IDEVICE_DEVICE_PAIRED:
-                    notificationName = .DevicePaired
-                    if let res = deviceName(udid) {
-                        name = String(cString: res)
-                        break
-                    }
+                    // If we can not read the device name it's a good indicator that the pairing did not work.
+                    // This happens quit often because libimobiledevice detects Wi-Fi devices, although it does
+                    // not support them (yet). We don't want to send a notification in this case.
                     return
                 case IDEVICE_DEVICE_REMOVE:
                     notificationName = .DeviceDisconnected
@@ -79,7 +75,8 @@ class Device: NSObject {
             }
 
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: notificationName!, object: nil, userInfo: ["UDID": udid, "NAME": name])
+                NotificationCenter.default.post(name: notificationName!, object: nil,
+                                                userInfo: ["UDID": udid, "NAME": name])
             }
         }
         return idevice_event_subscribe(cb, nil) == IDEVICE_E_SUCCESS

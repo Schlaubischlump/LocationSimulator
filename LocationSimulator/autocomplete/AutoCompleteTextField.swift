@@ -132,7 +132,7 @@ class AutoCompleteTextField: NSTextField {
             return nil
         case 48: // Tab
             if isShow {
-                self.autoCompletePopover?.close()
+                self.autoCompletePopover?.hide()
             }
         case 49: //Space
             if isShow && !keyUp {
@@ -163,7 +163,7 @@ class AutoCompleteTextField: NSTextField {
             self.stringValue = match.text
             self.tableViewDelegate!.textField(self, didSelectItem: match)
         }
-        self.autoCompletePopover?.close()
+        self.autoCompletePopover?.hide()
     }
     
     @objc override func complete(_ sender: Any?) {
@@ -172,7 +172,7 @@ class AutoCompleteTextField: NSTextField {
         
         //This happens when we just started a new word or if we have already typed the entire word
         if subStringRange.length == 0 || lengthOfWord == 0 {
-            self.autoCompletePopover?.close()
+            self.autoCompletePopover?.hide()
             return
         }
         
@@ -190,7 +190,7 @@ class AutoCompleteTextField: NSTextField {
             }
         }
         else{
-            self.autoCompletePopover?.close()
+            self.autoCompletePopover?.hide()
         }
     }
 

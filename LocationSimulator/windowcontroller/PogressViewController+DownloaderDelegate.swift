@@ -40,7 +40,6 @@ extension ProgressViewController: DownloaderDelegate {
 
     func downloadError(downloader: Downloader, task: DownloadTask, error: Error) {
         guard let win = self.view.window else { return }
-
         // show the error to the user
         win.sheetParent?.showError(NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR", comment: ""),
                                    message: NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR_MSG", comment: ""))

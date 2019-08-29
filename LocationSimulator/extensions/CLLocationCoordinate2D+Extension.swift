@@ -36,7 +36,8 @@ extension CLLocationCoordinate2D {
      - Parameter transportType: transport type, e.g car or walk
      - Parameter completion: completion block after the calculation finished
      */
-    func calculateRouteTo(_ destination: CLLocationCoordinate2D, transportType: MKDirectionsTransportType, completion: @escaping (_ value: [CLLocationCoordinate2D]) -> ()) {
+    func calculateRouteTo(_ destination: CLLocationCoordinate2D, transportType: MKDirectionsTransportType,
+                          completion: @escaping (_ value: [CLLocationCoordinate2D]) -> ()) {
 
         // create a request to navigation from source to destination
         let request = MKDirections.Request()
@@ -50,10 +51,12 @@ extension CLLocationCoordinate2D {
         directions.calculate { response, error in
             guard let unwrappedResponse = response else { return }
 
-            if let route = unwrappedResponse.routes.first {
-                completion(route.polyline.coordinates)
-            } else {
-                completion([])
+            DispatchQueue.main.async {
+                if let route = unwrappedResponse.routes.first {
+                    completion(route.polyline.coordinates)
+                } else {
+                    completion([])
+                }
             }
         }
     }
