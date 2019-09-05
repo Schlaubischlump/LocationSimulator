@@ -45,6 +45,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 	```shell
 	brew install libimobiledevice --HEAD
 	```
+> You might need a new version of `libusbmuxd` for `libimobiledevice` to install. Use ```brew install usbmuxd --HEAD``` to install the latest version.
 1. Clone this repository:    
 
 	```shell
