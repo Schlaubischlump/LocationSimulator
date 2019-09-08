@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144" width="144" height="144">
-	<style>
-		tspan { white-space:pre }
-		.shp0 { fill: #067cff;stroke: #ffffff;stroke-width: 24 } 
-	</style>
-	<circle id="Shape 1" class="shp0" cy="72" cx="72" r="60"/>
-</svg>
+<svg height="144" viewBox="0 0 144 144" width="144" xmlns="http://www.w3.org/2000/svg"><circle cx="72" cy="72" fill="#067cff" r="60" stroke="#fff" stroke-width="24"/></svg>

@@ -123,5 +123,16 @@
 			<string>https://github.com/luannguyenkhoa/LocationSimulator/raw/master/LocationSimulator/13.0/DeveloperDiskImage.dmg.signature</string>
 		</array>
 	</dict>
+	<key>13.1</key>
+	<dict>
+		<key>Image</key>
+		<array>
+			<string>https://github.com/luannguyenkhoa/LocationSimulator/raw/master/LocationSimulator/13.0/DeveloperDiskImage.dmg</string>
+		</array>
+		<key>Signature</key>
+		<array>
+			<string>https://github.com/luannguyenkhoa/LocationSimulator/raw/master/LocationSimulator/13.0/DeveloperDiskImage.dmg.signature</string>
+		</array>
+	</dict>
 </dict>
 </plist>
