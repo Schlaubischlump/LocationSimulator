@@ -61,25 +61,27 @@ extension MapViewController: LocationSpooferDelegate {
 
         // if we have set a new location animate the marker
         if (!isReset) {
-            if (self.currentLocationMarker != nil) { // location was updated => animate to new position
-                NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
-                    context.duration = 0.5
-                    context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-                    context.allowsImplicitAnimation = true
-                    self.currentLocationMarker?.coordinate = toCoordinate!
-                }, completionHandler: nil)
-
-                if self.autoFocusCurrentLocation {
-                    self.mapView.setCenter(toCoordinate!, animated: true)
-                }
-            } else { // location was set for the first time => display marker
+            // location was set for the first time => display marker
+            if (self.currentLocationMarker == nil) { // location was updated => animate to new position
                 let currentLocationMarker = MKPointAnnotation()
-                currentLocationMarker.coordinate = toCoordinate!
                 currentLocationMarker.title = NSLocalizedString("CURRENT_LOCATION", comment: "")
 
                 self.mapView.addAnnotation(currentLocationMarker)
                 self.currentLocationMarker = currentLocationMarker
                 self.autoFocusCurrentLocation = true
+            }
+            self.currentLocationMarker!.subtitle = "\(toCoordinate!.latitude), \(toCoordinate!.longitude)"
+
+            // animate the marker to the new position
+            NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
+                context.duration = 0.5
+                context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+                context.allowsImplicitAnimation = true
+                self.currentLocationMarker?.coordinate = toCoordinate!
+            }, completionHandler: nil)
+
+            if self.autoFocusCurrentLocation {
+                self.mapView.setCenter(toCoordinate!, animated: true)
             }
         } else { // the location was reset => remove marker
             if let marker = self.currentLocationMarker {

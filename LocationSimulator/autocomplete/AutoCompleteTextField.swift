@@ -44,6 +44,14 @@ class AutoCompleteTextField: NSTextField {
         self.setup()
     }
 
+    override func becomeFirstResponder() -> Bool {
+        // Show popover if we click inside of the textField or enter the focus.
+        if !self.stringValue.isEmpty {
+            self.complete(self)
+        }
+        return super.becomeFirstResponder()
+    }
+
     func setup() {
         let column1 = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "text"))
         column1.isEditable = false

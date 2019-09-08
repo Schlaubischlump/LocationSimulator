@@ -25,10 +25,12 @@ extension MapViewController: MKMapViewDelegate {
         {
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: kAnnotationViewCurrentLocationIdentifier)
             if annotationView == nil {
+                let size = 24.0
+
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: kAnnotationViewCurrentLocationIdentifier)
-                annotationView?.image = #imageLiteral(resourceName: "UserLocation").resize(width: 24.0, height: 24.0)
+                annotationView?.image = #imageLiteral(resourceName: "UserLocation").resize(width: CGFloat(size), height: CGFloat(size))
                 annotationView?.canShowCallout = true
-                annotationView?.centerOffset = CGPoint(x: 0, y: 0)
+                annotationView?.centerOffset = CGPoint(x: -size/2.0, y: -size/2.0)
 
                 // add a drop shadow to the location marker
                 let shadow = NSShadow()
