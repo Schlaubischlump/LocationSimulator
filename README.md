@@ -49,7 +49,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 1. Clone this repository:    
 
 	```shell
-	git clone https://github.com/Schlaubischlump/LocationSimulator
+	git clone --recurse-submodules https://github.com/Schlaubischlump/LocationSimulator
 	```
 1. Open `LocationSimulator.xcodeproj` in Xcode.
 1. Adjust the library search paths and the linked libraries if required.
