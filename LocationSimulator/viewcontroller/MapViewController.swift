@@ -96,6 +96,7 @@ class MapViewController: NSViewController {
         self.mapView.wantsLayer = true // otherwise the BlurView won't work
         self.mapView.showsZoomControls = false
         self.mapView.showsScale = true
+        //self.mapView.showsUserLocation = true
 
         // add a drop shadow to the circle view
         let shadow = NSShadow()
@@ -122,10 +123,6 @@ class MapViewController: NSViewController {
         }
 
         // Add gesture recognizer
-        let mapClickGesture = NSClickGestureRecognizer(target: self, action: #selector(mapViewClicked(_:)))
-        mapClickGesture.numberOfTouchesRequired = 1
-        mapView.addGestureRecognizer(mapClickGesture)
-
         let mapPressGesture = NSPressGestureRecognizer(target: self, action: #selector(mapViewPressed(_:)))
         mapPressGesture.minimumPressDuration = 0.5
         mapPressGesture.numberOfTouchesRequired = 1
@@ -154,6 +151,11 @@ class MapViewController: NSViewController {
         // Fixme: This is ugly, but I can not get another solution to work...
         DistributedNotificationCenter.default.addObserver(self, selector: #selector(themeChanged),
                                                           name: .AppleInterfaceThemeChanged, object: nil)
+    }
+
+    override func mouseDown(with event: NSEvent) {
+        self.view.window?.makeFirstResponder(self.mapView)
+        super.mouseDown(with: event)
     }
 
     override func viewDidAppear() {
@@ -286,13 +288,51 @@ class MapViewController: NSViewController {
         self.spoofer?.heading = self.mapView.camera.heading + heading
     }
 
-    // MARK: - Interface Builder callbacks
+    // MARK: - Teleport
 
-    @objc func mapViewClicked(_ sender: NSClickGestureRecognizer) {
-        if sender.state == .ended {
-            self.view.window?.makeFirstResponder(self.mapView)
+    func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D) {
+        // if the current location is set ask the user if he wants to teleport or navigate to the destination
+        let alert = NSAlert()
+        alert.messageText = NSLocalizedString("DESTINATION", comment: "")
+        alert.informativeText = NSLocalizedString("TELEPORT_OR_NAVIGATE_MSG", comment: "")
+        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("TELEPORT", comment: ""))
+        alert.alertStyle = .informational
+        alert.beginSheetModal(for: self.view.window!) { res in
+            if res == NSApplication.ModalResponse.alertFirstButtonReturn {
+                guard let spoofer = self.spoofer else { return }
+                // cancel => set the location to the current one, in case the marker was dragged
+                self.didChangeLocation(spoofer: spoofer, toCoordinate: spoofer.currentLocation)
+            } else if res == NSApplication.ModalResponse.alertSecondButtonReturn {
+                // calculate the route, display it and start moving
+                guard let spoofer = self.spoofer, let currentLoc = self.spoofer?.currentLocation else { return }
+
+                let transportType: MKDirectionsTransportType = (spoofer.moveType == .car) ? .automobile : .walking
+
+                // indicate work while we calculate the route
+                self.startSpinner()
+
+                // calulate the route to the destination
+                currentLoc.calculateRouteTo(coord, transportType: transportType) {route in
+                    // set the current route to follow
+                    spoofer.route = route
+                    self.stopSpinner()
+
+                    // start automoving
+                    if (spoofer.moveState != .auto) {
+                        spoofer.moveState = .auto
+                        spoofer.move()
+                    }
+                }
+            } else if res == NSApplication.ModalResponse.alertThirdButtonReturn {
+                // teleport to the new location
+                self.spoofer?.setLocation(coord)
+            }
         }
     }
+
+    // MARK: - Interface Builder callbacks
 
     @objc func mapViewPressed(_ sender: NSPressGestureRecognizer) {
         if sender.state == .ended {
@@ -302,41 +342,7 @@ class MapViewController: NSViewController {
             if self.currentLocationMarker == nil {
                 self.spoofer?.setLocation(coordinate)
             } else {
-                // if the current location is set ask the user if he wants to teleport or navigate to the destination
-                let alert = NSAlert()
-                alert.messageText = NSLocalizedString("DESTINATION", comment: "")
-                alert.informativeText = NSLocalizedString("TELEPORT_OR_NAVIGATE_MSG", comment: "")
-                alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-                alert.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
-                alert.addButton(withTitle: NSLocalizedString("TELEPORT", comment: ""))
-                alert.alertStyle = .informational
-                alert.beginSheetModal(for: self.view.window!) { res in
-                    if res == NSApplication.ModalResponse.alertSecondButtonReturn {
-                        // calculate the route, display it and start moving
-                        guard let spoofer = self.spoofer, let currentLoc = self.spoofer?.currentLocation else { return }
-
-                        let transportType: MKDirectionsTransportType = (spoofer.moveType == .car) ? .automobile : .walking
-
-                        // indicate work while we calculate the route
-                        self.startSpinner()
-
-                        // calulate the route to the destination
-                        currentLoc.calculateRouteTo(coordinate, transportType: transportType) {route in
-                            // set the current route to follow
-                            spoofer.route = route
-                            self.stopSpinner()
-
-                            // start automoving
-                            if (spoofer.moveState != .auto) {
-                                spoofer.moveState = .auto
-                                spoofer.move()
-                            }
-                        }
-                    } else if res == NSApplication.ModalResponse.alertThirdButtonReturn {
-                        // teleport to the new location
-                        self.spoofer?.setLocation(coordinate)
-                    }
-                }
+                self.requestTeleportOrNavigation(toCoordinate: coordinate)
             }
             self.view.window?.makeFirstResponder(self.mapView)
         }

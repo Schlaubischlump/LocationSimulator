@@ -62,7 +62,7 @@ extension MapViewController: LocationSpooferDelegate {
         // if we have set a new location animate the marker
         if (!isReset) {
             // location was set for the first time => display marker
-            if (self.currentLocationMarker == nil) { // location was updated => animate to new position
+            if (self.currentLocationMarker == nil) {
                 let currentLocationMarker = MKPointAnnotation()
                 currentLocationMarker.title = NSLocalizedString("CURRENT_LOCATION", comment: "")
 
@@ -72,7 +72,7 @@ extension MapViewController: LocationSpooferDelegate {
             }
             self.currentLocationMarker!.subtitle = "\(toCoordinate!.latitude), \(toCoordinate!.longitude)"
 
-            // animate the marker to the new position
+             // location was updated => animate to new position
             NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
                 context.duration = 0.5
                 context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)

@@ -20,31 +20,36 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let pointAnnotation = annotation as? MKPointAnnotation,
-            pointAnnotation == self.currentLocationMarker
+        if let pointAnnotation = annotation as? MKPointAnnotation, pointAnnotation == self.currentLocationMarker
         {
             var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: kAnnotationViewCurrentLocationIdentifier)
             if annotationView == nil {
-                let size = 24.0
-
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: kAnnotationViewCurrentLocationIdentifier)
-                annotationView?.image = #imageLiteral(resourceName: "UserLocation").resize(width: CGFloat(size), height: CGFloat(size))
-                annotationView?.canShowCallout = true
-                annotationView?.centerOffset = CGPoint(x: -size/2.0, y: -size/2.0)
+                annotationView!.image = #imageLiteral(resourceName: "UserLocation").resize(width: 24.0, height: 24.0)
+                annotationView!.canShowCallout = true
+                annotationView!.collisionMode = .circle
+                annotationView!.isDraggable = true
+                annotationView!.displayPriority = .required
 
                 // add a drop shadow to the location marker
                 let shadow = NSShadow()
                 shadow.shadowColor = NSColor(calibratedWhite: 0.0, alpha: 0.6)
                 shadow.shadowBlurRadius = 18.0
                 shadow.shadowOffset = NSSize(width: 0.0, height: 0.0)
-                annotationView?.shadow = shadow
-            } else {
-                annotationView?.annotation = annotation
+                annotationView!.shadow = shadow
             }
+
+            annotationView?.annotation = pointAnnotation
 
             return annotationView
         }
 
         return nil
+    }
+
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        if newState == .ending, let annotation = view.annotation {
+            self.requestTeleportOrNavigation(toCoordinate: annotation.coordinate)
+        }
     }
 }
