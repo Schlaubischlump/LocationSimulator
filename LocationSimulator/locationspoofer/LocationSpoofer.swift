@@ -106,6 +106,9 @@ class LocationSpoofer: NSObject {
     /// The connected iOS Device.
     public let device: Device
 
+    /// Total moved distance in m
+    public var totalDistance: Double = 0.0
+
     /// Internal background queue which performs the location update operations
     private let dispatchQueue: DispatchQueue
 
@@ -184,6 +187,7 @@ class LocationSpoofer: NSObject {
             // try to simulate the location on the device
             let success: Bool = self.device.simulateLocation(coordinate)
             if (success) {
+                self.totalDistance += self.currentLocation?.distanceTo(coordinate: coordinate) ?? 0
                 self.currentLocation = coordinate
             }
 

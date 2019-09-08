@@ -42,6 +42,8 @@ class MapViewController: NSViewController {
 
     @IBOutlet weak var separatorLine: NSBox!
     
+    @IBOutlet weak var totalDistanceLabel: NSTextField!
+    
     // MARK: - Properties
 
     /// Current instance to spoof the iOS device location.
@@ -180,7 +182,8 @@ class MapViewController: NSViewController {
         self.spinnerContainer.disableBlur = !isDarkMode
         self.moveButtonEffectView.disableBlur = !isDarkMode
         self.moveHeadingEffectView.disableBlur = !isDarkMode
-        print(self.separatorLine.appearance, self.view.appearance)
+        self.separatorLine.borderColor = isDarkMode ? .black : NSColor(calibratedRed: 167.0/255.0, green: 167.0/255.0, blue: 167.0/255.0, alpha: 1.0)
+        //print(self.separatorLine.effectiveAppearance.name, NSColor(named: "separatorColor"))
     }
 
     @objc func themeChanged(_ notification: Notification) {

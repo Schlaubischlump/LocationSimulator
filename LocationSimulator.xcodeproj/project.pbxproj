@@ -114,7 +114,6 @@
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
 		6375BA192309A95C000DA0A4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
-		63B1272A23250C7D0077399D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B1277623251F3D0077399D /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.6.dylib; path = "../../../../usr/local/Cellar/libimobiledevice/HEAD-0584aa9_3/lib/libimobiledevice.6.dylib"; sourceTree = "<group>"; };
 		63B1277823251F490077399D /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = ../../../../usr/local/Cellar/libplist/2.0.0_1/lib/libplist.3.dylib; sourceTree = "<group>"; };
 		63B1277A23251F5F0077399D /* libssl.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2s/lib/libssl.1.0.0.dylib; sourceTree = "<group>"; };
@@ -160,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				13BA351820A433EE00A0431C /* LocationSimulator */,
-				63B1272923250C7D0077399D /* LibmobileDevice */,
 				13BA351720A433EE00A0431C /* Products */,
 				633A433B22F9926C005B3BE0 /* Frameworks */,
 			);
@@ -291,14 +289,6 @@
 				63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */,
 			);
 			path = viewcontroller;
-			sourceTree = "<group>";
-		};
-		63B1272923250C7D0077399D /* LibmobileDevice */ = {
-			isa = PBXGroup;
-			children = (
-				63B1272A23250C7D0077399D /* Info.plist */,
-			);
-			path = LibmobileDevice;
 			sourceTree = "<group>";
 		};
 		63FC479523022D3A00BBB2E8 /* extensions */ = {
