@@ -157,6 +157,7 @@ class LocationSpoofer: NSObject {
             // try to reset the location
             let success: Bool = self.device.disableSimulation()
             if (success) {
+                self.totalDistance = 0.0
                 self.currentLocation = nil
             }
 

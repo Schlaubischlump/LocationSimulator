@@ -53,7 +53,9 @@ extension MapViewController: LocationSpooferDelegate {
         // true if the location was reset, false otherwise
         let isReset: Bool = (toCoordinate == nil)
 
-        var totalDistanceInKM: Double = 0.0
+        // calculate the total rounded distance in kilometers
+        let totalDistanceInKM: Double = round(self.spoofer?.totalDistance ?? 0.0) / 1000.0
+        self.totalDistanceLabel.stringValue = "Total distance: \(totalDistanceInKM)km"
 
         // hide / show move controls
         self.controlsHidden = isReset
@@ -63,9 +65,6 @@ extension MapViewController: LocationSpooferDelegate {
 
         // if we have set a new location animate the marker
         if (!isReset) {
-            // calculate the total rounded distance in kilometers
-            totalDistanceInKM = round(self.spoofer?.totalDistance ?? 0.0) / 1000.0
-
             // location was set for the first time => display marker
             if (self.currentLocationMarker == nil) {
                 let currentLocationMarker = MKPointAnnotation()
@@ -96,9 +95,6 @@ extension MapViewController: LocationSpooferDelegate {
 
             self.autoFocusCurrentLocation = false
         }
-
-        // update total moved distance
-        self.totalDistanceLabel.stringValue = "Total distance: \(totalDistanceInKM)km"
     }
 
     func didChangeMoveState(spoofer: LocationSpoofer, moveState: MoveState) {
