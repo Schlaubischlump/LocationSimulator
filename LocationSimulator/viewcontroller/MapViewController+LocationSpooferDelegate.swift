@@ -35,7 +35,7 @@ extension MapViewController: LocationSpooferDelegate {
             self.mapView.addOverlay(self.routeOverlay!, level: .aboveLabels)
             // FixMe: force a redraw to show the overlay... for some reason display is not working
             // this does block the UI for a little less then a second :/ 
-            self.mapView.setCenter(self.mapView.centerCoordinate, animated: true)
+            //self.mapView.setCenter(self.mapView.centerCoordinate, animated: true)
         }
     }
 

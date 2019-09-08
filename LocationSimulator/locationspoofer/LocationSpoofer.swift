@@ -112,6 +112,9 @@ class LocationSpoofer: NSObject {
     /// Internal timer required for automoving.
     private var autoMoveTimer: Timer?
 
+    /// True if a location update task is already running, false otehrwise.
+    private var hasPendingTask: Bool = false
+
 
     // MARK: - Constructor
 
@@ -141,6 +144,7 @@ class LocationSpoofer: NSObject {
      - Parameter completion: completion block to call after the update oparation is executed
      */
     public func resetLocation() {
+        self.hasPendingTask = true
         // inform delegate that the location will be reset
         self.delegate?.willChangeLocation(spoofer: self, toCoordinate: nil)
         // disable automoving
@@ -159,6 +163,7 @@ class LocationSpoofer: NSObject {
                 } else {
                     self.delegate?.errorChangingLocation(spoofer: self, toCoordinate: nil)
                 }
+                self.hasPendingTask = false
             }
         }
     }
@@ -171,6 +176,7 @@ class LocationSpoofer: NSObject {
      - Parameter completion: completion block after the update oparation was performed
     */
     private func setLocation(_ coordinate: CLLocationCoordinate2D, completion:@escaping kSucessHandler) {
+        self.hasPendingTask = true
         // inform delegate that the location will change
         self.delegate?.willChangeLocation(spoofer: self, toCoordinate: coordinate)
 
@@ -189,6 +195,7 @@ class LocationSpoofer: NSObject {
                 } else {
                     self.delegate?.errorChangingLocation(spoofer: self, toCoordinate: coordinate)
                 }
+                self.hasPendingTask = false
             }
         }
     }
@@ -262,7 +269,7 @@ class LocationSpoofer: NSObject {
      Pause or resume automoving. Calling this function is only useful if a route is set. Otherwise you could just
      change the `moveType`to manual to get the same effect.
      */
-    public func pauseResumeNavigationAutoMove() {
+    public func pauseResumeAutoMove() {
         if self.moveState == .manual || self.route.count == 0 { return }
 
         if (self.autoMoveTimer != nil) {
@@ -276,8 +283,12 @@ class LocationSpoofer: NSObject {
     /**
      Move `moveType.distance` meters per second `into the direction defined by `heading` or by the current route.
      If automove is activated this function will reschedule itself.
+     - Parameter appendToPendingTasks: True to append the location operation to the DispatchQueue, false otherwise
     */
-    @objc public func move() {
+    @objc public func move(appendToPendingTasks: Bool = true) {
+        // we don't want to append a new task
+        if !appendToPendingTasks && self.hasPendingTask { return }
+
         let distance = moveType.distance*kAutoMoveDuration
 
         guard let nextLocation = self.calculateNextLocation(distance) else {

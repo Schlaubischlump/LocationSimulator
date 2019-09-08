@@ -119,7 +119,7 @@ class WindowController: NSWindowController {
                     if (angle < .pi/2.0 && angle > -.pi/2.0) {
                         viewController.rotateHeaderViewBy(.pi)
                     }
-                    spoofer.move()
+                    spoofer.move(appendToPendingTasks: false)
                 }
                 return nil
             case kUpKey:
@@ -131,12 +131,12 @@ class WindowController: NSWindowController {
                     if (angle > .pi/2.0 || angle < -.pi/2.0) {
                         viewController.rotateHeaderViewBy(.pi)
                     }
-                    spoofer.move()
+                    spoofer.move(appendToPendingTasks: false)
                 }
                 return nil
             case kSpaceKey:
                 // pause navigation
-                spoofer.pauseResumeNavigationAutoMove()
+                spoofer.pauseResumeAutoMove()
                 return nil
             default:
                 break
