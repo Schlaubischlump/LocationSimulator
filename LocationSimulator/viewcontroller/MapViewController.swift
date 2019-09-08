@@ -40,6 +40,8 @@ class MapViewController: NSViewController {
     
     @IBOutlet weak var moveHeadingEffectView: BlurView!
 
+    @IBOutlet weak var separatorLine: NSBox!
+    
     // MARK: - Properties
 
     /// Current instance to spoof the iOS device location.
@@ -178,6 +180,7 @@ class MapViewController: NSViewController {
         self.spinnerContainer.disableBlur = !isDarkMode
         self.moveButtonEffectView.disableBlur = !isDarkMode
         self.moveHeadingEffectView.disableBlur = !isDarkMode
+        print(self.separatorLine.appearance, self.view.appearance)
     }
 
     @objc func themeChanged(_ notification: Notification) {

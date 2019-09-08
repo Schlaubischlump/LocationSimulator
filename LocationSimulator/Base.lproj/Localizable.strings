@@ -22,7 +22,7 @@
 
 // Error messages
 "PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
-"MOUNT_ERROR_MSG" = "The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nAre the correct DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files placed in the corresponding folder in the application resources?";
+"MOUNT_ERROR_MSG" = "The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked? Are the correct DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files placed in the corresponding folder in the application resources?";
 "UNKNOWN_ERROR_MSG" = "You should never see this message...\nPlease contact the author.";
 "LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
 "LOCATION_CHANGE_ERROR_MSG" = "Could not change the location.";
