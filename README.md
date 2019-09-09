@@ -31,7 +31,10 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 - macOS 10.13+
 - Swift 5.0+
 - [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice)
-- [libplist](https://github.com/libimobiledevice/libplist)
+	- [libusbmuxd](https://github.com/libimobiledevice/libusbmuxd)
+	- [libplist](https://github.com/libimobiledevice/libplist)
+	- [libopenssl](https://github.com/openssl/openssl)
+	- [libcrypto](https://github.com/openssl/openssl)
 
 > **Note**:    
 > LocationSimulator will try to download the corresponding `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` for your iOS Version from github, because I can not legally distribute these files. If the download should not work, get the files by installing Xcode and copy or link them to:    
@@ -40,7 +43,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 ### Build the app
 
 1. Install the latest [Xcode developer tools](https://developer.apple.com/xcode/downloads/) from Apple.
-1. Install latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) (and thereby [libplist](https://github.com/libimobiledevice/libplist) as well) with [homebrew](https://brew.sh):
+1. Install latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) (and thereby all it's dependencies as well) as well) with [homebrew](https://brew.sh):
 
 	```shell
 	brew install libimobiledevice --HEAD
