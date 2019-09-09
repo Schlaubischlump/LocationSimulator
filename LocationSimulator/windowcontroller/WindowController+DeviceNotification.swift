@@ -33,7 +33,8 @@ extension WindowController {
     }
 
     /**
-     Callback when a device gets paired.
+     Callback when a device gets paired for the first time with this computer. We could restart the device creation
+     process here... For now we just asume the device is already paired and trusted.
      - Parameter notification: notification with device information (UDID and name)
      */
     @objc func devicePaired(_ notification: Notification) {
@@ -67,6 +68,9 @@ extension WindowController {
 
             // cleanup the spoofer instance for the device
             viewController.spoofer = nil
+            // reset the total distance label
+            let emptyTotalDistanceString = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
+            viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
         }
     }
 }

@@ -43,7 +43,7 @@ class MapViewController: NSViewController {
     @IBOutlet weak var separatorLine: NSBox!
     
     @IBOutlet weak var totalDistanceLabel: NSTextField!
-    
+
     // MARK: - Properties
 
     /// Current instance to spoof the iOS device location.
@@ -94,6 +94,9 @@ class MapViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // reset the total distance label
+        self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
 
         // configure the map view
         self.mapView.delegate = self

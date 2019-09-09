@@ -55,7 +55,8 @@ extension MapViewController: LocationSpooferDelegate {
 
         // calculate the total rounded distance in kilometers
         let totalDistanceInKM: Double = round(self.spoofer?.totalDistance ?? 0.0) / 1000.0
-        self.totalDistanceLabel.stringValue = "Total distance: \(totalDistanceInKM)km"
+        self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""),
+                                                     totalDistanceInKM)
 
         // hide / show move controls
         self.controlsHidden = isReset

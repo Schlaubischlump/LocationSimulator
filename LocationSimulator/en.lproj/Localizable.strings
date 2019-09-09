@@ -40,3 +40,4 @@
 // Informative text
 "DEVDISK_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg";
 "DEVSIGN_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg.signature";
+"TOTAL_DISTANCE" = "Total distance: %.3fkm";
