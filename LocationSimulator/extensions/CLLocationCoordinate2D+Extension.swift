@@ -43,6 +43,7 @@ extension CLLocationCoordinate2D {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: self, addressDictionary: nil))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
+        request.transportType = transportType
         request.requestsAlternateRoutes = false
 
         let directions = MKDirections(request: request)
