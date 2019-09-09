@@ -95,8 +95,6 @@ bool developerImageIsMountedForDevice(const char *udid) {
     // free client
     mobile_image_mounter_free(mim);
 
-    goto leave;
-
 leave:
     if (lckd) {
         lockdownd_client_free(lckd);
