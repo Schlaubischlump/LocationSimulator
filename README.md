@@ -18,7 +18,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 - ✅ Spoof the iOS device location without a jailbreak or installing an app on the device.
 - ✅ Automatically try to download the DeveloperDiskImage files for your iOS Version.
 - ✅ Set the device location with a long click on the map.
-- ✅ Supported 3 movement speeds (Walk/Cycle/Drive).
+- ✅ Support 3 movement speeds (Walk/Cycle/Drive).
 - ✅ Control the movement using the arrow keys.
 - ✅ Navigate from the current location to a new location.
 - ✅ Search for locations.
