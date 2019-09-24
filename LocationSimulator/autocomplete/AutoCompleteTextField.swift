@@ -142,11 +142,11 @@ class AutoCompleteTextField: NSTextField {
             if isShow {
                 self.autoCompletePopover?.hide()
             }
-        case 49: //Space
+        /*case 49: //Space
             if isShow && !keyUp {
                 self.insert(self)
             }
-            return nil
+            return nil*/
         default:
             break
         }
