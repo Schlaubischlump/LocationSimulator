@@ -43,21 +43,21 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 ### Build the app
 
 1. Install the latest [Xcode developer tools](https://developer.apple.com/xcode/downloads/) from Apple.
-1. Install latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) (and thereby all it's dependencies as well) with [homebrew](https://brew.sh):
+2. Install latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) (and thereby all it's dependencies as well) with [homebrew](https://brew.sh):
 
 	```shell
 	brew install libimobiledevice --HEAD
 	```
 > You might need a new version of `libusbmuxd` for `libimobiledevice` to install. Use ```brew install usbmuxd --HEAD``` to install the latest version.
-1. Clone this repository:    
+3. Clone this repository:    
 
 	```shell
 	git clone --recurse-submodules https://github.com/Schlaubischlump/LocationSimulator
 	```
-1. Open `LocationSimulator.xcodeproj` in Xcode.
-1. Adjust the header search paths, library search paths and the embedded and linked libraries if required.
+4. Open `LocationSimulator.xcodeproj` in Xcode.
+5. Adjust the header search paths, library search paths and the embedded and linked libraries if required.
 > If you checked out a different head for `libimobiledeive` or `libusbmuxd` than used in this project, you will need to change all of the above entries.
-1. Tap Run to build and execute the app.
+6. Tap Run to build and execute the app.
 
 
 ## Usage
