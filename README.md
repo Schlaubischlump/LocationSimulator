@@ -38,7 +38,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 
 > **Note**:    
 > LocationSimulator will try to download the corresponding `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` for your iOS Version from github, because I can not legally distribute these files. If the download should not work, get the files by installing Xcode and copy or link them to:    
-> ```~/Library/Application Support/LocationSimulator/{YOUR_IOS_VERSION}/```
+> ```~/Library/Application Support/LocationSimulator/{MAJOR_YOUR_IOS_VERSION}.{MINOR_YOUR_IOS_VERSION}/```
 
 ### Build the app
 
@@ -55,7 +55,8 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 	git clone --recurse-submodules https://github.com/Schlaubischlump/LocationSimulator
 	```
 1. Open `LocationSimulator.xcodeproj` in Xcode.
-1. Adjust the library search paths and the linked libraries if required.
+1. Adjust the header search paths, library search paths and the embedded and linked libraries if required.
+> If you checked out a different head for `libimobiledeive` or `libusbmuxd` than used in this project, you will need to change all of the above entries.
 1. Tap Run to build and execute the app.
 
 
