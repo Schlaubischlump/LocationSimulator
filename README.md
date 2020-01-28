@@ -85,3 +85,8 @@ The whole project is licensed under the [MIT License](LICENSE) unless specified 
 
 ## Contribute
 Help is always appreciated, wether it are Bug fixes or features! E.g Accessibility support is still to be implemented, especially for the popup menu.
+
+### Enhancement ideas
+- Move all key events to menu bar shortcuts
+- Add a menu bar shortcut to teleport to specific coordinates
+- Allow following a predefined route from a gpx file
