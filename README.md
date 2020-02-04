@@ -90,3 +90,4 @@ Help is always appreciated, wether it are Bug fixes or features! E.g Accessibili
 - Move all key events to menu bar shortcuts
 - Add a menu bar shortcut to teleport to specific coordinates
 - Allow following a predefined route from a gpx file
+- Favorite location menu
