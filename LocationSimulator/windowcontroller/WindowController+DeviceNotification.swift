@@ -56,6 +56,7 @@ extension WindowController {
 
         // remove the device from the list and the list popup
         if let index: Int = self.deviceUDIDs.firstIndex(of: udid) {
+            let removedCurrentDevice = (self.devicesPopup.indexOfSelectedItem == index)
             self.devicesPopup.removeItem(at: index)
             self.deviceUDIDs.remove(at: index)
 
@@ -74,8 +75,14 @@ extension WindowController {
             // reset the total distance label
             let emptyTotalDistanceString = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
             viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
+
             // disable the menubar items
             self.setNavigationMenubarItems(enabled: false)
+
+            // try to select the next device in the list
+            if removedCurrentDevice, self.devicesPopup.numberOfItems > 0 {
+                self.deviceSelected(self.devicesPopup)
+            }
         }
     }
 }

@@ -265,14 +265,14 @@
 			path = deviceinfo;
 			sourceTree = "<group>";
 		};
-		632C465123F4B326004E5092 /* ProgressPanel */ = {
+		632C465123F4B326004E5092 /* progresspanel */ = {
 			isa = PBXGroup;
 			children = (
 				634D1145230CB8D7001F440C /* PogressWindowController.swift */,
 				63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */,
 				634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */,
 			);
-			path = ProgressPanel;
+			path = progresspanel;
 			sourceTree = "<group>";
 		};
 		632C465723F4B5F5004E5092 /* menu */ = {
@@ -337,7 +337,7 @@
 		63FC47A22306243300BBB2E8 /* windowcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				632C465123F4B326004E5092 /* ProgressPanel */,
+				632C465123F4B326004E5092 /* progresspanel */,
 				63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */,
 				130F510920AE9634002A61F1 /* WindowController.swift */,
 				63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */,

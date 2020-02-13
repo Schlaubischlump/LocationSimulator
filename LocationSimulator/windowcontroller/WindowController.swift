@@ -192,6 +192,8 @@ class WindowController: NSWindowController {
     }
 
     @IBAction func deviceSelected(_ sender: NSPopUpButton) {
+        self.setNavigationMenubarItems(enabled: false)
+
         guard let viewController = contentViewController as? MapViewController else { return }
 
         let index: Int = sender.indexOfSelectedItem
@@ -216,6 +218,8 @@ class WindowController: NSWindowController {
         if viewController.loadDevice(udid) {
             // set the correct walking speed based on the current selection
             viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
+            // make sure to enable the menubar item
+            self.setNavigationMenubarItems(enabled: true)
         }
     }
 }
