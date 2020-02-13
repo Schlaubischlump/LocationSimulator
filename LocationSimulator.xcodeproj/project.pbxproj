@@ -22,6 +22,10 @@
 		63183E29231821DC0073D80E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63183E27231821DB0073D80E /* Localizable.strings */; };
 		631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */; };
 		631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D23230A063200A7A8CF /* NSImage+Extension.swift */; };
+		632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C465823F4B611004E5092 /* CoordinateSelectionView.swift */; };
+		632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */; };
+		632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */; };
+		632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466223F4D9C8004E5092 /* CoordinateStepper.swift */; };
 		633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351920A433EE00A0431C /* AppDelegate.swift */; };
 		633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510920AE9634002A61F1 /* WindowController.swift */; };
 		633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */; };
@@ -39,17 +43,17 @@
 		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
 		6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375BA192309A95C000DA0A4 /* BlurView.swift */; };
 		638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ADBE0230095980061612D /* AutoCompletePopover.swift */; };
-		63B1277723251F3D0077399D /* libimobiledevice.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B1277623251F3D0077399D /* libimobiledevice.6.dylib */; };
-		63B1277923251F4A0077399D /* libplist.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B1277823251F490077399D /* libplist.3.dylib */; };
-		63B1277C23251F5F0077399D /* libssl.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B1277A23251F5F0077399D /* libssl.1.0.0.dylib */; };
-		63B1277D23251F5F0077399D /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B1277B23251F5F0077399D /* libcrypto.1.0.0.dylib */; };
-		63B1277F23251F730077399D /* libusbmuxd.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B1277E23251F730077399D /* libusbmuxd.4.dylib */; };
-		63B1278123251F860077399D /* libusbmuxd.4.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63B1277E23251F730077399D /* libusbmuxd.4.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		63B1278223251F860077399D /* libcrypto.1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63B1277B23251F5F0077399D /* libcrypto.1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		63B1278323251F860077399D /* libssl.1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63B1277A23251F5F0077399D /* libssl.1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		63B1278423251F860077399D /* libplist.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63B1277823251F490077399D /* libplist.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		63B1278523251F860077399D /* libimobiledevice.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63B1277623251F3D0077399D /* libimobiledevice.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
+		63C325F123F494C300E12207 /* libplist.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C325F023F494C300E12207 /* libplist.3.dylib */; };
+		63C325F623F4955300E12207 /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */; };
+		63C325F723F4955300E12207 /* libssl.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C325F523F4955300E12207 /* libssl.1.0.0.dylib */; };
+		63C3260023F498C100E12207 /* libcrypto.1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		63C3260123F498C300E12207 /* libssl.1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63C325F523F4955300E12207 /* libssl.1.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		63C3260323F498CA00E12207 /* libplist.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63C325F023F494C300E12207 /* libplist.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		63C3261023F49DE500E12207 /* libimobiledevice.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */; };
+		63C3261223F49DF400E12207 /* libusbmuxd.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */; };
+		63C3261323F49DF600E12207 /* libusbmuxd.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		63C3261423F49DF900E12207 /* libimobiledevice.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */; };
@@ -63,11 +67,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				63B1278123251F860077399D /* libusbmuxd.4.dylib in CopyFiles */,
-				63B1278223251F860077399D /* libcrypto.1.0.0.dylib in CopyFiles */,
-				63B1278323251F860077399D /* libssl.1.0.0.dylib in CopyFiles */,
-				63B1278423251F860077399D /* libplist.3.dylib in CopyFiles */,
-				63B1278523251F860077399D /* libimobiledevice.6.dylib in CopyFiles */,
+				63C3261423F49DF900E12207 /* libimobiledevice.6.dylib in CopyFiles */,
+				63C3261323F49DF600E12207 /* libusbmuxd.6.dylib in CopyFiles */,
+				63C3260023F498C100E12207 /* libcrypto.1.0.0.dylib in CopyFiles */,
+				63C3260123F498C300E12207 /* libssl.1.0.0.dylib in CopyFiles */,
+				63C3260323F498CA00E12207 /* libplist.3.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +107,10 @@
 		63183E2A2318221B0073D80E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		631F9D23230A063200A7A8CF /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
+		632C465823F4B611004E5092 /* CoordinateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionView.swift; sourceTree = "<group>"; };
+		632C465B23F4B715004E5092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CoordinateSelectionView.xib; sourceTree = "<group>"; };
+		632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateFormatter.swift; sourceTree = "<group>"; };
+		632C466223F4D9C8004E5092 /* CoordinateStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateStepper.swift; sourceTree = "<group>"; };
 		633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+TableView.swift"; sourceTree = "<group>"; };
 		633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+Protocol.swift"; sourceTree = "<group>"; };
@@ -114,12 +122,12 @@
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
 		6375BA192309A95C000DA0A4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
-		63B1277623251F3D0077399D /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.6.dylib; path = "../../../../usr/local/Cellar/libimobiledevice/HEAD-0584aa9_3/lib/libimobiledevice.6.dylib"; sourceTree = "<group>"; };
-		63B1277823251F490077399D /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = ../../../../usr/local/Cellar/libplist/2.0.0_1/lib/libplist.3.dylib; sourceTree = "<group>"; };
-		63B1277A23251F5F0077399D /* libssl.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2s/lib/libssl.1.0.0.dylib; sourceTree = "<group>"; };
-		63B1277B23251F5F0077399D /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2s/lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
-		63B1277E23251F730077399D /* libusbmuxd.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.4.dylib; path = "../../../../usr/local/Cellar/usbmuxd/HEAD-c75605d_1/lib/libusbmuxd.4.dylib"; sourceTree = "<group>"; };
 		63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		63C325F023F494C300E12207 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = ../../../../usr/local/Cellar/libplist/2.1.0/lib/libplist.3.dylib; sourceTree = "<group>"; };
+		63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2t/lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
+		63C325F523F4955300E12207 /* libssl.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2t/lib/libssl.1.0.0.dylib; sourceTree = "<group>"; };
+		63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.6.dylib; path = "../../../../usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib/libimobiledevice.6.dylib"; sourceTree = "<group>"; };
+		63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.6.dylib; path = ../../../../usr/local/Cellar/libusbmuxd/2.0.1/lib/libusbmuxd.6.dylib; sourceTree = "<group>"; };
 		63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeveloperDiskImages.plist; sourceTree = "<group>"; };
 		63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchField.swift; sourceTree = "<group>"; };
 		63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+LocationSpooferDelegate.swift"; sourceTree = "<group>"; };
@@ -132,11 +140,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63B1277F23251F730077399D /* libusbmuxd.4.dylib in Frameworks */,
-				63B1277C23251F5F0077399D /* libssl.1.0.0.dylib in Frameworks */,
-				63B1277D23251F5F0077399D /* libcrypto.1.0.0.dylib in Frameworks */,
-				63B1277923251F4A0077399D /* libplist.3.dylib in Frameworks */,
-				63B1277723251F3D0077399D /* libimobiledevice.6.dylib in Frameworks */,
+				63C3261223F49DF400E12207 /* libusbmuxd.6.dylib in Frameworks */,
+				63C3261023F49DE500E12207 /* libimobiledevice.6.dylib in Frameworks */,
+				63C325F623F4955300E12207 /* libcrypto.1.0.0.dylib in Frameworks */,
+				63C325F723F4955300E12207 /* libssl.1.0.0.dylib in Frameworks */,
+				63C325F123F494C300E12207 /* libplist.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +186,8 @@
 				13BA351920A433EE00A0431C /* AppDelegate.swift */,
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				13BA351F20A433EF00A0431C /* Main.storyboard */,
+				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
+				632C465723F4B5F5004E5092 /* menu */,
 				63FC47A22306243300BBB2E8 /* windowcontroller */,
 				6311B79A230C1D9C00AABF3E /* downloader */,
 				638ADBE2230203B20061612D /* viewcontroller */,
@@ -255,14 +265,34 @@
 			path = deviceinfo;
 			sourceTree = "<group>";
 		};
+		632C465123F4B326004E5092 /* ProgressPanel */ = {
+			isa = PBXGroup;
+			children = (
+				634D1145230CB8D7001F440C /* PogressWindowController.swift */,
+				63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */,
+				634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */,
+			);
+			path = ProgressPanel;
+			sourceTree = "<group>";
+		};
+		632C465723F4B5F5004E5092 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */,
+				632C466223F4D9C8004E5092 /* CoordinateStepper.swift */,
+				632C465823F4B611004E5092 /* CoordinateSelectionView.swift */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
 		633A433B22F9926C005B3BE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				63B1277E23251F730077399D /* libusbmuxd.4.dylib */,
-				63B1277B23251F5F0077399D /* libcrypto.1.0.0.dylib */,
-				63B1277A23251F5F0077399D /* libssl.1.0.0.dylib */,
-				63B1277823251F490077399D /* libplist.3.dylib */,
-				63B1277623251F3D0077399D /* libimobiledevice.6.dylib */,
+				63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */,
+				63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */,
+				63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */,
+				63C325F523F4955300E12207 /* libssl.1.0.0.dylib */,
+				63C325F023F494C300E12207 /* libplist.3.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -307,13 +337,11 @@
 		63FC47A22306243300BBB2E8 /* windowcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				632C465123F4B326004E5092 /* ProgressPanel */,
 				63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */,
 				130F510920AE9634002A61F1 /* WindowController.swift */,
 				63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */,
 				63FC47A32306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift */,
-				634D1145230CB8D7001F440C /* PogressWindowController.swift */,
-				63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */,
-				634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */,
 			);
 			path = windowcontroller;
 			sourceTree = "<group>";
@@ -329,7 +357,7 @@
 				13BA351320A433EE00A0431C /* Frameworks */,
 				13BA351420A433EE00A0431C /* Resources */,
 				63B1278023251F7A0077399D /* CopyFiles */,
-				6392FEFD2325349800192C23 /* ShellScript */,
+				6392FEFD2325349800192C23 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -393,6 +421,7 @@
 				13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */,
 				63183E29231821DC0073D80E /* Localizable.strings in Resources */,
 				63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */,
+				632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */,
 				13BA352120A433EF00A0431C /* Main.storyboard in Resources */,
 				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
 				63156C1722FB9BC20086D5F6 /* LICENSE in Resources */,
@@ -402,7 +431,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6392FEFD2325349800192C23 /* ShellScript */ = {
+		6392FEFD2325349800192C23 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -411,6 +440,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -442,8 +472,10 @@
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
 				6311B799230C150D00AABF3E /* Filemanager+Extension.swift in Sources */,
 				633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */,
+				632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */,
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
 				634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */,
+				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
 				633A460922F9A6A0005B3BE0 /* AutoCompleteTextField.swift in Sources */,
@@ -453,6 +485,7 @@
 				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
+				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				6311B79C230C1DD200AABF3E /* Downloader.swift in Sources */,
 				63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */,
 				633A460C22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift in Sources */,
@@ -479,6 +512,14 @@
 				63183E2A2318221B0073D80E /* Base */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				632C465B23F4B715004E5092 /* Base */,
+			);
+			name = CoordinateSelectionView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -615,8 +656,8 @@
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/libimobiledevice/HEAD-0584aa9_3/include/",
-					/usr/local/Cellar/libplist/2.0.0_1/include/,
+					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
+					/usr/local/Cellar/libplist/2.1.0/include/,
 				);
 				INFOPLIST_FILE = LocationSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -624,11 +665,10 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.0.0_1/lib/,
-					"/usr/local/Cellar/libimobiledevice/HEAD-0584aa9_3/lib",
-					/usr/local/Cellar/libplist/2.0.0_1/lib,
-					/usr/local/Cellar/openssl/1.0.2s/lib,
-					"/usr/local/Cellar/usbmuxd/HEAD-c75605d_1/lib",
+					/usr/local/Cellar/libplist/2.1.0/lib,
+					/usr/local/Cellar/openssl/1.0.2t/lib,
+					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
+					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -652,8 +692,8 @@
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/libimobiledevice/HEAD-0584aa9_3/include/",
-					/usr/local/Cellar/libplist/2.0.0_1/include/,
+					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
+					/usr/local/Cellar/libplist/2.1.0/include/,
 				);
 				INFOPLIST_FILE = LocationSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -661,11 +701,10 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.0.0_1/lib/,
-					"/usr/local/Cellar/libimobiledevice/HEAD-0584aa9_3/lib",
-					/usr/local/Cellar/libplist/2.0.0_1/lib,
-					/usr/local/Cellar/openssl/1.0.2s/lib,
-					"/usr/local/Cellar/usbmuxd/HEAD-c75605d_1/lib",
+					/usr/local/Cellar/libplist/2.1.0/lib,
+					/usr/local/Cellar/openssl/1.0.2t/lib,
+					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
+					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;

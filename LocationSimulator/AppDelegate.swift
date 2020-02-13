@@ -23,5 +23,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
+    // MARK: - MenuBar
+
+    @IBAction func setLocation(_ sender: Any) {
+        // Show the user an input textField to change the location.
+        guard let windowController = NSApp.mainWindow?.windowController else { return }
+        guard let viewController = windowController.contentViewController as? MapViewController else { return }
+        viewController.requestTeleportOrNavigation()
+    }
 }
 

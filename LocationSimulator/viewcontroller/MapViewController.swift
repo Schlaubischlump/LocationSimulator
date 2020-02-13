@@ -299,7 +299,7 @@ class MapViewController: NSViewController {
 
     // MARK: - Teleport
 
-    func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D) {
+    func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D? = nil) {
         // if the current location is set ask the user if he wants to teleport or navigate to the destination
         let alert = NSAlert()
         alert.messageText = NSLocalizedString("DESTINATION", comment: "")
@@ -308,7 +308,28 @@ class MapViewController: NSViewController {
         alert.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
         alert.addButton(withTitle: NSLocalizedString("TELEPORT", comment: ""))
         alert.alertStyle = .informational
+
+        // new coordinates to move to, either give by the function or read from a user input
+        var newCoords: CLLocationCoordinate2D? = nil
+
+        // if no location is give request one from the user
+        if coord == nil {
+            alert.accessoryView = CoordinateSelectionView(frame: NSRect(x: 0, y: 0, width: 330, height: 40))
+        } else {
+            newCoords = coord
+        }
+
         alert.beginSheetModal(for: self.view.window!) { res in
+            // read coodinates from user input
+            if coord == nil {
+                if let coordSelectionView = alert.accessoryView as? CoordinateSelectionView {
+                    newCoords = coordSelectionView.getCoordinates()
+                } else {
+                    // something went wrong...
+                    return
+                }
+            }
+
             if res == NSApplication.ModalResponse.alertFirstButtonReturn {
                 guard let spoofer = self.spoofer else { return }
                 // cancel => set the location to the current one, in case the marker was dragged
@@ -323,7 +344,7 @@ class MapViewController: NSViewController {
                 self.startSpinner()
 
                 // calulate the route to the destination
-                currentLoc.calculateRouteTo(coord, transportType: transportType) {route in
+                currentLoc.calculateRouteTo(newCoords!, transportType: transportType) {route in
                     // set the current route to follow
                     spoofer.route = route
                     self.stopSpinner()
@@ -336,7 +357,7 @@ class MapViewController: NSViewController {
                 }
             } else if res == NSApplication.ModalResponse.alertThirdButtonReturn {
                 // teleport to the new location
-                self.spoofer?.setLocation(coord)
+                self.spoofer?.setLocation(newCoords!)
             }
         }
     }

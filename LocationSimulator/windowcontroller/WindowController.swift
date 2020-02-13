@@ -174,13 +174,11 @@ class WindowController: NSWindowController {
     
     @IBAction func typeSegmentChanged(_ sender: NSSegmentedControl) {
         guard let viewController = contentViewController as? MapViewController else { return }
-
         viewController.spoofer?.moveType = MoveType(rawValue: sender.selectedSegment)!
     }
     
     @IBAction func resetClicked(_ sender: NSButton) {
         guard let viewController = contentViewController as? MapViewController else { return }
-
         viewController.spoofer?.resetLocation()
     }
 

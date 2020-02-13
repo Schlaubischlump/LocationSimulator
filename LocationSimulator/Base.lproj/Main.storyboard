@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
-        <plugIn identifier="com.apple.MapKitIBPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,6 +52,21 @@
                                         <menuItem title="Quit LocationSimulator" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Item" id="xOd-ZV-ahj">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Navigation" id="d6a-XJ-xTQ" userLabel="Navigation">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Navigation" id="rdu-o6-dXR">
+                                    <items>
+                                        <menuItem title="Set Location..." keyEquivalent="G" id="Z3Z-Tm-ifV">
+                                            <connections>
+                                                <action selector="setLocation:" target="Voe-Tx-rLC" id="DD6-Yk-UAR"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -765,7 +780,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a2u-Ak-h7p">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="dk1-4D-8i4"/>
                                         </popUpButtonCell>
                                     </popUpButton>
@@ -929,10 +944,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="905"/>
         </scene>
-        <!--Window Controller-->
+        <!--Progress Window Controller-->
         <scene sceneID="oc5-MO-MAg">
             <objects>
-                <windowController storyboardIdentifier="progressWindowController" id="oXD-az-5U6" customClass="ProgressWindowController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="progressWindowController" id="oXD-az-5U6" userLabel="Progress Window Controller" customClass="ProgressWindowController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="36H-n2-BDh">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -960,7 +975,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BAO-cU-cWv">
-                                <rect key="frame" x="18" y="138" width="444" height="17"/>
+                                <rect key="frame" x="18" y="139" width="444" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Status 1" id="rLz-LV-XVO">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -968,7 +983,7 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" verticalHuggingPriority="751" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="ZID-Mb-JLF" userLabel="Horizontal Progress Indicator (top)">
-                                <rect key="frame" x="20" y="111" width="440" height="20"/>
+                                <rect key="frame" x="20" y="112" width="440" height="20"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ohc-gm-lle">
                                 <rect key="frame" x="384" y="13" width="82" height="32"/>
@@ -984,10 +999,10 @@ Gw
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="wVa-Ez-faJ" userLabel="Horizontal Progress Indicator (bottom)">
-                                <rect key="frame" x="20" y="60" width="440" height="20"/>
+                                <rect key="frame" x="20" y="62" width="440" height="20"/>
                             </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Avv-I6-As1">
-                                <rect key="frame" x="18" y="87" width="444" height="17"/>
+                                <rect key="frame" x="18" y="89" width="444" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Status 2" id="fGL-KP-wgK">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
