@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AppKit
 
 extension WindowController {
     /**
@@ -28,6 +29,8 @@ extension WindowController {
         if self.deviceUDIDs.count == 1, let viewController = self.contentViewController as! MapViewController? {
             if viewController.loadDevice(udid) {
                 viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
+                // make sure to enable the menubar item
+                self.setNavigationMenubarItems(enabled: true)
             }
         }
     }
@@ -71,6 +74,8 @@ extension WindowController {
             // reset the total distance label
             let emptyTotalDistanceString = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
             viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
+            // disable the menubar items
+            self.setNavigationMenubarItems(enabled: false)
         }
     }
 }

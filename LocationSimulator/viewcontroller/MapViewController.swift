@@ -88,6 +88,7 @@ class MapViewController: NSViewController {
         }
     }
 
+    var isShowingAlert: Bool = false
 
 
     // MARK: - View lifecycle
@@ -152,11 +153,14 @@ class MapViewController: NSViewController {
         // hide the controls
         self.controlsHidden = true
 
+        // are we currently showing a alert
+        self.isShowingAlert = false
+
         // load the design for the current theme
         self.updateAppearance()
 
         // Fixme: This is ugly, but I can not get another solution to work...
-        DistributedNotificationCenter.default.addObserver(self, selector: #selector(themeChanged),
+        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged),
                                                           name: .AppleInterfaceThemeChanged, object: nil)
     }
 
@@ -171,7 +175,7 @@ class MapViewController: NSViewController {
     }
 
     deinit {
-        DistributedNotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Dark mode
@@ -300,6 +304,11 @@ class MapViewController: NSViewController {
     // MARK: - Teleport
 
     func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D? = nil) {
+        // make sure we can spoof a location
+        guard let spoofer = self.spoofer else { return }
+        // do not allow multiple dialogs
+        guard !self.isShowingAlert else { return }
+
         // if the current location is set ask the user if he wants to teleport or navigate to the destination
         let alert = NSAlert()
         alert.messageText = NSLocalizedString("DESTINATION", comment: "")
@@ -319,6 +328,8 @@ class MapViewController: NSViewController {
             newCoords = coord
         }
 
+        self.isShowingAlert = true
+
         alert.beginSheetModal(for: self.view.window!) { res in
             // read coodinates from user input
             if coord == nil {
@@ -326,6 +337,7 @@ class MapViewController: NSViewController {
                     newCoords = coordSelectionView.getCoordinates()
                 } else {
                     // something went wrong...
+                    self.isShowingAlert = false
                     return
                 }
             }
@@ -357,8 +369,10 @@ class MapViewController: NSViewController {
                 }
             } else if res == NSApplication.ModalResponse.alertThirdButtonReturn {
                 // teleport to the new location
-                self.spoofer?.setLocation(newCoords!)
+                spoofer.setLocation(newCoords!)
             }
+
+            self.isShowingAlert = false
         }
     }
 

@@ -160,6 +160,15 @@ class WindowController: NSWindowController {
         }
     }
 
+    // MARK: - Menubar
+
+    func setNavigationMenubarItems(enabled: Bool) {
+        if let navigationMenu = NSApp.menu?.item(withTag: 1)?.submenu {
+            let setLocationItem = navigationMenu.items.first
+            setLocationItem?.isEnabled = enabled
+        }
+    }
+
     // MARK: - Interface Builder callbacks
 
     @IBAction func currentLocationClicked(_ sender: NSButton) {

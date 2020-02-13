@@ -29,7 +29,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Show the user an input textField to change the location.
         guard let windowController = NSApp.mainWindow?.windowController else { return }
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
-        viewController.requestTeleportOrNavigation()
+        // We can only request one location change at a time.
+        if viewController.isShowingAlert {
+            NSSound.beep()
+        } else {
+            viewController.requestTeleportOrNavigation()
+        }
     }
 }
 

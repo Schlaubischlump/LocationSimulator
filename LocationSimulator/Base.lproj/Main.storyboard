@@ -60,11 +60,11 @@
                             <menuItem title="Item" id="xOd-ZV-ahj">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Navigation" id="d6a-XJ-xTQ" userLabel="Navigation">
+                            <menuItem title="Navigation" tag="1" id="d6a-XJ-xTQ" userLabel="Navigation">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Navigation" id="rdu-o6-dXR">
+                                <menu key="submenu" title="Navigation" autoenablesItems="NO" id="rdu-o6-dXR">
                                     <items>
-                                        <menuItem title="Set Location..." keyEquivalent="G" id="Z3Z-Tm-ifV">
+                                        <menuItem title="Set Location..." tag="1" enabled="NO" keyEquivalent="G" id="Z3Z-Tm-ifV">
                                             <connections>
                                                 <action selector="setLocation:" target="Voe-Tx-rLC" id="DD6-Yk-UAR"/>
                                             </connections>
