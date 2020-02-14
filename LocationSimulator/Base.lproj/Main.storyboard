@@ -111,7 +111,7 @@
                                                 <action selector="move:" target="Voe-Tx-rLC" id="ujh-Ob-d8R"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Rotate Left" tag="10" enabled="NO" keyEquivalent="" id="laX-cb-Fmd" userLabel="Rotate Counterclockwise">
+                                        <menuItem title="Rotate Counterclockwise" tag="10" enabled="NO" keyEquivalent="" id="laX-cb-Fmd" userLabel="Rotate Counterclockwise">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="move:" target="Voe-Tx-rLC" id="aaF-gA-B2T"/>
