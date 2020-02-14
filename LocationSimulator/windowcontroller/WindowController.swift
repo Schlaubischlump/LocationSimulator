@@ -10,16 +10,6 @@ import Foundation
 import AppKit
 import MapKit
 
-let kLeftKey: UInt16 = 123
-let kRightKey: UInt16 = 124
-let kDownKey: UInt16 = 125
-let kUpKey: UInt16 = 126
-let kSpaceKey: UInt16 = 49
-let kWKey: UInt16 = 13
-let kCKey: UInt16 = 8
-let kDKey: UInt16 = 2
-
-
 class WindowController: NSWindowController {
     /// Enable, disable autofocus current location.
     @IBOutlet weak var currentLocationButton: NSButton!
@@ -38,9 +28,6 @@ class WindowController: NSWindowController {
 
     /// UDIDs of all currently connected devices.
     public var deviceUDIDs: [String]!
-
-    /// Event monitor to responds to keyboard events.
-    private var localKeyEventMonitor: Any?
 
     /// True if we currently listen to connected / disconnected device notifcation, False otherwise.
     private var observeDevices: Bool!
@@ -77,73 +64,6 @@ class WindowController: NSWindowController {
                 self.currentLocationButton.state = .off
             }
         }
-
-        self.localKeyEventMonitor = NSEvent.addLocalMonitorForEvents(matching: [.keyDown])
-        { [unowned self] (event) -> NSEvent? in
-            // only handle events if the mapview is the first responder
-            guard let viewController = self.contentViewController as? MapViewController,
-                  let view = self.window?.firstResponder, view == viewController.mapView,
-                  let spoofer = viewController.spoofer else { return event }
-
-            // The locaiton is not spoofed yet => use default behaviour
-            if viewController.currentLocationMarker == nil {
-                return event
-            }
-
-            // allow manual moving with the arrow keys
-            switch event.keyCode {
-            case kWKey:
-                self.typeSegmented.selectedSegment = 0
-                self.typeSegmentChanged(self.typeSegmented)
-                return nil
-            case kCKey:
-                self.typeSegmented.selectedSegment = 1
-                self.typeSegmentChanged(self.typeSegmented)
-                return nil
-            case kDKey:
-                self.typeSegmented.selectedSegment = 2
-                self.typeSegmentChanged(self.typeSegmented)
-                return nil
-            case kLeftKey:
-                viewController.rotateHeaderViewBy(CGFloat(5.0.degreesToRadians))
-                return nil
-            case kRightKey:
-                viewController.rotateHeaderViewBy(CGFloat(-5.0.degreesToRadians))
-                return nil
-            case kDownKey:
-                //  x | x                 |          |                   |
-                // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
-                //    |    arrow down   x | x      x | x  arrow down   x | x
-                if spoofer.moveState == .manual {
-                    let angle = viewController.getHeaderViewAngle()
-                    if (angle < .pi/2.0 && angle > -.pi/2.0) {
-                        viewController.rotateHeaderViewBy(.pi)
-                    }
-                    spoofer.move(appendToPendingTasks: false)
-                }
-                return nil
-            case kUpKey:
-                //    |                 x | x      x | x               x | x
-                // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
-                //  x | x   arrow up      |          |     arrow up      |
-                if spoofer.moveState == .manual {
-                    let angle = viewController.getHeaderViewAngle()
-                    if (angle > .pi/2.0 || angle < -.pi/2.0) {
-                        viewController.rotateHeaderViewBy(.pi)
-                    }
-                    spoofer.move(appendToPendingTasks: false)
-                }
-                return nil
-            case kSpaceKey:
-                // pause navigation
-                spoofer.pauseResumeAutoMove()
-                return nil
-            default:
-                break
-            }
-
-            return event
-        }
     }
 
     deinit {
@@ -152,20 +72,20 @@ class WindowController: NSWindowController {
 
         // remove all notifications
         NotificationCenter.default.removeObserver(self)
-
-        // stop listening for keyboard events
-        if let eventMonitor = self.localKeyEventMonitor {
-            NSEvent.removeMonitor(eventMonitor)
-            self.localKeyEventMonitor = nil
-        }
     }
 
     // MARK: - Menubar
 
+    /**
+     Enable or disable all menus items which should only be accessible if a device is connected.
+     - Parameter enabled: true to enable the menubar items, false to disable them
+     */
     func setNavigationMenubarItems(enabled: Bool) {
-        if let navigationMenu = NSApp.menu?.item(withTag: 1)?.submenu {
-            let setLocationItem = navigationMenu.items.first
-            setLocationItem?.isEnabled = enabled
+        // Get a reference to the navigation menu item.
+        guard let navigationMenu = NSApp.menu?.item(withTag: 1)?.submenu else { return }
+        // Enable or disable all relevant items.
+        for i in [kSetLocationTag, kToggleNavigationTag, kUpTag, kDownTag, kLeftTag, kRightTag] {
+            navigationMenu.item(withTag: i)?.isEnabled = enabled
         }
     }
 

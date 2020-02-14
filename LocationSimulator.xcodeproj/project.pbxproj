@@ -26,6 +26,7 @@
 		632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */; };
 		632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */; };
 		632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466223F4D9C8004E5092 /* CoordinateStepper.swift */; };
+		632C466523F7638A004E5092 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466423F7638A004E5092 /* Constants.swift */; };
 		633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351920A433EE00A0431C /* AppDelegate.swift */; };
 		633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510920AE9634002A61F1 /* WindowController.swift */; };
 		633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */; };
@@ -111,6 +112,7 @@
 		632C465B23F4B715004E5092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CoordinateSelectionView.xib; sourceTree = "<group>"; };
 		632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateFormatter.swift; sourceTree = "<group>"; };
 		632C466223F4D9C8004E5092 /* CoordinateStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateStepper.swift; sourceTree = "<group>"; };
+		632C466423F7638A004E5092 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+TableView.swift"; sourceTree = "<group>"; };
 		633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+Protocol.swift"; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		632C465723F4B5F5004E5092 /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				632C466423F7638A004E5092 /* Constants.swift */,
 				632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */,
 				632C466223F4D9C8004E5092 /* CoordinateStepper.swift */,
 				632C465823F4B611004E5092 /* CoordinateSelectionView.swift */,
@@ -481,6 +484,7 @@
 				633A460922F9A6A0005B3BE0 /* AutoCompleteTextField.swift in Sources */,
 				63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */,
 				633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */,
+				632C466523F7638A004E5092 /* Constants.swift in Sources */,
 				633A460422F996E2005B3BE0 /* Device.swift in Sources */,
 				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,

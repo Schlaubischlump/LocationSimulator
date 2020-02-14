@@ -64,9 +64,57 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Navigation" autoenablesItems="NO" id="rdu-o6-dXR">
                                     <items>
-                                        <menuItem title="Set Location..." tag="1" enabled="NO" keyEquivalent="G" id="Z3Z-Tm-ifV">
+                                        <menuItem title="Walk" keyEquivalent="1" id="FcQ-9J-hOu" userLabel="Walk">
+                                            <connections>
+                                                <action selector="setMovementSpeed:" target="Voe-Tx-rLC" id="daz-32-R5c"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Cycle" tag="1" keyEquivalent="2" id="Fr9-v0-Je1">
+                                            <connections>
+                                                <action selector="setMovementSpeed:" target="Voe-Tx-rLC" id="YdD-yN-plt"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Drive" tag="2" keyEquivalent="3" id="7E4-fJ-nHN">
+                                            <connections>
+                                                <action selector="setMovementSpeed:" target="Voe-Tx-rLC" id="Rnn-pE-z97"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="3" id="OoF-V6-Hea"/>
+                                        <menuItem title="Set Location..." tag="4" enabled="NO" keyEquivalent="G" id="Z3Z-Tm-ifV">
                                             <connections>
                                                 <action selector="setLocation:" target="Voe-Tx-rLC" id="DD6-Yk-UAR"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="5" id="bdS-Ru-Mgs"/>
+                                        <menuItem title="Pause / Resume Navigation" tag="6" enabled="NO" keyEquivalent=" " id="fpP-7o-78x">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="pauseResumeNavigation:" target="Voe-Tx-rLC" id="z4i-fx-ZKi"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" tag="7" id="iWY-Du-NiK"/>
+                                        <menuItem title="Move Up" tag="8" enabled="NO" keyEquivalent="" id="oPn-mE-IJS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="move:" target="Voe-Tx-rLC" id="Ihp-oC-46J"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Move Down" tag="9" enabled="NO" keyEquivalent="" id="uBy-uu-IwP">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="move:" target="Voe-Tx-rLC" id="WZ9-JA-Kxd"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Rotate Clockwise" tag="11" enabled="NO" keyEquivalent="" id="P6M-6B-WyS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="move:" target="Voe-Tx-rLC" id="ujh-Ob-d8R"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Rotate Left" tag="10" enabled="NO" keyEquivalent="" id="laX-cb-Fmd" userLabel="Rotate Counterclockwise">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="move:" target="Voe-Tx-rLC" id="aaF-gA-B2T"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -890,7 +938,7 @@
                                 <rect key="frame" x="0.0" y="20" width="460" height="1"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <view key="contentView" ambiguous="YES" id="hnp-sX-osg">
-                                    <rect key="frame" x="1" y="1" width="458" height="0.0"/>
+                                    <rect key="frame" x="1" y="0.0" width="458" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

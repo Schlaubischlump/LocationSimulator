@@ -77,6 +77,7 @@ class MapViewController: NSViewController {
         }
     }
 
+    /// Show or hide the navigation controls in the lower left corner.
     var controlsHidden: Bool = true {
         didSet {
             // hide / show the navigation controls
@@ -199,6 +200,13 @@ class MapViewController: NSViewController {
 
     // MARK: - Load device
 
+    /**
+     Load a new device given by its udid. A new spoofer instance is created based on the device. All location change or
+     reset actions are directed to this spoofer instance. If you change the device you have to call this method to
+     change the current spoofer instance to interact with it. You can not interact with more than one device at a time.
+     - Parameter udid: device unique identifier
+     - Return: true on success, false otherwise
+     */
     func loadDevice(_ udid: String) -> Bool {
         guard let window = self.view.window else { return false }
 
@@ -303,6 +311,11 @@ class MapViewController: NSViewController {
 
     // MARK: - Teleport
 
+    /**
+     Spoof the current location to the specified coordinates. If no coordinates are provided a user dialog is presented
+     to enter the new coordinates. The user can then choose to navigate or teleport to the new location.
+     - Parameter toCoordinate: new coordinates or nil
+     */
     func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D? = nil) {
         // make sure we can spoof a location
         guard let spoofer = self.spoofer else { return }
