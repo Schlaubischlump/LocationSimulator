@@ -59,6 +59,8 @@ extension WindowController {
             let removedCurrentDevice = (self.devicesPopup.indexOfSelectedItem == index)
             self.devicesPopup.removeItem(at: index)
             self.deviceUDIDs.remove(at: index)
+            // remove the last known location for this device
+            self.lastKnownLocationCache.removeValue(forKey: udid)
 
             if let spoofer = viewController.spoofer {
                 // disable all events

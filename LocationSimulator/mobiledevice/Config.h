@@ -9,6 +9,7 @@
 #ifndef Config_h
 #define Config_h
 
+#include <errno.h>
 #include <libimobiledevice/libimobiledevice.h>
 
 // MARK: - C-Backend configuration

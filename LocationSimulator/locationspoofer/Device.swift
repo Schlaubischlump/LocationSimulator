@@ -34,7 +34,7 @@ public extension Notification.Name {
 }
 
 
-class Device: NSObject {
+class Device {
     /// Unique Device ID (UDID) string.
     public var UDID: String = ""
 

@@ -42,7 +42,7 @@ enum MoveType: Int {
 
 // MARK: - Spoofer
 
-class LocationSpoofer: NSObject {
+class LocationSpoofer {
 
     // MARK: - Properties
 
@@ -126,7 +126,6 @@ class LocationSpoofer: NSObject {
         self.device = device
         self.currentLocation = nil
         self.dispatchQueue = DispatchQueue(label: "locationUpdates", qos: .background)
-        super.init()
     }
 
     // MARK: - Location spoofing

@@ -29,6 +29,9 @@ class WindowController: NSWindowController {
     /// UDIDs of all currently connected devices.
     public var deviceUDIDs: [String]!
 
+    /// cache to store the last known location for each device as long as it is connected
+    var lastKnownLocationCache: [String: CLLocationCoordinate2D] = [:]
+
     // MARK: - Window lifecycle
 
     override func windowDidLoad() {
@@ -112,6 +115,9 @@ class WindowController: NSWindowController {
             spoofer.moveState = .manual
             spoofer.delegate = nil
 
+            // store the last known location for the last device
+            self.lastKnownLocationCache[spoofer.device.UDID] = spoofer.currentLocation
+
             // explicitly force the UI to reset
             viewController.willChangeLocation(spoofer: spoofer, toCoordinate: nil)
             viewController.didChangeLocation(spoofer: spoofer, toCoordinate: nil)
@@ -120,7 +126,18 @@ class WindowController: NSWindowController {
         // load the new device
         if viewController.loadDevice(udid) {
             // set the correct walking speed based on the current selection
-            viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
+            viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
+
+            // Check if we already have a known location for this device, if so load it.
+            // TODO: This is not an optimal solution, because we do not keep information about the current route or
+            // automove state. We could fix this by serializing the spoofer instance... but this is low priority.
+            if let spoofer = viewController.spoofer, let coordinate = self.lastKnownLocationCache[udid] {
+                spoofer.currentLocation = coordinate
+                viewController.willChangeLocation(spoofer: spoofer, toCoordinate: coordinate)
+                viewController.didChangeLocation(spoofer: spoofer, toCoordinate: coordinate)
+                // enable the move menubar items
+                spoofer.moveState = .manual
+            }
             // make sure to enable the 'Set Location' menubar item if a device is connected
             MenubarItem.SetLocation.enable()
         }
