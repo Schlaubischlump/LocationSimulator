@@ -18,6 +18,7 @@ enum MenubarItem: Int {
     case MoveCounterclockwise   = 10
     case MoveClockwise          = 11
     case StopNavigation         = 12
+    case ResetLocation          = 13
 
     // MARK: - Enable or disable a menubar item
 

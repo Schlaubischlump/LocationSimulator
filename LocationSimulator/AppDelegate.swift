@@ -120,4 +120,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
         viewController.spoofer?.moveState = .manual
     }
+
+
+    @IBAction func resetLocation(_ sender: NSMenuItem) {
+        // reset the current location to the device location
+        guard let windowController = NSApp.mainWindow?.windowController else { return }
+        guard let viewController = windowController.contentViewController as? MapViewController else { return }
+        viewController.spoofer?.resetLocation()
+    }
 }

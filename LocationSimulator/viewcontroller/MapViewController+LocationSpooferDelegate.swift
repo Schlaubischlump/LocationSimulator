@@ -52,14 +52,19 @@ extension MapViewController: LocationSpooferDelegate {
     func didChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
         // true if the location was reset, false otherwise
         let isReset: Bool = (toCoordinate == nil)
-        // disable all move menubar items when the location is reset
-        let items: [MenubarItem] = [.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise, .MoveClockwise]
-        items.forEach { item in
-            if isReset {
-                item.disable()
-            } else {
-                items.first!.enable()
-            }
+
+        if isReset {
+            // disable all move menubar items when the location is reset
+            MenubarItem.ToggleAutomove.disable()
+            MenubarItem.ResetLocation.disable()
+            MenubarItem.MoveUp.disable()
+            MenubarItem.MoveDown.disable()
+            MenubarItem.MoveClockwise.disable()
+            MenubarItem.MoveCounterclockwise.disable()
+        } else {
+            // enable these items if we start faking the location
+            MenubarItem.ToggleAutomove.enable()
+            MenubarItem.ResetLocation.enable()
         }
 
         // calculate the total rounded distance in kilometers

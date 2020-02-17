@@ -85,6 +85,12 @@
                                                 <action selector="setLocation:" target="Voe-Tx-rLC" id="DD6-Yk-UAR"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Reset Location" tag="13" enabled="NO" keyEquivalent="r" id="hEy-d1-5LR">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <connections>
+                                                <action selector="resetLocation:" target="Voe-Tx-rLC" id="6II-AQ-6nT"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="5" id="bdS-Ru-Mgs"/>
                                         <menuItem title="Toggle Automove" tag="6" enabled="NO" keyEquivalent=" " id="fpP-7o-78x" userLabel="Toggle Automove">
                                             <modifierMask key="keyEquivalentModifierMask"/>

@@ -21,6 +21,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 - ✅ Support 3 movement speeds (Walk/Cycle/Drive).
 - ✅ Control the movement using the arrow keys.
 - ✅ Navigate from the current location to a new location.
+- ✅ Support network devices.
 - ✅ Search for locations.
 - ✅ Support dark mode.
 
@@ -48,7 +49,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 	```shell
 	brew install libimobiledevice --HEAD
 	```
-> You might need a new version of `libusbmuxd` for `libimobiledevice` to install. Use ```brew install usbmuxd --HEAD``` to install the latest version.
+> You might need a new version of `libusbmuxd` for `libimobiledevice` to install. Use ```brew install usbmuxd --HEAD``` to install the latest version. (versions >= 2.0.1 are sufficient)
 3. Clone this repository:    
 
 	```shell
@@ -63,7 +64,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 ## Usage
 
 ### Start spoofing:
-  1. Connect the iOS device to your computer via USB.
+  1. Connect the iOS device to your computer via USB or Wi-Fi.
   2. Long click the point you want to set as the current location on the map.
 
 ### Moving:
@@ -87,7 +88,5 @@ The whole project is licensed under the [MIT License](LICENSE) unless specified 
 Help is always appreciated, wether it are Bug fixes or features! E.g Accessibility support is still to be implemented, especially for the popup menu.
 
 ### Enhancement ideas
-- ~~Move all key events to menu bar shortcuts~~
-- ~~Add a menu bar shortcut to teleport to specific coordinates~~
 - Allow following a predefined route from a gpx file
 - Favorite location menu
