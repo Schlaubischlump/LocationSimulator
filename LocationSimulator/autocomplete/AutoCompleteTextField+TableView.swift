@@ -52,8 +52,13 @@ class AutoCompleteTableRowView: NSTableRowView {
     override func drawSelection(in dirtyRect: NSRect) {
         if self.selectionHighlightStyle != .none{
             let selectionRect = NSInsetRect(self.bounds, 0.5, 0.5)
-            NSColor.selectedMenuItemColor.setStroke()
-            NSColor.selectedMenuItemColor.setFill()
+            if #available(OSX 10.14, *) {
+                NSColor.selectedContentBackgroundColor.setStroke()
+                NSColor.selectedContentBackgroundColor.setFill()
+            } else {
+                NSColor.alternateSelectedControlColor.setStroke()
+                NSColor.alternateSelectedControlColor.setFill()
+            }
             let selectionPath = NSBezierPath(roundedRect: selectionRect, xRadius: 0.0, yRadius: 0.0)
             selectionPath.fill()
             selectionPath.stroke()
