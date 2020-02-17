@@ -24,6 +24,7 @@ class AutoCompleteTableCellView: NSTableCellView {
         let isDarkMode = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") != nil
         let muAttrStr = NSMutableAttributedString(attributedString: attrStr)
         let end: Int = match.text.count + match.detail.count
+        muAttrStr.addAttribute(.font, value: NSFont.systemFont(ofSize: 12), range: NSMakeRange(0, end))
         muAttrStr.removeAttribute(NSAttributedString.Key.foregroundColor, range: NSMakeRange(0, end))
         if !highlighted {
             muAttrStr.addAttribute(NSAttributedString.Key.foregroundColor,

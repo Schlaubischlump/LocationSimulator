@@ -14,7 +14,7 @@
 #include <libimobiledevice/lockdown.h>
 #include <libimobiledevice/libimobiledevice.h>
 
-#include "../Config.h"
+#include "../config.h"
 
 /**
  Pair and validate the connection to the device with the given UDID.

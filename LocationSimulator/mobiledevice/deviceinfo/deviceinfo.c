@@ -15,7 +15,7 @@
 #include <libimobiledevice/libimobiledevice.h>
 #include <libimobiledevice/lockdown.h>
 
-#include "../Config.h"
+#include "../config.h"
 
 /**
  Get the iOS product version string from the connected device

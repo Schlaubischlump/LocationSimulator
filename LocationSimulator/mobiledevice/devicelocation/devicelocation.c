@@ -16,7 +16,7 @@
 
 #include "endianness.h"
 
-#include "../Config.h"
+#include "../config.h"
 
 /**
  Stop spoofing the iOS device location and reset it to the original GPS coordinates.

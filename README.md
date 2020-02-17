@@ -85,7 +85,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 The whole project is licensed under the [MIT License](LICENSE) unless specified otherwise in the specific subdirectories.
 
 ## Contribute
-Help is always appreciated, wether it are Bug fixes or features! E.g Accessibility support is still to be implemented, especially for the popup menu.
+Help is always appreciated, wether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
 
 ### Enhancement ideas
 - Allow following a predefined route from a gpx file

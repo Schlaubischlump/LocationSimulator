@@ -17,7 +17,7 @@
 #include <libimobiledevice/libimobiledevice.h>
 #include <libimobiledevice/mobile_image_mounter.h>
 
-#include "../Config.h"
+#include "../config.h"
 
 static const char PKG_PATH[] = "PublicStaging";
 static const char PATH_PREFIX[] = "/private/var/mobile/Media";
