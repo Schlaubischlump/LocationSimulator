@@ -14,6 +14,8 @@
 #include <libimobiledevice/lockdown.h>
 #include <libimobiledevice/libimobiledevice.h>
 
+#include "../Config.h"
+
 /**
  Pair and validate the connection to the device with the given UDID.
  - Parameter udid: iOS device UDID
@@ -23,14 +25,14 @@ bool pairDevice(const char* udid) {
     idevice_t device = NULL;
     lockdownd_client_t client = NULL;
 
-    if (IDEVICE_E_SUCCESS != idevice_new(&device, udid)) {
-        printf("ERROR: Could not create device with UDID: %s", udid);
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+        LOG_ERR("Could not create device with UDID: %s", udid);
         return false;
     }
 
     // try to perform the handshake
     if (LOCKDOWN_E_SUCCESS != lockdownd_client_new_with_handshake(device, &client, "devicepair")) {
-        printf("ERROR: Could not pair device with UDID: %s", udid);
+        LOG_ERR("Could not pair device with UDID: %s", udid);
         idevice_free(device);
         return false;
     }

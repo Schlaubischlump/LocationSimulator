@@ -89,6 +89,7 @@
 		13BA352020A433EF00A0431C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13BA352220A433EF00A0431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13BA352320A433EF00A0431C /* LocationSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocationSimulator.entitlements; sourceTree = "<group>"; };
+		6305075223FAEB9500EF529A /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		6311B794230C13AF00AABF3E /* LocationSpoofer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpoofer.swift; sourceTree = "<group>"; };
 		6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Protocol.swift"; sourceTree = "<group>"; };
 		6311B798230C150D00AABF3E /* Filemanager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filemanager+Extension.swift"; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		63156C0522FB6A3E0086D5F6 /* mobiledevice */ = {
 			isa = PBXGroup;
 			children = (
+				6305075223FAEB9500EF529A /* Config.h */,
 				63156C1322FB9A5D0086D5F6 /* COPYRIGHT */,
 				63156C1522FB9A7A0086D5F6 /* README.md */,
 				63156C0E22FB86040086D5F6 /* deviceinfo */,

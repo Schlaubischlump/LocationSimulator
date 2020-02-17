@@ -17,6 +17,7 @@
 #include <libimobiledevice/libimobiledevice.h>
 #include <libimobiledevice/mobile_image_mounter.h>
 
+#include "../Config.h"
 
 static const char PKG_PATH[] = "PublicStaging";
 static const char PATH_PREFIX[] = "/private/var/mobile/Media";
@@ -42,25 +43,25 @@ bool developerImageIsMountedForDevice(const char *udid) {
     lockdownd_service_descriptor_t service = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
-    if (IDEVICE_E_SUCCESS != idevice_new(&device, udid)) {
-        printf("ERROR: No device found.\n");
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+        LOG_ERR("No device found.");
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new_with_handshake(device, &lckd, "deviceimagemounter"))) {
-        printf("ERROR: Could not connect to lockdown, error code %d.\n", ldret);
+        LOG_ERR("Could not connect to lockdown, error code %d.", ldret);
         goto leave;
     }
 
     lockdownd_start_service(lckd, "com.apple.mobile.mobile_image_mounter", &service);
 
     if (!service || service->port == 0) {
-        printf("ERROR: Could not start mobile_image_mounter service!\n");
+        LOG_ERR("Could not start mobile_image_mounter service!");
         goto leave;
     }
 
     if (mobile_image_mounter_new(device, service, &mim) != MOBILE_IMAGE_MOUNTER_E_SUCCESS) {
-        printf("ERROR: Could not connect to mobile_image_mounter!\n");
+        LOG_ERR("Could not connect to mobile_image_mounter!");
         goto leave;
     }
 
@@ -87,7 +88,7 @@ bool developerImageIsMountedForDevice(const char *udid) {
         }
         free(it);
     } else {
-        printf("Error: lookup_image returned %d\n", err);
+        LOG_ERR("lookup_image returned %d", err);
     }
 
     // perform hangup command
@@ -127,13 +128,13 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     lockdownd_service_descriptor_t service = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
-    if (IDEVICE_E_SUCCESS != idevice_new(&device, udid)) {
-        printf("ERROR: No device found.\n");
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+        LOG_ERR("No device found.");
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new_with_handshake(device, &lckd, "deviceimagemounter"))) {
-        printf("ERROR: Could not connect to lockdown, error code %d.\n", ldret);
+        LOG_ERR("Could not connect to lockdown, error code %d.", ldret);
         goto leave;
     }
 
@@ -159,12 +160,12 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     lockdownd_start_service(lckd, "com.apple.mobile.mobile_image_mounter", &service);
 
     if (!service || service->port == 0) {
-        printf("ERROR: Could not start mobile_image_mounter service!\n");
+        LOG_ERR("Could not start mobile_image_mounter service!");
         goto leave;
     }
 
     if (mobile_image_mounter_new(device, service, &mim) != MOBILE_IMAGE_MOUNTER_E_SUCCESS) {
-        printf("ERROR: Could not connect to mobile_image_mounter!\n");
+        LOG_ERR("Could not connect to mobile_image_mounter!");
         goto leave;
     }
 
@@ -176,11 +177,11 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     struct stat fst;
     if (disk_image_upload_type == DISK_IMAGE_UPLOAD_TYPE_AFC) {
         if ((lockdownd_start_service(lckd, "com.apple.afc", &service) != LOCKDOWN_E_SUCCESS) || !service || !service->port) {
-            printf("ERROR: Could not start com.apple.afc!\n");
+            LOG_ERR("Could not start com.apple.afc!");
             goto leave;
         }
         if (afc_client_new(device, service, &afc) != AFC_E_SUCCESS) {
-            printf("ERROR: Could not connect to AFC!\n");
+            LOG_ERR("Could not connect to AFC!");
             goto leave;
         }
         if (service) {
@@ -190,13 +191,13 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     }
 
     if (stat(devDMG, &fst) != 0) {
-        printf("ERROR: stat: %s: %s\n", devDMG, strerror(errno));
+        LOG_ERR("stat: %s: %s", devDMG, strerror(errno));
         goto leave;
     }
 
     size_t image_size = fst.st_size;
     if (stat(devSign, &fst) != 0) {
-        printf("ERROR: stat: %s: %s\n", devSign, strerror(errno));
+        LOG_ERR("stat: %s: %s", devSign, strerror(errno));
         goto leave;
     }
 
@@ -205,45 +206,45 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     size_t sig_length = 0;
     FILE *f = fopen(devSign, "rb");
     if (!f) {
-        printf("Error: opening signature file '%s': %s\n", devSign, strerror(errno));
+        LOG_ERR("opening signature file '%s': %s", devSign, strerror(errno));
         goto leave;
     }
     sig_length = fread(sig, 1, sizeof(sig), f);
     fclose(f);
     if (sig_length == 0) {
-        printf("Error: Could not read signature from file '%s'\n", devSign);
+        LOG_ERR("Could not read signature from file '%s'", devSign);
         goto leave;
     }
 
     f = fopen(devDMG, "rb");
     if (!f) {
-        printf("Error: opening image file '%s': %s\n", devDMG, strerror(errno));
+        LOG_ERR("opening image file '%s': %s", devDMG, strerror(errno));
         goto leave;
     }
 
     char *targetname = NULL;
     if (asprintf(&targetname, "%s/%s", PKG_PATH, "staging.dimage") < 0) {
-        printf("Out of memory!?\n");
+        LOG_ERR("Out of memory!?");
         goto leave;
     }
     char *mountname = NULL;
     if (asprintf(&mountname, "%s/%s", PATH_PREFIX, targetname) < 0) {
-        printf("Out of memory!?\n");
+        LOG_ERR("Out of memory!?");
         goto leave;
     }
 
     switch(disk_image_upload_type) {
         case DISK_IMAGE_UPLOAD_TYPE_UPLOAD_IMAGE:
-            printf("Uploading %s\n", devDMG);
+            LOG_INFO("Uploading %s", devDMG);
             mobile_image_mounter_upload_image(mim, "Developer", image_size, sig, sig_length, mim_upload_cb, f);
             break;
         case DISK_IMAGE_UPLOAD_TYPE_AFC:
         default:
-            printf("Uploading %s --> afc:///%s\n", devDMG, targetname);
+            LOG_INFO("Uploading %s --> afc:///%s", devDMG, targetname);
             char **strs = NULL;
             if (afc_get_file_info(afc, PKG_PATH, &strs) != AFC_E_SUCCESS) {
                 if (afc_make_directory(afc, PKG_PATH) != AFC_E_SUCCESS) {
-                    printf("WARNING: Could not create directory '%s' on device!\n", PKG_PATH);
+                    LOG_WARN("Could not create directory '%s' on device!", PKG_PATH);
                 }
             }
             if (strs) {
@@ -259,7 +260,7 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
             if ((afc_file_open(afc, targetname, AFC_FOPEN_WRONLY, &af) !=
                  AFC_E_SUCCESS) || !af) {
                 fclose(f);
-                printf("afc_file_open on '%s' failed!\n", targetname);
+                LOG_ERR("afc_file_open on '%s' failed!", targetname);
                 goto leave;
             }
 
@@ -272,13 +273,13 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
                     while (total < amount) {
                         written = 0;
                         if (afc_file_write(afc, af, buf, (uint32_t)amount, &written) != AFC_E_SUCCESS) {
-                            printf("AFC Write error!\n");
+                            LOG_ERR("AFC Write error!");
                             break;
                         }
                         total += written;
                     }
                     if (total != amount) {
-                        printf("Error: wrote only %d of %d\n", total, (unsigned int)amount);
+                        LOG_ERR("wrote only %d of %d", total, (unsigned int)amount);
                         afc_file_close(afc, af);
                         fclose(f);
                         goto leave;
@@ -297,7 +298,7 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     mobile_image_mounter_error_t err = mobile_image_mounter_mount_image(mim, mountname, sig, sig_length, "Developer", &result);
     res = (err == MOBILE_IMAGE_MOUNTER_E_SUCCESS);
     if (!res) {
-        printf("Error: mount_image returned %d\n", err);
+        LOG_ERR("mount_image returned %d", err);
     }
 
     if (result) {

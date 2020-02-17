@@ -10,8 +10,14 @@ import Foundation
 import CoreLocation
 
 
+public enum ConnectionType: Int {
+    case UNKNOWN = 0 // This should never be the case, unless libimobiledevice is changed
+    case USB = 1
+    case NETWORK = 2
+}
+
 /// Error messages while connecting a device.
-enum DeviceError: Error {
+public enum DeviceError: Error {
     case pair(_ message: String)
     case permisson(_ message: String)
     case devDiskImageNotFound(_ message: String, iOSVersion: String)
@@ -21,7 +27,7 @@ enum DeviceError: Error {
 
 
 /// Notifications when a device is connected / paired / disconnected.
-extension Notification.Name {
+public extension Notification.Name {
     static let DevicePaired = Notification.Name("iDevicePaired")
     static let DeviceConnected = Notification.Name("iDeviceConntected")
     static let DeviceDisconnected = Notification.Name("iDeviceDisconntected")
@@ -52,7 +58,7 @@ class Device: NSObject {
         let cb : idevice_event_cb_t = { (event, userData: UnsafeMutableRawPointer?) in
             guard let event_t = event?.pointee else { return }
             guard let udid_t = event_t.udid else { return }
-
+            
             let udid = String(cString: udid_t)
             var name: String = ""
             var notificationName: Notification.Name? = nil
@@ -64,9 +70,6 @@ class Device: NSObject {
                         name = String(cString: res)
                         break
                     }
-                    // If we can not read the device name it's a good indicator that the pairing did not work.
-                    // This happens quit often because libimobiledevice detects Wi-Fi devices, although it does
-                    // not support them (yet?). We don't want to send a notification in this case.
                     return
                 case IDEVICE_DEVICE_REMOVE:
                     notificationName = .DeviceDisconnected
@@ -76,8 +79,19 @@ class Device: NSObject {
             }
 
             DispatchQueue.main.async {
+                // replace the idevice_connection_type with a swift enum
+                var conType: ConnectionType = .UNKNOWN
+                switch (event_t.conn_type) {
+                    case CONNECTION_USBMUXD:
+                        conType = .USB
+                    case CONNECTION_NETWORK:
+                        conType = .NETWORK
+                    default:
+                        conType = .UNKNOWN
+                }
+
                 NotificationCenter.default.post(name: notificationName!, object: nil,
-                                                userInfo: ["UDID": udid, "NAME": name])
+                                                userInfo: ["UDID": udid, "NAME": name, "CONTYPE": conType])
             }
         }
         return idevice_event_subscribe(cb, nil) == IDEVICE_E_SUCCESS

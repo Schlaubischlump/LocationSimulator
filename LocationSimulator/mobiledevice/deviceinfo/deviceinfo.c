@@ -15,6 +15,8 @@
 #include <libimobiledevice/libimobiledevice.h>
 #include <libimobiledevice/lockdown.h>
 
+#include "../Config.h"
+
 /**
  Get the iOS product version string from the connected device
  - Parameter udid: iOS device UDID
@@ -22,17 +24,17 @@
  */
 const char *deviceProductVersion(const char *udid) {
     idevice_t device = NULL;
-    idevice_error_t ret = idevice_new(&device, udid);
+    idevice_error_t ret = idevice_new_with_options(&device, udid, LOOKUP_OPS);
     lockdownd_client_t client = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
     if (ret != IDEVICE_E_SUCCESS) {
-        printf("ERROR: No device found with udid %s, is it plugged in?\n", udid);
+        LOG_ERR("No device found with udid %s, is it plugged in?", udid);
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new(device, &client, "deviceinfo"))) {
-        printf("ERROR: Could not connect to lockdownd, error code %d\n", ldret);
+        LOG_ERR("Could not connect to lockdownd, error code %d", ldret);
         idevice_free(device);
         return NULL;
     }
@@ -68,24 +70,23 @@ const char *deviceProductVersion(const char *udid) {
  */
 const char *deviceName(const char *udid) {
     idevice_t device = NULL;
-    idevice_error_t ret = idevice_new(&device, udid);
     lockdownd_client_t client = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
-    if (ret != IDEVICE_E_SUCCESS) {
-        printf("ERROR: No device found with udid %s, is it plugged in?\n", udid);
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+        LOG_ERR("No device found with udid %s, is it plugged in?", udid);
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new(device, &client, "devicename"))) {
-        printf("ERROR: Could not connect to lockdownd, error code %d\n", ldret);
+        LOG_ERR("Could not connect to lockdownd, error code %d", ldret);
         idevice_free(device);
         return NULL;
     }
 
     char* name = NULL;
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_get_device_name(client, &name))) {
-        printf("ERROR: Could not get device name, error code %d\n", ldret);
+        LOG_ERR("Could not get device name, error code %d", ldret);
     }
 
     lockdownd_client_free(client);
