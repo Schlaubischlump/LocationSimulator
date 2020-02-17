@@ -78,7 +78,7 @@ extension WindowController {
 
             // disable the menubar items
             let items: [MenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
-                                        .MoveClockwise]
+                                        .MoveClockwise, .StopNavigation]
             items.forEach { item in item.disable() }
 
             // try to select the next device in the list
