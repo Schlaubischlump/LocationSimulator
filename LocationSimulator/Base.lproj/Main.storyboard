@@ -86,10 +86,16 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="5" id="bdS-Ru-Mgs"/>
-                                        <menuItem title="Pause / Resume Navigation" tag="6" enabled="NO" keyEquivalent=" " id="fpP-7o-78x">
+                                        <menuItem title="Toggle Automove" tag="6" enabled="NO" keyEquivalent=" " id="fpP-7o-78x" userLabel="Toggle Automove">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="pauseResumeNavigation:" target="Voe-Tx-rLC" id="z4i-fx-ZKi"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Stop Navigation" tag="12" enabled="NO" keyEquivalent="s" id="pTJ-Ut-Hkv">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <connections>
+                                                <action selector="stopNavigation:" target="Voe-Tx-rLC" id="ddX-Rs-ugM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="7" id="iWY-Du-NiK"/>
@@ -938,7 +944,7 @@
                                 <rect key="frame" x="0.0" y="20" width="460" height="1"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <view key="contentView" ambiguous="YES" id="hnp-sX-osg">
-                                    <rect key="frame" x="1" y="0.0" width="458" height="0.0"/>
+                                    <rect key="frame" x="1" y="1" width="458" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

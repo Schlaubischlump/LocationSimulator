@@ -189,7 +189,7 @@
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				13BA351F20A433EF00A0431C /* Main.storyboard */,
 				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
-				632C465723F4B5F5004E5092 /* menu */,
+				632C465723F4B5F5004E5092 /* menubar */,
 				63FC47A22306243300BBB2E8 /* windowcontroller */,
 				6311B79A230C1D9C00AABF3E /* downloader */,
 				638ADBE2230203B20061612D /* viewcontroller */,
@@ -277,15 +277,23 @@
 			path = progresspanel;
 			sourceTree = "<group>";
 		};
-		632C465723F4B5F5004E5092 /* menu */ = {
+		632C465723F4B5F5004E5092 /* menubar */ = {
 			isa = PBXGroup;
 			children = (
 				632C466423F7638A004E5092 /* Constants.swift */,
+				632C466623F76881004E5092 /* coordinateselection */,
+			);
+			path = menubar;
+			sourceTree = "<group>";
+		};
+		632C466623F76881004E5092 /* coordinateselection */ = {
+			isa = PBXGroup;
+			children = (
 				632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */,
 				632C466223F4D9C8004E5092 /* CoordinateStepper.swift */,
 				632C465823F4B611004E5092 /* CoordinateSelectionView.swift */,
 			);
-			path = menu;
+			path = coordinateselection;
 			sourceTree = "<group>";
 		};
 		633A433B22F9926C005B3BE0 /* Frameworks */ = {
@@ -378,7 +386,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "David Klopp";
 				TargetAttributes = {
 					13BA351520A433EE00A0431C = {

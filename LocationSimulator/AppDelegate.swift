@@ -38,8 +38,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func setMovementSpeed(_ menuItem: NSMenuItem) {
-        // Only these tags are allowed, otherwise the app would crash
-        guard [kWalkTag, kCycleTag, kDriveTag].contains(menuItem.tag) else { return }
+        // Only these tags are allowed, otherwise the app would crash.
+        guard let item = MenubarItem(rawValue: menuItem.tag), item == .Walk || item == .Cycle || item == .Drive else {
+            return
+        }
         // Change the movement speed.
         guard let windowController = NSApp.mainWindow?.windowController as? WindowController else { return }
         windowController.typeSegmented.selectedSegment = menuItem.tag
@@ -47,28 +49,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func pauseResumeNavigation(_ menuItem: NSMenuItem) {
+        // pause or resume the navigation or start and stop automove if we are not navigating
         guard let windowController = NSApp.mainWindow?.windowController else { return }
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
-        viewController.spoofer?.pauseResumeAutoMove()
+        guard let spoofer = viewController.spoofer else { return }
+
+        // start automoving
+        if spoofer.moveState == .manual {
+            spoofer.moveState = .auto
+            spoofer.move()
+        } else if spoofer.moveState == .auto {
+            // stop automove
+            if spoofer.route.isEmpty {
+                spoofer.moveState = .manual
+            } else {
+                // pause / resume the navigation
+                spoofer.pauseResumeAutoMove()
+            }
+        }
     }
 
     @IBAction func move(_ menuItem: NSMenuItem) {
         guard let windowController = NSApp.mainWindow?.windowController else { return }
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
 
-        switch(menuItem.tag) {
-            case kLeftTag:
+        switch(MenubarItem(rawValue: menuItem.tag)) {
+            // Counterclockwise
+            case .MoveCounterclockwise:
                 viewController.rotateHeaderViewBy(CGFloat(5.0.degreesToRadians))
                 break
 
-            case kRightTag:
+            // Clockwise
+            case .MoveClockwise:
                 viewController.rotateHeaderViewBy(CGFloat(-5.0.degreesToRadians))
                 break
 
             //  x | x                 |          |                   |
             // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
             //    |    arrow down   x | x      x | x  arrow down   x | x
-            case kDownTag:
+            case .MoveDown:
                 if viewController.spoofer?.moveState == .manual {
                     let angle = viewController.getHeaderViewAngle()
                     if (angle < .pi/2.0 && angle > -.pi/2.0) {
@@ -81,7 +100,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             //    |                 x | x      x | x               x | x
             // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
             //  x | x   arrow up      |          |     arrow up      |
-            case kUpTag:
+            case .MoveUp:
                 if viewController.spoofer?.moveState == .manual {
                     let angle = viewController.getHeaderViewAngle()
                     if (angle > .pi/2.0 || angle < -.pi/2.0) {
@@ -95,4 +114,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    @IBAction func stopNavigation(_ sender: NSMenuItem) {
+        // stop the navigation
+        guard let windowController = NSApp.mainWindow?.windowController else { return }
+        guard let viewController = windowController.contentViewController as? MapViewController else { return }
+        viewController.spoofer?.moveState = .manual
+    }
 }

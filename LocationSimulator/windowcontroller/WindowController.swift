@@ -29,9 +29,6 @@ class WindowController: NSWindowController {
     /// UDIDs of all currently connected devices.
     public var deviceUDIDs: [String]!
 
-    /// True if we currently listen to connected / disconnected device notifcation, False otherwise.
-    private var observeDevices: Bool!
-
     // MARK: - Window lifecycle
 
     override func windowDidLoad() {
@@ -40,10 +37,7 @@ class WindowController: NSWindowController {
         // save the UDIDs of all connected devices
         self.deviceUDIDs = []
 
-        // start listening to new devices if possible
-        self.observeDevices = Device.startGeneratingDeviceNotifications()
-
-        if self.observeDevices {
+        if Device.startGeneratingDeviceNotifications() {
             NotificationCenter.default.addObserver(self, selector: #selector(self.deviceConnected), name: .DeviceConnected, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.devicePaired), name: .DevicePaired, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDisconnected), name: .DeviceDisconnected, object: nil)
@@ -68,25 +62,10 @@ class WindowController: NSWindowController {
 
     deinit {
         // stop generating update notifications (0 != 1 can never occur)
-        self.observeDevices = self.observeDevices != Device.stopGeneratingDeviceNotifications()
+        Device.stopGeneratingDeviceNotifications()
 
         // remove all notifications
         NotificationCenter.default.removeObserver(self)
-    }
-
-    // MARK: - Menubar
-
-    /**
-     Enable or disable all menus items which should only be accessible if a device is connected.
-     - Parameter enabled: true to enable the menubar items, false to disable them
-     */
-    func setNavigationMenubarItems(enabled: Bool) {
-        // Get a reference to the navigation menu item.
-        guard let navigationMenu = NSApp.menu?.item(withTag: 1)?.submenu else { return }
-        // Enable or disable all relevant items.
-        for i in [kSetLocationTag, kToggleNavigationTag, kUpTag, kDownTag, kLeftTag, kRightTag] {
-            navigationMenu.item(withTag: i)?.isEnabled = enabled
-        }
     }
 
     // MARK: - Interface Builder callbacks
@@ -112,7 +91,10 @@ class WindowController: NSWindowController {
     }
 
     @IBAction func deviceSelected(_ sender: NSPopUpButton) {
-        self.setNavigationMenubarItems(enabled: false)
+        // Disable all menubar items which only work if a device is connected.
+        let items: [MenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
+                                    .MoveClockwise]
+        items.forEach { item in item.disable() }
 
         guard let viewController = contentViewController as? MapViewController else { return }
 
@@ -123,6 +105,7 @@ class WindowController: NSWindowController {
         if let spoofer = viewController.spoofer {
             // if the selection did not change do nothing
             if spoofer.device.UDID == udid {
+                MenubarItem.SetLocation.enable()
                 return
             }
             // reset the timer and cancel all delegate updates
@@ -138,8 +121,8 @@ class WindowController: NSWindowController {
         if viewController.loadDevice(udid) {
             // set the correct walking speed based on the current selection
             viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
-            // make sure to enable the menubar item
-            self.setNavigationMenubarItems(enabled: true)
+            // make sure to enable the 'Set Location' menubar item if a device is connected
+            MenubarItem.SetLocation.enable()
         }
     }
 }

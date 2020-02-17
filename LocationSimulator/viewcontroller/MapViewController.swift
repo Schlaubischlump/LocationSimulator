@@ -365,6 +365,9 @@ class MapViewController: NSViewController {
 
                 let transportType: MKDirectionsTransportType = (spoofer.moveType == .car) ? .automobile : .walking
 
+                // stop automoving before we calculate the route
+                spoofer.moveState = .manual
+
                 // indicate work while we calculate the route
                 self.startSpinner()
 
@@ -375,10 +378,8 @@ class MapViewController: NSViewController {
                     self.stopSpinner()
 
                     // start automoving
-                    if (spoofer.moveState != .auto) {
-                        spoofer.moveState = .auto
-                        spoofer.move()
-                    }
+                    spoofer.moveState = .auto
+                    spoofer.move()
                 }
             } else if res == NSApplication.ModalResponse.alertThirdButtonReturn {
                 // teleport to the new location

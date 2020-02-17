@@ -47,6 +47,7 @@ class Device: NSObject {
      Start to observer the USB interface for newly added, paired or removed iOS devices.
      - Return: True if the observer could be started, False otherwise.
      */
+    @discardableResult
     class func startGeneratingDeviceNotifications() -> Bool {
         let cb : idevice_event_cb_t = { (event, userData: UnsafeMutableRawPointer?) in
             guard let event_t = event?.pointee else { return }
@@ -65,7 +66,7 @@ class Device: NSObject {
                     }
                     // If we can not read the device name it's a good indicator that the pairing did not work.
                     // This happens quit often because libimobiledevice detects Wi-Fi devices, although it does
-                    // not support them (yet). We don't want to send a notification in this case.
+                    // not support them (yet?). We don't want to send a notification in this case.
                     return
                 case IDEVICE_DEVICE_REMOVE:
                     notificationName = .DeviceDisconnected
@@ -86,6 +87,7 @@ class Device: NSObject {
      Stop observing the USB interface for device changes.
      - Return: True if the observer could be closed, False otherwise.
      */
+    @discardableResult
     class func stopGeneratingDeviceNotifications() -> Bool {
         return idevice_event_unsubscribe() == IDEVICE_E_SUCCESS
     }
@@ -169,6 +171,7 @@ class Device: NSObject {
      - Parameter location: new coordinates
      - Return: True on success, False otherwise.
      */
+    @discardableResult
     func simulateLocation(_ location: CLLocationCoordinate2D) -> Bool {
         return sendLocation("\(location.latitude)", "\(location.longitude)", "\(self.UDID)")
     }
@@ -177,6 +180,7 @@ class Device: NSObject {
      Stop spoofing the iOS device location and reset the coordinates to the real device coordinates.
      - Return: True on success, False otherwise.
      */
+    @discardableResult
     func disableSimulation() -> Bool {
         return resetLocation("\(self.UDID)")
     }

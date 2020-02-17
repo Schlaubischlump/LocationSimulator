@@ -52,6 +52,15 @@ extension MapViewController: LocationSpooferDelegate {
     func didChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
         // true if the location was reset, false otherwise
         let isReset: Bool = (toCoordinate == nil)
+        // disable all move menubar items when the location is reset
+        let items: [MenubarItem] = [.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise, .MoveClockwise]
+        items.forEach { item in
+            if isReset {
+                item.disable()
+            } else {
+                items.first!.enable()
+            }
+        }
 
         // calculate the total rounded distance in kilometers
         let totalDistanceInKM: Double = round(self.spoofer?.totalDistance ?? 0.0) / 1000.0
@@ -102,8 +111,31 @@ extension MapViewController: LocationSpooferDelegate {
         switch moveState {
             case .manual:
                 moveButton.image = #imageLiteral(resourceName: "MoveButton")
+                // allow all movement to navigate manual
+                MenubarItem.MoveCounterclockwise.enable()
+                MenubarItem.MoveClockwise.enable()
+                MenubarItem.MoveUp.enable()
+                MenubarItem.MoveDown.enable()
+                // we disabled automove => we can not stop the navigation
+                MenubarItem.StopNavigation.disable()
             case .auto:
                 moveButton.image = #imageLiteral(resourceName: "MoveButtonAuto")
+
+                // we are moving automatically => do not allow manual movement
+                MenubarItem.MoveUp.disable()
+                MenubarItem.MoveDown.disable()
+
+                if spoofer.route.isEmpty {
+                    // allow changing the direction when automoving
+                    MenubarItem.MoveCounterclockwise.enable()
+                    MenubarItem.MoveClockwise.enable()
+                } else {
+                    // if we are navigating enable the menu item to stop the navigation
+                    MenubarItem.StopNavigation.enable()
+                    // disable all movement if we are navigating
+                    MenubarItem.MoveCounterclockwise.disable()
+                    MenubarItem.MoveClockwise.disable()
+                }
         }
 
         if (self.routeOverlay != nil) {
