@@ -22,7 +22,9 @@ class AutoCompleteTextField: NSTextField {
     @IBInspectable var popOverWidth: CGFloat = 100.0
     
     weak var tableViewDelegate: AutoCompleteTableViewDelegate?
+
     let popOverPadding: CGFloat = 0.0
+
     let maxResults = 10
 
     var matches: [Match]?
@@ -60,7 +62,8 @@ class AutoCompleteTextField: NSTextField {
         let tableView = NSTableView(frame: NSZeroRect)
         tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.regular
         tableView.backgroundColor = NSColor.clear
-        tableView.rowSizeStyle = NSTableView.RowSizeStyle.large
+        tableView.rowSizeStyle = NSTableView.RowSizeStyle.custom
+        tableView.rowHeight = 36.0
         tableView.intercellSpacing = NSMakeSize(5.0, 0.0)
         tableView.headerView = nil
         tableView.refusesFirstResponder = true
