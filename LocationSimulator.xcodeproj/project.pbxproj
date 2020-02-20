@@ -105,7 +105,6 @@
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
 		6375BA192309A95C000DA0A4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
-		63A6B99D23FED17B00F26968 /* Info_Homebrew.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info_Homebrew.plist; path = /Users/David/Desktop/LocationSimulator/Info_Homebrew.plist; sourceTree = "<absolute>"; };
 		63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		63C325F023F494C300E12207 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = ../../../../usr/local/Cellar/libplist/2.1.0/lib/libplist.3.dylib; sourceTree = "<group>"; };
 		63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2t/lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
@@ -142,7 +141,6 @@
 				13BA351D20A433EF00A0431C /* Assets.xcassets */,
 				63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */,
 				13BA352320A433EF00A0431C /* LocationSimulator.entitlements */,
-				63A6B99D23FED17B00F26968 /* Info_Homebrew.plist */,
 				13BA352220A433EF00A0431C /* Info.plist */,
 				6305075323FB06A700EF529A /* Credits.rtf */,
 			);
