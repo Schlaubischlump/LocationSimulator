@@ -56,7 +56,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 	git clone --recurse-submodules https://github.com/Schlaubischlump/LocationSimulator
 	```
 4. Open `LocationSimulator.xcodeproj` in Xcode.
-5. Adjust the header search paths, library search paths ~~and the embedded~ and linked libraries if required.
+5. Adjust the header search paths, library search paths ~~and the embedded~~ and linked libraries if required.
 > If you checked out a different head for `libimobiledeive` or `libusbmuxd` than used in this project, you will need to change all of the above entries.
 6. Tap Run to build and execute the app.
 
