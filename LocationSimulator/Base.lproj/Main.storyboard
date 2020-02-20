@@ -91,6 +91,20 @@
                                                 <action selector="resetLocation:" target="Voe-Tx-rLC" id="6II-AQ-6nT"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Recent Locations" tag="14" enabled="NO" id="6C4-QV-f6L">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Recent Locations" autoenablesItems="NO" id="kAM-hM-6pv">
+                                                <items>
+                                                    <menuItem isSeparatorItem="YES" id="JJf-yG-vqP"/>
+                                                    <menuItem title="Clear Menu" tag="1" enabled="NO" id="smy-uq-jUo">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <connections>
+                                                            <action selector="clearRecentLocations:" target="Voe-Tx-rLC" id="7vl-nX-sec"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="5" id="bdS-Ru-Mgs"/>
                                         <menuItem title="Toggle Automove" tag="6" enabled="NO" keyEquivalent=" " id="fpP-7o-78x" userLabel="Toggle Automove">
                                             <modifierMask key="keyEquivalentModifierMask"/>

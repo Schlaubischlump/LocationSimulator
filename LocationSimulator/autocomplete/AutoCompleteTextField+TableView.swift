@@ -97,8 +97,8 @@ extension AutoCompleteTextField: NSTableViewDelegate {
             cellView!.identifier = NSUserInterfaceItemIdentifier(rawValue: "cell")
 
             let textField = NSTextField(frame: NSZeroRect)
-            textField.isBezeled = false
             textField.autoresizingMask = [.height, .width]
+            textField.isBezeled = false
             textField.drawsBackground = false
             textField.isEditable = false
             textField.isSelectable = false
@@ -146,7 +146,7 @@ extension AutoCompleteTextField: NSTableViewDelegate {
 
 extension AutoCompleteTextField: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        if self.matches == nil{
+        if self.matches == nil {
             return 0
         }
         return self.matches!.count

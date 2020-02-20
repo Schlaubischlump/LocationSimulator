@@ -327,12 +327,17 @@ class MapViewController: NSViewController {
         alert.messageText = NSLocalizedString("DESTINATION", comment: "")
         alert.informativeText = NSLocalizedString("TELEPORT_OR_NAVIGATE_MSG", comment: "")
         alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-        alert.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
+        let navButton: NSButton = alert.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
         alert.addButton(withTitle: NSLocalizedString("TELEPORT", comment: ""))
         alert.alertStyle = .informational
 
         // new coordinates to move to, either give by the function or read from a user input
         var newCoords: CLLocationCoordinate2D? = nil
+
+        // disable the navigate button if no current location exists
+        if self.spoofer?.currentLocation == nil {
+            navButton.isEnabled = false
+        }
 
         // if no location is give request one from the user
         if coord == nil {
@@ -384,6 +389,8 @@ class MapViewController: NSViewController {
             } else if res == NSApplication.ModalResponse.alertThirdButtonReturn {
                 // teleport to the new location
                 spoofer.setLocation(newCoords!)
+                // if we teleport we want to save this location as a recent location
+                RecentLocationMenubarItem.addLocation(newCoords!)
             }
 
             self.isShowingAlert = false

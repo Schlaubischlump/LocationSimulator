@@ -7,12 +7,22 @@
 //
 
 import Cocoa
+import CoreLocation
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
+        // load all recent locations menubaritems
+        let items = RecentLocationMenubarItem.locations()
+        items.reversed().forEach { item in
+            RecentLocationMenubarItem.addLocationMenuItem(item)
+        }
+        // enable the clear menu item if required
+        if items.count > 0 {
+            RecentLocationMenubarItem.ClearMenu.enable()
+        }
+
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -39,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction func setMovementSpeed(_ menuItem: NSMenuItem) {
         // Only these tags are allowed, otherwise the app would crash.
-        guard let item = MenubarItem(rawValue: menuItem.tag), item == .Walk || item == .Cycle || item == .Drive else {
+        guard let item = NavigationMenubarItem(rawValue: menuItem.tag), item == .Walk || item == .Cycle || item == .Drive else {
             return
         }
         // Change the movement speed.
@@ -73,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let windowController = NSApp.mainWindow?.windowController else { return }
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
 
-        switch(MenubarItem(rawValue: menuItem.tag)) {
+        switch(NavigationMenubarItem(rawValue: menuItem.tag)) {
             // Counterclockwise
             case .MoveCounterclockwise:
                 viewController.rotateHeaderViewBy(CGFloat(5.0.degreesToRadians))
@@ -127,5 +137,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let windowController = NSApp.mainWindow?.windowController else { return }
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
         viewController.spoofer?.resetLocation()
+    }
+
+    @IBAction func clearRecentLocations(_ sender: NSMenuItem) {
+        RecentLocationMenubarItem.clearLocations()
+    }
+
+    @objc func selectRecentLocation(_ sender: NSMenuItem) {
+        guard let windowController = NSApp.mainWindow?.windowController else { return }
+        guard let viewController = windowController.contentViewController as? MapViewController else { return }
+        guard let idx: Int = RecentLocationMenubarItem.menu?.items.firstIndex(of: sender) else { return }
+        let loc: Location = RecentLocationMenubarItem.locations()[idx]
+        let coord = CLLocationCoordinate2D(latitude: loc.lat, longitude: loc.long)
+        if viewController.spoofer?.currentLocation != nil {
+            viewController.requestTeleportOrNavigation(toCoordinate: coord)
+        } else {
+            viewController.spoofer?.setLocation(coord)
+        }
     }
 }

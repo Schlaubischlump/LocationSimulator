@@ -95,8 +95,8 @@ class WindowController: NSWindowController {
 
     @IBAction func deviceSelected(_ sender: NSPopUpButton) {
         // Disable all menubar items which only work if a device is connected.
-        let items: [MenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
-                                    .MoveClockwise]
+        let items: [NavigationMenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
+                                              .MoveClockwise, .RecentLocation]
         items.forEach { item in item.disable() }
 
         guard let viewController = contentViewController as? MapViewController else { return }
@@ -108,7 +108,8 @@ class WindowController: NSWindowController {
         if let spoofer = viewController.spoofer {
             // if the selection did not change do nothing
             if spoofer.device.UDID == udid {
-                MenubarItem.SetLocation.enable()
+                NavigationMenubarItem.SetLocation.enable()
+                NavigationMenubarItem.RecentLocation.enable()
                 return
             }
             // reset the timer and cancel all delegate updates
@@ -139,7 +140,8 @@ class WindowController: NSWindowController {
                 spoofer.moveState = .manual
             }
             // make sure to enable the 'Set Location' menubar item if a device is connected
-            MenubarItem.SetLocation.enable()
+            NavigationMenubarItem.SetLocation.enable()
+            NavigationMenubarItem.RecentLocation.enable()
         }
     }
 }

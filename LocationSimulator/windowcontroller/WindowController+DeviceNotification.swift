@@ -30,7 +30,8 @@ extension WindowController {
             if viewController.loadDevice(udid) {
                 viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
                 // make sure to enable the menubar item
-                MenubarItem.SetLocation.enable()
+                NavigationMenubarItem.SetLocation.enable()
+                NavigationMenubarItem.RecentLocation.enable()
             }
         }
     }
@@ -79,8 +80,8 @@ extension WindowController {
             viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
 
             // disable the menubar items
-            let items: [MenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
-                                        .MoveClockwise, .StopNavigation]
+            let items: [NavigationMenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
+                                                  .MoveClockwise, .StopNavigation, .RecentLocation]
             items.forEach { item in item.disable() }
 
             // try to select the next device in the list

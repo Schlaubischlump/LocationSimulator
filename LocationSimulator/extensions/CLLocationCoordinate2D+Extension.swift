@@ -82,4 +82,29 @@ extension CLLocationCoordinate2D {
         let headingDegrees = atan2(y, x).radiansToDegrees
         return headingDegrees >= 0 ? headingDegrees : headingDegrees + 360
     }
+
+    /**
+     Get the location name based on the current coordinates.
+     */
+    func getLocationName(completion: @escaping (_ location: CLLocation, _ name: String) -> ()) {
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: self.latitude, longitude: self.longitude)
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { placemarks, error -> Void in
+            guard let placeMark = placemarks?.first else { return }
+
+            // Street address
+            var components: [String] = []
+            if let country = placeMark.country {
+                components.append(country)
+            }
+            if let city = placeMark.subAdministrativeArea {
+                components.append(city)
+            }
+            if let street = placeMark.thoroughfare {
+                components.append(street)
+            }
+
+            completion(location, components.joined(separator: " - "))
+        })
+    }
 }

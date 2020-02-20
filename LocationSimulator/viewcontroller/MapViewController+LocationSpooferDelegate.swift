@@ -55,16 +55,16 @@ extension MapViewController: LocationSpooferDelegate {
 
         if isReset {
             // disable all move menubar items when the location is reset
-            MenubarItem.ToggleAutomove.disable()
-            MenubarItem.ResetLocation.disable()
-            MenubarItem.MoveUp.disable()
-            MenubarItem.MoveDown.disable()
-            MenubarItem.MoveClockwise.disable()
-            MenubarItem.MoveCounterclockwise.disable()
+            NavigationMenubarItem.ToggleAutomove.disable()
+            NavigationMenubarItem.ResetLocation.disable()
+            NavigationMenubarItem.MoveUp.disable()
+            NavigationMenubarItem.MoveDown.disable()
+            NavigationMenubarItem.MoveClockwise.disable()
+            NavigationMenubarItem.MoveCounterclockwise.disable()
         } else {
             // enable these items if we start faking the location
-            MenubarItem.ToggleAutomove.enable()
-            MenubarItem.ResetLocation.enable()
+            NavigationMenubarItem.ToggleAutomove.enable()
+            NavigationMenubarItem.ResetLocation.enable()
         }
 
         // calculate the total rounded distance in kilometers
@@ -88,6 +88,9 @@ extension MapViewController: LocationSpooferDelegate {
                 self.mapView.addAnnotation(currentLocationMarker)
                 self.currentLocationMarker = currentLocationMarker
                 self.autoFocusCurrentLocation = true
+
+                // Add this location to the recent locations
+                RecentLocationMenubarItem.addLocation(toCoordinate!)
             }
             self.currentLocationMarker!.subtitle = "\(toCoordinate!.latitude), \(toCoordinate!.longitude)"
 
@@ -117,29 +120,29 @@ extension MapViewController: LocationSpooferDelegate {
             case .manual:
                 moveButton.image = #imageLiteral(resourceName: "MoveButton")
                 // allow all movement to navigate manual
-                MenubarItem.MoveCounterclockwise.enable()
-                MenubarItem.MoveClockwise.enable()
-                MenubarItem.MoveUp.enable()
-                MenubarItem.MoveDown.enable()
+                NavigationMenubarItem.MoveCounterclockwise.enable()
+                NavigationMenubarItem.MoveClockwise.enable()
+                NavigationMenubarItem.MoveUp.enable()
+                NavigationMenubarItem.MoveDown.enable()
                 // we disabled automove => we can not stop the navigation
-                MenubarItem.StopNavigation.disable()
+                NavigationMenubarItem.StopNavigation.disable()
             case .auto:
                 moveButton.image = #imageLiteral(resourceName: "MoveButtonAuto")
 
                 // we are moving automatically => do not allow manual movement
-                MenubarItem.MoveUp.disable()
-                MenubarItem.MoveDown.disable()
+                NavigationMenubarItem.MoveUp.disable()
+                NavigationMenubarItem.MoveDown.disable()
 
                 if spoofer.route.isEmpty {
                     // allow changing the direction when automoving
-                    MenubarItem.MoveCounterclockwise.enable()
-                    MenubarItem.MoveClockwise.enable()
+                    NavigationMenubarItem.MoveCounterclockwise.enable()
+                    NavigationMenubarItem.MoveClockwise.enable()
                 } else {
                     // if we are navigating enable the menu item to stop the navigation
-                    MenubarItem.StopNavigation.enable()
+                    NavigationMenubarItem.StopNavigation.enable()
                     // disable all movement if we are navigating
-                    MenubarItem.MoveCounterclockwise.disable()
-                    MenubarItem.MoveClockwise.disable()
+                    NavigationMenubarItem.MoveCounterclockwise.disable()
+                    NavigationMenubarItem.MoveClockwise.disable()
                 }
         }
 
