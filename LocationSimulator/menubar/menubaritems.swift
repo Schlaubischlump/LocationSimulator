@@ -177,7 +177,6 @@ enum RecentLocationMenubarItem: Int {
 
         // clear the menu entries (minus to because of the separator and the clear menu field)
         let numItems: Int = (RecentLocationMenubarItem.menu?.items.count)! - 2
-        print(numItems)
         for _ in 0..<numItems {
             RecentLocationMenubarItem.menu?.removeItem(at: 0)
         }
