@@ -661,9 +661,9 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/libplist/2.1.0/lib,
-					/usr/local/Cellar/openssl/1.0.2t/lib,
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
 					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
+					/usr/local/Cellar/openssl/1.0.2t/lib,
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -697,9 +697,9 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/libplist/2.1.0/lib,
-					/usr/local/Cellar/openssl/1.0.2t/lib,
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
 					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
+					/usr/local/Cellar/openssl/1.0.2t/lib,
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
