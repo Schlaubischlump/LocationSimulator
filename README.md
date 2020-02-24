@@ -60,6 +60,8 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 > If you checked out a different head for `libimobiledeive` or `libusbmuxd` than used in this project, you will need to change all of the above entries.
 6. Tap Run to build and execute the app.
 
+> **Note**:  
+> If you want to build a standalone application which can be copied to another Mac without installing the dependencies choose the `LocationSimulator` scheme and switch the configuration to `Release` before running. If you do not want to bundle the dependencies, but want to create a release build choose the `Homebrew` scheme. When a new release of `libimobiledevice` is available, I will try to create a homebrew cask for this application. 
 
 ## Usage
 

@@ -120,11 +120,16 @@ enum RecentLocationMenubarItem: Int {
         // load all entries and delete the last one if we have to many
         var recentLocations = RecentLocationMenubarItem.locations()
 
-        // make sure that we did not already store this location in the recent entries
-        for loc in recentLocations {
+        // Make sure that we did not already store this location in the recent entries and if we do, then remove the
+        // entry and call the remaining function to insert the item at the beginning. If the name of the location
+        // has changed since the last teleportation this will guarantee that the information is updated.
+        for index in 0..<recentLocations.count {
+            let loc: Location = recentLocations[index]
             let locCoords = CLLocationCoordinate2D(latitude: loc.lat, longitude: loc.long)
             if locCoords.distanceTo(coordinate: coords) < 0.005 {
-                return
+                recentLocations.remove(at: index)
+                RecentLocationMenubarItem.menu?.removeItem(at: index)
+                break
             }
         }
 

@@ -37,6 +37,8 @@
 		633A460922F9A6A0005B3BE0 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */; };
 		633A460C22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */; };
 		633A460E22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */; };
+		6344174C24035DEF00114694 /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6344174B24035DEF00114694 /* libcrypto.1.1.dylib */; };
+		6344174E24035DFA00114694 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6344174D24035DFA00114694 /* libssl.1.1.dylib */; };
 		634D1144230CB3AE001F440C /* Downloader+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1143230CB3AE001F440C /* Downloader+Protocol.swift */; };
 		634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1145230CB8D7001F440C /* PogressWindowController.swift */; };
 		634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */; };
@@ -47,8 +49,6 @@
 		638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ADBE0230095980061612D /* AutoCompletePopover.swift */; };
 		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
 		63C325F123F494C300E12207 /* libplist.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C325F023F494C300E12207 /* libplist.3.dylib */; };
-		63C325F623F4955300E12207 /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */; };
-		63C325F723F4955300E12207 /* libssl.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C325F523F4955300E12207 /* libssl.1.0.0.dylib */; };
 		63C3261023F49DE500E12207 /* libimobiledevice.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */; };
 		63C3261223F49DF400E12207 /* libusbmuxd.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
@@ -97,6 +97,8 @@
 		633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+TableView.swift"; sourceTree = "<group>"; };
 		633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+Protocol.swift"; sourceTree = "<group>"; };
+		6344174B24035DEF00114694 /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = "../../../../usr/local/Cellar/openssl@1.1/1.1.1d/lib/libcrypto.1.1.dylib"; sourceTree = "<group>"; };
+		6344174D24035DFA00114694 /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = "../../../../usr/local/Cellar/openssl@1.1/1.1.1d/lib/libssl.1.1.dylib"; sourceTree = "<group>"; };
 		634D1143230CB3AE001F440C /* Downloader+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Downloader+Protocol.swift"; sourceTree = "<group>"; };
 		634D1145230CB8D7001F440C /* PogressWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogressWindowController.swift; sourceTree = "<group>"; };
 		634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PogressViewController+DownloaderDelegate.swift"; sourceTree = "<group>"; };
@@ -107,8 +109,6 @@
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
 		63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		63C325F023F494C300E12207 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = ../../../../usr/local/Cellar/libplist/2.1.0/lib/libplist.3.dylib; sourceTree = "<group>"; };
-		63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2t/lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
-		63C325F523F4955300E12207 /* libssl.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.0.0.dylib; path = ../../../../usr/local/Cellar/openssl/1.0.2t/lib/libssl.1.0.0.dylib; sourceTree = "<group>"; };
 		63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.6.dylib; path = "../../../../usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib/libimobiledevice.6.dylib"; sourceTree = "<group>"; };
 		63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.6.dylib; path = ../../../../usr/local/Cellar/libusbmuxd/2.0.1/lib/libusbmuxd.6.dylib; sourceTree = "<group>"; };
 		63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeveloperDiskImages.plist; sourceTree = "<group>"; };
@@ -123,10 +123,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6344174E24035DFA00114694 /* libssl.1.1.dylib in Frameworks */,
+				6344174C24035DEF00114694 /* libcrypto.1.1.dylib in Frameworks */,
 				63C3261223F49DF400E12207 /* libusbmuxd.6.dylib in Frameworks */,
 				63C3261023F49DE500E12207 /* libimobiledevice.6.dylib in Frameworks */,
-				63C325F623F4955300E12207 /* libcrypto.1.0.0.dylib in Frameworks */,
-				63C325F723F4955300E12207 /* libssl.1.0.0.dylib in Frameworks */,
 				63C325F123F494C300E12207 /* libplist.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,10 +282,10 @@
 		633A433B22F9926C005B3BE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6344174D24035DFA00114694 /* libssl.1.1.dylib */,
+				6344174B24035DEF00114694 /* libcrypto.1.1.dylib */,
 				63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */,
 				63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */,
-				63C325F423F4955300E12207 /* libcrypto.1.0.0.dylib */,
-				63C325F523F4955300E12207 /* libssl.1.0.0.dylib */,
 				63C325F023F494C300E12207 /* libplist.3.dylib */,
 			);
 			name = Frameworks;
@@ -350,7 +350,7 @@
 				13BA351220A433EE00A0431C /* Sources */,
 				13BA351320A433EE00A0431C /* Frameworks */,
 				13BA351420A433EE00A0431C /* Resources */,
-				6392FEFD2325349800192C23 /* Run Script */,
+				63A4F9272403656600C3D877 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -425,7 +425,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6392FEFD2325349800192C23 /* Run Script */ = {
+		63A4F9272403656600C3D877 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,14 +434,13 @@
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $COPY_LIBS ]\nthen\n    ./tools/copy_dylibs.py;\nfi\n";
+			shellScript = "# Only copy the libraries into the app bundle if we build for a normal release.\nif [ $CONFIGURATION == \"Release\" ]; then\n    echo \"Embedding libraries...\"\n    ./tools/copy_dylibs.py\n    echo \"Done.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -663,7 +662,7 @@
 					/usr/local/Cellar/libplist/2.1.0/lib,
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
 					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
-					/usr/local/Cellar/openssl/1.0.2t/lib,
+					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -699,7 +698,7 @@
 					/usr/local/Cellar/libplist/2.1.0/lib,
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
 					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
-					/usr/local/Cellar/openssl/1.0.2t/lib,
+					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -710,6 +709,97 @@
 			};
 			name = Release;
 		};
+		63A4F928240366EA00C3D877 /* Homebrew */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Homebrew;
+		};
+		63A4F929240366EA00C3D877 /* Homebrew */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YJ8XYES89R;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
+					/usr/local/Cellar/libplist/2.1.0/include/,
+				);
+				INFOPLIST_FILE = LocationSimulator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/Cellar/libplist/2.1.0/lib,
+					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
+					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
+					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+				);
+				MACH_O_TYPE = mh_execute;
+				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LocationSimulator/LocationSimulator-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Homebrew;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -718,6 +808,7 @@
 			buildConfigurations = (
 				13BA352420A433EF00A0431C /* Debug */,
 				13BA352520A433EF00A0431C /* Release */,
+				63A4F928240366EA00C3D877 /* Homebrew */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -727,6 +818,7 @@
 			buildConfigurations = (
 				13BA352720A433EF00A0431C /* Debug */,
 				13BA352820A433EF00A0431C /* Release */,
+				63A4F929240366EA00C3D877 /* Homebrew */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
