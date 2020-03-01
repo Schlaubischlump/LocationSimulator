@@ -341,7 +341,22 @@ class MapViewController: NSViewController {
 
         // if no location is give request one from the user
         if coord == nil {
-            alert.accessoryView = CoordinateSelectionView(frame: NSRect(x: 0, y: 0, width: 330, height: 40))
+            let coordView = CoordinateSelectionView(frame: NSRect(x: 0, y: 0, width: 330, height: 40))
+
+            // try to read coordinates from pasteboard and suggest them to the user
+            if let pasteboardItem = NSPasteboard.general.pasteboardItems?.first?.string(forType: .string) {
+                let components = pasteboardItem.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: false)
+                if components.count == 2 {
+                    let first = String(components.first!).trimmingCharacters(in: .whitespaces)
+                    let second = String(components.last!).trimmingCharacters(in: .whitespaces)
+                    if let lat = Double(first), let long = Double(second) {
+                        coordView.lat = lat
+                        coordView.long = long
+                    }
+                }
+            }
+
+            alert.accessoryView = coordView
         } else {
             newCoords = coord
         }

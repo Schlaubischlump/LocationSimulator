@@ -9,6 +9,10 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CoordinateSelectionView" customModule="LocationSimulator" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="XYi-Cc-aLa" id="zCB-4e-9kH"/>
+                <outlet property="latStepper" destination="CUV-Km-pVe" id="2Ea-DV-596"/>
+                <outlet property="latTextField" destination="4Qp-Yp-ePa" id="2Zf-UD-svQ"/>
+                <outlet property="longStepper" destination="5SX-XR-2LT" id="LAR-fz-1NM"/>
+                <outlet property="longTextField" destination="kfK-Ii-PhL" id="RRx-w4-Vvs"/>
             </connections>
         </customObject>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="XYi-Cc-aLa" userLabel="Content View">

@@ -12,9 +12,29 @@ import CoreLocation
 
 class CoordinateSelectionView: NSView {
     @IBOutlet var contentView: NSView!
-    @IBInspectable var lat: Double = 37.3305976
-    @IBInspectable var long: Double = -122.0265794
 
+    @IBOutlet var longTextField: NSTextField!
+    @IBOutlet var latTextField: NSTextField!
+
+    @IBOutlet var longStepper: LongStepper!
+    @IBOutlet var latStepper: LatStepper!
+
+    @IBInspectable var lat: Double = 37.3305976 {
+        didSet {
+            self.lat = lat >= 0 ? min(85, self.lat) : max(self.lat, -85)
+            self.latTextField.doubleValue = self.lat
+            self.latStepper.doubleValue = self.lat
+        }
+    }
+
+    @IBInspectable var long: Double = -122.0265794 {
+        didSet {
+            self.long = long >= 0 ? min(180, self.long) : max(self.long, -180)
+            self.longTextField.doubleValue = self.long
+            self.longStepper.doubleValue = self.long
+        }
+    }
+    
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
