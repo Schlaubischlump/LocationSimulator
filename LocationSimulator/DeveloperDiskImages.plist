@@ -149,11 +149,22 @@
 	<dict>
 		<key>Image</key>
 		<array>
-			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/13.2/DeveloperDiskImage.dmg</string>
+			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/13.3/DeveloperDiskImage.dmg</string>
 		</array>
 		<key>Signature</key>
 		<array>
-			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/13.2/DeveloperDiskImage.dmg.signature</string>
+			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/13.3/DeveloperDiskImage.dmg.signature</string>
+		</array>
+	</dict>
+	<key>13.4</key>
+	<dict>
+		<key>Image</key>
+		<array>
+			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/13.4/DeveloperDiskImage.dmg</string>
+		</array>
+		<key>Signature</key>
+		<array>
+			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/13.4/DeveloperDiskImage.dmg.signature</string>
 		</array>
 	</dict>
 </dict>
