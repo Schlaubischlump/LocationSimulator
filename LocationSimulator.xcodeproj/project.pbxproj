@@ -644,10 +644,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YJ8XYES89R;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
@@ -662,7 +662,7 @@
 					/usr/local/Cellar/libplist/2.1.0/lib,
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
 					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -680,10 +680,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YJ8XYES89R;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
@@ -698,7 +698,7 @@
 					/usr/local/Cellar/libplist/2.1.0/lib,
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
 					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -771,10 +771,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = YJ8XYES89R;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
@@ -789,7 +789,7 @@
 					/usr/local/Cellar/libplist/2.1.0/lib,
 					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
 					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1d/lib",
+					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
