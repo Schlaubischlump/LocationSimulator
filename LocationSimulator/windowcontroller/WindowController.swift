@@ -17,6 +17,9 @@ class WindowController: NSWindowController {
     /// Change the current move speed.
     @IBOutlet weak var typeSegmented: NSSegmentedControl!
 
+    /// Change the current move speed using the touchbar.
+    @IBOutlet var typeSegmentedTouchbar: NSSegmentedControl!
+
     /// Search for a location inside the map.
     @IBOutlet weak var searchField: LocationSearchField!
 
@@ -85,10 +88,21 @@ class WindowController: NSWindowController {
     
     @IBAction func typeSegmentChanged(_ sender: NSSegmentedControl) {
         guard let viewController = contentViewController as? MapViewController else { return }
+
+        // Update the toolbar state if the touchbar was clicked.
+        if self.typeSegmented.selectedSegment != sender.selectedSegment {
+            self.typeSegmented.selectedSegment = sender.selectedSegment
+        }
+
+        // Update the touchbar state if the toolbar was clicked.
+        if self.typeSegmentedTouchbar.selectedSegment != sender.selectedSegment {
+            self.typeSegmentedTouchbar.selectedSegment = sender.selectedSegment
+        }
+
         viewController.spoofer?.moveType = MoveType(rawValue: sender.selectedSegment)!
     }
     
-    @IBAction func resetClicked(_ sender: NSButton) {
+    @IBAction func resetClicked(_ sender: Any) {
         guard let viewController = contentViewController as? MapViewController else { return }
         viewController.spoofer?.resetLocation()
     }
