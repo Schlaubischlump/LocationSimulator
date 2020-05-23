@@ -143,7 +143,6 @@ class LocationSpoofer {
 
     /**
      Disable location spoofing for the connected iDevice. This will reset the location to the real device location.
-     - Parameter completion: completion block to call after the update oparation is executed
      */
     public func resetLocation() {
         self.hasPendingTask = true
