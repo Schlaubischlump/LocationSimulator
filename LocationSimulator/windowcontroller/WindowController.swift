@@ -32,8 +32,11 @@ class WindowController: NSWindowController {
     /// UDIDs of all currently connected devices.
     public var deviceUDIDs: [String]!
 
-    /// cache to store the last known location for each device as long as it is connected
+    /// Cache to store the last known location for each device as long as it is connected
     var lastKnownLocationCache: [String: CLLocationCoordinate2D] = [:]
+
+    /// Internal reference to a NotificationCenterObserver.
+    private var autofocusObserver: Any?
 
     // MARK: - Window lifecycle
 
@@ -44,9 +47,12 @@ class WindowController: NSWindowController {
         self.deviceUDIDs = []
 
         if Device.startGeneratingDeviceNotifications() {
-            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceConnected), name: .DeviceConnected, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.devicePaired), name: .DevicePaired, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDisconnected), name: .DeviceDisconnected, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceConnected),
+                                                   name: .DeviceConnected, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.devicePaired),
+                                                   name: .DevicePaired, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDisconnected),
+                                                   name: .DeviceDisconnected, object: nil)
         }
 
         // setup the location searchfield
@@ -57,7 +63,8 @@ class WindowController: NSWindowController {
         searchCompleter.filterType = .locationsOnly
 
         // listen to current location changes
-        NotificationCenter.default.addObserver(forName: .AutoFoucusCurrentLocationChanged, object: nil, queue: .main) { (notification) in
+        self.autofocusObserver = NotificationCenter.default.addObserver(forName: .AutoFoucusCurrentLocationChanged,
+                                                                        object: nil, queue: .main) { (notification) in
             if let isOn = notification.object as? Bool, isOn == true {
                 self.currentLocationButton.state = .on
             } else {
@@ -71,7 +78,13 @@ class WindowController: NSWindowController {
         Device.stopGeneratingDeviceNotifications()
 
         // remove all notifications
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self, name: .DeviceConnected, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .DevicePaired, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .DeviceDisconnected, object: nil)
+        if let observer = self.autofocusObserver {
+            NotificationCenter.default.removeObserver(observer)
+            self.autofocusObserver = nil
+        }
     }
 
     // MARK: - Interface Builder callbacks
@@ -85,7 +98,7 @@ class WindowController: NSWindowController {
             viewController.autoFocusCurrentLocation = (sender.state == .on)
         }
     }
-    
+
     @IBAction func typeSegmentChanged(_ sender: NSSegmentedControl) {
         guard let viewController = contentViewController as? MapViewController else { return }
 
@@ -101,7 +114,7 @@ class WindowController: NSWindowController {
 
         viewController.spoofer?.moveType = MoveType(rawValue: sender.selectedSegment)!
     }
-    
+
     @IBAction func resetClicked(_ sender: Any) {
         guard let viewController = contentViewController as? MapViewController else { return }
         viewController.spoofer?.resetLocation()
@@ -109,8 +122,8 @@ class WindowController: NSWindowController {
 
     @IBAction func deviceSelected(_ sender: NSPopUpButton) {
         // Disable all menubar items which only work if a device is connected.
-        let items: [NavigationMenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
-                                              .MoveClockwise, .RecentLocation]
+        let items: [NavigationMenubarItem] = [.setLocation, .toggleAutomove, .moveUp, .moveDown, .moveCounterclockwise,
+                                              .moveClockwise, .recentLocation]
         items.forEach { item in item.disable() }
 
         guard let viewController = contentViewController as? MapViewController else { return }
@@ -122,8 +135,8 @@ class WindowController: NSWindowController {
         if let spoofer = viewController.spoofer {
             // if the selection did not change do nothing
             if spoofer.device.UDID == udid {
-                NavigationMenubarItem.SetLocation.enable()
-                NavigationMenubarItem.RecentLocation.enable()
+                NavigationMenubarItem.setLocation.enable()
+                NavigationMenubarItem.recentLocation.enable()
                 return
             }
             // reset the timer and cancel all delegate updates
@@ -154,10 +167,8 @@ class WindowController: NSWindowController {
                 spoofer.moveState = .manual
             }
             // make sure to enable the 'Set Location' menubar item if a device is connected
-            NavigationMenubarItem.SetLocation.enable()
-            NavigationMenubarItem.RecentLocation.enable()
+            NavigationMenubarItem.setLocation.enable()
+            NavigationMenubarItem.recentLocation.enable()
         }
     }
 }
-
-

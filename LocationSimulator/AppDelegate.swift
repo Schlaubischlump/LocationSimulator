@@ -20,14 +20,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         // enable the clear menu item if required
         if items.count > 0 {
-            RecentLocationMenubarItem.ClearMenu.enable()
+            RecentLocationMenubarItem.clearMenu.enable()
         }
 
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        
-    }
+    //func applicationWillTerminate(_ aNotification: Notification) {}
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
@@ -49,7 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction func setMovementSpeed(_ menuItem: NSMenuItem) {
         // Only these tags are allowed, otherwise the app would crash.
-        guard let item = NavigationMenubarItem(rawValue: menuItem.tag), item == .Walk || item == .Cycle || item == .Drive else {
+        guard let item = NavigationMenubarItem(rawValue: menuItem.tag),
+            item == .walk || item == .cycle || item == .drive else {
             return
         }
         // Change the movement speed.
@@ -83,42 +82,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let windowController = NSApp.mainWindow?.windowController else { return }
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
 
-        switch(NavigationMenubarItem(rawValue: menuItem.tag)) {
-            // Counterclockwise
-            case .MoveCounterclockwise:
-                viewController.rotateHeaderViewBy(CGFloat(5.0.degreesToRadians))
-                break
-
-            // Clockwise
-            case .MoveClockwise:
-                viewController.rotateHeaderViewBy(CGFloat(-5.0.degreesToRadians))
-                break
-
-            //  x | x                 |          |                   |
-            // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
-            //    |    arrow down   x | x      x | x  arrow down   x | x
-            case .MoveDown:
-                if viewController.spoofer?.moveState == .manual {
-                    let angle = viewController.getHeaderViewAngle()
-                    if (angle < .pi/2.0 && angle > -.pi/2.0) {
-                        viewController.rotateHeaderViewBy(.pi)
-                    }
-                    viewController.spoofer?.move(appendToPendingTasks: false)
+        switch NavigationMenubarItem(rawValue: menuItem.tag) {
+        // Counterclockwise
+        case .moveCounterclockwise:
+            viewController.rotateHeaderViewBy(CGFloat(5.0.degreesToRadians))
+        // Clockwise
+        case .moveClockwise:
+            viewController.rotateHeaderViewBy(CGFloat(-5.0.degreesToRadians))
+        //  x | x                 |          |                   |
+        // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
+        //    |    arrow down   x | x      x | x  arrow down   x | x
+        case .moveDown:
+            if viewController.spoofer?.moveState == .manual {
+                let angle = viewController.getHeaderViewAngle()
+                if angle < .pi/2.0 && angle > -.pi/2.0 {
+                    viewController.rotateHeaderViewBy(.pi)
                 }
-                break
-
-            //    |                 x | x      x | x               x | x
-            // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
-            //  x | x   arrow up      |          |     arrow up      |
-            case .MoveUp:
-                if viewController.spoofer?.moveState == .manual {
-                    let angle = viewController.getHeaderViewAngle()
-                    if (angle > .pi/2.0 || angle < -.pi/2.0) {
-                        viewController.rotateHeaderViewBy(.pi)
-                    }
-                    viewController.spoofer?.move(appendToPendingTasks: false)
+                viewController.spoofer?.move(appendToPendingTasks: false)
+            }
+        //    |                 x | x      x | x               x | x
+        // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
+        //  x | x   arrow up      |          |     arrow up      |
+        case .moveUp:
+            if viewController.spoofer?.moveState == .manual {
+                let angle = viewController.getHeaderViewAngle()
+                if angle > .pi/2.0 || angle < -.pi/2.0 {
+                    viewController.rotateHeaderViewBy(.pi)
                 }
-                break
+                viewController.spoofer?.move(appendToPendingTasks: false)
+            }
         default:
             break
         }
@@ -130,7 +122,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let viewController = windowController.contentViewController as? MapViewController else { return }
         viewController.spoofer?.moveState = .manual
     }
-
 
     @IBAction func resetLocation(_ sender: NSMenuItem) {
         // reset the current location to the device location

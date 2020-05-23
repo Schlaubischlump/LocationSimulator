@@ -15,7 +15,8 @@ class AutoCompletePopover: NSWindow {
     private var lostFocusObserver: Any?
 
     init(contentViewController: NSViewController) {
-        super.init(contentRect: .zero, styleMask: [.borderless], backing: NSWindow.BackingStoreType.buffered, defer: false)
+        super.init(contentRect: .zero, styleMask: [.borderless], backing: NSWindow.BackingStoreType.buffered,
+                   defer: false)
 
         self.contentViewController = contentViewController
 
@@ -70,7 +71,8 @@ class AutoCompletePopover: NSWindow {
         }
 
         // catch all click events outside the window to dismiss it
-        self.localMouseDownEventMonitor = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]) { [unowned self] (event) -> NSEvent? in
+        self.localMouseDownEventMonitor = NSEvent.addLocalMonitorForEvents(
+            matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]) { [unowned self] (event) -> NSEvent? in
 
             // make sure the event has a window
             guard let win = event.window else {
@@ -85,7 +87,9 @@ class AutoCompletePopover: NSWindow {
         }
 
         // if the window looses focus we need to dismiss the suggestion window as well
-        self.lostFocusObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { [unowned self] notification  in
+        self.lostFocusObserver = NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification,
+                                                                        object: window,
+                                                                        queue: nil) { [unowned self] _ in
                 self.hide()
         }
     }

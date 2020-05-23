@@ -10,7 +10,7 @@ import Foundation
 
 class DownloadTask {
     /// ID to identify a task when the delegate methods are called
-    public var id: String!
+    public var dID: String!
 
     /// Source URL from where to download the data
     public var source: URL!
@@ -27,8 +27,8 @@ class DownloadTask {
     /// Internal: download task object
     fileprivate var download: URLSessionDownloadTask?
 
-    init(id: String, source: URL, destination: URL, description: String = "") {
-        self.id = id
+    init(dID: String, source: URL, destination: URL, description: String = "") {
+        self.dID = dID
         self.source = source
         self.destination = destination
         self.description = description
@@ -42,7 +42,7 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
     private var session: URLSession!
 
     /// list of all active tasks
-    public var tasks: [Int:DownloadTask]!
+    public var tasks: [Int: DownloadTask]!
 
     /// delegate to inform about download changes
     public weak var delegate: DownloaderDelegate?
@@ -81,7 +81,8 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
 
     // MARK: - URLSessionDownloadDelegate
 
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64,
+                    totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         guard totalBytesExpectedToWrite > 0, let task = self.tasks[downloadTask.taskIdentifier] else { return }
 
         task.progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
@@ -95,8 +96,9 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
         guard let task = self.tasks[downloadTask.taskIdentifier] else { return }
 
         // check if the url response is valid
-        if let response = downloadTask.response as! HTTPURLResponse?, response.statusCode != 200 {
-            self.urlSession(session, downloadTask: downloadTask, didCompleteWithError: URLError(.init(rawValue: response.statusCode)))
+        if let response = downloadTask.response as? HTTPURLResponse, response.statusCode != 200 {
+            self.urlSession(session, downloadTask: downloadTask,
+                            didCompleteWithError: URLError(.init(rawValue: response.statusCode)))
         }
 
         // download seems to be okay => move the downloaded file to the destination
@@ -126,4 +128,3 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
         }
     }
 }
-

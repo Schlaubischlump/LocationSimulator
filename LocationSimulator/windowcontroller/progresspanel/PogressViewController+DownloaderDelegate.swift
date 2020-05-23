@@ -13,8 +13,8 @@ let kDevSignTaskID = "DevSign"
 
 extension ProgressViewController: DownloaderDelegate {
     func downloadStarted(downloader: Downloader, task: DownloadTask) {
-        let progressIndicator = (task.id == kDevDiskTaskID) ? self.progressIndicatorTop : self.progressIndicatorBottom
-        let statusLabel = (task.id == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
+        let progressIndicator = (task.dID == kDevDiskTaskID) ? self.progressIndicatorTop : self.progressIndicatorBottom
+        let statusLabel = (task.dID == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
 
         progressIndicator!.doubleValue = 0.0
         statusLabel!.stringValue = task.description
@@ -31,8 +31,8 @@ extension ProgressViewController: DownloaderDelegate {
     }
 
     func downloadProgressChanged(downloader: Downloader, task: DownloadTask) {
-        let progressIndicator = (task.id == kDevDiskTaskID) ? self.progressIndicatorTop : self.progressIndicatorBottom
-        let statusLabel = (task.id == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
+        let progressIndicator = (task.dID == kDevDiskTaskID) ? self.progressIndicatorTop : self.progressIndicatorBottom
+        let statusLabel = (task.dID == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
 
         progressIndicator!.doubleValue = task.progress
         statusLabel!.stringValue = task.description + ": " + String(format: "%.2f", task.progress*100) + "%"

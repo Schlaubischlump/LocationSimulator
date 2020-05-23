@@ -17,7 +17,6 @@ extension FloatingPoint {
     var radiansToDegrees: Self { return self * 180 / .pi }
 }
 
-
 extension CLLocationCoordinate2D {
     /**
      Calculate the distance from this location to the given one.
@@ -37,7 +36,7 @@ extension CLLocationCoordinate2D {
      - Parameter completion: completion block after the calculation finished
      */
     func calculateRouteTo(_ destination: CLLocationCoordinate2D, transportType: MKDirectionsTransportType,
-                          completion: @escaping (_ value: [CLLocationCoordinate2D]) -> ()) {
+                          completion: @escaping (_ value: [CLLocationCoordinate2D]) -> Void) {
 
         // create a request to navigation from source to destination
         let request = MKDirections.Request()
@@ -49,7 +48,7 @@ extension CLLocationCoordinate2D {
         let directions = MKDirections(request: request)
 
         // calculate the route and call the completion block afterwards
-        directions.calculate { response, error in
+        directions.calculate { response, _ in
             guard let unwrappedResponse = response else { return }
 
             DispatchQueue.main.async {
@@ -68,28 +67,28 @@ extension CLLocationCoordinate2D {
      - Parameter to: target location
      - Return: heading in degrees
      */
-    func heading(to: CLLocationCoordinate2D) -> Double {
+    func heading(toLocation: CLLocationCoordinate2D) -> Double {
         let lat1 = self.latitude.degreesToRadians
         let lon1 = self.longitude.degreesToRadians
 
-        let lat2 = to.latitude.degreesToRadians
-        let lon2 = to.longitude.degreesToRadians
+        let lat2 = toLocation.latitude.degreesToRadians
+        let lon2 = toLocation.longitude.degreesToRadians
 
         let dLon = lon2 - lon1
-        let y = sin(dLon) * cos(lat2)
-        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        let yVal = sin(dLon) * cos(lat2)
+        let xVal = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
 
-        let headingDegrees = atan2(y, x).radiansToDegrees
+        let headingDegrees = atan2(yVal, xVal).radiansToDegrees
         return headingDegrees >= 0 ? headingDegrees : headingDegrees + 360
     }
 
     /**
      Get the location name based on the current coordinates.
      */
-    func getLocationName(completion: @escaping (_ location: CLLocation, _ name: String) -> ()) {
+    func getLocationName(completion: @escaping (_ location: CLLocation, _ name: String) -> Void) {
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: self.latitude, longitude: self.longitude)
-        geoCoder.reverseGeocodeLocation(location, completionHandler: { placemarks, error -> Void in
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { placemarks, _ -> Void in
             guard let placeMark = placemarks?.first else { return }
 
             // Street address

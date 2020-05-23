@@ -17,7 +17,7 @@ extension WindowController: AutoCompleteTableViewDelegate {
      - Parameter item: selected item as match object
      */
     func textField(_ textField: NSTextField, didSelectItem item: Match) {
-        guard let comp = item.data as! MKLocalSearchCompletion?,
+        guard let comp = item.data as? MKLocalSearchCompletion,
             let viewController = contentViewController as? MapViewController else {
                 return
         }
@@ -41,7 +41,8 @@ extension WindowController: AutoCompleteTableViewDelegate {
      - Parameter index:
      - Return: list of matches for the entered search string
      */
-    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange, indexOfSelectedItem index: Int) -> [Match] {
+    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange,
+                   indexOfSelectedItem index: Int) -> [Match] {
 
         self.searchCompleter.queryFragment = textField.stringValue
         return self.searchCompleter.results.map { Match(text: $0.title, detail: $0.subtitle, data: $0) }

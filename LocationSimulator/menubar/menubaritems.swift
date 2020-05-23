@@ -8,25 +8,22 @@
 import AppKit
 import CoreLocation
 
-
 let kNavigationMenuTag: Int = 1
 
-/**
- Enum to represent the main navigation menu
- */
+/// Enum to represent the main navigation menu
 enum NavigationMenubarItem: Int {
-    case Walk                   = 0
-    case Cycle                  = 1
-    case Drive                  = 2
-    case SetLocation            = 4
-    case ToggleAutomove         = 6
-    case MoveUp                 = 8
-    case MoveDown               = 9
-    case MoveCounterclockwise   = 10
-    case MoveClockwise          = 11
-    case StopNavigation         = 12
-    case ResetLocation          = 13
-    case RecentLocation         = 14
+    case walk                   = 0
+    case cycle                  = 1
+    case drive                  = 2
+    case setLocation            = 4
+    case toggleAutomove         = 6
+    case moveUp                 = 8
+    case moveDown               = 9
+    case moveCounterclockwise   = 10
+    case moveClockwise          = 11
+    case stopNavigation         = 12
+    case resetLocation          = 13
+    case recentLocation         = 14
 
     static public var menu: NSMenu? {
         guard let navigationMenu = NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu else { return nil }
@@ -47,7 +44,6 @@ enum NavigationMenubarItem: Int {
         self.setEnabled(false)
     }
 }
-
 
 // MARK: - Recent Locations
 
@@ -70,15 +66,16 @@ let kRecentLocationUserDefaultKey: String = "RecentLocations"
  Enum to represent the recent location submenu
  */
 enum RecentLocationMenubarItem: Int {
-    case ClearMenu = 1
+    case clearMenu = 1
 
     static public var menu: NSMenu? {
-        let recentLocationSubmenuTag: Int = NavigationMenubarItem.RecentLocation.rawValue
+        let recentLocationSubmenuTag: Int = NavigationMenubarItem.recentLocation.rawValue
         guard let navigationMenu = NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu else { return nil }
-        guard let recentLocationMenu = navigationMenu.item(withTag: recentLocationSubmenuTag)?.submenu else { return nil }
+        guard let recentLocationMenu = navigationMenu.item(withTag: recentLocationSubmenuTag)?.submenu else {
+            return nil
+        }
         return recentLocationMenu
     }
-
 
     // MARK: - Enable or disable a menubar item
 
@@ -105,8 +102,8 @@ enum RecentLocationMenubarItem: Int {
         if let storedLoc = defaults.array(forKey: kRecentLocationUserDefaultKey) as? [Data] {
             // convert data to Location struct
             let decoder = PropertyListDecoder()
-            return storedLoc.map { data in
-                return try! decoder.decode(Location.self, from: data)
+            return storedLoc.compactMap { data in
+                return try? decoder.decode(Location.self, from: data)
             }
         }
         return []
@@ -137,7 +134,7 @@ enum RecentLocationMenubarItem: Int {
         coords.getLocationName { loc, name in
             // remove the last item if we exceed the maximum number
             if recentLocations.count >= kMaxRecentItems {
-                let _ = recentLocations.popLast()
+                _ = recentLocations.popLast()
                 RecentLocationMenubarItem.menu?.removeItem(at: kMaxRecentItems-1)
             }
 
@@ -148,15 +145,15 @@ enum RecentLocationMenubarItem: Int {
             // save the changes
             let encoder = PropertyListEncoder()
             let defaults = UserDefaults.standard
-            defaults.set(recentLocations.map { loc -> Data in
-                return try! encoder.encode(loc)
+            defaults.set(recentLocations.compactMap { loc -> Data? in
+                return try? encoder.encode(loc)
             }, forKey: kRecentLocationUserDefaultKey)
             defaults.synchronize()
 
             // add the menubaritem
             RecentLocationMenubarItem.addLocationMenuItem(loc)
             // enable the clear menu item
-            RecentLocationMenubarItem.ClearMenu.enable()
+            RecentLocationMenubarItem.clearMenu.enable()
         }
     }
 
@@ -166,7 +163,8 @@ enum RecentLocationMenubarItem: Int {
      */
     static func addLocationMenuItem(_ loc: Location) {
         guard let delegate = NSApp.delegate as? AppDelegate else { return }
-        let menuItem = NSMenuItem(title: loc.name, action: #selector(delegate.selectRecentLocation(_:)), keyEquivalent: "")
+        let menuItem = NSMenuItem(title: loc.name, action: #selector(delegate.selectRecentLocation(_:)),
+                                  keyEquivalent: "")
         menuItem.isEnabled = true
         RecentLocationMenubarItem.menu?.insertItem(menuItem, at: 0)
     }
@@ -187,6 +185,6 @@ enum RecentLocationMenubarItem: Int {
         }
 
         // disable the clear menu
-        RecentLocationMenubarItem.ClearMenu.disable()
+        RecentLocationMenubarItem.clearMenu.disable()
     }
 }

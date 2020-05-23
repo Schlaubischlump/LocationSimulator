@@ -19,9 +19,8 @@ public extension NSNotification.Name {
     static let AppleInterfaceThemeChanged = Notification.Name("AppleInterfaceThemeChangedNotification")
 }
 
-
 class MapViewController: NSViewController {
-    
+
     // MARK: - UI
 
     @IBOutlet weak var mapView: MKMapView!
@@ -37,11 +36,11 @@ class MapViewController: NSViewController {
     @IBOutlet weak var moveHeadingControlsView: NSImageView!
 
     @IBOutlet weak var moveHeadingCircleView: NSImageView!
-    
+
     @IBOutlet weak var moveHeadingEffectView: BlurView!
 
     @IBOutlet weak var separatorLine: NSBox!
-    
+
     @IBOutlet weak var totalDistanceLabel: NSTextField!
 
     // MARK: - Properties
@@ -90,7 +89,6 @@ class MapViewController: NSViewController {
     }
 
     var isShowingAlert: Bool = false
-
 
     // MARK: - View lifecycle
 
@@ -190,8 +188,8 @@ class MapViewController: NSViewController {
         self.spinnerContainer.disableBlur = !isDarkMode
         self.moveButtonEffectView.disableBlur = !isDarkMode
         self.moveHeadingEffectView.disableBlur = !isDarkMode
-        self.separatorLine.borderColor = isDarkMode ? .black : NSColor(calibratedRed: 167.0/255.0, green: 167.0/255.0, blue: 167.0/255.0, alpha: 1.0)
-        //print(self.separatorLine.effectiveAppearance.name, NSColor(named: "separatorColor"))
+        self.separatorLine.borderColor = isDarkMode ? .black : NSColor(calibratedRed: 167.0/255.0, green: 167.0/255.0,
+                                                                       blue: 167.0/255.0, alpha: 1.0)
     }
 
     @objc func themeChanged(_ notification: Notification) {
@@ -221,9 +219,8 @@ class MapViewController: NSViewController {
             // try to download the DeveloperDiskImage files and try to connect to the device again
             let manager = FileManager.default
             if let devDMG = manager.getDeveloperDiskImage(iOSVersion: iOSVersion),
-                let devSign = manager.getDeveloperDiskImageSignature(iOSVersion: iOSVersion)
-            {
-                let (diskLinks, signLinks): ([URL], [URL]) = manager.getDeveloperDiskImageDownloadLinks(iOSVersion: iOSVersion)
+                let devSign = manager.getDeveloperDiskImageSignature(iOSVersion: iOSVersion) {
+                let (diskLinks, signLinks) = manager.getDeveloperDiskImageDownloadLinks(iOSVersion: iOSVersion)
 
                 // no download links for this iOS Version found
                 if diskLinks.isEmpty || signLinks.isEmpty {
@@ -238,13 +235,13 @@ class MapViewController: NSViewController {
                 // create the progress popup sheet
                 self.progressWindowController = ProgressWindowController.newInstance()
                 let progressWindow = self.progressWindowController!.window!
-                let progressViewController = progressWindow.contentViewController as! ProgressViewController
+                let progressViewController = progressWindow.contentViewController as? ProgressViewController
 
                 // set the delegate
                 downloader.delegate = progressViewController
-                let devDiskTask = DownloadTask(id: kDevDiskTaskID, source: diskLinks[0], destination: devDMG,
+                let devDiskTask = DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDMG,
                                                description: NSLocalizedString("DEVDISK_DOWNLOAD_DESC", comment: ""))
-                let devSignTask = DownloadTask(id: kDevSignTaskID, source: signLinks[0], destination: devSign,
+                let devSignTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSign,
                                                description: NSLocalizedString("DEVSIGN_DOWNLOAD_DESC", comment: ""))
 
                 // start the downlaod process
@@ -273,7 +270,6 @@ class MapViewController: NSViewController {
         }
         return false
     }
-
 
     // MARK: - Spinner control
 
@@ -332,7 +328,7 @@ class MapViewController: NSViewController {
         alert.alertStyle = .informational
 
         // new coordinates to move to, either give by the function or read from a user input
-        var newCoords: CLLocationCoordinate2D? = nil
+        var newCoords: CLLocationCoordinate2D?
 
         // disable the navigate button if no current location exists
         if self.spoofer?.currentLocation == nil {
@@ -434,9 +430,9 @@ class MapViewController: NSViewController {
         guard sender.state == .changed || sender.state == .ended else { return }
 
         let loc = sender.location(in: self.moveHeadingControlsView)
-        let dx = loc.x - self.moveHeadingControlsView.frame.width / 2
-        let dy = loc.y - self.moveHeadingControlsView.frame.height / 2
-        self.rotateHeaderViewTo(atan2(-dx, dy))
+        let deltaX = loc.x - self.moveHeadingControlsView.frame.width / 2
+        let deltaY = loc.y - self.moveHeadingControlsView.frame.height / 2
+        self.rotateHeaderViewTo(atan2(-deltaX, deltaY))
     }
 
     @objc func moveClicked(_ sender: NSClickGestureRecognizer) {
@@ -445,11 +441,11 @@ class MapViewController: NSViewController {
         guard let mState = self.spoofer?.moveState, sender.state == .ended else { return }
 
         switch mState {
-            case .manual:
-                self.spoofer?.move()
-            case .auto:
-                // Disable auto move
-                self.spoofer?.moveState = .manual
+        case .manual:
+            self.spoofer?.move()
+        case .auto:
+            // Disable auto move
+            self.spoofer?.moveState = .manual
         }
     }
 
@@ -459,13 +455,13 @@ class MapViewController: NSViewController {
         guard let mState = self.spoofer?.moveState, sender.state == .began else { return }
 
         switch mState {
-            case .manual:
-                // Enable auto move
-                self.spoofer?.moveState = .auto
-                self.spoofer?.move()
-            case .auto:
-                // Disable auto move
-                self.spoofer?.moveState = .manual
+        case .manual:
+            // Enable auto move
+            self.spoofer?.moveState = .auto
+            self.spoofer?.move()
+        case .auto:
+            // Disable auto move
+            self.spoofer?.moveState = .manual
         }
     }
 }

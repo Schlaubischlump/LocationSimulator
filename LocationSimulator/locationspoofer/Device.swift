@@ -9,7 +9,6 @@
 import Foundation
 import CoreLocation
 
-
 public enum ConnectionType: Int {
     case UNKNOWN = 0 // This should never be the case, unless libimobiledevice is changed
     case USB = 1
@@ -25,7 +24,6 @@ public enum DeviceError: Error {
     case productVersion(_ message: String)
 }
 
-
 /// Notifications when a device is connected / paired / disconnected.
 public extension Notification.Name {
     static let DevicePaired = Notification.Name("iDevicePaired")
@@ -33,16 +31,15 @@ public extension Notification.Name {
     static let DeviceDisconnected = Notification.Name("iDeviceDisconntected")
 }
 
-
 class Device {
     /// Unique Device ID (UDID) string.
     public var UDID: String = ""
 
     /// Try to read the product version string from the connected iOS device.
     lazy public var productVersion: String? = {
-        let ret: UnsafePointer<Int8>? = deviceProductVersion(UDID)
-        if (ret != nil) {
-            return String(cString: ret!)
+
+        if let ret: UnsafePointer<Int8> = deviceProductVersion(UDID) {
+            return String(cString: ret)
         }
         return nil
     }()
@@ -55,46 +52,45 @@ class Device {
      */
     @discardableResult
     class func startGeneratingDeviceNotifications() -> Bool {
-        let cb : idevice_event_cb_t = { (event, userData: UnsafeMutableRawPointer?) in
-            guard let event_t = event?.pointee else { return }
-            guard let udid_t = event_t.udid else { return }
-            
-            let udid = String(cString: udid_t)
-            var name: String = ""
-            var notificationName: Notification.Name? = nil
+        let callback: idevice_event_cb_t = { (event, userData: UnsafeMutableRawPointer?) in
+            guard let eventT = event?.pointee else { return }
+            guard let udidT = eventT.udid else { return }
 
-            switch(event_t.event) {
-                case IDEVICE_DEVICE_ADD, IDEVICE_DEVICE_PAIRED:
-                    notificationName = (event_t.event == IDEVICE_DEVICE_ADD) ? .DeviceConnected : .DevicePaired
-                    if let res = deviceName(udid) {
-                        name = String(cString: res)
-                        break
-                    }
-                    return
-                case IDEVICE_DEVICE_REMOVE:
-                    notificationName = .DeviceDisconnected
+            let udid = String(cString: udidT)
+            var name: String = ""
+            var notificationName: Notification.Name?
+
+            switch eventT.event {
+            case IDEVICE_DEVICE_ADD, IDEVICE_DEVICE_PAIRED:
+                notificationName = (eventT.event == IDEVICE_DEVICE_ADD) ? .DeviceConnected : .DevicePaired
+                if let res = deviceName(udid) {
+                    name = String(cString: res)
                     break
-                default:
-                    return
+                }
+                return
+            case IDEVICE_DEVICE_REMOVE:
+                notificationName = .DeviceDisconnected
+            default:
+                return
             }
 
             DispatchQueue.main.async {
                 // replace the idevice_connection_type with a swift enum
                 var conType: ConnectionType = .UNKNOWN
-                switch (event_t.conn_type) {
-                    case CONNECTION_USBMUXD:
-                        conType = .USB
-                    case CONNECTION_NETWORK:
-                        conType = .NETWORK
-                    default:
-                        conType = .UNKNOWN
+                switch eventT.conn_type {
+                case CONNECTION_USBMUXD:
+                    conType = .USB
+                case CONNECTION_NETWORK:
+                    conType = .NETWORK
+                default:
+                    conType = .UNKNOWN
                 }
 
                 NotificationCenter.default.post(name: notificationName!, object: nil,
                                                 userInfo: ["UDID": udid, "NAME": name, "CONTYPE": conType])
             }
         }
-        return idevice_event_subscribe(cb, nil) == IDEVICE_E_SUCCESS
+        return idevice_event_subscribe(callback, nil) == IDEVICE_E_SUCCESS
     }
 
     /**
@@ -127,9 +123,8 @@ class Device {
 
         return device
     }
-    
+
     // MARK: - Initializing Device
-    
     convenience init(UDID: String) {
         self.init()
         self.UDID = UDID
@@ -155,20 +150,20 @@ class Device {
             // get the path to the developer disk images
             let manager: FileManager = FileManager.default
             if let devDMG: URL = manager.getDeveloperDiskImage(iOSVersion: productVersion),
-                let devSign: URL = manager.getDeveloperDiskImageSignature(iOSVersion: productVersion)
-            {
+                let devSign: URL = manager.getDeveloperDiskImageSignature(iOSVersion: productVersion) {
                 var isDir: ObjCBool = false
                 if !manager.fileExists(atPath: devDMG.path, isDirectory: &isDir)
                     || isDir.boolValue
                     || !manager.fileExists(atPath: devSign.path, isDirectory: &isDir)
-                    || isDir.boolValue
-                {
-                    throw DeviceError.devDiskImageNotFound(NSLocalizedString("DEVDISK_NOT_FOUND", comment: ""), iOSVersion: productVersion)
+                    || isDir.boolValue {
+                    throw DeviceError.devDiskImageNotFound(NSLocalizedString("DEVDISK_NOT_FOUND", comment: ""),
+                                                           iOSVersion: productVersion)
                 }
 
                 // try to mount the developer image
                 if !mountImageForDevice(UDID, devDMG.path, devSign.path) {
-                    throw DeviceError.devDiskImageMount(NSLocalizedString("MOUNT_ERROR", comment: ""), iOSVersion: productVersion)
+                    throw DeviceError.devDiskImageMount(NSLocalizedString("MOUNT_ERROR", comment: ""),
+                                                        iOSVersion: productVersion)
                 }
             } else {
                 throw DeviceError.permisson(NSLocalizedString("PERMISSION_ERROR", comment: ""))
@@ -177,7 +172,7 @@ class Device {
             throw DeviceError.productVersion(NSLocalizedString("PRODUCT_VERSION_ERROR", comment: ""))
         }
     }
-    
+
     // MARK: - Managing locations
 
     /**

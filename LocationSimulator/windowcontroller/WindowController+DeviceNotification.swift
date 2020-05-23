@@ -26,12 +26,12 @@ extension WindowController {
         self.devicesPopup.addItem(withTitle: name)
 
         // first device connected => automatically pair it
-        if self.deviceUDIDs.count == 1, let viewController = self.contentViewController as! MapViewController? {
+        if self.deviceUDIDs.count == 1, let viewController = self.contentViewController as? MapViewController {
             if viewController.loadDevice(udid) {
                 viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
                 // make sure to enable the menubar item
-                NavigationMenubarItem.SetLocation.enable()
-                NavigationMenubarItem.RecentLocation.enable()
+                NavigationMenubarItem.setLocation.enable()
+                NavigationMenubarItem.recentLocation.enable()
             }
         }
     }
@@ -80,8 +80,9 @@ extension WindowController {
             viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
 
             // disable the menubar items
-            let items: [NavigationMenubarItem] = [.SetLocation,.ToggleAutomove, .MoveUp, .MoveDown, .MoveCounterclockwise,
-                                                  .MoveClockwise, .StopNavigation, .RecentLocation]
+            let items: [NavigationMenubarItem] = [.setLocation, .toggleAutomove, .moveUp, .moveDown,
+                                                  .moveCounterclockwise, .moveClockwise, .stopNavigation,
+                                                  .recentLocation]
             items.forEach { item in item.disable() }
 
             // try to select the next device in the list

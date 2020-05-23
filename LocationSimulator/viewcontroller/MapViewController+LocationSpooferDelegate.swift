@@ -18,7 +18,7 @@ extension MapViewController: LocationSpooferDelegate {
         self.startSpinner()
 
         // remove the route overlay if it is present
-        if (self.routeOverlay != nil) {
+        if self.routeOverlay != nil {
             self.mapView.removeOverlay(self.routeOverlay!)
             self.routeOverlay = nil
         }
@@ -30,7 +30,7 @@ extension MapViewController: LocationSpooferDelegate {
 
         // if there are still points left on the route => update the overlay
         let stepsLeft = spoofer.route.count
-        if stepsLeft > 0  {
+        if stepsLeft > 0 {
             self.routeOverlay = MKPolyline(coordinates: [coord] + spoofer.route, count: stepsLeft+1)
             self.mapView.addOverlay(self.routeOverlay!, level: .aboveLabels)
             // FixMe: force a redraw to show the overlay... for some reason display is not working
@@ -55,16 +55,16 @@ extension MapViewController: LocationSpooferDelegate {
 
         if isReset {
             // disable all move menubar items when the location is reset
-            NavigationMenubarItem.ToggleAutomove.disable()
-            NavigationMenubarItem.ResetLocation.disable()
-            NavigationMenubarItem.MoveUp.disable()
-            NavigationMenubarItem.MoveDown.disable()
-            NavigationMenubarItem.MoveClockwise.disable()
-            NavigationMenubarItem.MoveCounterclockwise.disable()
+            NavigationMenubarItem.toggleAutomove.disable()
+            NavigationMenubarItem.resetLocation.disable()
+            NavigationMenubarItem.moveUp.disable()
+            NavigationMenubarItem.moveDown.disable()
+            NavigationMenubarItem.moveClockwise.disable()
+            NavigationMenubarItem.moveCounterclockwise.disable()
         } else {
             // enable these items if we start faking the location
-            NavigationMenubarItem.ToggleAutomove.enable()
-            NavigationMenubarItem.ResetLocation.enable()
+            NavigationMenubarItem.toggleAutomove.enable()
+            NavigationMenubarItem.resetLocation.enable()
         }
 
         // calculate the total rounded distance in kilometers
@@ -79,9 +79,9 @@ extension MapViewController: LocationSpooferDelegate {
         self.stopSpinner()
 
         // if we have set a new location animate the marker
-        if (!isReset) {
+        if !isReset {
             // location was set for the first time => display marker
-            if (self.currentLocationMarker == nil) {
+            if self.currentLocationMarker == nil {
                 let currentLocationMarker = MKPointAnnotation()
                 currentLocationMarker.title = NSLocalizedString("CURRENT_LOCATION", comment: "")
 
@@ -117,36 +117,36 @@ extension MapViewController: LocationSpooferDelegate {
 
     func didChangeMoveState(spoofer: LocationSpoofer, moveState: MoveState) {
         switch moveState {
-            case .manual:
-                moveButton.image = #imageLiteral(resourceName: "MoveButton")
-                // allow all movement to navigate manual
-                NavigationMenubarItem.MoveCounterclockwise.enable()
-                NavigationMenubarItem.MoveClockwise.enable()
-                NavigationMenubarItem.MoveUp.enable()
-                NavigationMenubarItem.MoveDown.enable()
-                // we disabled automove => we can not stop the navigation
-                NavigationMenubarItem.StopNavigation.disable()
-            case .auto:
-                moveButton.image = #imageLiteral(resourceName: "MoveButtonAuto")
+        case .manual:
+            moveButton.image = #imageLiteral(resourceName: "MoveButton")
+            // allow all movement to navigate manual
+            NavigationMenubarItem.moveCounterclockwise.enable()
+            NavigationMenubarItem.moveClockwise.enable()
+            NavigationMenubarItem.moveUp.enable()
+            NavigationMenubarItem.moveDown.enable()
+            // we disabled automove => we can not stop the navigation
+            NavigationMenubarItem.stopNavigation.disable()
+        case .auto:
+            moveButton.image = #imageLiteral(resourceName: "MoveButtonAuto")
 
-                // we are moving automatically => do not allow manual movement
-                NavigationMenubarItem.MoveUp.disable()
-                NavigationMenubarItem.MoveDown.disable()
+            // we are moving automatically => do not allow manual movement
+            NavigationMenubarItem.moveUp.disable()
+            NavigationMenubarItem.moveDown.disable()
 
-                if spoofer.route.isEmpty {
-                    // allow changing the direction when automoving
-                    NavigationMenubarItem.MoveCounterclockwise.enable()
-                    NavigationMenubarItem.MoveClockwise.enable()
-                } else {
-                    // if we are navigating enable the menu item to stop the navigation
-                    NavigationMenubarItem.StopNavigation.enable()
-                    // disable all movement if we are navigating
-                    NavigationMenubarItem.MoveCounterclockwise.disable()
-                    NavigationMenubarItem.MoveClockwise.disable()
-                }
+            if spoofer.route.isEmpty {
+                // allow changing the direction when automoving
+                NavigationMenubarItem.moveCounterclockwise.enable()
+                NavigationMenubarItem.moveClockwise.enable()
+            } else {
+                // if we are navigating enable the menu item to stop the navigation
+                NavigationMenubarItem.stopNavigation.enable()
+                // disable all movement if we are navigating
+                NavigationMenubarItem.moveCounterclockwise.disable()
+                NavigationMenubarItem.moveClockwise.disable()
+            }
         }
 
-        if (self.routeOverlay != nil) {
+        if self.routeOverlay != nil {
             self.mapView.removeOverlay(self.routeOverlay!)
             self.routeOverlay = nil
         }

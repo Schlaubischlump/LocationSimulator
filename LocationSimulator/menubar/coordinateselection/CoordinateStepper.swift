@@ -26,7 +26,6 @@ class CoordinateStepper: NSStepper {
     }
 }
 
-
 class LatStepper: CoordinateStepper {
     override func commonInit() {
         super.commonInit()
@@ -34,7 +33,6 @@ class LatStepper: CoordinateStepper {
         self.maxValue = 85
     }
 }
-
 
 class LongStepper: CoordinateStepper {
     override func commonInit() {

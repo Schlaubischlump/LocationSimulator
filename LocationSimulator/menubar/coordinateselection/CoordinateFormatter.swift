@@ -18,7 +18,6 @@ extension String {
     }
 }
 
-
 class CoodinateFormatter: NumberFormatter {
 
     override init() {
@@ -39,21 +38,23 @@ class CoodinateFormatter: NumberFormatter {
         self.decimalSeparator = "."
     }
 
-    override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+    override func isPartialStringValid(_ partialString: String,
+                                       newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?,
+                                       errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
 
         if partialString.isEmpty {
             return true
         }
 
         // match float numbers
-        if (!(partialString ~= "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")) {
+        if !(partialString ~= "^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$") {
             NSSound.beep()
             return false
         }
 
         // check that the coordinates are valid
         if let num = Float(partialString) {
-            if (num < self.minimum!.floatValue || num > self.maximum!.floatValue) {
+            if num < self.minimum!.floatValue || num > self.maximum!.floatValue {
                 NSSound.beep()
                 return false
             }

@@ -34,7 +34,6 @@ class CoordinateSelectionView: NSView {
             self.longStepper.doubleValue = self.long
         }
     }
-    
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)

@@ -9,11 +9,11 @@
 import Foundation
 
 protocol DownloaderDelegate: class {
-    func downloadStarted(downloader: Downloader, task: DownloadTask);
-    func downloadCanceled(downloader: Downloader, task: DownloadTask);
-    func downloadFinished(downloader: Downloader, task: DownloadTask);
-    func downloadProgressChanged(downloader: Downloader, task: DownloadTask);
-    func downloadError(downloader: Downloader, task: DownloadTask, error: Error);
+    func downloadStarted(downloader: Downloader, task: DownloadTask)
+    func downloadCanceled(downloader: Downloader, task: DownloadTask)
+    func downloadFinished(downloader: Downloader, task: DownloadTask)
+    func downloadProgressChanged(downloader: Downloader, task: DownloadTask)
+    func downloadError(downloader: Downloader, task: DownloadTask, error: Error)
 }
 
 extension DownloaderDelegate {

@@ -14,13 +14,12 @@ import AppKit
 struct Match {
     var text: String = ""
     var detail: String = ""
-    var data: Any? = nil
+    var data: Any?
 }
-
 
 class AutoCompleteTextField: NSTextField {
     @IBInspectable var popOverWidth: CGFloat = 100.0
-    
+
     weak var tableViewDelegate: AutoCompleteTableViewDelegate?
 
     let popOverPadding: CGFloat = 0.0
@@ -34,7 +33,6 @@ class AutoCompleteTextField: NSTextField {
     public var autoCompletePopover: AutoCompletePopover?
 
     public var autoCompleteTableView: NSTableView?
-
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -59,12 +57,12 @@ class AutoCompleteTextField: NSTextField {
         column1.isEditable = false
         column1.width = popOverWidth - 2 * popOverPadding
 
-        let tableView = NSTableView(frame: NSZeroRect)
+        let tableView = NSTableView(frame: .zero)
         tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.regular
         tableView.backgroundColor = NSColor.clear
         tableView.rowSizeStyle = NSTableView.RowSizeStyle.custom
         tableView.rowHeight = 36.0
-        tableView.intercellSpacing = NSMakeSize(5.0, 0.0)
+        tableView.intercellSpacing = NSSize(width: 5.0, height: 0.0)
         tableView.headerView = nil
         tableView.refusesFirstResponder = true
         tableView.target = self
@@ -74,7 +72,7 @@ class AutoCompleteTextField: NSTextField {
         tableView.dataSource = self
         self.autoCompleteTableView = tableView
 
-        let tableSrollView = NSScrollView(frame: NSZeroRect)
+        let tableSrollView = NSScrollView(frame: .zero)
         tableSrollView.drawsBackground = false
         tableSrollView.documentView = tableView
         tableSrollView.hasVerticalScroller = true
@@ -89,15 +87,15 @@ class AutoCompleteTextField: NSTextField {
         self.autoCompletePopover = AutoCompletePopover(contentViewController: contentViewController)
 
         // if the textfield is a searchfield and has a clear button apply a function to update the suggestions
-        if let cell = self.cell as! NSSearchFieldCell? {
+        if let cell = self.cell as? NSSearchFieldCell {
             cell.cancelButtonCell?.target = self
             cell.cancelButtonCell?.action = #selector(clearText(_:))
         }
 
         self.matches = []
 
-        self.localKeyEventMonitor = NSEvent.addLocalMonitorForEvents(matching: [.keyDown, .keyUp])
-        { [unowned self] (event) -> NSEvent? in
+        self.localKeyEventMonitor = NSEvent.addLocalMonitorForEvents(
+            matching: [.keyDown, .keyUp]) { [unowned self] (event) -> NSEvent? in
             // if this textfield is the first responder
             if self.window?.firstResponder == self.currentEditor() {
                 return self.processSpecialKeys(with: event)
@@ -122,7 +120,7 @@ class AutoCompleteTextField: NSTextField {
         }
 
         // do some magic on keyDown
-        switch(theEvent.keyCode){
+        switch theEvent.keyCode {
 
         case 125: // Arrow Down
             if isShow && !keyUp {
@@ -166,7 +164,7 @@ class AutoCompleteTextField: NSTextField {
         self.complete(sender)
     }
 
-    @objc func insert(_ sender: AnyObject){
+    @objc func insert(_ sender: AnyObject) {
         let selectedRow = self.autoCompleteTableView!.selectedRow
         let matchCount = self.matches!.count
         if selectedRow >= 0 && selectedRow < matchCount {
@@ -176,17 +174,17 @@ class AutoCompleteTextField: NSTextField {
         }
         self.autoCompletePopover?.hide()
     }
-    
+
     @objc override func complete(_ sender: Any?) {
         let lengthOfWord = self.stringValue.count
-        let subStringRange = NSMakeRange(0, lengthOfWord)
-        
+        let subStringRange = NSRange(location: 0, length: lengthOfWord)
+
         //This happens when we just started a new word or if we have already typed the entire word
         if subStringRange.length == 0 || lengthOfWord == 0 {
             self.autoCompletePopover?.hide()
             return
         }
-        
+
         let index = 0
         self.matches = self.completionsForPartialWordRange(subStringRange, indexOfSelectedItem: index)
 
@@ -199,22 +197,24 @@ class AutoCompleteTextField: NSTextField {
             if !self.autoCompletePopover!.isVisible {
                 self.autoCompletePopover?.show(relativeTo: self.bounds, of: self)
             }
-        }
-        else{
+        } else {
             self.autoCompletePopover?.hide()
         }
     }
 
-    func completionsForPartialWordRange(_ charRange: NSRange, indexOfSelectedItem index: Int) ->[Match]{
-        return self.tableViewDelegate!.textField(self, completions: [], forPartialWordRange: charRange, indexOfSelectedItem: index)
+    func completionsForPartialWordRange(_ charRange: NSRange, indexOfSelectedItem index: Int) -> [Match] {
+        return self.tableViewDelegate!.textField(self, completions: [], forPartialWordRange: charRange,
+                                                 indexOfSelectedItem: index)
     }
 
     func updatePopoverContentSize() {
         let numberOfRows = min(self.autoCompleteTableView!.numberOfRows, maxResults)
-        let height = (self.autoCompleteTableView!.rowHeight + self.autoCompleteTableView!.intercellSpacing.height) * CGFloat(numberOfRows) + 2 * 0.0
-        let frame = NSMakeRect(0, 0, popOverWidth + self.autoCompleteTableView!.intercellSpacing.width, height)
-        self.autoCompleteTableView?.enclosingScrollView?.frame = NSInsetRect(frame, popOverPadding, popOverPadding)
-        self.autoCompletePopover?.setContentSize(NSMakeSize(NSWidth(frame), NSHeight(frame)))
+        let rowHeight = self.autoCompleteTableView!.rowHeight
+        let spacing = self.autoCompleteTableView!.intercellSpacing
+        let height = (rowHeight + spacing.height) * CGFloat(numberOfRows)
+        let frame = NSRect(x: 0, y: 0, width: popOverWidth + spacing.width, height: height)
+        //self.autoCompleteTableView?.enclosingScrollView?.frame = NSInsetRect(frame, popOverPadding, popOverPadding)
+        self.autoCompleteTableView?.enclosingScrollView?.frame = frame.insetBy(dx: popOverPadding, dy: popOverPadding)
+        self.autoCompletePopover?.setContentSize(frame.size)
     }
 }
-

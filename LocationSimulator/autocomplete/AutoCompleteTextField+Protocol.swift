@@ -12,11 +12,12 @@ import Foundation
 import AppKit
 
 protocol AutoCompleteTableViewDelegate: AnyObject {
-    func textField(_ textField:NSTextField,completions words:[String],forPartialWordRange charRange:NSRange,indexOfSelectedItem index:Int) ->[Match]
+    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange,
+                   indexOfSelectedItem index: Int) -> [Match]
 
-    func textField(_ textField:NSTextField, didSelectItem item: Match)
+    func textField(_ textField: NSTextField, didSelectItem item: Match)
 }
 
 extension AutoCompleteTableViewDelegate {
-    func textField(_ textField:NSTextField, didSelectItem item: Match) {}
+    func textField(_ textField: NSTextField, didSelectItem item: Match) {}
 }

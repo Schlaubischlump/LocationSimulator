@@ -35,7 +35,7 @@ extension FileManager {
      - Return: Path to the Application Support directory for this application.
      */
     func getAppSupportDirectory(create: Bool = false) -> URL? {
-        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        guard let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String else { return nil }
         let userAppSupportDir = self.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
         let appSupportDir = userAppSupportDir.appendingPathComponent(appName, isDirectory: true)
 
@@ -83,11 +83,11 @@ extension FileManager {
      - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
      */
     func getDeveloperDiskImageDownloadLinks(iOSVersion: String) -> ([URL], [URL]) {
-        if let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist")
-        {
+        if let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist") {
             let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath)
             if let downloadLinks: NSDictionary = downloadLinksPlist?[iOSVersion] as? NSDictionary,
-                let dmgLinks = downloadLinks["Image"] as? [String], let signLinks = downloadLinks["Signature"] as? [String] {
+                let dmgLinks = downloadLinks["Image"] as? [String],
+                let signLinks = downloadLinks["Signature"] as? [String] {
                 return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
             }
         }

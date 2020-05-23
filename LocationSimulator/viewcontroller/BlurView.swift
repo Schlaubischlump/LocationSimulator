@@ -9,7 +9,6 @@
 import Foundation
 import AppKit
 
-
 class BlurView: NSView {
 
     // MARK: - Properties
@@ -50,14 +49,12 @@ class BlurView: NSView {
         }
     }
 
-
     /// Disable the blur and saturation effect.
     public var disableBlur: Bool = false {
         didSet {
             self.reloadFilters()
         }
     }
-
 
     // MARK: - Constructor + public functions
 
@@ -79,7 +76,6 @@ class BlurView: NSView {
         self.saturation = 2.0
         self.reloadFilters()
     }
-
 
     // MARK: - Private functions
 

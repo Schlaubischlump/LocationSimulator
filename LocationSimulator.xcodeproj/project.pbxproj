@@ -348,6 +348,7 @@
 			buildConfigurationList = 13BA352620A433EF00A0431C /* Build configuration list for PBXNativeTarget "LocationSimulator" */;
 			buildPhases = (
 				13BA351220A433EE00A0431C /* Sources */,
+				63AB676E24794655008AED2F /* ShellScript */,
 				13BA351320A433EE00A0431C /* Frameworks */,
 				13BA351420A433EE00A0431C /* Resources */,
 				63A4F9272403656600C3D877 /* ShellScript */,
@@ -441,6 +442,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Only copy the libraries into the app bundle if we build for a normal release.\nif [ $CONFIGURATION == \"Release\" ]; then\n    echo \"Embedding libraries...\"\n    ./tools/copy_dylibs.py\n    echo \"Done.\"\nfi\n";
+		};
+		63AB676E24794655008AED2F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

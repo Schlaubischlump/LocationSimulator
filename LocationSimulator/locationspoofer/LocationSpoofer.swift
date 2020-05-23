@@ -13,7 +13,7 @@ import CoreLocation
 
 let kAutoMoveDuration: Double = 1.0
 
-typealias kSucessHandler = (_ sucessfull: Bool) -> ()
+typealias SucessHandler = (_ sucessfull: Bool) -> Void
 
 // MARK: - Enums
 
@@ -118,7 +118,6 @@ class LocationSpoofer {
     /// True if a location update task is already running, false otehrwise.
     private var hasPendingTask: Bool = false
 
-
     // MARK: - Constructor
 
     init(_ device: Device) {
@@ -154,13 +153,13 @@ class LocationSpoofer {
         dispatchQueue.async {
             // try to reset the location
             let success: Bool = self.device.disableSimulation()
-            if (success) {
+            if success {
                 self.totalDistance = 0.0
                 self.currentLocation = nil
             }
 
             DispatchQueue.main.async {
-                if (success) {
+                if success {
                     self.delegate?.didChangeLocation(spoofer: self, toCoordinate: nil)
                 } else {
                     self.delegate?.errorChangingLocation(spoofer: self, toCoordinate: nil)
@@ -177,7 +176,7 @@ class LocationSpoofer {
      - Parameter delay: delay after which the operation should be executed
      - Parameter completion: completion block after the update oparation was performed
     */
-    private func setLocation(_ coordinate: CLLocationCoordinate2D, completion:@escaping kSucessHandler) {
+    private func setLocation(_ coordinate: CLLocationCoordinate2D, completion:@escaping SucessHandler) {
         self.hasPendingTask = true
         // inform delegate that the location will change
         self.delegate?.willChangeLocation(spoofer: self, toCoordinate: coordinate)
@@ -185,7 +184,7 @@ class LocationSpoofer {
         dispatchQueue.async {
             // try to simulate the location on the device
             let success: Bool = self.device.simulateLocation(coordinate)
-            if (success) {
+            if success {
                 self.totalDistance += self.currentLocation?.distanceTo(coordinate: coordinate) ?? 0
                 self.currentLocation = coordinate
             }
@@ -193,7 +192,7 @@ class LocationSpoofer {
             // call the completion block and inform the delegate about the change
             DispatchQueue.main.async {
                 completion(success)
-                if (success) {
+                if success {
                     self.delegate?.didChangeLocation(spoofer: self, toCoordinate: coordinate)
                 } else {
                     self.delegate?.errorChangingLocation(spoofer: self, toCoordinate: coordinate)
@@ -217,10 +216,10 @@ class LocationSpoofer {
         }
 
         // move on the specified route
-        if (self.route.count > 0) {
+        if self.route.count > 0 {
             let coord = self.route.first!
 
-            let heading = currentLocation.heading(to: coord)
+            let heading = currentLocation.heading(toLocation: coord)
             var nextLocation = self.calculateNextLocation(distance, heading: heading)
             // snap into place if we are close enough to a marker
             if nextLocation.distanceTo(coordinate: coord) <= distance {
@@ -229,7 +228,7 @@ class LocationSpoofer {
                 self.route = Array(self.route.dropFirst())
 
                 // stop moving if we reached the end of the path
-                if (self.route.count == 0) {
+                if self.route.count == 0 {
                     self.moveState = .manual
                 }
             }
@@ -275,7 +274,7 @@ class LocationSpoofer {
     public func pauseResumeAutoMove() {
         if self.moveState == .manual || self.route.count == 0 { return }
 
-        if (self.autoMoveTimer != nil) {
+        if self.autoMoveTimer != nil {
             self.autoMoveTimer?.invalidate()
             self.autoMoveTimer = nil
         } else {
@@ -300,11 +299,12 @@ class LocationSpoofer {
 
         self.setLocation(nextLocation) { successfull in
             // cancel automove if the location could no be changed
-            if (!successfull) { return }
+            guard successfull else { return }
 
             // reschedule ourself
             if self.moveState == .auto {
-                self.autoMoveTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoMoveDuration), target: self, selector: #selector(self.move), userInfo: nil, repeats: false)
+                self.autoMoveTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoMoveDuration), target: self,
+                                                          selector: #selector(self.move), userInfo: nil, repeats: false)
             }
         }
     }

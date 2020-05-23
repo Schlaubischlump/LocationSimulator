@@ -16,7 +16,8 @@ class ProgressWindowController: NSWindowController {
      */
     class func newInstance() -> ProgressWindowController {
         let mainStoryboard = NSStoryboard.init(name: "Main", bundle: nil)
-        return mainStoryboard.instantiateController(withIdentifier: "progressWindowController") as! ProgressWindowController
+        let viewController = mainStoryboard.instantiateController(withIdentifier: "progressWindowController")
+        return (viewController as? ProgressWindowController)!
     }
 
     override func windowDidLoad() {
