@@ -37,8 +37,6 @@
 		633A460922F9A6A0005B3BE0 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */; };
 		633A460C22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */; };
 		633A460E22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */; };
-		6344174C24035DEF00114694 /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6344174B24035DEF00114694 /* libcrypto.1.1.dylib */; };
-		6344174E24035DFA00114694 /* libssl.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6344174D24035DFA00114694 /* libssl.1.1.dylib */; };
 		634D1144230CB3AE001F440C /* Downloader+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1143230CB3AE001F440C /* Downloader+Protocol.swift */; };
 		634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1145230CB8D7001F440C /* PogressWindowController.swift */; };
 		634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */; };
@@ -123,8 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6344174E24035DFA00114694 /* libssl.1.1.dylib in Frameworks */,
-				6344174C24035DEF00114694 /* libcrypto.1.1.dylib in Frameworks */,
 				63C3261223F49DF400E12207 /* libusbmuxd.6.dylib in Frameworks */,
 				63C3261023F49DE500E12207 /* libimobiledevice.6.dylib in Frameworks */,
 				63C325F123F494C300E12207 /* libplist.3.dylib in Frameworks */,
