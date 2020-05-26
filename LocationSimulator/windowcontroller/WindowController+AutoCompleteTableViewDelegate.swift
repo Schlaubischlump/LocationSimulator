@@ -32,7 +32,6 @@ extension WindowController: AutoCompleteTableViewDelegate {
         }
     }
 
-
     /// Called when text is entered into the textField.
     /// - Parameter textField: autocompletion text field instance
     /// - Parameter words:

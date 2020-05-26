@@ -316,7 +316,6 @@ class MapViewController: NSViewController {
 
     // MARK: - Teleport
 
-
     /// Spoof the current location to the specified coordinates. If no coordinates are provided a user dialog is
     /// presented to enter the new coordinates. The user can then choose to navigate or teleport to the new location.
     /// - Parameter toCoordinate: new coordinates or nil

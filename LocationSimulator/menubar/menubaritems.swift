@@ -63,7 +63,6 @@ struct Location: Codable {
 let kMaxRecentItems: Int = 10
 let kRecentLocationUserDefaultKey: String = "RecentLocations"
 
-
 /// Enum to represent the recent location submenu
 enum RecentLocationMenubarItem: Int {
     case clearMenu = 1

@@ -34,7 +34,6 @@ extension WindowController {
         }
     }
 
-
     /// Callback when a device gets paired for the first time with this computer. We could restart the device creation
     /// process here... For now we just asume the device is already paired and trusted.
     /// - Parameter notification: notification with device information (UDID and name)
