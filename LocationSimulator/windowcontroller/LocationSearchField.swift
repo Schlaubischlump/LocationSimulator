@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 
+/// Simple search field used inside the toolbar to search for a location.
 class LocationSearchField: AutoCompleteTextField {
     /// Define the width of the popover to be the same width as the textfield.
     override var popOverWidth: CGFloat {

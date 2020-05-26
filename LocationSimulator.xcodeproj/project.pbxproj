@@ -42,13 +42,13 @@
 		634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
+		6370EFE7247D21410078EA36 /* libplist.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6370EFE6247D21410078EA36 /* libplist.3.dylib */; };
+		6370EFE9247D214E0078EA36 /* libusbmuxd.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6370EFE8247D214E0078EA36 /* libusbmuxd.6.dylib */; };
+		6370EFEB247D215E0078EA36 /* libimobiledevice.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6370EFEA247D215E0078EA36 /* libimobiledevice.6.dylib */; };
 		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
 		6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375BA192309A95C000DA0A4 /* BlurView.swift */; };
 		638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ADBE0230095980061612D /* AutoCompletePopover.swift */; };
 		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
-		63C325F123F494C300E12207 /* libplist.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C325F023F494C300E12207 /* libplist.3.dylib */; };
-		63C3261023F49DE500E12207 /* libimobiledevice.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */; };
-		63C3261223F49DF400E12207 /* libusbmuxd.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */; };
@@ -102,6 +102,9 @@
 		634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PogressViewController+DownloaderDelegate.swift"; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
+		6370EFE6247D21410078EA36 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = "../../../../usr/local/Cellar/libplist/HEAD-66d2bb6/lib/libplist.3.dylib"; sourceTree = "<group>"; };
+		6370EFE8247D214E0078EA36 /* libusbmuxd.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.6.dylib; path = "../../../../usr/local/Cellar/libusbmuxd/HEAD-5364a1b/lib/libusbmuxd.6.dylib"; sourceTree = "<group>"; };
+		6370EFEA247D215E0078EA36 /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.6.dylib; path = "../../../../usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/lib/libimobiledevice.6.dylib"; sourceTree = "<group>"; };
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
 		6375BA192309A95C000DA0A4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
@@ -121,9 +124,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63C3261223F49DF400E12207 /* libusbmuxd.6.dylib in Frameworks */,
-				63C3261023F49DE500E12207 /* libimobiledevice.6.dylib in Frameworks */,
-				63C325F123F494C300E12207 /* libplist.3.dylib in Frameworks */,
+				6370EFEB247D215E0078EA36 /* libimobiledevice.6.dylib in Frameworks */,
+				6370EFE9247D214E0078EA36 /* libusbmuxd.6.dylib in Frameworks */,
+				6370EFE7247D21410078EA36 /* libplist.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +281,9 @@
 		633A433B22F9926C005B3BE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6370EFEA247D215E0078EA36 /* libimobiledevice.6.dylib */,
+				6370EFE8247D214E0078EA36 /* libusbmuxd.6.dylib */,
+				6370EFE6247D21410078EA36 /* libplist.3.dylib */,
 				6344174D24035DFA00114694 /* libssl.1.1.dylib */,
 				6344174B24035DEF00114694 /* libcrypto.1.1.dylib */,
 				63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */,
@@ -664,8 +670,8 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
-					/usr/local/Cellar/libplist/2.1.0/include/,
+					"/usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/include",
+					"/usr/local/Cellar/libplist/HEAD-66d2bb6/include/",
 				);
 				INFOPLIST_FILE = LocationSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,9 +679,9 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.1.0/lib,
-					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
-					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
+					"/usr/local/Cellar/libplist/HEAD-66d2bb6/lib",
+					"/usr/local/Cellar/libusbmuxd/HEAD-5364a1b/lib",
+					"/usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/lib",
 					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
 				);
 				MACH_O_TYPE = mh_execute;
@@ -700,8 +706,8 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
-					/usr/local/Cellar/libplist/2.1.0/include/,
+					"/usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/include",
+					"/usr/local/Cellar/libplist/HEAD-66d2bb6/include/",
 				);
 				INFOPLIST_FILE = LocationSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -709,9 +715,9 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.1.0/lib,
-					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
-					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
+					"/usr/local/Cellar/libplist/HEAD-66d2bb6/lib",
+					"/usr/local/Cellar/libusbmuxd/HEAD-5364a1b/lib",
+					"/usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/lib",
 					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
 				);
 				MACH_O_TYPE = mh_execute;
@@ -791,8 +797,8 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
-					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/include",
-					/usr/local/Cellar/libplist/2.1.0/include/,
+					"/usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/include",
+					"/usr/local/Cellar/libplist/HEAD-66d2bb6/include/",
 				);
 				INFOPLIST_FILE = LocationSimulator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -800,9 +806,9 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.1.0/lib,
-					"/usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib",
-					/usr/local/Cellar/libusbmuxd/2.0.1/lib,
+					"/usr/local/Cellar/libplist/HEAD-66d2bb6/lib",
+					"/usr/local/Cellar/libusbmuxd/HEAD-5364a1b/lib",
+					"/usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/lib",
 					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
 				);
 				MACH_O_TYPE = mh_execute;

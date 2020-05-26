@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 
+/// NSStepper subclass to support coordinate values. Do not use this class directly. Use `LatStepper` and `LongStepper`.
 class CoordinateStepper: NSStepper {
 
     override init(frame: NSRect) {
@@ -26,6 +27,7 @@ class CoordinateStepper: NSStepper {
     }
 }
 
+/// NSStepper subclass to select latitude values.
 class LatStepper: CoordinateStepper {
     override func commonInit() {
         super.commonInit()
@@ -34,6 +36,7 @@ class LatStepper: CoordinateStepper {
     }
 }
 
+/// NSStepper subclass to select longitude values.
 class LongStepper: CoordinateStepper {
     override func commonInit() {
         super.commonInit()

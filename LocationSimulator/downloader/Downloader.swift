@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Class to represent a specific download.
 class DownloadTask {
     /// ID to identify a task when the delegate methods are called
     public var dID: String!
@@ -35,16 +36,17 @@ class DownloadTask {
     }
 }
 
+/// Simple class to handle multiple download requests.
 class Downloader: NSObject, URLSessionDownloadDelegate {
 
     private var sessionConfig: URLSessionConfiguration!
 
     private var session: URLSession!
 
-    /// list of all active tasks
+    /// List of all active tasks.
     public var tasks: [Int: DownloadTask]!
 
-    /// delegate to inform about download changes
+    /// Delegate to inform about download changes.
     public weak var delegate: DownloaderDelegate?
 
     override init() {
@@ -54,10 +56,8 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
         self.session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: OperationQueue())
     }
 
-    /*
-     Start a new download process defined by a task instance.
-     - Parameter task: download task instance
-     */
+    /// Start a new download process defined by a task instance.
+    /// - Parameter task: download task instance
     func start(_ task: DownloadTask) {
         task.download = self.session.downloadTask(with: task.source)
         self.tasks[task.download!.taskIdentifier] = task
@@ -68,10 +68,8 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
         }
     }
 
-    /*
-     Cancel an active download process defined by a task instance.
-     - Parameter task: download task instance
-     */
+    /// Cancel an active download process defined by a task instance.
+    /// - Parameter task: download task instance
     func cancel(_ task: DownloadTask) {
         if let taskID = task.download?.taskIdentifier {
             self.tasks.removeValue(forKey: taskID)

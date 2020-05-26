@@ -17,11 +17,10 @@
 
 #include "../config.h"
 
-/**
- Get the iOS product version string from the connected device
- - Parameter udid: iOS device UDID
- - Return: product version string in format: major.minor
- */
+
+/// Get the iOS product version string from the connected device
+/// - Parameter udid: iOS device UDID
+/// - Return: product version string in format: major.minor
 const char *deviceProductVersion(const char *udid) {
     idevice_t device = NULL;
     idevice_error_t ret = idevice_new_with_options(&device, udid, LOOKUP_OPS);
@@ -63,11 +62,9 @@ const char *deviceProductVersion(const char *udid) {
     return res;
 }
 
-/**
- Get the name of the connected iOS device (not the name of the product).
- - Parameter udid: iOS device UDID
- - Return: name of the iOS device
- */
+/// Get the name of the connected iOS device (not the name of the product).
+/// - Parameter udid: iOS device UDID
+/// - Return: name of the iOS device
 const char *deviceName(const char *udid) {
     idevice_t device = NULL;
     lockdownd_client_t client = NULL;

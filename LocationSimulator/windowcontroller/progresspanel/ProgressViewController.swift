@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 
+/// A simple view which displays two progress bars with a corresponding status label for each bar.
 class ProgressViewController: NSViewController {
     /// Label above the download bar at the top.
     @IBOutlet weak var statusLabelTop: NSTextField!
@@ -19,6 +20,8 @@ class ProgressViewController: NSViewController {
     /// Download bar at the bottom of the window.
     @IBOutlet weak var progressIndicatorBottom: NSProgressIndicator!
 
+    /// The user canceled the progress view.
+    /// - Parameter sender: the button clicked to cancel the view.
     @IBAction func cancelButtonClicked(_ sender: Any) {
         guard let win = self.view.window else { return }
         win.sheetParent?.endSheet(win, returnCode: .cancel)

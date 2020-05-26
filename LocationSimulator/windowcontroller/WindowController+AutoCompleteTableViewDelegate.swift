@@ -10,12 +10,11 @@ import Foundation
 import AppKit
 import MapKit
 
+/// WindowController extension to handle the search for different locations.
 extension WindowController: AutoCompleteTableViewDelegate {
-    /**
-     Called when an item is selected inside the autocompletion popup.
-     - Parameter textField: autocompletion text field instance
-     - Parameter item: selected item as match object
-     */
+    /// Called when an item is selected inside the autocompletion popup.
+    /// - Parameter textField: autocompletion text field instance
+    /// - Parameter item: selected item as match object
     func textField(_ textField: NSTextField, didSelectItem item: Match) {
         guard let comp = item.data as? MKLocalSearchCompletion,
             let viewController = contentViewController as? MapViewController else {
@@ -33,14 +32,13 @@ extension WindowController: AutoCompleteTableViewDelegate {
         }
     }
 
-    /**
-     Called when text is entered into the textField.
-     - Parameter textField: autocompletion text field instance
-     - Parameter words:
-     - Parameter charRange:
-     - Parameter index:
-     - Return: list of matches for the entered search string
-     */
+
+    /// Called when text is entered into the textField.
+    /// - Parameter textField: autocompletion text field instance
+    /// - Parameter words:
+    /// - Parameter charRange:
+    /// - Parameter index:
+    /// - Return: list of matches for the entered search string
     func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange,
                    indexOfSelectedItem index: Int) -> [Match] {
 

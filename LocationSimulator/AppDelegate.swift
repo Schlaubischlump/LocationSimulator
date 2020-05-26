@@ -33,6 +33,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: - MenuBar
 
+    /// Show the user a dialog to enter the coordinates to go to.
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func setLocation(_ menuItem: NSMenuItem) {
         // Show the user an input textField to change the location.
         guard let windowController = NSApp.mainWindow?.windowController else { return }
@@ -45,6 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /// Change the current movement speed (walk / cylcle / drive).
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func setMovementSpeed(_ menuItem: NSMenuItem) {
         // Only these tags are allowed, otherwise the app would crash.
         guard let item = NavigationMenubarItem(rawValue: menuItem.tag),
@@ -57,6 +61,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowController.typeSegmentChanged(windowController.typeSegmented)
     }
 
+    /// Pause or resume the current navigation, if a navigation is active. Otherwise do nothing.
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func pauseResumeNavigation(_ menuItem: NSMenuItem) {
         // pause or resume the navigation or start and stop automove if we are not navigating
         guard let windowController = NSApp.mainWindow?.windowController else { return }
@@ -78,9 +84,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /// Change the current location by going north (up) / south (down) or change the current heading (left / right).
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func move(_ menuItem: NSMenuItem) {
-        guard let windowController = NSApp.mainWindow?.windowController else { return }
-        guard let viewController = windowController.contentViewController as? MapViewController else { return }
+        guard let windowController = NSApp.mainWindow?.windowController,
+            let viewController = windowController.contentViewController as? MapViewController else { return }
 
         switch NavigationMenubarItem(rawValue: menuItem.tag) {
         // Counterclockwise
@@ -116,6 +124,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    /// Stop the current navigation, if a navigation is active.
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func stopNavigation(_ sender: NSMenuItem) {
         // stop the navigation
         guard let windowController = NSApp.mainWindow?.windowController else { return }
@@ -123,6 +133,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         viewController.spoofer?.moveState = .manual
     }
 
+    /// Stop spoofing the location and reset it to the actual device location.
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func resetLocation(_ sender: NSMenuItem) {
         // reset the current location to the device location
         guard let windowController = NSApp.mainWindow?.windowController else { return }
@@ -130,10 +142,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         viewController.spoofer?.resetLocation()
     }
 
+    /// Clear the `Recent locations` menu by removing all its stored entries.
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func clearRecentLocations(_ sender: NSMenuItem) {
         RecentLocationMenubarItem.clearLocations()
     }
 
+    /// Change the current location to the coordinates defined by a recently visited location.
+    /// - Parameter menuItem: the selected menu item that triggered this function
     @objc func selectRecentLocation(_ sender: NSMenuItem) {
         guard let windowController = NSApp.mainWindow?.windowController else { return }
         guard let viewController = windowController.contentViewController as? MapViewController else { return }

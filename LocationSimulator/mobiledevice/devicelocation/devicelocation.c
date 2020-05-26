@@ -18,11 +18,10 @@
 
 #include "../config.h"
 
-/**
- Stop spoofing the iOS device location and reset it to the original GPS coordinates.
- - Parameter udid: iOS device UDID
- - Return: True on success, False otherwise.
- */
+
+/// Stop spoofing the iOS device location and reset it to the original GPS coordinates.
+/// - Parameter udid: iOS device UDID
+/// - Return: True on success, False otherwise.
 bool resetLocation(const char* udid) {
     bool res = false;
     idevice_t device = NULL;
@@ -68,13 +67,12 @@ leave_and_cleanup:
     return res;
 }
 
-/**
- Set a new location on the specified iOS Device
- - Parameter lat: new latitude data as string
- - Parameter lng: new longitude data as string
- - Parameter udid: iOS device UDID
- - Return: True on success, False otherwise.
- */
+
+/// Set a new location on the specified iOS Device
+/// - Parameter lat: new latitude data as string
+/// - Parameter lng: new longitude data as string
+/// - Parameter udid: iOS device UDID
+/// - Return: True on success, False otherwise.
 bool sendLocation(const char *lat, const char *lng, const char* udid) {
     bool res = false;
     idevice_t device = NULL;

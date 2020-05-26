@@ -9,7 +9,7 @@
 #include <stdbool.h>
 #include <libimobiledevice/libimobiledevice.h>
 
-// Reset the currently spoofed location to the original one.
+// Reset the currently spoofed location of an iOS device to the original one.
 bool resetLocation(const char* udid);
 
 // Change the current location on an iOS device to new coordinates.

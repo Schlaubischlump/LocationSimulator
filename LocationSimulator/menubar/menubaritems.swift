@@ -10,7 +10,7 @@ import CoreLocation
 
 let kNavigationMenuTag: Int = 1
 
-/// Enum to represent the main navigation menu
+/// Enum to represent the main navigation menu.
 enum NavigationMenubarItem: Int {
     case walk                   = 0
     case cycle                  = 1
@@ -47,6 +47,7 @@ enum NavigationMenubarItem: Int {
 
 // MARK: - Recent Locations
 
+/// Simple codable struct to store the information about a location.
 struct Location: Codable {
     var name: String
     var lat: Double
@@ -62,9 +63,8 @@ struct Location: Codable {
 let kMaxRecentItems: Int = 10
 let kRecentLocationUserDefaultKey: String = "RecentLocations"
 
-/**
- Enum to represent the recent location submenu
- */
+
+/// Enum to represent the recent location submenu
 enum RecentLocationMenubarItem: Int {
     case clearMenu = 1
 
@@ -93,10 +93,8 @@ enum RecentLocationMenubarItem: Int {
 
     // MARK: - Manage recent locations
 
-    /**
-     Read all recent location from the UserDefaults.
-     - Return: list of all recent locations
-     */
+    /// Read all recent location from the UserDefaults.
+    /// - Return: list of all recent locations
     static func locations() -> [Location] {
         let defaults = UserDefaults.standard
         if let storedLoc = defaults.array(forKey: kRecentLocationUserDefaultKey) as? [Data] {
@@ -109,10 +107,8 @@ enum RecentLocationMenubarItem: Int {
         return []
     }
 
-    /**
-     Add a new location to the UserDefaults and the MenuBar.
-     - Parameter coords: coordinates of the recent location
-     */
+    /// Add a new location to the UserDefaults and add a corresponding menubar entry.
+    /// - Parameter coords: coordinates of the location to add
     static func addLocation(_ coords: CLLocationCoordinate2D) {
         // load all entries and delete the last one if we have to many
         var recentLocations = RecentLocationMenubarItem.locations()
@@ -157,10 +153,8 @@ enum RecentLocationMenubarItem: Int {
         }
     }
 
-    /**
-     Add a new menubar item for a given Location instance.
-     - Parameter loc: location instance
-     */
+    /// Add a new menubar item for a given Location instance.
+    /// - Parameter loc: location instance
     static func addLocationMenuItem(_ loc: Location) {
         guard let delegate = NSApp.delegate as? AppDelegate else { return }
         let menuItem = NSMenuItem(title: loc.name, action: #selector(delegate.selectRecentLocation(_:)),
@@ -169,9 +163,7 @@ enum RecentLocationMenubarItem: Int {
         RecentLocationMenubarItem.menu?.insertItem(menuItem, at: 0)
     }
 
-    /**
-     Clear all recent locations from the menu and the UserDefaults.
-     */
+    /// Clear all recent locations from the menubar and the UserDefaults.
     static func clearLocations() {
         // remove all saved entries
         let defaults = UserDefaults.standard

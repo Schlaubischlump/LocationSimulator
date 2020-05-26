@@ -10,10 +10,8 @@ import Foundation
 import AppKit
 
 extension WindowController {
-    /**
-     Callback when a device gets connected.
-     - Parameter notification: notification with device information (UDID and name)
-     */
+    /// Callback when a device gets connected.
+    /// - Parameter notification: notification with device information (UDID and name)
     @objc func deviceConnected(_ notification: Notification) {
         guard let udid: String = notification.userInfo?["UDID"] as? String,
             let name: String = notification.userInfo?["NAME"] as? String else { return }
@@ -36,21 +34,18 @@ extension WindowController {
         }
     }
 
-    /**
-     Callback when a device gets paired for the first time with this computer. We could restart the device creation
-     process here... For now we just asume the device is already paired and trusted.
-     - Parameter notification: notification with device information (UDID and name)
-     */
+
+    /// Callback when a device gets paired for the first time with this computer. We could restart the device creation
+    /// process here... For now we just asume the device is already paired and trusted.
+    /// - Parameter notification: notification with device information (UDID and name)
     @objc func devicePaired(_ notification: Notification) {
         guard let udid: String = notification.userInfo?["UDID"] as? String,
             let name: String = notification.userInfo?["NAME"] as? String else { return }
         print("[INFO]: Paired device: \(name) with UDID: \(udid)")
     }
 
-    /**
-     Callback when a device gets disconnected.
-     - Parameter notification: notification with device information (UDID)
-     */
+    /// Callback when a device gets disconnected.
+    /// - Parameter notification: notification with device information (UDID)
     @objc func deviceDisconnected(_ notification: Notification) {
         guard let udid: String = notification.userInfo?["UDID"] as? String,
             let viewController = contentViewController as? MapViewController else { return }

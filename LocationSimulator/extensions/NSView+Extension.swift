@@ -9,10 +9,8 @@
 import AppKit
 
 extension NSView {
-    /**
-     Set a new anchor point for a view without graphic glitches.
-     - Parmater anchorPoint: new anchor point for this view
-     */
+    /// Set a new anchor point for a view without graphic glitches.
+    /// - Parmater anchorPoint: new anchor point for this view
     func setAnchorPoint(_ anchorPoint: CGPoint) {
         guard let layer = self.layer else { return }
 

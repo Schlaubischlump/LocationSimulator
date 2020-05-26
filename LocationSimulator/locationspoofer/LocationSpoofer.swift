@@ -52,20 +52,16 @@ class LocationSpoofer {
     /// Change the direction in which to move (you can change this while automoving is active).
     public var heading: Double = 0.0
 
-    /**
-     If this property is set, automove will follow along the route and not responds to direction changes.
-     This list will be consumed while the path updates.
-    */
+    /// If this property is set, automove will follow along the route and not responds to direction changes.
+    /// This list will be consumed while the path updates.
     public var route: [CLLocationCoordinate2D]
 
     /// Delegate which is informed about location changes.
     public weak var delegate: LocationSpooferDelegate?
 
-    /**
-     The current automove state. Use `manual` to navigate by clicking the move button. Use `auto` to walk into the
-     direction specified by the control view in the lower left corner of the map. If additionally a route is specified,
-     the automove feature will automatically follow along this path.
-     */
+    /// The current automove state. Use `manual` to navigate by clicking the move button. Use `auto` to walk into the
+    /// direction specified by the control view in the lower left corner of the map. If additionally a route is
+    /// specified, the automove feature will automatically follow along this path.
     public var moveState: MoveState = .manual {
         willSet {
             DispatchQueue.main.async {
@@ -87,9 +83,7 @@ class LocationSpoofer {
         }
     }
 
-    /**
-     The current move type which defines the speed. The available types are: walk, cycle and drive.
-     */
+    /// The current move type which defines the speed. The available types are: walk, cycle and drive.
     public var moveType: MoveType = .walk {
         willSet {
             DispatchQueue.main.async {
@@ -129,10 +123,8 @@ class LocationSpoofer {
 
     // MARK: - Location spoofing
 
-    /**
-     Async call to change the device location. Use the delegate method to get informed when the location did change.
-     - Parameter coordinate: new location
-    */
+    /// Async call to change the device location. Use the delegate method to get informed when the location did change.
+    /// - Parameter coordinate: new location
     public func setLocation(_ coordinate: CLLocationCoordinate2D) {
         // stop automoving if required
         self.moveState = .manual
@@ -140,9 +132,7 @@ class LocationSpoofer {
         self.setLocation(coordinate) { _ in }
     }
 
-    /**
-     Disable location spoofing for the connected iDevice. This will reset the location to the real device location.
-     */
+    /// Disable location spoofing for the connected iDevice. This will reset the location to the real device location.
     public func resetLocation() {
         self.hasPendingTask = true
         // inform delegate that the location will be reset
@@ -169,13 +159,10 @@ class LocationSpoofer {
         }
     }
 
-    /**
-     Change the location on the connected iDevice to the new coordinates.
-
-     - Parameter coordinate: new location
-     - Parameter delay: delay after which the operation should be executed
-     - Parameter completion: completion block after the update oparation was performed
-    */
+    /// Change the location on the connected iDevice to the new coordinates.
+    /// - Parameter coordinate: new location
+    /// - Parameter delay: delay after which the operation should be executed
+    /// - Parameter completion: completion block after the update oparation was performed
     private func setLocation(_ coordinate: CLLocationCoordinate2D, completion:@escaping SucessHandler) {
         self.hasPendingTask = true
         // inform delegate that the location will change
@@ -204,12 +191,10 @@ class LocationSpoofer {
 
     // MARK: - Move / Automove
 
-    /**
-     Calculate the next location. The next location depends on the current route if one is defined.
-     Otherwise the next location is based on the current heading.
-     - Parameter distance: distance to move
-     - Return: new location
-     */
+    /// Calculate the next location. The next location depends on the current route if one is defined.
+    /// Otherwise the next location is based on the current heading.
+    /// - Parameter distance: distance to move
+    /// - Return: new location
     private func calculateNextLocation(_ distance: Double = 0.0) -> CLLocationCoordinate2D? {
         guard let currentLocation = self.currentLocation else {
             return nil
@@ -239,12 +224,10 @@ class LocationSpoofer {
         return self.calculateNextLocation(distance, heading: self.heading)
     }
 
-    /**
-     Calculate the new location based on the current heading and distance.
-     - Parameter distance: distance to move
-     - Parameter heading: direction to move in
-     - Return: new location
-     */
+    /// Calculate the new location based on the current heading and distance.
+    /// - Parameter distance: distance to move
+    /// - Parameter heading: direction to move in
+    /// - Return: new location
     private func calculateNextLocation(_ distance: Double = 0.0, heading: Double = 0.0) -> CLLocationCoordinate2D {
         // move into the direction of heading
         let latitude = currentLocation!.latitude
@@ -267,10 +250,8 @@ class LocationSpoofer {
         return CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
     }
 
-    /**
-     Pause or resume automoving. Calling this function is only useful if a route is set. Otherwise you could just
-     change the `moveType`to manual to get the same effect.
-     */
+    /// Pause or resume automoving. Calling this function is only useful if a route is set. Otherwise you could just
+    /// change the `moveType`to manual to get the same effect.
     public func pauseResumeAutoMove() {
         if self.moveState == .manual || self.route.count == 0 { return }
 
@@ -282,11 +263,9 @@ class LocationSpoofer {
         }
     }
 
-    /**
-     Move `moveType.distance` meters per second `into the direction defined by `heading` or by the current route.
-     If automove is activated this function will reschedule itself.
-     - Parameter appendToPendingTasks: True to append the location operation to the DispatchQueue, false otherwise
-    */
+    /// Move `moveType.distance` meters per second `into the direction defined by `heading` or by the current route.
+    /// If automove is activated this function will reschedule itself.
+    /// - Parameter appendToPendingTasks: True to append the location operation to the DispatchQueue, false otherwise
     @objc public func move(appendToPendingTasks: Bool = true) {
         // we don't want to append a new task
         if !appendToPendingTasks && self.hasPendingTask { return }

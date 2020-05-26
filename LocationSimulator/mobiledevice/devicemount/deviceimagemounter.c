@@ -28,11 +28,10 @@ typedef enum {
 } disk_image_upload_type_t;
 
 
-/**
- Check if the DeveloperDiskImage is mounted on the iOS Device.
- - Parameter udid: iOS device UDID
- - Return: True if the image is mounted, False otherwise.
- */
+
+/// Check if the DeveloperDiskImage is mounted on the iOS Device.
+/// - Parameter udid: iOS device UDID
+/// - Return: True if the image is mounted, False otherwise.
 bool developerImageIsMountedForDevice(const char *udid) {
     bool res = false;
 
@@ -111,13 +110,12 @@ static ssize_t mim_upload_cb(void* buf, size_t size, void* userdata)
     return fread(buf, 1, size, (FILE*)userdata);
 }
 
-/**
- Mount a specific DeveloperDiskImage on the iOS Device.
- - Parameter udid: iOS device UDID
- - Parameter devDMG: path to DeveloperDiskImage.dmg for this iOS Version
- - Parameter devSign: path to DeveloperDiskImage.dmg.signature for the devDMG file
- - Return: True if the image could be mounted, False otherwise.
- */
+
+/// Mount a specific DeveloperDiskImage on the iOS Device.
+/// - Parameter udid: iOS device UDID
+/// - Parameter devDMG: path to DeveloperDiskImage.dmg for this iOS Version
+/// - Parameter devSign: path to DeveloperDiskImage.dmg.signature for the devDMG file
+/// - Return: True if the image could be mounted, False otherwise.
 bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSign) {
     bool res = false;
 

@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 
+/// Custom view subclass which supports blurring the background.
 class BlurView: NSView {
 
     // MARK: - Properties
@@ -25,7 +26,7 @@ class BlurView: NSView {
         }
     }
 
-    /// Change the views tintColor
+    /// Change the views tintColor.
     public var tintColor: NSColor = NSColor(calibratedWhite: 1.0, alpha: 0.7) {
         didSet {
             self.layer?.backgroundColor =  self.tintColor.cgColor
@@ -33,7 +34,7 @@ class BlurView: NSView {
         }
     }
 
-    /// Apply a maskImage to the view
+    /// Apply a maskImage to the view.
     public var maskImage: NSImage? {
         didSet {
             guard let viewLayer = self.layer else { return }
@@ -68,9 +69,7 @@ class BlurView: NSView {
         self.setup()
     }
 
-    /**
-     Reset the filters to the default values.
-     */
+    /// Reset the filters to the default values.
     public func setDefaults() {
         self.blurRadius = 20.0
         self.saturation = 2.0
@@ -79,9 +78,7 @@ class BlurView: NSView {
 
     // MARK: - Private functions
 
-    /**
-     Configure the the view to be layer backed and load the filters.
-     */
+    /// Configure the the view to be layer backed and load the filters.
     private func setup() {
         self.wantsLayer = true
         self.layerUsesCoreImageFilters = true
@@ -91,9 +88,7 @@ class BlurView: NSView {
         self.reloadFilters()
     }
 
-    /**
-     Reload the blur and saturation filter with the new values.
-     */
+    /// Reload the blur and saturation filter with the new values.
     private func reloadFilters() {
         var filters: [CIFilter] = []
         if !self.disableBlur {

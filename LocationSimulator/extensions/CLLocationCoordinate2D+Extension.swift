@@ -18,23 +18,19 @@ extension FloatingPoint {
 }
 
 extension CLLocationCoordinate2D {
-    /**
-     Calculate the distance from this location to the given one.
-     - Parameter coordinate: coordinate to which the distance should be calculated to
-     - Return: distance between the two locations
-     */
+    /// Calculate the distance from this location to the given one.
+    /// - Parameter coordinate: coordinate to which the distance should be calculated to
+    /// - Return: distance between the two locations
     func distanceTo(coordinate: CLLocationCoordinate2D) -> CLLocationDistance {
         let thisLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)
         let otherLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         return thisLocation.distance(from: otherLocation)
     }
 
-    /**
-     Calculate a route from this location to the destination and return a list of intermediate locations.
-     - Parameter destination: target location
-     - Parameter transportType: transport type, e.g car or walk
-     - Parameter completion: completion block after the calculation finished
-     */
+    /// Calculate a route from this location to the destination and return a list of intermediate locations.
+    /// - Parameter destination: target location
+    /// - Parameter transportType: transport type, e.g car or walk
+    /// - Parameter completion: completion block after the calculation finished
     func calculateRouteTo(_ destination: CLLocationCoordinate2D, transportType: MKDirectionsTransportType,
                           completion: @escaping (_ value: [CLLocationCoordinate2D]) -> Void) {
 
@@ -61,12 +57,10 @@ extension CLLocationCoordinate2D {
         }
     }
 
-    /**
-     Calculate the heading from this location to the target location in degrees
-     See: https://stackoverflow.com/questions/6924742/valid-way-to-calculate-angle-between-2-cllocations
-     - Parameter to: target location
-     - Return: heading in degrees
-     */
+    /// Calculate the heading from this location to the target location in degrees
+    /// See: https://stackoverflow.com/questions/6924742/valid-way-to-calculate-angle-between-2-cllocations
+    /// - Parameter to: target location
+    /// - Return: heading in degrees
     func heading(toLocation: CLLocationCoordinate2D) -> Double {
         let lat1 = self.latitude.degreesToRadians
         let lon1 = self.longitude.degreesToRadians
@@ -82,9 +76,7 @@ extension CLLocationCoordinate2D {
         return headingDegrees >= 0 ? headingDegrees : headingDegrees + 360
     }
 
-    /**
-     Get the location name based on the current coordinates.
-     */
+    /// Get the location name based on the current coordinates.
     func getLocationName(completion: @escaping (_ location: CLLocation, _ name: String) -> Void) {
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: self.latitude, longitude: self.longitude)

@@ -9,11 +9,8 @@
 import Foundation
 
 extension FileManager {
-
-    /**
-     Create a new folder at the specified URL.
-     - Return: True if the folder was created or did already exist. False otherwise.
-     */
+    /// Create a new folder at the specified URL.
+    /// - Return: True if the folder was created or did already exist. False otherwise.
     func createFolder(atUrl url: URL) -> Bool {
         // if the folder does exist just return
         var isDir: ObjCBool = false
@@ -29,11 +26,9 @@ extension FileManager {
         return true
     }
 
-    /**
-     Get the path to the systems Application Support directory for this application.
-     - Parameter create: True: try to create the folder if it does not exist, False: just return the path
-     - Return: Path to the Application Support directory for this application.
-     */
+    /// Get the path to the systems Application Support directory for this application.
+    /// - Parameter create: True: try to create the folder if it does not exist, False: just return the path
+    /// - Return: Path to the Application Support directory for this application.
     func getAppSupportDirectory(create: Bool = false) -> URL? {
         guard let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String else { return nil }
         let userAppSupportDir = self.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
@@ -47,11 +42,9 @@ extension FileManager {
         return appSupportDir
     }
 
-    /**
-     Get the path to the DeveloperDiskImage.dmg inside the applications Support directory.
-     - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
-     - Return: path to DeveloperDiskImage.dmg
-     */
+    /// Get the path to the DeveloperDiskImage.dmg inside the applications Support directory.
+    /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
+    /// - Return: path to DeveloperDiskImage.dmg
     func getDeveloperDiskImage(iOSVersion: String) -> URL? {
         // get the path to the DeveloperDiskImage.dmg
         if let url = self.getAppSupportDirectory(create: true) {
@@ -63,11 +56,9 @@ extension FileManager {
         return nil
     }
 
-    /**
-     Get the path to the DeveloperDiskImage.dmg.signature inside the applications Support directory.
-     - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
-     - Return: path to DeveloperDiskImage.dmg.signature
-     */
+    /// Get the path to the DeveloperDiskImage.dmg.signature inside the applications Support directory.
+    /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
+    /// - Return: path to DeveloperDiskImage.dmg.signature
     func getDeveloperDiskImageSignature(iOSVersion: String) -> URL? {
         // get the path to the DeveloperDiskImage.dmg.signature
         if let devDisk: URL = self.getDeveloperDiskImage(iOSVersion: iOSVersion) {
@@ -76,12 +67,10 @@ extension FileManager {
         return nil
     }
 
-    /**
-     Parse the DeveloperDiskImages.plist inside the applications bundle and return the download links
-     for all DeveloperDiskImages files for every iOS version.
-     - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
-     - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
-     */
+    /// Parse the DeveloperDiskImages.plist inside the applications bundle and return the download links for all
+    /// DeveloperDiskImages files for every iOS version.
+    /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
+    /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
     func getDeveloperDiskImageDownloadLinks(iOSVersion: String) -> ([URL], [URL]) {
         if let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist") {
             let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath)

@@ -20,27 +20,26 @@ public extension NSNotification.Name {
 }
 
 class MapViewController: NSViewController {
-
     // MARK: - UI
-
+    /// The main mapView.
     @IBOutlet weak var mapView: MKMapView!
-
+    /// The button in the lower left corner used to move around the map when clicked.
     @IBOutlet weak var moveButton: NSButton!
-
+    /// The blur effect view used to get a nicer dark mode interface for the `moveButton`.
     @IBOutlet weak var moveButtonEffectView: BlurView!
-
+    /// A container view which hosts the progress spinner.
     @IBOutlet weak var spinnerContainer: BlurView!
-
+    /// The main progress spinner in the upper right corner to indicate the user, that we are performing an operation.
     @IBOutlet weak var spinner: NSProgressIndicator!
-
+    /// The view used to change the current heading inside the map.
     @IBOutlet weak var moveHeadingControlsView: NSImageView!
-
+    /// Outer circle view used to make the `moveHeadingControlsView` a little bit nicer.
     @IBOutlet weak var moveHeadingCircleView: NSImageView!
-
+    /// The blur effect view used to get a nicer dark mode interface for the `moveHeadingControlsView`.
     @IBOutlet weak var moveHeadingEffectView: BlurView!
-
+    /// A simple separator line at the bottom of the view to separate the bottom bar from the map view.
     @IBOutlet weak var separatorLine: NSBox!
-
+    /// The label which displays the total amount of meters you walked.
     @IBOutlet weak var totalDistanceLabel: NSTextField!
 
     // MARK: - Properties
@@ -88,6 +87,7 @@ class MapViewController: NSViewController {
         }
     }
 
+    /// True if a alert is visible, false otherwise.
     var isShowingAlert: Bool = false
 
     // MARK: - View lifecycle
@@ -123,11 +123,9 @@ class MapViewController: NSViewController {
         self.spinnerContainer.isHidden = true
         self.spinnerContainer.wantsLayer = true
 
-        if let layer = spinnerContainer.layer {
-            layer.cornerRadius = 10.0
-            layer.borderColor = CGColor(gray: 0.75, alpha: 1.0)
-            layer.borderWidth = 1.0
-        }
+        self.spinnerContainer.layer?.cornerRadius = 10.0
+        self.spinnerContainer.layer?.borderColor = CGColor(gray: 0.75, alpha: 1.0)
+        self.spinnerContainer.layer?.borderWidth = 1.0
 
         // Add gesture recognizer
         let mapPressGesture = NSPressGestureRecognizer(target: self, action: #selector(mapViewPressed(_:)))
@@ -160,9 +158,11 @@ class MapViewController: NSViewController {
 
         // Fixme: This is ugly, but I can not get another solution to work...
         NotificationCenter.default.addObserver(self, selector: #selector(themeChanged),
-                                                          name: .AppleInterfaceThemeChanged, object: nil)
+                                               name: .AppleInterfaceThemeChanged, object: nil)
     }
 
+    /// Make the window the first responder if it receives a mouse click.
+    /// - Parameter event: the mouse event
     override func mouseDown(with event: NSEvent) {
         self.view.window?.makeFirstResponder(self.mapView)
         super.mouseDown(with: event)
@@ -179,6 +179,7 @@ class MapViewController: NSViewController {
 
     // MARK: - Dark mode
 
+    /// Update the view appearance to light or dark mode based on the UserDefaults `AppleInterfaceStyle` key.
     func updateAppearance() {
         var isDarkMode = false
         if #available(OSX 10.14, *) {
@@ -192,19 +193,19 @@ class MapViewController: NSViewController {
                                                                        blue: 167.0/255.0, alpha: 1.0)
     }
 
+    /// Callback when the theme changed from light to dark or dark to light.
     @objc func themeChanged(_ notification: Notification) {
         self.updateAppearance()
     }
 
     // MARK: - Load device
 
-    /**
-     Load a new device given by its udid. A new spoofer instance is created based on the device. All location change or
-     reset actions are directed to this spoofer instance. If you change the device you have to call this method to
-     change the current spoofer instance to interact with it. You can not interact with more than one device at a time.
-     - Parameter udid: device unique identifier
-     - Return: true on success, false otherwise
-     */
+    /// Load a new device given by its udid. A new spoofer instance is created based on the device. All location change
+    /// or reset actions are directed to this spoofer instance. If you change the device you have to call this method to
+    /// change the current spoofer instance to interact with it. You can not interact with more than one device at a
+    ///  time.
+    /// - Parameter udid: device unique identifier
+    /// - Return: true on success, false otherwise
     func loadDevice(_ udid: String) -> Bool {
         guard let window = self.view.window else { return false }
 
@@ -216,7 +217,7 @@ class MapViewController: NSViewController {
         } catch DeviceError.pair(let errorMsg) {
             window.showError(errorMsg, message: NSLocalizedString("PAIR_ERROR_MSG", comment: ""))
         } catch DeviceError.devDiskImageNotFound(_, let iOSVersion) {
-            // try to download the DeveloperDiskImage files and try to connect to the device again
+            // Try to download the DeveloperDiskImage files and try to connect to the device again.
             let manager = FileManager.default
             if let devDMG = manager.getDeveloperDiskImage(iOSVersion: iOSVersion),
                 let devSign = manager.getDeveloperDiskImageSignature(iOSVersion: iOSVersion) {
@@ -231,7 +232,6 @@ class MapViewController: NSViewController {
 
                 // create the downloader instance
                 let downloader = Downloader()
-
                 // create the progress popup sheet
                 self.progressWindowController = ProgressWindowController.newInstance()
                 let progressWindow = self.progressWindowController!.window!
@@ -273,11 +273,13 @@ class MapViewController: NSViewController {
 
     // MARK: - Spinner control
 
+    /// Show an animated progress spinner in the upper right corner.
     func startSpinner() {
         self.spinnerContainer.isHidden = false
         self.spinner.startAnimation(self)
     }
 
+    /// Hide and stop the progress spinner in the upper right corner.
     func stopSpinner() {
         self.spinner.stopAnimation(self)
         self.spinnerContainer.isHidden = true
@@ -285,16 +287,23 @@ class MapViewController: NSViewController {
 
     // MARK: - Rotate headerView helper function
 
+    /// The current angle of the headingView used to change the heading.
+    /// - Return: the angle in degree
     func getHeaderViewAngle() -> CGFloat {
         guard let layer = self.moveHeadingControlsView.layer else { return 0.0 }
         return atan2(layer.transform.m12, layer.transform.m11)
     }
 
+    /// Rotate the headingView and update the location spoofer heading state by a specific angle. The angle is applied
+    /// to the current heading.
+    /// - Parameter angle: the angle in degree
     func rotateHeaderViewBy(_ angle: CGFloat) {
         // update the headingView and the spoofer heading
         self.rotateHeaderViewTo(self.getHeaderViewAngle() + angle)
     }
 
+    /// Set a new heading based on a specified angle.
+    /// - Parameter angle: the angle in degree
     func rotateHeaderViewTo(_ angle: CGFloat) {
         guard let layer = self.moveHeadingControlsView.layer else {return }
 
@@ -307,11 +316,10 @@ class MapViewController: NSViewController {
 
     // MARK: - Teleport
 
-    /**
-     Spoof the current location to the specified coordinates. If no coordinates are provided a user dialog is presented
-     to enter the new coordinates. The user can then choose to navigate or teleport to the new location.
-     - Parameter toCoordinate: new coordinates or nil
-     */
+
+    /// Spoof the current location to the specified coordinates. If no coordinates are provided a user dialog is
+    /// presented to enter the new coordinates. The user can then choose to navigate or teleport to the new location.
+    /// - Parameter toCoordinate: new coordinates or nil
     func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D? = nil) {
         // make sure we can spoof a location
         guard let spoofer = self.spoofer else { return }
@@ -410,6 +418,9 @@ class MapViewController: NSViewController {
 
     // MARK: - Interface Builder callbacks
 
+    /// Callback when the map view is long pressed. Ask the user if he wants to teleport or navigate to the selected
+    /// location.
+    /// - Parameter sender: the long press gesture recognizer instance
     @objc func mapViewPressed(_ sender: NSPressGestureRecognizer) {
         if sender.state == .ended {
             let loc = sender.location(in: mapView)
@@ -424,6 +435,8 @@ class MapViewController: NSViewController {
         }
     }
 
+    /// Change the heading when the user clicks inside heading view.
+    /// - Parameter sender: the click gesture recognizer instance
     @objc func headingViewPressed(_ sender: NSClickGestureRecognizer) {
         self.view.window?.makeFirstResponder(self.mapView)
 
@@ -435,6 +448,8 @@ class MapViewController: NSViewController {
         self.rotateHeaderViewTo(atan2(-deltaX, deltaY))
     }
 
+    /// Move north if the inner circle of the heading view is clicked.
+    /// - Parameter sender: the click gesture recognizer instance
     @objc func moveClicked(_ sender: NSClickGestureRecognizer) {
         self.view.window?.makeFirstResponder(self.mapView)
 
@@ -449,6 +464,8 @@ class MapViewController: NSViewController {
         }
     }
 
+    /// Start automoving if the inner circle of the heading view is long pressed.
+    /// - Parameter sender: the long press gesture recognizer instance
     @objc func moveLongPressed(_ sender: NSPressGestureRecognizer) {
         self.view.window?.makeFirstResponder(self.mapView)
 

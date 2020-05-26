@@ -143,11 +143,6 @@ class AutoCompleteTextField: NSTextField {
             if isShow {
                 self.autoCompletePopover?.hide()
             }
-        /*case 49: //Space
-            if isShow && !keyUp {
-                self.insert(self)
-            }
-            return nil*/
         default:
             break
         }
@@ -213,7 +208,6 @@ class AutoCompleteTextField: NSTextField {
         let spacing = self.autoCompleteTableView!.intercellSpacing
         let height = (rowHeight + spacing.height) * CGFloat(numberOfRows)
         let frame = NSRect(x: 0, y: 0, width: popOverWidth + spacing.width, height: height)
-        //self.autoCompleteTableView?.enclosingScrollView?.frame = NSInsetRect(frame, popOverPadding, popOverPadding)
         self.autoCompleteTableView?.enclosingScrollView?.frame = frame.insetBy(dx: popOverPadding, dy: popOverPadding)
         self.autoCompletePopover?.setContentSize(frame.size)
     }

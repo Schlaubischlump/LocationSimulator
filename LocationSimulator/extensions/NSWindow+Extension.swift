@@ -10,11 +10,9 @@ import Foundation
 import AppKit
 
 extension NSWindow {
-    /**
-     Show error sheet for this window.
-     - Parameter title: window title
-     - Parameter message: window message 
-     */
+    /// Show error sheet for this window.
+    /// - Parameter title: window title
+    /// - Parameter message: window message
     func showError(_ title: String, message: String) {
         let alert = NSAlert()
         alert.messageText = title

@@ -11,6 +11,8 @@ import Foundation
 let kDevDiskTaskID = "DevDisk"
 let kDevSignTaskID = "DevSign"
 
+/// Extension which takes care of the `DeveloperDiskImage` and `DeveloperDiskImage.sign` download progress and updates
+/// the UI accordingly.
 extension ProgressViewController: DownloaderDelegate {
     func downloadStarted(downloader: Downloader, task: DownloadTask) {
         let progressIndicator = (task.dID == kDevDiskTaskID) ? self.progressIndicatorTop : self.progressIndicatorBottom

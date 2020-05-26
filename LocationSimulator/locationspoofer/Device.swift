@@ -46,10 +46,8 @@ class Device {
 
     // MARK: - Class functions
 
-    /**
-     Start to observer the USB interface for newly added, paired or removed iOS devices.
-     - Return: True if the observer could be started, False otherwise.
-     */
+    /// Start to observer the USB interface for newly added, paired or removed iOS devices.
+    /// - Return: True if the observer could be started, false otherwise.
     @discardableResult
     class func startGeneratingDeviceNotifications() -> Bool {
         let callback: idevice_event_cb_t = { (event, userData: UnsafeMutableRawPointer?) in
@@ -93,22 +91,18 @@ class Device {
         return idevice_event_subscribe(callback, nil) == IDEVICE_E_SUCCESS
     }
 
-    /**
-     Stop observing the USB interface for device changes.
-     - Return: True if the observer could be closed, False otherwise.
-     */
+    /// Stop observing the USB interface for device changes.
+    /// - Return: True if the observer could be closed, False otherwise.
     @discardableResult
     class func stopGeneratingDeviceNotifications() -> Bool {
         return idevice_event_unsubscribe() == IDEVICE_E_SUCCESS
     }
 
-    /**
-     Pair the specific iOS Device with this computer and try to upload the DeveloperDiskImage.
-    - Throws:
-        * `DeviceError.pair`: The pairing process failed
-        * See `mountDeveloperDiskImage`
-     - Return: Device instance
-     */
+    /// Pair the specific iOS Device with this computer and try to upload the DeveloperDiskImage.
+    /// - Throws:
+    ///    * `DeviceError.pair`: The pairing process failed
+    ///    * See `mountDeveloperDiskImage`
+    /// - Return: Device instance
     class func load(_ UDID: String) throws -> Device {
         // check if a device is connected
         guard pairDevice(UDID) else {
@@ -132,14 +126,12 @@ class Device {
 
     // MARK: - Upload Developer Disk Image
 
-    /**
-     Try to upload and mount the DeveloperDiskImage.dmg on this device.
-     - Throws:
-        * `DeviceError.devDiskImageNotFound`: No DeveloperDiskImage.dmg or Signature file found in App Support folder
-        * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage.dmg file
-        * `DeviceError.permisson`: Permission error while accessing the App Support folder
-        * `DeviceError.productVersion`: Could not read the devices product version string
-     */
+    /// Try to upload and mount the DeveloperDiskImage.dmg on this device.
+    /// - Throws:
+    ///    * `DeviceError.devDiskImageNotFound`: No DeveloperDiskImage.dmg or Signature file found in App Support folder
+    ///    * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage.dmg file
+    ///    * `DeviceError.permisson`: Permission error while accessing the App Support folder
+    ///    * `DeviceError.productVersion`: Could not read the devices product version string
     func mountDeveloperDiskImage() throws {
         // developer image is already mounted
         if developerImageIsMountedForDevice(UDID) {
@@ -175,20 +167,16 @@ class Device {
 
     // MARK: - Managing locations
 
-    /**
-     Set the device location to the new coordinates.
-     - Parameter location: new coordinates
-     - Return: True on success, False otherwise.
-     */
+    /// Set the device location to the new coordinates.
+    /// - Parameter location: new coordinates
+    /// - Return: True on success, false otherwise.
     @discardableResult
     func simulateLocation(_ location: CLLocationCoordinate2D) -> Bool {
         return sendLocation("\(location.latitude)", "\(location.longitude)", "\(self.UDID)")
     }
 
-    /**
-     Stop spoofing the iOS device location and reset the coordinates to the real device coordinates.
-     - Return: True on success, False otherwise.
-     */
+    /// Stop spoofing the iOS device location and reset the coordinates to the real device coordinates.
+    /// - Return: True on success, False otherwise.
     @discardableResult
     func disableSimulation() -> Bool {
         return resetLocation("\(self.UDID)")

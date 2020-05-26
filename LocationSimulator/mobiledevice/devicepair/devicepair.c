@@ -16,11 +16,10 @@
 
 #include "../config.h"
 
-/**
- Pair and validate the connection to the device with the given UDID.
- - Parameter udid: iOS device UDID
- - Return: True on success, False otherwise.
- */
+
+/// Pair and validate the connection to the device with the given UDID.
+/// - Parameter udid: iOS device UDID
+/// - Return: True on success, False otherwise.
 bool pairDevice(const char* udid) {
     idevice_t device = NULL;
     lockdownd_client_t client = NULL;

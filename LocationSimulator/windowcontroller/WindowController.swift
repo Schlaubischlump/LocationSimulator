@@ -10,6 +10,7 @@ import Foundation
 import AppKit
 import MapKit
 
+/// The main window controller instance which hosts the map view and the toolbar.
 class WindowController: NSWindowController {
     /// Enable, disable autofocus current location.
     @IBOutlet weak var currentLocationButton: NSButton!
@@ -89,8 +90,10 @@ class WindowController: NSWindowController {
 
     // MARK: - Interface Builder callbacks
 
+    /// Toggle the autofocus feature on or off.
+    /// - Parameter sender: the button which triggered the action
     @IBAction func currentLocationClicked(_ sender: NSButton) {
-        guard let viewController = contentViewController as? MapViewController else { return }
+        guard let viewController = self.contentViewController as? MapViewController else { return }
 
         if viewController.currentLocationMarker == nil {
             sender.state = .off
@@ -99,8 +102,11 @@ class WindowController: NSWindowController {
         }
     }
 
+    /// Change the move speed to walk / cycle / drive based on the selected segment. Futhermore update the tool- and
+    /// touchbar to represent the current status.
+    /// - Parameter sender: the segmented control instance inside the tool- or touchbar.
     @IBAction func typeSegmentChanged(_ sender: NSSegmentedControl) {
-        guard let viewController = contentViewController as? MapViewController else { return }
+        guard let viewController = self.contentViewController as? MapViewController else { return }
 
         // Update the toolbar state if the touchbar was clicked.
         if self.typeSegmented.selectedSegment != sender.selectedSegment {
@@ -115,11 +121,15 @@ class WindowController: NSWindowController {
         viewController.spoofer?.moveType = MoveType(rawValue: sender.selectedSegment)!
     }
 
+    /// Stop spoofing the current location.
+    /// - Parameter sender: the button which triggered the action
     @IBAction func resetClicked(_ sender: Any) {
         guard let viewController = contentViewController as? MapViewController else { return }
         viewController.spoofer?.resetLocation()
     }
 
+    /// Change the currently select device to the new devive choosen from the list.
+    /// - Parameter sender: the button which triggered the action
     @IBAction func deviceSelected(_ sender: NSPopUpButton) {
         // Disable all menubar items which only work if a device is connected.
         let items: [NavigationMenubarItem] = [.setLocation, .toggleAutomove, .moveUp, .moveDown, .moveCounterclockwise,
@@ -166,7 +176,8 @@ class WindowController: NSWindowController {
                 // enable the move menubar items
                 spoofer.moveState = .manual
             }
-            // make sure to enable the 'Set Location' menubar item if a device is connected
+
+            // Make sure to enable the 'Set Location' menubar item if a device is connected.
             NavigationMenubarItem.setLocation.enable()
             NavigationMenubarItem.recentLocation.enable()
         }
