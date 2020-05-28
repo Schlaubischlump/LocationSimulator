@@ -4,10 +4,22 @@
 </div>
 
 ![LocationSimulator screenshot](Preview/screenshot.png)
-
-## Description
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 LocationSimulator is a macOS app which allows spoofing the location of an iOS device. The main target audience of this project are developers who want to test their location service based application. Of course you might as well use this app to spoof your location inside [PokemonGo](https://www.pokemongo.com), but don't blame me if you get banned. The method used to spoof your location is basically the same used by [PokemonGo Webspoof](https://github.com/iam4x/pokemongo-webspoof) (except that Xcode is not required) or [iSpoofer](https://www.ispoofer.com).
+
+- [Background](#background)
+- [Features](#features)
+- [Build](#build)
+    - [Requirements](#requirements)
+    - [Build the app](#build-the-app)
+- [Usage](#usage)
+    - [Start spoofing](#start-spoofing)
+    - [Moving](#moving)
+    - [Stop spoofing](#stop-spoofing)
+- [License](#license)
+- [Contribute](#contribute)
+- [Enhancement ideas](#enhancement-ideas)
 
 ## Background
 
@@ -89,5 +101,5 @@ The whole project is licensed under the [MIT License](LICENSE) unless specified 
 ## Contribute
 Help is always appreciated, wether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
 
-### Enhancement ideas
+## Enhancement ideas
 - Allow following a predefined route from a gpx file
