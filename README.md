@@ -27,15 +27,15 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 
 ## Features
 
-- ✅ Spoof the iOS device location without a jailbreak or installing an app on the device.
-- ✅ Automatically try to download the DeveloperDiskImage files for your iOS Version.
-- ✅ Set the device location with a long click on the map.
-- ✅ Support 3 movement speeds (Walk/Cycle/Drive).
-- ✅ Control the movement using the arrow keys.
-- ✅ Navigate from the current location to a new location.
-- ✅ Support network devices.
-- ✅ Search for locations.
-- ✅ Support dark mode.
+- [x] Spoof the iOS device location without a jailbreak or installing an app on the device.
+- [x] Automatically try to download the DeveloperDiskImage files for your iOS Version.
+- [x] Set the device location with a long click on the map.
+- [x] Support 3 movement speeds (Walk/Cycle/Drive).
+- [x] Control the movement using the arrow keys.
+- [x] Navigate from the current location to a new location.
+- [x] Support network devices.
+- [x] Search for locations.
+- [x] Support dark mode.
 
 ## Build
 
