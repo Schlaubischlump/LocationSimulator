@@ -54,6 +54,8 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 3. Go to [releases](https://github.com/Schlaubischlump/LocationSimulator/releases) and download the latest `LocationSimulator.app.zip` version.
 4. Unzip the file and run the application by right clicking on it and granting a [Gatekeeper exception](https://support.apple.com/en-us/HT202491). 
 
+> Note: If the app crashes on launch that means that either you made a mistake and installed an outdated version of the dependencies / LocationSimulator or I did not update the build for the latest homebrew release. If the later is the case or you can't distinguish between the two options open a new github issue, so that I can help you.
+
 ## Build
 
 ### Requirements
