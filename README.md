@@ -4,10 +4,22 @@
 </div>
 
 ![LocationSimulator screenshot](Preview/screenshot.png)
-
-## Description
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 LocationSimulator is a macOS app which allows spoofing the location of an iOS device. The main target audience of this project are developers who want to test their location service based application. Of course you might as well use this app to spoof your location inside [PokemonGo](https://www.pokemongo.com), but don't blame me if you get banned. The method used to spoof your location is basically the same used by [PokemonGo Webspoof](https://github.com/iam4x/pokemongo-webspoof) (except that Xcode is not required) or [iSpoofer](https://www.ispoofer.com).
+
+- [Background](#background)
+- [Features](#features)
+- [Build](#build)
+    - [Requirements](#requirements)
+    - [Build the app](#build-the-app)
+- [Usage](#usage)
+    - [Start spoofing](#start-spoofing)
+    - [Moving](#moving)
+    - [Stop spoofing](#stop-spoofing)
+- [License](#license)
+- [Contribute](#contribute)
+- [Enhancement ideas](#enhancement-ideas)
 
 ## Background
 
@@ -15,15 +27,15 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 
 ## Features
 
-- ✅ Spoof the iOS device location without a jailbreak or installing an app on the device.
-- ✅ Automatically try to download the DeveloperDiskImage files for your iOS Version.
-- ✅ Set the device location with a long click on the map.
-- ✅ Support 3 movement speeds (Walk/Cycle/Drive).
-- ✅ Control the movement using the arrow keys.
-- ✅ Navigate from the current location to a new location.
-- ✅ Support network devices.
-- ✅ Search for locations.
-- ✅ Support dark mode.
+- [x] Spoof the iOS device location without a jailbreak or installing an app on the device.
+- [x] Automatically try to download the DeveloperDiskImage files for your iOS Version.
+- [x] Set the device location with a long click on the map.
+- [x] Support 3 movement speeds (Walk/Cycle/Drive).
+- [x] Control the movement using the arrow keys.
+- [x] Navigate from the current location to a new location.
+- [x] Support network devices.
+- [x] Search for locations.
+- [x] Support dark mode.
 
 ## Build
 
@@ -71,7 +83,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
   	<img src="Preview/walk.png" height="60">
   - Long click the walk button to enabled auto move. Click again to disable auto move.    
   	<img src="Preview/automove.png" height="60">
-  - Long click on a new point on the map while you are spoofing the location to show the navigation prompt.    
+  - Long click on a new point on the map while you are spoofing the location to show the navigation prompt or select the menu item to set the coordinates manually.    
     <img src="Preview/navprompt.png" width="200">
   - Use the left and right arrow keys to change the direction of movement. Use up and down to move. Press space to stop the navigation.
 
@@ -86,5 +98,5 @@ The whole project is licensed under the [MIT License](LICENSE) unless specified 
 ## Contribute
 Help is always appreciated, wether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
 
-### Enhancement ideas
+## Enhancement ideas
 - Allow following a predefined route from a gpx file
