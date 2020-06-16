@@ -10,6 +10,7 @@ LocationSimulator is a macOS app which allows spoofing the location of an iOS de
 
 - [Background](#background)
 - [Features](#features)
+- [Install](#install)
 - [Build](#build)
     - [Requirements](#requirements)
     - [Build the app](#build-the-app)
@@ -37,6 +38,22 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 - [x] Search for locations.
 - [x] Support dark mode.
 
+## Install
+
+1. Install [homebrew](https://brew.sh) by entering the following command in your terminal: 
+
+	```shell
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	```
+2. Install the latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) with [homebrew](https://brew.sh) using:
+
+	```shell
+	brew install libimobiledevice
+	```
+
+3. Go to [releases](https://github.com/Schlaubischlump/LocationSimulator/releases) and download the latest `LocationSimulator.app.zip` version.
+4. Unzip the file and run the application by right clicking on it and granting a [Gatekeeper exception](https://support.apple.com/en-us/HT202491). 
+
 ## Build
 
 ### Requirements
@@ -56,7 +73,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 ### Build the app
 
 1. Install the latest [Xcode developer tools](https://developer.apple.com/xcode/downloads/) from Apple. (Using the AppStore is the easiest way)
-2. Install latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) (and thereby all it's dependencies as well) with [homebrew](https://brew.sh):
+2. Install the latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) (and thereby all it's dependencies as well) with [homebrew](https://brew.sh):
 
 	```shell
 	brew install libimobiledevice
