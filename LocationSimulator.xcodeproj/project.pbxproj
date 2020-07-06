@@ -94,23 +94,15 @@
 		633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
 		633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+TableView.swift"; sourceTree = "<group>"; };
 		633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+Protocol.swift"; sourceTree = "<group>"; };
-		6344174B24035DEF00114694 /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = "../../../../usr/local/Cellar/openssl@1.1/1.1.1d/lib/libcrypto.1.1.dylib"; sourceTree = "<group>"; };
-		6344174D24035DFA00114694 /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = "../../../../usr/local/Cellar/openssl@1.1/1.1.1d/lib/libssl.1.1.dylib"; sourceTree = "<group>"; };
 		634D1143230CB3AE001F440C /* Downloader+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Downloader+Protocol.swift"; sourceTree = "<group>"; };
 		634D1145230CB8D7001F440C /* PogressWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogressWindowController.swift; sourceTree = "<group>"; };
 		634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PogressViewController+DownloaderDelegate.swift"; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
-		6370EFE6247D21410078EA36 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = "../../../../usr/local/Cellar/libplist/HEAD-66d2bb6/lib/libplist.3.dylib"; sourceTree = "<group>"; };
-		6370EFE8247D214E0078EA36 /* libusbmuxd.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.6.dylib; path = "../../../../usr/local/Cellar/libusbmuxd/HEAD-5364a1b/lib/libusbmuxd.6.dylib"; sourceTree = "<group>"; };
-		6370EFEA247D215E0078EA36 /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.6.dylib; path = "../../../../usr/local/Cellar/libimobiledevice/HEAD-4331c3c_6/lib/libimobiledevice.6.dylib"; sourceTree = "<group>"; };
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
 		6375BA192309A95C000DA0A4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
 		63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		63C325F023F494C300E12207 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.3.dylib; path = ../../../../usr/local/Cellar/libplist/2.1.0/lib/libplist.3.dylib; sourceTree = "<group>"; };
-		63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.6.dylib; path = "../../../../usr/local/Cellar/libimobiledevice/HEAD-45d7856_6/lib/libimobiledevice.6.dylib"; sourceTree = "<group>"; };
-		63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.6.dylib; path = ../../../../usr/local/Cellar/libusbmuxd/2.0.1/lib/libusbmuxd.6.dylib; sourceTree = "<group>"; };
 		63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusbmuxd-2.0.6.dylib"; path = "../../../../usr/local/Cellar/libusbmuxd/2.0.2/lib/libusbmuxd-2.0.6.dylib"; sourceTree = "<group>"; };
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
@@ -285,14 +277,6 @@
 				63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */,
 				63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */,
 				63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */,
-				6370EFEA247D215E0078EA36 /* libimobiledevice.6.dylib */,
-				6370EFE8247D214E0078EA36 /* libusbmuxd.6.dylib */,
-				6370EFE6247D21410078EA36 /* libplist.3.dylib */,
-				6344174D24035DFA00114694 /* libssl.1.1.dylib */,
-				6344174B24035DEF00114694 /* libcrypto.1.1.dylib */,
-				63C3261123F49DF400E12207 /* libusbmuxd.6.dylib */,
-				63C3260F23F49DE500E12207 /* libimobiledevice.6.dylib */,
-				63C325F023F494C300E12207 /* libplist.3.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
