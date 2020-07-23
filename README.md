@@ -129,3 +129,4 @@ Help is always appreciated, wether it are bug fixes or features! E.g accessibili
 
 ## Enhancement ideas
 - Allow following a predefined route from a gpx file
+- If you have any other idea, let me know !
