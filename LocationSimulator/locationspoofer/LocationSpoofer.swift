@@ -263,19 +263,37 @@ class LocationSpoofer {
         }
     }
 
+    /// Public wrapper around the private move function.
+    @objc public func move(appendToPendingTasks append: Bool = true) {
+        self.move(timer: nil, appendToPendingTasks: append)
+    }
+
     /// Move `moveType.distance` meters per second `into the direction defined by `heading` or by the current route.
     /// If automove is activated this function will reschedule itself.
+    /// - Parameter timer: The timer instance which schedule the function
     /// - Parameter appendToPendingTasks: True to append the location operation to the DispatchQueue, false otherwise
-    @objc public func move(appendToPendingTasks: Bool = true) {
+    @objc private func move(timer: Timer?, appendToPendingTasks: Bool = true) {
         // we don't want to append a new task
         if !appendToPendingTasks && self.hasPendingTask { return }
 
-        let distance = moveType.distance*kAutoMoveDuration
+        // if the `setLocation` takes to long we might need to move a little bit more to keep the speed.
+        var distance: Double = 0
+        if let userInfo = timer?.userInfo as? [String: UInt64], let lastTime = userInfo["time"] {
+            let durationInSeconds = Double(DispatchTime.now().uptimeNanoseconds - lastTime) / 1000000000
+            distance = moveType.distance * durationInSeconds
+        } else {
+            distance = moveType.distance * kAutoMoveDuration
+        }
 
+        // calculate the next location based on the distance we want to move
         guard let nextLocation = self.calculateNextLocation(distance) else {
             return
         }
 
+        // save the time when we start sending the location information
+        let time = DispatchTime.now().uptimeNanoseconds
+
+        // send the new location information
         self.setLocation(nextLocation) { successfull in
             // cancel automove if the location could no be changed
             guard successfull else { return }
@@ -283,7 +301,9 @@ class LocationSpoofer {
             // reschedule ourself
             if self.moveState == .auto {
                 self.autoMoveTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoMoveDuration), target: self,
-                                                          selector: #selector(self.move), userInfo: nil, repeats: false)
+                                                          selector: #selector(self.move(timer:appendToPendingTasks:)),
+                                                          userInfo: ["time": time],
+                                                          repeats: false)
             }
         }
     }
