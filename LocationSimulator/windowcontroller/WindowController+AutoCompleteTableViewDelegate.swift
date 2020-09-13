@@ -34,14 +34,21 @@ extension WindowController: AutoCompleteTableViewDelegate {
 
     /// Called when text is entered into the textField.
     /// - Parameter textField: autocompletion text field instance
-    /// - Parameter words:
-    /// - Parameter charRange:
-    /// - Parameter index:
-    /// - Return: list of matches for the entered search string
-    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange,
-                   indexOfSelectedItem index: Int) -> [Match] {
-
+    /// - Parameter: text: the entered stringValue inside of the textField
+    func textField(_ textField: NSTextField, textDidChange text: String) {
+        // Cancel any running search request.
+        if self.searchCompleter.isSearching {
+            self.searchCompleter.cancel()
+        }
         self.searchCompleter.queryFragment = textField.stringValue
-        return self.searchCompleter.results.map { Match(text: $0.title, detail: $0.subtitle, data: $0) }
+    }
+}
+
+/// WindowController extension to handle the event, when the searchCompleter finished the search.
+extension WindowController: MKLocalSearchCompleterDelegate {
+    /// Called when the searchCompleter finished loading the search results.
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        let matches = self.searchCompleter.results.map { Match(text: $0.title, detail: $0.subtitle, data: $0) }
+        self.searchField.showMatches(matches)
     }
 }

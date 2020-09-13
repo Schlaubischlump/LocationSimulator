@@ -57,11 +57,12 @@ class WindowController: NSWindowController {
         }
 
         // setup the location searchfield
-        searchField.tableViewDelegate = self
+        self.searchField.tableViewDelegate = self
 
         // only search for locations
-        searchCompleter = MKLocalSearchCompleter()
-        searchCompleter.filterType = .locationsOnly
+        self.searchCompleter = MKLocalSearchCompleter()
+        self.searchCompleter.filterType = .locationsOnly
+        self.searchCompleter.delegate = self
 
         // listen to current location changes
         self.autofocusObserver = NotificationCenter.default.addObserver(forName: .AutoFoucusCurrentLocationChanged,

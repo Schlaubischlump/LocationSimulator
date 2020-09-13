@@ -47,7 +47,7 @@ class AutoCompleteTextField: NSTextField {
     override func becomeFirstResponder() -> Bool {
         // Show popover if we click inside of the textField or enter the focus.
         if !self.stringValue.isEmpty {
-            self.complete(self)
+            self.showMatches(self.matches ?? [])
         }
         return super.becomeFirstResponder()
     }
@@ -148,7 +148,7 @@ class AutoCompleteTextField: NSTextField {
         }
 
         if keyUp {
-            self.complete(self)
+            self.tableViewDelegate?.textField(self, textDidChange: self.stringValue)
         }
 
         return theEvent
@@ -156,7 +156,8 @@ class AutoCompleteTextField: NSTextField {
 
     @objc func clearText(_ sender: AnyObject) {
         self.stringValue = ""
-        self.complete(sender)
+        self.showMatches([])
+        self.tableViewDelegate?.textField(self, textDidChange: "")
     }
 
     @objc func insert(_ sender: AnyObject) {
@@ -170,18 +171,20 @@ class AutoCompleteTextField: NSTextField {
         self.autoCompletePopover?.hide()
     }
 
-    @objc override func complete(_ sender: Any?) {
+    func showMatches(_ matches: [Match]) {
+        // Save the last matches.
+        self.matches = matches
+
         let lengthOfWord = self.stringValue.count
         let subStringRange = NSRange(location: 0, length: lengthOfWord)
 
-        //This happens when we just started a new word or if we have already typed the entire word
+        // This happens when we just started a new word or if we have already typed the entire word.
         if subStringRange.length == 0 || lengthOfWord == 0 {
             self.autoCompletePopover?.hide()
             return
         }
 
         let index = 0
-        self.matches = self.completionsForPartialWordRange(subStringRange, indexOfSelectedItem: index)
 
         if self.matches!.count > 0 {
             self.autoCompleteTableView?.reloadData()
@@ -195,11 +198,6 @@ class AutoCompleteTextField: NSTextField {
         } else {
             self.autoCompletePopover?.hide()
         }
-    }
-
-    func completionsForPartialWordRange(_ charRange: NSRange, indexOfSelectedItem index: Int) -> [Match] {
-        return self.tableViewDelegate!.textField(self, completions: [], forPartialWordRange: charRange,
-                                                 indexOfSelectedItem: index)
     }
 
     func updatePopoverContentSize() {

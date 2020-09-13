@@ -12,9 +12,11 @@ import Foundation
 import AppKit
 
 protocol AutoCompleteTableViewDelegate: AnyObject {
-    func textField(_ textField: NSTextField, completions words: [String], forPartialWordRange charRange: NSRange,
-                   indexOfSelectedItem index: Int) -> [Match]
+    /// Called whenever the textField text changes. Use `showMatches:` on the AutoCompleteTextField to display
+    /// search results.
+    func textField(_ textField: NSTextField, textDidChange text: String)
 
+    /// Called when an item is selected.
     func textField(_ textField: NSTextField, didSelectItem item: Match)
 }
 
