@@ -78,8 +78,13 @@ bool developerImageIsMountedForDevice(const char *udid) {
         plist_dict_next_item(result, it, &key, &subnode);
         while (subnode)
         {
-            // if we find the ImageSignature key in the returned plist we can stop
-            res = (strcmp(key, "ImageSignature") == 0);
+            // If the ImageSignature key in the returned plist contains a subentry the disk image is already uploaded.
+            // Hopefully this works for older iOS versions as well.
+            plist_type type = plist_get_node_type(subnode);
+            if (strcmp(key, "ImageSignature") == 0 && PLIST_ARRAY == type) {
+                res = (plist_array_get_size(subnode) != 0);
+            }
+
             free(key);
             key = NULL;
             if (res) break;
