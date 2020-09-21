@@ -255,5 +255,16 @@
 			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.0/DeveloperDiskImage.dmg.signature</string>
 		</array>
 	</dict>
+  <key>14.2</key>
+	<dict>
+		<key>Image</key>
+		<array>
+			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.2/DeveloperDiskImage.dmg</string>
+		</array>
+		<key>Signature</key>
+		<array>
+			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.2/DeveloperDiskImage.dmg.signature</string>
+		</array>
+	</dict>
 </dict>
 </plist>
