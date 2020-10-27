@@ -173,10 +173,6 @@ class MapViewController: NSViewController {
         window.makeFirstResponder(self.mapView)
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     // MARK: - Dark mode
 
     /// Update the view appearance to light or dark mode based on the UserDefaults `AppleInterfaceStyle` key.

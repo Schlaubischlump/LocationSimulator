@@ -61,7 +61,12 @@ class WindowController: NSWindowController {
 
         // only search for locations
         self.searchCompleter = MKLocalSearchCompleter()
-        self.searchCompleter.filterType = .locationsOnly
+        if #available(OSX 10.15, *) {
+            self.searchCompleter.resultTypes = .address
+        } else {
+            // Fallback on earlier versions
+            self.searchCompleter.filterType = .locationsOnly
+        }
         self.searchCompleter.delegate = self
 
         // listen to current location changes
@@ -80,9 +85,6 @@ class WindowController: NSWindowController {
         Device.stopGeneratingDeviceNotifications()
 
         // remove all notifications
-        NotificationCenter.default.removeObserver(self, name: .DeviceConnected, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .DevicePaired, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .DeviceDisconnected, object: nil)
         if let observer = self.autofocusObserver {
             NotificationCenter.default.removeObserver(observer)
             self.autofocusObserver = nil

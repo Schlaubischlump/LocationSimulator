@@ -17,7 +17,7 @@ struct Match {
     var data: Any?
 }
 
-class AutoCompleteTextField: NSTextField {
+class AutoCompleteSearchField: NSSearchField {
     @IBInspectable var popOverWidth: CGFloat = 100.0
 
     weak var tableViewDelegate: AutoCompleteTableViewDelegate?
@@ -32,7 +32,7 @@ class AutoCompleteTextField: NSTextField {
 
     public var autoCompletePopover: AutoCompletePopover?
 
-    public var autoCompleteTableView: NSTableView?
+    public var autoCompleteTableView: NSTableView!
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -55,7 +55,7 @@ class AutoCompleteTextField: NSTextField {
     func setup() {
         let column1 = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "text"))
         column1.isEditable = false
-        column1.width = popOverWidth - 2 * popOverPadding
+        column1.width = popOverWidth - 2 * self.popOverPadding
 
         let tableView = NSTableView(frame: .zero)
         tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.regular
@@ -72,14 +72,16 @@ class AutoCompleteTextField: NSTextField {
         tableView.dataSource = self
         self.autoCompleteTableView = tableView
 
-        let tableSrollView = NSScrollView(frame: .zero)
-        tableSrollView.drawsBackground = false
-        tableSrollView.documentView = tableView
-        tableSrollView.hasVerticalScroller = true
-        tableSrollView.hasHorizontalScroller = false
+        let tableScrollView = NSScrollView(frame: .zero)
+        tableScrollView.drawsBackground = false
+        tableScrollView.documentView = tableView
+        tableScrollView.hasVerticalScroller = true
+        tableScrollView.hasHorizontalScroller = false
+        tableScrollView.automaticallyAdjustsContentInsets = false
+        tableScrollView.contentInsets = NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         let contentView = NSView(frame: NSRect.init(x: 0, y: 0, width: popOverWidth, height: 0))
-        contentView.addSubview(tableSrollView)
+        contentView.addSubview(tableScrollView)
 
         let contentViewController = NSViewController()
         contentViewController.view = contentView
@@ -192,7 +194,7 @@ class AutoCompleteTextField: NSTextField {
             self.autoCompleteTableView?.scrollRowToVisible(index)
             self.updatePopoverContentSize()
 
-            if !self.autoCompletePopover!.isVisible {
+            if !(self.autoCompletePopover?.isVisible ?? true) {
                 self.autoCompletePopover?.show(relativeTo: self.bounds, of: self)
             }
         } else {
@@ -201,12 +203,12 @@ class AutoCompleteTextField: NSTextField {
     }
 
     func updatePopoverContentSize() {
-        let numberOfRows = min(self.autoCompleteTableView!.numberOfRows, maxResults)
-        let rowHeight = self.autoCompleteTableView!.rowHeight
-        let spacing = self.autoCompleteTableView!.intercellSpacing
+        let numberOfRows = min(self.autoCompleteTableView.numberOfRows, maxResults)
+        let rowHeight = self.autoCompleteTableView.rowHeight
+        let spacing = self.autoCompleteTableView.intercellSpacing
         let height = (rowHeight + spacing.height) * CGFloat(numberOfRows)
-        let frame = NSRect(x: 0, y: 0, width: popOverWidth + spacing.width, height: height)
-        self.autoCompleteTableView?.enclosingScrollView?.frame = frame.insetBy(dx: popOverPadding, dy: popOverPadding)
+        var frame = NSRect(x: 0, y: 0, width: popOverWidth + spacing.width, height: height)
+        self.autoCompleteTableView.enclosingScrollView?.frame = frame.insetBy(dx: self.popOverPadding, dy: 0)
         self.autoCompletePopover?.setContentSize(frame.size)
     }
 }

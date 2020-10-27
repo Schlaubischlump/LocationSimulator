@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="16002"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
-        <plugIn identifier="com.apple.MapKitIBPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="17007"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17147"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="17147"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
@@ -807,8 +807,8 @@
                                 <toolbarItem implicitItemIdentifier="05896384-9377-47D8-8616-24434D2F77DB" label="" paletteLabel="Move Types" sizingBehavior="auto" id="d4p-ja-QrK">
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="JrU-V8-kbc">
-                                        <rect key="frame" x="0.0" y="14" width="181" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="14" width="152" height="23"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="Mrg-VI-6Bg">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -841,7 +841,7 @@
                                     <nil key="toolTip"/>
                                     <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="dZ6-JS-ZNU" customClass="LocationSearchField" customModule="LocationSimulator" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="2dn-JM-FSR">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -852,11 +852,11 @@
                                 <toolbarItem implicitItemIdentifier="6F13F7B5-5480-40F6-9CCF-DACF5B3377BB" label="Devices" paletteLabel="Devices" sizingBehavior="auto" id="Of5-OJ-NeV">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="s7G-Hf-qPV">
-                                        <rect key="frame" x="0.0" y="14" width="58" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="11" y="14" width="27" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a2u-Ak-h7p">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="dk1-4D-8i4"/>
                                         </popUpButtonCell>
                                     </popUpButton>
@@ -886,6 +886,7 @@
                                 <viewController key="viewController" id="kEP-d8-zG1">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eng-na-hHM">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O0j-vo-ghD">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -900,6 +901,7 @@
                                 <viewController key="viewController" id="I3c-B6-Xz7">
                                     <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ztw-f5-7tr">
                                         <rect key="frame" x="0.0" y="0.0" width="199" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="1NT-QT-ght">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -933,7 +935,7 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="MapViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="ContentView" customModule="LocationSimulator" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="460" height="460"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1099,7 +1101,7 @@
                                 <rect key="frame" x="20" y="112" width="440" height="20"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ohc-gm-lle">
-                                <rect key="frame" x="384" y="13" width="82" height="32"/>
+                                <rect key="frame" x="391" y="13" width="76" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BF4-i1-cE7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1162,7 +1164,7 @@ Gw
         <image name="Controls" width="511" height="511"/>
         <image name="CurrentLocation" width="51" height="51"/>
         <image name="MoveButton" width="273" height="269"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSTouchBarRefreshTemplate" width="19" height="30"/>
+        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="NSTouchBarRefreshTemplate" width="14" height="16"/>
     </resources>
 </document>

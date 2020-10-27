@@ -40,7 +40,12 @@ extension WindowController: AutoCompleteTableViewDelegate {
         if self.searchCompleter.isSearching {
             self.searchCompleter.cancel()
         }
-        self.searchCompleter.queryFragment = textField.stringValue
+
+        if textField.stringValue.isEmpty {
+            self.searchField.showMatches([])
+        } else {
+            self.searchCompleter.queryFragment = textField.stringValue
+        }
     }
 }
 

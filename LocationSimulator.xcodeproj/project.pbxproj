@@ -23,6 +23,7 @@
 		63183E29231821DC0073D80E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63183E27231821DB0073D80E /* Localizable.strings */; };
 		631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */; };
 		631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D23230A063200A7A8CF /* NSImage+Extension.swift */; };
+		632A962C254811AC0078B8DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632A962B254811AC0078B8DD /* ContentView.swift */; };
 		632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C465823F4B611004E5092 /* CoordinateSelectionView.swift */; };
 		632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */; };
 		632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */; };
@@ -34,9 +35,9 @@
 		633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351B20A433EE00A0431C /* MapViewController.swift */; };
 		633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510B20AED69B002A61F1 /* NSView+Extension.swift */; };
 		633A460422F996E2005B3BE0 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A3D5F620D20ED300546645 /* Device.swift */; };
-		633A460922F9A6A0005B3BE0 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */; };
-		633A460C22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */; };
-		633A460E22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */; };
+		633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */; };
+		633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */; };
+		633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */; };
 		634D1144230CB3AE001F440C /* Downloader+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1143230CB3AE001F440C /* Downloader+Protocol.swift */; };
 		634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1145230CB8D7001F440C /* PogressWindowController.swift */; };
 		634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */; };
@@ -86,14 +87,15 @@
 		63183E2A2318221B0073D80E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		631F9D23230A063200A7A8CF /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
+		632A962B254811AC0078B8DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		632C465823F4B611004E5092 /* CoordinateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionView.swift; sourceTree = "<group>"; };
 		632C465B23F4B715004E5092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CoordinateSelectionView.xib; sourceTree = "<group>"; };
 		632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateFormatter.swift; sourceTree = "<group>"; };
 		632C466223F4D9C8004E5092 /* CoordinateStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateStepper.swift; sourceTree = "<group>"; };
 		632C466423F7638A004E5092 /* menubaritems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menubaritems.swift; sourceTree = "<group>"; };
-		633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
-		633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+TableView.swift"; sourceTree = "<group>"; };
-		633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteTextField+Protocol.swift"; sourceTree = "<group>"; };
+		633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteSearchField.swift; sourceTree = "<group>"; };
+		633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteSearchField+TableView.swift"; sourceTree = "<group>"; };
+		633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteSearchField+Protocol.swift"; sourceTree = "<group>"; };
 		634D1143230CB3AE001F440C /* Downloader+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Downloader+Protocol.swift"; sourceTree = "<group>"; };
 		634D1145230CB8D7001F440C /* PogressWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogressWindowController.swift; sourceTree = "<group>"; };
 		634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PogressViewController+DownloaderDelegate.swift"; sourceTree = "<group>"; };
@@ -287,9 +289,9 @@
 				63156C1622FB9BC20086D5F6 /* LICENSE */,
 				63156C1822FB9BD20086D5F6 /* README.md */,
 				638ADBE0230095980061612D /* AutoCompletePopover.swift */,
-				633A460822F9A69F005B3BE0 /* AutoCompleteTextField.swift */,
-				633A460B22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift */,
-				633A460D22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift */,
+				633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */,
+				633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */,
+				633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */,
 			);
 			path = autocomplete;
 			sourceTree = "<group>";
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				6375BA192309A95C000DA0A4 /* BlurView.swift */,
+				632A962B254811AC0078B8DD /* ContentView.swift */,
 				13BA351B20A433EE00A0431C /* MapViewController.swift */,
 				63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */,
 				63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */,
@@ -359,7 +362,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "David Klopp";
 				TargetAttributes = {
 					13BA351520A433EE00A0431C = {
@@ -471,6 +474,7 @@
 				63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */,
 				63156C0422FB67610086D5F6 /* devicepair.c in Sources */,
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
+				632A962C254811AC0078B8DD /* ContentView.swift in Sources */,
 				6311B799230C150D00AABF3E /* Filemanager+Extension.swift in Sources */,
 				633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */,
 				632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */,
@@ -479,7 +483,7 @@
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
-				633A460922F9A6A0005B3BE0 /* AutoCompleteTextField.swift in Sources */,
+				633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */,
 				63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */,
 				633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */,
 				632C466523F7638A004E5092 /* menubaritems.swift in Sources */,
@@ -490,8 +494,8 @@
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				6311B79C230C1DD200AABF3E /* Downloader.swift in Sources */,
 				63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */,
-				633A460C22FACBD7005B3BE0 /* AutoCompleteTextField+TableView.swift in Sources */,
-				633A460E22FACC53005B3BE0 /* AutoCompleteTextField+Protocol.swift in Sources */,
+				633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */,
+				633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -554,6 +559,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -594,6 +600,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -617,6 +624,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -721,6 +729,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -744,6 +753,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

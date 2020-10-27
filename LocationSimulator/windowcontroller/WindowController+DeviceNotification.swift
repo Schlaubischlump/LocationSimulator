@@ -16,7 +16,8 @@ extension WindowController {
         guard let udid: String = notification.userInfo?["UDID"] as? String,
             let name: String = notification.userInfo?["NAME"] as? String else { return }
 
-        // For some reason sometimes the same device should be added twice
+        // If the same device is connected via USB and WI-FI this notification
+        // is send twice. We just use the first one.
         if self.deviceUDIDs.contains(udid) { return }
 
         // add the new device to the internal list and the UI

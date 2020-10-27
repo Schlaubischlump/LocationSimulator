@@ -77,7 +77,7 @@ class AutoCompleteTableRowView: NSTableRowView {
 }
 
 // MARK: - NSTableViewDelegate
-extension AutoCompleteTextField: NSTableViewDelegate {
+extension AutoCompleteSearchField: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
         return AutoCompleteTableRowView()
@@ -140,7 +140,7 @@ extension AutoCompleteTextField: NSTableViewDelegate {
 
 // MARK: - NSTableViewDataSource
 
-extension AutoCompleteTextField: NSTableViewDataSource {
+extension AutoCompleteSearchField: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         if self.matches == nil {
             return 0
