@@ -30,11 +30,11 @@ class WindowController: NSWindowController {
     /// Search completer to find a location based on a string.
     public var searchCompleter: MKLocalSearchCompleter!
 
-    /// UDIDs of all currently connected devices.
-    public var deviceUDIDs: [String]!
+    /// All currently connected devices.
+    public var devices: [Device] = []
 
     /// Cache to store the last known location for each device as long as it is connected
-    var lastKnownLocationCache: [String: CLLocationCoordinate2D] = [:]
+    var lastKnownLocationCache: [Device: CLLocationCoordinate2D] = [:]
 
     /// Internal reference to a NotificationCenterObserver.
     private var autofocusObserver: Any?
@@ -44,16 +44,8 @@ class WindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        // save the UDIDs of all connected devices
-        self.deviceUDIDs = []
-
         if Device.startGeneratingDeviceNotifications() {
-            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceConnected),
-                                                   name: .DeviceConnected, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.devicePaired),
-                                                   name: .DevicePaired, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDisconnected),
-                                                   name: .DeviceDisconnected, object: nil)
+            self.registerDeviceNotifications()
         }
 
         // setup the location searchfield
@@ -142,12 +134,12 @@ class WindowController: NSWindowController {
         guard let viewController = contentViewController as? MapViewController else { return }
 
         let index: Int = sender.indexOfSelectedItem
-        let udid: String = self.deviceUDIDs[index]
+        let device: Device = self.devices[index]
 
         // cleanup the UI if a previous device was selected
         if let spoofer = viewController.spoofer {
             // if the selection did not change do nothing
-            if spoofer.device.UDID == udid {
+            if spoofer.device == device {
                 NavigationMenubarItem.setLocation.enable()
                 NavigationMenubarItem.recentLocation.enable()
                 return
@@ -157,7 +149,7 @@ class WindowController: NSWindowController {
             spoofer.delegate = nil
 
             // store the last known location for the last device
-            self.lastKnownLocationCache[spoofer.device.UDID] = spoofer.currentLocation
+            self.lastKnownLocationCache[spoofer.device] = spoofer.currentLocation
 
             // explicitly force the UI to reset
             viewController.willChangeLocation(spoofer: spoofer, toCoordinate: nil)
@@ -165,14 +157,14 @@ class WindowController: NSWindowController {
         }
 
         // load the new device
-        if viewController.loadDevice(udid) {
+        if viewController.load(device: device) {
             // set the correct walking speed based on the current selection
             viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
 
             // Check if we already have a known location for this device, if so load it.
             // TODO: This is not an optimal solution, because we do not keep information about the current route or
             // automove state. We could fix this by serializing the spoofer instance... but this is low priority.
-            if let spoofer = viewController.spoofer, let coordinate = self.lastKnownLocationCache[udid] {
+            if let spoofer = viewController.spoofer, let coordinate = self.lastKnownLocationCache[device] {
                 spoofer.currentLocation = coordinate
                 viewController.willChangeLocation(spoofer: spoofer, toCoordinate: coordinate)
                 viewController.didChangeLocation(spoofer: spoofer, toCoordinate: coordinate)

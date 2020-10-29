@@ -207,7 +207,7 @@ class AutoCompleteSearchField: NSSearchField {
         let rowHeight = self.autoCompleteTableView.rowHeight
         let spacing = self.autoCompleteTableView.intercellSpacing
         let height = (rowHeight + spacing.height) * CGFloat(numberOfRows)
-        var frame = NSRect(x: 0, y: 0, width: popOverWidth + spacing.width, height: height)
+        let frame = NSRect(x: 0, y: 0, width: popOverWidth + spacing.width, height: height)
         self.autoCompleteTableView.enclosingScrollView?.frame = frame.insetBy(dx: self.popOverPadding, dy: 0)
         self.autoCompletePopover?.setContentSize(frame.size)
     }

@@ -202,11 +202,12 @@ class MapViewController: NSViewController {
     ///  time.
     /// - Parameter udid: device unique identifier
     /// - Return: true on success, false otherwise
-    func loadDevice(_ udid: String) -> Bool {
+    func load(device: Device) -> Bool {
         guard let window = self.view.window else { return false }
 
         do {
-            let device: Device = try Device.load(udid)
+            try device.pair()
+            // If the pairing and uploading of the developer disk image is successfull create a spoofer instance.
             self.spoofer = LocationSpoofer(device)
             self.spoofer?.delegate = self
             return true
@@ -252,7 +253,7 @@ class MapViewController: NSViewController {
                         downloader.cancel(devSignTask)
                     } else if response == .OK {
                         // download finished successfully => try to load the device again
-                        _ = self.loadDevice(udid)
+                        _ = self.load(device: device)
                     }
                 }
             }

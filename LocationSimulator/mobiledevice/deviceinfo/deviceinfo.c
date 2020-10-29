@@ -21,9 +21,9 @@
 /// Get the iOS product version string from the connected device
 /// - Parameter udid: iOS device UDID
 /// - Return: product version string in format: major.minor
-const char *deviceProductVersion(const char *udid) {
+const char *deviceProductVersion(const char *udid, enum idevice_options lookup_ops) {
     idevice_t device = NULL;
-    idevice_error_t ret = idevice_new_with_options(&device, udid, LOOKUP_OPS);
+    idevice_error_t ret = idevice_new_with_options(&device, udid, lookup_ops);
     lockdownd_client_t client = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
@@ -65,12 +65,12 @@ const char *deviceProductVersion(const char *udid) {
 /// Get the name of the connected iOS device (not the name of the product).
 /// - Parameter udid: iOS device UDID
 /// - Return: name of the iOS device
-const char *deviceName(const char *udid) {
+const char *deviceName(const char *udid, enum idevice_options lookup_ops) {
     idevice_t device = NULL;
     lockdownd_client_t client = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
-    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
         LOG_ERR("No device found with udid %s, is it plugged in?", udid);
         return NULL;
     }

@@ -9,24 +9,55 @@
 import Foundation
 import AppKit
 
+let kUSBIconImage: NSImage? = NSImage(named: "usb")?.resize(width: 20, height: 20)
+let kWIFIIconImage: NSImage? = NSImage(named: "wifi")?.resize(width: 20, height: 20)
+
 extension WindowController {
+
+    /// Update a single popup list item entry by updating its name and image.
+    private func updatePopupList(item: NSMenuItem?, device: Device) {
+        item?.title = device.name
+        if device.connectionType.contains([.network, .usb]) && device.preferNetworkConnection {
+            item?.image = kWIFIIconImage
+        } else if device.connectionType.contains(.usb) {
+            item?.image = kUSBIconImage
+        } else if device.connectionType.contains(.network) {
+            item?.image = kWIFIIconImage
+        } else {
+            item?.image = nil
+        }
+    }
+
+    /// Register all notification handler.
+    public func registerDeviceNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceConnected),
+                                               name: .DeviceConnected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceChanged),
+                                               name: .DeviceChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.devicePaired),
+                                               name: .DevicePaired, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.deviceDisconnected),
+                                               name: .DeviceDisconnected, object: nil)
+    }
+
     /// Callback when a device gets connected.
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func deviceConnected(_ notification: Notification) {
-        guard let udid: String = notification.userInfo?["UDID"] as? String,
-            let name: String = notification.userInfo?["NAME"] as? String else { return }
+        guard let device: Device = notification.userInfo?["device"] as? Device else { return }
 
-        // If the same device is connected via USB and WI-FI this notification
-        // is send twice. We just use the first one.
-        if self.deviceUDIDs.contains(udid) { return }
+        // This should never be the case, but let's make sure that a device is unique.
+        if self.devices.contains(device) { return }
 
         // add the new device to the internal list and the UI
-        self.deviceUDIDs.append(udid)
-        self.devicesPopup.addItem(withTitle: name)
+        self.devices.append(device)
+        self.devicesPopup.addItem(withTitle: device.name)
+
+        // Update the device popup.
+        self.updatePopupList(item: self.devicesPopup.lastItem, device: device)
 
         // first device connected => automatically pair it
-        if self.deviceUDIDs.count == 1, let viewController = self.contentViewController as? MapViewController {
-            if viewController.loadDevice(udid) {
+        if self.devices.count == 1, let viewController = self.contentViewController as? MapViewController {
+            if viewController.load(device: device) {
                 viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
                 // make sure to enable the menubar item
                 NavigationMenubarItem.setLocation.enable()
@@ -44,19 +75,45 @@ extension WindowController {
         print("[INFO]: Paired device: \(name) with UDID: \(udid)")
     }
 
+    /// Callback when a device is changed. This might happen if a network device is additionally connected over USB.
+    /// - Parameter notification: notification with device information (UDID and name)
+    @objc func deviceChanged(_ notification: Notification) {
+        guard let device: Device = notification.userInfo?["device"] as? Device,
+              let viewController = contentViewController as? MapViewController else { return }
+
+        // The internal `preferNetworkConnection` might not be updated for the cached device.
+        // TODO: Might be helpful in the future if I introduce settings.
+        // device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
+
+        // Device is a struct. We therefore need to update the existing struct to write the changes.
+        if let index: Int = self.devices.firstIndex(of: device) {
+            self.devices[index] = device
+
+            // update the device popup
+            self.updatePopupList(item: self.devicesPopup.item(at: index), device: device)
+        }
+
+        // sometimes the mapView looses focus when connecting and disconnecting a device
+        viewController.becomeFirstResponder()
+    }
+
     /// Callback when a device gets disconnected.
     /// - Parameter notification: notification with device information (UDID)
     @objc func deviceDisconnected(_ notification: Notification) {
-        guard let udid: String = notification.userInfo?["UDID"] as? String,
-            let viewController = contentViewController as? MapViewController else { return }
+        guard let device: Device = notification.userInfo?["device"] as? Device,
+              let viewController = contentViewController as? MapViewController else { return }
+
+        print("Disconnect: \(device.name)")
 
         // remove the device from the list and the list popup
-        if let index: Int = self.deviceUDIDs.firstIndex(of: udid) {
+        if let index: Int = self.devices.firstIndex(of: device) {
+            print("Device to disconnect: \(self.devices[index].name)")
+
             let removedCurrentDevice = (self.devicesPopup.indexOfSelectedItem == index)
             self.devicesPopup.removeItem(at: index)
-            self.deviceUDIDs.remove(at: index)
+            self.devices.remove(at: index)
             // remove the last known location for this device
-            self.lastKnownLocationCache.removeValue(forKey: udid)
+            self.lastKnownLocationCache.removeValue(forKey: device)
 
             if let spoofer = viewController.spoofer {
                 // disable all events

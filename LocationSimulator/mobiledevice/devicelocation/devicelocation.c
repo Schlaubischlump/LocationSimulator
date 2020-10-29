@@ -22,14 +22,14 @@
 /// Stop spoofing the iOS device location and reset it to the original GPS coordinates.
 /// - Parameter udid: iOS device UDID
 /// - Return: True on success, False otherwise.
-bool resetLocation(const char* udid) {
+bool resetLocation(const char* udid, enum idevice_options lookup_ops) {
     bool res = false;
     idevice_t device = NULL;
     lockdownd_client_t client = NULL;
     service_client_t service_client = NULL;
     lockdownd_service_descriptor_t service = NULL;
 
-    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
         LOG_ERR("No iOS device with specified udid found.");
         goto leave_and_cleanup;
     }
@@ -73,14 +73,14 @@ leave_and_cleanup:
 /// - Parameter lng: new longitude data as string
 /// - Parameter udid: iOS device UDID
 /// - Return: True on success, False otherwise.
-bool sendLocation(const char *lat, const char *lng, const char* udid) {
+bool sendLocation(const char *lat, const char *lng, const char* udid, enum idevice_options lookup_ops) {
     bool res = false;
     idevice_t device = NULL;
     lockdownd_client_t client = NULL;
     service_client_t service_client = NULL;
     lockdownd_service_descriptor_t service = NULL;
 
-    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
         LOG_ERR("No iOS device with specified udid found.");
         goto leave_and_cleanup;
     }

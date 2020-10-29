@@ -20,11 +20,11 @@
 /// Pair and validate the connection to the device with the given UDID.
 /// - Parameter udid: iOS device UDID
 /// - Return: True on success, False otherwise.
-bool pairDevice(const char* udid) {
+bool pairDevice(const char* udid, enum idevice_options lookup_ops) {
     idevice_t device = NULL;
     lockdownd_client_t client = NULL;
 
-    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
         LOG_ERR("Could not create device with UDID: %s", udid);
         return false;
     }

@@ -32,7 +32,7 @@ typedef enum {
 /// Check if the DeveloperDiskImage is mounted on the iOS Device.
 /// - Parameter udid: iOS device UDID
 /// - Return: True if the image is mounted, False otherwise.
-bool developerImageIsMountedForDevice(const char *udid) {
+bool developerImageIsMountedForDevice(const char *udid, enum idevice_options lookup_ops) {
     bool res = false;
 
     plist_t result = NULL;
@@ -42,7 +42,7 @@ bool developerImageIsMountedForDevice(const char *udid) {
     lockdownd_service_descriptor_t service = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
-    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
         LOG_ERR("No device found.");
         return NULL;
     }
@@ -121,7 +121,7 @@ static ssize_t mim_upload_cb(void* buf, size_t size, void* userdata)
 /// - Parameter devDMG: path to DeveloperDiskImage.dmg for this iOS Version
 /// - Parameter devSign: path to DeveloperDiskImage.dmg.signature for the devDMG file
 /// - Return: True if the image could be mounted, False otherwise.
-bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSign) {
+bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSign, enum idevice_options lookup_ops) {
     bool res = false;
 
     idevice_t device = NULL;
@@ -131,7 +131,7 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     lockdownd_service_descriptor_t service = NULL;
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
-    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, LOOKUP_OPS)) {
+    if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
         LOG_ERR("No device found.");
         return NULL;
     }
