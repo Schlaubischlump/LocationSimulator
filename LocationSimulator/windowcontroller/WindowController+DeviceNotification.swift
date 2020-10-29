@@ -43,16 +43,16 @@ extension WindowController {
     /// Callback when a device gets connected.
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func deviceConnected(_ notification: Notification) {
-        guard let device: Device = notification.userInfo?["device"] as? Device else { return }
+        guard var device: Device = notification.userInfo?["device"] as? Device else { return }
 
         // This should never be the case, but let's make sure that a device is unique.
         if self.devices.contains(device) { return }
 
-        // add the new device to the internal list and the UI
+        device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
+
+        // add the new device to the internal list and update the UI
         self.devices.append(device)
         self.devicesPopup.addItem(withTitle: device.name)
-
-        // Update the device popup.
         self.updatePopupList(item: self.devicesPopup.lastItem, device: device)
 
         // first device connected => automatically pair it
@@ -78,12 +78,11 @@ extension WindowController {
     /// Callback when a device is changed. This might happen if a network device is additionally connected over USB.
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func deviceChanged(_ notification: Notification) {
-        guard let device: Device = notification.userInfo?["device"] as? Device,
+        guard var device: Device = notification.userInfo?["device"] as? Device,
               let viewController = contentViewController as? MapViewController else { return }
 
-        // The internal `preferNetworkConnection` might not be updated for the cached device.
-        // TODO: Might be helpful in the future if I introduce settings.
-        // device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
+        // the internal `preferNetworkConnection` might not be updated for the cached device
+        device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
 
         // Device is a struct. We therefore need to update the existing struct to write the changes.
         if let index: Int = self.devices.firstIndex(of: device) {
@@ -103,43 +102,42 @@ extension WindowController {
         guard let device: Device = notification.userInfo?["device"] as? Device,
               let viewController = contentViewController as? MapViewController else { return }
 
-        print("Disconnect: \(device.name)")
-
         // remove the device from the list and the list popup
         if let index: Int = self.devices.firstIndex(of: device) {
-            print("Device to disconnect: \(self.devices[index].name)")
-
             let removedCurrentDevice = (self.devicesPopup.indexOfSelectedItem == index)
             self.devicesPopup.removeItem(at: index)
             self.devices.remove(at: index)
             // remove the last known location for this device
             self.lastKnownLocationCache.removeValue(forKey: device)
 
-            if let spoofer = viewController.spoofer {
-                // disable all events
-                spoofer.moveState = .manual
-                spoofer.delegate = nil
+            // if the current device was removed, reset the UI
+            if removedCurrentDevice {
+                if let spoofer = viewController.spoofer {
+                    // disable all events
+                    spoofer.moveState = .manual
+                    spoofer.delegate = nil
 
-                // make sure the GUI is reset
-                viewController.willChangeLocation(spoofer: spoofer, toCoordinate: nil)
-                viewController.didChangeLocation(spoofer: spoofer, toCoordinate: nil)
-            }
+                    // make sure the GUI is reset
+                    viewController.willChangeLocation(spoofer: spoofer, toCoordinate: nil)
+                    viewController.didChangeLocation(spoofer: spoofer, toCoordinate: nil)
+                }
 
-            // cleanup the spoofer instance for the device
-            viewController.spoofer = nil
-            // reset the total distance label
-            let emptyTotalDistanceString = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
-            viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
+                // cleanup the spoofer instance for the device
+                viewController.spoofer = nil
+                // reset the total distance label
+                let emptyTotalDistanceString = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
+                viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
 
-            // disable the menubar items
-            let items: [NavigationMenubarItem] = [.setLocation, .toggleAutomove, .moveUp, .moveDown,
-                                                  .moveCounterclockwise, .moveClockwise, .stopNavigation,
-                                                  .recentLocation]
-            items.forEach { item in item.disable() }
+                // disable the menubar items
+                let items: [NavigationMenubarItem] = [.setLocation, .toggleAutomove, .moveUp, .moveDown,
+                                                      .moveCounterclockwise, .moveClockwise, .stopNavigation,
+                                                      .recentLocation]
+                items.forEach { item in item.disable() }
 
-            // try to select the next device in the list
-            if removedCurrentDevice, self.devicesPopup.numberOfItems > 0 {
-                self.deviceSelected(self.devicesPopup)
+                // try to select the next device in the list
+                if self.devicesPopup.numberOfItems > 0 {
+                    self.deviceSelected(self.devicesPopup)
+                }
             }
         }
     }

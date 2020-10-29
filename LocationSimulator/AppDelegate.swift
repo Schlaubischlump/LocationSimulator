@@ -23,6 +23,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             RecentLocationMenubarItem.clearMenu.enable()
         }
 
+        // register the default setting values
+        UserDefaults.standard.registerNetworkDefaultValues()
     }
 
     //func applicationWillTerminate(_ aNotification: Notification) {}

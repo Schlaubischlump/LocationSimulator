@@ -48,6 +48,10 @@
 		638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9096254B3C6600A520E0 /* ConnectionType.swift */; };
 		638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9097254B3C6600A520E0 /* DeviceError.swift */; };
 		638B909B254B3C6600A520E0 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9098254B3C6600A520E0 /* Device.swift */; };
+		638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B909E254B514C00A520E0 /* PreferenceWindowController.swift */; };
+		638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A2254B5A1800A520E0 /* GeneralViewController.swift */; };
+		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
+		638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */; };
 		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
 		63E4B63424997AE9009B779B /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
 		63E4B63524997B17009B779B /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
@@ -108,6 +112,10 @@
 		638B9096254B3C6600A520E0 /* ConnectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
 		638B9097254B3C6600A520E0 /* DeviceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceError.swift; sourceTree = "<group>"; };
 		638B9098254B3C6600A520E0 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		638B909E254B514C00A520E0 /* PreferenceWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceWindowController.swift; sourceTree = "<group>"; };
+		638B90A2254B5A1800A520E0 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		638B90A6254B5A4400A520E0 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceTabViewController.swift; sourceTree = "<group>"; };
 		63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusbmuxd-2.0.6.dylib"; path = "../../../../usr/local/Cellar/libusbmuxd/2.0.2/lib/libusbmuxd-2.0.6.dylib"; sourceTree = "<group>"; };
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
@@ -169,6 +177,7 @@
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				13BA351F20A433EF00A0431C /* Main.storyboard */,
 				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
+				638B909D254B513300A520E0 /* Preferences */,
 				632C465723F4B5F5004E5092 /* menubar */,
 				63FC47A22306243300BBB2E8 /* windowcontroller */,
 				6311B79A230C1D9C00AABF3E /* downloader */,
@@ -320,6 +329,17 @@
 				638B9098254B3C6600A520E0 /* Device.swift */,
 			);
 			path = Device;
+			sourceTree = "<group>";
+		};
+		638B909D254B513300A520E0 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				638B909E254B514C00A520E0 /* PreferenceWindowController.swift */,
+				638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */,
+				638B90A2254B5A1800A520E0 /* GeneralViewController.swift */,
+				638B90A6254B5A4400A520E0 /* NetworkViewController.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		63FC479523022D3A00BBB2E8 /* extensions */ = {
@@ -498,13 +518,16 @@
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
+				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
 				633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */,
 				63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */,
+				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
 				633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */,
 				632C466523F7638A004E5092 /* menubaritems.swift in Sources */,
 				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
+				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
 				638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */,
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				6311B79C230C1DD200AABF3E /* Downloader.swift in Sources */,
@@ -512,6 +535,7 @@
 				638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */,
 				633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */,
 				633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */,
+				638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

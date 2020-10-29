@@ -155,6 +155,10 @@ struct Device: Hashable {
     static func stopGeneratingDeviceNotifications() -> Bool {
         guard Device.isGeneratingDeviceNotifications else { return false }
 
+        // Remove all currently connected devices.
+        deviceList.forEach({
+            NotificationCenter.default.post(name: .DeviceDisconnected, object: nil, userInfo: ["device": $1])
+        })
         deviceList.removeAll()
 
         // Cancel device event subscription.
