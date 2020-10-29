@@ -128,5 +128,7 @@ The whole project is licensed under the [MIT License](LICENSE) unless specified 
 Help is always appreciated, wether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
 
 ## Enhancement ideas
+- Accessibility support
+- AppleScript support
 - Allow following a predefined route from a gpx file
 - If you have any other idea, let me know !
