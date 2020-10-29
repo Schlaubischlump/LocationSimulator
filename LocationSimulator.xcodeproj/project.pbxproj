@@ -177,8 +177,8 @@
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				13BA351F20A433EF00A0431C /* Main.storyboard */,
 				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
-				638B909D254B513300A520E0 /* Preferences */,
 				632C465723F4B5F5004E5092 /* menubar */,
+				638B909D254B513300A520E0 /* preferences */,
 				63FC47A22306243300BBB2E8 /* windowcontroller */,
 				6311B79A230C1D9C00AABF3E /* downloader */,
 				638ADBE2230203B20061612D /* viewcontroller */,
@@ -331,7 +331,7 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
-		638B909D254B513300A520E0 /* Preferences */ = {
+		638B909D254B513300A520E0 /* preferences */ = {
 			isa = PBXGroup;
 			children = (
 				638B909E254B514C00A520E0 /* PreferenceWindowController.swift */,
@@ -339,7 +339,7 @@
 				638B90A2254B5A1800A520E0 /* GeneralViewController.swift */,
 				638B90A6254B5A4400A520E0 /* NetworkViewController.swift */,
 			);
-			path = Preferences;
+			path = preferences;
 			sourceTree = "<group>";
 		};
 		63FC479523022D3A00BBB2E8 /* extensions */ = {

@@ -129,8 +129,4 @@ Help is always appreciated, wether it are bug fixes or features! E.g accessibili
 
 ## Enhancement ideas
 - Allow following a predefined route from a gpx file
-- Big Sur UI update
-    - ~~New icon (done, just not pushed)~~
-    - Replace the bottom bar (maybe with a transparent, hovering total distance label)
-    - Extend the Mapview behind the toolbar
 - If you have any other idea, let me know !
