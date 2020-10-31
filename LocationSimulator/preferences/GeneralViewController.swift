@@ -18,8 +18,11 @@ class GeneralViewController: NSViewController {
         infoField.font = .labelFont(ofSize: NSFont.systemFontSize)
         infoField.alignment = .center
         infoField.isBezeled = false
+
+        // Add the welcome text and resize the view
         infoField.stringValue = "\n" + NSLocalizedString("WELCOME", comment: "") + "\n"
         infoField.sizeToFit()
+
         // Add some padding to the left and right
         infoField.frame.size.width += 40
 

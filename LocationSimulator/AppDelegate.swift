@@ -9,6 +9,8 @@
 import Cocoa
 import CoreLocation
 
+let kProjectWebsite = "https://github.com/Schlaubischlump/LocationSimulator"
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -159,6 +161,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             viewController.requestTeleportOrNavigation(toCoordinate: coord)
         } else {
             viewController.spoofer?.setLocation(coord)
+        }
+    }
+
+    /// Open the main project website in a browser.
+    @IBAction func openProjectPage(_ sender: Any) {
+        if let url = URL(string: kProjectWebsite) {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    /// Open the report an issue website in a browser.
+    @IBAction func reportBugPage(_ sender: Any) {
+        if let url = URL(string: kProjectWebsite + "/issues") {
+            NSWorkspace.shared.open(url)
         }
     }
 }

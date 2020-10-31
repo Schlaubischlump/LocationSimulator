@@ -762,6 +762,19 @@
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Zm5-Nw-xaS"/>
+                                        <menuItem title="Open Project Page" id="FIq-gG-PQ6" userLabel="Project">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openProjectPage:" target="Voe-Tx-rLC" id="ckP-da-SBy"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Report a Bug" id="L0Z-ob-Iva" userLabel="Report">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="reportBugPage:" target="Voe-Tx-rLC" id="UMh-F7-yIk"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
