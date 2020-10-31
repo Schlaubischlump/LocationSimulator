@@ -17,12 +17,10 @@ extension WindowController {
     /// Update a single popup list item entry by updating its name and image.
     private func updatePopupList(item: NSMenuItem?, device: Device) {
         item?.title = device.name
-        if device.connectionType.contains([.network, .usb]) && device.preferNetworkConnection {
+        if device.usesNetwork {
             item?.image = kWIFIIconImage
         } else if device.connectionType.contains(.usb) {
             item?.image = kUSBIconImage
-        } else if device.connectionType.contains(.network) {
-            item?.image = kWIFIIconImage
         } else {
             item?.image = nil
         }
@@ -47,6 +45,8 @@ extension WindowController {
 
         // This should never be the case, but let's make sure that a device is unique.
         if self.devices.contains(device) { return }
+
+        print("connected: ", device)
 
         device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
 
@@ -81,6 +81,8 @@ extension WindowController {
         guard var device: Device = notification.userInfo?["device"] as? Device,
               let viewController = contentViewController as? MapViewController else { return }
 
+        print("update: ", device)
+
         // the internal `preferNetworkConnection` might not be updated for the cached device
         device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
 
@@ -101,6 +103,8 @@ extension WindowController {
     @objc func deviceDisconnected(_ notification: Notification) {
         guard let device: Device = notification.userInfo?["device"] as? Device,
               let viewController = contentViewController as? MapViewController else { return }
+
+        print("disconnect: ", device)
 
         // remove the device from the list and the list popup
         if let index: Int = self.devices.firstIndex(of: device) {

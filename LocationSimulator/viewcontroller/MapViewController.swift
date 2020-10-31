@@ -252,8 +252,11 @@ class MapViewController: NSViewController {
                         downloader.cancel(devDiskTask)
                         downloader.cancel(devSignTask)
                     } else if response == .OK {
-                        // download finished successfully => try to load the device again
-                        _ = self.load(device: device)
+                        // download finished successfully => try to load the device again if it is still connected
+                        let connectedDevices = (window.windowController as? WindowController)?.devices ?? []
+                        if connectedDevices.contains(device) {
+                            _ = self.load(device: device)
+                        }
                     }
                 }
             }
