@@ -14,18 +14,6 @@ let kWIFIIconImage: NSImage? = NSImage(named: "wifi")?.resize(width: 20, height:
 
 extension WindowController {
 
-    /// Update a single popup list item entry by updating its name and image.
-    private func updatePopupList(item: NSMenuItem?, device: Device) {
-        item?.title = device.name
-        if device.usesNetwork {
-            item?.image = kWIFIIconImage
-        } else if device.connectionType.contains(.usb) {
-            item?.image = kUSBIconImage
-        } else {
-            item?.image = nil
-        }
-    }
-
     /// Register all notification handler.
     public func registerDeviceNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.deviceConnected),
@@ -53,7 +41,7 @@ extension WindowController {
         // add the new device to the internal list and update the UI
         self.devices.append(device)
         self.devicesPopup.addItem(withTitle: device.name)
-        self.updatePopupList(item: self.devicesPopup.lastItem, device: device)
+        self.devicesPopup.lastItem?.image = device.usesNetwork ? kWIFIIconImage : kUSBIconImage
 
         // first device connected => automatically pair it
         if self.devices.count == 1, let viewController = self.contentViewController as? MapViewController {
@@ -88,7 +76,7 @@ extension WindowController {
             self.devices[index] = device
 
             // update the device popup
-            self.updatePopupList(item: self.devicesPopup.item(at: index), device: device)
+            self.devicesPopup.item(at: index)?.image = device.usesNetwork ? kWIFIIconImage : kUSBIconImage
 
             print("[INFO]: Update device: \(device.name) with UDID: \(device.udid)")
         }

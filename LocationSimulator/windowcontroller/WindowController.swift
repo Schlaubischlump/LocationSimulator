@@ -46,7 +46,7 @@ class WindowController: NSWindowController {
 
         // register the default setting values
         UserDefaults.standard.registerNetworkDefaultValues()
-        
+
         // Load the default value for network devices
         Device.detectNetworkDevices = UserDefaults.standard.detectNetworkDevices
 

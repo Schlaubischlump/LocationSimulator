@@ -1218,40 +1218,13 @@ Gw
             <objects>
                 <viewController title="General" id="eae-4P-ykM" customClass="GeneralViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OAa-Fi-hM2">
-                        <rect key="frame" x="0.0" y="0.0" width="664" height="172"/>
+                        <rect key="frame" x="0.0" y="0.0" width="664" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dey-0Y-iOx">
-                                <rect key="frame" x="18" y="-20" width="628" height="172"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="172" id="7mx-S2-Tpx"/>
-                                </constraints>
-                                <textFieldCell key="cell" alignment="center" id="IXN-83-HIZ" userLabel="General label">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <string key="title">Thanks for using LocationSimulator !
-
-This software is still in beta. Please report any bugs you find.
-In this version a lot of things changed:
-
-1. New backend
-2. Wi-Fi / USB indicator
-3. Network settings</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Dey-0Y-iOx" secondAttribute="trailing" constant="20" symbolic="YES" id="3kb-m7-suk"/>
-                            <constraint firstAttribute="height" secondItem="Dey-0Y-iOx" secondAttribute="height" id="7Am-Nh-gzQ"/>
-                            <constraint firstItem="Dey-0Y-iOx" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="Kui-tl-MgP"/>
-                            <constraint firstItem="Dey-0Y-iOx" firstAttribute="top" secondItem="OAa-Fi-hM2" secondAttribute="top" constant="20" symbolic="YES" id="fvp-1Q-vzh"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="31H-zk-lrr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-272" y="1288"/>
+            <point key="canvasLocation" x="-272" y="1328"/>
         </scene>
         <!--Network-->
         <scene sceneID="Irb-r9-9bb">
@@ -1298,7 +1271,7 @@ In this version a lot of things changed:
                 </viewController>
                 <customObject id="zgb-hy-cVv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-422" y="1479"/>
+            <point key="canvasLocation" x="-549" y="1693"/>
         </scene>
     </scenes>
     <resources>

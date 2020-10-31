@@ -31,6 +31,15 @@ class PreferencesTabViewController: NSTabViewController {
         }
     }
 
+    /// Resize the window when the view appears for the first time.
+    override func viewWillAppear() {
+        super.viewWillAppear()
+
+        if let item = self.tabView.selectedTabViewItem {
+            self.resizeWindowToFit(tabViewItem: item)
+        }
+    }
+
     /// Resizes the window to fit the content of the tab.
     private func resizeWindowToFit(tabViewItem: NSTabViewItem) {
         guard let size = self.tabViewSizes[tabViewItem],

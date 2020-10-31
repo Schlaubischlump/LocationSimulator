@@ -41,3 +41,6 @@
 "DEVDISK_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg";
 "DEVSIGN_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg.signature";
 "TOTAL_DISTANCE" = "Total distance: %.3fkm";
+
+// Preferences
+"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nIn this version a lot of things changed:\n\n1. New backend\n2. Wi-Fi / USB indicator\n3. Network settings\n4. Bug fixes";
