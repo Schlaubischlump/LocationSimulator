@@ -46,7 +46,7 @@ extension WindowController {
         // This should never be the case, but let's make sure that a device is unique.
         if self.devices.contains(device) { return }
 
-        print("connected: ", device)
+        print("[INFO]: Connect device: \(device.name) with UDID: \(device.udid)")
 
         device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
 
@@ -70,9 +70,8 @@ extension WindowController {
     /// process here... For now we just asume the device is already paired and trusted.
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func devicePaired(_ notification: Notification) {
-        guard let udid: String = notification.userInfo?["UDID"] as? String,
-            let name: String = notification.userInfo?["NAME"] as? String else { return }
-        print("[INFO]: Paired device: \(name) with UDID: \(udid)")
+        guard let device: Device = notification.userInfo?["device"] as? Device else { return }
+        print("[INFO]: Paired device: \(device.name) with UDID: \(device.udid)")
     }
 
     /// Callback when a device is changed. This might happen if a network device is additionally connected over USB.
@@ -80,8 +79,6 @@ extension WindowController {
     @objc func deviceChanged(_ notification: Notification) {
         guard var device: Device = notification.userInfo?["device"] as? Device,
               let viewController = contentViewController as? MapViewController else { return }
-
-        print("update: ", device)
 
         // the internal `preferNetworkConnection` might not be updated for the cached device
         device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
@@ -92,6 +89,8 @@ extension WindowController {
 
             // update the device popup
             self.updatePopupList(item: self.devicesPopup.item(at: index), device: device)
+
+            print("[INFO]: Update device: \(device.name) with UDID: \(device.udid)")
         }
 
         // sometimes the mapView looses focus when connecting and disconnecting a device
@@ -104,10 +103,10 @@ extension WindowController {
         guard let device: Device = notification.userInfo?["device"] as? Device,
               let viewController = contentViewController as? MapViewController else { return }
 
-        print("disconnect: ", device)
-
         // remove the device from the list and the list popup
         if let index: Int = self.devices.firstIndex(of: device) {
+            print("[INFO]: Disconnect device: \(device.name) with UDID: \(device.udid)")
+
             let removedCurrentDevice = (self.devicesPopup.indexOfSelectedItem == index)
             self.devicesPopup.removeItem(at: index)
             self.devices.remove(at: index)
