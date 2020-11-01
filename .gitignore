@@ -5,6 +5,7 @@
 ## Apple Owned files
 *.dmg
 *.dmg.signature
+.DS_Store
 
 ## Build generated
 build/
