@@ -9,8 +9,8 @@
 import Foundation
 import AppKit
 
-let kUSBIconImage: NSImage? = NSImage(named: "usb")?.resize(width: 20, height: 20)
-let kWIFIIconImage: NSImage? = NSImage(named: "wifi")?.resize(width: 20, height: 20)
+let kUSBIconImage: NSImage? = NSImage(named: "usb")
+let kWIFIIconImage: NSImage? = NSImage(named: "wifi")
 
 extension WindowController {
 
@@ -41,7 +41,8 @@ extension WindowController {
         // add the new device to the internal list and update the UI
         self.devices.append(device)
         self.devicesPopup.addItem(withTitle: device.name)
-        self.devicesPopup.lastItem?.image = device.usesNetwork ? kWIFIIconImage : kUSBIconImage
+        self.devicesPopup.lastItem?.image = (device.usesNetwork ? kWIFIIconImage : kUSBIconImage)
+        self.devicesPopup.lastItem?.image?.size = CGSize(width: 20, height: 20)
 
         // first device connected => automatically pair it
         if self.devices.count == 1, let viewController = self.contentViewController as? MapViewController {
@@ -76,7 +77,8 @@ extension WindowController {
             self.devices[index] = device
 
             // update the device popup
-            self.devicesPopup.item(at: index)?.image = device.usesNetwork ? kWIFIIconImage : kUSBIconImage
+            self.devicesPopup.item(at: index)?.image = (device.usesNetwork ? kWIFIIconImage : kUSBIconImage)
+            self.devicesPopup.item(at: index)?.image?.size = CGSize(width: 20, height: 20)
 
             print("[INFO]: Update device: \(device.name) with UDID: \(device.udid)")
         }
