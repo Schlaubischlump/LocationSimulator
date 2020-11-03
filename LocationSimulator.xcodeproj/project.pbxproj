@@ -55,7 +55,6 @@
 		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
 		638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */; };
 		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
-		63B840F92551671500758DC8 /* NSTableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B840F82551671500758DC8 /* NSTableView+Extension.swift */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */; };
@@ -118,7 +117,6 @@
 		638B90A6254B5A4400A520E0 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceTabViewController.swift; sourceTree = "<group>"; };
 		63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		63B840F82551671500758DC8 /* NSTableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableView+Extension.swift"; sourceTree = "<group>"; };
 		63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusbmuxd-2.0.6.dylib"; path = "../../../../usr/local/Cellar/libusbmuxd/2.0.2/lib/libusbmuxd-2.0.6.dylib"; sourceTree = "<group>"; };
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
@@ -353,7 +351,6 @@
 				6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */,
 				631F9D23230A063200A7A8CF /* NSImage+Extension.swift */,
 				6311B798230C150D00AABF3E /* Filemanager+Extension.swift */,
-				63B840F82551671500758DC8 /* NSTableView+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -521,7 +518,6 @@
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
-				63B840F92551671500758DC8 /* NSTableView+Extension.swift in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
 				633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */,
 				63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */,
