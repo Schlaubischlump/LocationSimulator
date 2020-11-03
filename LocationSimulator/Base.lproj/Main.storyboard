@@ -1028,13 +1028,17 @@
                                 <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NRh-IM-EPn">
-                                <rect key="frame" x="6" y="0.0" width="448" height="20"/>
+                                <rect key="frame" x="6" y="0.0" width="418" height="20"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Total distance: 0.0km" id="tGq-gI-j9V">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView hidden="YES" toolTip="Device not paired." horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JDL-Z8-47m">
+                                <rect key="frame" x="422" y="0.0" width="38" height="20"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="PiT-Ks-S1v"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="NRh-IM-EPn" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="1GH-tr-vkU"/>
@@ -1044,11 +1048,14 @@
                             <constraint firstItem="6SH-1d-2JP" firstAttribute="centerX" secondItem="Xym-3b-sFG" secondAttribute="centerX" id="F9E-b5-lLE"/>
                             <constraint firstItem="UPy-aZ-mQr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ImC-oZ-TEm"/>
                             <constraint firstAttribute="trailing" secondItem="boF-o9-C5b" secondAttribute="trailing" constant="20" id="JO6-OV-mcd"/>
+                            <constraint firstItem="JDL-Z8-47m" firstAttribute="height" secondItem="NRh-IM-EPn" secondAttribute="height" id="K0Y-1v-tOD"/>
                             <constraint firstItem="Xym-3b-sFG" firstAttribute="bottom" secondItem="gh2-Yq-ayS" secondAttribute="bottom" id="MrP-VL-6mJ"/>
                             <constraint firstItem="UPy-aZ-mQr" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="NtY-be-ghW"/>
                             <constraint firstItem="ESA-EZ-scL" firstAttribute="trailing" secondItem="6SH-1d-2JP" secondAttribute="trailing" id="OmS-st-AVv"/>
-                            <constraint firstItem="NRh-IM-EPn" firstAttribute="trailing" secondItem="m2S-Jp-Qdl" secondAttribute="trailing" constant="-8" id="QS3-fW-Ot6"/>
+                            <constraint firstItem="NRh-IM-EPn" firstAttribute="trailing" secondItem="m2S-Jp-Qdl" secondAttribute="trailing" constant="-38" id="QS3-fW-Ot6"/>
+                            <constraint firstAttribute="trailing" secondItem="JDL-Z8-47m" secondAttribute="trailing" id="aMP-YC-YXt"/>
                             <constraint firstItem="UPy-aZ-mQr" firstAttribute="bottom" secondItem="6SH-1d-2JP" secondAttribute="bottom" constant="23" id="hTl-hu-zbE"/>
+                            <constraint firstItem="JDL-Z8-47m" firstAttribute="leading" secondItem="NRh-IM-EPn" secondAttribute="trailing" id="kDe-Xj-1mv"/>
                             <constraint firstItem="boF-o9-C5b" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="kut-FC-EeK"/>
                             <constraint firstItem="Xym-3b-sFG" firstAttribute="trailing" secondItem="gh2-Yq-ayS" secondAttribute="trailing" id="lk1-Jl-4tS"/>
                             <constraint firstItem="G2u-rs-ygb" firstAttribute="trailing" secondItem="gh2-Yq-ayS" secondAttribute="trailing" id="mnS-kK-ZDg"/>
@@ -1057,9 +1064,11 @@
                             <constraint firstAttribute="bottom" secondItem="NRh-IM-EPn" secondAttribute="bottom" id="sG2-RO-xti"/>
                             <constraint firstItem="ESA-EZ-scL" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="33" id="t7H-CK-NmO"/>
                             <constraint firstItem="6SH-1d-2JP" firstAttribute="bottom" secondItem="ESA-EZ-scL" secondAttribute="bottom" id="zDZ-Sx-5Ma"/>
+                            <constraint firstItem="JDL-Z8-47m" firstAttribute="top" secondItem="NRh-IM-EPn" secondAttribute="top" id="zIY-at-UPb"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorIndicator" destination="JDL-Z8-47m" id="o1Z-bw-srJ"/>
                         <outlet property="mapView" destination="UPy-aZ-mQr" id="0dR-N4-GA7"/>
                         <outlet property="moveButton" destination="6SH-1d-2JP" id="ukt-2y-ZCA"/>
                         <outlet property="moveButtonEffectView" destination="ESA-EZ-scL" id="ZTc-t5-j9e"/>
@@ -1292,6 +1301,7 @@ Gw
         <image name="Controls" width="511" height="511"/>
         <image name="CurrentLocation" width="51" height="51"/>
         <image name="MoveButton" width="273" height="269"/>
+        <image name="NSCaution" width="32" height="32"/>
         <image name="NSNetwork" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>

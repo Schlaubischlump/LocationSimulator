@@ -23,7 +23,7 @@
 // Error messages
 "PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
 "MOUNT_ERROR_MSG" = "The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked? Are the correct DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files placed in the corresponding folder in the application resources?";
-"UNKNOWN_ERROR_MSG" = "You should never see this message...\nPlease contact the author.";
+"UNKNOWN_ERROR_MSG" = "An unknown error occured. Please disconnect your device and try againg.";
 "LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
 "LOCATION_CHANGE_ERROR_MSG" = "Could not change the location.";
 "PERMISSION_ERROR_MSG" = "Can not access Application Support folder.";
@@ -43,4 +43,4 @@
 "TOTAL_DISTANCE" = "Total distance: %.3fkm";
 
 // Preferences
-"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nIn this version a lot of things changed:\n\n1. New backend\n2. Wi-Fi / USB indicator\n3. Network settings\n4. Bug fixes";
+"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nIn this version a lot of things changed:\n\n1. New backend\n2. Wi-Fi / USB indicator\n3. Network settings\n4. Bug fixes\n5. Report a Bug";

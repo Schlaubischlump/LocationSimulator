@@ -44,6 +44,8 @@
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
 		6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375BA192309A95C000DA0A4 /* BlurView.swift */; };
+		637F1E6025501AA400C1AA1C /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
+		637F1E6125501AA700C1AA1C /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
 		638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ADBE0230095980061612D /* AutoCompletePopover.swift */; };
 		638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9096254B3C6600A520E0 /* ConnectionType.swift */; };
 		638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9097254B3C6600A520E0 /* DeviceError.swift */; };
@@ -53,8 +55,6 @@
 		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
 		638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */; };
 		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
-		63E4B63424997AE9009B779B /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
-		63E4B63524997B17009B779B /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */; };
@@ -132,8 +132,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63E4B63524997B17009B779B /* libplist-2.0.3.dylib in Frameworks */,
-				63E4B63424997AE9009B779B /* libimobiledevice-1.0.6.dylib in Frameworks */,
+				637F1E6025501AA400C1AA1C /* libimobiledevice-1.0.6.dylib in Frameworks */,
+				637F1E6125501AA700C1AA1C /* libplist-2.0.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

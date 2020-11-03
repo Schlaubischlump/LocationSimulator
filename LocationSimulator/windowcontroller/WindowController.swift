@@ -137,7 +137,7 @@ class WindowController: NSWindowController {
                                               .moveClockwise, .recentLocation]
         items.forEach { item in item.disable() }
 
-        guard let viewController = contentViewController as? MapViewController else { return }
+        guard let viewController = self.contentViewController as? MapViewController else { return }
 
         let index: Int = sender.indexOfSelectedItem
         let device: Device = self.devices[index]
@@ -181,6 +181,12 @@ class WindowController: NSWindowController {
             // Make sure to enable the 'Set Location' menubar item if a device is connected.
             NavigationMenubarItem.setLocation.enable()
             NavigationMenubarItem.recentLocation.enable()
+
+            // Hide the error indicator
+            viewController.errorIndicator.isHidden = true
+        } else {
+            // Show the error indicator
+            viewController.errorIndicator.isHidden = false
         }
     }
 }

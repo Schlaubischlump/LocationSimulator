@@ -41,6 +41,8 @@ class MapViewController: NSViewController {
     @IBOutlet weak var separatorLine: NSBox!
     /// The label which displays the total amount of meters you walked.
     @IBOutlet weak var totalDistanceLabel: NSTextField!
+    /// Error indicator if something went wrong while connecting the device.
+    @IBOutlet weak var errorIndicator: NSImageView!
 
     // MARK: - Properties
 
@@ -89,6 +91,11 @@ class MapViewController: NSViewController {
 
     /// True if a alert is visible, false otherwise.
     var isShowingAlert: Bool = false
+
+    /// True if currently a device is connected.
+    var deviceIsConnectd: Bool {
+        return self.spoofer?.device != nil
+    }
 
     // MARK: - View lifecycle
 
@@ -268,6 +275,15 @@ class MapViewController: NSViewController {
             window.showError(NSLocalizedString("UNKNOWN_ERROR", comment: ""),
                              message: NSLocalizedString("UNKNOWN_ERROR_MSG", comment: ""))
         }
+
+        // device connection failed => no device is currently connected
+        // If you remove this line the following bug will occure:
+        // 1. sucessfully connect a device (=> spoofer instance is set)
+        // 2. change to a new device where the connection fails (=> spoofer instance is still set)
+        // 3. select the original device (=> spoofer.devive is still the same as the selected device)
+        // => Nothing happend and you can not use the selected device
+        self.spoofer = nil
+
         return false
     }
 

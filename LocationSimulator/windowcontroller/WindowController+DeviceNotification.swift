@@ -44,13 +44,22 @@ extension WindowController {
         self.devicesPopup.lastItem?.image = (device.usesNetwork ? kWIFIIconImage : kUSBIconImage)
         self.devicesPopup.lastItem?.image?.size = CGSize(width: 20, height: 20)
 
-        // first device connected => automatically pair it
-        if self.devices.count == 1, let viewController = self.contentViewController as? MapViewController {
+        // only try to pair the first device
+        guard self.devices.count == 1 else { return }
+
+        // to be 100% sure check if we are currently not spoofing
+        if let viewController = self.contentViewController as? MapViewController, !viewController.deviceIsConnectd {
             if viewController.load(device: device) {
                 viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
                 // make sure to enable the menubar item
                 NavigationMenubarItem.setLocation.enable()
                 NavigationMenubarItem.recentLocation.enable()
+
+                // Hide the error indicator
+                viewController.errorIndicator.isHidden = true
+            } else {
+                // Show the error indicator
+                viewController.errorIndicator.isHidden = false
             }
         }
     }
@@ -131,6 +140,9 @@ extension WindowController {
                 if self.devicesPopup.numberOfItems > 0 {
                     self.deviceSelected(self.devicesPopup)
                 }
+
+                // Hide the error indicator
+                viewController.errorIndicator.isHidden = true
             }
         }
     }
