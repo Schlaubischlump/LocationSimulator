@@ -212,6 +212,8 @@ class MapViewController: NSViewController {
     func load(device: Device) -> Bool {
         guard let window = self.view.window else { return false }
 
+        var ret = false
+
         do {
             try device.pair()
             // If the pairing and uploading of the developer disk image is successfull create a spoofer instance.
@@ -262,7 +264,7 @@ class MapViewController: NSViewController {
                         // download finished successfully => try to load the device again if it is still connected
                         let connectedDevices = (window.windowController as? WindowController)?.devices ?? []
                         if connectedDevices.contains(device) {
-                            _ = self.load(device: device)
+                            ret = self.load(device: device)
                         }
                     }
                 }
@@ -284,7 +286,7 @@ class MapViewController: NSViewController {
         // => Nothing happend and you can not use the selected device
         self.spoofer = nil
 
-        return false
+        return ret
     }
 
     // MARK: - Spinner control
