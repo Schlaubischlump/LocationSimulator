@@ -23,7 +23,7 @@
 // Error messages
 "PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
 "MOUNT_ERROR_MSG" = "The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked? Are the correct DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files placed in the corresponding folder in the application resources?";
-"UNKNOWN_ERROR_MSG" = "An unknown error occured. Please disconnect your device and try againg.";
+"UNKNOWN_ERROR_MSG" = "An unknown error occured. Please disconnect your device and try again.";
 "LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
 "LOCATION_CHANGE_ERROR_MSG" = "Could not change the location.";
 "PERMISSION_ERROR_MSG" = "Can not access Application Support folder.";
