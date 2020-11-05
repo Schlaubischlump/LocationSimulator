@@ -129,8 +129,9 @@ Help is always appreciated, wether it are bug fixes or features! E.g accessibili
 
 ## Enhancement ideas
 - Accessibility support
+- Change Refresh Symbol
+- Set mac location as iOS device location
 - AppleScript support
 - Help menu entry
-- Set mac location as iOS device location
 - Allow following a predefined route from a gpx file
 - If you have any other idea, let me know !
