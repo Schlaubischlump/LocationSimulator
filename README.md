@@ -128,10 +128,11 @@ The whole project is licensed under the [MIT License](LICENSE) unless specified 
 Help is always appreciated, wether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
 
 ## Enhancement ideas
-- Accessibility support
 - Change Refresh Symbol
 - Add license to Preference Window
 - Set mac location as iOS device location
+- Sort devices in alphabetical order ?
+- Accessibility support
 - AppleScript support
 - Help menu entry
 - Allow following a predefined route from a gpx file
