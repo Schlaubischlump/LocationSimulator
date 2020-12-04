@@ -806,18 +806,33 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="4Ka-D3-6mZ"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="KId-ag-A2U"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="eCp-9n-poY"/>
-                                <toolbarItem implicitItemIdentifier="C8C77EE4-7F6C-4EB8-ACFC-3DDF4BF944FF" label="" paletteLabel="Current Location" toolTip="Autofocus to current location" image="CurrentLocation" id="HdA-HT-jQN">
+                                <toolbarItem implicitItemIdentifier="C8C77EE4-7F6C-4EB8-ACFC-3DDF4BF944FF" label="" paletteLabel="Autofocus Location" toolTip="Autofocus current location" image="CurrentLocation" id="HdA-HT-jQN" userLabel="Autofocus Location">
                                     <size key="minSize" width="37" height="25"/>
                                     <size key="maxSize" width="38" height="25"/>
-                                    <button key="view" verticalHuggingPriority="750" id="MDz-N6-VAD">
-                                        <rect key="frame" x="29" y="14" width="38" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="MDz-N6-VAD" userLabel="Autofocus Location Button">
+                                        <rect key="frame" x="36" y="14" width="38" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="CurrentLocation" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pqe-GJ-GmQ">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="currentLocationClicked:" target="B8D-0N-5wS" id="8Cf-Hi-DFp"/>
+                                            <action selector="autofocusLocationClicked:" target="B8D-0N-5wS" id="AUT-tY-jYQ"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="AB403377-7212-4E7B-9260-EC465F38CB7E" label="" paletteLabel="Current Location" toolTip="Set PC location to current location" image="NSHomeTemplate" id="Gar-ru-IyF">
+                                    <size key="minSize" width="37" height="24"/>
+                                    <size key="maxSize" width="39" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="dNN-xU-QRQ">
+                                        <rect key="frame" x="28" y="14" width="39" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSHomeTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sjc-9y-gO1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="currentLocationClicked:" target="B8D-0N-5wS" id="n4S-aB-OGa"/>
                                         </connections>
                                     </button>
                                 </toolbarItem>
@@ -839,13 +854,13 @@
                                         </connections>
                                     </segmentedControl>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="95B0582C-0FFC-4954-AD9E-5D6F61A2C2EE" label="" paletteLabel="Reset" toolTip="Stop faking the device location" image="NSRefreshTemplate" id="K12-Gb-eXb">
+                                <toolbarItem implicitItemIdentifier="95B0582C-0FFC-4954-AD9E-5D6F61A2C2EE" label="" paletteLabel="Reset" toolTip="Stop faking the device location" image="NSStopProgressTemplate" id="K12-Gb-eXb">
                                     <size key="minSize" width="37" height="24"/>
                                     <size key="maxSize" width="38" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="4PY-kR-qhe">
                                         <rect key="frame" x="0.0" y="14" width="38" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ngE-0r-oZ3">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ngE-0r-oZ3">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -884,6 +899,7 @@
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="K12-Gb-eXb"/>
+                                <toolbarItem reference="Gar-ru-IyF"/>
                                 <toolbarItem reference="HdA-HT-jQN"/>
                                 <toolbarItem reference="eCp-9n-poY"/>
                                 <toolbarItem reference="4aF-Km-tnN"/>
@@ -904,7 +920,7 @@
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eng-na-hHM">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O0j-vo-ghD">
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O0j-vo-ghD">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <connections>
@@ -936,7 +952,8 @@
                         </touchBarItems>
                     </touchBar>
                     <connections>
-                        <outlet property="currentLocationButton" destination="MDz-N6-VAD" id="jre-ke-tIA"/>
+                        <outlet property="autofocusLocationButton" destination="MDz-N6-VAD" id="VNE-JT-Piv"/>
+                        <outlet property="currentLocationButton" destination="dNN-xU-QRQ" id="jsX-Pd-Tdc"/>
                         <outlet property="devicesPopup" destination="s7G-Hf-qPV" id="gwa-R6-aGE"/>
                         <outlet property="searchField" destination="dZ6-JS-ZNU" id="5rF-tn-y7M"/>
                         <outlet property="typeSegmented" destination="JrU-V8-kbc" id="Gc1-2k-1pM"/>
@@ -1191,10 +1208,10 @@ Gw
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="gTw-tO-wCd">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="-121" y="240" width="797" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <view key="contentView" id="2ao-We-I0y">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="797" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <connections>
@@ -1207,7 +1224,7 @@ Gw
                 </windowController>
                 <customObject id="QQt-fW-oAn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-941" y="830"/>
+            <point key="canvasLocation" x="-1099.5" y="830"/>
         </scene>
         <!--Preferences Tab View Controller-->
         <scene sceneID="Jkf-Ib-8gT">
@@ -1302,9 +1319,9 @@ Gw
         <image name="CurrentLocation" width="51" height="51"/>
         <image name="MoveButton" width="273" height="269"/>
         <image name="NSCaution" width="32" height="32"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSNetwork" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSTouchBarRefreshTemplate" width="19" height="30"/>
+        <image name="NSStopProgressTemplate" width="11" height="11"/>
     </resources>
 </document>

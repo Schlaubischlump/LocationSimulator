@@ -30,5 +30,7 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>User location is required to set the currently spoofed location to your Mac&apos;s location.</string>
 </dict>
 </plist>

@@ -129,10 +129,10 @@
 "HFo-cy-zxI.title" = "Show Spelling and Grammar";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Current Location"; ObjectID = "HdA-HT-jQN"; */
-"HdA-HT-jQN.paletteLabel" = "Current Location";
+"HdA-HT-jQN.paletteLabel" = "Autofocus Location";
 
 /* Class = "NSToolbarItem"; toolTip = "Autofocus to current location"; ObjectID = "HdA-HT-jQN"; */
-"HdA-HT-jQN.toolTip" = "Autofocus to current location";
+"HdA-HT-jQN.toolTip" = "Autofocus current location";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
 "HyV-fh-RgO.title" = "View";

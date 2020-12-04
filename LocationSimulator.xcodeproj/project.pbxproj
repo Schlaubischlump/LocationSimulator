@@ -718,7 +718,7 @@
 					/usr/local/Cellar/libplist/2.2.0/lib,
 					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
 					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
+					"/usr/local/Cellar/openssl@1.1/1.1.1h/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -754,7 +754,7 @@
 					/usr/local/Cellar/libplist/2.2.0/lib,
 					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
 					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
+					"/usr/local/Cellar/openssl@1.1/1.1.1h/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;
@@ -847,7 +847,7 @@
 					/usr/local/Cellar/libplist/2.2.0/lib,
 					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
 					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1g/lib",
+					"/usr/local/Cellar/openssl@1.1/1.1.1h/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_BUNDLE_IDENTIFIER = com.schlaubi.LocationSimulator;

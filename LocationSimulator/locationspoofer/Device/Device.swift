@@ -75,7 +75,7 @@ struct Device: Hashable {
     static func startGeneratingDeviceNotifications() -> Bool {
         guard !Device.isGeneratingDeviceNotifications else { return false }
 
-        let callback: idevice_event_cb_t = { (event, userData: UnsafeMutableRawPointer?) in
+        let callback: idevice_event_cb_t = { (event, _: UnsafeMutableRawPointer?) in
             guard let eventT = event?.pointee, let udidT = eventT.udid else { return }
 
             let udid = String(cString: udidT)

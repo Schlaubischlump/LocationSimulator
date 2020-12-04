@@ -13,6 +13,9 @@ import MapKit
 /// The main window controller instance which hosts the map view and the toolbar.
 class WindowController: NSWindowController {
     /// Enable, disable autofocus current location.
+    @IBOutlet weak var autofocusLocationButton: NSButton!
+
+    /// Set the current PC location as the spoofed location.
     @IBOutlet weak var currentLocationButton: NSButton!
 
     /// Change the current move speed.
@@ -39,6 +42,9 @@ class WindowController: NSWindowController {
     /// Internal reference to a NotificationCenterObserver.
     private var autofocusObserver: Any?
 
+    /// Internal reference to a location manager for this mac's location
+    private let locationManager = CLLocationManager()
+
     // MARK: - Window lifecycle
 
     override func windowDidLoad() {
@@ -53,6 +59,13 @@ class WindowController: NSWindowController {
         if Device.startGeneratingDeviceNotifications() {
             self.registerDeviceNotifications()
         }
+
+        // Request the permission to access the mac's location.
+        // Otherwise the current location button won't work.
+        if #available(OSX 10.15, *) {
+            locationManager.requestAlwaysAuthorization()
+        }
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
         // setup the location searchfield
         self.searchField.tableViewDelegate = self
@@ -93,7 +106,7 @@ class WindowController: NSWindowController {
 
     /// Toggle the autofocus feature on or off.
     /// - Parameter sender: the button which triggered the action
-    @IBAction func currentLocationClicked(_ sender: NSButton) {
+    @IBAction func autofocusLocationClicked(_ sender: NSButton) {
         guard let viewController = self.contentViewController as? MapViewController else { return }
 
         if viewController.currentLocationMarker == nil {
@@ -127,6 +140,26 @@ class WindowController: NSWindowController {
     @IBAction func resetClicked(_ sender: Any) {
         guard let viewController = contentViewController as? MapViewController else { return }
         viewController.spoofer?.resetLocation()
+    }
+
+    @IBAction func currentLocationClicked(_ sender: NSButton) {
+        guard let viewController = contentViewController as? MapViewController else { return }
+        if !CLLocationManager.locationServicesEnabled() {
+            window?.showError(
+                NSLocalizedString("LOCATION_SERVICE_DISABLED", comment: ""),
+                message: NSLocalizedString("LOCATION_SERVICE_DISABLED_MSG", comment: ""))
+        }
+
+        // Check if we can read the current user location.
+        guard let coord = locationManager.location?.coordinate else {
+            window?.showError(
+                NSLocalizedString("GET_LOCATION_ERROR", comment: ""),
+                message: NSLocalizedString("GET_LOCATION_ERROR_MSG", comment: ""))
+            return
+        }
+
+        // We silently fail if no spoofer instance exists / no device is connected.
+        viewController.spoofer?.setLocation(coord)
     }
 
     /// Change the currently select device to the new devive choosen from the list.
