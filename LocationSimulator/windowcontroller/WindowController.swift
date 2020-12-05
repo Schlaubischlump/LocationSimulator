@@ -143,7 +143,9 @@ class WindowController: NSWindowController {
     }
 
     @IBAction func currentLocationClicked(_ sender: NSButton) {
-        guard let viewController = contentViewController as? MapViewController else { return }
+        guard let viewController = contentViewController as? MapViewController,
+              let spoofer = viewController.spoofer else { return }
+
         guard CLLocationManager.locationServicesEnabled() else {
             window?.showError(
                 NSLocalizedString("LOCATION_SERVICE_DISABLED", comment: ""),
@@ -160,7 +162,7 @@ class WindowController: NSWindowController {
         }
 
         // We silently fail if no spoofer instance exists / no device is connected.
-        viewController.spoofer?.setLocation(coord)
+        spoofer.setLocation(coord)
     }
 
     /// Change the currently select device to the new devive choosen from the list.
