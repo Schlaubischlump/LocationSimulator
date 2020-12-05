@@ -125,7 +125,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 The whole project is licensed under the [GNU General Public License version 3](LICENSE) unless specified otherwise in the specific subdirectories.
 
 ## Contribute
-Help is always appreciated, wether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
+Help is always appreciated, whether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
 
 ## Enhancement ideas
 - Change Refresh Symbol
