@@ -144,10 +144,11 @@ class WindowController: NSWindowController {
 
     @IBAction func currentLocationClicked(_ sender: NSButton) {
         guard let viewController = contentViewController as? MapViewController else { return }
-        if !CLLocationManager.locationServicesEnabled() {
+        guard CLLocationManager.locationServicesEnabled() else {
             window?.showError(
                 NSLocalizedString("LOCATION_SERVICE_DISABLED", comment: ""),
                 message: NSLocalizedString("LOCATION_SERVICE_DISABLED_MSG", comment: ""))
+            return
         }
 
         // Check if we can read the current user location.
