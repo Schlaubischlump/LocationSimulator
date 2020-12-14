@@ -11,8 +11,6 @@ LocationSimulator is a macOS app which allows spoofing the location of an iOS de
 - [Background](#background)
 - [Features](#features)
 - [Install](#install)
-    - [With dependencies](#with-dependencies)
-    - [Without dependencies](#without-dependencies)
 - [Build](#build)
     - [Requirements](#requirements)
     - [Build the app](#build-the-app)
