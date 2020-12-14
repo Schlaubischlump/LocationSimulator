@@ -119,6 +119,7 @@ Help is always appreciated, whether it are bug fixes or features! E.g accessibil
 - ~~Set mac location as iOS device location~~
 - Allow following a predefined route from a gpx file
 - Add license to Preference Window
+- Add a fallback download URL
 - Accessibility support
 - Sort devices in alphabetical order ?
 - AppleScript support
