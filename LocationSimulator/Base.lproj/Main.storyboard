@@ -802,7 +802,7 @@
                 <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="240" y="240" width="640" height="480"/>
+                        <rect key="contentRect" x="240" y="240" width="728" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <value key="minSize" type="size" width="640" height="480"/>
                         <toolbar key="toolbar" implicitIdentifier="85BEC97E-E606-461B-9DB8-F1B8A3EF02FF" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="ERa-CM-KNB">
@@ -952,11 +952,11 @@
                             <touchBarItem id="3I0-Yu-ztP">
                                 <viewController key="viewController" id="I3c-B6-Xz7">
                                     <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ztw-f5-7tr">
-                                        <rect key="frame" x="0.0" y="0.0" width="199" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="1NT-QT-ght">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment label="Walk" width="62" selected="YES"/>
+                                                <segment label="Walk" width="63" selected="YES"/>
                                                 <segment label="Cycle" width="62" tag="1"/>
                                                 <segment label="Drive" width="61"/>
                                             </segments>
@@ -981,7 +981,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="312"/>
+            <point key="canvasLocation" x="10" y="319"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -1251,6 +1251,7 @@ Gw
                     <tabViewItems>
                         <tabViewItem label="General" identifier="" image="NSPreferencesGeneral" id="Zw5-Ce-8bO"/>
                         <tabViewItem label="Network" identifier="" image="NSNetwork" id="gbr-Wo-Ace"/>
+                        <tabViewItem label="License" image="NSMultipleDocuments" id="N3V-fj-rsh"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="iT9-X4-Bic">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="301"/>
@@ -1264,11 +1265,83 @@ Gw
                         <outlet property="tabView" destination="iT9-X4-Bic" id="aRK-Wv-JJQ"/>
                         <segue destination="eae-4P-ykM" kind="relationship" relationship="tabItems" id="A2N-3S-Vxn"/>
                         <segue destination="7gW-SW-Mts" kind="relationship" relationship="tabItems" id="wHO-xv-mde"/>
+                        <segue destination="vCG-Tv-LLk" kind="relationship" relationship="tabItems" id="6iF-sd-l9r"/>
                     </connections>
                 </tabViewController>
                 <customObject id="XCT-BM-hs1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-941" y="1303.5"/>
+        </scene>
+        <!--License-->
+        <scene sceneID="n6L-6n-tFL">
+            <objects>
+                <viewController title="License" id="vCG-Tv-LLk" customClass="LicenseViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="7Rv-sQ-Sau">
+                        <rect key="frame" x="0.0" y="0.0" width="432" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1J-z2-5Z2">
+                                <rect key="frame" x="20" y="20" width="392" height="231"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ZN2-WY-ljI">
+                                    <rect key="frame" x="0.0" y="0.0" width="392" height="231"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="vzr-8q-RBC">
+                                            <rect key="frame" x="0.0" y="0.0" width="392" height="231"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="392" height="231"/>
+                                            <size key="maxSize" width="630" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="PLX-Lx-toQ">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="L8K-0O-Uxt">
+                                    <rect key="frame" x="376" y="0.0" width="16" height="231"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-QT-zgv">
+                                <rect key="frame" x="18" y="257" width="396" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yKm-gM-V3h">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment width="130"/>
+                                        <segment width="129" selected="YES" tag="1"/>
+                                        <segment width="129">
+                                            <nil key="label"/>
+                                        </segment>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="licenseSelectionChanged:" target="vCG-Tv-LLk" id="e9d-ZV-fva"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="E1J-z2-5Z2" firstAttribute="trailing" secondItem="sVg-QT-zgv" secondAttribute="trailing" id="CJ4-as-i9W"/>
+                            <constraint firstItem="E1J-z2-5Z2" firstAttribute="top" secondItem="sVg-QT-zgv" secondAttribute="bottom" constant="8" symbolic="YES" id="Qg9-B0-alC"/>
+                            <constraint firstItem="sVg-QT-zgv" firstAttribute="leading" secondItem="7Rv-sQ-Sau" secondAttribute="leading" constant="20" symbolic="YES" id="RiU-0F-iBk"/>
+                            <constraint firstItem="E1J-z2-5Z2" firstAttribute="leading" secondItem="sVg-QT-zgv" secondAttribute="leading" id="SVR-u9-MWq"/>
+                            <constraint firstItem="sVg-QT-zgv" firstAttribute="width" secondItem="7Rv-sQ-Sau" secondAttribute="width" constant="-40" id="VhL-ym-DBH"/>
+                            <constraint firstItem="sVg-QT-zgv" firstAttribute="top" secondItem="7Rv-sQ-Sau" secondAttribute="top" constant="20" symbolic="YES" id="X9z-4c-sSl"/>
+                            <constraint firstAttribute="bottom" secondItem="E1J-z2-5Z2" secondAttribute="bottom" constant="20" symbolic="YES" id="nJJ-AI-9Oy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="licenseSelection" destination="sVg-QT-zgv" id="yhn-ok-6v8"/>
+                        <outlet property="licenseTextView" destination="vzr-8q-RBC" id="eJn-lY-Hz5"/>
+                    </connections>
+                </viewController>
+                <customObject id="gSB-cy-KBm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1219" y="1775"/>
         </scene>
         <!--General-->
         <scene sceneID="fZh-u0-Yd8">
@@ -1338,6 +1411,7 @@ Gw
         <image name="MoveButton" width="273" height="269"/>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
+        <image name="NSMultipleDocuments" width="32" height="32"/>
         <image name="NSNetwork" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="NSStopProgressTemplate" width="11" height="11"/>

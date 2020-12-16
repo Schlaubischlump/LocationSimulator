@@ -43,7 +43,7 @@
 "TOTAL_DISTANCE" = "Total distance: %.3fkm";
 
 // Preferences
-"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nIn this version a lot of things changed:\n\n1. New backend\n2. Wi-Fi / USB indicator\n3. Network settings\n4. Bug fixes\n5. Report a Bug";
+"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nChanges in this version are:\n\n1. Fallback download URL for DeveloperDiskImages\n2. Use current mac location as spoofed location\n3. Open GPX files\n4. Bug fixes\n";
 
 // Error message.
 "LOCATION_SERVICE_DISABLED" = "Enable location services";

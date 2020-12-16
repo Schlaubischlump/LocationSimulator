@@ -19,7 +19,6 @@
 		63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C0A22FB78B60086D5F6 /* deviceimagemounter.c */; };
 		63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C1022FB86160086D5F6 /* deviceinfo.c */; };
 		63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */ = {isa = PBXBuildFile; fileRef = 63156C1322FB9A5D0086D5F6 /* COPYRIGHT */; };
-		63156C1722FB9BC20086D5F6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63156C1622FB9BC20086D5F6 /* LICENSE */; };
 		63183E29231821DC0073D80E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63183E27231821DB0073D80E /* Localizable.strings */; };
 		631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */; };
 		631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D23230A063200A7A8CF /* NSImage+Extension.swift */; };
@@ -40,6 +39,8 @@
 		634D1144230CB3AE001F440C /* Downloader+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1143230CB3AE001F440C /* Downloader+Protocol.swift */; };
 		634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1145230CB8D7001F440C /* PogressWindowController.swift */; };
 		634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */; };
+		63525910258AC0950031F289 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352590F258AC0950031F289 /* LicenseViewController.swift */; };
+		63525913258AC7F00031F289 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63525912258AC7F00031F289 /* Licenses.plist */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
@@ -85,7 +86,6 @@
 		63156C1022FB86160086D5F6 /* deviceinfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deviceinfo.c; sourceTree = "<group>"; };
 		63156C1322FB9A5D0086D5F6 /* COPYRIGHT */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYRIGHT; sourceTree = "<group>"; };
 		63156C1522FB9A7A0086D5F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		63156C1622FB9BC20086D5F6 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		63156C1822FB9BD20086D5F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63183E26231821B80073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		63183E28231821DB0073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -104,6 +104,9 @@
 		634D1143230CB3AE001F440C /* Downloader+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Downloader+Protocol.swift"; sourceTree = "<group>"; };
 		634D1145230CB8D7001F440C /* PogressWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogressWindowController.swift; sourceTree = "<group>"; };
 		634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PogressViewController+DownloaderDelegate.swift"; sourceTree = "<group>"; };
+		6352590F258AC0950031F289 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
+		63525915258AC8310031F289 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 				63183E27231821DB0073D80E /* Localizable.strings */,
 				13BA351D20A433EF00A0431C /* Assets.xcassets */,
 				63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */,
+				63525912258AC7F00031F289 /* Licenses.plist */,
 				13BA352320A433EF00A0431C /* LocationSimulator.entitlements */,
 				13BA352220A433EF00A0431C /* Info.plist */,
 				6305075323FB06A700EF529A /* Credits.rtf */,
@@ -299,7 +303,7 @@
 		633A460A22FACBB6005B3BE0 /* autocomplete */ = {
 			isa = PBXGroup;
 			children = (
-				63156C1622FB9BC20086D5F6 /* LICENSE */,
+				63525915258AC8310031F289 /* LICENSE */,
 				63156C1822FB9BD20086D5F6 /* README.md */,
 				638ADBE0230095980061612D /* AutoCompletePopover.swift */,
 				633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */,
@@ -338,6 +342,7 @@
 				638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */,
 				638B90A2254B5A1800A520E0 /* GeneralViewController.swift */,
 				638B90A6254B5A4400A520E0 /* NetworkViewController.swift */,
+				6352590F258AC0950031F289 /* LicenseViewController.swift */,
 			);
 			path = preferences;
 			sourceTree = "<group>";
@@ -446,7 +451,7 @@
 				632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */,
 				13BA352120A433EF00A0431C /* Main.storyboard in Resources */,
 				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
-				63156C1722FB9BC20086D5F6 /* LICENSE in Resources */,
+				63525913258AC7F00031F289 /* Licenses.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +539,7 @@
 				63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */,
 				638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */,
 				633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */,
+				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
 				633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */,
 				638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */,
 			);
