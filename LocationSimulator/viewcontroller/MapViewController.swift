@@ -227,9 +227,11 @@ class MapViewController: NSViewController {
             let manager = FileManager.default
             if let devDMG = manager.getDeveloperDiskImage(iOSVersion: iOSVersion),
                 let devSign = manager.getDeveloperDiskImageSignature(iOSVersion: iOSVersion) {
-                let (diskLinks, signLinks) = manager.getDeveloperDiskImageDownloadLinks(iOSVersion: iOSVersion)
+                // could not find the developer disk images
+                // fetch the download url from the plist if available
+                let (diskLinks, signLinks): ([URL], [URL]) = manager.getDeveloperDiskImageDownloadLinks(iOSVersion: iOSVersion)
 
-                // no download links for this iOS Version found
+                // no download links for this iOS Version found => try to use the fallback URL
                 if diskLinks.isEmpty || signLinks.isEmpty {
                     window.showError(NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR", comment: ""),
                                      message: NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR_MSG", comment: ""))

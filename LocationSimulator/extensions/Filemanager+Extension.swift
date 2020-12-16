@@ -75,9 +75,21 @@ extension FileManager {
         if let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist") {
             let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath)
             if let downloadLinks: NSDictionary = downloadLinksPlist?[iOSVersion] as? NSDictionary,
-                let dmgLinks = downloadLinks["Image"] as? [String],
-                let signLinks = downloadLinks["Signature"] as? [String] {
+               let dmgLinks = downloadLinks["Image"] as? [String],
+               let signLinks = downloadLinks["Signature"] as? [String] {
                 return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
+            }
+
+            // Try to use the fallback links if no direct links were found
+            if let fallbackLinks: NSDictionary = downloadLinksPlist?["Fallback"] as? NSDictionary,
+               let dmgLinks = fallbackLinks["Image"] as? [String],
+               let signLinks = fallbackLinks["Signature"] as? [String] {
+                return (dmgLinks.map {
+                            URL(string: String(format: $0, iOSVersion))!
+                        },
+                        signLinks.map {
+                            URL(string: String(format: $0, iOSVersion))!
+                        })
             }
         }
         return ([], [])

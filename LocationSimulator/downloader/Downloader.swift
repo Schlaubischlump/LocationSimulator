@@ -107,6 +107,8 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
             try FileManager.default.moveItem(at: location, to: task.destination)
 
             DispatchQueue.main.async {
+                task.progress = 1
+                self.delegate?.downloadProgressChanged(downloader: self, task: task)
                 self.delegate?.downloadFinished(downloader: self, task: task)
             }
         } catch let error {
