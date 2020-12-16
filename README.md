@@ -110,7 +110,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 The whole project is licensed under the [GNU General Public License version 3](LICENSE) unless specified otherwise in the specific subdirectories.
 
 ## Contribute
-Help is always appreciated, whether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
+Help is always appreciated, whether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu. Make sure that you run swift-lint on your code before submitting pull requests.
 
 ## Enhancement ideas
 Look at the `Projects` tab to see a list of planned features for the next releases. 
