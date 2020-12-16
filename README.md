@@ -113,12 +113,4 @@ The whole project is licensed under the [GNU General Public License version 3](L
 Help is always appreciated, whether it are bug fixes or features! E.g accessibility support is still to be implemented, especially for the popup menu.
 
 ## Enhancement ideas
-- ~~Change Refresh Symbol~~
-- ~~Set mac location as iOS device location~~
-- Allow following a predefined route from a gpx file
-- Add license to Preference Window
-- Add a fallback download URL
-- Accessibility support
-- Sort devices in alphabetical order ?
-- AppleScript support
-- Help menu entry
+Look at the `Projects` tab to see a list of planned features for the next releases. 
