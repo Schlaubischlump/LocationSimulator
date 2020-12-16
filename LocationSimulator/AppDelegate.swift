@@ -138,15 +138,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func resetLocation(_ sender: NSMenuItem) {
         // reset the current location to the device location
-        guard let windowController = NSApp.mainWindow?.windowController else { return }
-        guard let viewController = windowController.contentViewController as? MapViewController else { return }
-        viewController.spoofer?.resetLocation()
+        guard let windowController = NSApp.mainWindow?.windowController as? WindowController else { return }
+        windowController.resetClicked(sender)
     }
 
     /// Clear the `Recent locations` menu by removing all its stored entries.
     /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func clearRecentLocations(_ sender: NSMenuItem) {
         RecentLocationMenubarItem.clearLocations()
+    }
+
+    /// Use the mac's current location as spoofed iOS location.
+    /// - Parameter menuItem: the selected menu item that triggered this function
+    @IBAction func useCurrentLocation(_ sender: NSMenuItem) {
+        guard let windowController = NSApp.mainWindow?.windowController as? WindowController else { return }
+        windowController.currentLocationClicked(sender)
     }
 
     /// Change the current location to the coordinates defined by a recently visited location.

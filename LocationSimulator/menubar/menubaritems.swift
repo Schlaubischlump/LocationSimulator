@@ -24,6 +24,7 @@ enum NavigationMenubarItem: Int {
     case stopNavigation         = 12
     case resetLocation          = 13
     case recentLocation         = 14
+    case useMacLocation         = 15
 
     static public var menu: NSMenu? {
         guard let navigationMenu = NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu else { return nil }

@@ -142,7 +142,7 @@ class WindowController: NSWindowController {
         viewController.spoofer?.resetLocation()
     }
 
-    @IBAction func currentLocationClicked(_ sender: NSButton) {
+    @IBAction func currentLocationClicked(_ sender: Any) {
         guard let viewController = contentViewController as? MapViewController,
               let spoofer = viewController.spoofer else { return }
 
@@ -183,6 +183,7 @@ class WindowController: NSWindowController {
             // if the selection did not change do nothing
             if spoofer.device == device {
                 NavigationMenubarItem.setLocation.enable()
+                NavigationMenubarItem.useMacLocation.enable()
                 NavigationMenubarItem.recentLocation.enable()
                 return
             }
@@ -216,6 +217,7 @@ class WindowController: NSWindowController {
 
             // Make sure to enable the 'Set Location' menubar item if a device is connected.
             NavigationMenubarItem.setLocation.enable()
+            NavigationMenubarItem.useMacLocation.enable()
             NavigationMenubarItem.recentLocation.enable()
 
             // Hide the error indicator

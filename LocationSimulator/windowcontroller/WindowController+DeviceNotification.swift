@@ -53,6 +53,7 @@ extension WindowController {
                 viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
                 // make sure to enable the menubar item
                 NavigationMenubarItem.setLocation.enable()
+                NavigationMenubarItem.useMacLocation.enable()
                 NavigationMenubarItem.recentLocation.enable()
 
                 // Hide the error indicator

@@ -97,6 +97,12 @@
                                                 <action selector="resetLocation:" target="Voe-Tx-rLC" id="6II-AQ-6nT"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Use Mac Location" tag="15" enabled="NO" keyEquivalent="m" id="FSp-F9-NBr" userLabel="Use Mac Location">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <connections>
+                                                <action selector="useCurrentLocation:" target="Voe-Tx-rLC" id="AoL-VR-TsY"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Recent Locations" tag="14" enabled="NO" id="6C4-QV-f6L">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Recent Locations" autoenablesItems="NO" id="kAM-hM-6pv">
