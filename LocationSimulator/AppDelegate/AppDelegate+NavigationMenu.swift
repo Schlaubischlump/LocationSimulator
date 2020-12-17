@@ -1,39 +1,15 @@
 //
-//  AppDelegate.swift
+//  AppDelegate+NavigationMenu.swift
 //  LocationSimulator
 //
-//  Created by David Klopp on 18.08.19.
-//  Copyright © 2019 David Klopp. All rights reserved.
+//  Created by David Klopp on 17.12.20.
+//  Copyright © 2020 David Klopp. All rights reserved.
 //
 
-import Cocoa
+import AppKit
 import CoreLocation
 
-let kProjectWebsite = "https://github.com/Schlaubischlump/LocationSimulator"
-
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // load all recent locations menubaritems
-        let items = RecentLocationMenubarItem.locations()
-        items.reversed().forEach { item in
-            RecentLocationMenubarItem.addLocationMenuItem(item)
-        }
-        // enable the clear menu item if required
-        if items.count > 0 {
-            RecentLocationMenubarItem.clearMenu.enable()
-        }
-    }
-
-    //func applicationWillTerminate(_ aNotification: Notification) {}
-
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
-    }
-
-    // MARK: - MenuBar
-
+extension AppDelegate {
     /// Show the user a dialog to enter the coordinates to go to.
     /// - Parameter menuItem: the selected menu item that triggered this function
     @IBAction func setLocation(_ menuItem: NSMenuItem) {
@@ -167,20 +143,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             viewController.requestTeleportOrNavigation(toCoordinate: coord)
         } else {
             viewController.spoofer?.setLocation(coord)
-        }
-    }
-
-    /// Open the main project website in a browser.
-    @IBAction func openProjectPage(_ sender: Any) {
-        if let url = URL(string: kProjectWebsite) {
-            NSWorkspace.shared.open(url)
-        }
-    }
-
-    /// Open the report an issue website in a browser.
-    @IBAction func reportBugPage(_ sender: Any) {
-        if let url = URL(string: kProjectWebsite + "/issues") {
-            NSWorkspace.shared.open(url)
         }
     }
 }

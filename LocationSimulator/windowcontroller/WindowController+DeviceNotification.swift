@@ -49,16 +49,48 @@ extension WindowController {
 
         // to be 100% sure check if we are currently not spoofing
         if let viewController = self.contentViewController as? MapViewController, !viewController.deviceIsConnectd {
-            if viewController.load(device: device) {
-                viewController.spoofer!.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
+
+            // The block to load a device
+            let deviceLoadHandler = {
+                try viewController.load(device: device)
+
+                viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
                 // make sure to enable the menubar item
                 NavigationMenubarItem.setLocation.enable()
                 NavigationMenubarItem.useMacLocation.enable()
                 NavigationMenubarItem.recentLocation.enable()
+                FileMenubarItem.openGPXFile.enable()
 
                 // Hide the error indicator
                 viewController.errorIndicator.isHidden = true
-            } else {
+            }
+
+            do {
+                try deviceLoadHandler()
+            } catch DeviceError.devDiskImageNotFound(_, let iOSVersion) {
+                // Show the error indicator
+                viewController.errorIndicator.isHidden = false
+
+                // try to load device after a successfull DeveloperDiskImage download
+                viewController.downloadDeveloperDiskImage(iOSVersion: iOSVersion) { success in
+                    // Check if any device is left
+                    let index = self.devicesPopup.indexOfSelectedItem
+                    guard index >= 0 else { return }
+
+                    // If the device is still the selected device try to reload it
+                    let selectedDevice = self.devices[index]
+                    if success && selectedDevice == device {
+                        DispatchQueue.main.async {
+                            do {
+                                try deviceLoadHandler()
+                                viewController.errorIndicator.isHidden = true
+                            } catch let error {
+                                print(error)
+                            }
+                        }
+                    }
+                }
+            } catch {
                 // Show the error indicator
                 viewController.errorIndicator.isHidden = false
             }

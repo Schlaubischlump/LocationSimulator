@@ -93,10 +93,11 @@ class Downloader: NSObject, URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         guard let task = self.tasks[downloadTask.taskIdentifier] else { return }
 
-        // check if the url response is valid
+        // check if the url response is valid, if not complete with error and exit this function
         if let response = downloadTask.response as? HTTPURLResponse, response.statusCode != 200 {
             self.urlSession(session, downloadTask: downloadTask,
                             didCompleteWithError: URLError(.init(rawValue: response.statusCode)))
+            return
         }
 
         // download seems to be okay => move the downloaded file to the destination

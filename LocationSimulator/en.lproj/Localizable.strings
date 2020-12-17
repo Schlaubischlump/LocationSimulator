@@ -49,4 +49,12 @@
 "LOCATION_SERVICE_DISABLED" = "Enable location services";
 "LOCATION_SERVICE_DISABLED_MSG" = "Location services seem to be disabled. Please activate location services inside System Preferences.";
 "GET_LOCATION_ERROR" = "Could not get location";
-"GET_LOCATION_ERROR_MSG" = "Could not get read the current location. Did you allow LocationSimulator to access this mac's location ?";
+"GET_LOCATION_ERROR_MSG" = "Could not get read the current location. Did you allow LocationSimulator to access this mac's location?";
+
+// GPX file dialog
+"CHOOSE_GPX_FILE" = "Choose a .gpx file";
+"ERROR_OPEN_GPX" = "Error Opening GPX File";
+"ERROR_OPEN_GPX_MSG" = "Could not open the selected GPX file.";
+"ERROR_PARSE_GPX" = "Error Parsing GPX File";
+"ERROR_PARSE_GPX_MSG" = "Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
+"TELEPORT_OR_NAVIGATE_GPX_MSG" = "Do you want to navigate or teleport to the start location of this route?";

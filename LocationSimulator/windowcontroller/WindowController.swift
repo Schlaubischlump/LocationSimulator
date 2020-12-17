@@ -84,9 +84,9 @@ class WindowController: NSWindowController {
         self.autofocusObserver = NotificationCenter.default.addObserver(forName: .AutoFoucusCurrentLocationChanged,
                                                                         object: nil, queue: .main) { (notification) in
             if let isOn = notification.object as? Bool, isOn == true {
-                self.currentLocationButton.state = .on
+                self.autofocusLocationButton.state = .on
             } else {
-                self.currentLocationButton.state = .off
+                self.autofocusLocationButton.state = .off
             }
         }
     }
@@ -185,6 +185,7 @@ class WindowController: NSWindowController {
                 NavigationMenubarItem.setLocation.enable()
                 NavigationMenubarItem.useMacLocation.enable()
                 NavigationMenubarItem.recentLocation.enable()
+                FileMenubarItem.openGPXFile.enable()
                 return
             }
             // reset the timer and cancel all delegate updates
@@ -199,8 +200,9 @@ class WindowController: NSWindowController {
             viewController.didChangeLocation(spoofer: spoofer, toCoordinate: nil)
         }
 
-        // load the new device
-        if viewController.load(device: device) {
+        let deviceLoadHandler = {
+            // load the new device
+            try viewController.load(device: device)
             // set the correct walking speed based on the current selection
             viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
 
@@ -219,10 +221,38 @@ class WindowController: NSWindowController {
             NavigationMenubarItem.setLocation.enable()
             NavigationMenubarItem.useMacLocation.enable()
             NavigationMenubarItem.recentLocation.enable()
+            FileMenubarItem.openGPXFile.enable()
 
             // Hide the error indicator
             viewController.errorIndicator.isHidden = true
-        } else {
+        }
+
+        do {
+            try deviceLoadHandler()
+        } catch DeviceError.devDiskImageNotFound(_, let iOSVersion) {
+            // Show the error indicator
+            viewController.errorIndicator.isHidden = false
+
+            // try to load device after a successfull DeveloperDiskImage download
+            viewController.downloadDeveloperDiskImage(iOSVersion: iOSVersion) { success in
+                // Check if any device is left
+                let index = self.devicesPopup.indexOfSelectedItem
+                guard index >= 0 else { return }
+
+                // If the device is still the selected device try to reload it
+                let selectedDevice = self.devices[index]
+                if success && selectedDevice == device {
+                    DispatchQueue.main.async {
+                        do {
+                            try deviceLoadHandler()
+                            viewController.errorIndicator.isHidden = true
+                        } catch let error {
+                            print(error)
+                        }
+                    }
+                }
+            }
+        } catch {
             // Show the error indicator
             viewController.errorIndicator.isHidden = false
         }

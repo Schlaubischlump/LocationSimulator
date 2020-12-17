@@ -1,52 +1,14 @@
 //
-//  Constants.swift
+//  RecentLocationMenuBarItem.swift
 //  LocationSimulator
 //
-//  Created by David Klopp on 15.02.20.
+//  Created by David Klopp on 17.12.20.
 //  Copyright © 2020 David Klopp. All rights reserved.
 //
+
+import Foundation
 import AppKit
 import CoreLocation
-
-let kNavigationMenuTag: Int = 1
-
-/// Enum to represent the main navigation menu.
-enum NavigationMenubarItem: Int {
-    case walk                   = 0
-    case cycle                  = 1
-    case drive                  = 2
-    case setLocation            = 4
-    case toggleAutomove         = 6
-    case moveUp                 = 8
-    case moveDown               = 9
-    case moveCounterclockwise   = 10
-    case moveClockwise          = 11
-    case stopNavigation         = 12
-    case resetLocation          = 13
-    case recentLocation         = 14
-    case useMacLocation         = 15
-
-    static public var menu: NSMenu? {
-        guard let navigationMenu = NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu else { return nil }
-        return navigationMenu
-    }
-
-    // MARK: - Enable or disable a menubar item
-
-    private func setEnabled(_ enabled: Bool) {
-        NavigationMenubarItem.menu?.item(withTag: self.rawValue)?.isEnabled = enabled
-    }
-
-    func enable() {
-        self.setEnabled(true)
-    }
-
-    func disable() {
-        self.setEnabled(false)
-    }
-}
-
-// MARK: - Recent Locations
 
 /// Simple codable struct to store the information about a location.
 struct Location: Codable {
@@ -64,31 +26,14 @@ struct Location: Codable {
 let kMaxRecentItems: Int = 10
 let kRecentLocationUserDefaultKey: String = "RecentLocations"
 
-/// Enum to represent the recent location submenu
-enum RecentLocationMenubarItem: Int {
+/// Enum to represent the Recent Locations submenu
+enum RecentLocationMenubarItem: Int, MenubarItem {
     case clearMenu = 1
 
     static public var menu: NSMenu? {
         let recentLocationSubmenuTag: Int = NavigationMenubarItem.recentLocation.rawValue
-        guard let navigationMenu = NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu else { return nil }
-        guard let recentLocationMenu = navigationMenu.item(withTag: recentLocationSubmenuTag)?.submenu else {
-            return nil
-        }
-        return recentLocationMenu
-    }
-
-    // MARK: - Enable or disable a menubar item
-
-    private func setEnabled(_ enabled: Bool) {
-        RecentLocationMenubarItem.menu?.item(withTag: self.rawValue)?.isEnabled = enabled
-    }
-
-    func enable() {
-        self.setEnabled(true)
-    }
-
-    func disable() {
-        self.setEnabled(false)
+        let navigationMenu = NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu
+        return navigationMenu?.item(withTag: recentLocationSubmenuTag)?.submenu
     }
 
     // MARK: - Manage recent locations

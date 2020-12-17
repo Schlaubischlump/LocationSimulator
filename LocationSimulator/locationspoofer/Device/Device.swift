@@ -187,6 +187,8 @@ struct Device: Hashable {
     ///    * See `mountDeveloperDiskImage`
     /// - Return: Device instance
     func pair() throws {
+        //throw DeviceError.devDiskImageNotFound("", iOSVersion: "14.3")
+
         // check if a device is connected
         guard pairDevice(self.udid, self.lookupOps) else {
             throw DeviceError.pair(NSLocalizedString("PAIR_ERROR_MSG", comment: ""))
