@@ -208,26 +208,28 @@ struct Device: Hashable {
             return
         }
 
-        if let ret: UnsafePointer<Int8> = deviceProductVersion(self.udid, self.lookupOps) {
+        if let retVersion: UnsafePointer<Int8> = deviceProductVersion(self.udid, self.lookupOps),
+           let retName: UnsafePointer<Int8> = deviceProductName(self.udid, self.lookupOps) {
             // Get the current product version string e.g 12.4
-            let productVersion = String(cString: ret)
+            let productVersion = String(cString: retVersion)
+            // Get the current product name e.g. iPhone OS
+            let productName = String(cString: retName)
             // get the path to the developer disk images
             let manager: FileManager = FileManager.default
-            if let devDMG: URL = manager.getDeveloperDiskImage(iOSVersion: productVersion),
-                let devSign: URL = manager.getDeveloperDiskImageSignature(iOSVersion: productVersion) {
+            if let devDMG: URL = manager.getDeveloperDiskImage(os: productName, iOSVersion: productVersion),
+                let devSign: URL = manager.getDeveloperDiskImageSignature(os: productName, iOSVersion: productVersion) {
+
                 var isDir: ObjCBool = false
-                if !manager.fileExists(atPath: devDMG.path, isDirectory: &isDir) ||
-                    isDir.boolValue ||
-                    !manager.fileExists(atPath: devSign.path, isDirectory: &isDir) ||
-                    isDir.boolValue {
-                    throw DeviceError.devDiskImageNotFound(NSLocalizedString("DEVDISK_NOT_FOUND", comment: ""),
-                                                           iOSVersion: productVersion)
+                if !manager.fileExists(atPath: devDMG.path, isDirectory: &isDir) || isDir.boolValue ||
+                    !manager.fileExists(atPath: devSign.path, isDirectory: &isDir) || isDir.boolValue {
+                        throw DeviceError.devDiskImageNotFound(NSLocalizedString("DEVDISK_NOT_FOUND", comment: ""),
+                                                               os: productName, version: productVersion)
                 }
 
                 // try to mount the developer image
                 if !mountImageForDevice(udid, devDMG.path, devSign.path, self.lookupOps) {
                     throw DeviceError.devDiskImageMount(NSLocalizedString("MOUNT_ERROR", comment: ""),
-                                                        iOSVersion: productVersion)
+                                                        os: productName, version: productVersion)
                 }
             } else {
                 throw DeviceError.permisson(NSLocalizedString("PERMISSION_ERROR", comment: ""))

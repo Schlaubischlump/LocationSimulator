@@ -45,11 +45,12 @@ extension FileManager {
     /// Get the path to the DeveloperDiskImage.dmg inside the applications Support directory.
     /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
     /// - Return: path to DeveloperDiskImage.dmg
-    func getDeveloperDiskImage(iOSVersion: String) -> URL? {
+    func getDeveloperDiskImage(os: String, iOSVersion: String) -> URL? {
         // get the path to the DeveloperDiskImage.dmg
         if let url = self.getAppSupportDirectory(create: true) {
-            let versionFolder: URL = url.appendingPathComponent(iOSVersion)
-            if self.createFolder(atUrl: versionFolder) {
+            let osFolder: URL = url.appendingPathComponent(os)
+            let versionFolder: URL = osFolder.appendingPathComponent(iOSVersion)
+            if self.createFolder(atUrl: osFolder) && self.createFolder(atUrl: versionFolder) {
                 return versionFolder.appendingPathComponent("DeveloperDiskImage.dmg")
             }
         }
@@ -59,9 +60,9 @@ extension FileManager {
     /// Get the path to the DeveloperDiskImage.dmg.signature inside the applications Support directory.
     /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
     /// - Return: path to DeveloperDiskImage.dmg.signature
-    func getDeveloperDiskImageSignature(iOSVersion: String) -> URL? {
+    func getDeveloperDiskImageSignature(os: String, iOSVersion: String) -> URL? {
         // get the path to the DeveloperDiskImage.dmg.signature
-        if let devDisk: URL = self.getDeveloperDiskImage(iOSVersion: iOSVersion) {
+        if let devDisk: URL = self.getDeveloperDiskImage(os: os, iOSVersion: iOSVersion) {
             return URL(fileURLWithPath: devDisk.path + ".signature")
         }
         return nil
@@ -71,13 +72,14 @@ extension FileManager {
     /// DeveloperDiskImages files for every iOS version.
     /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
     /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
-    func getDeveloperDiskImageDownloadLinks(iOSVersion: String) -> ([URL], [URL]) {
+    func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> ([URL], [URL]) {
         if let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist") {
             let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath)
-            if let downloadLinks: NSDictionary = downloadLinksPlist?[iOSVersion] as? NSDictionary,
+            if let downloadLinksForOS: NSDictionary = downloadLinksPlist?[os] as? NSDictionary,
+               let downloadLinks: NSDictionary = downloadLinksForOS[version] as? NSDictionary,
                let dmgLinks = downloadLinks["Image"] as? [String],
                let signLinks = downloadLinks["Signature"] as? [String] {
-                return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
+                    return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
             }
 
             // Try to use the fallback links if no direct links were found
@@ -85,10 +87,10 @@ extension FileManager {
                let dmgLinks = fallbackLinks["Image"] as? [String],
                let signLinks = fallbackLinks["Signature"] as? [String] {
                 return (dmgLinks.map {
-                            URL(string: String(format: $0, iOSVersion))!
+                            URL(string: String(format: $0, version))!
                         },
                         signLinks.map {
-                            URL(string: String(format: $0, iOSVersion))!
+                            URL(string: String(format: $0, version))!
                         })
             }
         }

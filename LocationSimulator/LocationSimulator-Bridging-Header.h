@@ -29,5 +29,8 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
 // get the ProductVersion of the specific iOS Device
 const char *deviceProductVersion(const char *udid, enum idevice_options lookup_ops);
 
+// get the ProductName of the specific iOS Device
+const char *deviceProductName(const char *udid, enum idevice_options lookup_ops);
+
 // get the device name of the specific iOS Device
 const char *deviceName(const char *udid, enum idevice_options lookup_ops);

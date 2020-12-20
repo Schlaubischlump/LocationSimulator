@@ -11,7 +11,7 @@ import Foundation
 public enum DeviceError: Error {
     case pair(_ message: String)
     case permisson(_ message: String)
-    case devDiskImageNotFound(_ message: String, iOSVersion: String)
-    case devDiskImageMount(_ message: String, iOSVersion: String)
+    case devDiskImageNotFound(_ message: String, os: String, version: String)
+    case devDiskImageMount(_ message: String, os: String, version: String)
     case productVersion(_ message: String)
 }

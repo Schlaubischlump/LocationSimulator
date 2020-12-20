@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Downloader
 
 let kDevDiskTaskID = "DevDisk"
 let kDevSignTaskID = "DevSign"

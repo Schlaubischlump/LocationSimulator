@@ -229,12 +229,12 @@ class WindowController: NSWindowController {
 
         do {
             try deviceLoadHandler()
-        } catch DeviceError.devDiskImageNotFound(_, let iOSVersion) {
+        } catch DeviceError.devDiskImageNotFound(_, let os, let iOSVersion) {
             // Show the error indicator
             viewController.errorIndicator.isHidden = false
 
             // try to load device after a successfull DeveloperDiskImage download
-            viewController.downloadDeveloperDiskImage(iOSVersion: iOSVersion) { success in
+            viewController.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) { success in
                 // Check if any device is left
                 let index = self.devicesPopup.indexOfSelectedItem
                 guard index >= 0 else { return }

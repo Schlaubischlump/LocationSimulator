@@ -1,0 +1,3 @@
+# rule identifiers turned on by default to exclude from running
+disabled_rules: 
+   - identifier_name

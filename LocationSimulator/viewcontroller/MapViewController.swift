@@ -9,6 +9,7 @@
 import Cocoa
 import MapKit
 import CoreLocation
+import Downloader
 
 let kAnnotationViewCurrentLocationIdentifier = "AnnotationViewCurrentLocationIdentifier"
 
@@ -151,17 +152,17 @@ class MapViewController: NSViewController {
     }
 
     // MARK: - Load device
-    func downloadDeveloperDiskImage(iOSVersion: String, _ completion: @escaping (Bool) -> Void = { _ in }) {
+    func downloadDeveloperDiskImage(os: String, iOSVersion: String, _ completion: @escaping (Bool) -> Void = { _ in }) {
         guard let window = self.view.window else {
             completion(false)
             return
         }
         // Try to download the DeveloperDiskImage files and try to connect to the device again.
         let manager = FileManager.default
-        if let devDMG = manager.getDeveloperDiskImage(iOSVersion: iOSVersion),
-            let devSign = manager.getDeveloperDiskImageSignature(iOSVersion: iOSVersion) {
+        if let devDMG = manager.getDeveloperDiskImage(os: os, iOSVersion: iOSVersion),
+            let devSign = manager.getDeveloperDiskImageSignature(os: os, iOSVersion: iOSVersion) {
 
-            let (diskLinks, signLinks): ([URL], [URL]) = manager.getDeveloperDiskImageDownloadLinks(iOSVersion:
+            let (diskLinks, signLinks): ([URL], [URL]) = manager.getDeveloperDiskImageDownloadLinks(os: os, version:
                                                                                                         iOSVersion)
             if diskLinks.isEmpty || signLinks.isEmpty {
                 window.showError(NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR", comment: ""),
@@ -233,11 +234,11 @@ class MapViewController: NSViewController {
             switch error {
             case DeviceError.pair(let errorMsg):
                 window.showError(errorMsg, message: NSLocalizedString("PAIR_ERROR_MSG", comment: ""))
-            case DeviceError.devDiskImageNotFound(_, _):
+            case DeviceError.devDiskImageNotFound(_, _, _):
                 break
             case DeviceError.permisson(let errorMsg):
                 window.showError(errorMsg, message: NSLocalizedString("PERMISSION_ERROR_MSG", comment: ""))
-            case DeviceError.devDiskImageMount(let errorMsg, _):
+            case DeviceError.devDiskImageMount(let errorMsg, _, _):
                 window.showError(errorMsg, message: NSLocalizedString("MOUNT_ERROR_MSG", comment: ""))
             default:
                 window.showError(NSLocalizedString("UNKNOWN_ERROR", comment: ""),

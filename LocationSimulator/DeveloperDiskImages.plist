@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>iPhone OS</key>
+    <dict>
 	<key>11.0</key>
 	<dict>
 		<key>Image</key>
@@ -299,5 +301,6 @@
 			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/%@/DeveloperDiskImage.dmg</string>
 		</array>
 	</dict>
+    </dict>
 </dict>
 </plist>
