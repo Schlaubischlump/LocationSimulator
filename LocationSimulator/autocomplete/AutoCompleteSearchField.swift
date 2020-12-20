@@ -71,12 +71,6 @@ class AutoCompleteSearchField: NSSearchField {
         if #available(OSX 11.0, *) {
             tableView.style = .fullWidth
         }
-        /*let selector = Selector("setStyle:")
-        if tableView.responds(to: selector) {
-            print("Responds")
-            tableView.perform(selector, with: NSInteger(1))
-        }*/
-
         tableView.delegate = self
         tableView.dataSource = self
         self.autoCompleteTableView = tableView

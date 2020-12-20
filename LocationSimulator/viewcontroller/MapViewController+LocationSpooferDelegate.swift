@@ -50,10 +50,6 @@ extension MapViewController: LocationSpooferDelegate {
     }
 
     func didChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
-        // TODO: Move this to a nicer place
-        // Update the heading of the location spoofer. This is important if the RotationGestureRecognizer was used.
-        spoofer.heading = self.mapView.camera.heading - self.getHeaderViewAngle()
-
         // true if the location was reset, false otherwise
         let isReset: Bool = (toCoordinate == nil)
 

@@ -7,6 +7,8 @@
 
 import AppKit
 
+typealias MovementControlAction = () -> Void
+
 /// Percentage of the inner circle cutout given in percentage of this views width.
 /// E.g a value of 0.5 means the cutout takes up 50% of the views width.
 private let kInnerCircleSizeInPercent: CGFloat = 0.55
@@ -18,6 +20,9 @@ class MovementControlHUDView: HUDView {
 
     /// Direction controls overlaying the outer circle
     private let directionOverlay = NSImageView(image: .controlsImage)
+
+    /// Callback when the heading changes.
+    var headingChangedAction: MovementControlAction?
 
     // MARK: - Constructor
 
@@ -71,6 +76,9 @@ class MovementControlHUDView: HUDView {
 
         let transform = CGAffineTransform(rotationAngle: CGFloat(self.currentHeadingInDegrees) * .pi / 180.0)
         self.directionOverlay.layer?.setAffineTransform(transform)
+
+        // Call the `heading changed` callback after rotating the view.
+        self.headingChangedAction?()
     }
 
     /// Rotate the translation overlay to a specific angle given in rad.

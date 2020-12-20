@@ -73,31 +73,8 @@ class MapViewController: NSViewController {
 
     // MARK: - View lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // reset the total distance label
-        self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
-
-        // configure the map view
-        self.mapView.delegate = self
-        self.mapView.wantsLayer = true // otherwise the BlurView won't work
-        self.mapView.showsZoomControls = false
-        self.mapView.showsScale = true
-        //self.mapView.showsUserLocation = true
-
-        // Add gesture recognizer
-        let mapPressGesture = NSPressGestureRecognizer(target: self, action: #selector(mapViewPressed(_:)))
-        mapPressGesture.minimumPressDuration = 0.5
-        mapPressGesture.numberOfTouchesRequired = 1
-        mapView.addGestureRecognizer(mapPressGesture)
-
-        // hide the controls
-        self.contentView?.controlsHidden = true
-
-        // are we currently showing a alert
-        self.isShowingAlert = false
-
+    /// Register all actions for the controls in the lower left corner.
+    private func registerControlsHUDActions() {
         // Add the movement button click action to move.
         self.contentView?.movementButtonHUD.clickAction = {
             self.view.window?.makeFirstResponder(self.mapView)
@@ -125,6 +102,40 @@ class MapViewController: NSViewController {
                 break
             }
         }
+
+        // Add the callback when the heading changes
+        self.contentView?.movementControlHUD.headingChangedAction = {
+            // Update the location spoofer heading
+            self.spoofer?.heading = self.mapView.camera.heading - self.getHeaderViewAngle()
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // reset the total distance label
+        self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
+
+        // configure the map view
+        self.mapView.delegate = self
+        self.mapView.wantsLayer = true // otherwise the BlurView won't work
+        self.mapView.showsZoomControls = false
+        self.mapView.showsScale = true
+        //self.mapView.showsUserLocation = true
+
+        // Add gesture recognizer
+        let mapPressGesture = NSPressGestureRecognizer(target: self, action: #selector(mapViewPressed(_:)))
+        mapPressGesture.minimumPressDuration = 0.5
+        mapPressGesture.numberOfTouchesRequired = 1
+        mapView.addGestureRecognizer(mapPressGesture)
+
+        // hide the controls
+        self.contentView?.controlsHidden = true
+
+        // are we currently showing a alert
+        self.isShowingAlert = false
+
+        self.registerControlsHUDActions()
     }
 
     /// Make the window the first responder if it receives a mouse click.
@@ -268,7 +279,6 @@ class MapViewController: NSViewController {
     /// - Parameter angle: the angle in degree
     func rotateHeaderViewTo(_ angle: Double) {
         self.contentView?.rotateOverlayTo(angleInDegrees: angle)
-        self.spoofer?.heading = self.mapView.camera.heading - self.getHeaderViewAngle()
     }
 
     // MARK: - Teleport or Navigate
