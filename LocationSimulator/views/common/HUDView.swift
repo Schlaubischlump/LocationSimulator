@@ -14,6 +14,7 @@ class HUDView: NSView {
         return self.effectView
     }
 
+    /// Set the corner radius for this view and the effect view.
     var cornerRadius: CGFloat {
         get { return self.effectView.layer?.cornerRadius ?? 0}
         set {
@@ -54,9 +55,6 @@ class HUDView: NSView {
         self.effectView.layer?.cornerRadius = 5.0
         self.effectView.frame = self.bounds
         self.effectView.autoresizingMask = [.height, .width]
-        //self.effectView.layer.borderWidth = 0.5
-        //self.effectView.layer.borderColor = UIColor(named: "borderColor")!.cgColor
-
         self.addSubview(self.effectView)
     }
 

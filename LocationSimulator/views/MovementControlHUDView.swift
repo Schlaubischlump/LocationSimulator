@@ -11,6 +11,7 @@ import AppKit
 /// E.g a value of 0.5 means the cutout takes up 50% of the views width.
 private let kInnerCircleSizeInPercent: CGFloat = 0.55
 
+/// The movement control which is used to adjust the heading.
 class MovementControlHUDView: HUDView {
     /// The currect heading in degrees of the direction overlay
     public private(set) var currentHeadingInDegrees: Double = 0

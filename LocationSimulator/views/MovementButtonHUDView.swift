@@ -11,6 +11,7 @@ typealias MovementButtonClickAction = () -> Void
 
 typealias MovementButtonPressAction = () -> Void
 
+/// The movement button which can be clicked or long pressed to trigger actions.
 class MovementButtonHUDView: HUDView, NSGestureRecognizerDelegate {
     /// Highlight the movement button by applying a blue tint
     var highlight: Bool = false {

@@ -118,7 +118,7 @@ class LocationSpoofer {
         self.route = []
         self.device = device
         self.currentLocation = nil
-        self.dispatchQueue = DispatchQueue(label: "locationUpdates", qos: .background)
+        self.dispatchQueue = DispatchQueue(label: "locationUpdates", qos: .userInteractive)
     }
 
     // MARK: - Location spoofing

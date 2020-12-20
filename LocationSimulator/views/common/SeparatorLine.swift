@@ -9,9 +9,9 @@
 import AppKit
 
 class SeparatorLine: NSBox {
-    // Support dark mode.
     override func updateLayer() {
         super.updateLayer()
+        // Support dark mode.
         self.borderColor = .separator
     }
 }
