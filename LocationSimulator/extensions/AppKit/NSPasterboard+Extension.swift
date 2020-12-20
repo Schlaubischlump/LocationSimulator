@@ -7,7 +7,6 @@
 //
 
 import AppKit
-import CoreLocation
 
 extension NSPasteboard {
     /**

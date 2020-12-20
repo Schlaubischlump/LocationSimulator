@@ -49,12 +49,19 @@
 		63525933258B79900031F289 /* AppDelegate+HelpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525932258B79900031F289 /* AppDelegate+HelpMenu.swift */; };
 		63525936258B79A70031F289 /* AppDelegate+FileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525935258B79A70031F289 /* AppDelegate+FileMenu.swift */; };
 		6352594F258B84550031F289 /* GPXParser in Frameworks */ = {isa = PBXBuildFile; productRef = 6352594E258B84550031F289 /* GPXParser */; };
+		63525959258E8FC80031F289 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525958258E8FC80031F289 /* HUDView.swift */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
-		6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375BA192309A95C000DA0A4 /* BlurView.swift */; };
-		637F1E6025501AA400C1AA1C /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
-		637F1E6125501AA700C1AA1C /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
+		6376755A258E93CE000DCEF3 /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
+		6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
+		6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */; };
+		63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */; };
+		63767561258EA61E000DCEF3 /* MovementControlHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755F258EA61E000DCEF3 /* MovementControlHUDView.swift */; };
+		63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767562258EA684000DCEF3 /* NSColor+Extension.swift */; };
+		63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */; };
+		63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */; };
+		6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376756A258EC809000DCEF3 /* SeparatorLine.swift */; };
 		638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ADBE0230095980061612D /* AutoCompletePopover.swift */; };
 		638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9096254B3C6600A520E0 /* ConnectionType.swift */; };
 		638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9097254B3C6600A520E0 /* DeviceError.swift */; };
@@ -122,10 +129,17 @@
 		6352592F258B79550031F289 /* AppDelegate+NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NavigationMenu.swift"; sourceTree = "<group>"; };
 		63525932258B79900031F289 /* AppDelegate+HelpMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+HelpMenu.swift"; sourceTree = "<group>"; };
 		63525935258B79A70031F289 /* AppDelegate+FileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+FileMenu.swift"; sourceTree = "<group>"; };
+		63525958258E8FC80031F289 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
-		6375BA192309A95C000DA0A4 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerHUDView.swift; sourceTree = "<group>"; };
+		6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementButtonHUDView.swift; sourceTree = "<group>"; };
+		6376755F258EA61E000DCEF3 /* MovementControlHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementControlHUDView.swift; sourceTree = "<group>"; };
+		63767562258EA684000DCEF3 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
+		63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+Extension.swift"; sourceTree = "<group>"; };
+		63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
+		6376756A258EC809000DCEF3 /* SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
 		638B9096254B3C6600A520E0 /* ConnectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
 		638B9097254B3C6600A520E0 /* DeviceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceError.swift; sourceTree = "<group>"; };
@@ -150,8 +164,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637F1E6025501AA400C1AA1C /* libimobiledevice-1.0.6.dylib in Frameworks */,
-				637F1E6125501AA700C1AA1C /* libplist-2.0.3.dylib in Frameworks */,
+				6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */,
+				6376755A258E93CE000DCEF3 /* libimobiledevice-1.0.6.dylib in Frameworks */,
 				6352594F258B84550031F289 /* GPXParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,6 +213,7 @@
 				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
 				632C465723F4B5F5004E5092 /* menubar */,
 				638B909D254B513300A520E0 /* preferences */,
+				63525956258E8F9A0031F289 /* views */,
 				63FC47A22306243300BBB2E8 /* windowcontroller */,
 				6311B79A230C1D9C00AABF3E /* downloader */,
 				638ADBE2230203B20061612D /* viewcontroller */,
@@ -343,10 +358,67 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
+		63525951258E8EC50031F289 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				63767562258EA684000DCEF3 /* NSColor+Extension.swift */,
+				130F510B20AED69B002A61F1 /* NSView+Extension.swift */,
+				6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */,
+				631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */,
+				631F9D23230A063200A7A8CF /* NSImage+Extension.swift */,
+				63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */,
+				63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		63525952258E8EDC0031F289 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				6311B798230C150D00AABF3E /* Filemanager+Extension.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		63525953258E8EEF0031F289 /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+				6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */,
+			);
+			path = MapKit;
+			sourceTree = "<group>";
+		};
+		63525954258E8F000031F289 /* CoreLocation */ = {
+			isa = PBXGroup;
+			children = (
+				6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */,
+			);
+			path = CoreLocation;
+			sourceTree = "<group>";
+		};
+		63525956258E8F9A0031F289 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				63525957258E8FC80031F289 /* common */,
+				6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */,
+				6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */,
+				6376755F258EA61E000DCEF3 /* MovementControlHUDView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		63525957258E8FC80031F289 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				63525958258E8FC80031F289 /* HUDView.swift */,
+				6376756A258EC809000DCEF3 /* SeparatorLine.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		638ADBE2230203B20061612D /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				6375BA192309A95C000DA0A4 /* BlurView.swift */,
 				632A962B254811AC0078B8DD /* ContentView.swift */,
 				13BA351B20A433EE00A0431C /* MapViewController.swift */,
 				63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */,
@@ -380,13 +452,10 @@
 		63FC479523022D3A00BBB2E8 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				130F510B20AED69B002A61F1 /* NSView+Extension.swift */,
-				6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */,
-				631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */,
-				6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */,
-				6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */,
-				631F9D23230A063200A7A8CF /* NSImage+Extension.swift */,
-				6311B798230C150D00AABF3E /* Filemanager+Extension.swift */,
+				63525952258E8EDC0031F289 /* Foundation */,
+				63525951258E8EC50031F289 /* AppKit */,
+				63525954258E8F000031F289 /* CoreLocation */,
+				63525953258E8EEF0031F289 /* MapKit */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -541,11 +610,13 @@
 				634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */,
 				63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */,
 				6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */,
+				63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */,
 				631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */,
 				638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */,
 				63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
 				6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */,
+				6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */,
 				633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */,
 				63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */,
 				63156C0422FB67610086D5F6 /* devicepair.c in Sources */,
@@ -560,7 +631,7 @@
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
 				634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */,
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
-				6375BA1A2309A95C000DA0A4 /* BlurView.swift in Sources */,
+				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
 				633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */,
@@ -571,19 +642,24 @@
 				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
 				63525933258B79900031F289 /* AppDelegate+HelpMenu.swift in Sources */,
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
+				63767561258EA61E000DCEF3 /* MovementControlHUDView.swift in Sources */,
 				63525936258B79A70031F289 /* AppDelegate+FileMenu.swift in Sources */,
 				6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
 				63525927258B74750031F289 /* RecentLocationMenuBarItem.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
 				638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */,
+				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
+				63525959258E8FC80031F289 /* HUDView.swift in Sources */,
 				6311B79C230C1DD200AABF3E /* Downloader.swift in Sources */,
 				63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */,
 				638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */,
 				633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */,
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
 				633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */,
+				63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */,
+				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,
 				63525930258B79550031F289 /* AppDelegate+NavigationMenu.swift in Sources */,
 				638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */,
 			);
@@ -745,6 +821,7 @@
 		13BA352720A433EF00A0431C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
@@ -781,6 +858,7 @@
 		13BA352820A433EF00A0431C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
@@ -873,6 +951,7 @@
 		63A4F929240366EA00C3D877 /* Homebrew */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;

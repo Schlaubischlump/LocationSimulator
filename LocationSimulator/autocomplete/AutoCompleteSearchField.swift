@@ -59,7 +59,7 @@ class AutoCompleteSearchField: NSSearchField {
 
         let tableView = NSTableView(frame: .zero)
         tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.regular
-        tableView.backgroundColor = NSColor.clear
+        tableView.backgroundColor = .clear
         tableView.rowSizeStyle = NSTableView.RowSizeStyle.custom
         tableView.rowHeight = 36.0
         tableView.intercellSpacing = NSSize(width: 5.0, height: 0.0)
@@ -68,9 +68,15 @@ class AutoCompleteSearchField: NSSearchField {
         tableView.target = self
         tableView.action = #selector(insert(_:))
         tableView.addTableColumn(column1)
-        //if #available(OSX 11.0, *) {
-        //    tableView.style = .fullWidth
-        //}
+        if #available(OSX 11.0, *) {
+            tableView.style = .fullWidth
+        }
+        /*let selector = Selector("setStyle:")
+        if tableView.responds(to: selector) {
+            print("Responds")
+            tableView.perform(selector, with: NSInteger(1))
+        }*/
+
         tableView.delegate = self
         tableView.dataSource = self
         self.autoCompleteTableView = tableView
@@ -116,6 +122,7 @@ class AutoCompleteSearchField: NSSearchField {
         }
     }
 
+    // swiftlint:disable cyclomatic_complexity
     func processSpecialKeys(with theEvent: NSEvent) -> NSEvent? {
         let keyUp: Bool = theEvent.type == .keyUp
 
@@ -158,6 +165,7 @@ class AutoCompleteSearchField: NSSearchField {
 
         return theEvent
     }
+    // swiftlint:enable cyclomatic_complexity
 
     @objc func clearText(_ sender: AnyObject) {
         self.stringValue = ""

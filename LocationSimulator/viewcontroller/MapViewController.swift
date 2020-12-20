@@ -12,33 +12,14 @@ import CoreLocation
 
 let kAnnotationViewCurrentLocationIdentifier = "AnnotationViewCurrentLocationIdentifier"
 
-let kDarkBlurColor = NSColor(calibratedWhite: 0.4, alpha: 0.5)
-
 public extension NSNotification.Name {
     static let AutoFoucusCurrentLocationChanged = Notification.Name("AutoFoucusCurrentLocationChanged")
-    static let AppleInterfaceThemeChanged = Notification.Name("AppleInterfaceThemeChangedNotification")
 }
 
 class MapViewController: NSViewController {
     // MARK: - UI
     /// The main mapView.
     @IBOutlet weak var mapView: MKMapView!
-    /// The button in the lower left corner used to move around the map when clicked.
-    @IBOutlet weak var moveButton: NSButton!
-    /// The blur effect view used to get a nicer dark mode interface for the `moveButton`.
-    @IBOutlet weak var moveButtonEffectView: BlurView!
-    /// A container view which hosts the progress spinner.
-    @IBOutlet weak var spinnerContainer: BlurView!
-    /// The main progress spinner in the upper right corner to indicate the user, that we are performing an operation.
-    @IBOutlet weak var spinner: NSProgressIndicator!
-    /// The view used to change the current heading inside the map.
-    @IBOutlet weak var moveHeadingControlsView: NSImageView!
-    /// Outer circle view used to make the `moveHeadingControlsView` a little bit nicer.
-    @IBOutlet weak var moveHeadingCircleView: NSImageView!
-    /// The blur effect view used to get a nicer dark mode interface for the `moveHeadingControlsView`.
-    @IBOutlet weak var moveHeadingEffectView: BlurView!
-    /// A simple separator line at the bottom of the view to separate the bottom bar from the map view.
-    @IBOutlet weak var separatorLine: NSBox!
     /// The label which displays the total amount of meters you walked.
     @IBOutlet weak var totalDistanceLabel: NSTextField!
     /// Error indicator if something went wrong while connecting the device.
@@ -54,6 +35,11 @@ class MapViewController: NSViewController {
 
     /// Current route overlay shown when navigation is active.
     public var routeOverlay: MKOverlay?
+
+    /// The main contentView which hosts all other views, including the mapView.
+    public var contentView: ContentView? {
+        return self.view as? ContentView
+    }
 
     /// Window controller shown when the DeveloperDiskImage download is performed.
     private var progressWindowController: ProgressWindowController?
@@ -74,18 +60,6 @@ class MapViewController: NSViewController {
             // Send a notification
             NotificationCenter.default.post(name: .AutoFoucusCurrentLocationChanged,
                                             object: autoFocusCurrentLocation)
-        }
-    }
-
-    /// Show or hide the navigation controls in the lower left corner.
-    var controlsHidden: Bool = true {
-        didSet {
-            // hide / show the navigation controls
-            self.moveHeadingCircleView.isHidden = self.controlsHidden
-            self.moveHeadingControlsView.isHidden = self.controlsHidden
-            self.moveButton.isHidden = self.controlsHidden
-            self.moveButtonEffectView.isHidden = self.controlsHidden
-            self.moveHeadingEffectView.isHidden = self.controlsHidden
         }
     }
 
@@ -112,60 +86,45 @@ class MapViewController: NSViewController {
         self.mapView.showsScale = true
         //self.mapView.showsUserLocation = true
 
-        // add a drop shadow to the circle view
-        let shadow = NSShadow()
-        shadow.shadowColor = NSColor(calibratedWhite: 0.0, alpha: 0.5)
-        shadow.shadowBlurRadius = 0.5
-        shadow.shadowOffset = NSSize(width: 0.0, height: -0.5)
-        self.moveHeadingCircleView.shadow = shadow
-
-        // configure the blur view for dark mode
-        self.moveHeadingEffectView.tintColor = kDarkBlurColor
-        self.moveHeadingEffectView.maskImage = #imageLiteral(resourceName: "CircleOutline")
-
-        self.moveButtonEffectView.tintColor = kDarkBlurColor
-        self.moveButtonEffectView.maskImage = #imageLiteral(resourceName: "MoveButton")
-
-        // customize spinner
-        self.spinnerContainer.isHidden = true
-        self.spinnerContainer.wantsLayer = true
-
-        self.spinnerContainer.layer?.cornerRadius = 10.0
-        self.spinnerContainer.layer?.borderColor = CGColor(gray: 0.75, alpha: 1.0)
-        self.spinnerContainer.layer?.borderWidth = 1.0
-
         // Add gesture recognizer
         let mapPressGesture = NSPressGestureRecognizer(target: self, action: #selector(mapViewPressed(_:)))
         mapPressGesture.minimumPressDuration = 0.5
         mapPressGesture.numberOfTouchesRequired = 1
         mapView.addGestureRecognizer(mapPressGesture)
 
-        let headingPressGesture = NSPressGestureRecognizer(target: self, action: #selector(headingViewPressed(_:)))
-        headingPressGesture.minimumPressDuration = 0.1
-        headingPressGesture.numberOfTouchesRequired = 1
-        self.moveHeadingControlsView.addGestureRecognizer(headingPressGesture)
-
-        let moveClickGesture = NSClickGestureRecognizer(target: self, action: #selector(moveClicked(_:)))
-        moveClickGesture.numberOfTouchesRequired = 1
-        moveButton.addGestureRecognizer(moveClickGesture)
-
-        let moveLongPressGesture = NSPressGestureRecognizer(target: self, action: #selector(moveLongPressed(_:)))
-        moveLongPressGesture.minimumPressDuration = 1.0
-        moveLongPressGesture.numberOfTouchesRequired = 1
-        moveButton.addGestureRecognizer(moveLongPressGesture)
-
         // hide the controls
-        self.controlsHidden = true
+        self.contentView?.controlsHidden = true
 
         // are we currently showing a alert
         self.isShowingAlert = false
 
-        // load the design for the current theme
-        self.updateAppearance()
+        // Add the movement button click action to move.
+        self.contentView?.movementButtonHUD.clickAction = {
+            self.view.window?.makeFirstResponder(self.mapView)
 
-        // Fixme: This is ugly, but I can not get another solution to work...
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged),
-                                               name: .AppleInterfaceThemeChanged, object: nil)
+            switch self.spoofer?.moveState {
+            case .manual: self.spoofer?.move()
+            case .auto: self.spoofer?.moveState = .manual
+            case .none: break
+            }
+        }
+
+        // Add the movement button long press action to automove.
+        self.contentView?.movementButtonHUD.longPressAction = {
+            self.view.window?.makeFirstResponder(self.mapView)
+
+            switch self.spoofer?.moveState {
+            case .manual:
+                // Enable auto move
+                self.spoofer?.moveState = .auto
+                self.spoofer?.move()
+            case .auto:
+                // Disable auto move
+                self.spoofer?.moveState = .manual
+            case .none:
+                break
+            }
+        }
     }
 
     /// Make the window the first responder if it receives a mouse click.
@@ -178,27 +137,6 @@ class MapViewController: NSViewController {
     override func viewDidAppear() {
         guard let window = self.view.window else { return }
         window.makeFirstResponder(self.mapView)
-    }
-
-    // MARK: - Dark mode
-
-    /// Update the view appearance to light or dark mode based on the UserDefaults `AppleInterfaceStyle` key.
-    func updateAppearance() {
-        var isDarkMode = false
-        if #available(OSX 10.14, *) {
-            isDarkMode = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
-        }
-        self.spinnerContainer.tintColor = isDarkMode ? kDarkBlurColor : .white
-        self.spinnerContainer.disableBlur = !isDarkMode
-        self.moveButtonEffectView.disableBlur = !isDarkMode
-        self.moveHeadingEffectView.disableBlur = !isDarkMode
-        self.separatorLine.borderColor = isDarkMode ? .black : NSColor(calibratedRed: 167.0/255.0, green: 167.0/255.0,
-                                                                       blue: 167.0/255.0, alpha: 1.0)
-    }
-
-    /// Callback when the theme changed from light to dark or dark to light.
-    @objc func themeChanged(_ notification: Notification) {
-        self.updateAppearance()
     }
 
     // MARK: - Load device
@@ -302,43 +240,35 @@ class MapViewController: NSViewController {
 
     /// Show an animated progress spinner in the upper right corner.
     func startSpinner() {
-        self.spinnerContainer.isHidden = false
-        self.spinner.startAnimation(self)
+        self.contentView?.startSpinner()
     }
 
     /// Hide and stop the progress spinner in the upper right corner.
     func stopSpinner() {
-        self.spinner.stopAnimation(self)
-        self.spinnerContainer.isHidden = true
+        self.contentView?.stopSpinner()
     }
 
     // MARK: - Rotate headerView helper function
 
     /// The current angle of the headingView used to change the heading.
     /// - Return: the angle in degree
-    func getHeaderViewAngle() -> CGFloat {
-        guard let layer = self.moveHeadingControlsView.layer else { return 0.0 }
-        return atan2(layer.transform.m12, layer.transform.m11)
+    func getHeaderViewAngle() -> Double {
+        return self.contentView?.movementControlHUD.currentHeadingInDegrees ?? 0.0
     }
 
     /// Rotate the headingView and update the location spoofer heading state by a specific angle. The angle is applied
     /// to the current heading.
     /// - Parameter angle: the angle in degree
-    func rotateHeaderViewBy(_ angle: CGFloat) {
+    func rotateHeaderViewBy(_ angle: Double) {
         // update the headingView and the spoofer heading
         self.rotateHeaderViewTo(self.getHeaderViewAngle() + angle)
     }
 
     /// Set a new heading based on a specified angle.
     /// - Parameter angle: the angle in degree
-    func rotateHeaderViewTo(_ angle: CGFloat) {
-        guard let layer = self.moveHeadingControlsView.layer else {return }
-
-        // update the headingView and the spoofer heading
-        self.moveHeadingControlsView.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
-        layer.transform = CATransform3DMakeRotation(angle, 0, 0, 1)
-        let heading: Double = (angle >= 0 ? 360 : 0) - 60 * Double(angle)
-        self.spoofer?.heading = self.mapView.camera.heading + heading
+    func rotateHeaderViewTo(_ angle: Double) {
+        self.contentView?.rotateOverlayTo(angleInDegrees: angle)
+        self.spoofer?.heading = self.mapView.camera.heading - self.getHeaderViewAngle()
     }
 
     // MARK: - Teleport or Navigate
@@ -515,53 +445,6 @@ class MapViewController: NSViewController {
                 self.requestTeleportOrNavigation(toCoordinate: coordinate)
             }
             self.view.window?.makeFirstResponder(self.mapView)
-        }
-    }
-
-    /// Change the heading when the user clicks inside heading view.
-    /// - Parameter sender: the click gesture recognizer instance
-    @objc func headingViewPressed(_ sender: NSClickGestureRecognizer) {
-        self.view.window?.makeFirstResponder(self.mapView)
-
-        guard sender.state == .changed || sender.state == .ended else { return }
-
-        let loc = sender.location(in: self.moveHeadingControlsView)
-        let deltaX = loc.x - self.moveHeadingControlsView.frame.width / 2
-        let deltaY = loc.y - self.moveHeadingControlsView.frame.height / 2
-        self.rotateHeaderViewTo(atan2(-deltaX, deltaY))
-    }
-
-    /// Move north if the inner circle of the heading view is clicked.
-    /// - Parameter sender: the click gesture recognizer instance
-    @objc func moveClicked(_ sender: NSClickGestureRecognizer) {
-        self.view.window?.makeFirstResponder(self.mapView)
-
-        guard let mState = self.spoofer?.moveState, sender.state == .ended else { return }
-
-        switch mState {
-        case .manual:
-            self.spoofer?.move()
-        case .auto:
-            // Disable auto move
-            self.spoofer?.moveState = .manual
-        }
-    }
-
-    /// Start automoving if the inner circle of the heading view is long pressed.
-    /// - Parameter sender: the long press gesture recognizer instance
-    @objc func moveLongPressed(_ sender: NSPressGestureRecognizer) {
-        self.view.window?.makeFirstResponder(self.mapView)
-
-        guard let mState = self.spoofer?.moveState, sender.state == .began else { return }
-
-        switch mState {
-        case .manual:
-            // Enable auto move
-            self.spoofer?.moveState = .auto
-            self.spoofer?.move()
-        case .auto:
-            // Disable auto move
-            self.spoofer?.moveState = .manual
         }
     }
 }

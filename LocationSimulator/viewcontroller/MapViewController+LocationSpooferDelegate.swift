@@ -50,6 +50,10 @@ extension MapViewController: LocationSpooferDelegate {
     }
 
     func didChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
+        // TODO: Move this to a nicer place
+        // Update the heading of the location spoofer. This is important if the RotationGestureRecognizer was used.
+        spoofer.heading = self.mapView.camera.heading - self.getHeaderViewAngle()
+
         // true if the location was reset, false otherwise
         let isReset: Bool = (toCoordinate == nil)
 
@@ -73,7 +77,7 @@ extension MapViewController: LocationSpooferDelegate {
                                                      totalDistanceInKM)
 
         // hide / show move controls
-        self.controlsHidden = isReset
+        self.contentView?.controlsHidden = isReset
 
         // hide the progress spinner when the location was changed
         self.stopSpinner()
@@ -118,7 +122,8 @@ extension MapViewController: LocationSpooferDelegate {
     func didChangeMoveState(spoofer: LocationSpoofer, moveState: MoveState) {
         switch moveState {
         case .manual:
-            moveButton.image = #imageLiteral(resourceName: "MoveButton")
+            // Remove the movebutton highlight
+            self.contentView?.movementButtonHUD.highlight = false
             // allow all movement to navigate manual
             NavigationMenubarItem.moveCounterclockwise.enable()
             NavigationMenubarItem.moveClockwise.enable()
@@ -127,8 +132,8 @@ extension MapViewController: LocationSpooferDelegate {
             // we disabled automove => we can not stop the navigation
             NavigationMenubarItem.stopNavigation.disable()
         case .auto:
-            moveButton.image = #imageLiteral(resourceName: "MoveButtonAuto")
-
+            // Highlight the move button
+            self.contentView?.movementButtonHUD.highlight = true
             // we are moving automatically => do not allow manual movement
             NavigationMenubarItem.moveUp.disable()
             NavigationMenubarItem.moveDown.disable()

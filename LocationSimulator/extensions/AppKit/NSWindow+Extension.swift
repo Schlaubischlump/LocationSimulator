@@ -6,7 +6,6 @@
 //  Copyright © 2019 David Klopp. All rights reserved.
 //
 
-import Foundation
 import AppKit
 
 extension NSWindow {

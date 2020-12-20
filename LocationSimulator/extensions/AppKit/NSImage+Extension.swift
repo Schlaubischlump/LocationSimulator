@@ -6,7 +6,6 @@
 //  Copyright © 2019 David Klopp. All rights reserved.
 //
 
-import Foundation
 import AppKit
 
 extension NSImage {
@@ -24,4 +23,26 @@ extension NSImage {
         newImage.size = destRect.size
         return newImage
     }
+
+    /// Tint an image with a color.
+    /// - Parameter color: the tint color
+    /// - Return: the new tinted NSImage
+    func tint(color: NSColor) -> NSImage? {
+        guard let cgImage = self.cgImage(forProposedRect: nil, context: nil, hints: nil) else { return nil }
+
+        return NSImage(size: size, flipped: false) { bounds in
+            guard let context = NSGraphicsContext.current?.cgContext else { return false }
+
+            color.set()
+            context.clip(to: bounds, mask: cgImage)
+            context.fill(bounds)
+
+            return true
+        }
+    }
+
+    /// References to images in the asset catalog.
+    static var moveImage: NSImage = NSImage(named: "Move")!
+
+    static var controlsImage: NSImage =  NSImage(named: "Controls")!
 }
