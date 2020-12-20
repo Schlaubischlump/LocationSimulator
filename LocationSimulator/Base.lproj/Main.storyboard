@@ -160,14 +160,14 @@
                             </menuItem>
                             <menuItem title="File" state="on" tag="2" id="dMs-cI-mzQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="File" id="bib-Uj-vzu">
+                                <menu key="submenu" title="File" autoenablesItems="NO" id="bib-Uj-vzu">
                                     <items>
                                         <menuItem title="New" hidden="YES" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
                                                 <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open GPX File…" tag="1" keyEquivalent="o" id="IAo-SY-fd9">
+                                        <menuItem title="Open GPX File…" tag="1" enabled="NO" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="openGPXFile:" target="Voe-Tx-rLC" id="vUN-eY-toG"/>
                                             </connections>

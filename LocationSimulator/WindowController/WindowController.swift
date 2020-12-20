@@ -168,12 +168,10 @@ class WindowController: NSWindowController {
     /// Change the currently select device to the new devive choosen from the list.
     /// - Parameter sender: the button which triggered the action
     @IBAction func deviceSelected(_ sender: NSPopUpButton) {
-        // Disable all menubar items which only work if a device is connected.
-        let items: [NavigationMenubarItem] = [.setLocation, .toggleAutomove, .moveUp, .moveDown, .moveCounterclockwise,
-                                              .moveClockwise, .recentLocation]
-        items.forEach { item in item.disable() }
-
         guard let viewController = self.contentViewController as? MapViewController else { return }
+
+        // New device is connected without a spoofed location
+        MenubarController.state = .disconnected
 
         let index: Int = sender.indexOfSelectedItem
         let device: Device = self.devices[index]
@@ -181,13 +179,7 @@ class WindowController: NSWindowController {
         // cleanup the UI if a previous device was selected
         if let spoofer = viewController.spoofer {
             // if the selection did not change do nothing
-            if spoofer.device == device {
-                NavigationMenubarItem.setLocation.enable()
-                NavigationMenubarItem.useMacLocation.enable()
-                NavigationMenubarItem.recentLocation.enable()
-                FileMenubarItem.openGPXFile.enable()
-                return
-            }
+            guard spoofer.device != device else { return }
             // reset the timer and cancel all delegate updates
             spoofer.moveState = .manual
             spoofer.delegate = nil
@@ -206,6 +198,11 @@ class WindowController: NSWindowController {
             // set the correct walking speed based on the current selection
             viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
 
+            // Hide the error indicator
+            viewController.errorIndicator.isHidden = true
+            // Activate the menubar items
+            MenubarController.state = .connected
+
             // Check if we already have a known location for this device, if so load it.
             // TODO: This is not an optimal solution, because we do not keep information about the current route or
             // automove state. We could fix this by serializing the spoofer instance... but this is low priority.
@@ -216,15 +213,6 @@ class WindowController: NSWindowController {
                 // enable the move menubar items
                 spoofer.moveState = .manual
             }
-
-            // Make sure to enable the 'Set Location' menubar item if a device is connected.
-            NavigationMenubarItem.setLocation.enable()
-            NavigationMenubarItem.useMacLocation.enable()
-            NavigationMenubarItem.recentLocation.enable()
-            FileMenubarItem.openGPXFile.enable()
-
-            // Hide the error indicator
-            viewController.errorIndicator.isHidden = true
         }
 
         do {
@@ -246,9 +234,7 @@ class WindowController: NSWindowController {
                         do {
                             try deviceLoadHandler()
                             viewController.errorIndicator.isHidden = true
-                        } catch let error {
-                            print(error)
-                        }
+                        } catch {}
                     }
                 }
             }

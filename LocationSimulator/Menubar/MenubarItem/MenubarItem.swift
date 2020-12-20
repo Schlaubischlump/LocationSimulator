@@ -22,7 +22,7 @@ protocol MenubarItem {
 
 extension MenubarItem {
     func setEnabled(_ enabled: Bool) {
-        NavigationMenubarItem.menu?.item(withTag: self.rawValue)?.isEnabled = enabled
+        Self.menu?.item(withTag: self.rawValue)?.isEnabled = enabled
     }
 
     func enable() {

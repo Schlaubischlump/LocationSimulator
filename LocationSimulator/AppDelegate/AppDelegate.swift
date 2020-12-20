@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         // enable the clear menu item if required
         if items.count > 0 {
+            // TODO: CRL
             RecentLocationMenubarItem.clearMenu.enable()
         }
     }

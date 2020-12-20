@@ -55,14 +55,11 @@ extension WindowController {
                 try viewController.load(device: device)
 
                 viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
-                // make sure to enable the menubar item
-                NavigationMenubarItem.setLocation.enable()
-                NavigationMenubarItem.useMacLocation.enable()
-                NavigationMenubarItem.recentLocation.enable()
-                FileMenubarItem.openGPXFile.enable()
 
                 // Hide the error indicator
                 viewController.errorIndicator.isHidden = true
+                // Active the menubar items. We are currently not spoofing
+                MenubarController.state = .connected
             }
 
             do {
@@ -84,9 +81,7 @@ extension WindowController {
                             do {
                                 try deviceLoadHandler()
                                 viewController.errorIndicator.isHidden = true
-                            } catch let error {
-                                print(error)
-                            }
+                            } catch {}
                         }
                     }
                 }
@@ -164,10 +159,7 @@ extension WindowController {
                 viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
 
                 // disable the menubar items
-                let items: [NavigationMenubarItem] = [.setLocation, .toggleAutomove, .moveUp, .moveDown,
-                                                      .moveCounterclockwise, .moveClockwise, .stopNavigation,
-                                                      .recentLocation]
-                items.forEach { item in item.disable() }
+                MenubarController.state = .disconnected
 
                 // try to select the next device in the list
                 if self.devicesPopup.numberOfItems > 0 {

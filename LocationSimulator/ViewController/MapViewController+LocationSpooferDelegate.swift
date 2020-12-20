@@ -55,16 +55,13 @@ extension MapViewController: LocationSpooferDelegate {
 
         if isReset {
             // disable all move menubar items when the location is reset
-            NavigationMenubarItem.toggleAutomove.disable()
-            NavigationMenubarItem.resetLocation.disable()
-            NavigationMenubarItem.moveUp.disable()
-            NavigationMenubarItem.moveDown.disable()
-            NavigationMenubarItem.moveClockwise.disable()
-            NavigationMenubarItem.moveCounterclockwise.disable()
+            MenubarController.state = .connected
         } else {
-            // enable these items if we start faking the location
-            NavigationMenubarItem.toggleAutomove.enable()
-            NavigationMenubarItem.resetLocation.enable()
+            // Start faking the location
+            switch spoofer.moveState {
+            case .manual: MenubarController.state = .manual
+            case .auto:   MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
+            }
         }
 
         // calculate the total rounded distance in kilometers
@@ -121,30 +118,12 @@ extension MapViewController: LocationSpooferDelegate {
             // Remove the movebutton highlight
             self.contentView?.movementButtonHUD.highlight = false
             // allow all movement to navigate manual
-            NavigationMenubarItem.moveCounterclockwise.enable()
-            NavigationMenubarItem.moveClockwise.enable()
-            NavigationMenubarItem.moveUp.enable()
-            NavigationMenubarItem.moveDown.enable()
-            // we disabled automove => we can not stop the navigation
-            NavigationMenubarItem.stopNavigation.disable()
+            MenubarController.state = .manual
         case .auto:
             // Highlight the move button
             self.contentView?.movementButtonHUD.highlight = true
-            // we are moving automatically => do not allow manual movement
-            NavigationMenubarItem.moveUp.disable()
-            NavigationMenubarItem.moveDown.disable()
-
-            if spoofer.route.isEmpty {
-                // allow changing the direction when automoving
-                NavigationMenubarItem.moveCounterclockwise.enable()
-                NavigationMenubarItem.moveClockwise.enable()
-            } else {
-                // if we are navigating enable the menu item to stop the navigation
-                NavigationMenubarItem.stopNavigation.enable()
-                // disable all movement if we are navigating
-                NavigationMenubarItem.moveCounterclockwise.disable()
-                NavigationMenubarItem.moveClockwise.disable()
-            }
+            // we are moving automatically or navigating
+            MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
         }
 
         if self.routeOverlay != nil {

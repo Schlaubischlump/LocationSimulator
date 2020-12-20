@@ -12,7 +12,7 @@ import AppKit
 let kNavigationMenuTag: Int = 1
 
 /// Enum to represent the main Navigation menu.
-enum NavigationMenubarItem: Int, MenubarItem {
+enum NavigationMenubarItem: Int, CaseIterable, MenubarItem {
     case walk                   = 0
     case cycle                  = 1
     case drive                  = 2

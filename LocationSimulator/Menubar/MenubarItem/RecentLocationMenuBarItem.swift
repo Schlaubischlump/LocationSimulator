@@ -27,7 +27,7 @@ let kMaxRecentItems: Int = 10
 let kRecentLocationUserDefaultKey: String = "RecentLocations"
 
 /// Enum to represent the Recent Locations submenu
-enum RecentLocationMenubarItem: Int, MenubarItem {
+enum RecentLocationMenubarItem: Int, CaseIterable, MenubarItem {
     case clearMenu = 1
 
     static public var menu: NSMenu? {

@@ -11,7 +11,7 @@ import AppKit
 let kFileMenuTag: Int = 2
 
 /// The main File menu.
-enum FileMenubarItem: Int, MenubarItem {
+enum FileMenubarItem: Int, CaseIterable, MenubarItem {
     case openGPXFile = 1
 
     static public var menu: NSMenu? {

@@ -44,9 +44,7 @@ extension AppDelegate {
         dialog.allowsMultipleSelection = false
         dialog.allowedFileTypes        = ["gpx"]
 
-        let response = dialog.runModal()
-        if response == .OK, let gpxFile = dialog.url {
-
+        if dialog.runModal() == .OK, let gpxFile = dialog.url {
             do {
                 // Try to parse the GPX file
                 let parser = try GPXParser(file: gpxFile)
@@ -87,7 +85,6 @@ extension AppDelegate {
                                 // If the action was not canceled.
                                 if res != NSApplication.ModalResponse.alertFirstButtonReturn {
                                     let coords = gpxView.coordinates
-                                    print(coords)
                                     viewController?.requestGPXRouting(route: coords)
                                 }
                             }
