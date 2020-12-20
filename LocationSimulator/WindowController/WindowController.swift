@@ -171,7 +171,7 @@ class WindowController: NSWindowController {
         guard let viewController = self.contentViewController as? MapViewController else { return }
 
         // New device is connected without a spoofed location
-        MenubarController.state = .disconnected
+        MenubarController.state = .connected
 
         let index: Int = sender.indexOfSelectedItem
         let device: Device = self.devices[index]
