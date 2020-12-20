@@ -13,5 +13,5 @@ public enum DeviceError: Error {
     case permisson(_ message: String)
     case devDiskImageNotFound(_ message: String, os: String, version: String)
     case devDiskImageMount(_ message: String, os: String, version: String)
-    case productVersion(_ message: String)
+    case productInfo(_ message: String)
 }

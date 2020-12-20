@@ -15,7 +15,7 @@
 "DEVDISK_NOT_FOUND" = "DeveloperDiskImage files not found";
 "UNKNOWN_ERROR" = "Unknown error";
 "LOCATION_CHANGE_ERROR" = "Error changing location";
-"PRODUCT_VERSION_ERROR" = "Could not get product version";
+"PRODUCT_INFO_ERROR" = "Could not get product info";
 "PERMISSION_ERROR" = "Permission error";
 "NO_DEVDISK_DOWNLOAD_ERROR" = "No DeveloperDiskImage download found";
 "DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage download failed";
@@ -58,3 +58,14 @@
 "ERROR_PARSE_GPX" = "Error Parsing GPX File";
 "ERROR_PARSE_GPX_MSG" = "Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
 "TELEPORT_OR_NAVIGATE_GPX_MSG" = "Do you want to navigate or teleport to the start location of this route?";
+"EMPTY_ROUTE" = "Empty Route";
+"EMPTY_ROUTE_MSG" = "Not enough coordinates available to start the navigation.";
+
+// GPX Selection View
+"CHOOSE" = "Choose";
+"TRACK_SEGMENT" = "Segment";
+"TRACK" = "Track";
+"ROUTE" = "Route";
+"WAYPOINTS" = "Waypoints";
+"GPX_SELECTION" = "Choose Coordinates";
+"GPX_SELECTION_MSG" = "Choose a Track, Track Segment, Route or the Waypoints to start the navigation.";

@@ -59,8 +59,7 @@ class MapViewController: NSViewController {
             }
 
             // Send a notification
-            NotificationCenter.default.post(name: .AutoFoucusCurrentLocationChanged,
-                                            object: autoFocusCurrentLocation)
+            NotificationCenter.default.post(name: .AutoFoucusCurrentLocationChanged, object: autoFocusCurrentLocation)
         }
     }
 
@@ -92,15 +91,13 @@ class MapViewController: NSViewController {
             self.view.window?.makeFirstResponder(self.mapView)
 
             switch self.spoofer?.moveState {
+            // Enable auto move
             case .manual:
-                // Enable auto move
                 self.spoofer?.moveState = .auto
                 self.spoofer?.move()
-            case .auto:
-                // Disable auto move
-                self.spoofer?.moveState = .manual
-            case .none:
-                break
+            // Disable auto move
+            case .auto: self.spoofer?.moveState = .manual
+            case .none: break
             }
         }
 
@@ -119,9 +116,9 @@ class MapViewController: NSViewController {
 
         // configure the map view
         self.mapView.delegate = self
-        self.mapView.wantsLayer = true // otherwise the BlurView won't work
         self.mapView.showsZoomControls = false
         self.mapView.showsScale = true
+        //self.mapView.wantsLayer = true
         //self.mapView.showsUserLocation = true
 
         // Add gesture recognizer
@@ -136,6 +133,7 @@ class MapViewController: NSViewController {
         // are we currently showing a alert
         self.isShowingAlert = false
 
+        // register all actions for the controls in the lower left corner
         self.registerControlsHUDActions()
     }
 
@@ -162,8 +160,7 @@ class MapViewController: NSViewController {
         if let devDMG = manager.getDeveloperDiskImage(os: os, iOSVersion: iOSVersion),
             let devSign = manager.getDeveloperDiskImageSignature(os: os, iOSVersion: iOSVersion) {
 
-            let (diskLinks, signLinks): ([URL], [URL]) = manager.getDeveloperDiskImageDownloadLinks(os: os, version:
-                                                                                                        iOSVersion)
+            let (diskLinks, signLinks) = manager.getDeveloperDiskImageDownloadLinks(os: os, version: iOSVersion)
             if diskLinks.isEmpty || signLinks.isEmpty {
                 window.showError(NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR", comment: ""),
                                  message: NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR_MSG", comment: ""))
@@ -180,6 +177,7 @@ class MapViewController: NSViewController {
 
             // set the delegate
             downloader.delegate = progressViewController
+            // We just use the first download link. In theory we could add multiple links for the same image.
             let devDiskTask = DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDMG,
                                            description: NSLocalizedString("DEVDISK_DOWNLOAD_DESC", comment: ""))
             let devSignTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSign,
@@ -213,7 +211,7 @@ class MapViewController: NSViewController {
     ///    * `DeviceError.devDiskImageNotFound`: No DeveloperDiskImage.dmg or Signature file found in App Support folder
     ///    * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage.dmg file
     ///    * `DeviceError.permisson`: Permission error while accessing the App Support folder
-    ///    * `DeviceError.productVersion`: Could not read the devices product version string
+    ///    * `DeviceError.productInfo`: Could not read the devices product version string
     func load(device: Device) throws {
         guard let window = self.view.window else { return }
 
@@ -393,6 +391,13 @@ class MapViewController: NSViewController {
     func requestGPXRouting(route: [CLLocationCoordinate2D]) {
         // make sure we can spoof a location and not dialog is currently showing
         guard !self.isShowingAlert else { return }
+
+        // We need at least one coordinate
+        guard route.count > 0 else {
+            self.view.window?.showError(NSLocalizedString("EMPTY_ROUTE", comment: ""),
+                                       message: NSLocalizedString("EMPTY_ROUTE_MSG", comment: ""))
+            return
+        }
 
         // if the current location is set ask the user if he wants to teleport or navigate to the destination
         let alert = NSAlert()

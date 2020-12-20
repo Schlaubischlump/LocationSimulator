@@ -201,7 +201,7 @@ struct Device: Hashable {
     ///    * `DeviceError.devDiskImageNotFound`: No DeveloperDiskImage.dmg or Signature file found in App Support folder
     ///    * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage.dmg file
     ///    * `DeviceError.permisson`: Permission error while accessing the App Support folder
-    ///    * `DeviceError.productVersion`: Could not read the devices product version string
+    ///    * `DeviceError.productInfo`: Could not read the devices product version string
     private func mountDeveloperDiskImage() throws {
         // developer image is already mounted
         if developerImageIsMountedForDevice(udid, self.lookupOps) {
@@ -235,7 +235,7 @@ struct Device: Hashable {
                 throw DeviceError.permisson(NSLocalizedString("PERMISSION_ERROR", comment: ""))
             }
         } else {
-            throw DeviceError.productVersion(NSLocalizedString("PRODUCT_VERSION_ERROR", comment: ""))
+            throw DeviceError.productInfo(NSLocalizedString("PRODUCT_INFO_ERROR", comment: ""))
         }
     }
 

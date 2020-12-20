@@ -58,14 +58,39 @@ extension AppDelegate {
                         let routes = parser.routes
                         let tracks = parser.tracks
 
+                        let viewController = windowController?.contentViewController as? MapViewController
+
                         // Start the navigation of the GPX route
                         if let coords = self.uniqueCoordinates(waypoints: waypoints, routes: routes, tracks: tracks) {
-                            // Use the coordinates
-                            let viewController = windowController?.contentViewController as? MapViewController
                             // Jump to the first coordinate of the coordinate list
                             viewController?.requestGPXRouting(route: coords)
                         } else {
-                            // TODO: Show a user selection window for the waypoints / routes / tracks.
+                            guard let window = window else { return }
+
+                            // Show a user selection window for the waypoints / routes / tracks.
+                            let alert = NSAlert()
+                            alert.messageText = NSLocalizedString("GPX_SELECTION", comment: "")
+                            alert.informativeText = NSLocalizedString("GPX_SELECTION_MSG", comment: "")
+                            alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
+                            alert.addButton(withTitle: NSLocalizedString("CHOOSE", comment: ""))
+                            alert.alertStyle = .informational
+
+                            // Create the GPX selection view.
+                            let gpxView = GPXSelectionView(frame: NSRect(x: 0, y: 0, width: 330, height: 100))
+                            gpxView.tracks = tracks
+                            gpxView.routes = routes
+                            gpxView.waypoints = waypoints
+                            alert.accessoryView = gpxView
+
+                            // Show the alert
+                            alert.beginSheetModal(for: window) { res in
+                                // If the action was not canceled.
+                                if res != NSApplication.ModalResponse.alertFirstButtonReturn {
+                                    let coords = gpxView.coordinates
+                                    print(coords)
+                                    viewController?.requestGPXRouting(route: coords)
+                                }
+                            }
                         }
                     case .failure:
                         // Could not parse the file.
