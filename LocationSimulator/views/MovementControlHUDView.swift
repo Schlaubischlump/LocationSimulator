@@ -11,7 +11,7 @@ typealias MovementControlAction = () -> Void
 
 /// Percentage of the inner circle cutout given in percentage of this views width.
 /// E.g a value of 0.5 means the cutout takes up 50% of the views width.
-private let kInnerCircleSizeInPercent: CGFloat = 0.55
+private let kInnerCircleSizeInPercent: CGFloat = 0.58
 
 /// The movement control which is used to adjust the heading.
 class MovementControlHUDView: HUDView {

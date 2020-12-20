@@ -93,15 +93,25 @@ class MovementButtonHUDView: HUDView, NSGestureRecognizerDelegate {
         }
     }
 
+    private var material: Int = 0
+
     /// Called on a click.
     @objc private func buttonClicked(sender: NSPressGestureRecognizer) {
-        if sender.state == .ended {
+
+        print("Material: ", self.material)
+        self.effectView.material = NSVisualEffectView.Material(rawValue: self.material)!
+        self.effectView.isEmphasized = !self.effectView.isEmphasized
+        if self.effectView.isEmphasized {
+            self.material = (self.material + 1) % 30
+        }
+
+        /*if sender.state == .ended {
             self.highlight = !self.highlight
             self.clickAction?()
             // Keep the button highlighted for a couple of seconds
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.035, execute: {
                 self.highlight = false
             })
-        }
+        }*/
     }
 }

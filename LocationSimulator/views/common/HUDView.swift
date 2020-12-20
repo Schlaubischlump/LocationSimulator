@@ -15,12 +15,8 @@ class HUDView: NSView {
     }
 
     /// Set the corner radius for this view and the effect view.
-    var cornerRadius: CGFloat {
-        get { return self.effectView.layer?.cornerRadius ?? 0}
-        set {
-            self.layer?.cornerRadius = newValue
-            self.effectView.layer?.cornerRadius = newValue
-        }
+    var cornerRadius: CGFloat = 5.0 {
+        didSet { self.applyCornerRadius(self.cornerRadius) }
     }
 
     /// Set a views background color
@@ -40,9 +36,6 @@ class HUDView: NSView {
     lazy var effectView: NSVisualEffectView = {
         let effectView = NSVisualEffectView()
         effectView.blendingMode = .withinWindow
-        effectView.material = .titlebar
-        effectView.isEmphasized = true
-        effectView.state = .active
         effectView.wantsLayer = true
         return effectView
     }()
@@ -52,10 +45,18 @@ class HUDView: NSView {
     private func setup() {
         // Round the corners of the VisuelEffectView
         self.effectView.layer?.masksToBounds = true
-        self.effectView.layer?.cornerRadius = 5.0
         self.effectView.frame = self.bounds
         self.effectView.autoresizingMask = [.height, .width]
         self.addSubview(self.effectView)
+
+        // Prepare the layer
+        self.wantsLayer = true
+        self.layer?.masksToBounds = false
+
+        // Change the effectView style.
+        self.applyCornerRadius(self.cornerRadius)
+        self.applyEffectViewStyle()
+        self.applyDropShadow()
     }
 
     init() {
@@ -67,4 +68,59 @@ class HUDView: NSView {
         super.init(coder: coder)
         self.setup()
     }
+
+    // MARK: - layout
+
+    /// Apply a drop shadow to the HUD.
+    private func applyDropShadow() {
+        if #available(OSX 11.0, *) {
+            // Nothing to do on Big Sur
+        } else {
+            // Add a nice drop shadow around the HUD for older macOS versions.
+            let shadow = NSShadow()
+            shadow.shadowColor = NSColor(calibratedWhite: 0.0, alpha: 0.3)
+            shadow.shadowBlurRadius = 0.5
+            shadow.shadowOffset = NSSize(width: 0.0, height: -0.5)
+            self.shadow = shadow
+        }
+    }
+
+    /// Change the current effectView style depending on the OS Version and dark / light mode.
+    private func applyEffectViewStyle() {
+        if #available(OSX 11.0, *) {
+            effectView.material = .titlebar
+        } else if #available(OSX 10.14, *) {
+            let isDark =  NSAppearance.current.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
+            effectView.material = isDark ? .titlebar : .contentBackground
+        } else {
+            // Mac OS 10.13. TODO: Needs testing.
+            effectView.material = .titlebar
+        }
+
+        effectView.isEmphasized = true
+        effectView.state = .active
+    }
+
+    /// Change the corner radius to the effectView and this view depending on the OS Version and dark / light mode.
+    /// - Parameter radius: the new corner radius
+    private func applyCornerRadius(_ radius: CGFloat) {
+        self.layer?.cornerRadius = radius
+        self.effectView.layer?.cornerRadius = radius
+
+        if #available(OSX 11.0, *) {
+            // Don't change anything for macOS Big Sur and greater
+        } else {
+            // Add a thin border for older macOS systems
+            self.layer?.borderColor = NSColor.separator.cgColor
+            self.layer?.borderWidth = 0.5
+        }
+    }
+
+    override func layout() {
+        super.layout()
+        // Reapply the corner radius on layout to adapt to dark mode.
+        self.applyEffectViewStyle()
+        self.applyCornerRadius(self.cornerRadius)
+    }
+
 }

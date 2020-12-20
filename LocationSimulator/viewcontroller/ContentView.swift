@@ -21,6 +21,8 @@
     /// The container view which contains the button and the control.
     @IBOutlet var movementContainer: NSView! {
         didSet {
+            // Make the view layer backed.
+            self.movementContainer.wantsLayer = true
             // Add a rotation gesture recognizer to the movement container.
             let rotateRecognizer = NSRotationGestureRecognizer(target: self, action: #selector(overlayRotateByGesture))
             self.movementContainer.addGestureRecognizer(rotateRecognizer)
@@ -66,7 +68,6 @@
 
         // Fix bottom bar color on Big Sur.
         if #available(OSX 11.0, *) {
-            self.wantsLayer = true
             self.layer?.backgroundColor = NSColor(named: "bottomBarBackground")?.cgColor
         }
     }
