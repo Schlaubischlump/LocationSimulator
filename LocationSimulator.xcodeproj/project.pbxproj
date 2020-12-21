@@ -52,11 +52,12 @@
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
+		6372061D25911CED00293EA8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372061C25911CED00293EA8 /* MapView.swift */; };
 		6376755A258E93CE000DCEF3 /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
 		6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
 		6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */; };
 		63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */; };
-		63767561258EA61E000DCEF3 /* MovementControlHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755F258EA61E000DCEF3 /* MovementControlHUDView.swift */; };
+		63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */; };
 		63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767562258EA684000DCEF3 /* NSColor+Extension.swift */; };
 		63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */; };
 		63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */; };
@@ -72,7 +73,7 @@
 		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
-		63FC479F2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */; };
+		63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */; };
 		63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC47A32306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift */; };
 		63FDE219258F876B00917412 /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 63FDE218258F876B00917412 /* Downloader */; };
 		63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE223258F9E3300917412 /* GPXSelectionView.swift */; };
@@ -136,9 +137,10 @@
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
+		6372061C25911CED00293EA8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerHUDView.swift; sourceTree = "<group>"; };
 		6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementButtonHUDView.swift; sourceTree = "<group>"; };
-		6376755F258EA61E000DCEF3 /* MovementControlHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementControlHUDView.swift; sourceTree = "<group>"; };
+		6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDirectionHUDView.swift; sourceTree = "<group>"; };
 		63767562258EA684000DCEF3 /* NSColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+Extension.swift"; sourceTree = "<group>"; };
 		63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 		63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeveloperDiskImages.plist; sourceTree = "<group>"; };
 		63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchField.swift; sourceTree = "<group>"; };
 		63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+LocationSpooferDelegate.swift"; sourceTree = "<group>"; };
-		63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+MapViewDelegate.swift"; sourceTree = "<group>"; };
+		63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		63FC47A32306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+AutoCompleteTableViewDelegate.swift"; sourceTree = "<group>"; };
 		63FDE223258F9E3300917412 /* GPXSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionView.swift; sourceTree = "<group>"; };
 		63FDE229258F9F6800917412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GPXSelectionView.xib; sourceTree = "<group>"; };
@@ -406,12 +408,13 @@
 		63525956258E8F9A0031F289 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				63525957258E8FC80031F289 /* Common */,
+				63720622259121C600293EA8 /* MapView */,
 				63FDE21B258F9D2400917412 /* GPXSelection */,
 				632C466623F76881004E5092 /* CoordinateSelection */,
-				63525957258E8FC80031F289 /* Common */,
 				6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */,
 				6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */,
-				6376755F258EA61E000DCEF3 /* MovementControlHUDView.swift */,
+				6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,13 +428,21 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		63720622259121C600293EA8 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				6372061C25911CED00293EA8 /* MapView.swift */,
+				63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		638ADBE2230203B20061612D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				632A962B254811AC0078B8DD /* ContentView.swift */,
 				13BA351B20A433EE00A0431C /* MapViewController.swift */,
 				63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */,
-				63FC479E2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -626,7 +637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63FC479F2305653000BBB2E8 /* MapViewController+MapViewDelegate.swift in Sources */,
+				63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */,
 				634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */,
 				63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */,
 				6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */,
@@ -664,9 +675,10 @@
 				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
 				63525933258B79900031F289 /* AppDelegate+HelpMenu.swift in Sources */,
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
-				63767561258EA61E000DCEF3 /* MovementControlHUDView.swift in Sources */,
+				63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */,
 				63525936258B79A70031F289 /* AppDelegate+FileMenu.swift in Sources */,
 				6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */,
+				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
 				63525927258B74750031F289 /* RecentLocationMenuBarItem.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,

@@ -13,104 +13,84 @@ import MapKit
 
 extension MapViewController: LocationSpooferDelegate {
 
+    // MARK: - Location
+
     func willChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
         // show a progress spinner when we request a location change
         self.startSpinner()
 
         // remove the route overlay if it is present
-        if self.routeOverlay != nil {
-            self.mapView.removeOverlay(self.routeOverlay!)
-            self.routeOverlay = nil
-        }
+        self.mapView.removeNavigationOverlay()
 
         // make sure the spoofer is setup
-        guard let coord = toCoordinate, let spoofer = self.spoofer else {
-            return
-        }
+        guard let coord = toCoordinate, let spoofer = self.spoofer else { return }
 
-        // if there are still points left on the route => update the overlay
-        let stepsLeft = spoofer.route.count
-        if stepsLeft > 0 {
-            self.routeOverlay = MKPolyline(coordinates: [coord] + spoofer.route, count: stepsLeft+1)
-            self.mapView.addOverlay(self.routeOverlay!, level: .aboveLabels)
-            // FixMe: force a redraw to show the overlay... for some reason display is not working
-            // this does block the UI for a little less then a second :/ 
-            //self.mapView.setCenter(self.mapView.centerCoordinate, animated: true)
+        // if we are still navigating => update the overlay
+        if spoofer.route.count > 0 {
+            self.mapView.addNavigationOverlay(withPath: [coord] + spoofer.route)
         }
     }
 
     func errorChangingLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
+        // true if the location was reset, false otherwise
+        let isReset: Bool = (toCoordinate == nil)
+        let errorMsg = isReset ? "LOCATION_RESET_ERROR_MSG" : "LOCATION_CHANGE_ERROR_MSG"
+
         // hide the spinner
         self.stopSpinner()
 
         // inform the user that the location could not be changed
         self.view.window!.showError(NSLocalizedString("LOCATION_CHANGE_ERROR", comment: ""),
-                                    message: NSLocalizedString((toCoordinate == nil) ?
-                                        "LOCATION_RESET_ERROR_MSG" : "LOCATION_CHANGE_ERROR_MSG", comment: ""))
+                                    message: NSLocalizedString(errorMsg, comment: ""))
     }
 
     func didChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
         // true if the location was reset, false otherwise
         let isReset: Bool = (toCoordinate == nil)
 
-        if isReset {
-            // disable all move menubar items when the location is reset
-            MenubarController.state = .connected
-        } else {
-            // Start faking the location
-            switch spoofer.moveState {
-            case .manual: MenubarController.state = .manual
-            case .auto:   MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
-            }
-        }
-
-        // calculate the total rounded distance in kilometers
+        // Calculate the total rounded distance in kilometers and update the label
         let totalDistanceInKM: Double = round(self.spoofer?.totalDistance ?? 0.0) / 1000.0
         self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""),
                                                      totalDistanceInKM)
 
-        // hide / show move controls
-        self.contentView?.controlsHidden = isReset
-
-        // hide the progress spinner when the location was changed
+        // Hide the progress spinner after the location was changed.
         self.stopSpinner()
 
-        // if we have set a new location animate the marker
-        if !isReset {
-            // location was set for the first time => display marker
-            if self.currentLocationMarker == nil {
-                let currentLocationMarker = MKPointAnnotation()
-                currentLocationMarker.title = NSLocalizedString("CURRENT_LOCATION", comment: "")
-
-                self.mapView.addAnnotation(currentLocationMarker)
-                self.currentLocationMarker = currentLocationMarker
-                self.autoFocusCurrentLocation = true
-
-                // Add this location to the recent locations
+        if isReset {
+            // Disable all `move` menubar items when the location is reset.
+            MenubarController.state = .connected
+            //  Remove the current location marker
+            self.mapView.removeCurrentLocationMarker()
+            // Disable autofocus
+            self.autoFocusCurrentLocation = false
+            // Hide the movement controls
+            self.contentView?.controlsHidden = true
+        } else {
+            // We either have teleported or navigated. In each case update the menubar.
+            switch spoofer.moveState {
+            case .manual: MenubarController.state = .manual
+            case .auto:   MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
+            }
+            // Place the current location marker
+            let markerCreated = self.mapView.placeCurrentLocationMarker(atLocation: toCoordinate!)
+            // Add this location to the recent locations if the marker was created.
+            // If the marker was moved (automove / navigate) we do not want to add
+            // the location to the recent location list
+            if markerCreated {
                 RecentLocationMenubarItem.addLocation(toCoordinate!)
             }
-            self.currentLocationMarker!.subtitle = "\(toCoordinate!.latitude), \(toCoordinate!.longitude)"
-
-             // location was updated => animate to new position
-            NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
-                context.duration = 0.5
-                context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-                context.allowsImplicitAnimation = true
-                self.currentLocationMarker?.coordinate = toCoordinate!
-            }, completionHandler: nil)
-
-            if self.autoFocusCurrentLocation {
+            // If autofocus is enabled and the user is not interacting with the map.
+            if  self.autoFocusCurrentLocation && !self.mapView.isUserInteracting {
+                // Center the view, without zooming in.
                 self.mapView.setCenter(toCoordinate!, animated: true)
+                //self.mapView.zoomToLocation(toCoordinate!, animated: true)
             }
-        } else { // the location was reset => remove marker
-            if let marker = self.currentLocationMarker {
-                self.mapView.removeAnnotation(marker)
-                self.currentLocationMarker = nil
-            }
-
-            self.autoFocusCurrentLocation = false
+            // Show the movement controls
+            self.contentView?.controlsHidden = false
         }
     }
+
+    // MARK: - Move state
 
     func didChangeMoveState(spoofer: LocationSpoofer, moveState: MoveState) {
         switch moveState {
@@ -126,9 +106,9 @@ extension MapViewController: LocationSpooferDelegate {
             MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
         }
 
-        if self.routeOverlay != nil {
-            self.mapView.removeOverlay(self.routeOverlay!)
-            self.routeOverlay = nil
-        }
+        // Remove the navigation overlay. We need to do this even if we are navigating.
+        // On navigation the overlay will be removed and readded on location will change.
+        // This will fake the animation. There is no easier why to animate the navigation.
+        self.mapView.removeNavigationOverlay()
     }
 }

@@ -108,12 +108,7 @@ class WindowController: NSWindowController {
     /// - Parameter sender: the button which triggered the action
     @IBAction func autofocusLocationClicked(_ sender: NSButton) {
         guard let viewController = self.contentViewController as? MapViewController else { return }
-
-        if viewController.currentLocationMarker == nil {
-            sender.state = .off
-        } else {
-            viewController.autoFocusCurrentLocation = (sender.state == .on)
-        }
+        viewController.autoFocusCurrentLocation = (sender.state == .on)
     }
 
     /// Change the move speed to walk / cycle / drive based on the selected segment. Futhermore update the tool- and

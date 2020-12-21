@@ -70,10 +70,10 @@ extension AppDelegate {
         switch NavigationMenubarItem(rawValue: menuItem.tag) {
         // Counterclockwise
         case .moveCounterclockwise:
-            viewController.rotateHeaderViewBy(5.0)
+            viewController.rotateDirectionViewBy(5.0)
         // Clockwise
         case .moveClockwise:
-            viewController.rotateHeaderViewBy(-5.0)
+            viewController.rotateDirectionViewBy(-5.0)
         //  x | x                 |          |                   |
         // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
         //    |    arrow down   x | x      x | x  arrow down   x | x
@@ -81,7 +81,7 @@ extension AppDelegate {
             if viewController.spoofer?.moveState == .manual {
                 let angle = viewController.getHeaderViewAngle()
                 if angle < 90 || angle > 270 {
-                    viewController.rotateHeaderViewBy(180)
+                    viewController.rotateDirectionViewBy(180)
                 }
                 viewController.spoofer?.move(appendToPendingTasks: false)
             }
@@ -92,7 +92,7 @@ extension AppDelegate {
             if viewController.spoofer?.moveState == .manual {
                 let angle = viewController.getHeaderViewAngle()
                 if angle > 90 && angle < 270 {
-                    viewController.rotateHeaderViewBy(180)
+                    viewController.rotateDirectionViewBy(180)
                 }
                 viewController.spoofer?.move(appendToPendingTasks: false)
             }

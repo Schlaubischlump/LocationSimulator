@@ -20,7 +20,7 @@ public extension NSNotification.Name {
 class MapViewController: NSViewController {
     // MARK: - UI
     /// The main mapView.
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MapView!
     /// The label which displays the total amount of meters you walked.
     @IBOutlet weak var totalDistanceLabel: NSTextField!
     /// Error indicator if something went wrong while connecting the device.
@@ -30,12 +30,6 @@ class MapViewController: NSViewController {
 
     /// Current instance to spoof the iOS device location.
     public var spoofer: LocationSpoofer?
-
-    /// Current marker on the mapView.
-    public var currentLocationMarker: MKPointAnnotation?
-
-    /// Current route overlay shown when navigation is active.
-    public var routeOverlay: MKOverlay?
 
     /// The main contentView which hosts all other views, including the mapView.
     public var contentView: ContentView? {
@@ -48,14 +42,9 @@ class MapViewController: NSViewController {
     /// True to autofocus current location when the location changes, False otherwise.
     var autoFocusCurrentLocation = false {
         didSet {
-            if self.autoFocusCurrentLocation == true,
-                let currentLocation = self.spoofer?.currentLocation {
-                // Zoom to the current Location
-                let currentRegion = mapView.region
-                let span = MKCoordinateSpan(latitudeDelta: min(0.002, currentRegion.span.latitudeDelta),
-                                            longitudeDelta: min(0.002, currentRegion.span.longitudeDelta))
-                let region = MKCoordinateRegion(center: currentLocation, span: span)
-                mapView.setRegion(region, animated: true)
+            // Zoom to the current Location
+            if self.autoFocusCurrentLocation == true, let currentLocation = self.spoofer?.currentLocation {
+                self.mapView.zoomToLocation(currentLocation, animated: true)
             }
 
             // Send a notification
@@ -71,7 +60,7 @@ class MapViewController: NSViewController {
         return self.spoofer?.device != nil
     }
 
-    // MARK: - View lifecycle
+    // MARK: - Actions
 
     /// Register all actions for the controls in the lower left corner.
     private func registerControlsHUDActions() {
@@ -102,11 +91,33 @@ class MapViewController: NSViewController {
         }
 
         // Add the callback when the heading changes
-        self.contentView?.movementControlHUD.headingChangedAction = {
+        self.contentView?.movementDirectionHUD.headingChangedAction = {
             // Update the location spoofer heading
             self.spoofer?.heading = self.mapView.camera.heading - self.getHeaderViewAngle()
         }
     }
+
+    /// Register callbacks for all mapView actions.
+    private func registerMapViewActions() {
+        // Callback when the mapView is long pressed. Navigate or teleport to the new locatiom if possible.
+        self.mapView.longPressAction = { (src: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
+            if src == nil {
+                // There is no current location => we can only teleport
+                self.spoofer?.setLocation(dst)
+            } else {
+                // There is a current location => ask the user to either teleport or navigate
+                self.requestTeleportOrNavigation(toCoordinate: dst)
+            }
+            self.view.window?.makeFirstResponder(self.mapView)
+        }
+
+        // Current location marker was dragged. Navigate or teleport to the new location.
+        self.mapView.markerDragAction = { (_: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
+            self.requestTeleportOrNavigation(toCoordinate: dst)
+        }
+    }
+
+    // MARK: - View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,39 +125,24 @@ class MapViewController: NSViewController {
         // reset the total distance label
         self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
 
-        // configure the map view
-        self.mapView.delegate = self
-        self.mapView.showsZoomControls = false
-        self.mapView.showsScale = true
-        //self.mapView.wantsLayer = true
-        //self.mapView.showsUserLocation = true
-
-        // Add gesture recognizer
-        let mapPressGesture = NSPressGestureRecognizer(target: self, action: #selector(mapViewPressed(_:)))
-        mapPressGesture.minimumPressDuration = 0.5
-        mapPressGesture.numberOfTouchesRequired = 1
-        mapView.addGestureRecognizer(mapPressGesture)
-
         // hide the controls
         self.contentView?.controlsHidden = true
 
-        // are we currently showing a alert
-        self.isShowingAlert = false
+        // register all actions for the mapView
+        self.registerMapViewActions()
 
         // register all actions for the controls in the lower left corner
         self.registerControlsHUDActions()
     }
 
-    /// Make the window the first responder if it receives a mouse click.
-    /// - Parameter event: the mouse event
+    override func viewDidAppear() {
+        self.view.window?.makeFirstResponder(self.mapView)
+        super.viewDidAppear()
+    }
+
     override func mouseDown(with event: NSEvent) {
         self.view.window?.makeFirstResponder(self.mapView)
         super.mouseDown(with: event)
-    }
-
-    override func viewDidAppear() {
-        guard let window = self.view.window else { return }
-        window.makeFirstResponder(self.mapView)
     }
 
     // MARK: - Load device
@@ -258,26 +254,25 @@ class MapViewController: NSViewController {
         self.contentView?.stopSpinner()
     }
 
-    // MARK: - Rotate headerView helper function
+    // MARK: - Direction HUD
 
-    /// The current angle of the headingView used to change the heading.
+    /// The current angle of the movementDirectionHUD used to change the heading.
     /// - Return: the angle in degree
     func getHeaderViewAngle() -> Double {
-        return self.contentView?.movementControlHUD.currentHeadingInDegrees ?? 0.0
+        return self.contentView?.movementDirectionHUD.currentHeadingInDegrees ?? 0.0
     }
 
-    /// Rotate the headingView and update the location spoofer heading state by a specific angle. The angle is applied
-    /// to the current heading.
+    /// Rotate the movementDirectionHUD by a specific angle. The angle is added to the current heading.
     /// - Parameter angle: the angle in degree
-    func rotateHeaderViewBy(_ angle: Double) {
+    func rotateDirectionViewBy(_ angle: Double) {
         // update the headingView and the spoofer heading
-        self.rotateHeaderViewTo(self.getHeaderViewAngle() + angle)
+        self.rotateDirectionViewTo(self.getHeaderViewAngle() + angle)
     }
 
-    /// Set a new heading based on a specified angle.
+    /// Set a new heading given by an angle.
     /// - Parameter angle: the angle in degree
-    func rotateHeaderViewTo(_ angle: Double) {
-        self.contentView?.rotateOverlayTo(angleInDegrees: angle)
+    func rotateDirectionViewTo(_ angle: Double) {
+        self.contentView?.rotateDirectionHUD(toAngleInDegrees: angle)
     }
 
     // MARK: - Teleport or Navigate
@@ -442,25 +437,6 @@ class MapViewController: NSViewController {
             }
 
             self.isShowingAlert = false
-        }
-    }
-
-    // MARK: - Interface Builder callbacks
-
-    /// Callback when the map view is long pressed. Ask the user if he wants to teleport or navigate to the selected
-    /// location.
-    /// - Parameter sender: the long press gesture recognizer instance
-    @objc func mapViewPressed(_ sender: NSPressGestureRecognizer) {
-        if sender.state == .ended {
-            let loc = sender.location(in: mapView)
-            let coordinate = mapView.convert(loc, toCoordinateFrom: mapView)
-
-            if self.currentLocationMarker == nil {
-                self.spoofer?.setLocation(coordinate)
-            } else {
-                self.requestTeleportOrNavigation(toCoordinate: coordinate)
-            }
-            self.view.window?.makeFirstResponder(self.mapView)
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MovementControlHUDView.swift
+//  MovementDirectionHUDView.swift
 //  LocationSimulator2
 //
 //  Created by David Klopp on 17.08.20.
@@ -14,7 +14,7 @@ typealias MovementControlAction = () -> Void
 private let kInnerCircleSizeInPercent: CGFloat = 0.58
 
 /// The movement control which is used to adjust the heading.
-class MovementControlHUDView: HUDView {
+class MovementDirectionHUDView: HUDView {
     /// The currect heading in degrees of the direction overlay
     public private(set) var currentHeadingInDegrees: Double = 0
 
@@ -32,8 +32,8 @@ class MovementControlHUDView: HUDView {
 
         // Add all necessary gesture recognizer to rotate the overlay
         // Install Pan (Click + Move) + Tap recognizer
-        let tapRecognizer = NSClickGestureRecognizer(target: self, action: #selector(overlayRotateByTouch))
-        let panGesture = NSPanGestureRecognizer(target: self, action: #selector(overlayRotateByTouch))
+        let tapRecognizer = NSClickGestureRecognizer(target: self, action: #selector(rotateByTouch))
+        let panGesture = NSPanGestureRecognizer(target: self, action: #selector(rotateByTouch))
 
         self.directionOverlay.addGestureRecognizer(tapRecognizer)
         self.directionOverlay.addGestureRecognizer(panGesture)
@@ -55,20 +55,20 @@ class MovementControlHUDView: HUDView {
 
     // MARK: - Gesture Recognizer
 
-    @objc private func overlayRotateByTouch(sender: NSGestureRecognizer) {
+    @objc private func rotateByTouch(sender: NSGestureRecognizer) {
         guard sender.state == .changed || sender.state == .ended else { return }
 
         // We need to use self here, not the overlay, because the overlay rotates.
         let loc = sender.location(in: self)
         let deltaX = loc.x - self.frame.width / 2
         let deltaY = loc.y - self.frame.height / 2
-        self.rotateOverlayTo(angleInRad: Double(atan2(-deltaX, deltaY)))
+        self.rotateTo(angleInRad: Double(atan2(-deltaX, deltaY)))
     }
 
     // MARK: - Rotate overlay
 
     /// Rotate the translation overlay to a specific angle given in degree.
-    func rotateOverlayTo(angleInDegrees angle: Double) {
+    func rotateyTo(angleInDegrees angle: Double) {
         self.directionOverlay.setAnchorPoint(CGPoint(x: 0.5, y: 0.5))
         // Normalize all values to be between 0 and 360
         let angle = angle.truncatingRemainder(dividingBy: 360)
@@ -82,8 +82,8 @@ class MovementControlHUDView: HUDView {
     }
 
     /// Rotate the translation overlay to a specific angle given in rad.
-    func rotateOverlayTo(angleInRad angle: Double) {
-        self.rotateOverlayTo(angleInDegrees: angle * 180.0 / .pi)
+    func rotateTo(angleInRad angle: Double) {
+        self.rotateyTo(angleInDegrees: angle * 180.0 / .pi)
     }
 
     // MARK: - Layout

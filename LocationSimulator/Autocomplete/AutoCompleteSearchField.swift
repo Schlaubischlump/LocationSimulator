@@ -68,9 +68,11 @@ class AutoCompleteSearchField: NSSearchField {
         tableView.target = self
         tableView.action = #selector(insert(_:))
         tableView.addTableColumn(column1)
+
         if #available(OSX 11.0, *) {
-            tableView.style = .fullWidth
+            tableView.style = NSTableView.Style.fullWidth
         }
+
         tableView.delegate = self
         tableView.dataSource = self
         self.autoCompleteTableView = tableView

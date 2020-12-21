@@ -8,12 +8,15 @@
 
  import AppKit
 
+/// This is the main content view. It includes the mapView and all the controls that overlay the mapView.
+/// Since this view contains links to the interface builders main storyboard, it belongs to this viewController and
+/// not to the general Views group.
  class ContentView: NSView {
     /// The spinner in the top right corner.
     @IBOutlet var spinnerHUD: SpinnerHUDView!
 
     /// The direction outer circle.
-    @IBOutlet var movementControlHUD: MovementControlHUDView!
+    @IBOutlet var movementDirectionHUD: MovementDirectionHUDView!
 
     /// The movement button.
     @IBOutlet var movementButtonHUD: MovementButtonHUDView!
@@ -24,7 +27,7 @@
             // Make the view layer backed.
             self.movementContainer.wantsLayer = true
             // Add a rotation gesture recognizer to the movement container.
-            let rotateRecognizer = NSRotationGestureRecognizer(target: self, action: #selector(overlayRotateByGesture))
+            let rotateRecognizer = NSRotationGestureRecognizer(target: self, action: #selector(directionHUDRotateByGesture))
             self.movementContainer.addGestureRecognizer(rotateRecognizer)
         }
     }
@@ -41,28 +44,29 @@
     // MARK: - Gesture Recognizer
 
     /// Rotate the translation overlay to a specific angle given in degrees.
-    func rotateOverlayTo(angleInDegrees angle: Double) {
-        self.movementControlHUD.rotateOverlayTo(angleInDegrees: angle)
+    func rotateDirectionHUD(toAngleInDegrees angle: Double) {
+        self.movementDirectionHUD.rotateyTo(angleInDegrees: angle)
     }
 
     /// Rotate the translation overlay to a specific angle given in rad.
-    func rotateOverlayTo(angleInRad angle: Double) {
-        self.movementControlHUD.rotateOverlayTo(angleInRad: angle)
+    func rotateDirectionHUD(toAngleInRad angle: Double) {
+        self.movementDirectionHUD.rotateTo(angleInRad: angle)
     }
 
-    @objc private func overlayRotateByGesture(sender: NSRotationGestureRecognizer) {
+    @objc private func directionHUDRotateByGesture(sender: NSRotationGestureRecognizer) {
         switch sender.state {
         case .began, .ended:
-            self.startAngleInDegrees = self.movementControlHUD.currentHeadingInDegrees
+            self.startAngleInDegrees = self.movementDirectionHUD.currentHeadingInDegrees
         case .changed:
             let deltaAngle = Double(sender.rotation * 180 / .pi)
-            self.rotateOverlayTo(angleInDegrees: self.startAngleInDegrees + deltaAngle)
+            self.rotateDirectionHUD(toAngleInDegrees: self.startAngleInDegrees + deltaAngle)
         default:
             break
         }
     }
 
     // MARK: - Layout
+
     override func layout() {
         super.layout()
 
