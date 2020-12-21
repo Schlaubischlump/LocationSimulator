@@ -10,6 +10,7 @@ import AppKit
 import CoreLocation
 import GPXParser
 
+/// A view which allows the user to select a track, track segment, router or waypoints.
 class GPXSelectionView: NSView {
     @IBOutlet var contentView: NSView!
 
@@ -47,15 +48,15 @@ class GPXSelectionView: NSView {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        self.commonInit()
+        self.setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.commonInit()
+        self.setup()
     }
 
-    private func commonInit() {
+    private func setup() {
         // Load the contentView and set its size to update automatically.
         Bundle.main.loadNibNamed("GPXSelectionView", owner: self, topLevelObjects: nil)
         self.contentView.autoresizingMask = [.width, .height]

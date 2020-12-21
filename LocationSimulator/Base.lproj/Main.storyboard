@@ -1074,120 +1074,21 @@
                             <constraint firstItem="JDL-Z8-47m" firstAttribute="top" secondItem="NRh-IM-EPn" secondAttribute="top" id="zIY-at-UPb"/>
                         </constraints>
                         <connections>
+                            <outlet property="errorIndicator" destination="JDL-Z8-47m" id="yQh-Ov-Vt7"/>
                             <outlet property="movementButtonHUD" destination="ESA-EZ-scL" id="Bid-ke-fWU"/>
                             <outlet property="movementContainer" destination="Xym-3b-sFG" id="0jO-Fz-NmA"/>
                             <outlet property="movementDirectionHUD" destination="Zt8-yG-DDP" id="09m-td-eqU"/>
                             <outlet property="spinnerHUD" destination="boF-o9-C5b" id="fCE-FN-AFy"/>
+                            <outlet property="totalDistanceLabel" destination="NRh-IM-EPn" id="duw-xI-axp"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="errorIndicator" destination="JDL-Z8-47m" id="o1Z-bw-srJ"/>
                         <outlet property="mapView" destination="UPy-aZ-mQr" id="0dR-N4-GA7"/>
-                        <outlet property="totalDistanceLabel" destination="NRh-IM-EPn" id="5nw-BH-WNm"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="445" y="1018"/>
-        </scene>
-        <!--Progress Window Controller-->
-        <scene sceneID="oc5-MO-MAg">
-            <objects>
-                <windowController storyboardIdentifier="progressWindowController" id="oXD-az-5U6" userLabel="Progress Window Controller" customClass="ProgressWindowController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="36H-n2-BDh">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <connections>
-                            <outlet property="delegate" destination="oXD-az-5U6" id="3j5-eP-vIg"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <outlet property="window" destination="36H-n2-BDh" id="RfE-kw-QXa"/>
-                        <segue destination="WvF-eN-eEd" kind="relationship" relationship="window.shadowedContentViewController" id="cvw-L5-pW3"/>
-                    </connections>
-                </windowController>
-                <customObject id="Txq-sU-Ci3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="699" y="189"/>
-        </scene>
-        <!--Progress View Controller-->
-        <scene sceneID="6xW-Yv-Gv5">
-            <objects>
-                <viewController id="WvF-eN-eEd" customClass="ProgressViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="vs5-DV-CO6">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="175"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BAO-cU-cWv">
-                                <rect key="frame" x="18" y="139" width="444" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Status 1" id="rLz-LV-XVO">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <progressIndicator wantsLayer="YES" verticalHuggingPriority="751" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="ZID-Mb-JLF" userLabel="Horizontal Progress Indicator (top)">
-                                <rect key="frame" x="20" y="112" width="440" height="20"/>
-                            </progressIndicator>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ohc-gm-lle">
-                                <rect key="frame" x="384" y="13" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BF4-i1-cE7">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="cancelButtonClicked:" target="WvF-eN-eEd" id="CXD-Wa-pbG"/>
-                                </connections>
-                            </button>
-                            <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="wVa-Ez-faJ" userLabel="Horizontal Progress Indicator (bottom)">
-                                <rect key="frame" x="20" y="62" width="440" height="20"/>
-                            </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Avv-I6-As1">
-                                <rect key="frame" x="18" y="89" width="444" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Status 2" id="fGL-KP-wgK">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="Avv-I6-As1" firstAttribute="leading" secondItem="ZID-Mb-JLF" secondAttribute="leading" id="5HC-kE-yB0"/>
-                            <constraint firstItem="wVa-Ez-faJ" firstAttribute="leading" secondItem="Avv-I6-As1" secondAttribute="leading" id="6lX-Sx-r9e"/>
-                            <constraint firstItem="wVa-Ez-faJ" firstAttribute="leading" secondItem="vs5-DV-CO6" secondAttribute="leading" constant="20" symbolic="YES" id="BlS-06-bv3"/>
-                            <constraint firstAttribute="trailing" secondItem="BAO-cU-cWv" secondAttribute="trailing" constant="20" symbolic="YES" id="N8B-Me-nkt"/>
-                            <constraint firstItem="Avv-I6-As1" firstAttribute="trailing" secondItem="ZID-Mb-JLF" secondAttribute="trailing" id="Rbd-Z1-E4j"/>
-                            <constraint firstAttribute="bottom" secondItem="Ohc-gm-lle" secondAttribute="bottom" constant="20" symbolic="YES" id="U2j-BF-qw4"/>
-                            <constraint firstItem="wVa-Ez-faJ" firstAttribute="trailing" secondItem="Ohc-gm-lle" secondAttribute="trailing" id="cS8-Rg-9Q1"/>
-                            <constraint firstItem="Ohc-gm-lle" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vs5-DV-CO6" secondAttribute="leading" constant="20" symbolic="YES" id="fke-B3-Plv"/>
-                            <constraint firstItem="wVa-Ez-faJ" firstAttribute="leading" secondItem="BAO-cU-cWv" secondAttribute="leading" id="h1p-sB-u2P"/>
-                            <constraint firstAttribute="trailing" secondItem="Ohc-gm-lle" secondAttribute="trailing" constant="20" symbolic="YES" id="kxO-sT-7up"/>
-                            <constraint firstItem="BAO-cU-cWv" firstAttribute="top" secondItem="vs5-DV-CO6" secondAttribute="top" constant="20" symbolic="YES" id="n6T-P0-zc0"/>
-                            <constraint firstItem="Ohc-gm-lle" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wVa-Ez-faJ" secondAttribute="bottom" constant="20" symbolic="YES" id="oZD-MJ-y9G"/>
-                            <constraint firstItem="wVa-Ez-faJ" firstAttribute="top" secondItem="Avv-I6-As1" secondAttribute="bottom" constant="8" symbolic="YES" id="v2H-NK-HsT"/>
-                            <constraint firstItem="wVa-Ez-faJ" firstAttribute="trailing" secondItem="Avv-I6-As1" secondAttribute="trailing" id="xZg-wh-5wc"/>
-                            <constraint firstItem="Avv-I6-As1" firstAttribute="top" secondItem="ZID-Mb-JLF" secondAttribute="bottom" constant="8" symbolic="YES" id="zL7-0D-1Ng"/>
-                            <constraint firstItem="ZID-Mb-JLF" firstAttribute="top" secondItem="BAO-cU-cWv" secondAttribute="bottom" constant="8" symbolic="YES" id="zcj-gr-82M"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="ProgressIndicatorBottom" destination="wVa-Ez-faJ" id="xqq-eJ-Iwf"/>
-                        <outlet property="ProgressIndicatorTop" destination="ZID-Mb-JLF" id="GvI-Ij-sl5"/>
-                        <outlet property="StatusLabelBottom" destination="Avv-I6-As1" id="V3H-3P-8Ao"/>
-                        <outlet property="progressIndicatorBottom" destination="wVa-Ez-faJ" id="9v0-YB-Cm9"/>
-                        <outlet property="progressIndicatorTop" destination="ZID-Mb-JLF" id="UkV-Kz-DoY"/>
-                        <outlet property="statusLabelBottom" destination="Avv-I6-As1" id="afK-NJ-muK"/>
-                        <outlet property="statusLabelTop" destination="BAO-cU-cWv" id="QLK-Ge-BpK"/>
-                    </connections>
-                </viewController>
-                <customObject id="I1I-Rb-iRU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="699" y="577"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="TJM-Z5-sck">

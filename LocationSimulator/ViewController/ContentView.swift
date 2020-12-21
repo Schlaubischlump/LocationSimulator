@@ -21,14 +21,20 @@
     /// The movement button.
     @IBOutlet var movementButtonHUD: MovementButtonHUDView!
 
+    /// The error indicator in the lower right corner.
+    @IBOutlet var errorIndicator: NSImageView!
+
+    /// The label in the bottom bar which displays the total amount of meters you walked.
+    @IBOutlet var totalDistanceLabel: NSTextField!
+
     /// The container view which contains the button and the control.
     @IBOutlet var movementContainer: NSView! {
         didSet {
             // Make the view layer backed.
             self.movementContainer.wantsLayer = true
             // Add a rotation gesture recognizer to the movement container.
-            let rotateRecognizer = NSRotationGestureRecognizer(target: self, action: #selector(directionHUDRotateByGesture))
-            self.movementContainer.addGestureRecognizer(rotateRecognizer)
+            let recognizer = NSRotationGestureRecognizer(target: self, action: #selector(directionHUDRotateByGesture))
+            self.movementContainer.addGestureRecognizer(recognizer)
         }
     }
 
@@ -41,15 +47,26 @@
     /// Starting angle for the direction overlay rotation.
     private var startAngleInDegrees: Double = 0.0
 
+    // MARK: - Layout
+
+    override func layout() {
+        super.layout()
+
+        // Fix bottom bar color on Big Sur.
+        if #available(OSX 11.0, *) {
+            self.layer?.backgroundColor = NSColor(named: "bottomBarBackground")?.cgColor
+        }
+    }
+
     // MARK: - Gesture Recognizer
 
     /// Rotate the translation overlay to a specific angle given in degrees.
-    func rotateDirectionHUD(toAngleInDegrees angle: Double) {
+    public func rotateDirectionHUD(toAngleInDegrees angle: Double) {
         self.movementDirectionHUD.rotateyTo(angleInDegrees: angle)
     }
 
     /// Rotate the translation overlay to a specific angle given in rad.
-    func rotateDirectionHUD(toAngleInRad angle: Double) {
+    public func rotateDirectionHUD(toAngleInRad angle: Double) {
         self.movementDirectionHUD.rotateTo(angleInRad: angle)
     }
 
@@ -65,29 +82,37 @@
         }
     }
 
-    // MARK: - Layout
-
-    override func layout() {
-        super.layout()
-
-        // Fix bottom bar color on Big Sur.
-        if #available(OSX 11.0, *) {
-            self.layer?.backgroundColor = NSColor(named: "bottomBarBackground")?.cgColor
-        }
-    }
-
     // MARK: - Spinner
 
     /// Show an animated progress spinner in the upper right corner.
-    func startSpinner() {
+    public func startSpinner() {
         self.spinnerHUD.startSpinning()
         self.spinnerHUD.isHidden = false
     }
 
     /// Hide and stop the progress spinner in the upper right corner.
-    func stopSpinner() {
+    public func stopSpinner() {
         self.spinnerHUD.stopSpinning()
         self.spinnerHUD.isHidden = true
     }
 
+    // MARK: - Bottom bar
+
+    /// Change the text of the total distance label.
+    /// - Parameter meter: the amount of meters walked
+    public func setTotalDistance(meter: Double) {
+        let totalDistanceInKM = meter / 1000.0
+        let labelText = NSLocalizedString("TOTAL_DISTANCE", comment: "")
+        self.totalDistanceLabel.stringValue = String(format: labelText, totalDistanceInKM)
+    }
+
+    /// Show the warning triangle in the lower right corner.
+    public func showErrorInidcator() {
+        self.errorIndicator.isHidden = false
+    }
+
+    /// Hide the warning triangle in the lower right corner.
+    public func hideErrorInidcator() {
+        self.errorIndicator.isHidden = true
+    }
  }

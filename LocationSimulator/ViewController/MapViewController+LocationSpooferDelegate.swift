@@ -17,7 +17,7 @@ extension MapViewController: LocationSpooferDelegate {
 
     func willChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
         // show a progress spinner when we request a location change
-        self.startSpinner()
+        self.contentView?.startSpinner()
 
         // remove the route overlay if it is present
         self.mapView.removeNavigationOverlay()
@@ -37,7 +37,7 @@ extension MapViewController: LocationSpooferDelegate {
         let errorMsg = isReset ? "LOCATION_RESET_ERROR_MSG" : "LOCATION_CHANGE_ERROR_MSG"
 
         // hide the spinner
-        self.stopSpinner()
+        self.contentView?.stopSpinner()
 
         // inform the user that the location could not be changed
         self.view.window!.showError(NSLocalizedString("LOCATION_CHANGE_ERROR", comment: ""),
@@ -49,12 +49,11 @@ extension MapViewController: LocationSpooferDelegate {
         let isReset: Bool = (toCoordinate == nil)
 
         // Calculate the total rounded distance in kilometers and update the label
-        let totalDistanceInKM: Double = round(self.spoofer?.totalDistance ?? 0.0) / 1000.0
-        self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""),
-                                                     totalDistanceInKM)
+        let distanceInMeter = round(self.spoofer?.totalDistance ?? 0.0)
+        self.contentView?.setTotalDistance(meter: distanceInMeter)
 
         // Hide the progress spinner after the location was changed.
-        self.stopSpinner()
+        self.contentView?.stopSpinner()
 
         if isReset {
             // Disable all `move` menubar items when the location is reset.

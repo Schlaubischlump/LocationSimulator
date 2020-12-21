@@ -19,12 +19,9 @@ public extension NSNotification.Name {
 
 class MapViewController: NSViewController {
     // MARK: - UI
+
     /// The main mapView.
     @IBOutlet weak var mapView: MapView!
-    /// The label which displays the total amount of meters you walked.
-    @IBOutlet weak var totalDistanceLabel: NSTextField!
-    /// Error indicator if something went wrong while connecting the device.
-    @IBOutlet weak var errorIndicator: NSImageView!
 
     // MARK: - Properties
 
@@ -35,9 +32,6 @@ class MapViewController: NSViewController {
     public var contentView: ContentView? {
         return self.view as? ContentView
     }
-
-    /// Window controller shown when the DeveloperDiskImage download is performed.
-    private var progressWindowController: ProgressWindowController?
 
     /// True to autofocus current location when the location changes, False otherwise.
     var autoFocusCurrentLocation = false {
@@ -93,14 +87,13 @@ class MapViewController: NSViewController {
         // Add the callback when the heading changes
         self.contentView?.movementDirectionHUD.headingChangedAction = {
             // Update the location spoofer heading
-            self.spoofer?.heading = self.mapView.camera.heading - self.getHeaderViewAngle()
+            self.spoofer?.heading = self.mapView.camera.heading - self.getDirectionViewAngle()
         }
     }
 
     /// Register callbacks for all mapView actions.
     private func registerMapViewActions() {
-        // Callback when the mapView is long pressed. Navigate or teleport to the new locatiom if possible.
-        self.mapView.longPressAction = { (src: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
+        let mapViewAction: MapViewAction = { (src: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
             if src == nil {
                 // There is no current location => we can only teleport
                 self.spoofer?.setLocation(dst)
@@ -111,10 +104,11 @@ class MapViewController: NSViewController {
             self.view.window?.makeFirstResponder(self.mapView)
         }
 
+        // Callback when the mapView is long pressed. Navigate or teleport to the new locatiom if possible.
+        self.mapView.longPressAction = mapViewAction
+
         // Current location marker was dragged. Navigate or teleport to the new location.
-        self.mapView.markerDragAction = { (_: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
-            self.requestTeleportOrNavigation(toCoordinate: dst)
-        }
+        self.mapView.markerDragAction = mapViewAction
     }
 
     // MARK: - View lifecycle
@@ -123,7 +117,7 @@ class MapViewController: NSViewController {
         super.viewDidLoad()
 
         // reset the total distance label
-        self.totalDistanceLabel.stringValue = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
+        self.contentView?.setTotalDistance(meter: 0)
 
         // hide the controls
         self.contentView?.controlsHidden = true
@@ -148,53 +142,27 @@ class MapViewController: NSViewController {
     // MARK: - Load device
     func downloadDeveloperDiskImage(os: String, iOSVersion: String, _ completion: @escaping (Bool) -> Void = { _ in }) {
         guard let window = self.view.window else {
+                completion(false)
+                return
+        }
+        // Start the download progress.
+        let alert = ProgressAlert()
+        // Make sure we find a download link for this os version.
+        guard alert.prepareDownload(os: os, iOSVersion: iOSVersion) else {
+            window.showError(NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR", comment: ""),
+                             message: NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR_MSG", comment: ""))
             completion(false)
             return
         }
-        // Try to download the DeveloperDiskImage files and try to connect to the device again.
-        let manager = FileManager.default
-        if let devDMG = manager.getDeveloperDiskImage(os: os, iOSVersion: iOSVersion),
-            let devSign = manager.getDeveloperDiskImageSignature(os: os, iOSVersion: iOSVersion) {
-
-            let (diskLinks, signLinks) = manager.getDeveloperDiskImageDownloadLinks(os: os, version: iOSVersion)
-            if diskLinks.isEmpty || signLinks.isEmpty {
-                window.showError(NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR", comment: ""),
-                                 message: NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR_MSG", comment: ""))
-                completion(false)
-                return
-            }
-
-            // create the downloader instance
-            let downloader = Downloader()
-            // create the progress popup sheet
-            self.progressWindowController = ProgressWindowController.newInstance()
-            let progressWindow = self.progressWindowController!.window!
-            let progressViewController = progressWindow.contentViewController as? ProgressViewController
-
-            // set the delegate
-            downloader.delegate = progressViewController
-            // We just use the first download link. In theory we could add multiple links for the same image.
-            let devDiskTask = DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDMG,
-                                           description: NSLocalizedString("DEVDISK_DOWNLOAD_DESC", comment: ""))
-            let devSignTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSign,
-                                           description: NSLocalizedString("DEVSIGN_DOWNLOAD_DESC", comment: ""))
-
-            // start the downlaod process
-            downloader.start(devDiskTask)
-            downloader.start(devSignTask)
-
-            window.beginSheet(progressWindow) {[unowned self] response in
-                self.progressWindowController = nil
-                // cancel clicked => stop the download
-                if response == .cancel {
-                    downloader.cancel(devDiskTask)
-                    downloader.cancel(devSignTask)
-                    completion(false)
-                } else if response == .OK {
-                    completion(true)
-                }
+        // Show the download dialog.
+        alert.beginSheetModal(for: window) { response in
+            switch response {
+            case .OK : completion(true)
+            default: completion(false)
             }
         }
+        // Start the download.
+        alert.startDownload()
     }
 
     /// Load a new device given by its udid. A new spoofer instance is created based on the device. All location change
@@ -242,23 +210,11 @@ class MapViewController: NSViewController {
         }
     }
 
-    // MARK: - Spinner control
-
-    /// Show an animated progress spinner in the upper right corner.
-    func startSpinner() {
-        self.contentView?.startSpinner()
-    }
-
-    /// Hide and stop the progress spinner in the upper right corner.
-    func stopSpinner() {
-        self.contentView?.stopSpinner()
-    }
-
     // MARK: - Direction HUD
 
     /// The current angle of the movementDirectionHUD used to change the heading.
     /// - Return: the angle in degree
-    func getHeaderViewAngle() -> Double {
+    func getDirectionViewAngle() -> Double {
         return self.contentView?.movementDirectionHUD.currentHeadingInDegrees ?? 0.0
     }
 
@@ -266,7 +222,7 @@ class MapViewController: NSViewController {
     /// - Parameter angle: the angle in degree
     func rotateDirectionViewBy(_ angle: Double) {
         // update the headingView and the spoofer heading
-        self.rotateDirectionViewTo(self.getHeaderViewAngle() + angle)
+        self.rotateDirectionViewTo(self.getDirectionViewAngle() + angle)
     }
 
     /// Set a new heading given by an angle.
@@ -291,13 +247,13 @@ class MapViewController: NSViewController {
         spoofer.moveState = .manual
 
         // indicate work while we calculate the route
-        self.startSpinner()
+        self.contentView?.startSpinner()
 
         // calulate the route to the destination
         currentLoc.calculateRouteTo(coord, transportType: transportType) { route in
             // set the current route to follow
             spoofer.route = route + additionalRoute
-            self.stopSpinner()
+            self.contentView?.stopSpinner()
 
             // start automoving
             spoofer.moveState = .auto

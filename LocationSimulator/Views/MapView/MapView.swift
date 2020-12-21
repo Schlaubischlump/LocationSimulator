@@ -11,17 +11,15 @@ import MapKit
 import CoreLocation
 
 // source location, destination location
-typealias MapViewPressAction = (CLLocationCoordinate2D?, CLLocationCoordinate2D) -> Void
-// source location, destination location
-typealias MapViewMarkerDragAction = (CLLocationCoordinate2D?, CLLocationCoordinate2D) -> Void
+typealias MapViewAction = (CLLocationCoordinate2D?, CLLocationCoordinate2D) -> Void
 
 class MapView: MKMapView {
 
     /// Action to perform on a long press.
-    public var longPressAction: MapViewPressAction?
+    public var longPressAction: MapViewAction?
 
     /// Action to perform when the current location marker is dragged
-    public var markerDragAction: MapViewMarkerDragAction?
+    public var markerDragAction: MapViewAction?
 
     /// True if the user is currently interacting with the map, false otherwise.
     public var isUserInteracting: Bool = false

@@ -192,9 +192,8 @@ class WindowController: NSWindowController {
             try viewController.load(device: device)
             // set the correct walking speed based on the current selection
             viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
+            viewController.contentView?.hideErrorInidcator()
 
-            // Hide the error indicator
-            viewController.errorIndicator.isHidden = true
             // Activate the menubar items
             MenubarController.state = .connected
 
@@ -214,7 +213,7 @@ class WindowController: NSWindowController {
             try deviceLoadHandler()
         } catch DeviceError.devDiskImageNotFound(_, let os, let iOSVersion) {
             // Show the error indicator
-            viewController.errorIndicator.isHidden = false
+            viewController.contentView?.showErrorInidcator()
 
             // try to load device after a successfull DeveloperDiskImage download
             viewController.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) { success in
@@ -228,14 +227,14 @@ class WindowController: NSWindowController {
                     DispatchQueue.main.async {
                         do {
                             try deviceLoadHandler()
-                            viewController.errorIndicator.isHidden = true
+                            viewController.contentView?.hideErrorInidcator()
                         } catch {}
                     }
                 }
             }
         } catch {
             // Show the error indicator
-            viewController.errorIndicator.isHidden = false
+            viewController.contentView?.showErrorInidcator()
         }
     }
 }

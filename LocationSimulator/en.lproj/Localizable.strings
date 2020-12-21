@@ -9,6 +9,8 @@
 // General
 "CURRENT_LOCATION" = "Current Location";
 
+// MARK: - Error
+
 // Error title
 "NO_DEVICE_ERROR" = "No device found";
 "MOUNT_ERROR" = "Could not mount DeveloperDiskImage.dmg";
@@ -38,8 +40,6 @@
 "TELEPORT_OR_NAVIGATE_MSG" = "Do you want to teleport or navigate to the destination?";
 
 // Informative text
-"DEVDISK_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg";
-"DEVSIGN_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg.signature";
 "TOTAL_DISTANCE" = "Total distance: %.3fkm";
 
 // Preferences
@@ -69,3 +69,8 @@
 "WAYPOINTS" = "Waypoints";
 "GPX_SELECTION" = "Choose Coordinates";
 "GPX_SELECTION_MSG" = "Choose a Track, Track Segment, Route or the Waypoints to start the navigation.";
+
+// Progress View.
+"PROGRESS" = "Download iOS support files";
+"DEVDISK_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg";
+"DEVSIGN_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg.signature";

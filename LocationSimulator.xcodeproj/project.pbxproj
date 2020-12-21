@@ -36,8 +36,6 @@
 		633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */; };
 		633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */; };
 		633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */; };
-		634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1145230CB8D7001F440C /* PogressWindowController.swift */; };
-		634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */; };
 		63525910258AC0950031F289 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352590F258AC0950031F289 /* LicenseViewController.swift */; };
 		63525913258AC7F00031F289 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63525912258AC7F00031F289 /* Licenses.plist */; };
 		6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */; };
@@ -53,6 +51,10 @@
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
 		6372061D25911CED00293EA8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372061C25911CED00293EA8 /* MapView.swift */; };
+		63720628259141EF00293EA8 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720627259141EF00293EA8 /* ProgressView.swift */; };
+		6372062F2591427100293EA8 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6372062D2591427000293EA8 /* ProgressView.xib */; };
+		63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */; };
+		63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720635259147AB00293EA8 /* ProgressAlert.swift */; };
 		6376755A258E93CE000DCEF3 /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
 		6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
 		6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */; };
@@ -70,7 +72,6 @@
 		638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A2254B5A1800A520E0 /* GeneralViewController.swift */; };
 		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
 		638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */; };
-		63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */; };
@@ -121,8 +122,6 @@
 		633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteSearchField.swift; sourceTree = "<group>"; };
 		633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteSearchField+TableView.swift"; sourceTree = "<group>"; };
 		633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteSearchField+Protocol.swift"; sourceTree = "<group>"; };
-		634D1145230CB8D7001F440C /* PogressWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PogressWindowController.swift; sourceTree = "<group>"; };
-		634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PogressViewController+DownloaderDelegate.swift"; sourceTree = "<group>"; };
 		6352590F258AC0950031F289 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		63525915258AC8310031F289 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -138,6 +137,10 @@
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
 		6372061C25911CED00293EA8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		63720627259141EF00293EA8 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		6372062E2591427000293EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressView.xib; sourceTree = "<group>"; };
+		63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+DownloadDelegate.swift"; sourceTree = "<group>"; };
+		63720635259147AB00293EA8 /* ProgressAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAlert.swift; sourceTree = "<group>"; };
 		6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerHUDView.swift; sourceTree = "<group>"; };
 		6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementButtonHUDView.swift; sourceTree = "<group>"; };
 		6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDirectionHUDView.swift; sourceTree = "<group>"; };
@@ -153,7 +156,6 @@
 		638B90A2254B5A1800A520E0 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		638B90A6254B5A4400A520E0 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceTabViewController.swift; sourceTree = "<group>"; };
-		63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusbmuxd-2.0.6.dylib"; path = "../../../../usr/local/Cellar/libusbmuxd/2.0.2/lib/libusbmuxd-2.0.6.dylib"; sourceTree = "<group>"; };
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
@@ -219,10 +221,9 @@
 				6352592E258B793F0031F289 /* AppDelegate */,
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				13BA351F20A433EF00A0431C /* Main.storyboard */,
-				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
-				63FDE228258F9F6800917412 /* GPXSelectionView.xib */,
 				632C465723F4B5F5004E5092 /* Menubar */,
 				638B909D254B513300A520E0 /* Preferences */,
+				637206342591479800293EA8 /* Alerts */,
 				63525956258E8F9A0031F289 /* Views */,
 				63FC47A22306243300BBB2E8 /* WindowController */,
 				638ADBE2230203B20061612D /* ViewController */,
@@ -304,16 +305,6 @@
 			path = MenubarItem;
 			sourceTree = "<group>";
 		};
-		632C465123F4B326004E5092 /* Progresspanel */ = {
-			isa = PBXGroup;
-			children = (
-				634D1145230CB8D7001F440C /* PogressWindowController.swift */,
-				63B443C9230DF9FC00CDBA08 /* ProgressViewController.swift */,
-				634D1147230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift */,
-			);
-			path = Progresspanel;
-			sourceTree = "<group>";
-		};
 		632C465723F4B5F5004E5092 /* Menubar */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,14 +314,15 @@
 			path = Menubar;
 			sourceTree = "<group>";
 		};
-		632C466623F76881004E5092 /* CoordinateSelection */ = {
+		632C466623F76881004E5092 /* CoordinateSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
 				632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */,
 				632C466223F4D9C8004E5092 /* CoordinateStepper.swift */,
 				632C465823F4B611004E5092 /* CoordinateSelectionView.swift */,
 			);
-			path = CoordinateSelection;
+			path = CoordinateSelectionView;
 			sourceTree = "<group>";
 		};
 		633A433B22F9926C005B3BE0 /* Frameworks */ = {
@@ -410,8 +402,9 @@
 			children = (
 				63525957258E8FC80031F289 /* Common */,
 				63720622259121C600293EA8 /* MapView */,
-				63FDE21B258F9D2400917412 /* GPXSelection */,
-				632C466623F76881004E5092 /* CoordinateSelection */,
+				63FDE21B258F9D2400917412 /* GPXSelectionView */,
+				632C466623F76881004E5092 /* CoordinateSelectionView */,
+				637206262591418F00293EA8 /* ProgressView */,
 				6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */,
 				6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */,
 				6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */,
@@ -435,6 +428,24 @@
 				63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */,
 			);
 			path = MapView;
+			sourceTree = "<group>";
+		};
+		637206262591418F00293EA8 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				6372062D2591427000293EA8 /* ProgressView.xib */,
+				63720627259141EF00293EA8 /* ProgressView.swift */,
+				63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */,
+			);
+			path = ProgressView;
+			sourceTree = "<group>";
+		};
+		637206342591479800293EA8 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				63720635259147AB00293EA8 /* ProgressAlert.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		638ADBE2230203B20061612D /* ViewController */ = {
@@ -483,7 +494,6 @@
 		63FC47A22306243300BBB2E8 /* WindowController */ = {
 			isa = PBXGroup;
 			children = (
-				632C465123F4B326004E5092 /* Progresspanel */,
 				63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */,
 				130F510920AE9634002A61F1 /* WindowController.swift */,
 				63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */,
@@ -492,13 +502,14 @@
 			path = WindowController;
 			sourceTree = "<group>";
 		};
-		63FDE21B258F9D2400917412 /* GPXSelection */ = {
+		63FDE21B258F9D2400917412 /* GPXSelectionView */ = {
 			isa = PBXGroup;
 			children = (
+				63FDE228258F9F6800917412 /* GPXSelectionView.xib */,
 				63FDE223258F9E3300917412 /* GPXSelectionView.swift */,
 				63FDE22C258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift */,
 			);
-			path = GPXSelection;
+			path = GPXSelectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +599,7 @@
 				6305075423FB06A700EF529A /* Credits.rtf in Resources */,
 				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
 				63525913258AC7F00031F289 /* Licenses.plist in Resources */,
+				6372062F2591427100293EA8 /* ProgressView.xib in Resources */,
 				13BA352120A433EF00A0431C /* Main.storyboard in Resources */,
 				632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */,
 			);
@@ -638,9 +650,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */,
-				634D1148230CB8EA001F440C /* PogressViewController+DownloaderDelegate.swift in Sources */,
 				63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */,
 				6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */,
+				63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */,
 				63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */,
 				631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */,
 				638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */,
@@ -650,7 +662,6 @@
 				6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */,
 				633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */,
 				63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */,
-				63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */,
 				63156C0422FB67610086D5F6 /* devicepair.c in Sources */,
 				638B909B254B3C6600A520E0 /* Device.swift in Sources */,
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
@@ -661,7 +672,7 @@
 				632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */,
 				6352592B258B75190031F289 /* FileMenuBarItem.swift in Sources */,
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
-				634D1146230CB8D7001F440C /* PogressWindowController.swift in Sources */,
+				63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */,
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
@@ -675,6 +686,7 @@
 				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
 				63525933258B79900031F289 /* AppDelegate+HelpMenu.swift in Sources */,
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
+				63720628259141EF00293EA8 /* ProgressView.swift in Sources */,
 				63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */,
 				63525936258B79A70031F289 /* AppDelegate+FileMenu.swift in Sources */,
 				6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */,
@@ -726,6 +738,14 @@
 				632C465B23F4B715004E5092 /* Base */,
 			);
 			name = CoordinateSelectionView.xib;
+			sourceTree = "<group>";
+		};
+		6372062D2591427000293EA8 /* ProgressView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6372062E2591427000293EA8 /* Base */,
+			);
+			name = ProgressView.xib;
 			sourceTree = "<group>";
 		};
 		63FDE228258F9F6800917412 /* GPXSelectionView.xib */ = {

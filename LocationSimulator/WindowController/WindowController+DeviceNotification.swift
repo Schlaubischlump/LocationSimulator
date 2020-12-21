@@ -57,7 +57,7 @@ extension WindowController {
                 viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
 
                 // Hide the error indicator
-                viewController.errorIndicator.isHidden = true
+                viewController.contentView?.hideErrorInidcator()
                 // Active the menubar items. We are currently not spoofing
                 MenubarController.state = .connected
             }
@@ -65,8 +65,7 @@ extension WindowController {
             do {
                 try deviceLoadHandler()
             } catch DeviceError.devDiskImageNotFound(_, let os, let iOSVersion) {
-                // Show the error indicator
-                viewController.errorIndicator.isHidden = false
+                viewController.contentView?.showErrorInidcator()
 
                 // try to load device after a successfull DeveloperDiskImage download
                 viewController.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) { success in
@@ -80,14 +79,13 @@ extension WindowController {
                         DispatchQueue.main.async {
                             do {
                                 try deviceLoadHandler()
-                                viewController.errorIndicator.isHidden = true
+                                viewController.contentView?.hideErrorInidcator()
                             } catch {}
                         }
                     }
                 }
             } catch {
-                // Show the error indicator
-                viewController.errorIndicator.isHidden = false
+                viewController.contentView?.showErrorInidcator()
             }
         }
     }
@@ -155,8 +153,7 @@ extension WindowController {
                 // cleanup the spoofer instance for the device
                 viewController.spoofer = nil
                 // reset the total distance label
-                let emptyTotalDistanceString = String(format: NSLocalizedString("TOTAL_DISTANCE", comment: ""), 0)
-                viewController.totalDistanceLabel.stringValue = emptyTotalDistanceString
+                viewController.contentView?.setTotalDistance(meter: 0)
 
                 // disable the menubar items
                 MenubarController.state = .disconnected
@@ -167,7 +164,7 @@ extension WindowController {
                 }
 
                 // Hide the error indicator
-                viewController.errorIndicator.isHidden = true
+                viewController.contentView?.hideErrorInidcator()
             }
         }
     }

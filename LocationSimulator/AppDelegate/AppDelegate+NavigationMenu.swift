@@ -79,7 +79,7 @@ extension AppDelegate {
         //    |    arrow down   x | x      x | x  arrow down   x | x
         case .moveDown:
             if viewController.spoofer?.moveState == .manual {
-                let angle = viewController.getHeaderViewAngle()
+                let angle = viewController.getDirectionViewAngle()
                 if angle < 90 || angle > 270 {
                     viewController.rotateDirectionViewBy(180)
                 }
@@ -90,7 +90,7 @@ extension AppDelegate {
         //  x | x   arrow up      |          |     arrow up      |
         case .moveUp:
             if viewController.spoofer?.moveState == .manual {
-                let angle = viewController.getHeaderViewAngle()
+                let angle = viewController.getDirectionViewAngle()
                 if angle > 90 && angle < 270 {
                     viewController.rotateDirectionViewBy(180)
                 }

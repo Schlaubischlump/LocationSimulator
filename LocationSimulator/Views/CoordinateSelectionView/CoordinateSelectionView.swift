@@ -40,15 +40,15 @@ class CoordinateSelectionView: NSView {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        self.commonInit()
+        self.setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.commonInit()
+        self.setup()
     }
 
-    private func commonInit() {
+    private func setup() {
         // Load the contentView and set its size to update automatically.
         Bundle.main.loadNibNamed("CoordinateSelectionView", owner: self, topLevelObjects: nil)
         self.contentView.autoresizingMask = [.width, .height]
