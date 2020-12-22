@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 
+let kAnnotationViewCurrentLocationIdentifier = "AnnotationViewCurrentLocationIdentifier"
+
 /// This delegate is responsible for providing a polyline when navigation is active.
 /// Additionally it handles the track gesture of the current location marker and informs observer about the action.
 extension MapView: MKMapViewDelegate {

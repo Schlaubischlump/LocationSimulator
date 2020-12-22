@@ -9,9 +9,6 @@
 import Cocoa
 import MapKit
 import CoreLocation
-import Downloader
-
-let kAnnotationViewCurrentLocationIdentifier = "AnnotationViewCurrentLocationIdentifier"
 
 public extension NSNotification.Name {
     static let AutoFoucusCurrentLocationChanged = Notification.Name("AutoFoucusCurrentLocationChanged")
@@ -148,28 +145,26 @@ class MapViewController: NSViewController {
     /// Download the developer disk image and corresponding signature file for the specified version of the os.
     /// - Parameter os: the os type to download the image for
     /// - Parameter iOSVersion: the version number to download the image for
-    /// - Parameter completion: the completion handler to call after the download finished or failed
-    func downloadDeveloperDiskImage(os: String, iOSVersion: String, _ completion: @escaping (Bool) -> Void = { _ in }) {
-        guard let window = self.view.window else {
-                completion(false)
-                return
+    /// - Return: true on success, false otherwise
+    func downloadDeveloperDiskImage(os: String, iOSVersion: String) -> Bool {
+        guard let window = self.view.window else { return false }
+
+        let alert = ProgressAlert(os: os, version: iOSVersion)
+        let response = alert.runSheetModal(forWindow: window)
+        print(response)
+        switch response {
+        // Download was successfull
+        case .OK :
+            print("Downloaded.")
+            return true
+        // No download link available.
+        // show the error to the user
+        case .failed: window.showError(NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR", comment: ""),
+                                       message: NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR_MSG", comment: ""))
+        default: break
         }
-        let alert = ProgressAlert()
-        // Make sure we find a download link for this os version.
-        guard alert.prepareDownload(os: os, iOSVersion: iOSVersion) else {
-            window.showError(NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR", comment: ""),
-                             message: NSLocalizedString("NO_DEVDISK_DOWNLOAD_ERROR_MSG", comment: ""))
-            completion(false)
-            return
-        }
-        // Show the download dialog and start the download.
-        alert.beginSheetModal(for: window) { response in
-            switch response {
-            case .OK : completion(true)
-            default: completion(false)
-            }
-        }
-        alert.startDownload()
+        print("Return false.")
+        return false
     }
 
     /// Load a new device given by its udid. A new spoofer instance is created based on the device. All location change
@@ -282,10 +277,10 @@ class MapViewController: NSViewController {
 
         // If a coordinate is provided to this function the user can not input one.
         // E.g. he did use use the recent location menu or dropped the current location to a new one.
-        let showsUserInput = (coord == nil)
-        let showsNavigation = self.spoofer?.currentLocation != nil
+        let showUserInput = (coord == nil)
+        let showNavigation = self.spoofer?.currentLocation != nil
 
-        let alert = CoordinateSelectionAlert(showNavigationButton: showsNavigation, showsUserInput: showsUserInput)
+        let alert = CoordinateSelectionAlert(showNavigationButton: showNavigation, showUserInput: showUserInput)
         alert.beginSheetModal(for: window) { response, userCoord in
             self.isShowingAlert = false
 
@@ -320,8 +315,8 @@ class MapViewController: NSViewController {
             return
         }
 
-        let showsNavigation = self.spoofer?.currentLocation != nil
-        let alert = CoordinateSelectionAlert(showNavigationButton: showsNavigation, showsUserInput: false)
+        let showNavigation = self.spoofer?.currentLocation != nil
+        let alert = CoordinateSelectionAlert(showNavigationButton: showNavigation, showUserInput: false)
 
         alert.beginSheetModal(for: window) { response, _ in
             self.isShowingAlert = false

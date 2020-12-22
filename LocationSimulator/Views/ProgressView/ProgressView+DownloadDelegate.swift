@@ -6,8 +6,11 @@
 //  Copyright © 2020 David Klopp. All rights reserved.
 //
 
-import Foundation
+import AppKit
 import Downloader
+
+// TODO: This win.sheetParent?.endSheet is ugly. Use a completion handler to pass the value to the alert.
+// TODO: If we keep win.sheetParent?.endSheet we need to perform this on the main thread ?
 
 let kDevDiskTaskID = "DevDisk"
 let kDevSignTaskID = "DevSign"
@@ -15,38 +18,49 @@ let kDevSignTaskID = "DevSign"
 /// Extension which takes care of the `DeveloperDiskImage` and `DeveloperDiskImage.sign` download progress and updates
 /// the UI accordingly.
 extension ProgressView: DownloaderDelegate {
-    func downloadStarted(downloader: Downloader, task: DownloadTask) {
+
+    // MARK: - Helper that should run on main thread
+
+    @objc private func updateUIForStart(task: DownloadTask) {
         let progressBar = (task.dID == kDevDiskTaskID) ? self.progressBarTop : self.progressBarBottom
         let statusLabel = (task.dID == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
 
         progressBar!.doubleValue = 0.0
-        statusLabel!.stringValue = task.description
+        statusLabel!.stringValue = task.desc
     }
 
-    func downloadCanceled(downloader: Downloader, task: DownloadTask) {
-        guard downloader.tasks.count != 0, let win = self.window else { return }
-        win.sheetParent?.endSheet(win, returnCode: .cancel)
-    }
-
-    func downloadFinished(downloader: Downloader, task: DownloadTask) {
-        guard downloader.tasks.count == 0, let win = self.window else { return }
-        win.sheetParent?.endSheet(win, returnCode: .OK)
-    }
-
-    func downloadProgressChanged(downloader: Downloader, task: DownloadTask) {
+    @objc private func updateUIForProgress(task: DownloadTask) {
         let progressBar = (task.dID == kDevDiskTaskID) ? self.progressBarTop : self.progressBarBottom
         let statusLabel = (task.dID == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
 
         progressBar!.doubleValue = task.progress
-        statusLabel!.stringValue = task.description + ": " + String(format: "%.2f", task.progress*100) + "%"
+        statusLabel!.stringValue = task.desc + ": " + String(format: "%.2f", task.progress*100) + "%"
+    }
+
+    // MARK: - Delegate
+
+    func downloadStarted(downloader: Downloader, task: DownloadTask) {
+        // We can not use `DispatchQueue` here, because `DispatchQueue` runs on the .common RunLoop.
+        // This is the same runloop that modal dialogs use. Therefore use `performSelector` which runs on the default
+        // loop.
+        self.performSelector(onMainThread: #selector(updateUIForStart(task:)), with: task, waitUntilDone: true)
+    }
+
+    func downloadProgressChanged(downloader: Downloader, task: DownloadTask) {
+        self.performSelector(onMainThread: #selector(updateUIForProgress(task:)), with: task, waitUntilDone: true)
+    }
+
+    func downloadCanceled(downloader: Downloader, task: DownloadTask) {
+        guard downloader.tasks.count == 0 else { return }
+        self.downloadFinishedAction?(.cancel)
+    }
+
+    func downloadFinished(downloader: Downloader, task: DownloadTask) {
+        guard downloader.tasks.count == 0 else { return }
+        self.downloadFinishedAction?(.success)
     }
 
     func downloadError(downloader: Downloader, task: DownloadTask, error: Error) {
-        guard let win = self.window else { return }
-        // show the error to the user
-        win.sheetParent?.showError(NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR", comment: ""),
-                                   message: NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR_MSG", comment: ""))
-        // dismiss the download window
-        win.sheetParent?.endSheet(win, returnCode: .cancel)
+        self.downloadFinishedAction?(.failure)
     }
 }

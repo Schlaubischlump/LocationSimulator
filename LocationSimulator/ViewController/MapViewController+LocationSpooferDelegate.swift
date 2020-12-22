@@ -19,7 +19,7 @@ extension MapViewController: LocationSpooferDelegate {
         // show a progress spinner when we request a location change
         self.contentView?.startSpinner()
 
-        // remove the route overlay if it is present
+        // remove the route overlay if it is present to fake an animation
         self.mapView.removeNavigationOverlay()
 
         // make sure the spoofer is setup
@@ -48,7 +48,7 @@ extension MapViewController: LocationSpooferDelegate {
         // true if the location was reset, false otherwise
         let isReset: Bool = (toCoordinate == nil)
 
-        // Calculate the total rounded distance in kilometers and update the label
+        // Calculate the total rounded distance in meters and update the label
         let distanceInMeter = round(self.spoofer?.totalDistance ?? 0.0)
         self.contentView?.setTotalDistance(meter: distanceInMeter)
 
@@ -61,7 +61,7 @@ extension MapViewController: LocationSpooferDelegate {
             //  Remove the current location marker
             self.mapView.removeCurrentLocationMarker()
             // Disable autofocus
-            self.autoFocusCurrentLocation = false
+            self.autoFocusCurrentLocation = true
             // Hide the movement controls
             self.contentView?.controlsHidden = true
         } else {
@@ -105,9 +105,7 @@ extension MapViewController: LocationSpooferDelegate {
             MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
         }
 
-        // Remove the navigation overlay. We need to do this even if we are navigating.
-        // On navigation the overlay will be removed and readded on location will change.
-        // This will fake the animation. There is no easier why to animate the navigation.
+        // Remove the animatoon overlay if a navigation was canceled.
         self.mapView.removeNavigationOverlay()
     }
 }

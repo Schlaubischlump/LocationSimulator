@@ -32,11 +32,11 @@ class CoordinateSelectionAlert: NSAlert {
 
     /// Default constructor.
     /// - Parameter showNavigate: true to show the navigation button or false to hide it.
-    init(showNavigationButton: Bool, showsUserInput: Bool) {
+    init(showNavigationButton: Bool, showUserInput: Bool) {
         super.init()
 
         self.showsNavigationButton = showNavigationButton
-        self.showsUserInput = showsUserInput
+        self.showsUserInput = showUserInput
 
         self.messageText = NSLocalizedString("DESTINATION", comment: "")
         self.informativeText = NSLocalizedString("TELEPORT_OR_NAVIGATE_MSG", comment: "")

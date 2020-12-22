@@ -86,10 +86,10 @@ class MapView: MKMapView {
 
     /// Place the current location marker at the specified position. Create a new marker if none exists.
     /// - Parameter atLocation: destination location of the marker
-    /// - Return: true if the marker was moved, false if it was created.
+    /// - Return: true if the marker was created, false if it was moved.
     @discardableResult
     public func placeCurrentLocationMarker(atLocation coordinate: CLLocationCoordinate2D) -> Bool {
-        var res: Bool = true
+        var res: Bool = false
         // No marker does currenty exist => create and place the current location marker on the map
         if self.currentLocationMarker == nil {
             let marker = MKPointAnnotation()
@@ -97,7 +97,7 @@ class MapView: MKMapView {
             self.addAnnotation(marker)
             self.currentLocationMarker = marker
             // the marker was created
-            res = false
+            res = true
         }
 
         // Updat the subtitles for the new location.

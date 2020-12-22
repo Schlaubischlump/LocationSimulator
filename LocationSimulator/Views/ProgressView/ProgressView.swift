@@ -9,6 +9,16 @@
 import AppKit
 import Downloader
 
+public enum DownloadStatus: Int {
+    case failure
+    case success
+    case cancel
+}
+
+typealias DownloadCompletionHandler = (DownloadStatus) -> Void
+
+/// This class is responsible for downloading an displaying the download progress of the DeveloperDiskImage.dmg and
+/// the DeveloperDiskImage.dmg.signature file. You can use this class inside your UI or place it inside an alert.
 class ProgressView: NSView {
     /// Label above the download bar at the top.
     @IBOutlet weak var statusLabelTop: NSTextField!
@@ -24,6 +34,9 @@ class ProgressView: NSView {
     /// The downloader instance to manage.
     public let downloader: Downloader = Downloader()
 
+    /// The action to perform when the download is finished.
+    public var downloadFinishedAction: DownloadCompletionHandler?
+
     /// True if the download progress is active.
     private var isDownloading = false
 
@@ -37,8 +50,8 @@ class ProgressView: NSView {
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        self.downloader.delegate = self
         self.setup()
+        self.downloader.delegate = self
     }
 
     required init?(coder: NSCoder) {
@@ -60,7 +73,8 @@ class ProgressView: NSView {
     /// - Parameter os: the os type to download the image for
     /// - Parameter iOSVersion: the version number to download the image for
     /// - Return: true if the download can be started, false otherwise
-    public func prepareDownload(os: String, iOSVersion: String) -> Bool {
+    @discardableResult
+    @objc public func prepareDownload(os: String, iOSVersion: String) -> Bool {
         // Check if the path for the image and signature file can be created.
         let manager = FileManager.default
         guard let devDMG = manager.getDeveloperDiskImage(os: os, iOSVersion: iOSVersion),
@@ -85,13 +99,13 @@ class ProgressView: NSView {
 
     /// Start the download of the DeveloperDiskImages.
     /// - Return: true on success, false otherwise.
-    public func startDownload() -> Bool {
+    @discardableResult
+    @objc public func startDownload() -> Bool {
         guard !self.isDownloading, let devDiskTask = self.devDiskTask, let devSignTask = self.devSignTask else {
             return false
         }
 
         self.isDownloading = true
-
         // Start the downlaod process.
         self.downloader.start(devDiskTask)
         self.downloader.start(devSignTask)
@@ -100,7 +114,8 @@ class ProgressView: NSView {
 
     /// Cancel the current download.
     /// - Return: true on success, false otherwise.
-    public func cancelDownload() -> Bool {
+    @discardableResult
+    @objc public func cancelDownload() -> Bool {
         guard self.isDownloading, let devDiskTask = self.devDiskTask, let devSignTask = self.devSignTask else {
             return false
         }

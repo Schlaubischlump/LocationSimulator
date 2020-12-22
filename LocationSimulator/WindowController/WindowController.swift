@@ -216,20 +216,18 @@ class WindowController: NSWindowController {
             viewController.contentView?.showErrorInidcator()
 
             // try to load device after a successfull DeveloperDiskImage download
-            viewController.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) { success in
+            if viewController.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) {
                 // Check if any device is left
                 let index = self.devicesPopup.indexOfSelectedItem
                 guard index >= 0 else { return }
 
                 // If the device is still the selected device try to reload it
                 let selectedDevice = self.devices[index]
-                if success && selectedDevice == device {
-                    DispatchQueue.main.async {
-                        do {
-                            try deviceLoadHandler()
-                            viewController.contentView?.hideErrorInidcator()
-                        } catch {}
-                    }
+                if selectedDevice == device {
+                    do {
+                        try deviceLoadHandler()
+                        viewController.contentView?.hideErrorInidcator()
+                    } catch {}
                 }
             }
         } catch {
