@@ -9,9 +9,6 @@
 import AppKit
 import Downloader
 
-// TODO: This win.sheetParent?.endSheet is ugly. Use a completion handler to pass the value to the alert.
-// TODO: If we keep win.sheetParent?.endSheet we need to perform this on the main thread ?
-
 let kDevDiskTaskID = "DevDisk"
 let kDevSignTaskID = "DevSign"
 

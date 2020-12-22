@@ -20,15 +20,15 @@ class MapViewController: NSViewController {
     /// The main mapView.
     @IBOutlet weak var mapView: MapView!
 
-    // MARK: - Properties
-
-    /// Current instance to spoof the iOS device location.
-    public var spoofer: LocationSpoofer?
-
     /// The main contentView which hosts all other views, including the mapView.
     public var contentView: ContentView? {
         return self.view as? ContentView
     }
+
+    // MARK: - Properties
+
+    /// Current instance to spoof the iOS device location.
+    public var spoofer: LocationSpoofer?
 
     /// True to autofocus current location when the location changes, False otherwise.
     var autoFocusCurrentLocation = false {
@@ -149,21 +149,18 @@ class MapViewController: NSViewController {
     func downloadDeveloperDiskImage(os: String, iOSVersion: String) -> Bool {
         guard let window = self.view.window else { return false }
 
+        // Show the alert and thereby start the download progress.
         let alert = ProgressAlert(os: os, version: iOSVersion)
         let response = alert.runSheetModal(forWindow: window)
-        print(response)
         switch response {
         // Download was successfull
-        case .OK :
-            print("Downloaded.")
-            return true
+        case .OK : return true
         // No download link available.
         // show the error to the user
         case .failed: window.showError(NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR", comment: ""),
                                        message: NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR_MSG", comment: ""))
         default: break
         }
-        print("Return false.")
         return false
     }
 

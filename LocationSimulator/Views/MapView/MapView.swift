@@ -25,8 +25,7 @@ class MapView: MKMapView {
     public var isUserInteracting: Bool = false
 
     /// Current marker on the mapView.
-    /// FIXME: This should be private but I don't want to place the delegate code in this file.
-    internal var currentLocationMarker: MKPointAnnotation?
+    public private(set) var currentLocationMarker: MKPointAnnotation?
 
     /// Current navigation overlay that shows the path.
     private var navigationOverlay: MKOverlay?
