@@ -131,6 +131,10 @@ class MapViewController: NSViewController {
 
     override func viewDidAppear() {
         self.view.window?.makeFirstResponder(self.mapView)
+
+        // change the autofocus state and thereby update the toolbar button as well
+        self.autoFocusCurrentLocation = true
+
         super.viewDidAppear()
     }
 
@@ -140,12 +144,16 @@ class MapViewController: NSViewController {
     }
 
     // MARK: - Load device
+
+    /// Download the developer disk image and corresponding signature file for the specified version of the os.
+    /// - Parameter os: the os type to download the image for
+    /// - Parameter iOSVersion: the version number to download the image for
+    /// - Parameter completion: the completion handler to call after the download finished or failed
     func downloadDeveloperDiskImage(os: String, iOSVersion: String, _ completion: @escaping (Bool) -> Void = { _ in }) {
         guard let window = self.view.window else {
                 completion(false)
                 return
         }
-        // Start the download progress.
         let alert = ProgressAlert()
         // Make sure we find a download link for this os version.
         guard alert.prepareDownload(os: os, iOSVersion: iOSVersion) else {
@@ -154,14 +162,13 @@ class MapViewController: NSViewController {
             completion(false)
             return
         }
-        // Show the download dialog.
+        // Show the download dialog and start the download.
         alert.beginSheetModal(for: window) { response in
             switch response {
             case .OK : completion(true)
             default: completion(false)
             }
         }
-        // Start the download.
         alert.startDownload()
     }
 
@@ -233,7 +240,9 @@ class MapViewController: NSViewController {
 
     // MARK: - Teleport or Navigate
 
-    /// Calculate the route from the current location to a target location and start the navigation.
+    /// Calculate the route from the current location to the specified coordinates and start the navigation.
+    /// After the navigation to `toCoordinate` is finished, continue the navigation for the path specified in
+    /// `additionalRoute`.
     /// - Parameter toCoordinate: tagret location.
     /// - Parameter additionalRoute: additional route to append to the calculated route
     private func navigate(toCoordinate coord: CLLocationCoordinate2D, additionalRoute: [CLLocationCoordinate2D] = []) {
@@ -265,74 +274,35 @@ class MapViewController: NSViewController {
     /// presented to enter the new coordinates. The user can then choose to navigate or teleport to the new location.
     /// - Parameter toCoordinate: new coordinates or nil
     func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D? = nil) {
-        // make sure we can spoof a location and not dialog is currently showing
-        guard !self.isShowingAlert else { return }
+        // make sure we can spoof a location and no dialog is currently showing
+        guard !self.isShowingAlert, let window = self.view.window else { return }
 
-        // has the user provided coordinates to teleport to
-        // e.g. he did use use the recent location menu or dropped the current location to a new one
-        let userHasProvidedLocation = (coord != nil)
-
-        // if the current location is set ask the user if he wants to teleport or navigate to the destination
-        let alert = NSAlert()
-        alert.messageText = NSLocalizedString("DESTINATION", comment: "")
-        alert.informativeText = NSLocalizedString("TELEPORT_OR_NAVIGATE_MSG", comment: "")
-        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-        let navButton: NSButton = alert.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
-        alert.addButton(withTitle: NSLocalizedString("TELEPORT", comment: ""))
-        alert.alertStyle = .informational
-
-        // new coordinates to move to, either give by the function or read from a user input
-        var newCoords: CLLocationCoordinate2D?
-
-        // disable the navigate button if no current location exists
-        if self.spoofer?.currentLocation == nil {
-            navButton.isEnabled = false
-        }
-
-        // if no location is give request one from the user (e.g. Go to feature is used)
-        if userHasProvidedLocation {
-            newCoords = coord
-        } else {
-            let coordView = CoordinateSelectionView(frame: NSRect(x: 0, y: 0, width: 330, height: 40))
-            // try to read coordinates from pasteboard and suggest them to the user
-            if let (lat, long) = NSPasteboard.general.parseFirstItemAsCoordinates() {
-                coordView.lat = lat
-                coordView.long = long
-            }
-            alert.accessoryView = coordView
-        }
-
+        // Limit the amount of alerts of this kind to one.
         self.isShowingAlert = true
 
-        alert.beginSheetModal(for: self.view.window!) { res in
-            // Make ure the spoofer still exists
-            guard let spoofer = self.spoofer else { return }
+        // If a coordinate is provided to this function the user can not input one.
+        // E.g. he did use use the recent location menu or dropped the current location to a new one.
+        let showsUserInput = (coord == nil)
+        let showsNavigation = self.spoofer?.currentLocation != nil
 
-            // read coodinates from user input
-            if !userHasProvidedLocation {
-                if let coordSelectionView = alert.accessoryView as? CoordinateSelectionView {
-                    newCoords = coordSelectionView.getCoordinates()
-                } else {
-                    // something went wrong...
-                    self.isShowingAlert = false
-                    return
-                }
-            }
-
-            if res == NSApplication.ModalResponse.alertFirstButtonReturn {
-                // cancel => set the location to the current one, in case the marker was dragged
-                self.didChangeLocation(spoofer: spoofer, toCoordinate: spoofer.currentLocation)
-            } else if res == NSApplication.ModalResponse.alertSecondButtonReturn {
-                // navigate to the target coordinates
-                self.navigate(toCoordinate: newCoords!)
-            } else if res == NSApplication.ModalResponse.alertThirdButtonReturn {
-                // teleport to the new location
-                spoofer.setLocation(newCoords!)
-                // if we teleport we want to save this location as a recent location
-                RecentLocationMenubarItem.addLocation(newCoords!)
-            }
-
+        let alert = CoordinateSelectionAlert(showNavigationButton: showsNavigation, showsUserInput: showsUserInput)
+        alert.beginSheetModal(for: window) { response, userCoord in
             self.isShowingAlert = false
+
+            // Make sure the spoofer still exists and no unexpected error occured.
+            guard let spoofer = self.spoofer, let dstCoord = userCoord ?? coord else { return }
+
+            switch response {
+            // Cancel => set the location to the current one, in case the marker was dragged
+            case .cancel: self.didChangeLocation(spoofer: spoofer, toCoordinate: spoofer.currentLocation)
+            // Navigate to the target coordinates
+            case .navigate: self.navigate(toCoordinate: dstCoord)
+            // Teleport to the new location and save the recent location
+            case .teleport:
+                spoofer.setLocation(dstCoord)
+                RecentLocationMenubarItem.addLocation(dstCoord)
+            default: break
+            }
         }
     }
 
@@ -340,45 +310,28 @@ class MapViewController: NSViewController {
     /// along the route.
     /// - Parameter route: the coordinates for this GPX route
     func requestGPXRouting(route: [CLLocationCoordinate2D]) {
-        // make sure we can spoof a location and not dialog is currently showing
-        guard !self.isShowingAlert else { return }
+        // make sure we can spoof a location and no dialog is currently showing
+        guard !self.isShowingAlert, let window = self.view.window else { return }
 
         // We need at least one coordinate
-        guard route.count > 0 else {
+        guard !route.isEmpty else {
             self.view.window?.showError(NSLocalizedString("EMPTY_ROUTE", comment: ""),
                                        message: NSLocalizedString("EMPTY_ROUTE_MSG", comment: ""))
             return
         }
 
-        // if the current location is set ask the user if he wants to teleport or navigate to the destination
-        let alert = NSAlert()
-        alert.messageText = NSLocalizedString("DESTINATION", comment: "")
-        alert.informativeText = NSLocalizedString("TELEPORT_OR_NAVIGATE_GPX_MSG", comment: "")
-        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-        let navButton: NSButton = alert.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
-        alert.addButton(withTitle: NSLocalizedString("TELEPORT", comment: ""))
-        alert.alertStyle = .informational
+        let showsNavigation = self.spoofer?.currentLocation != nil
+        let alert = CoordinateSelectionAlert(showNavigationButton: showsNavigation, showsUserInput: false)
 
-        // disable the navigate button if no current location exists
-        if self.spoofer?.currentLocation == nil {
-            navButton.isEnabled = false
-        }
+        alert.beginSheetModal(for: window) { response, _ in
+            self.isShowingAlert = false
 
-        self.isShowingAlert = true
-
-        /// Make a mutsating copy of the route.
-        var route = route
-
-        alert.beginSheetModal(for: self.view.window!) { res in
-            // Make ure the spoofer still exists
+            // Make sure the spoofer still exists
             guard let spoofer = self.spoofer else { return }
 
-            if res == NSApplication.ModalResponse.alertSecondButtonReturn {
-                // Navigate
-                let coord = route.removeFirst()
-                self.navigate(toCoordinate: coord, additionalRoute: route)
-            } else if res ==  NSApplication.ModalResponse.alertThirdButtonReturn {
-                // if we teleport we want to save this location as a recent location
+            switch response {
+            /// Teleport to the start of the route and contiune the navigation from there on.
+            case .teleport:
                 guard let startCoord = route.first else { return }
 
                 RecentLocationMenubarItem.addLocation(startCoord)
@@ -390,9 +343,14 @@ class MapViewController: NSViewController {
                 // start automoving
                 spoofer.moveState = .auto
                 spoofer.move()
-            }
+            /// Navigate to the first coordinate and continue the navigation with the rest of the route.
+            case .navigate:
+                var route = route
+                let startCoord = route.removeFirst()
+                self.navigate(toCoordinate: startCoord, additionalRoute: route)
 
-            self.isShowingAlert = false
+            default: break
+            }
         }
     }
 }

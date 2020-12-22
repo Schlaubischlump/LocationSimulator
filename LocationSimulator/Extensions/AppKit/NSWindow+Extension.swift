@@ -10,13 +10,33 @@ import AppKit
 
 extension NSWindow {
     /// Show error sheet for this window.
-    /// - Parameter title: window title
-    /// - Parameter message: window message
-    func showError(_ title: String, message: String) {
+    /// - Parameter title: alert title
+    /// - Parameter message: alert message
+    /// - Return: the modal response
+    @discardableResult
+    func showError(_ title: String, message: String) -> NSApplication.ModalResponse {
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = message
         alert.alertStyle = .critical
-        alert.beginSheetModal(for: self, completionHandler: nil)
+        alert.alertStyle = .critical
+        return alert.runModal()
+    }
+
+    /// Show the open panel to select a file.
+    /// - Parameter title: panel title
+    /// - Parameter extensions: permitted file extensions
+    /// - Return: the modal response
+    @discardableResult
+    func showOpenPanel(_ tilte: String, extensions: [String]) -> (NSApplication.ModalResponse, URL?) {
+        let dialog = NSOpenPanel()
+        dialog.title                   = title
+        dialog.showsResizeIndicator    = true
+        dialog.showsHiddenFiles        = false
+        dialog.canChooseDirectories    = false
+        dialog.canCreateDirectories    = true
+        dialog.allowsMultipleSelection = false
+        dialog.allowedFileTypes        = extensions
+        return (dialog.runModal(), dialog.url)
     }
 }

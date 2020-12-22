@@ -55,6 +55,8 @@
 		6372062F2591427100293EA8 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6372062D2591427000293EA8 /* ProgressView.xib */; };
 		63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */; };
 		63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720635259147AB00293EA8 /* ProgressAlert.swift */; };
+		6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */; };
+		6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */; };
 		6376755A258E93CE000DCEF3 /* libimobiledevice-1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */; };
 		6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */; };
 		6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */; };
@@ -141,6 +143,8 @@
 		6372062E2591427000293EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressView.xib; sourceTree = "<group>"; };
 		63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+DownloadDelegate.swift"; sourceTree = "<group>"; };
 		63720635259147AB00293EA8 /* ProgressAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAlert.swift; sourceTree = "<group>"; };
+		6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionAlert.swift; sourceTree = "<group>"; };
+		6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionAlert.swift; sourceTree = "<group>"; };
 		6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerHUDView.swift; sourceTree = "<group>"; };
 		6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementButtonHUDView.swift; sourceTree = "<group>"; };
 		6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDirectionHUDView.swift; sourceTree = "<group>"; };
@@ -444,6 +448,8 @@
 			isa = PBXGroup;
 			children = (
 				63720635259147AB00293EA8 /* ProgressAlert.swift */,
+				6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */,
+				6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -680,6 +686,8 @@
 				633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */,
 				63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
+				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
+				6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */,
 				633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */,
 				632C466523F7638A004E5092 /* MenubarItem.swift in Sources */,
 				632B4039258FFE6600202647 /* MenubarController.swift in Sources */,

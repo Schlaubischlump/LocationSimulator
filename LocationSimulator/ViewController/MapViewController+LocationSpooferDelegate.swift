@@ -26,7 +26,7 @@ extension MapViewController: LocationSpooferDelegate {
         guard let coord = toCoordinate, let spoofer = self.spoofer else { return }
 
         // if we are still navigating => update the overlay
-        if spoofer.route.count > 0 {
+        if !spoofer.route.isEmpty {
             self.mapView.addNavigationOverlay(withPath: [coord] + spoofer.route)
         }
     }

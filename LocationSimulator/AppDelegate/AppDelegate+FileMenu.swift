@@ -31,76 +31,55 @@ extension AppDelegate {
 
     /// Open a gpx file.
     @IBAction func openGPXFile(_ sender: NSMenuItem) {
-        let windowController = NSApp.mainWindow?.windowController
-        let window = windowController?.window
+        guard let windowController = NSApp.mainWindow?.windowController, let window = windowController.window else {
+            return
+        }
 
         // Prepare the open file dialog
-        let dialog = NSOpenPanel()
-        dialog.title                   = NSLocalizedString("CHOOSE_GPX_FILE", comment: "")
-        dialog.showsResizeIndicator    = true
-        dialog.showsHiddenFiles        = false
-        dialog.canChooseDirectories    = false
-        dialog.canCreateDirectories    = true
-        dialog.allowsMultipleSelection = false
-        dialog.allowedFileTypes        = ["gpx"]
+        let title = NSLocalizedString("CHOOSE_GPX_FILE", comment: "")
+        let (response, url): (NSApplication.ModalResponse, URL?) = window.showOpenPanel(title, extensions: ["gpx"])
 
-        if dialog.runModal() == .OK, let gpxFile = dialog.url {
-            do {
-                // Try to parse the GPX file
-                let parser = try GPXParser(file: gpxFile)
-                parser.parse { result in
-                    switch result {
-                    case .success:
-                        // Successfully opened the file
-                        let waypoints = parser.waypoints
-                        let routes = parser.routes
-                        let tracks = parser.tracks
+        // Make sure everything is working as expected.
+        guard response == .OK, let gpxFile = url else { return }
 
-                        let viewController = windowController?.contentViewController as? MapViewController
+        do {
+            // Try to parse the GPX file
+            let parser = try GPXParser(file: gpxFile)
+            parser.parse { result in
+                switch result {
+                case .success:
+                    // Successfully opened the file
+                    let waypoints = parser.waypoints
+                    let routes = parser.routes
+                    let tracks = parser.tracks
 
-                        // Start the navigation of the GPX route
-                        if let coords = self.uniqueCoordinates(waypoints: waypoints, routes: routes, tracks: tracks) {
-                            // Jump to the first coordinate of the coordinate list
-                            viewController?.requestGPXRouting(route: coords)
-                        } else {
-                            guard let window = window else { return }
+                    let viewController = windowController.contentViewController as? MapViewController
 
-                            // Show a user selection window for the waypoints / routes / tracks.
-                            let alert = NSAlert()
-                            alert.messageText = NSLocalizedString("GPX_SELECTION", comment: "")
-                            alert.informativeText = NSLocalizedString("GPX_SELECTION_MSG", comment: "")
-                            alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-                            alert.addButton(withTitle: NSLocalizedString("CHOOSE", comment: ""))
-                            alert.alertStyle = .informational
-
-                            // Create the GPX selection view.
-                            let gpxView = GPXSelectionView(frame: NSRect(x: 0, y: 0, width: 330, height: 100))
-                            gpxView.tracks = tracks
-                            gpxView.routes = routes
-                            gpxView.waypoints = waypoints
-                            alert.accessoryView = gpxView
-
-                            // Show the alert
-                            alert.beginSheetModal(for: window) { res in
-                                // If the action was not canceled.
-                                if res != NSApplication.ModalResponse.alertFirstButtonReturn {
-                                    let coords = gpxView.coordinates
-                                    viewController?.requestGPXRouting(route: coords)
-                                }
+                    // Start the navigation of the GPX route if there is only one unique route to use.
+                    if let coords = self.uniqueCoordinates(waypoints: waypoints, routes: routes, tracks: tracks) {
+                        // Jump to the first coordinate of the coordinate list
+                        viewController?.requestGPXRouting(route: coords)
+                    } else {
+                        // Show a user selection window for the waypoints / routes / tracks.
+                        let alert = GPXSelectionAlert(tracks: tracks, routes: routes, waypoints: waypoints)
+                        alert.beginSheetModal(for: window) { response, coordinates in
+                            switch response {
+                            case .OK: viewController?.requestGPXRouting(route: coordinates)
+                            default: break
                             }
                         }
-                    case .failure:
-                        // Could not parse the file.
-                        window?.showError(NSLocalizedString("ERROR_PARSE_GPX", comment: ""),
-                                          message: NSLocalizedString("ERROR_PARSE_GPX_MSG", comment: ""))
                     }
+                case .failure:
+                    // Could not parse the file.
+                    window.showError(NSLocalizedString("ERROR_PARSE_GPX", comment: ""),
+                                     message: NSLocalizedString("ERROR_PARSE_GPX_MSG", comment: ""))
                 }
-            } catch {
-                // Could not open the file.
-                window?.showError(NSLocalizedString("ERROR_OPEN_GPX", comment: ""),
-                                  message: NSLocalizedString("ERROR_OPEN_GPX_MSG", comment: ""))
             }
-
+        } catch {
+            // Could not open the file.
+            window.showError(NSLocalizedString("ERROR_OPEN_GPX", comment: ""),
+                             message: NSLocalizedString("ERROR_OPEN_GPX_MSG", comment: ""))
         }
+
     }
 }

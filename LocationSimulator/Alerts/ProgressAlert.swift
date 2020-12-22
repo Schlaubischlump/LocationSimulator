@@ -48,6 +48,7 @@ class ProgressAlert: NSAlert {
         return self.progressView?.cancelDownload() ?? false
     }
 
+    /// Override to handle the case that the user canceled the download.
     override func beginSheetModal(for sheetWindow: NSWindow,
                                   completionHandler handler: ((NSApplication.ModalResponse) -> Void)? = nil) {
         super.beginSheetModal(for: sheetWindow) { [unowned self] response in
