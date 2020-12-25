@@ -189,7 +189,7 @@ struct Device: Hashable {
     func pair() throws {
         // check if a device is connected
         guard pairDevice(self.udid, self.lookupOps) else {
-            throw DeviceError.pair(NSLocalizedString("PAIR_ERROR_MSG", comment: ""))
+            throw DeviceError.pair("Could not pair device!")
         }
 
         // try to mount the DeveloperDiskImage.dmg
@@ -222,20 +222,19 @@ struct Device: Hashable {
                 var isDir: ObjCBool = false
                 if !manager.fileExists(atPath: devDMG.path, isDirectory: &isDir) || isDir.boolValue ||
                     !manager.fileExists(atPath: devSign.path, isDirectory: &isDir) || isDir.boolValue {
-                        throw DeviceError.devDiskImageNotFound(NSLocalizedString("DEVDISK_NOT_FOUND", comment: ""),
+                        throw DeviceError.devDiskImageNotFound("DeveloperDiskImage not found!",
                                                                os: productName, version: productVersion)
                 }
 
                 // try to mount the developer image
                 if !mountImageForDevice(udid, devDMG.path, devSign.path, self.lookupOps) {
-                    throw DeviceError.devDiskImageMount(NSLocalizedString("MOUNT_ERROR", comment: ""),
-                                                        os: productName, version: productVersion)
+                    throw DeviceError.devDiskImageMount("Mount error!", os: productName, version: productVersion)
                 }
             } else {
-                throw DeviceError.permisson(NSLocalizedString("PERMISSION_ERROR", comment: ""))
+                throw DeviceError.permisson("Wrong file permission!")
             }
         } else {
-            throw DeviceError.productInfo(NSLocalizedString("PRODUCT_INFO_ERROR", comment: ""))
+            throw DeviceError.productInfo("Could not read device information!")
         }
     }
 

@@ -74,3 +74,10 @@
 "PROGRESS" = "Download iOS support files";
 "DEVDISK_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg";
 "DEVSIGN_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg.signature";
+
+// Device Sidebar
+"DEVICE_HEADER" = "Devices";
+
+// NoDeviceViewController
+"NO_DEVICE"="No Device Selected";
+"NO_DEVICE_MSG"="Please connect a device and select it in the sidebar to start spoofing.";

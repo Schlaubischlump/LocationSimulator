@@ -9,56 +9,67 @@
 import Foundation
 import AppKit
 import MapKit
+import CoreLocation
+import GPXParser
 
 /// The main window controller instance which hosts the map view and the toolbar.
 class WindowController: NSWindowController {
-    /// Enable, disable autofocus current location.
-    @IBOutlet weak var autofocusLocationButton: NSButton!
+    // MARK: - Enums
 
-    /// Set the current PC location as the spoofed location.
-    @IBOutlet weak var currentLocationButton: NSButton!
+    enum MoveDirection {
+        case up
+        case down
+    }
 
-    /// Change the current move speed.
-    @IBOutlet weak var typeSegmented: NSSegmentedControl!
+    enum RotateDirection {
+        case clockwise
+        case counterclockwise
+    }
 
-    /// Change the current move speed using the touchbar.
-    @IBOutlet var typeSegmentedTouchbar: NSSegmentedControl!
+    // MARK: - Controller / Model
 
-    /// Search for a location inside the map.
-    @IBOutlet weak var searchField: LocationSearchField!
+    /// The toolbar controller instance to handle the toolbar validation as well as the toolbar actions.
+    @IBOutlet var toolbarController: ToolbarController!
 
-    /// Change the current device.
-    @IBOutlet weak var devicesPopup: NSPopUpButton!
+    /// The touchbar controller instance to handle the touchbar validation as well as the touchbar actions.
+    @IBOutlet var touchbarController: TouchbarController!
 
-    /// Search completer to find a location based on a string.
-    public var searchCompleter: MKLocalSearchCompleter!
+    /// The search popup controller instance to handle the search and displaying the results.
+    @IBOutlet var searchController: SearchPopupController!
 
-    /// All currently connected devices.
-    public var devices: [Device] = []
+    // MARK: - ViewController
 
-    /// Cache to store the last known location for each device as long as it is connected
-    var lastKnownLocationCache: [Device: CLLocationCoordinate2D] = [:]
+    /// Reference to the SplitViewController
+    public var splitViewController: SplitViewController? {
+        return self.contentViewController as? SplitViewController
+    }
 
-    /// Internal reference to a NotificationCenterObserver.
-    private var autofocusObserver: Any?
+    /// Reference to the mapViewController if one exists.
+    public var mapViewController: MapViewController? {
+        return self.splitViewController?.detailViewController as? MapViewController
+    }
+
+    // MARK: - Model
 
     /// Internal reference to a location manager for this mac's location
     private let locationManager = CLLocationManager()
+
+    /// The device status observer used to update toolbar and touchbar.
+    private var statusObserver: NSObjectProtocol?
+
+    // MARK: - Helper
+
+    public var moveType: MoveType {
+        guard self.toolbarController.moveType == self.touchbarController.moveType else {
+            fatalError("Inconsistent moveType status between touchbar and toolbar!")
+        }
+        return self.toolbarController.moveType
+    }
 
     // MARK: - Window lifecycle
 
     override func windowDidLoad() {
         super.windowDidLoad()
-
-        // register the default setting values
-        UserDefaults.standard.registerNetworkDefaultValues()
-
-        // Load the default value for network devices
-        Device.detectNetworkDevices = UserDefaults.standard.detectNetworkDevices
-
-        if Device.startGeneratingDeviceNotifications() {
-            self.registerDeviceNotifications()
-        }
 
         // Request the permission to access the mac's location.
         // Otherwise the current location button won't work.
@@ -67,172 +78,174 @@ class WindowController: NSWindowController {
         }
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
-        // setup the location searchfield
-        self.searchField.tableViewDelegate = self
-
-        // only search for locations
-        self.searchCompleter = MKLocalSearchCompleter()
-        if #available(OSX 10.15, *) {
-            self.searchCompleter.resultTypes = .address
-        } else {
-            // Fallback on earlier versions
-            self.searchCompleter.filterType = .locationsOnly
-        }
-        self.searchCompleter.delegate = self
-
-        // listen to current location changes
-        self.autofocusObserver = NotificationCenter.default.addObserver(forName: .AutoFoucusCurrentLocationChanged,
-                                                                        object: nil, queue: .main) { (notification) in
-            if let isOn = notification.object as? Bool, isOn == true {
-                self.autofocusLocationButton.state = .on
-            } else {
-                self.autofocusLocationButton.state = .off
-            }
+        // Listen for state changes to update the toolbar and touchbar.
+        self.statusObserver = NotificationCenter.default.addObserver(forName: .StatusChanged, object: nil,
+                                                                     queue: .main) { [weak self] notification in
+            // Make sure the event belongs to this window (might be useful for multiple windows in the future).
+            guard let viewController = notification.object as? NSViewController,
+                  let windowController = viewController.view.window?.windowController,
+                  windowController == self,
+                  let newState = notification.userInfo?["status"] as? DeviceStatus else { return }
+            // Update the UI for the new status
+            self?.toolbarController.updateForDeviceStatus(newState)
+            self?.touchbarController.updateForDeviceStatus(newState)
         }
     }
 
     deinit {
-        // stop generating update notifications (0 != 1 can never occur)
-        Device.stopGeneratingDeviceNotifications()
-
-        // remove all notifications
-        if let observer = self.autofocusObserver {
+        // Remove the observer
+        if let observer = self.statusObserver {
             NotificationCenter.default.removeObserver(observer)
-            self.autofocusObserver = nil
+        }
+        self.statusObserver = nil
+    }
+
+    // MARK: - Helper
+
+    /// Toggle the sidebar visibility.
+    public func toggleSidebar() {
+        self.splitViewController?.toggleSidebar()
+    }
+
+    /// Enabled / Disable the autofocus to current location feature.
+    /// - Parameter enabled: enable or disable the autofocus
+    public func setAutofocusEnabled(_ enabled: Bool) {
+        self.mapViewController?.autoFocusCurrentLocation = enabled
+    }
+
+    /// Reset the current location.
+    public func resetLocation() {
+        self.mapViewController?.resetLocation()
+    }
+
+    /// Set the currentlocation of this mac to the spoofed location.
+    public func setLocationToCurrentLocation() {
+        if !CLLocationManager.locationServicesEnabled() {
+            // Check if location services are enabled.
+            self.window?.showError("LOCATION_SERVICE_DISABLED", message: "LOCATION_SERVICE_DISABLED_MSG")
+        } else if let coord = locationManager.location?.coordinate {
+            self.requestLocationChange(coord: coord)
+        } else {
+            // Can not read the current user location.
+            self.window?.showError("GET_LOCATION_ERROR", message: "GET_LOCATION_ERROR_MSG")
         }
     }
 
-    // MARK: - Interface Builder callbacks
-
-    /// Toggle the autofocus feature on or off.
-    /// - Parameter sender: the button which triggered the action
-    @IBAction func autofocusLocationClicked(_ sender: NSButton) {
-        guard let viewController = self.contentViewController as? MapViewController else { return }
-        viewController.autoFocusCurrentLocation = (sender.state == .on)
+    /// Request a location change to the give coordinates. If no coordinates are specified, a coordinate selection
+    /// view will be shown to the user.
+    /// - Parameter coord: the new coordinates.
+    public func requestLocationChange(coord: CLLocationCoordinate2D? = nil) {
+        if let isShowingAlert = self.mapViewController?.isShowingAlert, isShowingAlert {
+            // We can only request one location change at a time.
+            NSSound.beep()
+        } else {
+            // Request the location change.
+            self.mapViewController?.requestTeleportOrNavigation(toCoordinate: coord)
+        }
     }
 
-    /// Change the move speed to walk / cycle / drive based on the selected segment. Futhermore update the tool- and
-    /// touchbar to represent the current status.
-    /// - Parameter sender: the segmented control instance inside the tool- or touchbar.
-    @IBAction func typeSegmentChanged(_ sender: NSSegmentedControl) {
-        guard let viewController = self.contentViewController as? MapViewController else { return }
-
-        // Update the toolbar state if the touchbar was clicked.
-        if self.typeSegmented.selectedSegment != sender.selectedSegment {
-            self.typeSegmented.selectedSegment = sender.selectedSegment
-        }
-
-        // Update the touchbar state if the toolbar was clicked.
-        if self.typeSegmentedTouchbar.selectedSegment != sender.selectedSegment {
-            self.typeSegmentedTouchbar.selectedSegment = sender.selectedSegment
-        }
-
-        viewController.spoofer?.moveType = MoveType(rawValue: sender.selectedSegment)!
+    /// Change the current move type.
+    /// - Parameter moveType: The new move type to select.
+    public func setMoveType(_ moveType: MoveType) {
+        // Update the UI.
+        self.toolbarController.moveType = moveType
+        self.touchbarController.moveType = moveType
+        // Update the actual move type.
+        self.mapViewController?.moveType = moveType
     }
 
-    /// Stop spoofing the current location.
-    /// - Parameter sender: the button which triggered the action
-    @IBAction func resetClicked(_ sender: Any) {
-        guard let viewController = contentViewController as? MapViewController else { return }
-        viewController.spoofer?.resetLocation()
+    /// Toggle between the automove and the manual move state. If a navigation is running, it will be paused / resumed.
+    public func toggleAutomoveState() {
+        self.mapViewController?.toggleAutomoveState()
     }
 
-    @IBAction func currentLocationClicked(_ sender: Any) {
-        guard let viewController = contentViewController as? MapViewController,
-              let spoofer = viewController.spoofer else { return }
-
-        guard CLLocationManager.locationServicesEnabled() else {
-            window?.showError(
-                NSLocalizedString("LOCATION_SERVICE_DISABLED", comment: ""),
-                message: NSLocalizedString("LOCATION_SERVICE_DISABLED_MSG", comment: ""))
-            return
-        }
-
-        // Check if we can read the current user location.
-        guard let coord = locationManager.location?.coordinate else {
-            window?.showError(
-                NSLocalizedString("GET_LOCATION_ERROR", comment: ""),
-                message: NSLocalizedString("GET_LOCATION_ERROR_MSG", comment: ""))
-            return
-        }
-
-        // We silently fail if no spoofer instance exists / no device is connected.
-        spoofer.setLocation(coord)
+    /// Stop the current navigation.
+    public func stopNavigation() {
+        self.mapViewController?.stopNavigation()
     }
 
-    /// Change the currently select device to the new devive choosen from the list.
-    /// - Parameter sender: the button which triggered the action
-    @IBAction func deviceSelected(_ sender: NSPopUpButton) {
-        guard let viewController = self.contentViewController as? MapViewController else { return }
+    /// Move the spoofed location.
+    /// - Parameter direction: up or down
+    public func move(_ direction: MoveDirection) {
+        guard let angle = self.mapViewController?.getDirectionViewAngle() else { return }
+        switch direction {
+        //    |                 x | x      x | x               x | x
+        // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
+        //  x | x   arrow up      |          |     arrow up      |
+        case .up:   self.mapViewController?.move(flip: angle > 90 && angle < 270)
+        //  x | x                 |          |                   |
+        // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
+        //    |    arrow down   x | x      x | x  arrow down   x | x
+        case .down: self.mapViewController?.move(flip: angle < 90 || angle > 270)
+        }
+    }
 
-        // New device is connected without a spoofed location
-        MenubarController.state = .connected
+    /// Rotate the direction overlay.
+    /// - Parameter direction: clockwise or counterclockwise
+    public func rotate(_ direction: RotateDirection) {
+        switch direction {
+        case .clockwise:        self.mapViewController?.rotateDirectionViewBy(-5.0)
+        case .counterclockwise: self.mapViewController?.rotateDirectionViewBy(5.0)
+        }
+    }
 
-        let index: Int = sender.indexOfSelectedItem
-        let device: Device = self.devices[index]
-
-        // cleanup the UI if a previous device was selected
-        if let spoofer = viewController.spoofer {
-            // if the selection did not change do nothing
-            guard spoofer.device != device else { return }
-            // reset the timer and cancel all delegate updates
-            spoofer.moveState = .manual
-            spoofer.delegate = nil
-
-            // store the last known location for the last device
-            self.lastKnownLocationCache[spoofer.device] = spoofer.currentLocation
-
-            // explicitly force the UI to reset
-            viewController.willChangeLocation(spoofer: spoofer, toCoordinate: nil)
-            viewController.didChangeLocation(spoofer: spoofer, toCoordinate: nil)
+    /// Return a list with all coordinates if only a signle type of points is found.
+    private func uniqueCoordinates(waypoints: [WayPoint], routes: [Route],
+                                   tracks: [Track]) -> [CLLocationCoordinate2D]? {
+        // More than one track or route
+        if tracks.count > 1 || routes.count > 1 {
+            return nil
         }
 
-        let deviceLoadHandler = {
-            // load the new device
-            try viewController.load(device: device)
-            // set the correct walking speed based on the current selection
-            viewController.spoofer?.moveType = MoveType(rawValue: self.typeSegmented.selectedSegment) ?? .walk
-            viewController.contentView?.hideErrorInidcator()
+        // Check if there is a single unique point collection to use
+        let routepoints = routes.flatMap { $0.routepoints }
+        let trackpoints = tracks.flatMap { $0.segments.flatMap { $0.trackpoints } }
+        let points: [[GPXPoint]] = [waypoints, routepoints, trackpoints]
+        let filteredPoints = points.filter { $0.count > 0 }
 
-            // Activate the menubar items
-            MenubarController.state = .connected
+        // Return the coordinates with the unique points.
+        return filteredPoints.count == 1 ? filteredPoints[0].map { $0.coordinate } : nil
+    }
 
-            // Check if we already have a known location for this device, if so load it.
-            // TODO: This is not an optimal solution, because we do not keep information about the current route or
-            // automove state. We could fix this by serializing the spoofer instance... but this is low priority.
-            if let spoofer = viewController.spoofer, let coordinate = self.lastKnownLocationCache[device] {
-                spoofer.currentLocation = coordinate
-                viewController.willChangeLocation(spoofer: spoofer, toCoordinate: coordinate)
-                viewController.didChangeLocation(spoofer: spoofer, toCoordinate: coordinate)
-                // enable the move menubar items
-                spoofer.moveState = .manual
-            }
-        }
+    /// Request to open a GPX file.
+    public func requestGPXOpenDialog() {
+        guard let window = self.window else { return }
 
+        // Prepare the open file dialog
+        let title = NSLocalizedString("CHOOSE_GPX_FILE", comment: "")
+        let (res, url): (NSApplication.ModalResponse, URL?) = window.showOpenPanel(title, extensions: ["gpx"])
+
+        // Make sure everything is working as expected.
+        guard res == .OK, let gpxFile = url else { return }
         do {
-            try deviceLoadHandler()
-        } catch DeviceError.devDiskImageNotFound(_, let os, let iOSVersion) {
-            // Show the error indicator
-            viewController.contentView?.showErrorInidcator()
+            // Try to parse the GPX file
+            let parser = try GPXParser(file: gpxFile)
+            parser.parse { result in
+                switch result {
+                case .success:
+                    // Successfully opened the file
+                    let waypoints = parser.waypoints
+                    let routes = parser.routes
+                    let tracks = parser.tracks
 
-            // try to load device after a successfull DeveloperDiskImage download
-            if viewController.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) {
-                // Check if any device is left
-                let index = self.devicesPopup.indexOfSelectedItem
-                guard index >= 0 else { return }
-
-                // If the device is still the selected device try to reload it
-                let selectedDevice = self.devices[index]
-                if selectedDevice == device {
-                    do {
-                        try deviceLoadHandler()
-                        viewController.contentView?.hideErrorInidcator()
-                    } catch {}
+                    // Start the navigation of the GPX route if there is only one unique route to use.
+                    if let coords = self.uniqueCoordinates(waypoints: waypoints, routes: routes, tracks: tracks) {
+                        self.mapViewController?.requestGPXRouting(route: coords)
+                    } else {
+                        // Show a user selection window for the waypoints / routes / tracks.
+                        let alert = GPXSelectionAlert(tracks: tracks, routes: routes, waypoints: waypoints)
+                        alert.beginSheetModal(for: window) { response, coordinates in
+                            guard response == .OK else { return }
+                            self.mapViewController?.requestGPXRouting(route: coordinates)
+                        }
+                    }
+                // Could not parse the file.
+                case .failure: window.showError("ERROR_PARSE_GPX", message: "ERROR_PARSE_GPX_MSG")
                 }
             }
         } catch {
-            // Show the error indicator
-            viewController.contentView?.showErrorInidcator()
+            // Could not open the file.
+            window.showError("ERROR_OPEN_GPX", message: "ERROR_OPEN_GPX_MSG")
         }
     }
 }
