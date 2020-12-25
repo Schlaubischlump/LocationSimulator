@@ -78,9 +78,9 @@ class CoordinateSelectionAlert: NSAlert {
     func beginSheetModal(for sheetWindow: NSWindow,
                          completionHandler handler: CoordinateSelectionCompletionHandler? = nil) {
         // If we don't need user input and we do not have the option to navigate we can only teleport. No need to ask.
-        if !self.showsUserInput && !self.showsNavigationButton && self.confirmTeleportation(for: sheetWindow) {
+        if !self.showsUserInput && !self.showsNavigationButton {
             let coord = self.coordinateSelectionView?.getCoordinates()
-            handler?( .teleport, coord)
+            handler?(self.confirmTeleportation(for: sheetWindow) ? .teleport : .cancel, coord)
             return
         }
 
