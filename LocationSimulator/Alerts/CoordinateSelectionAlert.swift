@@ -64,10 +64,27 @@ class CoordinateSelectionAlert: NSAlert {
         fatalError("Do not use this function. Use the two argument implementation instead.")
     }
 
+    /// Ask the user to confirm the teleportation.
+    /// - Return: true if the teleportation should be performed, false otherwise.
+    private func confirmTeleportation(for sheetWindow: NSWindow) -> Bool {
+        if UserDefaults.standard.confirmTeleportation {
+            return sheetWindow.showConfirmation("CONFIRM_TELEPORT", message: "CONFIRM_TELEPORT_MSG") == .OK
+        }
+        // The user does not wish to be asked about the teleportation.
+        return true
+    }
+
     /// Implementation to handle the response more nicely and add a second argument.
     func beginSheetModal(for sheetWindow: NSWindow,
                          completionHandler handler: CoordinateSelectionCompletionHandler? = nil) {
+        // If we don't need user input and we do not have the option to navigate we can only teleport. No need to ask.
+        if !self.showsUserInput && !self.showsNavigationButton && self.confirmTeleportation(for: sheetWindow) {
+            let coord = self.coordinateSelectionView?.getCoordinates()
+            handler?( .teleport, coord)
+            return
+        }
 
+        // Show the actual coordinate selection.
         super.beginSheetModal(for: sheetWindow) { [unowned self] response in
             // Get the user entered coordinates
             let coord = self.coordinateSelectionView?.getCoordinates()
@@ -77,7 +94,9 @@ class CoordinateSelectionAlert: NSAlert {
             // Navigate or teleport depending on whether navigate is available
             case .alertSecondButtonReturn: handler?( self.showsNavigationButton ? .navigate : .teleport, coord)
             // Teleport
-            case .alertThirdButtonReturn: handler?( .teleport, coord)
+            case .alertThirdButtonReturn:
+                // Check if we need to confirm the teleportation.
+                handler?(self.confirmTeleportation(for: sheetWindow) ? .teleport : .cancel, coord)
             default: break
             }
         }

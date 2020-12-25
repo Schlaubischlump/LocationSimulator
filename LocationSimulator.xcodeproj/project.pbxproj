@@ -10,6 +10,7 @@
 		13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BA351D20A433EF00A0431C /* Assets.xcassets */; };
 		13BA352120A433EF00A0431C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13BA351F20A433EF00A0431C /* Main.storyboard */; };
 		6305075423FB06A700EF529A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6305075323FB06A700EF529A /* Credits.rtf */; };
+		630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4A142593ECD100442713 /* NoDeviceView.swift */; };
 		6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B794230C13AF00AABF3E /* LocationSpoofer.swift */; };
 		6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */; };
 		6311B799230C150D00AABF3E /* Filemanager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B798230C150D00AABF3E /* Filemanager+Extension.swift */; };
@@ -19,6 +20,10 @@
 		63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C1022FB86160086D5F6 /* deviceinfo.c */; };
 		63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */ = {isa = PBXBuildFile; fileRef = 63156C1322FB9A5D0086D5F6 /* COPYRIGHT */; };
 		63183E29231821DC0073D80E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63183E27231821DB0073D80E /* Localizable.strings */; };
+		631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE2259409190066D5BB /* Notification+Extension.swift */; };
+		631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE8259415250066D5BB /* DeviceStatus.swift */; };
+		631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFF325941C880066D5BB /* ToolbarController.swift */; };
+		631EC00B2594C1D60066D5BB /* NSViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EC00A2594C1D60066D5BB /* NSViewController+Extension.swift */; };
 		631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */; };
 		631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D23230A063200A7A8CF /* NSImage+Extension.swift */; };
 		632A962C254811AC0078B8DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632A962B254811AC0078B8DD /* ContentView.swift */; };
@@ -39,17 +44,13 @@
 		63525910258AC0950031F289 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352590F258AC0950031F289 /* LicenseViewController.swift */; };
 		63525913258AC7F00031F289 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63525912258AC7F00031F289 /* Licenses.plist */; };
 		6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */; };
-		63525922258B74290031F289 /* NavigationMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525921258B74290031F289 /* NavigationMenuBarItem.swift */; };
-		63525927258B74750031F289 /* RecentLocationMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525926258B74750031F289 /* RecentLocationMenuBarItem.swift */; };
-		6352592B258B75190031F289 /* FileMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352592A258B75190031F289 /* FileMenuBarItem.swift */; };
-		63525930258B79550031F289 /* AppDelegate+NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352592F258B79550031F289 /* AppDelegate+NavigationMenu.swift */; };
-		63525933258B79900031F289 /* AppDelegate+HelpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525932258B79900031F289 /* AppDelegate+HelpMenu.swift */; };
-		63525936258B79A70031F289 /* AppDelegate+FileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525935258B79A70031F289 /* AppDelegate+FileMenu.swift */; };
+		63525922258B74290031F289 /* NavigationMenuabrItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525921258B74290031F289 /* NavigationMenuabrItem.swift */; };
+		63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525926258B74750031F289 /* RecentLocationMenubarItem.swift */; };
+		6352592B258B75190031F289 /* FileMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352592A258B75190031F289 /* FileMenubarItem.swift */; };
 		6352594F258B84550031F289 /* GPXParser in Frameworks */ = {isa = PBXBuildFile; productRef = 6352594E258B84550031F289 /* GPXParser */; };
 		63525959258E8FC80031F289 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525958258E8FC80031F289 /* HUDView.swift */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
-		63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */; };
 		6372061D25911CED00293EA8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372061C25911CED00293EA8 /* MapView.swift */; };
 		63720628259141EF00293EA8 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720627259141EF00293EA8 /* ProgressView.swift */; };
 		6372062F2591427100293EA8 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6372062D2591427000293EA8 /* ProgressView.xib */; };
@@ -66,7 +67,14 @@
 		63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */; };
 		63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */; };
 		6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376756A258EC809000DCEF3 /* SeparatorLine.swift */; };
+		637FD228259578B700E84EDB /* TouchbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FD227259578B700E84EDB /* TouchbarController.swift */; };
 		63888DCA2592A2D900B1DFC9 /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 63888DC92592A2D900B1DFC9 /* Downloader */; };
+		63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */; };
+		63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */; };
+		63888DDA2592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */; };
+		638ACB86259562C4008790CE /* SearchPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ACB85259562C4008790CE /* SearchPopupController.swift */; };
+		638ACB8A259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ACB89259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift */; };
+		638ACB8D25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ACB8C25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift */; };
 		638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ADBE0230095980061612D /* AutoCompletePopover.swift */; };
 		638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9096254B3C6600A520E0 /* ConnectionType.swift */; };
 		638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9097254B3C6600A520E0 /* DeviceError.swift */; };
@@ -75,10 +83,17 @@
 		638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A2254B5A1800A520E0 /* GeneralViewController.swift */; };
 		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
 		638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */; };
+		6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB3D2593CB9900B0CABA /* SidebarItem.swift */; };
+		6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB412593D63000B0CABA /* SplitviewController.swift */; };
+		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
+		63C799EF25961C260099B794 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799EE25961C260099B794 /* Array+Extension.swift */; };
+		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
+		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
+		63C799FD259659740099B794 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799FC259659740099B794 /* InfoViewController.swift */; };
+		63DBFFE225961563005EAB02 /* NSResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBFFE125961563005EAB02 /* NSResponder+Extension.swift */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */; };
-		63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC47A32306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift */; };
 		63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE223258F9E3300917412 /* GPXSelectionView.swift */; };
 		63FDE22A258F9F6800917412 /* GPXSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FDE228258F9F6800917412 /* GPXSelectionView.xib */; };
 		63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE22C258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift */; };
@@ -96,6 +111,7 @@
 		13BA352320A433EF00A0431C /* LocationSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocationSimulator.entitlements; sourceTree = "<group>"; };
 		6305075223FAEB9500EF529A /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		6305075323FB06A700EF529A /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		630C4A142593ECD100442713 /* NoDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
 		6311B794230C13AF00AABF3E /* LocationSpoofer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpoofer.swift; sourceTree = "<group>"; };
 		6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Protocol.swift"; sourceTree = "<group>"; };
 		6311B798230C150D00AABF3E /* Filemanager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filemanager+Extension.swift"; sourceTree = "<group>"; };
@@ -111,6 +127,10 @@
 		63183E26231821B80073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		63183E28231821DB0073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		63183E2A2318221B0073D80E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		631EBFE2259409190066D5BB /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		631EBFE8259415250066D5BB /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
+		631EBFF325941C880066D5BB /* ToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarController.swift; sourceTree = "<group>"; };
+		631EC00A2594C1D60066D5BB /* NSViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Extension.swift"; sourceTree = "<group>"; };
 		631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		631F9D23230A063200A7A8CF /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		632A962B254811AC0078B8DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,16 +148,12 @@
 		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		63525915258AC8310031F289 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasterboard+Extension.swift"; sourceTree = "<group>"; };
-		63525921258B74290031F289 /* NavigationMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenuBarItem.swift; sourceTree = "<group>"; };
-		63525926258B74750031F289 /* RecentLocationMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentLocationMenuBarItem.swift; sourceTree = "<group>"; };
-		6352592A258B75190031F289 /* FileMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenuBarItem.swift; sourceTree = "<group>"; };
-		6352592F258B79550031F289 /* AppDelegate+NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NavigationMenu.swift"; sourceTree = "<group>"; };
-		63525932258B79900031F289 /* AppDelegate+HelpMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+HelpMenu.swift"; sourceTree = "<group>"; };
-		63525935258B79A70031F289 /* AppDelegate+FileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+FileMenu.swift"; sourceTree = "<group>"; };
+		63525921258B74290031F289 /* NavigationMenuabrItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenuabrItem.swift; sourceTree = "<group>"; };
+		63525926258B74750031F289 /* RecentLocationMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentLocationMenubarItem.swift; sourceTree = "<group>"; };
+		6352592A258B75190031F289 /* FileMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenubarItem.swift; sourceTree = "<group>"; };
 		63525958258E8FC80031F289 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
-		63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+DeviceNotification.swift"; sourceTree = "<group>"; };
 		6372061C25911CED00293EA8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		63720627259141EF00293EA8 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		6372062E2591427000293EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressView.xib; sourceTree = "<group>"; };
@@ -152,6 +168,13 @@
 		63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+Extension.swift"; sourceTree = "<group>"; };
 		63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
 		6376756A258EC809000DCEF3 /* SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
+		637FD227259578B700E84EDB /* TouchbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarController.swift; sourceTree = "<group>"; };
+		63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
+		63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarDataSource.swift; sourceTree = "<group>"; };
+		63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidebarDataSource+DeviceNotifications.swift"; sourceTree = "<group>"; };
+		638ACB85259562C4008790CE /* SearchPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPopupController.swift; sourceTree = "<group>"; };
+		638ACB89259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchPopupController+AutoCompleteTableViewDelegate.swift"; sourceTree = "<group>"; };
+		638ACB8C25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchPopupController+MKLocalSearchCompleterDelegate.swift"; sourceTree = "<group>"; };
 		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
 		638B9096254B3C6600A520E0 /* ConnectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
 		638B9097254B3C6600A520E0 /* DeviceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceError.swift; sourceTree = "<group>"; };
@@ -160,6 +183,14 @@
 		638B90A2254B5A1800A520E0 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		638B90A6254B5A4400A520E0 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceTabViewController.swift; sourceTree = "<group>"; };
+		6390AB3D2593CB9900B0CABA /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
+		6390AB412593D63000B0CABA /* SplitviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitviewController.swift; sourceTree = "<group>"; };
+		6390AB442593E23700B0CABA /* NoDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceViewController.swift; sourceTree = "<group>"; };
+		63C799EE25961C260099B794 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Extension.swift"; path = "../../../../LocationSimulator2/LocationSimulator2/Extensions/Foundation/Array+Extension.swift"; sourceTree = "<group>"; };
+		63C799F12596291F0099B794 /* ViewMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenubarItem.swift; sourceTree = "<group>"; };
+		63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTouchbarItem+Extension.swift"; sourceTree = "<group>"; };
+		63C799FC259659740099B794 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		63DBFFE125961563005EAB02 /* NSResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSResponder+Extension.swift"; sourceTree = "<group>"; };
 		63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusbmuxd-2.0.6.dylib"; path = "../../../../usr/local/Cellar/libusbmuxd/2.0.2/lib/libusbmuxd-2.0.6.dylib"; sourceTree = "<group>"; };
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
@@ -167,7 +198,6 @@
 		63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchField.swift; sourceTree = "<group>"; };
 		63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+LocationSpooferDelegate.swift"; sourceTree = "<group>"; };
 		63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MapViewDelegate.swift"; sourceTree = "<group>"; };
-		63FC47A32306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+AutoCompleteTableViewDelegate.swift"; sourceTree = "<group>"; };
 		63FDE223258F9E3300917412 /* GPXSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionView.swift; sourceTree = "<group>"; };
 		63FDE229258F9F6800917412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GPXSelectionView.xib; sourceTree = "<group>"; };
 		63FDE22C258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXSelectionView+NSBrowserDelegate.swift"; sourceTree = "<group>"; };
@@ -222,7 +252,8 @@
 		13BA351820A433EE00A0431C /* LocationSimulator */ = {
 			isa = PBXGroup;
 			children = (
-				6352592E258B793F0031F289 /* AppDelegate */,
+				631EBFE8259415250066D5BB /* DeviceStatus.swift */,
+				13BA351920A433EE00A0431C /* AppDelegate.swift */,
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				13BA351F20A433EF00A0431C /* Main.storyboard */,
 				632C465723F4B5F5004E5092 /* Menubar */,
@@ -238,6 +269,23 @@
 				1344BEBD20D10AFD00355F49 /* Supporting Files */,
 			);
 			path = LocationSimulator;
+			sourceTree = "<group>";
+		};
+		630C4A192593ECE000442713 /* NoDeviceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				630C4A142593ECD100442713 /* NoDeviceView.swift */,
+				6390AB442593E23700B0CABA /* NoDeviceViewController.swift */,
+			);
+			path = NoDeviceViewController;
+			sourceTree = "<group>";
+		};
+		630C4A272593F7F100442713 /* SplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6390AB412593D63000B0CABA /* SplitviewController.swift */,
+			);
+			path = SplitViewController;
 			sourceTree = "<group>";
 		};
 		6311B793230C13AF00AABF3E /* LocationSpoofer */ = {
@@ -298,13 +346,22 @@
 			path = deviceinfo;
 			sourceTree = "<group>";
 		};
+		631EBFF225941C540066D5BB /* ToolbarController */ = {
+			isa = PBXGroup;
+			children = (
+				631EBFF325941C880066D5BB /* ToolbarController.swift */,
+			);
+			path = ToolbarController;
+			sourceTree = "<group>";
+		};
 		632B4037258FFE5100202647 /* MenubarItem */ = {
 			isa = PBXGroup;
 			children = (
 				632C466423F7638A004E5092 /* MenubarItem.swift */,
-				63525921258B74290031F289 /* NavigationMenuBarItem.swift */,
-				63525926258B74750031F289 /* RecentLocationMenuBarItem.swift */,
-				6352592A258B75190031F289 /* FileMenuBarItem.swift */,
+				63525921258B74290031F289 /* NavigationMenuabrItem.swift */,
+				63525926258B74750031F289 /* RecentLocationMenubarItem.swift */,
+				6352592A258B75190031F289 /* FileMenubarItem.swift */,
+				63C799F12596291F0099B794 /* ViewMenubarItem.swift */,
 			);
 			path = MenubarItem;
 			sourceTree = "<group>";
@@ -352,20 +409,11 @@
 			path = Autocomplete;
 			sourceTree = "<group>";
 		};
-		6352592E258B793F0031F289 /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				13BA351920A433EE00A0431C /* AppDelegate.swift */,
-				6352592F258B79550031F289 /* AppDelegate+NavigationMenu.swift */,
-				63525935258B79A70031F289 /* AppDelegate+FileMenu.swift */,
-				63525932258B79900031F289 /* AppDelegate+HelpMenu.swift */,
-			);
-			path = AppDelegate;
-			sourceTree = "<group>";
-		};
 		63525951258E8EC50031F289 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
+				63DBFFE125961563005EAB02 /* NSResponder+Extension.swift */,
+				63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */,
 				63767562258EA684000DCEF3 /* NSColor+Extension.swift */,
 				130F510B20AED69B002A61F1 /* NSView+Extension.swift */,
 				6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */,
@@ -373,6 +421,7 @@
 				631F9D23230A063200A7A8CF /* NSImage+Extension.swift */,
 				63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */,
 				63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */,
+				631EC00A2594C1D60066D5BB /* NSViewController+Extension.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -380,6 +429,8 @@
 		63525952258E8EDC0031F289 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				63C799EE25961C260099B794 /* Array+Extension.swift */,
+				631EBFE2259409190066D5BB /* Notification+Extension.swift */,
 				6311B798230C150D00AABF3E /* Filemanager+Extension.swift */,
 			);
 			path = Foundation;
@@ -454,12 +505,61 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
-		638ADBE2230203B20061612D /* ViewController */ = {
+		637FD2262595789C00E84EDB /* TouchbarController */ = {
+			isa = PBXGroup;
+			children = (
+				637FD227259578B700E84EDB /* TouchbarController.swift */,
+			);
+			path = TouchbarController;
+			sourceTree = "<group>";
+		};
+		63888DCC2592AEB000B1DFC9 /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
 				632A962B254811AC0078B8DD /* ContentView.swift */,
 				13BA351B20A433EE00A0431C /* MapViewController.swift */,
 				63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		63888DD22592B22600B1DFC9 /* SidebarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63888DD82592B8ED00B1DFC9 /* SidebarDataSource */,
+				63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */,
+			);
+			path = SidebarViewController;
+			sourceTree = "<group>";
+		};
+		63888DD82592B8ED00B1DFC9 /* SidebarDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				6390AB3D2593CB9900B0CABA /* SidebarItem.swift */,
+				63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */,
+				63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */,
+			);
+			path = SidebarDataSource;
+			sourceTree = "<group>";
+		};
+		638ACB842595628D008790CE /* SearchPopupController */ = {
+			isa = PBXGroup;
+			children = (
+				63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */,
+				638ACB85259562C4008790CE /* SearchPopupController.swift */,
+				638ACB89259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift */,
+				638ACB8C25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift */,
+			);
+			path = SearchPopupController;
+			sourceTree = "<group>";
+		};
+		638ADBE2230203B20061612D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				63888DCC2592AEB000B1DFC9 /* MapViewController */,
+				63888DD22592B22600B1DFC9 /* SidebarViewController */,
+				630C4A192593ECE000442713 /* NoDeviceViewController */,
+				630C4A272593F7F100442713 /* SplitViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -480,6 +580,7 @@
 				638B909E254B514C00A520E0 /* PreferenceWindowController.swift */,
 				638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */,
 				638B90A2254B5A1800A520E0 /* GeneralViewController.swift */,
+				63C799FC259659740099B794 /* InfoViewController.swift */,
 				638B90A6254B5A4400A520E0 /* NetworkViewController.swift */,
 				6352590F258AC0950031F289 /* LicenseViewController.swift */,
 			);
@@ -500,10 +601,10 @@
 		63FC47A22306243300BBB2E8 /* WindowController */ = {
 			isa = PBXGroup;
 			children = (
-				63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */,
+				638ACB842595628D008790CE /* SearchPopupController */,
+				631EBFF225941C540066D5BB /* ToolbarController */,
+				637FD2262595789C00E84EDB /* TouchbarController */,
 				130F510920AE9634002A61F1 /* WindowController.swift */,
-				63712F07230750B500506BE2 /* WindowController+DeviceNotification.swift */,
-				63FC47A32306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift */,
 			);
 			path = WindowController;
 			sourceTree = "<group>";
@@ -655,6 +756,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63888DDA2592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift in Sources */,
+				6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */,
 				63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */,
 				63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */,
 				6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */,
@@ -669,52 +772,65 @@
 				633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */,
 				63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */,
 				63156C0422FB67610086D5F6 /* devicepair.c in Sources */,
+				637FD228259578B700E84EDB /* TouchbarController.swift in Sources */,
+				63DBFFE225961563005EAB02 /* NSResponder+Extension.swift in Sources */,
 				638B909B254B3C6600A520E0 /* Device.swift in Sources */,
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
 				632A962C254811AC0078B8DD /* ContentView.swift in Sources */,
+				6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */,
 				6311B799230C150D00AABF3E /* Filemanager+Extension.swift in Sources */,
+				63C799FD259659740099B794 /* InfoViewController.swift in Sources */,
 				633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */,
-				63525922258B74290031F289 /* NavigationMenuBarItem.swift in Sources */,
+				63525922258B74290031F289 /* NavigationMenuabrItem.swift in Sources */,
 				632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */,
-				6352592B258B75190031F289 /* FileMenuBarItem.swift in Sources */,
+				6352592B258B75190031F289 /* FileMenubarItem.swift in Sources */,
+				63C799EF25961C260099B794 /* Array+Extension.swift in Sources */,
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
 				63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */,
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
+				63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */,
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
 				633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */,
-				63FC47A42306247E00BBB2E8 /* WindowController+AutoCompleteTableViewDelegate.swift in Sources */,
+				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
+				638ACB8D25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
 				6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */,
+				630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */,
+				638ACB86259562C4008790CE /* SearchPopupController.swift in Sources */,
 				633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */,
 				632C466523F7638A004E5092 /* MenubarItem.swift in Sources */,
+				6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */,
 				632B4039258FFE6600202647 /* MenubarController.swift in Sources */,
 				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
-				63525933258B79900031F289 /* AppDelegate+HelpMenu.swift in Sources */,
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
 				63720628259141EF00293EA8 /* ProgressView.swift in Sources */,
+				63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */,
+				638ACB8A259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift in Sources */,
 				63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */,
-				63525936258B79A70031F289 /* AppDelegate+FileMenu.swift in Sources */,
 				6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */,
+				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
+				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
 				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
-				63525927258B74750031F289 /* RecentLocationMenuBarItem.swift in Sources */,
+				63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
 				638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */,
 				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				63525959258E8FC80031F289 /* HUDView.swift in Sources */,
-				63712F08230750B500506BE2 /* WindowController+DeviceNotification.swift in Sources */,
 				638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */,
 				633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */,
 				63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */,
+				63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */,
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
 				633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */,
 				63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */,
+				631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */,
 				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,
-				63525930258B79550031F289 /* AppDelegate+NavigationMenu.swift in Sources */,
+				631EC00B2594C1D60066D5BB /* NSViewController+Extension.swift in Sources */,
 				638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -54,10 +54,10 @@ extension MapViewController: LocationSpooferDelegate {
 
         // Hide the progress spinner after the location was changed.
         self.contentView?.stopSpinner()
+        // The new application status.
+        var status: DeviceStatus = .connected
 
         if isReset {
-            // Disable all `move` menubar items when the location is reset.
-            MenubarController.state = .connected
             //  Remove the current location marker
             self.mapView.removeCurrentLocationMarker()
             // Disable autofocus
@@ -65,10 +65,10 @@ extension MapViewController: LocationSpooferDelegate {
             // Hide the movement controls
             self.contentView?.controlsHidden = true
         } else {
-            // We either have teleported or navigated. In each case update the menubar.
+            // We either have teleported or navigated. In each case update the status.
             switch spoofer.moveState {
-            case .manual: MenubarController.state = .manual
-            case .auto:   MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
+            case .manual: status = .manual
+            case .auto:   status = spoofer.route.isEmpty ? .auto : .navigation
             }
             // Place the current location marker
             let markerCreated = self.mapView.placeCurrentLocationMarker(atLocation: toCoordinate!)
@@ -76,7 +76,7 @@ extension MapViewController: LocationSpooferDelegate {
             // If the marker was moved (automove / navigate) we do not want to add
             // the location to the recent location list
             if markerCreated {
-                RecentLocationMenubarItem.addLocation(toCoordinate!)
+                self.menubarController?.addLocation(toCoordinate!)
             }
             // If autofocus is enabled and the user is not interacting with the map.
             if  self.autoFocusCurrentLocation && !self.mapView.isUserInteracting {
@@ -87,25 +87,40 @@ extension MapViewController: LocationSpooferDelegate {
             // Show the movement controls
             self.contentView?.controlsHidden = false
         }
+
+        // Post the update for the current app status.
+        NotificationCenter.default.post(name: .StatusChanged, object: self, userInfo: [
+            "device": spoofer.device,
+            "status": status
+        ])
     }
 
     // MARK: - Move state
 
     func didChangeMoveState(spoofer: LocationSpoofer, moveState: MoveState) {
+        // The new application status.
+        var status: DeviceStatus = .connected
+
         switch moveState {
         case .manual:
             // Remove the movebutton highlight
             self.contentView?.movementButtonHUD.highlight = false
             // allow all movement to navigate manual
-            MenubarController.state = .manual
+            status = .manual
         case .auto:
             // Highlight the move button
             self.contentView?.movementButtonHUD.highlight = true
             // we are moving automatically or navigating
-            MenubarController.state = spoofer.route.isEmpty ? .auto : .navigation
+            status = spoofer.route.isEmpty ? .auto : .navigation
         }
 
         // Remove the animatoon overlay if a navigation was canceled.
         self.mapView.removeNavigationOverlay()
+
+        // Update the current application status.
+        NotificationCenter.default.post(name: .StatusChanged, object: self, userInfo: [
+            "device": spoofer.device,
+            "status": status
+        ])
     }
 }

@@ -8,66 +8,194 @@
 
 import AppKit
 
-enum MenubarState {
-    // MARK: Device disconnected status
+let kProjectWebsite = "https://github.com/Schlaubischlump/LocationSimulator"
 
-    /// No device currently active / ready to use. This can happen for the following reasons:
-    /// - No device connected
-    /// - DevDiskImage upload failed for selected device
-    case disconnected
+class MenubarController: NSResponder {
+    /// The notification observer for status changes.
+    private var statusObserver: NSObjectProtocol?
 
-    // MARK: Device connected status
+    /// The main menu should always represent the status of the key window.
+    private var windowController: WindowController? {
+        return NSApp.keyWindow?.windowController as? WindowController
+    }
 
-    /// Device is connected but there is no spoofed current location
-    case connected
-    /// Location is currently spoofed, with manual move
-    case manual
-    /// Location is currently spoofed, with auto move
-    case auto
-    /// Location is currently spoofed, with an active navigation
-    case navigation
+    // MARK: - Constructor
 
-    // MARK: Items
+    override init() {
+        super.init()
+        self.registerNotifications()
+    }
 
-    /// List with all MenubarItems to enable for this state.
-    fileprivate var enabledItems: [MenubarItem] {
-        var navigationItems: [NavigationMenubarItem] = [.walk, .cycle, .drive]
-        let fileMenuItems: [FileMenubarItem] = [.openGPXFile]
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.registerNotifications()
+    }
 
-        switch self {
-        case .disconnected:
-            return navigationItems
-        case .connected:
-            navigationItems += [.setLocation, .recentLocation, .useMacLocation]
-            return navigationItems + fileMenuItems
-        case .manual:
-            navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
-                                .moveClockwise, .moveCounterclockwise, .moveUp, .moveDown]
-            return navigationItems + fileMenuItems
-        case .auto:
-            navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
-                                .moveClockwise, .moveCounterclockwise]
-            return navigationItems + fileMenuItems
-        case .navigation:
-            navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
-                                .stopNavigation]
-            return navigationItems + fileMenuItems
+    // MARK: - Destructor
+
+    deinit {
+        // Remove the observer
+        if let observer = self.statusObserver {
+            NotificationCenter.default.removeObserver(observer)
+            self.statusObserver = nil
         }
     }
 
-    /// All available MenubarItems items.
-    fileprivate var allItems: [MenubarItem] {
-        return NavigationMenubarItem.allCases + FileMenubarItem.allCases
-    }
-}
+    // MARK: - Notification
 
-class MenubarController {
-    public static var state: MenubarState = .disconnected {
-        didSet {
-            // Disable all items.
-            self.state.allItems.forEach { $0.disable() }
+    /// Listen for state changes
+    public func registerNotifications() {
+        self.statusObserver = NotificationCenter.default.addObserver(forName: .StatusChanged, object: nil,
+                                                                     queue: .main) { notification in
+            // Make sure the request is send from the key window subview.
+            guard let viewController = notification.object as? NSViewController,
+                  let windowController = viewController.view.window?.windowController,
+                  windowController == self.windowController,
+                  let newState = notification.userInfo?["status"] as? DeviceStatus else { return }
             // Enable the items relevant for this state.
-            self.state.enabledItems.forEach { $0.enable() }
+            newState.allMenubarItems.forEach { $0.disable() }
+            newState.enabledMenubarItems.forEach { $0.enable() }
         }
+    }
+
+    // MARK: - Navigation Menu
+
+    @IBAction func setMoveType(_ sender: NSMenuItem) {
+        var moveType: MoveType
+        switch NavigationMenubarItem(rawValue: sender.tag) {
+        case .walk:  moveType = .walk
+        case .cycle: moveType = .cycle
+        case .drive: moveType = .car
+        default: return
+        }
+        self.windowController?.setMoveType(moveType)
+    }
+
+    /// Show the `Go to Location` view.
+    @IBAction func requestLocationChange(_ sender: NSMenuItem) {
+        self.windowController?.requestLocationChange()
+    }
+
+    /// Reset the currently spoofed location to the original device location.
+    @IBAction func resetLocation(_ sender: NSMenuItem) {
+        self.windowController?.resetLocation()
+    }
+
+    /// Set the spoofed location to the current location of this mac.
+    @IBAction func setLocationToCurrentLocation(_ sender: NSMenuItem) {
+        self.windowController?.setLocationToCurrentLocation()
+    }
+
+    /// Toggle between automove and manual move. If a navigation is running, the navigation will be paused.
+    /// Call this function again to resume the navigation.
+    @IBAction func toggleAutomoveState(_ sender: NSMenuItem) {
+        self.windowController?.toggleAutomoveState()
+    }
+
+    @IBAction func stopNavigation(_ sender: Any) {
+        self.windowController?.stopNavigation()
+    }
+
+    @IBAction func move(_ sender: NSMenuItem) {
+        switch NavigationMenubarItem(rawValue: sender.tag) {
+        case .moveCounterclockwise: self.windowController?.rotate(.counterclockwise)
+        case .moveClockwise:        self.windowController?.rotate(.clockwise)
+        case .moveDown:             self.windowController?.move(.down)
+        case .moveUp:               self.windowController?.move(.up)
+        default: break
+        }
+    }
+
+    // MARK: - Recent Location Submenu
+
+    /// Change the current location to the coordinates defined by a recently visited location.
+    /// - Parameter sender: the selected menu item that triggered this function
+    @objc func selectRecentLocation(_ sender: NSMenuItem) {
+        guard let idx: Int = RecentLocationMenubarItem.menu?.items.firstIndex(of: sender) else { return }
+        let loc: Location = UserDefaults.standard.recentLocations[idx]
+        let coord = CLLocationCoordinate2D(latitude: loc.lat, longitude: loc.long)
+        self.windowController?.requestLocationChange(coord: coord)
+    }
+
+    /// Clear the `Recent locations` menu by removing all its stored entries.
+    /// - Parameter sender: the selected menu item that triggered this function
+    @IBAction func clearRecentLocations(_ sender: NSMenuItem? = nil) {
+        // Remove all entries from the user defaults.
+        UserDefaults.standard.recentLocations = []
+        // Clear the menu item.
+        RecentLocationMenubarItem.clearLocationMenuItems()
+    }
+
+    /// Load the recent locations from the user defaults and add them to the menu.
+    public func loadRecentLocations() {
+        // Remove all recent locations menu items.
+        RecentLocationMenubarItem.clearLocationMenuItems()
+        // Add all recent locations from the user defaults.
+        UserDefaults.standard.recentLocations.reversed().forEach { item in
+            RecentLocationMenubarItem.addLocationMenuItem(item)
+        }
+    }
+
+    /// Add a new location to the UserDefaults and add a corresponding menubar entry.
+    /// - Parameter coords: coordinates of the location to add
+    public func addLocation(_ coords: CLLocationCoordinate2D) {
+        // load all entries and delete the last one if we have to many
+        var recentLocations = UserDefaults.standard.recentLocations
+        // Make sure that we did not already store this location in the recent entries and if we do, then remove the
+        // entry and call the remaining function to insert the item at the beginning. If the name of the location
+        // has changed since the last teleportation this will guarantee that the information is updated.
+        var index = 0
+        while index < recentLocations.count {
+            let loc = recentLocations[index]
+            let locCoords = CLLocationCoordinate2D(latitude: loc.lat, longitude: loc.long)
+            if locCoords.distanceTo(coordinate: coords) < 0.005 {
+                recentLocations.remove(at: index)
+                RecentLocationMenubarItem.removeLocationMenuItem(at: index)
+            }
+            index += 1
+        }
+        // Add the new location to the UserDefaults and the menu
+        coords.getLocationName { loc, name in
+            // Remove the last item if we exceed the maximum number
+            if recentLocations.count >= kMaxRecentItems {
+                _ = recentLocations.popLast()
+                RecentLocationMenubarItem.removeLocationMenuItem(at: kMaxRecentItems-1)
+            }
+            // Add a new user defaults entry
+            let loc = Location(name: name, lat: loc.coordinate.latitude, long: loc.coordinate.longitude)
+            recentLocations.insert(loc, at: 0)
+            // Save the changes
+            UserDefaults.standard.recentLocations = recentLocations
+            // Add the menubaritem
+            RecentLocationMenubarItem.addLocationMenuItem(loc)
+        }
+    }
+
+    // MARK: - File Menu
+
+    @IBAction func openGPXFile(_ sender: NSMenuItem) {
+        self.windowController?.requestGPXOpenDialog()
+    }
+
+    // MARK: - Help Menu
+
+    /// Open the main project website in a browser.
+    @IBAction func openProjectPage(_ sender: Any) {
+        if let url = URL(string: kProjectWebsite) {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    /// Open the report an issue website in a browser.
+    @IBAction func reportBugPage(_ sender: Any) {
+        if let url = URL(string: kProjectWebsite + "/issues") {
+            NSWorkspace.shared.open(url)
+        }
+    }
+
+    // MARK: - View Menu
+
+    @IBAction func toggleSidebar(_ sender: NSMenuItem) {
+        self.windowController?.toggleSidebar()
     }
 }

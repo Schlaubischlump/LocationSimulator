@@ -6,13 +6,12 @@
 //  Copyright © 2019 David Klopp. All rights reserved.
 //
 
+// TODO: Fix location spoofing is working although the dev disk image is not marked as uploaded
+// TODO: Fix UI blocks when the developer disk image is uploaded.
+
 import Cocoa
 import MapKit
 import CoreLocation
-
-public extension NSNotification.Name {
-    static let AutoFoucusCurrentLocationChanged = Notification.Name("AutoFoucusCurrentLocationChanged")
-}
 
 class MapViewController: NSViewController {
     // MARK: - UI
@@ -21,42 +20,78 @@ class MapViewController: NSViewController {
     @IBOutlet weak var mapView: MapView!
 
     /// The main contentView which hosts all other views, including the mapView.
-    public var contentView: ContentView? {
+    var contentView: ContentView? {
         return self.view as? ContentView
     }
 
     // MARK: - Properties
 
     /// Current instance to spoof the iOS device location.
-    public var spoofer: LocationSpoofer?
+    var spoofer: LocationSpoofer?
 
-    /// True to autofocus current location when the location changes, False otherwise.
+    /// The current device managed by this viewController. Assigning this property will NOT automatically try to connect
+    /// the device. You still need to call `connectDevice`. That beeing said, changing a device assigned to this
+    /// viewController is not officially supported.
+    public var device: Device? {
+        get { return self.spoofer?.device }
+        set {
+            // Either we removed the device or the new device is not connected yet.
+            self.deviceIsConnectd = false
+            // Check that the device exists.
+            guard let device = newValue else { return }
+            // Create a spoofer instance for this device.
+            self.spoofer = LocationSpoofer(device)
+            self.spoofer?.delegate = self
+        }
+    }
+
+    /// A reference to the current move type.
+    var moveType: MoveType? {
+        get { return self.spoofer?.moveType }
+        set {
+            guard let moveType = newValue else { return }
+            self.spoofer?.moveType = moveType
+        }
+    }
+
+    /// True to autofocus current location when the location changes, false otherwise.
     var autoFocusCurrentLocation = false {
         didSet {
             // Zoom to the current Location
             if self.autoFocusCurrentLocation == true, let currentLocation = self.spoofer?.currentLocation {
                 self.mapView.zoomToLocation(currentLocation, animated: true)
             }
-
             // Send a notification
-            NotificationCenter.default.post(name: .AutoFoucusCurrentLocationChanged, object: autoFocusCurrentLocation)
+            NotificationCenter.default.post(name: .AutoFocusChanged, object: self, userInfo: [
+                "autofocus": self.autoFocusCurrentLocation
+            ])
         }
     }
 
     /// True if a alert is visible, false otherwise.
     var isShowingAlert: Bool = false
 
-    /// True if currently a device is connected.
-    var deviceIsConnectd: Bool {
-        return self.spoofer?.device != nil
+    /// True if the current device is connected, false otherwise.
+    public private(set) var deviceIsConnectd: Bool = false {
+        didSet {
+            var userInfo: [String: Any] = [
+                "status": self.deviceIsConnectd ? DeviceStatus.connected : DeviceStatus.disconnected
+            ]
+            // Add the device to the info if available.
+            if let device = self.device {
+                userInfo["device"] = device
+            }
+            // Post a notifcation about the new device status.
+            NotificationCenter.default.post(name: .StatusChanged, object: self, userInfo: userInfo)
+        }
     }
 
-    // MARK: - Actions
+    // MARK: - Register Callbacks
 
     /// Register all actions for the controls in the lower left corner.
     private func registerControlsHUDActions() {
         // Add the movement button click action to move.
-        self.contentView?.movementButtonHUD.clickAction = {
+        self.contentView?.movementButtonHUD.clickAction = { [unowned self] in
             self.view.window?.makeFirstResponder(self.mapView)
 
             switch self.spoofer?.moveState {
@@ -65,9 +100,8 @@ class MapViewController: NSViewController {
             case .none: break
             }
         }
-
         // Add the movement button long press action to automove.
-        self.contentView?.movementButtonHUD.longPressAction = {
+        self.contentView?.movementButtonHUD.longPressAction = { [unowned self] in
             self.view.window?.makeFirstResponder(self.mapView)
 
             switch self.spoofer?.moveState {
@@ -80,17 +114,20 @@ class MapViewController: NSViewController {
             case .none: break
             }
         }
-
         // Add the callback when the heading changes
-        self.contentView?.movementDirectionHUD.headingChangedAction = {
+        self.contentView?.movementDirectionHUD.headingChangedAction = { [unowned self] in
             // Update the location spoofer heading
             self.spoofer?.heading = self.mapView.camera.heading - self.getDirectionViewAngle()
+        }
+        // Add a reconnect action when clicking the error Indicator.
+        self.contentView?.errorIndicationAction = { [unowned self] in
+            self.connectDevice()
         }
     }
 
     /// Register callbacks for all mapView actions.
     private func registerMapViewActions() {
-        let mapViewAction: MapViewAction = { (src: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
+        let mapViewAction = { [unowned self] (src: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
             if src == nil {
                 // There is no current location => we can only teleport
                 self.spoofer?.setLocation(dst)
@@ -100,10 +137,8 @@ class MapViewController: NSViewController {
             }
             self.view.window?.makeFirstResponder(self.mapView)
         }
-
         // Callback when the mapView is long pressed. Navigate or teleport to the new locatiom if possible.
         self.mapView.longPressAction = mapViewAction
-
         // Current location marker was dragged. Navigate or teleport to the new location.
         self.mapView.markerDragAction = mapViewAction
     }
@@ -112,27 +147,26 @@ class MapViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // reset the total distance label
         self.contentView?.setTotalDistance(meter: 0)
-
         // hide the controls
         self.contentView?.controlsHidden = true
-
+        // show the error indicator on first view appearance.
+        self.contentView?.showErrorInidcator()
         // register all actions for the mapView
         self.registerMapViewActions()
-
         // register all actions for the controls in the lower left corner
         self.registerControlsHUDActions()
     }
 
     override func viewDidAppear() {
+        super.viewDidAppear()
+        // Show the window controller.
         self.view.window?.makeFirstResponder(self.mapView)
-
         // change the autofocus state and thereby update the toolbar button as well
         self.autoFocusCurrentLocation = true
-
-        super.viewDidAppear()
+        // Try to load the current device if it is not yet connected.
+        self.connectDevice()
     }
 
     override func mouseDown(with event: NSEvent) {
@@ -140,80 +174,44 @@ class MapViewController: NSViewController {
         super.mouseDown(with: event)
     }
 
-    // MARK: - Load device
+    // MARK: - Helper
 
-    /// Download the developer disk image and corresponding signature file for the specified version of the os.
-    /// - Parameter os: the os type to download the image for
-    /// - Parameter iOSVersion: the version number to download the image for
-    /// - Return: true on success, false otherwise
-    func downloadDeveloperDiskImage(os: String, iOSVersion: String) -> Bool {
-        guard let window = self.view.window else { return false }
-
-        // Show the alert and thereby start the download progress.
-        let alert = ProgressAlert(os: os, version: iOSVersion)
-        let response = alert.runSheetModal(forWindow: window)
-        switch response {
-        // Download was successfull
-        case .OK : return true
-        // No download link available.
-        // show the error to the user
-        case .failed: window.showError(NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR", comment: ""),
-                                       message: NSLocalizedString("DEVDISK_DOWNLOAD_FAILED_ERROR_MSG", comment: ""))
-        default: break
-        }
-        return false
+    /// Zoom into a given region.
+    /// - Parameter region: The region to zoom into.
+    public func zoomTo(region: MKCoordinateRegion) {
+        self.mapView.setRegion(region, animated: true)
+        // Make the mapview the first responder.
+        self.view.window?.makeFirstResponder(self.mapView)
     }
 
-    /// Load a new device given by its udid. A new spoofer instance is created based on the device. All location change
-    /// or reset actions are directed to this spoofer instance. If you change the device you have to call this method to
-    /// change the current spoofer instance to interact with it. You can not interact with more than one device at a
-    ///  time.
-    /// - Parameter udid: device unique identifier
-    /// - Return: true on success, false otherwise
-    /// - Throws:
-    ///    * `DeviceError.devDiskImageNotFound`: No DeveloperDiskImage.dmg or Signature file found in App Support folder
-    ///    * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage.dmg file
-    ///    * `DeviceError.permisson`: Permission error while accessing the App Support folder
-    ///    * `DeviceError.productInfo`: Could not read the devices product version string
-    func load(device: Device) throws {
-        guard let window = self.view.window else { return }
-
-        do {
-            try device.pair()
-            // If the pairing and uploading of the developer disk image is successfull create a spoofer instance.
-            self.spoofer = LocationSpoofer(device)
-            self.spoofer?.delegate = self
-        } catch let error {
-            // device connection failed => no device is currently connected
-            // If you remove this line the following bug will occure:
-            // 1. sucessfully connect a device (=> spoofer instance is set)
-            // 2. change to a new device where the connection fails (=> spoofer instance is still set)
-            // 3. select the original device (=> spoofer.devive is still the same as the selected device)
-            // => Nothing happend and you can not use the selected device
-            self.spoofer = nil
-
-            switch error {
-            case DeviceError.pair(let errorMsg):
-                window.showError(errorMsg, message: NSLocalizedString("PAIR_ERROR_MSG", comment: ""))
-            case DeviceError.devDiskImageNotFound(_, _, _):
-                break
-            case DeviceError.permisson(let errorMsg):
-                window.showError(errorMsg, message: NSLocalizedString("PERMISSION_ERROR_MSG", comment: ""))
-            case DeviceError.devDiskImageMount(let errorMsg, _, _):
-                window.showError(errorMsg, message: NSLocalizedString("MOUNT_ERROR_MSG", comment: ""))
-            default:
-                window.showError(NSLocalizedString("UNKNOWN_ERROR", comment: ""),
-                                 message: NSLocalizedString("UNKNOWN_ERROR_MSG", comment: ""))
-            }
-            throw error
-        }
+    /// Reset the current location.
+    public func resetLocation() {
+        self.spoofer?.resetLocation()
     }
 
-    // MARK: - Direction HUD
+    /// Stop the current navigation.
+    public func stopNavigation() {
+        self.spoofer?.moveState = .manual
+    }
+
+    /// Move up or down.
+    /// - Parameter flip: true to flip the diretion overlay by 180 degrees.
+    public func move(flip: Bool) {
+        guard self.spoofer?.moveState == .manual else { return }
+        if flip {
+            self.rotateDirectionViewBy(180)
+        }
+        self.spoofer?.move(appendToPendingTasks: false)
+    }
+
+    /// Toggle between the automove and the manual move state. If a navigation is running, it will be paused / resumed.
+    public func toggleAutomoveState() {
+        self.spoofer?.toggleAutomoveState()
+    }
 
     /// The current angle of the movementDirectionHUD used to change the heading.
     /// - Return: the angle in degree
-    func getDirectionViewAngle() -> Double {
+    public func getDirectionViewAngle() -> Double {
         return self.contentView?.movementDirectionHUD.currentHeadingInDegrees ?? 0.0
     }
 
@@ -230,6 +228,68 @@ class MapViewController: NSViewController {
         self.contentView?.rotateDirectionHUD(toAngleInDegrees: angle)
     }
 
+    // MARK: - Load device
+
+    /// Download the developer disk image and corresponding signature file for the specified version of the os.
+    /// - Parameter os: the os type to download the image for
+    /// - Parameter iOSVersion: the version number to download the image for
+    /// - Return: true on success, false otherwise
+    func downloadDeveloperDiskImage(os: String, iOSVersion: String) -> Bool {
+        guard let window = self.view.window else { return false }
+        // Show the alert and thereby start the download progress.
+        let alert = ProgressAlert(os: os, version: iOSVersion)
+        let response = alert.runSheetModal(forWindow: window)
+        switch response {
+        // Download was successfull
+        case .OK : return true
+        // No download link available.
+        // show the error to the user
+        case .failed: window.showError("DEVDISK_DOWNLOAD_FAILED_ERROR", message: "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG")
+        default: break
+        }
+        return false
+    }
+
+    /// Connect the current device. If no developer disk image is found, we try to download a matching one and reconnect
+    /// the device.
+    /// - Returns: true on success, false otherwise.
+    @discardableResult
+    func connectDevice() -> Bool {
+        // Make sure we have a device to connect, which is not already connected. We need a window to show errors.
+        guard !self.deviceIsConnectd, let device = self.device, let window = self.view.window else { return false }
+        do {
+            // Show the error indicator and a progress spinner.
+            self.contentView?.showErrorInidcator()
+            // If the pairing and uploading of the developer disk image is successfull create a spoofer instance.
+            try device.pair()
+            // Hide the error indicator if the device was connected sucessfully.
+            self.contentView?.hideErrorInidcator()
+            // We successfully connected the device.
+            self.deviceIsConnectd = true
+        } catch let error {
+            // Stop the spinner even if an error occured.
+            self.contentView?.stopSpinner()
+            self.deviceIsConnectd = false
+            // Handle the error message
+            switch error {
+            case DeviceError.pair:
+                window.showError("PAIR_ERROR_MSG", message: "PAIR_ERROR_MSG")
+            case DeviceError.devDiskImageNotFound(_, let os, let iOSVersion):
+                // Try to download the developer disk image. Note this call is blocking.
+                return self.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) ? self.connectDevice() : false
+            case DeviceError.permisson:
+                window.showError("PERMISSION_ERROR", message: "PERMISSION_ERROR_MSG")
+            case DeviceError.devDiskImageMount:
+                window.showError("MOUNT_ERROR", message: "MOUNT_ERROR_MSG")
+            default:
+                window.showError("UNKNOWN_ERROR", message: "UNKNOWN_ERROR_MSG")
+            }
+            return false
+        }
+        // Everything is working.
+        return true
+    }
+
     // MARK: - Teleport or Navigate
 
     /// Calculate the route from the current location to the specified coordinates and start the navigation.
@@ -240,22 +300,17 @@ class MapViewController: NSViewController {
     private func navigate(toCoordinate coord: CLLocationCoordinate2D, additionalRoute: [CLLocationCoordinate2D] = []) {
         // calculate the route, display it and start moving
         guard let spoofer = self.spoofer, let currentLoc = self.spoofer?.currentLocation else { return }
-
         // the route is calculated differently based on the transport type
         let transportType: MKDirectionsTransportType = (spoofer.moveType == .car) ? .automobile : .walking
-
         // stop automoving before we calculate the route
         spoofer.moveState = .manual
-
         // indicate work while we calculate the route
         self.contentView?.startSpinner()
-
         // calulate the route to the destination
-        currentLoc.calculateRouteTo(coord, transportType: transportType) { route in
+        currentLoc.calculateRouteTo(coord, transportType: transportType) { [unowned self] route in
             // set the current route to follow
             spoofer.route = route + additionalRoute
             self.contentView?.stopSpinner()
-
             // start automoving
             spoofer.moveState = .auto
             spoofer.move()
@@ -268,31 +323,27 @@ class MapViewController: NSViewController {
     func requestTeleportOrNavigation(toCoordinate coord: CLLocationCoordinate2D? = nil) {
         // make sure we can spoof a location and no dialog is currently showing
         guard !self.isShowingAlert, let window = self.view.window else { return }
-
         // Limit the amount of alerts of this kind to one.
         self.isShowingAlert = true
-
         // If a coordinate is provided to this function the user can not input one.
         // E.g. he did use use the recent location menu or dropped the current location to a new one.
         let showUserInput = (coord == nil)
         let showNavigation = self.spoofer?.currentLocation != nil
-
+        // Ask the user what to do.
         let alert = CoordinateSelectionAlert(showNavigationButton: showNavigation, showUserInput: showUserInput)
-        alert.beginSheetModal(for: window) { response, userCoord in
+        alert.beginSheetModal(for: window) { [unowned self] response, userCoord in
             self.isShowingAlert = false
-
             // Make sure the spoofer still exists and no unexpected error occured.
             guard let spoofer = self.spoofer, let dstCoord = userCoord ?? coord else { return }
-
             switch response {
             // Cancel => set the location to the current one, in case the marker was dragged
-            case .cancel: self.didChangeLocation(spoofer: spoofer, toCoordinate: spoofer.currentLocation)
+            case .cancel:   self.didChangeLocation(spoofer: spoofer, toCoordinate: spoofer.currentLocation)
             // Navigate to the target coordinates
             case .navigate: self.navigate(toCoordinate: dstCoord)
             // Teleport to the new location and save the recent location
             case .teleport:
                 spoofer.setLocation(dstCoord)
-                RecentLocationMenubarItem.addLocation(dstCoord)
+                self.menubarController?.addLocation(dstCoord)
             default: break
             }
         }
@@ -304,43 +355,32 @@ class MapViewController: NSViewController {
     func requestGPXRouting(route: [CLLocationCoordinate2D]) {
         // make sure we can spoof a location and no dialog is currently showing
         guard !self.isShowingAlert, let window = self.view.window else { return }
-
         // We need at least one coordinate
         guard !route.isEmpty else {
-            self.view.window?.showError(NSLocalizedString("EMPTY_ROUTE", comment: ""),
-                                       message: NSLocalizedString("EMPTY_ROUTE_MSG", comment: ""))
+            self.view.window?.showError("EMPTY_ROUTE", message: "EMPTY_ROUTE_MSG")
             return
         }
-
         let showNavigation = self.spoofer?.currentLocation != nil
         let alert = CoordinateSelectionAlert(showNavigationButton: showNavigation, showUserInput: false)
-
-        alert.beginSheetModal(for: window) { response, _ in
+        alert.beginSheetModal(for: window) {[unowned self] response, _ in
             self.isShowingAlert = false
-
-            // Make sure the spoofer still exists
-            guard let spoofer = self.spoofer else { return }
-
             switch response {
-            /// Teleport to the start of the route and contiune the navigation from there on.
+            ///Teleport to the start of the route and contiune the navigation from there on.
             case .teleport:
                 guard let startCoord = route.first else { return }
-
-                RecentLocationMenubarItem.addLocation(startCoord)
-                spoofer.currentLocation = startCoord
-
+                // Update the Recent location menu.
+                self.menubarController?.addLocation(startCoord)
+                self.spoofer?.currentLocation = startCoord
                 // start navigating from the start of the route
-                spoofer.moveState = .manual
-                spoofer.route = route
-                // start automoving
-                spoofer.moveState = .auto
-                spoofer.move()
-            /// Navigate to the first coordinate and continue the navigation with the rest of the route.
+                self.spoofer?.moveState = .manual
+                self.spoofer?.route = route
+                self.spoofer?.moveState = .auto
+                self.spoofer?.move()
+            // Navigate to the first coordinate and continue the navigation with the rest of the route.
             case .navigate:
                 var route = route
                 let startCoord = route.removeFirst()
                 self.navigate(toCoordinate: startCoord, additionalRoute: route)
-
             default: break
             }
         }

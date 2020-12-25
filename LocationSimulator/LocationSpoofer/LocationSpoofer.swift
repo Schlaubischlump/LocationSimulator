@@ -121,7 +121,7 @@ class LocationSpoofer {
         self.dispatchQueue = DispatchQueue(label: "locationUpdates", qos: .userInteractive)
     }
 
-    // MARK: - Location spoofing
+    // MARK: - Location Spoofing (Public)
 
     /// Async call to change the device location. Use the delegate method to get informed when the location did change.
     /// - Parameter coordinate: new location
@@ -158,6 +158,31 @@ class LocationSpoofer {
             }
         }
     }
+
+    /// Pause a navigation if it is running. Otherwise toggle between automove and manual move.
+    public func toggleAutomoveState() {
+        switch self.moveState {
+        // switch to automove
+        case .manual:
+            self.moveState = .auto
+            self.move()
+        case .auto:
+            if self.route.isEmpty {
+                // stop automove if no navigation is active
+                self.moveState = .manual
+            } else {
+                // pause / resume the navigation
+                self.pauseResumeNavigation()
+            }
+        }
+    }
+
+    /// Public wrapper around the private move function.
+    @objc public func move(appendToPendingTasks append: Bool = true) {
+        self.move(timer: nil, appendToPendingTasks: append)
+    }
+
+    // MARK: - Location Spoofing (Private)
 
     /// Change the location on the connected iDevice to the new coordinates.
     /// - Parameter coordinate: new location
@@ -250,9 +275,8 @@ class LocationSpoofer {
         return CLLocationCoordinate2D(latitude: newLat, longitude: newLng)
     }
 
-    /// Pause or resume automoving. Calling this function is only useful if a route is set. Otherwise you could just
-    /// change the `moveType`to manual to get the same effect.
-    public func pauseResumeAutoMove() {
+    /// Pause or resume the current navigation.
+    private func pauseResumeNavigation() {
         if self.moveState == .manual || self.route.count == 0 { return }
 
         if self.autoMoveTimer != nil {
@@ -261,11 +285,6 @@ class LocationSpoofer {
         } else {
             self.move()
         }
-    }
-
-    /// Public wrapper around the private move function.
-    @objc public func move(appendToPendingTasks append: Bool = true) {
-        self.move(timer: nil, appendToPendingTasks: append)
     }
 
     /// Move `moveType.distance` meters per second `into the direction defined by `heading` or by the current route.
