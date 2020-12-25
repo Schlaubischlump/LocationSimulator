@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ProgressView" customModule="LocationSimulator" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="c22-O7-iKe" id="8Pz-ej-VZX"/>
+                <outlet property="progressBarBottom" destination="Un4-45-lFj" id="fNH-lp-Yii"/>
+                <outlet property="progressBarTop" destination="elB-Sv-d1g" id="bDc-jA-8aB"/>
+                <outlet property="statusLabelBottom" destination="i0W-DQ-wMZ" id="dFQ-Vu-OWI"/>
+                <outlet property="statusLabelTop" destination="NTU-8K-hkR" id="R6x-bv-2A5"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NTU-8K-hkR">
+                    <rect key="frame" x="-2" y="76" width="484" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Download DeveloperDiskImage.dmg" id="2V8-SR-FPV">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator wantsLayer="YES" verticalHuggingPriority="751" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="elB-Sv-d1g" userLabel="Porgressbar Top">
+                    <rect key="frame" x="0.0" y="49" width="480" height="20"/>
+                </progressIndicator>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i0W-DQ-wMZ">
+                    <rect key="frame" x="-2" y="26" width="484" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Download DeveloperDiskImage.dmg.signature" id="a8B-SX-Dan">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Un4-45-lFj" userLabel="Porgressbar Bottom">
+                    <rect key="frame" x="0.0" y="-1" width="480" height="20"/>
+                </progressIndicator>
+            </subviews>
+            <constraints>
+                <constraint firstItem="i0W-DQ-wMZ" firstAttribute="top" secondItem="elB-Sv-d1g" secondAttribute="bottom" constant="8" symbolic="YES" id="2ds-ST-eJe"/>
+                <constraint firstItem="i0W-DQ-wMZ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="8i4-Sp-eOf"/>
+                <constraint firstItem="Un4-45-lFj" firstAttribute="trailing" secondItem="i0W-DQ-wMZ" secondAttribute="trailing" id="AWu-zS-gqG"/>
+                <constraint firstItem="elB-Sv-d1g" firstAttribute="leading" secondItem="NTU-8K-hkR" secondAttribute="leading" id="HUu-SR-nqT"/>
+                <constraint firstItem="Un4-45-lFj" firstAttribute="leading" secondItem="i0W-DQ-wMZ" secondAttribute="leading" id="QLT-87-uL9"/>
+                <constraint firstAttribute="trailing" secondItem="i0W-DQ-wMZ" secondAttribute="trailing" id="R5N-3X-RgA"/>
+                <constraint firstAttribute="trailing" secondItem="NTU-8K-hkR" secondAttribute="trailing" id="SoC-cZ-XDa"/>
+                <constraint firstItem="elB-Sv-d1g" firstAttribute="trailing" secondItem="NTU-8K-hkR" secondAttribute="trailing" id="WcO-jy-G2g"/>
+                <constraint firstItem="NTU-8K-hkR" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="dWQ-eq-fe8"/>
+                <constraint firstItem="NTU-8K-hkR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="nGm-uS-pui"/>
+                <constraint firstItem="Un4-45-lFj" firstAttribute="top" secondItem="i0W-DQ-wMZ" secondAttribute="bottom" constant="8" symbolic="YES" id="ng9-h2-EZf"/>
+                <constraint firstItem="elB-Sv-d1g" firstAttribute="top" secondItem="NTU-8K-hkR" secondAttribute="bottom" constant="8" symbolic="YES" id="rl0-zd-2nb"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="18"/>
+        </customView>
+    </objects>
+</document>
