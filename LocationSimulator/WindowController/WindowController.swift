@@ -71,6 +71,10 @@ class WindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
+        // Disable the touchbar and toolbar.
+        self.toolbarController.updateForDeviceStatus(.disconnected)
+        self.touchbarController.updateForDeviceStatus(.disconnected)
+
         // Request the permission to access the mac's location.
         // Otherwise the current location button won't work.
         if #available(OSX 10.15, *) {

@@ -21,10 +21,6 @@ class TouchbarController: NSResponder {
 
     @IBOutlet weak var moveTypeSegment: NSSegmentedControl!
 
-    @IBOutlet weak var resetLocationButton: NSButton!
-
-    @IBOutlet weak var currentLocationButton: NSButton!
-
     // MARK: - TouchbarItems
 
     @IBOutlet weak var moveTypeSegmentItem: NSTouchBarItem!
@@ -45,9 +41,10 @@ class TouchbarController: NSResponder {
     /// Listen for state changes
     public func updateForDeviceStatus(_ deviceStatus: DeviceStatus) {
         let deviceDisconnected = deviceStatus == .disconnected
-        self.resetLocationButton.isEnabled = !deviceDisconnected
-        self.currentLocationButton.isEnabled = !deviceDisconnected
-        self.moveTypeSegment.isEnabled = true
+        self.currentLocationItem.isEnabled = !deviceDisconnected
+        let hasSpoofedLocation = (deviceStatus == .manual || deviceStatus == .auto || deviceStatus == .navigation)
+        self.resetLocationItem.isEnabled = hasSpoofedLocation
+        self.moveTypeSegmentItem.isEnabled = true
     }
 
     // MARK: - Touchbar Actions

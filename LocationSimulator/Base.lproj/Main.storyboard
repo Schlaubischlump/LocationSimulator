@@ -915,7 +915,6 @@
                                 <viewController key="viewController" id="kEP-d8-zG1">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eng-na-hHM">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O0j-vo-ghD">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -930,7 +929,6 @@
                                 <viewController key="viewController" id="4QK-HB-6Kz">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-yO-fGr">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSHomeTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nif-4x-Dla">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -945,7 +943,6 @@
                                 <viewController key="viewController" id="I3c-B6-Xz7">
                                     <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ztw-f5-7tr">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="1NT-QT-ght">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -987,11 +984,9 @@
                 </customObject>
                 <customObject id="inS-Zu-Xxv" customClass="TouchbarController" customModule="LocationSimulator" customModuleProvider="target">
                     <connections>
-                        <outlet property="currentLocationButton" destination="IvV-yO-fGr" id="E6R-Tt-x3e"/>
                         <outlet property="currentLocationItem" destination="ShX-T7-Dur" id="Kr0-gc-3ko"/>
                         <outlet property="moveTypeSegment" destination="ztw-f5-7tr" id="7J3-yS-Rtt"/>
                         <outlet property="moveTypeSegmentItem" destination="3I0-Yu-ztP" id="YEH-Dq-nfi"/>
-                        <outlet property="resetLocationButton" destination="Eng-na-hHM" id="UKa-BZ-4nz"/>
                         <outlet property="resetLocationItem" destination="Lap-MN-cqZ" id="ddj-2s-JQ0"/>
                         <outlet property="windowController" destination="B8D-0N-5wS" id="wOJ-p6-AVy"/>
                     </connections>
@@ -1314,6 +1309,7 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="rSB-OX-bfh" customClass="PreferencesTabViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
+                        <tabViewItem label="Info" image="NSInfo" id="fCK-nG-5Tl"/>
                         <tabViewItem label="General" identifier="" image="NSPreferencesGeneral" id="Zw5-Ce-8bO"/>
                         <tabViewItem label="Network" identifier="" image="NSNetwork" id="gbr-Wo-Ace"/>
                         <tabViewItem label="License" image="NSMultipleDocuments" id="N3V-fj-rsh"/>
@@ -1328,6 +1324,7 @@
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="iT9-X4-Bic" id="aRK-Wv-JJQ"/>
+                        <segue destination="uVV-Vv-12T" kind="relationship" relationship="tabItems" id="odq-jy-Lbr"/>
                         <segue destination="eae-4P-ykM" kind="relationship" relationship="tabItems" id="A2N-3S-Vxn"/>
                         <segue destination="7gW-SW-Mts" kind="relationship" relationship="tabItems" id="wHO-xv-mde"/>
                         <segue destination="vCG-Tv-LLk" kind="relationship" relationship="tabItems" id="6iF-sd-l9r"/>
@@ -1406,31 +1403,76 @@
                 </viewController>
                 <customObject id="gSB-cy-KBm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1219" y="1775"/>
+            <point key="canvasLocation" x="-941" y="1869"/>
         </scene>
         <!--General-->
         <scene sceneID="fZh-u0-Yd8">
             <objects>
                 <viewController title="General" id="eae-4P-ykM" customClass="GeneralViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OAa-Fi-hM2">
+                        <rect key="frame" x="0.0" y="0.0" width="226" height="94"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AOL-3Y-1IX">
+                                <rect key="frame" x="18" y="58" width="190" height="18"/>
+                                <buttonCell key="cell" type="check" title="Confirm Teleportation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="isp-Tm-ft7">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="confirmTeleportationChanged:" target="eae-4P-ykM" id="OOb-JN-XeU"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ufL-NS-UPy">
+                                <rect key="frame" x="18" y="36" width="190" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" enabled="NO" title="Always ask before teleporting." id="3Kt-Um-S7h">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="AOL-3Y-1IX" secondAttribute="trailing" constant="20" symbolic="YES" id="CYh-Te-RVA"/>
+                            <constraint firstItem="ufL-NS-UPy" firstAttribute="top" secondItem="AOL-3Y-1IX" secondAttribute="bottom" constant="8" symbolic="YES" id="KhA-oR-8Ku"/>
+                            <constraint firstItem="ufL-NS-UPy" firstAttribute="leading" secondItem="AOL-3Y-1IX" secondAttribute="leading" id="esy-MK-WvX"/>
+                            <constraint firstItem="ufL-NS-UPy" firstAttribute="trailing" secondItem="AOL-3Y-1IX" secondAttribute="trailing" id="o0n-Pg-lx2"/>
+                            <constraint firstItem="AOL-3Y-1IX" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="vuz-Ef-qaa"/>
+                            <constraint firstItem="AOL-3Y-1IX" firstAttribute="top" secondItem="OAa-Fi-hM2" secondAttribute="top" constant="20" symbolic="YES" id="xYo-Vn-mcm"/>
+                            <constraint firstAttribute="trailing" secondItem="ufL-NS-UPy" secondAttribute="trailing" constant="20" symbolic="YES" id="yvJ-qO-oEa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmTeleportationCheckbox" destination="AOL-3Y-1IX" id="I83-IW-OI5"/>
+                    </connections>
+                </viewController>
+                <customObject id="31H-zk-lrr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-485" y="1360"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="fza-CR-btx">
+            <objects>
+                <viewController title="Info" id="uVV-Vv-12T" customClass="InfoViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Wj1-Wf-B6v">
                         <rect key="frame" x="0.0" y="0.0" width="664" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
-                <customObject id="31H-zk-lrr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="mX0-Ez-e8l" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-272" y="1328"/>
+            <point key="canvasLocation" x="-1604" y="1661"/>
         </scene>
         <!--Network-->
         <scene sceneID="Irb-r9-9bb">
             <objects>
                 <viewController title="Network" id="7gW-SW-Mts" customClass="NetworkViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="mMX-pa-UGk">
-                        <rect key="frame" x="0.0" y="0.0" width="204" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="333" height="153"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fi6-Br-FNi">
-                                <rect key="frame" x="18" y="44" width="168" height="18"/>
+                                <rect key="frame" x="18" y="117" width="297" height="18"/>
                                 <buttonCell key="cell" type="check" title="Allow network devices" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5ME-ma-VHG">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1439,8 +1481,16 @@
                                     <action selector="allowNetworkDevicesChanged:" target="7gW-SW-Mts" id="t55-kU-M5Q"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="qq5-Tc-zGK">
+                                <rect key="frame" x="18" y="95" width="297" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" enabled="NO" title="Disable this option to only allow USB devices." id="gTa-OC-mjf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnE-95-ecY">
-                                <rect key="frame" x="18" y="18" width="168" height="18"/>
+                                <rect key="frame" x="18" y="71" width="297" height="18"/>
                                 <buttonCell key="cell" type="check" title="Prefer network devices" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="58b-rt-Ol9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1449,12 +1499,27 @@
                                     <action selector="preferNetworkDevicesChanged:" target="7gW-SW-Mts" id="t9A-0M-5AO"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="d0d-Lv-5H3">
+                                <rect key="frame" x="18" y="33" width="297" height="32"/>
+                                <textFieldCell key="cell" selectable="YES" enabled="NO" title="Always use the network connection even if a device is connected over the network." id="IjJ-2W-bRZ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="jnE-95-ecY" firstAttribute="top" secondItem="fi6-Br-FNi" secondAttribute="bottom" constant="12" id="1bA-yl-4AO"/>
+                            <constraint firstItem="jnE-95-ecY" firstAttribute="top" secondItem="qq5-Tc-zGK" secondAttribute="bottom" constant="8" symbolic="YES" id="1bA-yl-4AO"/>
                             <constraint firstItem="fi6-Br-FNi" firstAttribute="leading" secondItem="jnE-95-ecY" secondAttribute="leading" id="1jf-Rc-gnN"/>
+                            <constraint firstItem="d0d-Lv-5H3" firstAttribute="trailing" secondItem="qq5-Tc-zGK" secondAttribute="trailing" id="6uv-lm-tsE"/>
+                            <constraint firstItem="d0d-Lv-5H3" firstAttribute="top" secondItem="jnE-95-ecY" secondAttribute="bottom" constant="8" symbolic="YES" id="Hmv-bd-B5Q"/>
+                            <constraint firstItem="d0d-Lv-5H3" firstAttribute="leading" secondItem="qq5-Tc-zGK" secondAttribute="leading" id="JY9-Nq-8Wj"/>
+                            <constraint firstItem="qq5-Tc-zGK" firstAttribute="trailing" secondItem="fi6-Br-FNi" secondAttribute="trailing" id="LTq-Z2-gdx"/>
                             <constraint firstItem="fi6-Br-FNi" firstAttribute="trailing" secondItem="jnE-95-ecY" secondAttribute="trailing" id="Li6-ag-Xwv"/>
-                            <constraint firstAttribute="trailing" secondItem="fi6-Br-FNi" secondAttribute="trailing" constant="20" symbolic="YES" id="gEf-1z-Q1k"/>
+                            <constraint firstItem="qq5-Tc-zGK" firstAttribute="leading" secondItem="fi6-Br-FNi" secondAttribute="leading" id="RQa-L1-eEi"/>
+                            <constraint firstAttribute="trailing" secondItem="qq5-Tc-zGK" secondAttribute="trailing" constant="20" symbolic="YES" id="a51-R5-27Q"/>
+                            <constraint firstItem="qq5-Tc-zGK" firstAttribute="top" secondItem="fi6-Br-FNi" secondAttribute="bottom" constant="8" symbolic="YES" id="bLt-bl-Reu"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="fi6-Br-FNi" secondAttribute="trailing" constant="20" symbolic="YES" id="gEf-1z-Q1k"/>
                             <constraint firstItem="fi6-Br-FNi" firstAttribute="leading" secondItem="mMX-pa-UGk" secondAttribute="leading" constant="20" symbolic="YES" id="msM-BG-zwf"/>
                             <constraint firstItem="fi6-Br-FNi" firstAttribute="top" secondItem="mMX-pa-UGk" secondAttribute="top" constant="20" symbolic="YES" id="ynT-ZW-Aeu"/>
                         </constraints>
@@ -1466,7 +1531,7 @@
                 </viewController>
                 <customObject id="zgb-hy-cVv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-549" y="1693"/>
+            <point key="canvasLocation" x="-518.5" y="1747.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1475,6 +1540,7 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
+        <image name="NSInfo" width="32" height="32"/>
         <image name="NSMultipleDocuments" width="32" height="32"/>
         <image name="NSNetwork" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>

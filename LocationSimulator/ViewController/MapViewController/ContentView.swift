@@ -8,6 +8,8 @@
 
  import AppKit
 
+typealias ErrorIndicatorAction = () -> Void
+
 /// This is the main content view. It includes the mapView and all the controls that overlay the mapView.
 /// Since this view contains links to the interface builders main storyboard, it belongs to this viewController and
 /// not to the general Views group.
@@ -22,7 +24,13 @@
     @IBOutlet var movementButtonHUD: MovementButtonHUDView!
 
     /// The error indicator in the lower right corner.
-    @IBOutlet var errorIndicator: NSImageView!
+    @IBOutlet var errorIndicator: NSImageView! {
+        didSet {
+            // Add a click gesture to the view.
+            let clickGesture = NSClickGestureRecognizer(target: self, action: #selector(errorIndicatorClicked(_:)))
+            self.errorIndicator.addGestureRecognizer(clickGesture)
+        }
+    }
 
     /// The label in the bottom bar which displays the total amount of meters you walked.
     @IBOutlet var totalDistanceLabel: NSTextField!
@@ -44,8 +52,20 @@
         set { self.movementContainer.isHidden = newValue }
     }
 
+    /// The action to perform when the error indicator is clicked.
+    public var errorIndicationAction: ErrorIndicatorAction?
+
     /// Starting angle for the direction overlay rotation.
     private var startAngleInDegrees: Double = 0.0
+
+    // MARK: - Helper
+
+    @objc private func errorIndicatorClicked(_ sender: Any) {
+        // Disable the user interaction while the action is performed.
+        self.errorIndicator.isEnabled = false
+        self.errorIndicationAction?()
+        self.errorIndicator.isEnabled = true
+    }
 
     // MARK: - Layout
 

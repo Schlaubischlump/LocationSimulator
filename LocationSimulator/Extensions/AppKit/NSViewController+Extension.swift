@@ -9,8 +9,8 @@
 import AppKit
 
 extension NSViewController {
+    // Go up the viewController hierachy until a NSSplitViewController is found and return it.
     public var enclosingSplitViewController: NSSplitViewController? {
-        // Go up the viewController hierachy until a NSSplitViewController is found and return it.
         var currentVC: NSViewController? = self
         repeat {
             if let splitViewController = currentVC as? NSSplitViewController {

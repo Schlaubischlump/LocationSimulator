@@ -8,24 +8,34 @@
 
 import AppKit
 
+let kConfirmTeleportationKey: String = "com.schlaubischlump.locationsimulator.confirmteleportation"
+
+// Extend the UserDefaults with all keys relevant for this tab.
+extension UserDefaults {
+    @objc dynamic var confirmTeleportation: Bool {
+        get { return self.bool(forKey: kConfirmTeleportationKey) }
+        set { self.setValue(newValue, forKey: kConfirmTeleportationKey) }
+    }
+
+    /// Register the default NSUserDefault values.
+    func registerGeneralDefaultValues() {
+        UserDefaults.standard.register(defaults: [
+            kConfirmTeleportationKey: false
+        ])
+    }
+}
+
 class GeneralViewController: NSViewController {
-    override func loadView() {
-        let infoField = NSTextField(frame: .zero)
-        infoField.isEditable = false
-        infoField.isEnabled = false
-        infoField.backgroundColor = .clear
-        infoField.textColor = .labelColor
-        infoField.font = .labelFont(ofSize: NSFont.systemFontSize)
-        infoField.alignment = .center
-        infoField.isBezeled = false
+    @IBOutlet weak var confirmTeleportationCheckbox: NSButton!
 
-        // Add the welcome text and resize the view
-        infoField.stringValue = "\n" + NSLocalizedString("WELCOME", comment: "") + "\n"
-        infoField.sizeToFit()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // load the current user settings
+        self.confirmTeleportationCheckbox.state = UserDefaults.standard.confirmTeleportation ? .on : .off
+    }
 
-        // Add some padding to the left and right
-        infoField.frame.size.width += 40
-
-        self.view = infoField
+    /// Callback when the allow network devices toggle changes the state.
+    @IBAction func confirmTeleportationChanged(_ sender: NSButton) {
+        UserDefaults.standard.confirmTeleportation = (sender.state == .on)
     }
 }

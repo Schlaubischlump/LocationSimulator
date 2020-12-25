@@ -15,8 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var menubarController: MenubarController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Register the default setting values
+        // Register all the default setting values for this application.
         let defaults = UserDefaults.standard
+        defaults.registerGeneralDefaultValues()
         defaults.registerNetworkDefaultValues()
         defaults.registerRecentLocationDefaultValues()
         // Load the recent locations after the app finished launching.

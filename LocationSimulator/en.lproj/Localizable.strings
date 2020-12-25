@@ -6,6 +6,9 @@
  Copyright © 2019 David Klopp. All rights reserved.
  */
 
+// Preferences
+"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nChanges in this version are:\n\n1. New Sidebar\n2. Open GPX files\n3. Confirm Teleportation option\n4. Use current mac location as spoofed location\n5. Fallback download URL for DeveloperDiskImages\n6. Bug fixes\n";
+
 // General
 "CURRENT_LOCATION" = "Current Location";
 
@@ -41,9 +44,6 @@
 
 // Informative text
 "TOTAL_DISTANCE" = "Total distance: %.3fkm";
-
-// Preferences
-"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nChanges in this version are:\n\n1. Fallback download URL for DeveloperDiskImages\n2. Use current mac location as spoofed location\n3. Open GPX files\n4. Bug fixes\n";
 
 // Error message.
 "LOCATION_SERVICE_DISABLED" = "Enable location services";
@@ -81,3 +81,8 @@
 // NoDeviceViewController
 "NO_DEVICE"="No Device Selected";
 "NO_DEVICE_MSG"="Please connect a device and select it in the sidebar to start spoofing.";
+
+// Confirm teleportation.
+"CONFIRM_TELEPORT"="Confirm Teleportation";
+"CONFIRM_TELEPORT_MSG"="Do you really want to teleport?";
+"OK"="OK";

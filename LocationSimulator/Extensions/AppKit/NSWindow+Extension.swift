@@ -20,12 +20,26 @@ extension NSWindow {
         alert.messageText = localize ? NSLocalizedString(title, comment: "") : title
         alert.informativeText = localize ? NSLocalizedString(message, comment: "") : message
         alert.alertStyle = .critical
-        alert.alertStyle = .critical
         // Calling runModal will block the .common runloop. This runloop is used by DispatchQueue.main.async. This
         // function is used by MKMapView to load the map. That means, calling runModal, blocks the MapView from loading
         // the map. Since we do not need the modal response, we just leave it out and present the view as sheet instead.
         //return alert.runModal()
         alert.beginSheetModal(for: self)
+    }
+
+    /// Ask for confirmation.
+    func showConfirmation(_ title: String, message: String, localize: Bool = true) -> NSApplication.ModalResponse {
+        let alert = NSAlert()
+        alert.messageText = localize ? NSLocalizedString(title, comment: "") : title
+        alert.informativeText = localize ? NSLocalizedString(message, comment: "") : message
+        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+        alert.alertStyle = .informational
+        switch alert.runModal() {
+        case .alertFirstButtonReturn:  return .cancel
+        case .alertSecondButtonReturn: return .OK
+        default: return .cancel
+        }
     }
 
     /// Show the open panel to select a file.

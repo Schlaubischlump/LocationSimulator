@@ -100,7 +100,6 @@ class MapViewController: NSViewController {
             case .none: break
             }
         }
-
         // Add the movement button long press action to automove.
         self.contentView?.movementButtonHUD.longPressAction = { [unowned self] in
             self.view.window?.makeFirstResponder(self.mapView)
@@ -115,11 +114,14 @@ class MapViewController: NSViewController {
             case .none: break
             }
         }
-
         // Add the callback when the heading changes
         self.contentView?.movementDirectionHUD.headingChangedAction = { [unowned self] in
             // Update the location spoofer heading
             self.spoofer?.heading = self.mapView.camera.heading - self.getDirectionViewAngle()
+        }
+        // Add a reconnect action when clicking the error Indicator.
+        self.contentView?.errorIndicationAction = { [unowned self] in
+            self.connectDevice()
         }
     }
 
@@ -135,10 +137,8 @@ class MapViewController: NSViewController {
             }
             self.view.window?.makeFirstResponder(self.mapView)
         }
-
         // Callback when the mapView is long pressed. Navigate or teleport to the new locatiom if possible.
         self.mapView.longPressAction = mapViewAction
-
         // Current location marker was dragged. Navigate or teleport to the new location.
         self.mapView.markerDragAction = mapViewAction
     }
@@ -160,13 +160,13 @@ class MapViewController: NSViewController {
     }
 
     override func viewDidAppear() {
+        super.viewDidAppear()
         // Show the window controller.
         self.view.window?.makeFirstResponder(self.mapView)
         // change the autofocus state and thereby update the toolbar button as well
         self.autoFocusCurrentLocation = true
         // Try to load the current device if it is not yet connected.
         self.connectDevice()
-        super.viewDidAppear()
     }
 
     override func mouseDown(with event: NSEvent) {
@@ -329,13 +329,6 @@ class MapViewController: NSViewController {
         // E.g. he did use use the recent location menu or dropped the current location to a new one.
         let showUserInput = (coord == nil)
         let showNavigation = self.spoofer?.currentLocation != nil
-        // If we don't need user input and we do not have the option to navigate we can only teleport. No need to ask.
-        if !showUserInput && !showNavigation, let dstCoord = coord {
-            self.isShowingAlert = false
-            self.spoofer?.setLocation(dstCoord)
-            self.menubarController?.addLocation(dstCoord)
-            return
-        }
         // Ask the user what to do.
         let alert = CoordinateSelectionAlert(showNavigationButton: showNavigation, showUserInput: showUserInput)
         alert.beginSheetModal(for: window) { [unowned self] response, userCoord in
