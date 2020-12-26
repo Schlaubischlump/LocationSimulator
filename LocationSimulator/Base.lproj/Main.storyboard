@@ -1283,7 +1283,6 @@
                             <outlet property="movementContainerWidthConstraint" destination="OUR-HS-s9j" id="j1Q-X2-JTq"/>
                             <outlet property="movementDirectionHUD" destination="Zt8-yG-DDP" id="09m-td-eqU"/>
                             <outlet property="spinnerHUD" destination="boF-o9-C5b" id="fCE-FN-AFy"/>
-                            <outlet property="spinnerHUDTopConstraint" destination="kut-FC-EeK" id="gwa-ES-G5Y"/>
                             <outlet property="totalDistanceLabel" destination="NRh-IM-EPn" id="duw-xI-axp"/>
                             <outlet property="totalDistanceLabelTopConstraint" destination="973-3b-ooQ" id="oCn-f3-ZDS"/>
                         </connections>
