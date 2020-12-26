@@ -95,7 +95,7 @@ extension SidebarDataSource: NSOutlineViewDelegate {
         return item.isGroupItem
     }
 
-    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
-        return 28
-    }
+    //func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+    //    return 28
+    //}
 }

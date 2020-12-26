@@ -48,6 +48,9 @@
 		63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525926258B74750031F289 /* RecentLocationMenubarItem.swift */; };
 		6352592B258B75190031F289 /* FileMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352592A258B75190031F289 /* FileMenubarItem.swift */; };
 		63525959258E8FC80031F289 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525958258E8FC80031F289 /* HUDView.swift */; };
+		635C13812596EA5700BEB53B /* GPXParser in Frameworks */ = {isa = PBXBuildFile; productRef = 635C13802596EA5700BEB53B /* GPXParser */; };
+		635C13862596EA6600BEB53B /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 635C13852596EA6600BEB53B /* Downloader */; };
+		635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C13882596EA9800BEB53B /* Array+Extension.swift */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		6372061D25911CED00293EA8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372061C25911CED00293EA8 /* MapView.swift */; };
@@ -81,12 +84,9 @@
 		638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A2254B5A1800A520E0 /* GeneralViewController.swift */; };
 		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
 		638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */; };
-		638D6A232596B33700EBEF73 /* GPXParser in Frameworks */ = {isa = PBXBuildFile; productRef = 638D6A222596B33700EBEF73 /* GPXParser */; };
-		638D6A282596B36600EBEF73 /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 638D6A272596B36600EBEF73 /* Downloader */; };
 		6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB3D2593CB9900B0CABA /* SidebarItem.swift */; };
 		6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB412593D63000B0CABA /* SplitviewController.swift */; };
 		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
-		63C799EF25961C260099B794 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799EE25961C260099B794 /* Array+Extension.swift */; };
 		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
 		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
 		63C799FD259659740099B794 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799FC259659740099B794 /* InfoViewController.swift */; };
@@ -152,6 +152,7 @@
 		63525926258B74750031F289 /* RecentLocationMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentLocationMenubarItem.swift; sourceTree = "<group>"; };
 		6352592A258B75190031F289 /* FileMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenubarItem.swift; sourceTree = "<group>"; };
 		63525958258E8FC80031F289 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
+		635C13882596EA9800BEB53B /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		6372061C25911CED00293EA8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -186,7 +187,6 @@
 		6390AB3D2593CB9900B0CABA /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		6390AB412593D63000B0CABA /* SplitviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitviewController.swift; sourceTree = "<group>"; };
 		6390AB442593E23700B0CABA /* NoDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceViewController.swift; sourceTree = "<group>"; };
-		63C799EE25961C260099B794 /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Extension.swift"; path = "../../../../LocationSimulator2/LocationSimulator2/Extensions/Foundation/Array+Extension.swift"; sourceTree = "<group>"; };
 		63C799F12596291F0099B794 /* ViewMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenubarItem.swift; sourceTree = "<group>"; };
 		63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTouchbarItem+Extension.swift"; sourceTree = "<group>"; };
 		63C799FC259659740099B794 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -209,8 +209,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */,
-				638D6A282596B36600EBEF73 /* Downloader in Frameworks */,
-				638D6A232596B33700EBEF73 /* GPXParser in Frameworks */,
+				635C13862596EA6600BEB53B /* Downloader in Frameworks */,
+				635C13812596EA5700BEB53B /* GPXParser in Frameworks */,
 				6376755A258E93CE000DCEF3 /* libimobiledevice-1.0.6.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +429,7 @@
 		63525952258E8EDC0031F289 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				63C799EE25961C260099B794 /* Array+Extension.swift */,
+				635C13882596EA9800BEB53B /* Array+Extension.swift */,
 				631EBFE2259409190066D5BB /* Notification+Extension.swift */,
 				6311B798230C150D00AABF3E /* Filemanager+Extension.swift */,
 			);
@@ -638,8 +638,8 @@
 			);
 			name = LocationSimulator;
 			packageProductDependencies = (
-				638D6A222596B33700EBEF73 /* GPXParser */,
-				638D6A272596B36600EBEF73 /* Downloader */,
+				635C13802596EA5700BEB53B /* GPXParser */,
+				635C13852596EA6600BEB53B /* Downloader */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -682,8 +682,8 @@
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
-				638D6A212596B33700EBEF73 /* XCRemoteSwiftPackageReference "GPXParser" */,
-				638D6A262596B36600EBEF73 /* XCRemoteSwiftPackageReference "Downloader" */,
+				635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */,
+				635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -767,6 +767,7 @@
 				638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */,
 				63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
+				635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */,
 				6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */,
 				6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */,
 				633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */,
@@ -784,7 +785,6 @@
 				63525922258B74290031F289 /* NavigationMenuabrItem.swift in Sources */,
 				632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */,
 				6352592B258B75190031F289 /* FileMenubarItem.swift in Sources */,
-				63C799EF25961C260099B794 /* Array+Extension.swift in Sources */,
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
 				63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */,
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
@@ -1196,7 +1196,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		638D6A212596B33700EBEF73 /* XCRemoteSwiftPackageReference "GPXParser" */ = {
+		635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/GPXParser";
 			requirement = {
@@ -1204,7 +1204,7 @@
 				minimumVersion = 0.0.1;
 			};
 		};
-		638D6A262596B36600EBEF73 /* XCRemoteSwiftPackageReference "Downloader" */ = {
+		635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/Downloader";
 			requirement = {
@@ -1215,14 +1215,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		638D6A222596B33700EBEF73 /* GPXParser */ = {
+		635C13802596EA5700BEB53B /* GPXParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 638D6A212596B33700EBEF73 /* XCRemoteSwiftPackageReference "GPXParser" */;
+			package = 635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */;
 			productName = GPXParser;
 		};
-		638D6A272596B36600EBEF73 /* Downloader */ = {
+		635C13852596EA6600BEB53B /* Downloader */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 638D6A262596B36600EBEF73 /* XCRemoteSwiftPackageReference "Downloader" */;
+			package = 635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */;
 			productName = Downloader;
 		};
 /* End XCSwiftPackageProductDependency section */

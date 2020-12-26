@@ -30,9 +30,8 @@ extension ProgressView: DownloaderDelegate {
         let progressBar = (task.dID == kDevDiskTaskID) ? self.progressBarTop : self.progressBarBottom
         let statusLabel = (task.dID == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
         let progress = task.progress*100
-        //if (progress - progressBar!.doubleValue) > 5 {
-            progressBar!.doubleValue = progress
-        //}
+        // TODO: This isn't working for macOS 11.2 Beta ... why ? Is it fixed ?
+        progressBar!.doubleValue = progress
         statusLabel!.stringValue = task.desc + ": " + String(format: "%.2f", progress) + "%"
     }
 

@@ -260,7 +260,6 @@ class MapViewController: NSViewController {
         do {
             // Show the error indicator and a progress spinner.
             self.contentView?.showErrorInidcator()
-            //throw DeviceError.devDiskImageNotFound("", os: "iPhone OS", version: "14.3")
             // If the pairing and uploading of the developer disk image is successfull create a spoofer instance.
             try device.pair()
             // Hide the error indicator if the device was connected sucessfully.

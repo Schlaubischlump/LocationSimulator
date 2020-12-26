@@ -86,6 +86,7 @@ class ContentView: NSView {
     @IBOutlet var totalDistanceLabelTopConstraint: NSLayoutConstraint! {
         didSet { if #available(OSX 11.0, *) { self.totalDistanceLabelTopConstraint.constant -= 20 } }
     }
+    
     @IBOutlet var spinnerHUDTopConstraint: NSLayoutConstraint! {
         didSet { if #available(OSX 11.0, *) { self.spinnerHUDTopConstraint.constant += 25 } }
     }
