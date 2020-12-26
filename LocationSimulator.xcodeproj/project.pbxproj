@@ -47,7 +47,6 @@
 		63525922258B74290031F289 /* NavigationMenuabrItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525921258B74290031F289 /* NavigationMenuabrItem.swift */; };
 		63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525926258B74750031F289 /* RecentLocationMenubarItem.swift */; };
 		6352592B258B75190031F289 /* FileMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352592A258B75190031F289 /* FileMenubarItem.swift */; };
-		6352594F258B84550031F289 /* GPXParser in Frameworks */ = {isa = PBXBuildFile; productRef = 6352594E258B84550031F289 /* GPXParser */; };
 		63525959258E8FC80031F289 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63525958258E8FC80031F289 /* HUDView.swift */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
@@ -68,7 +67,6 @@
 		63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */; };
 		6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376756A258EC809000DCEF3 /* SeparatorLine.swift */; };
 		637FD228259578B700E84EDB /* TouchbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FD227259578B700E84EDB /* TouchbarController.swift */; };
-		63888DCA2592A2D900B1DFC9 /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 63888DC92592A2D900B1DFC9 /* Downloader */; };
 		63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */; };
 		63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */; };
 		63888DDA2592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */; };
@@ -83,6 +81,8 @@
 		638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A2254B5A1800A520E0 /* GeneralViewController.swift */; };
 		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
 		638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A9254B5CFB00A520E0 /* PreferenceTabViewController.swift */; };
+		638D6A232596B33700EBEF73 /* GPXParser in Frameworks */ = {isa = PBXBuildFile; productRef = 638D6A222596B33700EBEF73 /* GPXParser */; };
+		638D6A282596B36600EBEF73 /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 638D6A272596B36600EBEF73 /* Downloader */; };
 		6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB3D2593CB9900B0CABA /* SidebarItem.swift */; };
 		6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB412593D63000B0CABA /* SplitviewController.swift */; };
 		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
@@ -209,9 +209,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */,
-				63888DCA2592A2D900B1DFC9 /* Downloader in Frameworks */,
+				638D6A282596B36600EBEF73 /* Downloader in Frameworks */,
+				638D6A232596B33700EBEF73 /* GPXParser in Frameworks */,
 				6376755A258E93CE000DCEF3 /* libimobiledevice-1.0.6.dylib in Frameworks */,
-				6352594F258B84550031F289 /* GPXParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,8 +638,8 @@
 			);
 			name = LocationSimulator;
 			packageProductDependencies = (
-				6352594E258B84550031F289 /* GPXParser */,
-				63888DC92592A2D900B1DFC9 /* Downloader */,
+				638D6A222596B33700EBEF73 /* GPXParser */,
+				638D6A272596B36600EBEF73 /* Downloader */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -682,8 +682,8 @@
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
-				6352594D258B84550031F289 /* XCRemoteSwiftPackageReference "GPXParser" */,
-				63888DC82592A2D900B1DFC9 /* XCRemoteSwiftPackageReference "Downloader" */,
+				638D6A212596B33700EBEF73 /* XCRemoteSwiftPackageReference "GPXParser" */,
+				638D6A262596B36600EBEF73 /* XCRemoteSwiftPackageReference "Downloader" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -1196,15 +1196,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6352594D258B84550031F289 /* XCRemoteSwiftPackageReference "GPXParser" */ = {
+		638D6A212596B33700EBEF73 /* XCRemoteSwiftPackageReference "GPXParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Schlaubischlump/GPXParser/";
+			repositoryURL = "https://github.com/Schlaubischlump/GPXParser";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.1;
 			};
 		};
-		63888DC82592A2D900B1DFC9 /* XCRemoteSwiftPackageReference "Downloader" */ = {
+		638D6A262596B36600EBEF73 /* XCRemoteSwiftPackageReference "Downloader" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/Downloader";
 			requirement = {
@@ -1215,14 +1215,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6352594E258B84550031F289 /* GPXParser */ = {
+		638D6A222596B33700EBEF73 /* GPXParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6352594D258B84550031F289 /* XCRemoteSwiftPackageReference "GPXParser" */;
+			package = 638D6A212596B33700EBEF73 /* XCRemoteSwiftPackageReference "GPXParser" */;
 			productName = GPXParser;
 		};
-		63888DC92592A2D900B1DFC9 /* Downloader */ = {
+		638D6A272596B36600EBEF73 /* Downloader */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 63888DC82592A2D900B1DFC9 /* XCRemoteSwiftPackageReference "Downloader" */;
+			package = 638D6A262596B36600EBEF73 /* XCRemoteSwiftPackageReference "Downloader" */;
 			productName = Downloader;
 		};
 /* End XCSwiftPackageProductDependency section */

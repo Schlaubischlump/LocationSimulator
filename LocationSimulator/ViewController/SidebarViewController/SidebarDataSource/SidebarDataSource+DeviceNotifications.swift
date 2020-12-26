@@ -88,8 +88,15 @@ extension SidebarDataSource {
         if let index: Int = self.devices.firstIndex(of: device) {
             print("[INFO]: Disconnect device: \(device.name) with UDID: \(device.udid)")
 
-            //let removedCurrentDevice = (self.devicesPopup.indexOfSelectedItem == index)
-            self.devices.remove(at: index)
+            // True if the currently selected device was removed.
+            let removeCurrent = (self.selectedDevice == self.devices.remove(at: index))
+
+            // If the current device was removed, we need to change the status to disconnect.
+            // We do this by removing the device instance.
+            if removeCurrent {
+                let windowController = self.sidebarView?.window?.windowController as? WindowController
+                windowController?.mapViewController?.device = nil
+            }
 
             // index +1 for the HeaderCell
             self.sidebarView?.removeItems(at: [index+1], inParent: nil, withAnimation: .effectGap)

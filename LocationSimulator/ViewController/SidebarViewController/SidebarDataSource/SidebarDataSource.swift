@@ -94,4 +94,8 @@ extension SidebarDataSource: NSOutlineViewDelegate {
         guard let item = (item as AnyObject) as? SidebarItem else { return false }
         return item.isGroupItem
     }
+
+    func outlineView(_ outlineView: NSOutlineView, heightOfRowByItem item: Any) -> CGFloat {
+        return 28
+    }
 }

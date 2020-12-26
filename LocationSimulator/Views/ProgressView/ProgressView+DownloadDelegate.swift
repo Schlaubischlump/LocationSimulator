@@ -29,9 +29,11 @@ extension ProgressView: DownloaderDelegate {
     @objc private func updateUIForProgress(task: DownloadTask) {
         let progressBar = (task.dID == kDevDiskTaskID) ? self.progressBarTop : self.progressBarBottom
         let statusLabel = (task.dID == kDevDiskTaskID) ? self.statusLabelTop : self.statusLabelBottom
-
-        progressBar!.doubleValue = task.progress
-        statusLabel!.stringValue = task.desc + ": " + String(format: "%.2f", task.progress*100) + "%"
+        let progress = task.progress*100
+        //if (progress - progressBar!.doubleValue) > 5 {
+            progressBar!.doubleValue = progress
+        //}
+        statusLabel!.stringValue = task.desc + ": " + String(format: "%.2f", progress) + "%"
     }
 
     // MARK: - Delegate

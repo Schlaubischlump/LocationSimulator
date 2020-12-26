@@ -6,14 +6,32 @@
  //  Copyright © 2020 David Klopp. All rights reserved.
  //
 
- import AppKit
+import AppKit
+import MapKit
 
 typealias ErrorIndicatorAction = () -> Void
 
 /// This is the main content view. It includes the mapView and all the controls that overlay the mapView.
 /// Since this view contains links to the interface builders main storyboard, it belongs to this viewController and
 /// not to the general Views group.
- class ContentView: NSView {
+class ContentView: NSView {
+    @IBOutlet weak var mapView: MapView! {
+        didSet {
+            if #available(OSX 11.0, *) {
+                guard self.compassButton == nil else { return }
+                // Hide the default compass.
+                self.mapView?.showsCompass = false
+                // Create a new compass button.
+                let compass = MKCompassButton(mapView: self.mapView)
+                compass.compassVisibility = .visible
+                self.addSubview(compass)
+                // Assign the new compass button
+                self.compassButton = compass
+            }
+        }
+
+    }
+
     /// The spinner in the top right corner.
     @IBOutlet var spinnerHUD: SpinnerHUDView!
 
@@ -46,6 +64,45 @@ typealias ErrorIndicatorAction = () -> Void
         }
     }
 
+    // MARK: - MACOS 11.0
+
+    @IBOutlet var labelHUD: HUDView! {
+        didSet {
+            // Show a nice HUD background on macOS 11
+            if #available(OSX 11.0, *) {
+                self.labelHUD.cornerRadius = 0
+                self.labelHUD.isHidden = false
+            } else {
+                self.labelHUD.isHidden = true
+            }
+        }
+    }
+
+    /// The bottom constraint of the content view. The default for macOS versions fewer 11 is 20.
+    @IBOutlet var bottomConstraint: NSLayoutConstraint! {
+        didSet { if #available(OSX 11.0, *) { self.bottomConstraint.constant = 0 } }
+    }
+
+    @IBOutlet var totalDistanceLabelTopConstraint: NSLayoutConstraint! {
+        didSet { if #available(OSX 11.0, *) { self.totalDistanceLabelTopConstraint.constant -= 20 } }
+    }
+    @IBOutlet var spinnerHUDTopConstraint: NSLayoutConstraint! {
+        didSet { if #available(OSX 11.0, *) { self.spinnerHUDTopConstraint.constant += 25 } }
+    }
+
+    @IBOutlet var movementContainerWidthConstraint: NSLayoutConstraint! {
+        didSet { if #available(OSX 11.0, *) { self.movementContainerWidthConstraint.constant -= 4 } }
+    }
+
+    @IBOutlet var movementContainerHeightConstraint: NSLayoutConstraint! {
+        didSet { if #available(OSX 11.0, *) { self.movementContainerHeightConstraint.constant -= 4 } }
+    }
+
+    /// MacOS 11 > only: The custom compass view.
+    private var compassButton: NSView?
+
+    // MARK: - Interaction
+
     /// Show or hide the navigation controls in the lower left corner.
     public var controlsHidden: Bool {
         get { self.movementContainer.isHidden }
@@ -54,6 +111,8 @@ typealias ErrorIndicatorAction = () -> Void
 
     /// The action to perform when the error indicator is clicked.
     public var errorIndicationAction: ErrorIndicatorAction?
+
+    // MARK: - Private
 
     /// Starting angle for the direction overlay rotation.
     private var startAngleInDegrees: Double = 0.0
@@ -70,12 +129,12 @@ typealias ErrorIndicatorAction = () -> Void
     // MARK: - Layout
 
     override func layout() {
-        super.layout()
-
-        // Fix bottom bar color on Big Sur.
         if #available(OSX 11.0, *) {
-            self.layer?.backgroundColor = NSColor(named: "bottomBarBackground")?.cgColor
+            // Layout the compass view.
+            self.compassButton?.frame = self.convert(self.movementDirectionHUD.frame, from: self.movementContainer)
+            self.compassButton?.frame.origin.x = self.frame.size.width - (self.compassButton?.bounds.width ?? 0) - 20
         }
+        super.layout()
     }
 
     // MARK: - Gesture Recognizer

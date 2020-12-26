@@ -63,8 +63,11 @@ class SidebarViewController: NSViewController {
                     return
                 }
 
+                // On macOS 11 use the line toolbar separator style for the MapViewController. Otherwise use None.
+                var drawSeparator: Bool = false
                 var viewController: Any?
                 if let device = self.dataSource?.selectedDevice {
+                    drawSeparator = true
                     // A device was connected => create and show the corresponding MapViewController.
                     viewController = self.storyboard?.instantiateController(withIdentifier: "MapViewController")
                     if let mapViewController = viewController as? MapViewController {
@@ -74,6 +77,7 @@ class SidebarViewController: NSViewController {
                         mapViewController.moveType = windowController?.moveType
                     }
                 } else {
+                    drawSeparator = false
                     // The last device was removed => create and show a NoDeviceViewController.
                     viewController = self.storyboard?.instantiateController(withIdentifier: "NoDeviceViewControlelr")
                     // If the sidebar is currently hidden, show it. The user might not know where to select a device.
@@ -83,8 +87,11 @@ class SidebarViewController: NSViewController {
                 }
 
                 // Get a reference to the splitViewController and assign the new detailViewController
-
                 splitViewController.detailViewController = viewController as? NSViewController
+                // Adjust the style of the detail item to show a separator line for the MapViewController.
+                if #available(OSX 11.0, *) {
+                    splitViewController.splitViewItems[1].titlebarSeparatorStyle = drawSeparator ? .line : .none
+                }
         })
     }
 }
