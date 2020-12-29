@@ -35,12 +35,8 @@
 		632C466523F7638A004E5092 /* MenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466423F7638A004E5092 /* MenubarItem.swift */; };
 		633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351920A433EE00A0431C /* AppDelegate.swift */; };
 		633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510920AE9634002A61F1 /* WindowController.swift */; };
-		633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */; };
 		633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351B20A433EE00A0431C /* MapViewController.swift */; };
 		633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510B20AED69B002A61F1 /* NSView+Extension.swift */; };
-		633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */; };
-		633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */; };
-		633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */; };
 		63525910258AC0950031F289 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352590F258AC0950031F289 /* LicenseViewController.swift */; };
 		63525913258AC7F00031F289 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63525912258AC7F00031F289 /* Licenses.plist */; };
 		6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */; };
@@ -73,10 +69,6 @@
 		63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */; };
 		63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */; };
 		63888DDA2592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */; };
-		638ACB86259562C4008790CE /* SearchPopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ACB85259562C4008790CE /* SearchPopupController.swift */; };
-		638ACB8A259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ACB89259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift */; };
-		638ACB8D25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ACB8C25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift */; };
-		638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638ADBE0230095980061612D /* AutoCompletePopover.swift */; };
 		638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9096254B3C6600A520E0 /* ConnectionType.swift */; };
 		638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9097254B3C6600A520E0 /* DeviceError.swift */; };
 		638B909B254B3C6600A520E0 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9098254B3C6600A520E0 /* Device.swift */; };
@@ -87,6 +79,7 @@
 		6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB3D2593CB9900B0CABA /* SidebarItem.swift */; };
 		6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB412593D63000B0CABA /* SplitviewController.swift */; };
 		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
+		63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */ = {isa = PBXBuildFile; productRef = 63AEA2F1259AB41D0084F74B /* SuggestionPopup */; };
 		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
 		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
 		63C799FD259659740099B794 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799FC259659740099B794 /* InfoViewController.swift */; };
@@ -123,7 +116,6 @@
 		63156C1022FB86160086D5F6 /* deviceinfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deviceinfo.c; sourceTree = "<group>"; };
 		63156C1322FB9A5D0086D5F6 /* COPYRIGHT */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYRIGHT; sourceTree = "<group>"; };
 		63156C1522FB9A7A0086D5F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		63156C1822FB9BD20086D5F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		63183E26231821B80073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		63183E28231821DB0073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		63183E2A2318221B0073D80E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -141,12 +133,8 @@
 		632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateFormatter.swift; sourceTree = "<group>"; };
 		632C466223F4D9C8004E5092 /* CoordinateStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateStepper.swift; sourceTree = "<group>"; };
 		632C466423F7638A004E5092 /* MenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarItem.swift; sourceTree = "<group>"; };
-		633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteSearchField.swift; sourceTree = "<group>"; };
-		633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteSearchField+TableView.swift"; sourceTree = "<group>"; };
-		633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AutoCompleteSearchField+Protocol.swift"; sourceTree = "<group>"; };
 		6352590F258AC0950031F289 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
-		63525915258AC8310031F289 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasterboard+Extension.swift"; sourceTree = "<group>"; };
 		63525921258B74290031F289 /* NavigationMenuabrItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenuabrItem.swift; sourceTree = "<group>"; };
 		63525926258B74750031F289 /* RecentLocationMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentLocationMenubarItem.swift; sourceTree = "<group>"; };
@@ -173,10 +161,6 @@
 		63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarDataSource.swift; sourceTree = "<group>"; };
 		63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidebarDataSource+DeviceNotifications.swift"; sourceTree = "<group>"; };
-		638ACB85259562C4008790CE /* SearchPopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPopupController.swift; sourceTree = "<group>"; };
-		638ACB89259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchPopupController+AutoCompleteTableViewDelegate.swift"; sourceTree = "<group>"; };
-		638ACB8C25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchPopupController+MKLocalSearchCompleterDelegate.swift"; sourceTree = "<group>"; };
-		638ADBE0230095980061612D /* AutoCompletePopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletePopover.swift; sourceTree = "<group>"; };
 		638B9096254B3C6600A520E0 /* ConnectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
 		638B9097254B3C6600A520E0 /* DeviceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceError.swift; sourceTree = "<group>"; };
 		638B9098254B3C6600A520E0 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -195,7 +179,6 @@
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
 		63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeveloperDiskImages.plist; sourceTree = "<group>"; };
-		63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchField.swift; sourceTree = "<group>"; };
 		63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+LocationSpooferDelegate.swift"; sourceTree = "<group>"; };
 		63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		63FDE223258F9E3300917412 /* GPXSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionView.swift; sourceTree = "<group>"; };
@@ -208,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */,
 				6376755B258E93F4000DCEF3 /* libplist-2.0.3.dylib in Frameworks */,
 				635C13862596EA6600BEB53B /* Downloader in Frameworks */,
 				635C13812596EA5700BEB53B /* GPXParser in Frameworks */,
@@ -264,7 +248,6 @@
 				638ADBE2230203B20061612D /* ViewController */,
 				6311B793230C13AF00AABF3E /* LocationSpoofer */,
 				63FC479523022D3A00BBB2E8 /* Extensions */,
-				633A460A22FACBB6005B3BE0 /* Autocomplete */,
 				63156C0522FB6A3E0086D5F6 /* MobileDevice */,
 				1344BEBD20D10AFD00355F49 /* Supporting Files */,
 			);
@@ -394,19 +377,6 @@
 				63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		633A460A22FACBB6005B3BE0 /* Autocomplete */ = {
-			isa = PBXGroup;
-			children = (
-				63525915258AC8310031F289 /* LICENSE */,
-				63156C1822FB9BD20086D5F6 /* README.md */,
-				638ADBE0230095980061612D /* AutoCompletePopover.swift */,
-				633A460822F9A69F005B3BE0 /* AutoCompleteSearchField.swift */,
-				633A460B22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift */,
-				633A460D22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift */,
-			);
-			path = Autocomplete;
 			sourceTree = "<group>";
 		};
 		63525951258E8EC50031F289 /* AppKit */ = {
@@ -542,17 +512,6 @@
 			path = SidebarDataSource;
 			sourceTree = "<group>";
 		};
-		638ACB842595628D008790CE /* SearchPopupController */ = {
-			isa = PBXGroup;
-			children = (
-				63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */,
-				638ACB85259562C4008790CE /* SearchPopupController.swift */,
-				638ACB89259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift */,
-				638ACB8C25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift */,
-			);
-			path = SearchPopupController;
-			sourceTree = "<group>";
-		};
 		638ADBE2230203B20061612D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,7 +560,6 @@
 		63FC47A22306243300BBB2E8 /* WindowController */ = {
 			isa = PBXGroup;
 			children = (
-				638ACB842595628D008790CE /* SearchPopupController */,
 				631EBFF225941C540066D5BB /* ToolbarController */,
 				637FD2262595789C00E84EDB /* TouchbarController */,
 				130F510920AE9634002A61F1 /* WindowController.swift */,
@@ -640,6 +598,7 @@
 			packageProductDependencies = (
 				635C13802596EA5700BEB53B /* GPXParser */,
 				635C13852596EA6600BEB53B /* Downloader */,
+				63AEA2F1259AB41D0084F74B /* SuggestionPopup */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -684,6 +643,7 @@
 			packageReferences = (
 				635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */,
 				635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */,
+				63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -764,13 +724,11 @@
 				63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */,
 				63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */,
 				631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */,
-				638ADBE1230095980061612D /* AutoCompletePopover.swift in Sources */,
 				63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
 				635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */,
 				6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */,
 				6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */,
-				633A460022F996DC005B3BE0 /* LocationSearchField.swift in Sources */,
 				63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */,
 				63156C0422FB67610086D5F6 /* devicepair.c in Sources */,
 				637FD228259578B700E84EDB /* TouchbarController.swift in Sources */,
@@ -792,14 +750,11 @@
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
-				633A460922F9A6A0005B3BE0 /* AutoCompleteSearchField.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
-				638ACB8D25956308008790CE /* SearchPopupController+MKLocalSearchCompleterDelegate.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
 				6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */,
 				630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */,
-				638ACB86259562C4008790CE /* SearchPopupController.swift in Sources */,
 				633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */,
 				632C466523F7638A004E5092 /* MenubarItem.swift in Sources */,
 				6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */,
@@ -808,7 +763,6 @@
 				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
 				63720628259141EF00293EA8 /* ProgressView.swift in Sources */,
 				63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */,
-				638ACB8A259562F8008790CE /* SearchPopupController+AutoCompleteTableViewDelegate.swift in Sources */,
 				63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */,
 				6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */,
 				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
@@ -822,11 +776,9 @@
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				63525959258E8FC80031F289 /* HUDView.swift in Sources */,
 				638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */,
-				633A460C22FACBD7005B3BE0 /* AutoCompleteSearchField+TableView.swift in Sources */,
 				63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */,
 				63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */,
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
-				633A460E22FACC53005B3BE0 /* AutoCompleteSearchField+Protocol.swift in Sources */,
 				63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */,
 				631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */,
 				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,
@@ -1212,6 +1164,14 @@
 				minimumVersion = 0.0.1;
 			};
 		};
+		63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Schlaubischlump/SuggestionPopup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1224,6 +1184,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */;
 			productName = Downloader;
+		};
+		63AEA2F1259AB41D0084F74B /* SuggestionPopup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */;
+			productName = SuggestionPopup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

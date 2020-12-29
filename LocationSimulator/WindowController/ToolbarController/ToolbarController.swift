@@ -7,6 +7,8 @@
 //
 
 import AppKit
+import MapKit
+import SuggestionPopup
 
 class ToolbarController: NSResponder {
     /// The corresponding windowController for this toolbar controller.
@@ -22,6 +24,9 @@ class ToolbarController: NSResponder {
     /// The notification observer for autofocus changes.
     private var autofocusObserver: NSObjectProtocol?
 
+    /// The search completer instance to handle the search and displaying the results.
+    var searchCompleter: LocationSearchCompleter!
+
     // MARK: - ToolbarItem views
 
     @IBOutlet weak var autofocusButton: NSButton!
@@ -30,7 +35,29 @@ class ToolbarController: NSResponder {
 
     @IBOutlet weak var resetLocationButton: NSButton!
 
-    @IBOutlet weak var searchField: NSSearchField!
+    @IBOutlet weak var searchField: NSSearchField! {
+        didSet {
+            self.searchCompleter = LocationSearchCompleter(searchField: self.searchField)
+            self.searchCompleter.onSelect = { [weak self] _, suggestion in
+                // Zoom into the map at the searched location.
+                guard let comp = suggestion as? MKLocalSearchCompletion else { return }
+                let request: MKLocalSearch.Request = MKLocalSearch.Request(completion: comp)
+                let localSearch: MKLocalSearch = MKLocalSearch(request: request)
+                localSearch.start { (response, error) in
+                    if error == nil, let res: MKLocalSearch.Response = response {
+                        self?.mapViewController?.zoomTo(region: res.boundingRegion)
+                    }
+               }
+            }
+            // Listen for the searchField first responder status to update the search status.
+            self.searchCompleter.onBecomeFirstReponder = { [weak self] in
+                NotificationCenter.default.post(name: .SearchDidStart, object: self?.windowController?.window)
+            }
+            self.searchCompleter.onResignFirstReponder = { [weak self] in
+                NotificationCenter.default.post(name: .SearchDidEnd, object: self?.windowController?.window)
+            }
+        }
+    }
 
     @IBOutlet weak var moveTypeSegment: NSSegmentedControl!
 
@@ -48,14 +75,18 @@ class ToolbarController: NSResponder {
 
     // MARK: - Constructor
 
+    private func setup() {
+        self.registerNotifications()
+    }
+
     override init() {
         super.init()
-        self.registerNotifications()
+        self.setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.registerNotifications()
+        self.setup()
     }
 
     // MARK: - Helper
@@ -90,6 +121,7 @@ class ToolbarController: NSResponder {
 
     public func updateForDeviceStatus(_ deviceStatus: DeviceStatus) {
         // Update the enabled status for each toolbar item.
+        let deviceConnected = (deviceStatus == .connected)
         let deviceDisconnected = (deviceStatus == .disconnected)
         let hasSpoofedLocation = (deviceStatus == .manual || deviceStatus == .auto || deviceStatus == .navigation)
         self.autofocusItem.isEnabled = !deviceDisconnected
@@ -97,6 +129,10 @@ class ToolbarController: NSResponder {
         self.searchFieldItem.isEnabled = !deviceDisconnected
         self.resetLocationItem.isEnabled = hasSpoofedLocation
         self.moveTypeSegmentItem.isEnabled = true
+        // Clear the searchField.
+        if deviceDisconnected || deviceConnected {
+            self.searchField.stringValue = ""
+        }
     }
 
     // MARK: - Toolbar Actions

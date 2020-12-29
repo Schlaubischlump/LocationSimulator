@@ -6,6 +6,8 @@
 //  Copyright © 2020 David Klopp. All rights reserved.
 //
 
+// TODO: Disable the navigation if the search is active.
+
 import AppKit
 
 let kProjectWebsite = "https://github.com/Schlaubischlump/LocationSimulator"
@@ -14,9 +16,27 @@ class MenubarController: NSResponder {
     /// The notification observer for status changes.
     private var statusObserver: NSObjectProtocol?
 
+    /// Observe the search status.
+    private var searchStartObserver: NSObjectProtocol?
+    private var searchEndObserver: NSObjectProtocol?
+
     /// The main menu should always represent the status of the key window.
     private var windowController: WindowController? {
         return NSApp.keyWindow?.windowController as? WindowController
+    }
+
+    /// The current status.
+    var deviceStatus: DeviceStatus = .disconnected
+
+    /// True if the search is currently active, false otherwise.
+    public var isSearching: Bool = false {
+        didSet {
+            if self.isSearching {
+                self.disableMoveControls()
+            } else {
+                self.enableMoveControls()
+            }
+        }
     }
 
     // MARK: - Constructor
@@ -37,8 +57,17 @@ class MenubarController: NSResponder {
         // Remove the observer
         if let observer = self.statusObserver {
             NotificationCenter.default.removeObserver(observer)
-            self.statusObserver = nil
         }
+        if let observer = self.searchStartObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        if let observer = self.searchEndObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+
+        self.searchStartObserver = nil
+        self.searchEndObserver = nil
+        self.statusObserver = nil
     }
 
     // MARK: - Notification
@@ -46,16 +75,50 @@ class MenubarController: NSResponder {
     /// Listen for state changes
     public func registerNotifications() {
         self.statusObserver = NotificationCenter.default.addObserver(forName: .StatusChanged, object: nil,
-                                                                     queue: .main) { notification in
+                                                                     queue: .main) { [weak self] notification in
             // Make sure the request is send from the key window subview.
             guard let viewController = notification.object as? NSViewController,
                   let windowController = viewController.view.window?.windowController,
-                  windowController == self.windowController,
+                  windowController == self?.windowController,
                   let newState = notification.userInfo?["status"] as? DeviceStatus else { return }
             // Enable the items relevant for this state.
             newState.allMenubarItems.forEach { $0.disable() }
             newState.enabledMenubarItems.forEach { $0.enable() }
+            // Save the current state.
+            self?.deviceStatus = newState
+            // Disable the movement controls if we are searching.
+            if self?.isSearching ?? false {
+                self?.disableMoveControls()
+            }
         }
+
+        // Observe the search status.
+        self.searchStartObserver = NotificationCenter.default.addObserver(forName: .SearchDidStart, object: nil,
+                                                                     queue: .main) { [weak self] notification in
+            // Only handle search events from the active window.
+            guard self?.windowController?.window == notification.object as? NSWindow else { return }
+            self?.isSearching = true
+        }
+
+        self.searchEndObserver = NotificationCenter.default.addObserver(forName: .SearchDidEnd, object: nil,
+                                                                     queue: .main) { [weak self] notification in
+            // Only handle search events from the active window.
+            guard self?.windowController?.window == notification.object as? NSWindow else { return }
+            self?.isSearching = false
+        }
+    }
+
+    // MARK: - Search
+    private func enableMoveControls() {
+        // Only enable the controls if required.
+        guard self.deviceStatus == .manual else { return }
+        let moveControls: [NavigationMenubarItem] = [.moveUp, .moveDown, .moveClockwise, .moveCounterclockwise]
+        moveControls.forEach { $0.enable() }
+    }
+
+    private func disableMoveControls() {
+        let moveControls: [NavigationMenubarItem] = [.moveUp, .moveDown, .moveClockwise, .moveCounterclockwise]
+        moveControls.forEach { $0.disable() }
     }
 
     // MARK: - Navigation Menu

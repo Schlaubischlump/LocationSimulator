@@ -34,9 +34,6 @@ class WindowController: NSWindowController {
     /// The touchbar controller instance to handle the touchbar validation as well as the touchbar actions.
     @IBOutlet var touchbarController: TouchbarController!
 
-    /// The search popup controller instance to handle the search and displaying the results.
-    @IBOutlet var searchController: SearchPopupController!
-
     // MARK: - ViewController
 
     /// Reference to the SplitViewController

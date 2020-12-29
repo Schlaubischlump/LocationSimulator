@@ -883,7 +883,7 @@
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="1D925B39-EF9A-42C7-8D3C-BCD1550BDA48" explicitItemIdentifier="search" label="Search" paletteLabel="Search" sizingBehavior="auto" autovalidates="NO" id="4aF-Km-tnN">
                                     <nil key="toolTip"/>
-                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="dZ6-JS-ZNU" customClass="LocationSearchField" customModule="LocationSimulator" customModuleProvider="target">
+                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="dZ6-JS-ZNU">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="2dn-JM-FSR">
@@ -963,7 +963,6 @@
                         </touchBarItems>
                     </touchBar>
                     <connections>
-                        <outlet property="searchController" destination="QJc-xB-XcC" id="Aob-xw-ctj"/>
                         <outlet property="toolbarController" destination="NQO-h4-qY4" id="IKA-GH-DU4"/>
                         <outlet property="touchbarController" destination="inS-Zu-Xxv" id="nrW-UC-Nlp"/>
                         <segue destination="An9-GB-bXJ" kind="relationship" relationship="window.shadowedContentViewController" id="gyW-19-BgS"/>
@@ -992,12 +991,6 @@
                         <outlet property="moveTypeSegmentItem" destination="3I0-Yu-ztP" id="YEH-Dq-nfi"/>
                         <outlet property="resetLocationItem" destination="Lap-MN-cqZ" id="ddj-2s-JQ0"/>
                         <outlet property="windowController" destination="B8D-0N-5wS" id="wOJ-p6-AVy"/>
-                    </connections>
-                </customObject>
-                <customObject id="QJc-xB-XcC" customClass="SearchPopupController" customModule="LocationSimulator" customModuleProvider="target">
-                    <connections>
-                        <outlet property="searchField" destination="dZ6-JS-ZNU" id="jM7-3r-dMu"/>
-                        <outlet property="windowController" destination="B8D-0N-5wS" id="ibw-4l-f4A"/>
                     </connections>
                 </customObject>
                 <userDefaultsController representsSharedInstance="YES" id="ffy-JW-u3F"/>
