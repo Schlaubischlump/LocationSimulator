@@ -1,1 +1,1 @@
-![Screenshot](https://github.com/Schlaubischlump/LocationSimulator/blob/master/Preview/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/Schlaubischlump/LocationSimulator/master/Preview/screenshot.png)
