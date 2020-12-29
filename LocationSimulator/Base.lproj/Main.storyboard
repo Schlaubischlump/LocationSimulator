@@ -811,7 +811,7 @@
                         <rect key="contentRect" x="240" y="240" width="728" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
                         <value key="minSize" type="size" width="640" height="480"/>
-                        <toolbar key="toolbar" implicitIdentifier="85BEC97E-E606-461B-9DB8-F1B8A3EF02FF" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="ERa-CM-KNB">
+                        <toolbar key="toolbar" implicitIdentifier="85BEC97E-E606-461B-9DB8-F1B8A3EF02FF" displayMode="iconAndLabel" sizeMode="regular" id="ERa-CM-KNB">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="QDU-Z5-Bi7"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="lhf-dr-yMu"/>
