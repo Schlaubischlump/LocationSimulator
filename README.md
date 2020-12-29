@@ -6,7 +6,7 @@
 ![LocationSimulator screenshot](Preview/screenshot.png)
 [![License: GNU General Public License version 3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0)
 
-LocationSimulator is a macOS app which allows spoofing the location of an iOS device. The main target audience of this project are developers who want to test their location service based application. Of course you might as well use this app to spoof your location inside [PokemonGo](https://www.pokemongo.com), but don't blame me if you get banned. The method used to spoof your location is basically the same used by [PokemonGo Webspoof](https://github.com/iam4x/pokemongo-webspoof) (except that Xcode is not required) or [iSpoofer](https://www.ispoofer.com).
+LocationSimulator is a macOS app (10.15.x / 11.x) which allows spoofing the location of an iOS device. The main target audience of this project are developers who want to test their location service based application. Of course you might as well use this app to spoof your location inside [PokemonGo](https://www.pokemongo.com), but don't blame me if you get banned. The method used to spoof your location is basically the same used by [PokemonGo Webspoof](https://github.com/iam4x/pokemongo-webspoof) (except that Xcode is not required) or [iSpoofer](https://www.ispoofer.com).
 
 - [Background](#background)
 - [Features](#features)
@@ -55,7 +55,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 
 ### Requirements
 
-- macOS 10.13+
+- macOS 10.13+ (There might be bugs on 10.13 and 10.14)
 - Swift 5.0+
 - [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice)
 	- [libusbmuxd](https://github.com/libimobiledevice/libusbmuxd)
