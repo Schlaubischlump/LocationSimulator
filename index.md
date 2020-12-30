@@ -4,7 +4,7 @@ LocationSimulator is a macOS app (10.15.x / 11.x), licensed under the [GNU Gener
 
 # Install 
 
-Click on `Download .zip`, extract the file and run `LocationSimulator.app` by right-clicking on `open` to grant grant a Gatekeeper exception.
+Click on `Download .zip`, extract the file and run `LocationSimulator.app` by right-clicking on `open` to grant a Gatekeeper exception.
 
 Alternatively you can use homebrew to install LocationSimulator. The version can be slightly outdated, when installed this way.
 
@@ -31,3 +31,48 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 - Support network devices.
 - Search for locations.
 - Support dark mode.
+
+# Changelog
+
+### v0.1.7
+- Drop official support for 10.13 / 10.14
+- New deivce sidebar
+- Confirm teleportation option
+- New search Popup
+- Code cleanup
+- Bug fixes
+
+### v0.1.6
+- Open GPX files
+- Provide the foundation to support TvOS and WatchOS DevleoperDiskImages
+- New movement control to better fit the macOS design language (macOS 11)
+- Use mac location button to set the spoofed location to your macOS location
+- Add a fallback download URL, to support new iOS versions without updating LocationSimulator
+- Move Licenses to preference window
+- Bug fixes
+
+### v0.1.5
+- New device backend
+- Wi-Fi / USB indicator
+- Application settings
+- Bug fixes
+- UI fixes for Big Sur
+- Fix macOS 10.13/10.14
+
+### v0.1.4
+- Fix search popup does not disappear when searchfield is cleared
+- Fix searchField not working on Big Sur
+- Fix dark mode not working on Big Sur
+- Add iOS 14.1 download link
+
+### v0.1.3
+- Fix the iOS 12 download links
+- Fix image mount error on iOS 14.0
+
+### v0.1.2
+- Fix a bug where the location search popup was not updated correctly or did not appear at all.
+- Fix a bug where the speed was calculated incorrectly.
+- Update DeveloperDiskImage.plist to support versions up to iOS 13.7 and iOS 14.0.
+
+### v0.1.1
+- Initial version
