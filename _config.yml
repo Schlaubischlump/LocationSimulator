@@ -1,4 +1,4 @@
-remote_theme: SchlaubiSchlump/cayman
+theme: jekyll-theme-cayman
 show_downloads: "true"
 github:
   zip_url: https://github.com/Schlaubischlump/LocationSimulator/releases/download/v0.1.7/LocationSimulator.app.zip
