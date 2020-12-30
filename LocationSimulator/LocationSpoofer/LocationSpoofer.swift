@@ -64,8 +64,9 @@ class LocationSpoofer {
     /// specified, the automove feature will automatically follow along this path.
     public var moveState: MoveState = .manual {
         willSet {
-            DispatchQueue.main.async {
-                self.delegate?.willChangeMoveState(spoofer: self, moveState: self.moveState)
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.delegate?.willChangeMoveState(spoofer: strongSelf, moveState: strongSelf.moveState)
             }
         }
         didSet {
@@ -77,8 +78,9 @@ class LocationSpoofer {
                 self.route = []
             }
 
-            DispatchQueue.main.async {
-                self.delegate?.didChangeMoveState(spoofer: self, moveState: self.moveState)
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.delegate?.didChangeMoveState(spoofer: strongSelf, moveState: strongSelf.moveState)
             }
         }
     }
@@ -86,13 +88,15 @@ class LocationSpoofer {
     /// The current move type which defines the speed. The available types are: walk, cycle and drive.
     public var moveType: MoveType = .walk {
         willSet {
-            DispatchQueue.main.async {
-                self.delegate?.willChangeMoveType(spoofer: self, moveType: self.moveType)
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.delegate?.willChangeMoveType(spoofer: strongSelf, moveType: strongSelf.moveType)
             }
         }
         didSet {
-            DispatchQueue.main.async {
-                self.delegate?.didChangeMoveType(spoofer: self, moveType: self.moveType)
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.delegate?.didChangeMoveType(spoofer: strongSelf, moveType: strongSelf.moveType)
             }
         }
     }
@@ -140,21 +144,22 @@ class LocationSpoofer {
         // disable automoving
         self.moveState = .manual
 
-        dispatchQueue.async {
+        dispatchQueue.async { [weak self] in
             // try to reset the location
-            let success: Bool = self.device.disableSimulation()
+            let success: Bool = self?.device.disableSimulation() ?? false
             if success {
-                self.totalDistance = 0.0
-                self.currentLocation = nil
+                self?.totalDistance = 0.0
+                self?.currentLocation = nil
             }
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
                 if success {
-                    self.delegate?.didChangeLocation(spoofer: self, toCoordinate: nil)
+                    strongSelf.delegate?.didChangeLocation(spoofer: strongSelf, toCoordinate: nil)
                 } else {
-                    self.delegate?.errorChangingLocation(spoofer: self, toCoordinate: nil)
+                    strongSelf.delegate?.errorChangingLocation(spoofer: strongSelf, toCoordinate: nil)
                 }
-                self.hasPendingTask = false
+                self?.hasPendingTask = false
             }
         }
     }
@@ -193,23 +198,24 @@ class LocationSpoofer {
         // inform delegate that the location will change
         self.delegate?.willChangeLocation(spoofer: self, toCoordinate: coordinate)
 
-        dispatchQueue.async {
+        dispatchQueue.async { [weak self] in
             // try to simulate the location on the device
-            let success: Bool = self.device.simulateLocation(coordinate)
+            let success: Bool = self?.device.simulateLocation(coordinate) ?? false
             if success {
-                self.totalDistance += self.currentLocation?.distanceTo(coordinate: coordinate) ?? 0
-                self.currentLocation = coordinate
+                self?.totalDistance += self?.currentLocation?.distanceTo(coordinate: coordinate) ?? 0
+                self?.currentLocation = coordinate
             }
 
             // call the completion block and inform the delegate about the change
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
                 completion(success)
                 if success {
-                    self.delegate?.didChangeLocation(spoofer: self, toCoordinate: coordinate)
+                    strongSelf.delegate?.didChangeLocation(spoofer: strongSelf, toCoordinate: coordinate)
                 } else {
-                    self.delegate?.errorChangingLocation(spoofer: self, toCoordinate: coordinate)
+                    strongSelf.delegate?.errorChangingLocation(spoofer: strongSelf, toCoordinate: coordinate)
                 }
-                self.hasPendingTask = false
+                strongSelf.hasPendingTask = false
             }
         }
     }
@@ -313,16 +319,18 @@ class LocationSpoofer {
         let time = DispatchTime.now().uptimeNanoseconds
 
         // send the new location information
-        self.setLocation(nextLocation) { successfull in
+        self.setLocation(nextLocation) { [weak self] successfull in
             // cancel automove if the location could no be changed
-            guard successfull else { return }
+            guard successfull, let strongSelf = self else { return }
 
             // reschedule ourself
-            if self.moveState == .auto {
-                self.autoMoveTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoMoveDuration), target: self,
-                                                          selector: #selector(self.move(timer:appendToPendingTasks:)),
-                                                          userInfo: ["time": time],
-                                                          repeats: false)
+            if strongSelf.moveState == .auto {
+                strongSelf.autoMoveTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoMoveDuration),
+                                                                target: strongSelf,
+                                                                selector: #selector(strongSelf
+                                                                    .move(timer:appendToPendingTasks:)),
+                                                                userInfo: ["time": time],
+                                                                repeats: false)
             }
         }
     }

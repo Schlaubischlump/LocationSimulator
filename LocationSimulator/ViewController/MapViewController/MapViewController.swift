@@ -5,6 +5,7 @@
 //  Created by David Klopp on 18.08.19.
 //  Copyright © 2019 David Klopp. All rights reserved.
 //
+// Using [weak self] should in theory prevent deallocated MapViewController to send notifications
 
 // TODO: Fix location spoofing is working although the dev disk image is not marked as uploaded
 // TODO: Fix UI blocks when the developer disk image is uploaded.
@@ -91,7 +92,8 @@ class MapViewController: NSViewController {
     /// Register all actions for the controls in the lower left corner.
     private func registerControlsHUDActions() {
         // Add the movement button click action to move.
-        self.contentView?.movementButtonHUD.clickAction = { [unowned self] in
+        self.contentView?.movementButtonHUD.clickAction = { [weak self] in
+            guard let `self` = self else { return }
             self.view.window?.makeFirstResponder(self.mapView)
 
             switch self.spoofer?.moveState {
@@ -101,7 +103,8 @@ class MapViewController: NSViewController {
             }
         }
         // Add the movement button long press action to automove.
-        self.contentView?.movementButtonHUD.longPressAction = { [unowned self] in
+        self.contentView?.movementButtonHUD.longPressAction = { [weak self] in
+            guard let `self` = self else { return }
             self.view.window?.makeFirstResponder(self.mapView)
 
             switch self.spoofer?.moveState {
@@ -115,27 +118,28 @@ class MapViewController: NSViewController {
             }
         }
         // Add the callback when the heading changes
-        self.contentView?.movementDirectionHUD.headingChangedAction = { [unowned self] in
+        self.contentView?.movementDirectionHUD.headingChangedAction = { [weak self] in
+            guard let `self` = self else { return }
             // Update the location spoofer heading
             self.spoofer?.heading = self.mapView.camera.heading - self.getDirectionViewAngle()
         }
         // Add a reconnect action when clicking the error Indicator.
-        self.contentView?.errorIndicationAction = { [unowned self] in
-            self.connectDevice()
+        self.contentView?.errorIndicationAction = { [weak self] in
+            self?.connectDevice()
         }
     }
 
     /// Register callbacks for all mapView actions.
     private func registerMapViewActions() {
-        let mapViewAction = { [unowned self] (src: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
+        let mapViewAction = { [weak self] (src: CLLocationCoordinate2D?, dst: CLLocationCoordinate2D) -> Void in
             if src == nil {
                 // There is no current location => we can only teleport
-                self.spoofer?.setLocation(dst)
+                self?.spoofer?.setLocation(dst)
             } else {
                 // There is a current location => ask the user to either teleport or navigate
-                self.requestTeleportOrNavigation(toCoordinate: dst)
+                self?.requestTeleportOrNavigation(toCoordinate: dst)
             }
-            self.view.window?.makeFirstResponder(self.mapView)
+            self?.view.window?.makeFirstResponder(self?.mapView)
         }
         // Callback when the mapView is long pressed. Navigate or teleport to the new locatiom if possible.
         self.mapView.longPressAction = mapViewAction
@@ -307,10 +311,10 @@ class MapViewController: NSViewController {
         // indicate work while we calculate the route
         self.contentView?.startSpinner()
         // calulate the route to the destination
-        currentLoc.calculateRouteTo(coord, transportType: transportType) { [unowned self] route in
+        currentLoc.calculateRouteTo(coord, transportType: transportType) { [weak self] route in
             // set the current route to follow
             spoofer.route = route + additionalRoute
-            self.contentView?.stopSpinner()
+            self?.contentView?.stopSpinner()
             // start automoving
             spoofer.moveState = .auto
             spoofer.move()
@@ -331,19 +335,19 @@ class MapViewController: NSViewController {
         let showNavigation = self.spoofer?.currentLocation != nil
         // Ask the user what to do.
         let alert = CoordinateSelectionAlert(showNavigationButton: showNavigation, showUserInput: showUserInput)
-        alert.beginSheetModal(for: window) { [unowned self] response, userCoord in
-            self.isShowingAlert = false
+        alert.beginSheetModal(for: window) { [weak self] response, userCoord in
+            self?.isShowingAlert = false
             // Make sure the spoofer still exists and no unexpected error occured.
-            guard let spoofer = self.spoofer, let dstCoord = userCoord ?? coord else { return }
+            guard let spoofer = self?.spoofer, let dstCoord = userCoord ?? coord else { return }
             switch response {
             // Cancel => set the location to the current one, in case the marker was dragged
-            case .cancel:   self.didChangeLocation(spoofer: spoofer, toCoordinate: spoofer.currentLocation)
+            case .cancel:   self?.didChangeLocation(spoofer: spoofer, toCoordinate: spoofer.currentLocation)
             // Navigate to the target coordinates
-            case .navigate: self.navigate(toCoordinate: dstCoord)
+            case .navigate: self?.navigate(toCoordinate: dstCoord)
             // Teleport to the new location and save the recent location
             case .teleport:
                 spoofer.setLocation(dstCoord)
-                self.menubarController?.addLocation(dstCoord)
+                self?.menubarController?.addLocation(dstCoord)
             default: break
             }
         }
@@ -362,25 +366,25 @@ class MapViewController: NSViewController {
         }
         let showNavigation = self.spoofer?.currentLocation != nil
         let alert = CoordinateSelectionAlert(showNavigationButton: showNavigation, showUserInput: false)
-        alert.beginSheetModal(for: window) {[unowned self] response, _ in
-            self.isShowingAlert = false
+        alert.beginSheetModal(for: window) {[weak self] response, _ in
+            self?.isShowingAlert = false
             switch response {
             ///Teleport to the start of the route and contiune the navigation from there on.
             case .teleport:
                 guard let startCoord = route.first else { return }
                 // Update the Recent location menu.
-                self.menubarController?.addLocation(startCoord)
-                self.spoofer?.currentLocation = startCoord
+                self?.menubarController?.addLocation(startCoord)
+                self?.spoofer?.currentLocation = startCoord
                 // start navigating from the start of the route
-                self.spoofer?.moveState = .manual
-                self.spoofer?.route = route
-                self.spoofer?.moveState = .auto
-                self.spoofer?.move()
+                self?.spoofer?.moveState = .manual
+                self?.spoofer?.route = route
+                self?.spoofer?.moveState = .auto
+                self?.spoofer?.move()
             // Navigate to the first coordinate and continue the navigation with the rest of the route.
             case .navigate:
                 var route = route
                 let startCoord = route.removeFirst()
-                self.navigate(toCoordinate: startCoord, additionalRoute: route)
+                self?.navigate(toCoordinate: startCoord, additionalRoute: route)
             default: break
             }
         }
