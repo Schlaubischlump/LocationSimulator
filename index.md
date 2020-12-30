@@ -43,21 +43,21 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 - Bug fixes
 
 ### v0.1.6
-- Open GPX files
-- Provide the foundation to support TvOS and WatchOS DevleoperDiskImages
-- New movement control to better fit the macOS design language (macOS 11)
-- Use mac location button to set the spoofed location to your macOS location
 - Add a fallback download URL, to support new iOS versions without updating LocationSimulator
+- Use mac location button to set the spoofed location to your macOS location
+- New movement control to better fit the macOS design language (macOS 11)
+- Provide the foundation to support TvOS and WatchOS DevleoperDiskImages
 - Move Licenses to preference window
+- Open GPX files
 - Bug fixes
 
 ### v0.1.5
-- New device backend
+- Fix macOS 10.13/10.14
 - Wi-Fi / USB indicator
 - Application settings
-- Bug fixes
 - UI fixes for Big Sur
-- Fix macOS 10.13/10.14
+- New device backend
+- Bug fixes
 
 ### v0.1.4
 - Fix search popup does not disappear when searchfield is cleared
@@ -70,9 +70,9 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 - Fix image mount error on iOS 14.0
 
 ### v0.1.2
-- Fix a bug where the location search popup was not updated correctly or did not appear at all.
-- Fix a bug where the speed was calculated incorrectly.
-- Update DeveloperDiskImage.plist to support versions up to iOS 13.7 and iOS 14.0.
+- Fix a bug where the location search popup was not updated correctly or did not appear at all
+- Update DeveloperDiskImage.plist to support versions up to iOS 13.7 and iOS 14.0
+- Fix a bug where the speed was calculated incorrectly
 
 ### v0.1.1
 - Initial version
