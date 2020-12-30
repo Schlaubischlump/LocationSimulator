@@ -6,11 +6,10 @@
 //  Copyright © 2020 David Klopp. All rights reserved.
 //
 
-// TODO: Disable the navigation if the search is active.
-
 import AppKit
 
-let kProjectWebsite = "https://github.com/Schlaubischlump/LocationSimulator"
+let kProjectWebsite = "https://schlaubischlump.github.io/LocationSimulator/"
+let kGithubWebseite = "https://github.com/Schlaubischlump/LocationSimulator"
 
 class MenubarController: NSResponder {
     /// The notification observer for status changes.
@@ -251,7 +250,7 @@ class MenubarController: NSResponder {
 
     /// Open the report an issue website in a browser.
     @IBAction func reportBugPage(_ sender: Any) {
-        if let url = URL(string: kProjectWebsite + "/issues") {
+        if let url = URL(string: kGithubWebseite + "/issues") {
             NSWorkspace.shared.open(url)
         }
     }
