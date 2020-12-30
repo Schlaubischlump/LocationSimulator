@@ -36,8 +36,8 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 ### v0.1.7
 - Drop official support for 10.13 / 10.14
-- New device sidebar
 - Confirm teleportation option
+- New device sidebar
 - New search Popup
 - Code cleanup
 - Bug fixes
