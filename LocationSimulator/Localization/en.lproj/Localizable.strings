@@ -8,7 +8,7 @@
 
 // MARK: - Preferences (Info Tab)
 "WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.";
-"CHANGELOG" = "Changes in this version are:\n\n1. New Sidebar\n2. Open GPX files\n3. Confirm Teleportation option\n4. Use current mac location as spoofed location\n5. Fallback download URL for DeveloperDiskImages\n6. Bug fixes\n";
+"CHANGELOG" = "Changes in this version are:\n\n1. App Sandbox support\n2.German localization\n3. Bug fixes\n";
 
 // MARK: - General
 // Total distance label in the bottom bar.

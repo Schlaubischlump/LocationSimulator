@@ -940,6 +940,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
@@ -977,6 +978,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
@@ -1070,6 +1072,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,

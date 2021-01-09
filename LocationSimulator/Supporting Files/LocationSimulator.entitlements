@@ -6,6 +6,8 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array/>
+	<key>com.apple.security.cs.disable-library-validation</key>
+	<true/>
 	<key>com.apple.security.device.usb</key>
 	<true/>
 	<key>com.apple.security.files.user-selected.read-only</key>
@@ -16,8 +18,6 @@
 	<true/>
 	<key>com.apple.security.personal-information.location</key>
 	<true/>
-	<key>com.apple.security.temporary-exception.files.absolute-path.read-write</key>
-	<array/>
 	<key>com.apple.security.temporary-exception.sbpl</key>
 	<array>
 		<string>(allow network-outbound (literal "/private/var/run/usbmuxd"))</string>
