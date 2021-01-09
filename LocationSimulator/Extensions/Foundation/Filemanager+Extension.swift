@@ -38,7 +38,6 @@ extension FileManager {
         if !create || self.createFolder(atUrl: appSupportDir) {
             return appSupportDir
         }
-
         return appSupportDir
     }
 
