@@ -20,7 +20,9 @@ class InfoViewController: NSViewController {
         infoField.isBezeled = false
 
         // Add the welcome text and resize the view
-        infoField.stringValue = "\n" + NSLocalizedString("WELCOME", comment: "") + "\n"
+        let welcomeString = NSLocalizedString("WELCOME", comment: "")
+        let changelogString = NSLocalizedString("CHANGELOG", comment: "")
+        infoField.stringValue = "\n" + welcomeString + "\n" + changelogString + "\n"
         infoField.sizeToFit()
 
         // Add some padding to the left and right

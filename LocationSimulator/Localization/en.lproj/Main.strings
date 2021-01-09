@@ -1,4 +1,13 @@
 
+/* Class = "NSSegmentedCell"; 1NT-QT-ght.ibShadowedLabels[0] = "Walk"; ObjectID = "1NT-QT-ght"; */
+"1NT-QT-ght.ibShadowedLabels[0]" = "Walk";
+
+/* Class = "NSSegmentedCell"; 1NT-QT-ght.ibShadowedLabels[1] = "Cycle"; ObjectID = "1NT-QT-ght"; */
+"1NT-QT-ght.ibShadowedLabels[1]" = "Cycle";
+
+/* Class = "NSSegmentedCell"; 1NT-QT-ght.ibShadowedLabels[2] = "Drive"; ObjectID = "1NT-QT-ght"; */
+"1NT-QT-ght.ibShadowedLabels[2]" = "Drive";
+
 /* Class = "NSMenuItem"; title = "Customize Toolbar…"; ObjectID = "1UK-8n-QPP"; */
 "1UK-8n-QPP.title" = "Customize Toolbar…";
 
@@ -17,11 +26,11 @@
 /* Class = "NSMenuItem"; title = "Transformations"; ObjectID = "2oI-Rn-ZJC"; */
 "2oI-Rn-ZJC.title" = "Transformations";
 
-/* Class = "NSWindow"; title = "Window"; ObjectID = "36H-n2-BDh"; */
-"36H-n2-BDh.title" = "Window";
-
 /* Class = "NSMenu"; title = "Spelling"; ObjectID = "3IN-sU-3Bg"; */
 "3IN-sU-3Bg.title" = "Spelling";
+
+/* Class = "NSTextFieldCell"; title = "Always ask before teleporting."; ObjectID = "3Kt-Um-S7h"; */
+"3Kt-Um-S7h.title" = "Always ask before teleporting.";
 
 /* Class = "NSMenuItem"; title = "Use Default"; ObjectID = "3Om-Ey-2VK"; */
 "3Om-Ey-2VK.title" = "Use Default";
@@ -47,6 +56,12 @@
 /* Class = "NSMenuItem"; title = "Quit LocationSimulator"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Quit LocationSimulator";
 
+/* Class = "NSButtonCell"; title = "Prefer network devices"; ObjectID = "58b-rt-Ol9"; */
+"58b-rt-Ol9.title" = "Prefer network devices";
+
+/* Class = "NSButtonCell"; title = "Allow network devices"; ObjectID = "5ME-ma-VHG"; */
+"5ME-ma-VHG.title" = "Allow network devices";
+
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
 "5QF-Oa-p0T.title" = "Edit";
 
@@ -56,11 +71,20 @@
 /* Class = "NSMenuItem"; title = "About LocationSimulator"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "About LocationSimulator";
 
+/* Class = "NSMenuItem"; title = "Recent Locations"; ObjectID = "6C4-QV-f6L"; */
+"6C4-QV-f6L.title" = "Recent Locations";
+
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "6dh-zS-Vam"; */
 "6dh-zS-Vam.title" = "Redo";
 
 /* Class = "NSMenuItem"; title = "Correct Spelling Automatically"; ObjectID = "78Y-hA-62v"; */
 "78Y-hA-62v.title" = "Correct Spelling Automatically";
+
+/* Class = "NSMenuItem"; title = "Drive"; ObjectID = "7E4-fJ-nHN"; */
+"7E4-fJ-nHN.title" = "Drive";
+
+/* Class = "NSViewController"; title = "Network"; ObjectID = "7gW-SW-Mts"; */
+"7gW-SW-Mts.title" = "Network";
 
 /* Class = "NSMenu"; title = "Writing Direction"; ObjectID = "8mr-sm-Yjd"; */
 "8mr-sm-Yjd.title" = "Writing Direction";
@@ -73,9 +97,6 @@
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
-
-/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "BF4-i1-cE7"; */
-"BF4-i1-cE7.title" = "Cancel";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Preferences…";
@@ -95,14 +116,26 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Help";
 
+/* Class = "NSMenuItem"; title = "Open Project Page"; ObjectID = "FIq-gG-PQ6"; */
+"FIq-gG-PQ6.title" = "Open Project Page";
+
 /* Class = "NSMenuItem"; title = "LocationSimulator Help"; ObjectID = "FKE-Sm-Kum"; */
 "FKE-Sm-Kum.title" = "LocationSimulator Help";
+
+/* Class = "NSMenuItem"; title = "Use Mac Location"; ObjectID = "FSp-F9-NBr"; */
+"FSp-F9-NBr.title" = "Use Mac Location";
 
 /* Class = "NSMenuItem"; title = "Text"; ObjectID = "Fal-I4-PZk"; */
 "Fal-I4-PZk.title" = "Text";
 
+/* Class = "NSMenuItem"; title = "Walk"; ObjectID = "FcQ-9J-hOu"; */
+"FcQ-9J-hOu.title" = "Walk";
+
 /* Class = "NSMenu"; title = "Substitutions"; ObjectID = "FeM-D8-WVr"; */
 "FeM-D8-WVr.title" = "Substitutions";
+
+/* Class = "NSMenuItem"; title = "Cycle"; ObjectID = "Fr9-v0-Je1"; */
+"Fr9-v0-Je1.title" = "Cycle";
 
 /* Class = "NSMenuItem"; title = "Bold"; ObjectID = "GB9-OM-e27"; */
 "GB9-OM-e27.title" = "Bold";
@@ -112,6 +145,12 @@
 
 /* Class = "NSMenuItem"; title = "Use Default"; ObjectID = "GUa-eO-cwY"; */
 "GUa-eO-cwY.title" = "Use Default";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Current Location"; ObjectID = "Gar-ru-IyF"; */
+"Gar-ru-IyF.paletteLabel" = "Current Location";
+
+/* Class = "NSToolbarItem"; toolTip = "Set PC location to current location"; ObjectID = "Gar-ru-IyF"; */
+"Gar-ru-IyF.toolTip" = "Set PC location to current location";
 
 /* Class = "NSMenuItem"; title = "Font"; ObjectID = "Gi5-1S-RQB"; */
 "Gi5-1S-RQB.title" = "Font";
@@ -128,10 +167,10 @@
 /* Class = "NSMenuItem"; title = "Show Spelling and Grammar"; ObjectID = "HFo-cy-zxI"; */
 "HFo-cy-zxI.title" = "Show Spelling and Grammar";
 
-/* Class = "NSToolbarItem"; paletteLabel = "Current Location"; ObjectID = "HdA-HT-jQN"; */
+/* Class = "NSToolbarItem"; paletteLabel = "Autofocus Location"; ObjectID = "HdA-HT-jQN"; */
 "HdA-HT-jQN.paletteLabel" = "Autofocus Location";
 
-/* Class = "NSToolbarItem"; toolTip = "Autofocus to current location"; ObjectID = "HdA-HT-jQN"; */
+/* Class = "NSToolbarItem"; toolTip = "Autofocus current location"; ObjectID = "HdA-HT-jQN"; */
 "HdA-HT-jQN.toolTip" = "Autofocus current location";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "HyV-fh-RgO"; */
@@ -140,14 +179,20 @@
 /* Class = "NSMenuItem"; title = "Subscript"; ObjectID = "I0S-gh-46l"; */
 "I0S-gh-46l.title" = "Subscript";
 
-/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "IAo-SY-fd9"; */
+/* Class = "NSMenuItem"; title = "Open GPX File…"; ObjectID = "IAo-SY-fd9"; */
 "IAo-SY-fd9.title" = "Open GPX File…";
+
+/* Class = "NSTextFieldCell"; title = "Always use the network connection even if a device is connected over the network."; ObjectID = "IjJ-2W-bRZ"; */
+"IjJ-2W-bRZ.title" = "Always use the network connection even if a device is connected over the network.";
 
 /* Class = "NSMenuItem"; title = "Justify"; ObjectID = "J5U-5w-g23"; */
 "J5U-5w-g23.title" = "Justify";
 
 /* Class = "NSMenuItem"; title = "Use None"; ObjectID = "J7y-lM-qPV"; */
 "J7y-lM-qPV.title" = "Use None";
+
+/* Class = "NSImageView"; ibShadowedToolTip = "Device not paired."; ObjectID = "JDL-Z8-47m"; */
+"JDL-Z8-47m.ibShadowedToolTip" = "Device not paired.";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Reset"; ObjectID = "K12-Gb-eXb"; */
 "K12-Gb-eXb.paletteLabel" = "Reset";
@@ -161,8 +206,14 @@
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Show All";
 
+/* Class = "NSMenuItem"; title = "Report a Bug"; ObjectID = "L0Z-ob-Iva"; */
+"L0Z-ob-Iva.title" = "Report a Bug";
+
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
 "LE2-aR-0XJ.title" = "Bring All to Front";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "LRi-RR-hfc"; */
+"LRi-RR-hfc.title" = "Text Cell";
 
 /* Class = "NSMenuItem"; title = "Paste Ruler"; ObjectID = "LVM-kO-fVI"; */
 "LVM-kO-fVI.title" = "Paste Ruler";
@@ -182,6 +233,9 @@
 /* Class = "NSSegmentedCell"; Mrg-VI-6Bg.ibShadowedLabels[2] = "Drive"; ObjectID = "Mrg-VI-6Bg"; */
 "Mrg-VI-6Bg.ibShadowedLabels[2]" = "Drive";
 
+/* Class = "NSTabViewItem"; label = "License"; ObjectID = "N3V-fj-rsh"; */
+"N3V-fj-rsh.label" = "License";
+
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Services";
 
@@ -194,20 +248,20 @@
 /* Class = "NSMenuItem"; title = "Baseline"; ObjectID = "OaQ-X3-Vso"; */
 "OaQ-X3-Vso.title" = "Baseline";
 
-/* Class = "NSToolbarItem"; label = "Devices"; ObjectID = "Of5-OJ-NeV"; */
-"Of5-OJ-NeV.label" = "Devices";
-
-/* Class = "NSToolbarItem"; paletteLabel = "Devices"; ObjectID = "Of5-OJ-NeV"; */
-"Of5-OJ-NeV.paletteLabel" = "Devices";
-
 /* Class = "NSMenuItem"; title = "Hide LocationSimulator"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Hide LocationSimulator";
+
+/* Class = "NSTextFieldCell"; title = "HEADER CELL"; ObjectID = "OoK-EQ-Yxq"; */
+"OoK-EQ-Yxq.title" = "HEADER CELL";
 
 /* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "OwM-mh-QMV"; */
 "OwM-mh-QMV.title" = "Find Previous";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "Oyz-dy-DGm"; */
 "Oyz-dy-DGm.title" = "Stop Speaking";
+
+/* Class = "NSMenuItem"; title = "Rotate Clockwise"; ObjectID = "P6M-6B-WyS"; */
+"P6M-6B-WyS.title" = "Rotate Clockwise";
 
 /* Class = "NSMenuItem"; title = "Bigger"; ObjectID = "Ptp-SP-VEL"; */
 "Ptp-SP-VEL.title" = "Bigger";
@@ -230,8 +284,14 @@
 /* Class = "NSMenuItem"; title = "Jump to Selection"; ObjectID = "S0p-oC-mLd"; */
 "S0p-oC-mLd.title" = "Jump to Selection";
 
+/* Class = "NSBox"; title = "Box"; ObjectID = "T9r-7L-rgY"; */
+"T9r-7L-rgY.title" = "Box";
+
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "Message"; ObjectID = "U2d-pp-GIv"; */
+"U2d-pp-GIv.title" = "Message";
 
 /* Class = "NSMenuItem"; title = "Capitalize"; ObjectID = "UEZ-Bs-lqG"; */
 "UEZ-Bs-lqG.title" = "Capitalize";
@@ -269,11 +329,17 @@
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "Ynk-f8-cLZ"; */
 "Ynk-f8-cLZ.title" = "Start Speaking";
 
+/* Class = "NSMenuItem"; title = "Set Location..."; ObjectID = "Z3Z-Tm-ifV"; */
+"Z3Z-Tm-ifV.title" = "Set Location...";
+
 /* Class = "NSMenuItem"; title = "Align Left"; ObjectID = "ZM1-6Q-yy1"; */
 "ZM1-6Q-yy1.title" = "Align Left";
 
 /* Class = "NSMenuItem"; title = "Paragraph"; ObjectID = "ZvO-Gk-QUH"; */
 "ZvO-Gk-QUH.title" = "Paragraph";
+
+/* Class = "NSTabViewItem"; label = "General"; ObjectID = "Zw5-Ce-8bO"; */
+"Zw5-Ce-8bO.label" = "General";
 
 /* Class = "NSMenuItem"; title = "Print…"; ObjectID = "aTl-1u-JFS"; */
 "aTl-1u-JFS.title" = "Print…";
@@ -311,6 +377,9 @@
 /* Class = "NSToolbarItem"; paletteLabel = "Move Types"; ObjectID = "d4p-ja-QrK"; */
 "d4p-ja-QrK.paletteLabel" = "Move Types";
 
+/* Class = "NSMenuItem"; title = "Navigation"; ObjectID = "d6a-XJ-xTQ"; */
+"d6a-XJ-xTQ.title" = "Navigation";
+
 /* Class = "NSMenuItem"; title = "Make Lower Case"; ObjectID = "d9M-CD-aMd"; */
 "d9M-CD-aMd.title" = "Make Lower Case";
 
@@ -323,11 +392,29 @@
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "dRJ-4n-Yzg"; */
 "dRJ-4n-Yzg.title" = "Undo";
 
-/* Class = "NSTextFieldCell"; title = "Status 2"; ObjectID = "fGL-KP-wgK"; */
-"fGL-KP-wgK.title" = "Status 2";
+/* Class = "NSViewController"; title = "General"; ObjectID = "eae-4P-ykM"; */
+"eae-4P-ykM.title" = "General";
+
+/* Class = "NSTabViewItem"; label = "Info"; ObjectID = "fCK-nG-5Tl"; */
+"fCK-nG-5Tl.label" = "Info";
+
+/* Class = "NSMenuItem"; title = "Toggle Automove"; ObjectID = "fpP-7o-78x"; */
+"fpP-7o-78x.title" = "Toggle Automove";
+
+/* Class = "NSTextFieldCell"; title = "Disable this option to only allow USB devices."; ObjectID = "gTa-OC-mjf"; */
+"gTa-OC-mjf.title" = "Disable this option to only allow USB devices.";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "gTw-tO-wCd"; */
+"gTw-tO-wCd.title" = "Window";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "gVA-U4-sdL"; */
 "gVA-U4-sdL.title" = "Paste";
+
+/* Class = "NSTabViewItem"; label = "Network"; ObjectID = "gbr-Wo-Ace"; */
+"gbr-Wo-Ace.label" = "Network";
+
+/* Class = "NSMenuItem"; title = "Reset Location"; ObjectID = "hEy-d1-5LR"; */
+"hEy-d1-5LR.title" = "Reset Location";
 
 /* Class = "NSMenuItem"; title = "Smart Quotes"; ObjectID = "hQb-2v-fYv"; */
 "hQb-2v-fYv.title" = "Smart Quotes";
@@ -344,6 +431,9 @@
 /* Class = "NSMenu"; title = "Baseline"; ObjectID = "ijk-EB-dga"; */
 "ijk-EB-dga.title" = "Baseline";
 
+/* Class = "NSButtonCell"; title = "Confirm Teleportation"; ObjectID = "isp-Tm-ft7"; */
+"isp-Tm-ft7.title" = "Confirm Teleportation";
+
 /* Class = "NSMenuItem"; title = "Kern"; ObjectID = "jBQ-r6-VK2"; */
 "jBQ-r6-VK2.title" = "Kern";
 
@@ -353,8 +443,14 @@
 /* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
 "jxT-CU-nIS.title" = "Format";
 
+/* Class = "NSMenu"; title = "Recent Locations"; ObjectID = "kAM-hM-6pv"; */
+"kAM-hM-6pv.title" = "Recent Locations";
+
 /* Class = "NSMenuItem"; title = "Show Sidebar"; ObjectID = "kIP-vf-haE"; */
 "kIP-vf-haE.title" = "Show Sidebar";
+
+/* Class = "NSMenuItem"; title = "Rotate Counterclockwise"; ObjectID = "laX-cb-Fmd"; */
+"laX-cb-Fmd.title" = "Rotate Counterclockwise";
 
 /* Class = "NSMenuItem"; title = "Check Grammar With Spelling"; ObjectID = "mK6-2p-4JG"; */
 "mK6-2p-4JG.title" = "Check Grammar With Spelling";
@@ -362,11 +458,17 @@
 /* Class = "NSMenuItem"; title = "Ligatures"; ObjectID = "o6e-r0-MWq"; */
 "o6e-r0-MWq.title" = "Ligatures";
 
+/* Class = "NSMenuItem"; title = "Move Up"; ObjectID = "oPn-mE-IJS"; */
+"oPn-mE-IJS.title" = "Move Up";
+
 /* Class = "NSMenu"; title = "Open Recent"; ObjectID = "oas-Oc-fiZ"; */
 "oas-Oc-fiZ.title" = "Open Recent";
 
 /* Class = "NSMenuItem"; title = "Loosen"; ObjectID = "ogc-rX-tC1"; */
 "ogc-rX-tC1.title" = "Loosen";
+
+/* Class = "NSMenuItem"; title = "Stop Navigation"; ObjectID = "pTJ-Ut-Hkv"; */
+"pTJ-Ut-Hkv.title" = "Stop Navigation";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "pa3-QI-u2k"; */
 "pa3-QI-u2k.title" = "Delete";
@@ -380,17 +482,26 @@
 /* Class = "NSMenuItem"; title = "Page Setup…"; ObjectID = "qIS-W8-SiK"; */
 "qIS-W8-SiK.title" = "Page Setup…";
 
-/* Class = "NSTextFieldCell"; title = "Status 1"; ObjectID = "rLz-LV-XVO"; */
-"rLz-LV-XVO.title" = "Status 1";
-
 /* Class = "NSMenuItem"; title = "Check Spelling While Typing"; ObjectID = "rbD-Rh-wIN"; */
 "rbD-Rh-wIN.title" = "Check Spelling While Typing";
+
+/* Class = "NSMenu"; title = "Navigation"; ObjectID = "rdu-o6-dXR"; */
+"rdu-o6-dXR.title" = "Navigation";
 
 /* Class = "NSMenuItem"; title = "Smart Dashes"; ObjectID = "rgM-f4-ycn"; */
 "rgM-f4-ycn.title" = "Smart Dashes";
 
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "sid-3B-o4l"; */
+"sid-3B-o4l.title" = "Table View Cell";
+
+/* Class = "NSMenuItem"; title = "Clear Menu"; ObjectID = "smy-uq-jUo"; */
+"smy-uq-jUo.title" = "Clear Menu";
+
 /* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "snW-S8-Cw5"; */
 "snW-S8-Cw5.title" = "Show Toolbar";
+
+/* Class = "NSTextFieldCell"; title = "Total distance: 0.0km"; ObjectID = "tGq-gI-j9V"; */
+"tGq-gI-j9V.title" = "Total distance: 0.0km";
 
 /* Class = "NSMenuItem"; title = "Data Detectors"; ObjectID = "tRr-pd-1PS"; */
 "tRr-pd-1PS.title" = "Data Detectors";
@@ -401,11 +512,20 @@
 /* Class = "NSMenu"; title = "Kern"; ObjectID = "tlD-Oa-oAM"; */
 "tlD-Oa-oAM.title" = "Kern";
 
+/* Class = "NSMenuItem"; title = "Move Down"; ObjectID = "uBy-uu-IwP"; */
+"uBy-uu-IwP.title" = "Move Down";
+
 /* Class = "NSMenu"; title = "LocationSimulator"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "LocationSimulator";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
 "uRl-iY-unG.title" = "Cut";
+
+/* Class = "NSViewController"; title = "Info"; ObjectID = "uVV-Vv-12T"; */
+"uVV-Vv-12T.title" = "Info";
+
+/* Class = "NSViewController"; title = "License"; ObjectID = "vCG-Tv-LLk"; */
+"vCG-Tv-LLk.title" = "License";
 
 /* Class = "NSMenuItem"; title = "Paste Style"; ObjectID = "vKC-jM-MkH"; */
 "vKC-jM-MkH.title" = "Paste Style";
@@ -431,6 +551,9 @@
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "x3v-GG-iWU"; */
 "x3v-GG-iWU.title" = "Copy";
 
+/* Class = "NSMenuItem"; title = "Item"; ObjectID = "xOd-ZV-ahj"; */
+"xOd-ZV-ahj.title" = "Item";
+
 /* Class = "NSMenuItem"; title = "Use All"; ObjectID = "xQD-1f-W4t"; */
 "xQD-1f-W4t.title" = "Use All";
 
@@ -439,3 +562,6 @@
 
 /* Class = "NSMenuItem"; title = "Show Substitutions"; ObjectID = "z6F-FW-3nz"; */
 "z6F-FW-3nz.title" = "Show Substitutions";
+
+/* Class = "NSTextFieldCell"; title = "Titel"; ObjectID = "zbm-ZU-4S2"; */
+"zbm-ZU-4S2.title" = "Titel";

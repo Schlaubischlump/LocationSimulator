@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BA351D20A433EF00A0431C /* Assets.xcassets */; };
-		13BA352120A433EF00A0431C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13BA351F20A433EF00A0431C /* Main.storyboard */; };
 		6305075423FB06A700EF529A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6305075323FB06A700EF529A /* Credits.rtf */; };
 		630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4A142593ECD100442713 /* NoDeviceView.swift */; };
 		6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B794230C13AF00AABF3E /* LocationSpoofer.swift */; };
@@ -19,7 +18,6 @@
 		63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C0A22FB78B60086D5F6 /* deviceimagemounter.c */; };
 		63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C1022FB86160086D5F6 /* deviceinfo.c */; };
 		63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */ = {isa = PBXBuildFile; fileRef = 63156C1322FB9A5D0086D5F6 /* COPYRIGHT */; };
-		63183E29231821DC0073D80E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63183E27231821DB0073D80E /* Localizable.strings */; };
 		631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE2259409190066D5BB /* Notification+Extension.swift */; };
 		631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE8259415250066D5BB /* DeviceStatus.swift */; };
 		631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFF325941C880066D5BB /* ToolbarController.swift */; };
@@ -29,7 +27,6 @@
 		632A962C254811AC0078B8DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632A962B254811AC0078B8DD /* ContentView.swift */; };
 		632B4039258FFE6600202647 /* MenubarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B4038258FFE6600202647 /* MenubarController.swift */; };
 		632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C465823F4B611004E5092 /* CoordinateSelectionView.swift */; };
-		632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */; };
 		632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */; };
 		632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466223F4D9C8004E5092 /* CoordinateStepper.swift */; };
 		632C466523F7638A004E5092 /* MenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466423F7638A004E5092 /* MenubarItem.swift */; };
@@ -37,6 +34,11 @@
 		633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510920AE9634002A61F1 /* WindowController.swift */; };
 		633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351B20A433EE00A0431C /* MapViewController.swift */; };
 		633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510B20AED69B002A61F1 /* NSView+Extension.swift */; };
+		633C74C025AA28DF00161DB4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 633C74BE25AA28DF00161DB4 /* Localizable.strings */; };
+		633C74C325AA293300161DB4 /* CoordinateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */; };
+		633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C525AA293900161DB4 /* GPXSelectionView.xib */; };
+		633C74C925AA293F00161DB4 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C825AA293F00161DB4 /* ProgressView.xib */; };
+		633C74CE25AA298900161DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633C74D025AA298900161DB4 /* Main.storyboard */; };
 		63525910258AC0950031F289 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352590F258AC0950031F289 /* LicenseViewController.swift */; };
 		63525913258AC7F00031F289 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63525912258AC7F00031F289 /* Licenses.plist */; };
 		6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */; };
@@ -51,7 +53,6 @@
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		6372061D25911CED00293EA8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372061C25911CED00293EA8 /* MapView.swift */; };
 		63720628259141EF00293EA8 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720627259141EF00293EA8 /* ProgressView.swift */; };
-		6372062F2591427100293EA8 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6372062D2591427000293EA8 /* ProgressView.xib */; };
 		63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */; };
 		63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720635259147AB00293EA8 /* ProgressAlert.swift */; };
 		6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */; };
@@ -88,7 +89,6 @@
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */; };
 		63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE223258F9E3300917412 /* GPXSelectionView.swift */; };
-		63FDE22A258F9F6800917412 /* GPXSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FDE228258F9F6800917412 /* GPXSelectionView.xib */; };
 		63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE22C258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,11 +99,10 @@
 		13BA351920A433EE00A0431C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13BA351B20A433EE00A0431C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		13BA351D20A433EF00A0431C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		13BA352020A433EF00A0431C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		13BA352220A433EF00A0431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13BA352320A433EF00A0431C /* LocationSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocationSimulator.entitlements; sourceTree = "<group>"; };
+		13BA352220A433EF00A0431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
+		13BA352320A433EF00A0431C /* LocationSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = LocationSimulator.entitlements; path = "Supporting Files/LocationSimulator.entitlements"; sourceTree = "<group>"; };
 		6305075223FAEB9500EF529A /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		6305075323FB06A700EF529A /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		6305075323FB06A700EF529A /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Supporting Files/Credits.rtf"; sourceTree = "<group>"; };
 		630C4A142593ECD100442713 /* NoDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
 		6311B794230C13AF00AABF3E /* LocationSpoofer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpoofer.swift; sourceTree = "<group>"; };
 		6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Protocol.swift"; sourceTree = "<group>"; };
@@ -116,9 +115,6 @@
 		63156C1022FB86160086D5F6 /* deviceinfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deviceinfo.c; sourceTree = "<group>"; };
 		63156C1322FB9A5D0086D5F6 /* COPYRIGHT */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYRIGHT; sourceTree = "<group>"; };
 		63156C1522FB9A7A0086D5F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		63183E26231821B80073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		63183E28231821DB0073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		63183E2A2318221B0073D80E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		631EBFE2259409190066D5BB /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		631EBFE8259415250066D5BB /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
 		631EBFF325941C880066D5BB /* ToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarController.swift; sourceTree = "<group>"; };
@@ -129,12 +125,17 @@
 		632B4038258FFE6600202647 /* MenubarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarController.swift; sourceTree = "<group>"; };
 		632B4049258FFEE500202647 /* mobiledevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobiledevice.h; sourceTree = "<group>"; };
 		632C465823F4B611004E5092 /* CoordinateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionView.swift; sourceTree = "<group>"; };
-		632C465B23F4B715004E5092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CoordinateSelectionView.xib; sourceTree = "<group>"; };
 		632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateFormatter.swift; sourceTree = "<group>"; };
 		632C466223F4D9C8004E5092 /* CoordinateStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateStepper.swift; sourceTree = "<group>"; };
 		632C466423F7638A004E5092 /* MenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarItem.swift; sourceTree = "<group>"; };
+		633C74BF25AA28DF00161DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoordinateSelectionView.xib; sourceTree = "<group>"; };
+		633C74C525AA293900161DB4 /* GPXSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPXSelectionView.xib; sourceTree = "<group>"; };
+		633C74C825AA293F00161DB4 /* ProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
+		633C74D325AA298E00161DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization/en.lproj/Main.strings; sourceTree = "<group>"; };
+		633C74D425AA2CE800161DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
 		6352590F258AC0950031F289 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
-		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
+		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Licenses.plist; path = "Supporting Files/Licenses.plist"; sourceTree = "<group>"; };
 		6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasterboard+Extension.swift"; sourceTree = "<group>"; };
 		63525921258B74290031F289 /* NavigationMenuabrItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenuabrItem.swift; sourceTree = "<group>"; };
 		63525926258B74750031F289 /* RecentLocationMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentLocationMenubarItem.swift; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		6372061C25911CED00293EA8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		63720627259141EF00293EA8 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		6372062E2591427000293EA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProgressView.xib; sourceTree = "<group>"; };
 		63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+DownloadDelegate.swift"; sourceTree = "<group>"; };
 		63720635259147AB00293EA8 /* ProgressAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAlert.swift; sourceTree = "<group>"; };
 		6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionAlert.swift; sourceTree = "<group>"; };
@@ -178,11 +178,10 @@
 		63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusbmuxd-2.0.6.dylib"; path = "../../../../usr/local/Cellar/libusbmuxd/2.0.2/lib/libusbmuxd-2.0.6.dylib"; sourceTree = "<group>"; };
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
-		63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeveloperDiskImages.plist; sourceTree = "<group>"; };
+		63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DeveloperDiskImages.plist; path = "Supporting Files/DeveloperDiskImages.plist"; sourceTree = "<group>"; };
 		63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+LocationSpooferDelegate.swift"; sourceTree = "<group>"; };
 		63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		63FDE223258F9E3300917412 /* GPXSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionView.swift; sourceTree = "<group>"; };
-		63FDE229258F9F6800917412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GPXSelectionView.xib; sourceTree = "<group>"; };
 		63FDE22C258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GPXSelectionView+NSBrowserDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,7 +204,7 @@
 		1344BEBD20D10AFD00355F49 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				63183E27231821DB0073D80E /* Localizable.strings */,
+				633C74BE25AA28DF00161DB4 /* Localizable.strings */,
 				13BA351D20A433EF00A0431C /* Assets.xcassets */,
 				63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */,
 				63525912258AC7F00031F289 /* Licenses.plist */,
@@ -239,7 +238,7 @@
 				631EBFE8259415250066D5BB /* DeviceStatus.swift */,
 				13BA351920A433EE00A0431C /* AppDelegate.swift */,
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
-				13BA351F20A433EF00A0431C /* Main.storyboard */,
+				633C74D025AA298900161DB4 /* Main.storyboard */,
 				632C465723F4B5F5004E5092 /* Menubar */,
 				638B909D254B513300A520E0 /* Preferences */,
 				637206342591479800293EA8 /* Alerts */,
@@ -361,7 +360,7 @@
 		632C466623F76881004E5092 /* CoordinateSelectionView */ = {
 			isa = PBXGroup;
 			children = (
-				632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */,
+				633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */,
 				632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */,
 				632C466223F4D9C8004E5092 /* CoordinateStepper.swift */,
 				632C465823F4B611004E5092 /* CoordinateSelectionView.swift */,
@@ -458,7 +457,7 @@
 		637206262591418F00293EA8 /* ProgressView */ = {
 			isa = PBXGroup;
 			children = (
-				6372062D2591427000293EA8 /* ProgressView.xib */,
+				633C74C825AA293F00161DB4 /* ProgressView.xib */,
 				63720627259141EF00293EA8 /* ProgressView.swift */,
 				63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */,
 			);
@@ -570,7 +569,7 @@
 		63FDE21B258F9D2400917412 /* GPXSelectionView */ = {
 			isa = PBXGroup;
 			children = (
-				63FDE228258F9F6800917412 /* GPXSelectionView.xib */,
+				633C74C525AA293900161DB4 /* GPXSelectionView.xib */,
 				63FDE223258F9E3300917412 /* GPXSelectionView.swift */,
 				63FDE22C258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift */,
 			);
@@ -637,7 +636,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
@@ -659,16 +657,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				633C74C925AA293F00161DB4 /* ProgressView.xib in Resources */,
+				633C74CE25AA298900161DB4 /* Main.storyboard in Resources */,
 				13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */,
-				63FDE22A258F9F6800917412 /* GPXSelectionView.xib in Resources */,
-				63183E29231821DC0073D80E /* Localizable.strings in Resources */,
+				633C74C025AA28DF00161DB4 /* Localizable.strings in Resources */,
 				63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */,
 				6305075423FB06A700EF529A /* Credits.rtf in Resources */,
 				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
+				633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */,
 				63525913258AC7F00031F289 /* Licenses.plist in Resources */,
-				6372062F2591427100293EA8 /* ProgressView.xib in Resources */,
-				13BA352120A433EF00A0431C /* Main.storyboard in Resources */,
-				632C465C23F4B715004E5092 /* CoordinateSelectionView.xib in Resources */,
+				633C74C325AA293300161DB4 /* CoordinateSelectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -790,46 +788,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		13BA351F20A433EF00A0431C /* Main.storyboard */ = {
+		633C74BE25AA28DF00161DB4 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				13BA352020A433EF00A0431C /* Base */,
-				63183E26231821B80073D80E /* en */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		63183E27231821DB0073D80E /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63183E28231821DB0073D80E /* en */,
-				63183E2A2318221B0073D80E /* Base */,
+				633C74BF25AA28DF00161DB4 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		632C465A23F4B715004E5092 /* CoordinateSelectionView.xib */ = {
+		633C74D025AA298900161DB4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				632C465B23F4B715004E5092 /* Base */,
+				633C74D325AA298E00161DB4 /* en */,
+				633C74D425AA2CE800161DB4 /* en */,
 			);
-			name = CoordinateSelectionView.xib;
-			sourceTree = "<group>";
-		};
-		6372062D2591427000293EA8 /* ProgressView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6372062E2591427000293EA8 /* Base */,
-			);
-			name = ProgressView.xib;
-			sourceTree = "<group>";
-		};
-		63FDE228258F9F6800917412 /* GPXSelectionView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63FDE229258F9F6800917412 /* Base */,
-			);
-			name = GPXSelectionView.xib;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -962,7 +935,7 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -972,7 +945,7 @@
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
 					/usr/local/Cellar/libplist/2.2.0/include/,
 				);
-				INFOPLIST_FILE = LocationSimulator/Info.plist;
+				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -999,7 +972,7 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1009,7 +982,7 @@
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
 					/usr/local/Cellar/libplist/2.2.0/include/,
 				);
-				INFOPLIST_FILE = LocationSimulator/Info.plist;
+				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1092,7 +1065,7 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1102,7 +1075,7 @@
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
 					/usr/local/Cellar/libplist/2.2.0/include/,
 				);
-				INFOPLIST_FILE = LocationSimulator/Info.plist;
+				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

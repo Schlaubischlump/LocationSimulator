@@ -6,62 +6,68 @@
  Copyright © 2019 David Klopp. All rights reserved.
  */
 
-// Preferences
-"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.\nChanges in this version are:\n\n1. New Sidebar\n2. Open GPX files\n3. Confirm Teleportation option\n4. Use current mac location as spoofed location\n5. Fallback download URL for DeveloperDiskImages\n6. Bug fixes\n";
+// MARK: - Preferences (Info Tab)
+"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.";
+"CHANGELOG" = "Changes in this version are:\n\n1. New Sidebar\n2. Open GPX files\n3. Confirm Teleportation option\n4. Use current mac location as spoofed location\n5. Fallback download URL for DeveloperDiskImages\n6. Bug fixes\n";
 
-// General
+// MARK: - General
+// Total distance label in the bottom bar.
+"TOTAL_DISTANCE" = "Total distance: %.3fkm";
+// Current location annotation
 "CURRENT_LOCATION" = "Current Location";
+// Device sidebar
+"DEVICE_HEADER" = "Devices";
 
-// MARK: - Error
-
-// Error title
+// MARK: - Alert Titles
+"UNKNOWN_ERROR" = "Unknown error";
 "NO_DEVICE_ERROR" = "No device found";
 "MOUNT_ERROR" = "Could not mount DeveloperDiskImage.dmg";
-"DEVDISK_NOT_FOUND" = "DeveloperDiskImage files not found";
-"UNKNOWN_ERROR" = "Unknown error";
-"LOCATION_CHANGE_ERROR" = "Error changing location";
 "PRODUCT_INFO_ERROR" = "Could not get product info";
 "PERMISSION_ERROR" = "Permission error";
-//"NO_DEVDISK_DOWNLOAD_ERROR" = "No DeveloperDiskImage download found";
+"DEVDISK_NOT_FOUND" = "DeveloperDiskImage files not found";
 "DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage download failed";
-
-// Error messages
-"PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
-"MOUNT_ERROR_MSG" = "The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked? Are the correct DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files placed in the corresponding folder in the application resources?";
-"UNKNOWN_ERROR_MSG" = "An unknown error occured. Please disconnect your device and try again.";
-"LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
-"LOCATION_CHANGE_ERROR_MSG" = "Could not change the location.";
-"PERMISSION_ERROR_MSG" = "Can not access Application Support folder.";
-//"NO_DEVDISK_DOWNLOAD_ERROR_MSG" = "Could not find a valid download link for the corresponding DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature.";
-"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Failed to download DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature";
-
-// Information alerts
-"DESTINATION" = "Destination";
-"NAVIGATE" = "Navigate";
-"TELEPORT" = "Teleport";
-"CANCEL" = "Cancel";
-"TELEPORT_OR_NAVIGATE_MSG" = "Do you want to teleport or navigate to the destination?";
-
-// Informative text
-"TOTAL_DISTANCE" = "Total distance: %.3fkm";
-
-// Error message.
+// Location change
+"LOCATION_CHANGE_ERROR" = "Error changing location";
+// Use mac location
 "LOCATION_SERVICE_DISABLED" = "Enable location services";
-"LOCATION_SERVICE_DISABLED_MSG" = "Location services seem to be disabled. Please activate location services inside System Preferences.";
 "GET_LOCATION_ERROR" = "Could not get location";
-"GET_LOCATION_ERROR_MSG" = "Could not get read the current location. Did you allow LocationSimulator to access this mac's location?";
-
-// GPX file dialog
+// GPX Alert
 "CHOOSE_GPX_FILE" = "Choose a .gpx file";
 "ERROR_OPEN_GPX" = "Error Opening GPX File";
 "ERROR_OPEN_GPX_MSG" = "Could not open the selected GPX file.";
 "ERROR_PARSE_GPX" = "Error Parsing GPX File";
+"EMPTY_ROUTE" = "Empty Route";
+// Confirm teleportation.
+"CONFIRM_TELEPORT"="Confirm Teleportation";
+
+// MARK: - Alert Messages
+"PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
+"MOUNT_ERROR_MSG" = "The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked? Are the correct DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files placed in the corresponding folder in the application resources?";
+"UNKNOWN_ERROR_MSG" = "An unknown error occured. Please disconnect your device and try again.";
+"PERMISSION_ERROR_MSG" = "Can not access Application Support folder.";
+"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Failed to download DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature";
+// Use mac location
+"LOCATION_SERVICE_DISABLED_MSG" = "Location services seem to be disabled. Please activate location services inside System Preferences.";
+"GET_LOCATION_ERROR_MSG" = "Could not get read the current location. Did you allow LocationSimulator to access this mac's location?";
+// Location change
+"TELEPORT_OR_NAVIGATE_MSG" = "Do you want to teleport or navigate to the destination?";
+"LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
+"LOCATION_CHANGE_ERROR_MSG" = "Could not change the location.";
+// GPXAlert
 "ERROR_PARSE_GPX_MSG" = "Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
 "TELEPORT_OR_NAVIGATE_GPX_MSG" = "Do you want to navigate or teleport to the start location of this route?";
-"EMPTY_ROUTE" = "Empty Route";
 "EMPTY_ROUTE_MSG" = "Not enough coordinates available to start the navigation.";
+// Confirm teleportation.
+"CONFIRM_TELEPORT_MSG"="Do you really want to teleport?";
 
-// GPX Selection View
+// MARK: - Alert Buttons
+"DESTINATION" = "Destination";
+"NAVIGATE" = "Navigate";
+"TELEPORT" = "Teleport";
+"CANCEL" = "Cancel";
+"OK"="OK";
+
+// MARK: - GPXSelectionView
 "CHOOSE" = "Choose";
 "TRACK_SEGMENT" = "Segment";
 "TRACK" = "Track";
@@ -70,19 +76,16 @@
 "GPX_SELECTION" = "Choose Coordinates";
 "GPX_SELECTION_MSG" = "Choose a Track, Track Segment, Route or the Waypoints to start the navigation.";
 
-// Progress View.
+// MARK: - ProgressView
 "PROGRESS" = "Download iOS support files";
 "DEVDISK_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg";
 "DEVSIGN_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg.signature";
 
-// Device Sidebar
-"DEVICE_HEADER" = "Devices";
+// MARK: - CoordinateSelectionView
+"LAT" = "Lat";
+"LONG" = "Long";
 
-// NoDeviceViewController
+// MARK: - NoDeviceView
 "NO_DEVICE"="No Device Selected";
 "NO_DEVICE_MSG"="Please connect a device and select it in the sidebar to start spoofing.";
 
-// Confirm teleportation.
-"CONFIRM_TELEPORT"="Confirm Teleportation";
-"CONFIRM_TELEPORT_MSG"="Do you really want to teleport?";
-"OK"="OK";
