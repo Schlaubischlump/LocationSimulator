@@ -39,6 +39,8 @@
 		633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C525AA293900161DB4 /* GPXSelectionView.xib */; };
 		633C74C925AA293F00161DB4 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C825AA293F00161DB4 /* ProgressView.xib */; };
 		633C74CE25AA298900161DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633C74D025AA298900161DB4 /* Main.storyboard */; };
+		633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C74FD25AA789100161DB4 /* XIBLocalizable.swift */; };
+		633C750225AA78F900161DB4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C750125AA78F900161DB4 /* String+Extension.swift */; };
 		63525910258AC0950031F289 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352590F258AC0950031F289 /* LicenseViewController.swift */; };
 		63525913258AC7F00031F289 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63525912258AC7F00031F289 /* Licenses.plist */; };
 		6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */; };
@@ -132,8 +134,10 @@
 		633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoordinateSelectionView.xib; sourceTree = "<group>"; };
 		633C74C525AA293900161DB4 /* GPXSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPXSelectionView.xib; sourceTree = "<group>"; };
 		633C74C825AA293F00161DB4 /* ProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
-		633C74D325AA298E00161DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localization/en.lproj/Main.strings; sourceTree = "<group>"; };
 		633C74D425AA2CE800161DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
+		633C74FA25AA5E5800161DB4 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localization/de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		633C74FD25AA789100161DB4 /* XIBLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizable.swift; sourceTree = "<group>"; };
+		633C750125AA78F900161DB4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		6352590F258AC0950031F289 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Licenses.plist; path = "Supporting Files/Licenses.plist"; sourceTree = "<group>"; };
 		6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasterboard+Extension.swift"; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 		63525952258E8EDC0031F289 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				633C750125AA78F900161DB4 /* String+Extension.swift */,
 				635C13882596EA9800BEB53B /* Array+Extension.swift */,
 				631EBFE2259409190066D5BB /* Notification+Extension.swift */,
 				6311B798230C150D00AABF3E /* Filemanager+Extension.swift */,
@@ -548,6 +553,7 @@
 		63FC479523022D3A00BBB2E8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				633C74FD25AA789100161DB4 /* XIBLocalizable.swift */,
 				63525952258E8EDC0031F289 /* Foundation */,
 				63525951258E8EC50031F289 /* AppKit */,
 				63525954258E8F000031F289 /* CoreLocation */,
@@ -636,6 +642,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
@@ -722,6 +729,7 @@
 				63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */,
 				63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */,
 				631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */,
+				633C750225AA78F900161DB4 /* String+Extension.swift in Sources */,
 				63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
 				635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */,
@@ -748,6 +756,7 @@
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
+				633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
@@ -792,6 +801,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				633C74BF25AA28DF00161DB4 /* en */,
+				633C74FA25AA5E5800161DB4 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -799,7 +809,6 @@
 		633C74D025AA298900161DB4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				633C74D325AA298E00161DB4 /* en */,
 				633C74D425AA2CE800161DB4 /* en */,
 			);
 			name = Main.storyboard;

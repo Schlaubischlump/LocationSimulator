@@ -22,12 +22,18 @@
                                     <items>
                                         <menuItem title="About LocationSimulator" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ABOUT_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PREFERENCES_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <segue destination="ctE-mA-MGX" kind="show" id="eM6-EG-1tl"/>
                                             </connections>
@@ -36,27 +42,42 @@
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SERVICES_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
                                         <menuItem title="Hide LocationSimulator" keyEquivalent="h" id="Olw-nP-bQN">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="HIDE_APP_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="HIDE_OTHERS_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="VT4-aY-XCT"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Show All" id="Kd2-mp-pUS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_ALL_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="Dhg-Le-xox"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
                                         <menuItem title="Quit LocationSimulator" keyEquivalent="q" id="4sb-4s-VLi">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="QUIT_APP_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -64,42 +85,57 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Item" id="xOd-ZV-ahj">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
                             <menuItem title="Navigation" tag="1" id="d6a-XJ-xTQ" userLabel="Navigation">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Navigation" autoenablesItems="NO" id="rdu-o6-dXR">
                                     <items>
                                         <menuItem title="Walk" keyEquivalent="1" id="FcQ-9J-hOu" userLabel="Walk">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WALK_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="setMoveType:" target="hKL-9b-YFG" id="7AA-VN-ASB"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Cycle" tag="1" keyEquivalent="2" id="Fr9-v0-Je1">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CYCLE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="setMoveType:" target="hKL-9b-YFG" id="6b8-gl-nXU"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Drive" tag="2" keyEquivalent="3" id="7E4-fJ-nHN">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="DRIVE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="setMoveType:" target="hKL-9b-YFG" id="F2x-9m-3Es"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="3" id="OoF-V6-Hea"/>
                                         <menuItem title="Set Location..." tag="4" enabled="NO" keyEquivalent="G" id="Z3Z-Tm-ifV">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SET_LOCATION_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="requestLocationChange:" target="hKL-9b-YFG" id="Zda-OV-Cuw"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Reset Location" tag="13" enabled="NO" keyEquivalent="r" id="hEy-d1-5LR">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="RESET_LOCATION_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="resetLocation:" target="hKL-9b-YFG" id="dEl-gI-22O"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Use Mac Location" tag="15" enabled="NO" keyEquivalent="m" id="FSp-F9-NBr" userLabel="Use Mac Location">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MAC_LOCATION_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="setLocationToCurrentLocation:" target="hKL-9b-YFG" id="Y3S-tL-qJg"/>
                                             </connections>
@@ -111,22 +147,37 @@
                                                     <menuItem isSeparatorItem="YES" tag="-1" id="JJf-yG-vqP"/>
                                                     <menuItem title="Clear Menu" tag="-2" enabled="NO" id="smy-uq-jUo">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CLEAR_MENU_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="clearRecentLocations:" target="hKL-9b-YFG" id="rG1-Ky-eRE"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="RECENT_LOCATIONS_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="RECENT_LOCATIONS_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" tag="5" id="bdS-Ru-Mgs"/>
                                         <menuItem title="Toggle Automove" tag="6" enabled="NO" keyEquivalent=" " id="fpP-7o-78x" userLabel="Toggle Automove">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="TOGGLE_AUTOMOVE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="toggleAutomoveState:" target="hKL-9b-YFG" id="Vbt-of-M5C"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Stop Navigation" tag="12" enabled="NO" keyEquivalent="s" id="pTJ-Ut-Hkv">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="STOP_NAVIGATION_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="stopNavigation:" target="hKL-9b-YFG" id="6AW-O4-Td5"/>
                                             </connections>
@@ -134,29 +185,44 @@
                                         <menuItem isSeparatorItem="YES" tag="7" id="iWY-Du-NiK"/>
                                         <menuItem title="Move Up" tag="8" enabled="NO" keyEquivalent="" id="oPn-mE-IJS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MOVE_UP_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="move:" target="hKL-9b-YFG" id="8aw-YL-MDS"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Move Down" tag="9" enabled="NO" keyEquivalent="" id="uBy-uu-IwP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MOVE_DOWN_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="move:" target="hKL-9b-YFG" id="8dO-e0-k3W"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Rotate Clockwise" tag="11" enabled="NO" keyEquivalent="" id="P6M-6B-WyS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ROTATE_CLOCKWISE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="move:" target="hKL-9b-YFG" id="3ft-TC-4gR"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Rotate Counterclockwise" tag="10" enabled="NO" keyEquivalent="" id="laX-cb-Fmd" userLabel="Rotate Counterclockwise">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ROTATE_COUNTERCLOCKWISE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="move:" target="hKL-9b-YFG" id="u3x-8G-6Mg"/>
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="NAVIGATION_MENU"/>
+                                    </userDefinedRuntimeAttributes>
                                 </menu>
                             </menuItem>
                             <menuItem title="File" state="on" tag="2" id="dMs-cI-mzQ">
@@ -169,6 +235,9 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Open GPX File…" tag="1" enabled="NO" keyEquivalent="o" id="IAo-SY-fd9">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="OPEN_GPX_FILE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="openGPXFile:" target="hKL-9b-YFG" id="nfu-2u-h4O"/>
                                             </connections>
@@ -188,6 +257,9 @@
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                                         <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CLOSE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="HmO-Ls-i7Q"/>
                                             </connections>
@@ -220,6 +292,9 @@
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FILE_MENU"/>
+                                    </userDefinedRuntimeAttributes>
                                 </menu>
                             </menuItem>
                             <menuItem title="Edit" id="5QF-Oa-p0T">
@@ -227,44 +302,68 @@
                                 <menu key="submenu" title="Edit" id="W48-6f-4Dl">
                                     <items>
                                         <menuItem title="Undo" keyEquivalent="z" id="dRJ-4n-Yzg">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="UNDO_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="undo:" target="Ady-hI-5gd" id="M6e-cu-g7V"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Redo" keyEquivalent="Z" id="6dh-zS-Vam">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="REDO_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="redo:" target="Ady-hI-5gd" id="oIA-Rs-6OD"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="WRV-NI-Exz"/>
                                         <menuItem title="Cut" keyEquivalent="x" id="uRl-iY-unG">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CUT_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="cut:" target="Ady-hI-5gd" id="YJe-68-I9s"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Copy" keyEquivalent="c" id="x3v-GG-iWU">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="COPY_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="copy:" target="Ady-hI-5gd" id="G1f-GL-Joy"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Paste" keyEquivalent="v" id="gVA-U4-sdL">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PASTE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="paste:" target="Ady-hI-5gd" id="UvS-8e-Qdg"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Paste and Match Style" keyEquivalent="V" id="WeT-3V-zwk">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PASTE_AND_MATCH_STYLE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="pasteAsPlainText:" target="Ady-hI-5gd" id="cEh-KX-wJQ"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Delete" id="pa3-QI-u2k">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="DELETE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="delete:" target="Ady-hI-5gd" id="0Mk-Ml-PaM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Select All" keyEquivalent="a" id="Ruw-6m-B2m">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SELECT_ALL_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="selectAll:" target="Ady-hI-5gd" id="VNm-Mi-diN"/>
                                             </connections>
@@ -275,49 +374,79 @@
                                             <menu key="submenu" title="Find" id="1b7-l0-nxx">
                                                 <items>
                                                     <menuItem title="Find…" tag="1" keyEquivalent="f" id="Xz5-n4-O0W">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FIND..._MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="performFindPanelAction:" target="Ady-hI-5gd" id="cD7-Qs-BN4"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Find and Replace…" tag="12" keyEquivalent="f" id="YEy-JH-Tfz">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FIND_AND_REPLACE_..._MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="performFindPanelAction:" target="Ady-hI-5gd" id="WD3-Gg-5AJ"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Find Next" tag="2" keyEquivalent="g" id="q09-fT-Sye">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FIND_NEXT_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="performFindPanelAction:" target="Ady-hI-5gd" id="NDo-RZ-v9R"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Find Previous" tag="3" keyEquivalent="G" id="OwM-mh-QMV">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FIND_PREVIOUS_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="performFindPanelAction:" target="Ady-hI-5gd" id="HOh-sY-3ay"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Use Selection for Find" tag="7" keyEquivalent="e" id="buJ-ug-pKt">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="USE_SELECTION_FOR_FIND_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="performFindPanelAction:" target="Ady-hI-5gd" id="U76-nv-p5D"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Jump to Selection" keyEquivalent="j" id="S0p-oC-mLd">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="JUMP_TO_SELECTION_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="centerSelectionInVisibleArea:" target="Ady-hI-5gd" id="IOG-6D-g5B"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FIND_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FIND_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                         <menuItem title="Spelling and Grammar" id="Dv1-io-Yv7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Spelling" id="3IN-sU-3Bg">
                                                 <items>
                                                     <menuItem title="Show Spelling and Grammar" keyEquivalent=":" id="HFo-cy-zxI">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_SPELLING_AND_GRAMMAR_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="showGuessPanel:" target="Ady-hI-5gd" id="vFj-Ks-hy3"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Check Document Now" keyEquivalent=";" id="hz2-CU-CR7">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CHECK_DOCUMENT_NOW_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="checkSpelling:" target="Ady-hI-5gd" id="fz7-VC-reM"/>
                                                         </connections>
@@ -325,24 +454,39 @@
                                                     <menuItem isSeparatorItem="YES" id="bNw-od-mp5"/>
                                                     <menuItem title="Check Spelling While Typing" id="rbD-Rh-wIN">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CHECK_SPELLING_WHILE_TYPING_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleContinuousSpellChecking:" target="Ady-hI-5gd" id="7w6-Qz-0kB"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Check Grammar With Spelling" id="mK6-2p-4JG">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CHECK_GRAMMAR_WHILE_SPELLING"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleGrammarChecking:" target="Ady-hI-5gd" id="muD-Qn-j4w"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Correct Spelling Automatically" id="78Y-hA-62v">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CORRECT_SPELLING_AUTOMATICALLY_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleAutomaticSpellingCorrection:" target="Ady-hI-5gd" id="2lM-Qi-WAP"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SPELLING_GRAMMAR_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SPELLING_GRAMMAR_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                         <menuItem title="Substitutions" id="9ic-FL-obx">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -350,6 +494,9 @@
                                                 <items>
                                                     <menuItem title="Show Substitutions" id="z6F-FW-3nz">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_SUBSTITUTIONS_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="orderFrontSubstitutionsPanel:" target="Ady-hI-5gd" id="oku-mr-iSq"/>
                                                         </connections>
@@ -357,42 +504,66 @@
                                                     <menuItem isSeparatorItem="YES" id="gPx-C9-uUO"/>
                                                     <menuItem title="Smart Copy/Paste" id="9yt-4B-nSM">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SMART_COPY_PASTE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleSmartInsertDelete:" target="Ady-hI-5gd" id="3IJ-Se-DZD"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Smart Quotes" id="hQb-2v-fYv">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SMART_QUOTES_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleAutomaticQuoteSubstitution:" target="Ady-hI-5gd" id="ptq-xd-QOA"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Smart Dashes" id="rgM-f4-ycn">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SMART_DASHES_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleAutomaticDashSubstitution:" target="Ady-hI-5gd" id="oCt-pO-9gS"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Smart Links" id="cwL-P1-jid">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SMART_LINKS_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleAutomaticLinkDetection:" target="Ady-hI-5gd" id="Gip-E3-Fov"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Data Detectors" id="tRr-pd-1PS">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="DATA_DETECTORS_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleAutomaticDataDetection:" target="Ady-hI-5gd" id="R1I-Nq-Kbl"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Text Replacement" id="HFQ-gK-NFA">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="TEXT_REPLACEMENT_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleAutomaticTextReplacement:" target="Ady-hI-5gd" id="DvP-Fe-Py6"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SUBSTITUTIONS_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SUBSTITUTIONS_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                         <menuItem title="Transformations" id="2oI-Rn-ZJC">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -400,24 +571,39 @@
                                                 <items>
                                                     <menuItem title="Make Upper Case" id="vmV-6d-7jI">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MAKE_UPPER_CASE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="uppercaseWord:" target="Ady-hI-5gd" id="sPh-Tk-edu"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Make Lower Case" id="d9M-CD-aMd">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MAKE_LOWER_CASE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="lowercaseWord:" target="Ady-hI-5gd" id="iUZ-b5-hil"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Capitalize" id="UEZ-Bs-lqG">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CAPITALIZE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="capitalizeWord:" target="Ady-hI-5gd" id="26H-TL-nsh"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="TRANSFORMATIONS_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="TRANSFORMATIONS_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                         <menuItem title="Speech" id="xrE-MZ-jX0">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -425,20 +611,35 @@
                                                 <items>
                                                     <menuItem title="Start Speaking" id="Ynk-f8-cLZ">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="START_SPEAKING_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="startSpeaking:" target="Ady-hI-5gd" id="654-Ng-kyl"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Stop Speaking" id="Oyz-dy-DGm">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="STOP_SPEAKING_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="stopSpeaking:" target="Ady-hI-5gd" id="dX8-6p-jy9"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SPEECH_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SPEECH_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                     </items>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="EDIT_MENU"/>
+                                    </userDefinedRuntimeAttributes>
                                 </menu>
                             </menuItem>
                             <menuItem title="Format" id="jxT-CU-nIS">
@@ -450,32 +651,50 @@
                                             <menu key="submenu" title="Font" systemMenu="font" id="aXa-aM-Jaq">
                                                 <items>
                                                     <menuItem title="Show Fonts" keyEquivalent="t" id="Q5e-8K-NDq">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_FONTS_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="orderFrontFontPanel:" target="YLy-65-1bz" id="WHr-nq-2xA"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Bold" tag="2" keyEquivalent="b" id="GB9-OM-e27">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="BOLD_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="addFontTrait:" target="YLy-65-1bz" id="hqk-hr-sYV"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Italic" tag="1" keyEquivalent="i" id="Vjx-xi-njq">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ITALIC_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="addFontTrait:" target="YLy-65-1bz" id="IHV-OB-c03"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Underline" keyEquivalent="u" id="WRG-CD-K1S">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="UNDERLINE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="underline:" target="Ady-hI-5gd" id="FYS-2b-JAY"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem isSeparatorItem="YES" id="5gT-KC-WSO"/>
                                                     <menuItem title="Bigger" tag="3" keyEquivalent="+" id="Ptp-SP-VEL">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="BIGGER_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="modifyFont:" target="YLy-65-1bz" id="Uc7-di-UnL"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Smaller" tag="4" keyEquivalent="-" id="i1d-Er-qST">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SMALLER_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="modifyFont:" target="YLy-65-1bz" id="HcX-Lf-eNd"/>
                                                         </connections>
@@ -487,30 +706,48 @@
                                                             <items>
                                                                 <menuItem title="Use Default" id="GUa-eO-cwY">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="USE_DEFAULT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="useStandardKerning:" target="Ady-hI-5gd" id="6dk-9l-Ckg"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Use None" id="cDB-IK-hbR">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="USE_NONE_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="turnOffKerning:" target="Ady-hI-5gd" id="U8a-gz-Maa"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Tighten" id="46P-cB-AYj">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="TIGHTEN_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="tightenKerning:" target="Ady-hI-5gd" id="hr7-Nz-8ro"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Loosen" id="ogc-rX-tC1">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="LOOSEN_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="loosenKerning:" target="Ady-hI-5gd" id="8i4-f9-FKE"/>
                                                                     </connections>
                                                                 </menuItem>
                                                             </items>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="KERN_MENU"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </menu>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="KERN_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </menuItem>
                                                     <menuItem title="Ligatures" id="o6e-r0-MWq">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
@@ -518,24 +755,39 @@
                                                             <items>
                                                                 <menuItem title="Use Default" id="agt-UL-0e3">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="USE_DEFAULT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="useStandardLigatures:" target="Ady-hI-5gd" id="7uR-wd-Dx6"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Use None" id="J7y-lM-qPV">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="USE_NONE_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="turnOffLigatures:" target="Ady-hI-5gd" id="iX2-gA-Ilz"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Use All" id="xQD-1f-W4t">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="USE_ALL_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="useAllLigatures:" target="Ady-hI-5gd" id="KcB-kA-TuK"/>
                                                                     </connections>
                                                                 </menuItem>
                                                             </items>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="LIGATURES_MENU"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </menu>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="LIGATURES_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </menuItem>
                                                     <menuItem title="Baseline" id="OaQ-X3-Vso">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
@@ -543,39 +795,63 @@
                                                             <items>
                                                                 <menuItem title="Use Default" id="3Om-Ey-2VK">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="USE_DEFAULT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="unscript:" target="Ady-hI-5gd" id="0vZ-95-Ywn"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Superscript" id="Rqc-34-cIF">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SUPERSCRIPT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="superscript:" target="Ady-hI-5gd" id="3qV-fo-wpU"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Subscript" id="I0S-gh-46l">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SUBSCRIPT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="subscript:" target="Ady-hI-5gd" id="Q6W-4W-IGz"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Raise" id="2h7-ER-AoG">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="RAISE_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="raiseBaseline:" target="Ady-hI-5gd" id="4sk-31-7Q9"/>
                                                                     </connections>
                                                                 </menuItem>
                                                                 <menuItem title="Lower" id="1tx-W0-xDw">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="LOWER_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="lowerBaseline:" target="Ady-hI-5gd" id="OF1-bc-KW4"/>
                                                                     </connections>
                                                                 </menuItem>
                                                             </items>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="BASELINE_MENU"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </menu>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="BASELINE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </menuItem>
                                                     <menuItem isSeparatorItem="YES" id="Ndw-q3-faq"/>
                                                     <menuItem title="Show Colors" keyEquivalent="C" id="bgn-CT-cEk">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_COLORS_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="orderFrontColorPanel:" target="Ady-hI-5gd" id="mSX-Xz-DV3"/>
                                                         </connections>
@@ -583,40 +859,64 @@
                                                     <menuItem isSeparatorItem="YES" id="iMs-zA-UFJ"/>
                                                     <menuItem title="Copy Style" keyEquivalent="c" id="5Vv-lz-BsD">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="COPY_STYLE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="copyFont:" target="Ady-hI-5gd" id="GJO-xA-L4q"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Paste Style" keyEquivalent="v" id="vKC-jM-MkH">
                                                         <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PASTE_STYLE_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="pasteFont:" target="Ady-hI-5gd" id="JfD-CL-leO"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FONT_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FONT_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                         <menuItem title="Text" id="Fal-I4-PZk">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="Text" id="d9c-me-L2H">
                                                 <items>
                                                     <menuItem title="Align Left" keyEquivalent="{" id="ZM1-6Q-yy1">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ALIGN_LEFT_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="alignLeft:" target="Ady-hI-5gd" id="zUv-R1-uAa"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Center" keyEquivalent="|" id="VIY-Ag-zcb">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CENTER_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="alignCenter:" target="Ady-hI-5gd" id="spX-mk-kcS"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Justify" id="J5U-5w-g23">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="JUSTIFY_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="alignJustified:" target="Ady-hI-5gd" id="ljL-7U-jND"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Align Right" keyEquivalent="}" id="wb2-vD-lq4">
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ALIGN_RIGHT_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="alignRight:" target="Ady-hI-5gd" id="r48-bG-YeY"/>
                                                         </connections>
@@ -628,10 +928,16 @@
                                                             <items>
                                                                 <menuItem title="Paragraph" enabled="NO" id="ZvO-Gk-QUH">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PARAGRAPH_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </menuItem>
                                                                 <menuItem id="YGs-j5-SAR">
                                                                     <string key="title">	Default</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="DEFAULT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="makeBaseWritingDirectionNatural:" target="Ady-hI-5gd" id="qtV-5e-UBP"/>
                                                                     </connections>
@@ -639,6 +945,9 @@
                                                                 <menuItem id="Lbh-J2-qVU">
                                                                     <string key="title">	Left to Right</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="LEFT_TO_RIGHT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="makeBaseWritingDirectionLeftToRight:" target="Ady-hI-5gd" id="S0X-9S-QSf"/>
                                                                     </connections>
@@ -646,6 +955,9 @@
                                                                 <menuItem id="jFq-tB-4Kx">
                                                                     <string key="title">	Right to Left</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="RIGHT_TO_LEFT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="makeBaseWritingDirectionRightToLeft:" target="Ady-hI-5gd" id="5fk-qB-AqJ"/>
                                                                     </connections>
@@ -653,10 +965,16 @@
                                                                 <menuItem isSeparatorItem="YES" id="swp-gr-a21"/>
                                                                 <menuItem title="Selection" enabled="NO" id="cqv-fj-IhA">
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SELECTION_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </menuItem>
                                                                 <menuItem id="Nop-cj-93Q">
                                                                     <string key="title">	Default</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="DEFAULT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="makeTextWritingDirectionNatural:" target="Ady-hI-5gd" id="lPI-Se-ZHp"/>
                                                                     </connections>
@@ -664,6 +982,9 @@
                                                                 <menuItem id="BgM-ve-c93">
                                                                     <string key="title">	Left to Right</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="LEFT_TO_RIGHT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="makeTextWritingDirectionLeftToRight:" target="Ady-hI-5gd" id="caW-Bv-w94"/>
                                                                     </connections>
@@ -671,37 +992,67 @@
                                                                 <menuItem id="RB4-Sm-HuC">
                                                                     <string key="title">	Right to Left</string>
                                                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="RIGHT_TO_LEFT_MENUITEM"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="makeTextWritingDirectionRightToLeft:" target="Ady-hI-5gd" id="EXD-6r-ZUu"/>
                                                                     </connections>
                                                                 </menuItem>
                                                             </items>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WRITING_DIRECTION_MENU"/>
+                                                            </userDefinedRuntimeAttributes>
                                                         </menu>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WRITING_DIRECTION_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </menuItem>
                                                     <menuItem isSeparatorItem="YES" id="fKy-g9-1gm"/>
                                                     <menuItem title="Show Ruler" id="vLm-3I-IUL">
                                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_RULER_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="toggleRuler:" target="Ady-hI-5gd" id="FOx-HJ-KwY"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Copy Ruler" keyEquivalent="c" id="MkV-Pr-PK5">
                                                         <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="COPY_RULER_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="copyRuler:" target="Ady-hI-5gd" id="71i-fW-3W2"/>
                                                         </connections>
                                                     </menuItem>
                                                     <menuItem title="Paste Ruler" keyEquivalent="v" id="LVM-kO-fVI">
                                                         <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PASTE_RULER_MENUITEM"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="pasteRuler:" target="Ady-hI-5gd" id="cSh-wd-qM2"/>
                                                         </connections>
                                                     </menuItem>
                                                 </items>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="TEXT_MENU"/>
+                                                </userDefinedRuntimeAttributes>
                                             </menu>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="TEXT_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                         </menuItem>
                                     </items>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FORMAT_MENU"/>
+                                    </userDefinedRuntimeAttributes>
                                 </menu>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="FORMAT_MENUITEM"/>
+                                </userDefinedRuntimeAttributes>
                             </menuItem>
                             <menuItem title="View" tag="3" id="H8h-7b-M4v">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -709,12 +1060,18 @@
                                     <items>
                                         <menuItem title="Show Toolbar" hidden="YES" keyEquivalent="t" id="snW-S8-Cw5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_TOOLBAR_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="toggleToolbarShown:" target="Ady-hI-5gd" id="BXY-wc-z0C"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CUSTOMIZE_TOOLBAR_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
                                             </connections>
@@ -722,30 +1079,48 @@
                                         <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
                                         <menuItem title="Show Sidebar" tag="3" enabled="NO" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SHOW_SIDEBAR_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="toggleSidebar:" target="hKL-9b-YFG" id="LYn-jE-LjH"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ENTER_FULL_SCREEN_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="toggleFullScreen:" target="Ady-hI-5gd" id="dU3-MA-1Rq"/>
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="VIEW_MENU"/>
+                                    </userDefinedRuntimeAttributes>
                                 </menu>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="VIEW_MENUITEM"/>
+                                </userDefinedRuntimeAttributes>
                             </menuItem>
                             <menuItem title="Window" id="aUF-d1-5bR">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                                     <items>
                                         <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MINIMIZE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="performMiniaturize:" target="Ady-hI-5gd" id="VwT-WD-YPe"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Zoom" id="R4o-n2-Eq4">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ZOOM_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="DIl-cC-cCs"/>
                                             </connections>
@@ -753,18 +1128,30 @@
                                         <menuItem isSeparatorItem="YES" id="eu3-7i-yIM"/>
                                         <menuItem title="Bring All to Front" id="LE2-aR-0XJ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="BRING_ALL_TO_FRONT_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="DRN-fu-gQh"/>
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WINDOW_MENU"/>
+                                    </userDefinedRuntimeAttributes>
                                 </menu>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WINDOW_MENUITEM"/>
+                                </userDefinedRuntimeAttributes>
                             </menuItem>
                             <menuItem title="Help" id="wpr-3q-Mcd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
                                         <menuItem title="LocationSimulator Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="APP_HELP_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -772,20 +1159,35 @@
                                         <menuItem isSeparatorItem="YES" id="Zm5-Nw-xaS"/>
                                         <menuItem title="Open Project Page" id="FIq-gG-PQ6" userLabel="Project">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="OPEN_PROJECT_PAGE_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="openProjectPage:" target="hKL-9b-YFG" id="9WN-LR-eQs"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Report a Bug" id="L0Z-ob-Iva" userLabel="Report">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="REPORT_A_BUG_MENUITEM"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="reportBugPage:" target="hKL-9b-YFG" id="E00-UK-IkJ"/>
                                             </connections>
                                         </menuItem>
                                     </items>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="HELP_MENU"/>
+                                    </userDefinedRuntimeAttributes>
                                 </menu>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="HELP_MENUITEM"/>
+                                </userDefinedRuntimeAttributes>
                             </menuItem>
                         </items>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MAIN_MENU"/>
+                        </userDefinedRuntimeAttributes>
                     </menu>
                     <connections>
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
@@ -809,20 +1211,28 @@
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="compact" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="240" y="240" width="728" height="480"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <value key="minSize" type="size" width="640" height="480"/>
                         <toolbar key="toolbar" implicitIdentifier="85BEC97E-E606-461B-9DB8-F1B8A3EF02FF" displayMode="iconAndLabel" sizeMode="regular" id="ERa-CM-KNB">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="QDU-Z5-Bi7"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="lhf-dr-yMu"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="QDU-Z5-Bi7">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"/>
+                                    </userDefinedRuntimeAttributes>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="lhf-dr-yMu">
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"/>
+                                    </userDefinedRuntimeAttributes>
+                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="4Ka-D3-6mZ"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="KId-ag-A2U"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="eCp-9n-poY"/>
-                                <toolbarItem implicitItemIdentifier="C8C77EE4-7F6C-4EB8-ACFC-3DDF4BF944FF" explicitItemIdentifier="autoFocus" label="" paletteLabel="Autofocus Location" toolTip="Autofocus current location" image="CurrentLocation" autovalidates="NO" id="HdA-HT-jQN" userLabel="Autofocus Location">
+                                <toolbarItem implicitItemIdentifier="C8C77EE4-7F6C-4EB8-ACFC-3DDF4BF944FF" explicitItemIdentifier="autoFocus" label="" paletteLabel="" image="CurrentLocation" autovalidates="NO" id="HdA-HT-jQN" userLabel="Autofocus Location">
                                     <size key="minSize" width="37" height="25"/>
                                     <size key="maxSize" width="38" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="MDz-N6-VAD" userLabel="Autofocus Location Button">
-                                        <rect key="frame" x="36" y="14" width="38" height="25"/>
+                                        <rect key="frame" x="0.0" y="14" width="38" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="CurrentLocation" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pqe-GJ-GmQ">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -832,12 +1242,16 @@
                                             <action selector="autofocusLocationClicked:" target="NQO-h4-qY4" id="IQB-8I-HKl"/>
                                         </connections>
                                     </button>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="AUTOFOCUS_TOOLBARITEM_TOOLTIP"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="AUTOFOCUS_TOOLBARITEM_PALETTELABEL"/>
+                                    </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="AB403377-7212-4E7B-9260-EC465F38CB7E" explicitItemIdentifier="currentLocation" label="" paletteLabel="Current Location" toolTip="Set PC location to current location" image="NSHomeTemplate" autovalidates="NO" id="Gar-ru-IyF">
+                                <toolbarItem implicitItemIdentifier="AB403377-7212-4E7B-9260-EC465F38CB7E" explicitItemIdentifier="currentLocation" label="" paletteLabel="" image="NSHomeTemplate" autovalidates="NO" id="Gar-ru-IyF" userLabel="Mac Location">
                                     <size key="minSize" width="37" height="24"/>
                                     <size key="maxSize" width="39" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="dNN-xU-QRQ">
-                                        <rect key="frame" x="28" y="14" width="39" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="39" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSHomeTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sjc-9y-gO1">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -847,6 +1261,10 @@
                                             <action selector="currentLocationClicked:" target="NQO-h4-qY4" id="bQb-6w-aF8"/>
                                         </connections>
                                     </button>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="MAC_LOCATION_TOOLBARITEM_PALETTELABEL"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="MAC_LOCATION_TOOLBARITEM_TOOLTIP"/>
+                                    </userDefinedRuntimeAttributes>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="05896384-9377-47D8-8616-24434D2F77DB" explicitItemIdentifier="moveType" label="" paletteLabel="Move Types" sizingBehavior="auto" autovalidates="NO" id="d4p-ja-QrK">
                                     <nil key="toolTip"/>
@@ -861,12 +1279,18 @@
                                                 <segment label="Drive" imageScaling="proportionallyUpOrDown"/>
                                             </segments>
                                         </segmentedCell>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WALK_MENUITEM|CYCLE_MENUITEM|DRIVE_MENUITEM"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="moveTypeSegmentChanged:" target="NQO-h4-qY4" id="Tdb-HM-q9n"/>
                                         </connections>
                                     </segmentedControl>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="MOVETYPES_TOOLBARITEM_PALETTELABEL"/>
+                                    </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="95B0582C-0FFC-4954-AD9E-5D6F61A2C2EE" explicitItemIdentifier="reset" label="" paletteLabel="Reset" toolTip="Stop faking the device location" image="NSStopProgressTemplate" autovalidates="NO" id="K12-Gb-eXb">
+                                <toolbarItem implicitItemIdentifier="95B0582C-0FFC-4954-AD9E-5D6F61A2C2EE" explicitItemIdentifier="reset" label="" paletteLabel="" image="NSStopProgressTemplate" autovalidates="NO" id="K12-Gb-eXb" userLabel="Reset">
                                     <size key="minSize" width="37" height="24"/>
                                     <size key="maxSize" width="38" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="4PY-kR-qhe">
@@ -880,8 +1304,12 @@
                                             <action selector="resetLocationClicked:" target="NQO-h4-qY4" id="VyN-i7-eUD"/>
                                         </connections>
                                     </button>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="RESET_TOOLBARITEM_PALETTELABEL"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="RESET_TOOLBARITEM_TOOLTIP"/>
+                                    </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="1D925B39-EF9A-42C7-8D3C-BCD1550BDA48" explicitItemIdentifier="search" label="Search" paletteLabel="Search" sizingBehavior="auto" autovalidates="NO" id="4aF-Km-tnN">
+                                <toolbarItem implicitItemIdentifier="1D925B39-EF9A-42C7-8D3C-BCD1550BDA48" explicitItemIdentifier="search" label="Search" paletteLabel="" sizingBehavior="auto" autovalidates="NO" id="4aF-Km-tnN">
                                     <nil key="toolTip"/>
                                     <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="dZ6-JS-ZNU">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
@@ -891,7 +1319,13 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localePlaceholderKey" value="SEARCH_PLACEHOLDER"/>
+                                        </userDefinedRuntimeAttributes>
                                     </searchField>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="SEARCH_TOOLBARITEM_PALETTELABEL"/>
+                                    </userDefinedRuntimeAttributes>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
@@ -914,8 +1348,7 @@
                             <touchBarItem id="Lap-MN-cqZ">
                                 <viewController key="viewController" id="kEP-d8-zG1">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eng-na-hHM">
-                                        <rect key="frame" x="7" y="-5" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O0j-vo-ghD">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -929,8 +1362,7 @@
                             <touchBarItem id="ShX-T7-Dur">
                                 <viewController key="viewController" id="4QK-HB-6Kz">
                                     <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-yO-fGr">
-                                        <rect key="frame" x="7" y="-5" width="72" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSHomeTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nif-4x-Dla">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -944,8 +1376,7 @@
                             <touchBarItem id="3I0-Yu-ztP">
                                 <viewController key="viewController" id="I3c-B6-Xz7">
                                     <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ztw-f5-7tr">
-                                        <rect key="frame" x="2" y="-1" width="190" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="1NT-QT-ght">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -954,6 +1385,9 @@
                                                 <segment label="Drive" width="61"/>
                                             </segments>
                                         </segmentedCell>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WALK_MENUITEM|CYCLE_MENUITEM|DRIVE_MENUITEM"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="moveTypeSegmentChanged:" target="inS-Zu-Xxv" id="azM-zw-xfK"/>
                                         </connections>
@@ -1113,7 +1547,7 @@
                 </viewController>
                 <customObject id="rte-dW-qOB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115" y="780"/>
+            <point key="canvasLocation" x="157" y="877"/>
         </scene>
         <!--No Device View Controller-->
         <scene sceneID="bYp-ze-SFS">
@@ -1316,7 +1750,7 @@
         <!--Preferences Tab View Controller-->
         <scene sceneID="Jkf-Ib-8gT">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="rSB-OX-bfh" customClass="PreferencesTabViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" canPropagateSelectedChildViewControllerTitle="NO" id="rSB-OX-bfh" customClass="PreferencesTabViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="Info" image="NSInfo" id="fCK-nG-5Tl"/>
                         <tabViewItem label="General" identifier="" image="NSPreferencesGeneral" id="Zw5-Ce-8bO"/>
@@ -1332,7 +1766,6 @@
                         </connections>
                     </tabView>
                     <connections>
-                        <outlet property="tabView" destination="iT9-X4-Bic" id="aRK-Wv-JJQ"/>
                         <segue destination="uVV-Vv-12T" kind="relationship" relationship="tabItems" id="odq-jy-Lbr"/>
                         <segue destination="eae-4P-ykM" kind="relationship" relationship="tabItems" id="A2N-3S-Vxn"/>
                         <segue destination="7gW-SW-Mts" kind="relationship" relationship="tabItems" id="wHO-xv-mde"/>
@@ -1343,10 +1776,10 @@
             </objects>
             <point key="canvasLocation" x="-941" y="1303.5"/>
         </scene>
-        <!--License-->
+        <!--License View Controller-->
         <scene sceneID="n6L-6n-tFL">
             <objects>
-                <viewController title="License" id="vCG-Tv-LLk" customClass="LicenseViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vCG-Tv-LLk" customClass="LicenseViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="7Rv-sQ-Sau">
                         <rect key="frame" x="0.0" y="0.0" width="436" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1405,6 +1838,9 @@
                             <constraint firstAttribute="bottom" secondItem="E1J-z2-5Z2" secondAttribute="bottom" constant="20" symbolic="YES" id="nJJ-AI-9Oy"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="LICENSE_TITLE_SETTING"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="licenseSelection" destination="sVg-QT-zgv" id="yhn-ok-6v8"/>
                         <outlet property="licenseTextView" destination="vzr-8q-RBC" id="eJn-lY-Hz5"/>
@@ -1414,10 +1850,10 @@
             </objects>
             <point key="canvasLocation" x="-941" y="1869"/>
         </scene>
-        <!--General-->
+        <!--General View Controller-->
         <scene sceneID="fZh-u0-Yd8">
             <objects>
-                <viewController title="General" id="eae-4P-ykM" customClass="GeneralViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eae-4P-ykM" customClass="GeneralViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OAa-Fi-hM2">
                         <rect key="frame" x="0.0" y="0.0" width="226" height="94"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1428,6 +1864,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CONFIRM_TELEPORTATION_SETTING"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="confirmTeleportationChanged:" target="eae-4P-ykM" id="OOb-JN-XeU"/>
                                 </connections>
@@ -1438,7 +1877,13 @@
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePlaceholderKey" value="CONFIRM_TELEPORTATION_MSG_SETTING"/>
+                                    </userDefinedRuntimeAttributes>
                                 </textFieldCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CONFIRM_TELEPORTATION_MSG_SETTING"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <constraints>
@@ -1451,6 +1896,9 @@
                             <constraint firstAttribute="trailing" secondItem="ufL-NS-UPy" secondAttribute="trailing" constant="20" symbolic="YES" id="yvJ-qO-oEa"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="GENERAL_TITEL_SETTING"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="confirmTeleportationCheckbox" destination="AOL-3Y-1IX" id="I83-IW-OI5"/>
                     </connections>
@@ -1459,23 +1907,26 @@
             </objects>
             <point key="canvasLocation" x="-485" y="1360"/>
         </scene>
-        <!--Info-->
+        <!--Info View Controller-->
         <scene sceneID="fza-CR-btx">
             <objects>
-                <viewController title="Info" id="uVV-Vv-12T" customClass="InfoViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uVV-Vv-12T" customClass="InfoViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Wj1-Wf-B6v">
                         <rect key="frame" x="0.0" y="0.0" width="664" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="INFO_TITLE_KEY"/>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <customObject id="mX0-Ez-e8l" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1604" y="1661"/>
         </scene>
-        <!--Network-->
+        <!--Network View Controller-->
         <scene sceneID="Irb-r9-9bb">
             <objects>
-                <viewController title="Network" id="7gW-SW-Mts" customClass="NetworkViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7gW-SW-Mts" customClass="NetworkViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="mMX-pa-UGk">
                         <rect key="frame" x="0.0" y="0.0" width="333" height="153"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1486,6 +1937,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ALLOW_NETWORK_DEVICES_SETTING"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="allowNetworkDevicesChanged:" target="7gW-SW-Mts" id="t55-kU-M5Q"/>
                                 </connections>
@@ -1497,6 +1951,9 @@
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ALLOW_NETWORK_DEVICES_MSG_SETTING"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jnE-95-ecY">
                                 <rect key="frame" x="18" y="71" width="297" height="18"/>
@@ -1504,17 +1961,23 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PREFER_NETWORK_DEVICES_SETTING"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="preferNetworkDevicesChanged:" target="7gW-SW-Mts" id="t9A-0M-5AO"/>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="d0d-Lv-5H3">
                                 <rect key="frame" x="18" y="33" width="297" height="32"/>
-                                <textFieldCell key="cell" selectable="YES" enabled="NO" title="Always use the network connection even if a device is connected over the network." id="IjJ-2W-bRZ">
+                                <textFieldCell key="cell" selectable="YES" enabled="NO" title="Always use the network connection even if a device is connected over USB." id="IjJ-2W-bRZ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PREFER_NETWORK_DEVICES_MSG_SETTING"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <constraints>
@@ -1533,6 +1996,9 @@
                             <constraint firstItem="fi6-Br-FNi" firstAttribute="top" secondItem="mMX-pa-UGk" secondAttribute="top" constant="20" symbolic="YES" id="ynT-ZW-Aeu"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="NETWORK_TITEL_SETTING"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="allowNetworkDevicesCheckbox" destination="fi6-Br-FNi" id="ZHN-49-s4k"/>
                         <outlet property="preferNetworkDevicesCheckbox" destination="jnE-95-ecY" id="tLE-4h-bD4"/>

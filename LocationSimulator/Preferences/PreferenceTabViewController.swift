@@ -13,6 +13,14 @@ class PreferencesTabViewController: NSTabViewController {
 
     private lazy var tabViewSizes: [NSTabViewItem: NSSize] = [:]
 
+    override func addTabViewItem(_ tabViewItem: NSTabViewItem) {
+        // Use the localized viewController title as tabViewItem label.
+        if let title = tabViewItem.viewController?.title {
+            tabViewItem.label = title
+        }
+        super.addTabViewItem(tabViewItem)
+    }
+
     override func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
         super.tabView(tabView, didSelect: tabViewItem)
 
