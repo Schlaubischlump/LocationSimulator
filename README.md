@@ -67,6 +67,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 > **Note**:    
 > LocationSimulator will try to download the corresponding `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` for your iOS Version from github, since I can not legally distribute these files. If the download should not work, get the files by installing Xcode and copy or link them to:    
 > ```~/Library/Application Support/LocationSimulator/{MAJOR_YOUR_IOS_VERSION}.{MINOR_YOUR_IOS_VERSION}/```    
+>
 > As of v0.1.8 this folder moved to: ```~/Library/Containers/com.schlaubi.LocationSimulator/Data/Library/Application Support/LocationSimulator/```
 
 ### Build the app
