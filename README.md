@@ -39,6 +39,19 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 - [x] Search for locations.
 - [x] Support dark mode.
 
+> **Note**:    
+> LocationSimulator will try to download the corresponding `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` for your iOS Version from github, since I can not legally distribute these files. If the download should not work, get the files by installing Xcode and copy or link them to:    
+> 
+>```
+>~/Library/Application Support/LocationSimulator/{YOU_PLATFORM}/{MAJOR_YOUR_IOS_VERSION}.{MINOR_YOUR_IOS_VERSION}/
+>```    
+> `YOU_PLATFORM` might be `iPhone OS` (iPhone and iPad), `Watch OS` (Apple Watch) or `Tv OS` (Apple TV). `MAJOR_YOUR_IOS_VERSION` might `14` and `MINOR_YOUR_IOS_VERSION` might be `3` for a device running iOS 14.3.
+>
+> As of v0.1.8 this folder moved to: 
+>```
+>~/Library/Containers/com.schlaubi.LocationSimulator/Data/Library/Application Support/LocationSimulator/
+>```
+
 ## Install
 
 1. Install [homebrew](https://brew.sh) by entering the following command in your terminal: 
@@ -63,12 +76,6 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 	- [libplist](https://github.com/libimobiledevice/libplist)
 	- [libopenssl](https://github.com/openssl/openssl)
 	- [libcrypto](https://github.com/openssl/openssl)
-
-> **Note**:    
-> LocationSimulator will try to download the corresponding `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` for your iOS Version from github, since I can not legally distribute these files. If the download should not work, get the files by installing Xcode and copy or link them to:    
-> ```~/Library/Application Support/LocationSimulator/{MAJOR_YOUR_IOS_VERSION}.{MINOR_YOUR_IOS_VERSION}/```    
->
-> As of v0.1.8 this folder moved to: ```~/Library/Containers/com.schlaubi.LocationSimulator/Data/Library/Application Support/LocationSimulator/```
 
 ### Build the app
 
