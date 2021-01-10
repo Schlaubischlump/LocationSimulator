@@ -94,13 +94,14 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 5. Tap `Run` to build and execute the app.
 
 > **Note**:  
-> If you want to build a standalone application which can be copied to another Mac without installing the dependencies choose the `LocationSimulator` scheme and switch the configuration to `Release` before running. If you do not want to bundle the dependencies, but want to create a release build choose the `Homebrew` scheme. When a new release of `libimobiledevice` is available, I will try to create a homebrew cask for this application. 
+> If you want to build a standalone application which can be copied to another Mac without installing the dependencies choose the `LocationSimulator` scheme and switch the configuration to `Release` before running. If you do not want to bundle the dependencies, but want to create a release build choose the `Homebrew` scheme.
 
 ## Usage
 
 ### Start spoofing:
   1. Connect the iOS device to your computer via USB or Wi-Fi.
-  2. Long click the point you want to set as the current location on the map.
+  2. Select the device in the sidebar.
+  3. Long click the point you want to set as the current location on the map.
 
 ### Moving:
   - Click the walk button at bottom left corner of the map. Drag the blue triangle to change the direction of movement.    
