@@ -90,13 +90,13 @@
 // MARK: - MenuItem
 "MAIN_MENU"="Main Menu";
 // MARK: -- LocationSimulator
-"ABOUT_MENUITEM"="About LocationSimulator";
-"PREFERENCES_MENUITEM"="Preferences…";
+"ABOUT_MENUITEM"="Acerca de LocationSimulator";
+"PREFERENCES_MENUITEM"="Preferencias…";
 "SERVICES_MENUITEM"="Services";
-"HIDE_APP_MENUITEM"="Hide LocationSimulator";
-"HIDE_OTHERS_MENUITEM"="Hide Others";
-"SHOW_ALL_MENUITEM"="Show All";
-"QUIT_APP_MENUITEM"="Quit LocationSimulator";
+"HIDE_APP_MENUITEM"="Ocultar LocationSimulator";
+"HIDE_OTHERS_MENUITEM"="Ocultar otros";
+"SHOW_ALL_MENUITEM"="Mostrar todo";
+"QUIT_APP_MENUITEM"="Salir de LocationSimulator";
 // MARK: -- Navigation
 "NAVIGATION_MENU"="Navigation";
 "WALK_MENUITEM"="Walk";
@@ -107,7 +107,7 @@
 "MAC_LOCATION_MENUITEM"="Use Mac Location";
 "RECENT_LOCATIONS_MENU"="Recent Locations";
 "RECENT_LOCATIONS_MENUITEM"="Recent Locations";
-"CLEAR_MENU_MENUITEM"="Clear Menu";
+"CLEAR_MENU_MENUITEM"="Vaciar menú";
 "TOGGLE_AUTOMOVE_MENUITEM"="Toggle Automove";
 "STOP_NAVIGATION_MENUITEM"="Stop Navigation";
 "MOVE_UP_MENUITEM"="Move Up";
@@ -115,111 +115,111 @@
 "ROTATE_CLOCKWISE_MENUITEM"="Rotate Clockwise";
 "ROTATE_COUNTERCLOCKWISE_MENUITEM"="Rotate Counterclockwise";
 // MARK: -- File
-"FILE_MENU"="File";
+"FILE_MENU"="Archivo";
 "OPEN_GPX_FILE_MENUITEM"="Open GPX File…";
-"CLOSE_MENUITEM"="Close";
+"CLOSE_MENUITEM"="Cerrar";
 // MARK: -- Edit
-"EDIT_MENU"="Edit";
-"UNDO_MENUITEM"="Undo";
-"REDO_MENUITEM"="Redo";
-"CUT_MENUITEM"="Cut";
-"COPY_MENUITEM"="Copy";
-"PASTE_MENUITEM"="Paste";
-"PASTE_AND_MATCH_STYLE_MENUITEM"="Paste and Match Style";
-"DELETE_MENUITEM"="Delete";
-"SELECT_ALL_MENUITEM"="Select All";
+"EDIT_MENU"="Edición";
+"UNDO_MENUITEM"="Deshacer";
+"REDO_MENUITEM"="Rehacer";
+"CUT_MENUITEM"="Cortar";
+"COPY_MENUITEM"="Copiar";
+"PASTE_MENUITEM"="Pegar";
+"PASTE_AND_MATCH_STYLE_MENUITEM"="Pegar con el mismo estilo";
+"DELETE_MENUITEM"="Eliminar";
+"SELECT_ALL_MENUITEM"="Seleccionar todo";
 // MARK: ---- Find
 "FIND_MENU"="Find";
 "FIND_MENUITEM"="Find";
-"FIND..._MENUITEM"="Find…";
-"FIND_AND_REPLACE_..._MENUITEM"="Find and Replace…";
-"FIND_NEXT_MENUITEM"="Find Next";
-"FIND_PREVIOUS_MENUITEM"="Find Previous";
-"USE_SELECTION_FOR_FIND_MENUITEM"="Use Selection for Find";
-"JUMP_TO_SELECTION_MENUITEM"="Jump to Selection";
+"FIND..._MENUITEM"="Buscar…";
+"FIND_AND_REPLACE_..._MENUITEM"="Buscar y remplazar…";
+"FIND_NEXT_MENUITEM"="Buscar siguiente";
+"FIND_PREVIOUS_MENUITEM"="Buscar anterior";
+"USE_SELECTION_FOR_FIND_MENUITEM"="Usar selección para buscar";
+"JUMP_TO_SELECTION_MENUITEM"="Ir a la selección";
 // MARK: ---- Spelling and Grammar
-"SPELLING_GRAMMAR_MENU"="Spelling and Grammar";
-"SPELLING_GRAMMAR_MENUITEM"="Spelling and Grammar";
-"SHOW_SPELLING_AND_GRAMMAR_MENUITEM"="Show Spelling and Grammar";
-"CHECK_DOCUMENT_NOW_MENUITEM"="Check Document Now";
-"CHECK_SPELLING_WHILE_TYPING_MENUITEM"="Check Spelling While Typing";
-"CHECK_GRAMMAR_WHILE_SPELLING"="Check Grammar With Spelling";
-"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM"="Correct Spelling Automatically";
+"SPELLING_GRAMMAR_MENU"="Ortografía y gramática";
+"SPELLING_GRAMMAR_MENUITEM"="Ortografía y gramática";
+"SHOW_SPELLING_AND_GRAMMAR_MENUITEM"="Mostrar ortografía y gramática";
+"CHECK_DOCUMENT_NOW_MENUITEM"="Comprobar documento ahora";
+"CHECK_SPELLING_WHILE_TYPING_MENUITEM"="Comprobar ortografía mientras se escribe";
+"CHECK_GRAMMAR_WHILE_SPELLING"="Comprobar gramática con la ortografía";
+"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM"="Corregir ortografía automáticamente";
 // MARK: ---- Substitutions
 "SUBSTITUTIONS_MENU"="Substitutions";
 "SUBSTITUTIONS_MENUITEM"="Substitutions";
-"SHOW_SUBSTITUTIONS_MENUITEM"="Show Substitutions";
-"SMART_COPY_PASTE_MENUITEM"="Smart Copy/Paste";
-"SMART_QUOTES_MENUITEM"="Smart Quotes";
-"SMART_DASHES_MENUITEM"="Smart Dashes";
-"SMART_LINKS_MENUITEM"="Smart Links";
-"DATA_DETECTORS_MENUITEM"="Data Detectors";
-"TEXT_REPLACEMENT_MENUITEM"="Text Replacement";
+"SHOW_SUBSTITUTIONS_MENUITEM"="Mostrar sustituciones";
+"SMART_COPY_PASTE_MENUITEM"="Copiado/Pegado inteligente";
+"SMART_QUOTES_MENUITEM"="Comillas tipográficas";
+"SMART_DASHES_MENUITEM"="Guiones inteligentes";
+"SMART_LINKS_MENUITEM"="Enlaces inteligentes";
+"DATA_DETECTORS_MENUITEM"="Detectores de datos";
+"TEXT_REPLACEMENT_MENUITEM"="Reemplazar texto";
 // MARK: ---- Transformations
 "TRANSFORMATIONS_MENU"="Transformations";
 "TRANSFORMATIONS_MENUITEM"="Transformations";
-"MAKE_UPPER_CASE_MENUITEM"="Make Upper Case";
-"MAKE_LOWER_CASE_MENUITEM"="Make Lower Case";
-"CAPITALIZE_MENUITEM"="Capitalize";
+"MAKE_UPPER_CASE_MENUITEM"="Todo en mayúsculas";
+"MAKE_LOWER_CASE_MENUITEM"="Todo en minúsculas";
+"CAPITALIZE_MENUITEM"="Mayúsculas iniciales";
 // MARK: ---- Speech
 "SPEECH_MENU"="Speech";
 "SPEECH_MENUITEM"="Speech";
-"START_SPEAKING_MENUITEM"="Start Speaking";
-"STOP_SPEAKING_MENUITEM"="Stop Speaking";
+"START_SPEAKING_MENUITEM"="Iniciar locución";
+"STOP_SPEAKING_MENUITEM"="Detener locución";
 // MARK: -- Format
 "FORMAT_MENU"="Format";
 "FORMAT_MENUITEM"="Format";
 // MARK: ---- Font
-"FONT_MENU"="Font";
-"FONT_MENUITEM"="Font";
-"SHOW_FONTS_MENUITEM"="Show Fonts";
-"BOLD_MENUITEM"="Bold";
-"ITALIC_MENUITEM"="Italic";
-"UNDERLINE_MENUITEM"="Underline";
-"BIGGER_MENUITEM"="Bigger";
-"SMALLER_MENUITEM"="Smaller";
-"SHOW_COLORS_MENUITEM"="Show Colors";
-"COPY_STYLE_MENUITEM"="Copy Style";
-"PASTE_STYLE_MENUITEM"="Paste Style";
+"FONT_MENU"="Tipo de letra";
+"FONT_MENUITEM"="Tipo de letra";
+"SHOW_FONTS_MENUITEM"="Mostrar tipos de letra";
+"BOLD_MENUITEM"="Negrita";
+"ITALIC_MENUITEM"="Cursiva";
+"UNDERLINE_MENUITEM"="Subrayar";
+"BIGGER_MENUITEM"="Más grande";
+"SMALLER_MENUITEM"="Más pequeño";
+"SHOW_COLORS_MENUITEM"="Mostrar colores";
+"COPY_STYLE_MENUITEM"="Copiar estilo";
+"PASTE_STYLE_MENUITEM"="Pegar estilo";
 // MARK: ------ Kern
 "KERN_MENU"="Kern";
 "KERN_MENUITEM"="Kern";
-"USE_DEFAULT_MENUITEM"="Use Default";
-"USE_NONE_MENUITEM"="Use None";
-"TIGHTEN_MENUITEM"="Tighten";
-"LOOSEN_MENUITEM"="Loosen";
+"USE_DEFAULT_MENUITEM"="Valor por omisión";
+"USE_NONE_MENUITEM"="Ninguno";
+"TIGHTEN_MENUITEM"="Reducir";
+"LOOSEN_MENUITEM"="Aumentar";
 // MARK: ------ Ligatures
-"LIGATURES_MENU"="Ligatures";
-"LIGATURES_MENUITEM"="Ligatures";
-"USE_ALL_MENUITEM"="Use All";
+"LIGATURES_MENU"="Ligaduras";
+"LIGATURES_MENUITEM"="Ligaduras";
+"USE_ALL_MENUITEM"="Usar todas";
 // MARK: ------ Baseline
 "BASELINE_MENU"="Baseline";
 "BASELINE_MENUITEM"="Baseline";
-"SUPERSCRIPT_MENUITEM"="Superscript";
-"SUBSCRIPT_MENUITEM"="Subscript";
-"RAISE_MENUITEM"="Raise";
-"LOWER_MENUITEM"="Lower";
+"SUPERSCRIPT_MENUITEM"="Superíndice";
+"SUBSCRIPT_MENUITEM"="Subíndice";
+"RAISE_MENUITEM"="Subir";
+"LOWER_MENUITEM"="Bajar";
 // MARK: ---- Text
-"TEXT_MENU"="Text";
-"TEXT_MENUITEM"="Text";
-"ALIGN_LEFT_MENUITEM"="Align Left";
-"CENTER_MENUITEM"="Center";
-"JUSTIFY_MENUITEM"="Justify";
-"ALIGN_RIGHT_MENUITEM"="Align Right";
-"SHOW_RULER_MENUITEM"="Show Ruler";
-"COPY_RULER_MENUITEM"="Copy Ruler";
-"PASTE_RULER_MENUITEM"="Paste Ruler";
+"TEXT_MENU"="Texto";
+"TEXT_MENUITEM"="Texto";
+"ALIGN_LEFT_MENUITEM"="Alinear a la izquierda";
+"CENTER_MENUITEM"="Centrar";
+"JUSTIFY_MENUITEM"="Justificar";
+"ALIGN_RIGHT_MENUITEM"="Alinear a la derecha";
+"SHOW_RULER_MENUITEM"="Mostrar regla";
+"COPY_RULER_MENUITEM"="Copiar regla";
+"PASTE_RULER_MENUITEM"="Pegar regla";
 // MARK: ------ Writing Direction
 "WRITING_DIRECTION_MENU"="Writing Direction";
 "WRITING_DIRECTION_MENUITEM"="Writing Direction";
 "PARAGRAPH_MENUITEM"="Paragraph";
-"SELECTION_MENUITEM"="Selection";
-"DEFAULT_MENUITEM"="\tDefault";
-"LEFT_TO_RIGHT_MENUITEM"="\tLeft to Right";
-"RIGHT_TO_LEFT_MENUITEM"="\tRight to Left";
+"SELECTION_MENUITEM"="Selección";
+"DEFAULT_MENUITEM"="\tPor omisión";
+"LEFT_TO_RIGHT_MENUITEM"="\tDe izquierda a derecha";
+"RIGHT_TO_LEFT_MENUITEM"="\tDe derecha a izquierda";
 // MARK: -- View
-"VIEW_MENU"="View";
-"VIEW_MENUITEM"="View";
+"VIEW_MENU"="Visualización";
+"VIEW_MENUITEM"="Visualización";
 "SHOW_TOOLBAR_MENUITEM"="Show Toolbar";
 "CUSTOMIZE_TOOLBAR_MENUITEM"="Customize Toolbar…";
 "SHOW_SIDEBAR_MENUITEM"="Show Sidebar";
@@ -227,13 +227,13 @@
 // MARK: -- Window
 "WINDOW_MENU"="Window";
 "WINDOW_MENUITEM"="Window";
-"MINIMIZE_MENUITEM"="Minimize";
+"MINIMIZE_MENUITEM"="Minimizar";
 "ZOOM_MENUITEM"="Zoom";
-"BRING_ALL_TO_FRONT_MENUITEM"="Bring All to Front";
+"BRING_ALL_TO_FRONT_MENUITEM"="Traer todo al frente";
 // MARK: -- Help
-"HELP_MENU"="Help";
-"HELP_MENUITEM"="Help";
-"APP_HELP_MENUITEM"="LocationSimulator Help";
+"HELP_MENU"="Ayuda";
+"HELP_MENUITEM"="Ayuda";
+"APP_HELP_MENUITEM"="Ayuda LocationSimulator";
 "OPEN_PROJECT_PAGE_MENUITEM"="Open Project Page";
 "REPORT_A_BUG_MENUITEM"="Report a Bug";
 

@@ -59,7 +59,7 @@
 "CONFIRM_TELEPORT_MSG"="Möchtest du wirklich teleportieren?";
 
 // MARK: - Alert Buttons
-"DESTINATION" = "Ziel";
+"DESTINATION" = "Zielort";
 "NAVIGATE" = "Navigieren";
 "TELEPORT" = "Teleportieren";
 "CANCEL" = "Abbrechen";
