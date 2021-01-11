@@ -70,7 +70,9 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 ### Requirements
 
 - macOS 10.15+
-- Swift 5.0+
+- macOS 11.x+ SDK
+- swift 5.0+
+- swift-tools-version 5.3+
 - [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice)
 	- [libusbmuxd](https://github.com/libimobiledevice/libusbmuxd)
 	- [libplist](https://github.com/libimobiledevice/libplist)
