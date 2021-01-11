@@ -220,9 +220,9 @@
 // MARK: -- View
 "VIEW_MENU"="Visualización";
 "VIEW_MENUITEM"="Visualización";
-"SHOW_TOOLBAR_MENUITEM"="Show Toolbar";
+"SHOW_TOOLBAR_MENUITEM"="Toggle Toolbar";
 "CUSTOMIZE_TOOLBAR_MENUITEM"="Customize Toolbar…";
-"SHOW_SIDEBAR_MENUITEM"="Show Sidebar";
+"SHOW_SIDEBAR_MENUITEM"="Toggle Sidebar";
 "ENTER_FULL_SCREEN_MENUITEM"="Enter Full Screen";
 // MARK: -- Window
 "WINDOW_MENU"="Ventana";

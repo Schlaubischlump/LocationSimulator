@@ -220,10 +220,10 @@
 // MARK: -- View
 "VIEW_MENU"="View";
 "VIEW_MENUITEM"="View";
-"SHOW_TOOLBAR_MENUITEM"="Show Toolbar";
+"SHOW_TOOLBAR_MENUITEM"="Toggle Toolbar";
 "CUSTOMIZE_TOOLBAR_MENUITEM"="Customize Toolbar…";
-"SHOW_SIDEBAR_MENUITEM"="Show Sidebar";
-"ENTER_FULL_SCREEN_MENUITEM"="Enter Full Screen";
+"SHOW_SIDEBAR_MENUITEM"="Toggle Sidebar";
+"ENTER_FULL_SCREEN_MENUITEM"="Toggle Full Screen";
 // MARK: -- Window
 "WINDOW_MENU"="Window";
 "WINDOW_MENUITEM"="Window";
