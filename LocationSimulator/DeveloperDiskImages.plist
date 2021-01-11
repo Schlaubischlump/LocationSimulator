@@ -266,7 +266,7 @@
 			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.1/DeveloperDiskImage.dmg.signature</string>
 		</array>
 	</dict>
-  	<key>14.2</key>
+	<key>14.2</key>
 	<dict>
 		<key>Image</key>
 		<array>
@@ -277,6 +277,7 @@
 			<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.2/DeveloperDiskImage.dmg.signature</string>
 		</array>
 	</dict>
+	<key>14.3</key>
 	<dict>
 		<key>Image</key>
 		<array>
