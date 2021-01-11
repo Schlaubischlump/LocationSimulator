@@ -124,4 +124,4 @@ The whole project is licensed under the [GNU General Public License version 3](L
 Since I maintain this project in my freetime, I always appreciate any help I get. Even if you are not a programmer and do not know anything about coding you can still help out. Currently this project is only available in English and German. It would be great if more languages were available. If you know any other language and you are willing to invest some time to help with the translation let me know [here](https://github.com/Schlaubischlump/LocationSimulator/issues/65)! I want this software to be as stable as possible, if you find any bug please report it by opening a new issue. If you are a programmer, feel free to contribute bug fixes or new features. It would be greate if you run swift-lint on your code before submitting pull requests.
 
 ## Enhancement ideas
-Look at the `Projects` tab to see a list of planned features for the next releases. 
+Look at the [`Projects`](https://github.com/Schlaubischlump/LocationSimulator/projects) tab to see a list of planned features for the next releases. 
