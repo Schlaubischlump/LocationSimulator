@@ -93,7 +93,7 @@ class HUDView: NSView {
             let isDark =  NSAppearance.current.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
             effectView.material = isDark ? .titlebar : .contentBackground
         } else {
-            // Mac OS 10.13. TODO: Needs testing.
+            // Mac OS 10.13 support was removed.
             effectView.material = .titlebar
         }
 

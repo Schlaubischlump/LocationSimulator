@@ -26,7 +26,6 @@ protocol PaletteLabelXIBLocalizable {
     var localePaletteLabelKey: String? { get set }
 }
 
-
 // MARK: - NSView
 
 extension NSView: TooltipXIBLocalizable {

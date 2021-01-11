@@ -254,14 +254,15 @@
 "CONFIRM_TELEPORTATION_MSG_SETTING"="Teleportieren zusätzlich bestätigen.";
 // MARK: -- License
 "LICENSE_TITLE_SETTING"="Lizenz";
+// MARK: - Toolbar
+"SEARCH_PLACEHOLDER"="Suchen";
 // Palette Label
 "SEARCH_TOOLBARITEM_PALETTELABEL"="Suchen";
 "AUTOFOCUS_TOOLBARITEM_PALETTELABEL"="Standort verfolgen";
 "MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="Aktueller Standort";
 "MOVETYPES_TOOLBARITEM_PALETTELABEL"="Bewegungsart";
 "RESET_TOOLBARITEM_PALETTELABEL"="Zurücksetzen";
-// MARK: - Toolbar
-"SEARCH_PLACEHOLDER"="Suchen";
+// Tooltip
 "RESET_TOOLBARITEM_TOOLTIP"="Standort nicht mehr fälschen";
 "MAC_LOCATION_TOOLBARITEM_TOOLTIP"="Mac Standort als aktuellen Standort verwenden";
 "AUTOFOCUS_TOOLBARITEM_TOOLTIP"="Standort verfolgen";
