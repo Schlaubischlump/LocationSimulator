@@ -92,7 +92,7 @@
 // MARK: -- LocationSimulator
 "ABOUT_MENUITEM"="Acerca de LocationSimulator";
 "PREFERENCES_MENUITEM"="Preferencias…";
-"SERVICES_MENUITEM"="Services";
+"SERVICES_MENUITEM"="Servicios";
 "HIDE_APP_MENUITEM"="Ocultar LocationSimulator";
 "HIDE_OTHERS_MENUITEM"="Ocultar otros";
 "SHOW_ALL_MENUITEM"="Mostrar todo";
@@ -129,8 +129,8 @@
 "DELETE_MENUITEM"="Eliminar";
 "SELECT_ALL_MENUITEM"="Seleccionar todo";
 // MARK: ---- Find
-"FIND_MENU"="Find";
-"FIND_MENUITEM"="Find";
+"FIND_MENU"="Buscar";
+"FIND_MENUITEM"="Buscar";
 "FIND..._MENUITEM"="Buscar…";
 "FIND_AND_REPLACE_..._MENUITEM"="Buscar y remplazar…";
 "FIND_NEXT_MENUITEM"="Buscar siguiente";
@@ -146,8 +146,8 @@
 "CHECK_GRAMMAR_WHILE_SPELLING"="Comprobar gramática con la ortografía";
 "CORRECT_SPELLING_AUTOMATICALLY_MENUITEM"="Corregir ortografía automáticamente";
 // MARK: ---- Substitutions
-"SUBSTITUTIONS_MENU"="Substitutions";
-"SUBSTITUTIONS_MENUITEM"="Substitutions";
+"SUBSTITUTIONS_MENU"="Sustituciones";
+"SUBSTITUTIONS_MENUITEM"="Sustituciones";
 "SHOW_SUBSTITUTIONS_MENUITEM"="Mostrar sustituciones";
 "SMART_COPY_PASTE_MENUITEM"="Copiado/Pegado inteligente";
 "SMART_QUOTES_MENUITEM"="Comillas tipográficas";
@@ -156,19 +156,19 @@
 "DATA_DETECTORS_MENUITEM"="Detectores de datos";
 "TEXT_REPLACEMENT_MENUITEM"="Reemplazar texto";
 // MARK: ---- Transformations
-"TRANSFORMATIONS_MENU"="Transformations";
-"TRANSFORMATIONS_MENUITEM"="Transformations";
+"TRANSFORMATIONS_MENU"="Transformaciones";
+"TRANSFORMATIONS_MENUITEM"="Transformaciones";
 "MAKE_UPPER_CASE_MENUITEM"="Todo en mayúsculas";
 "MAKE_LOWER_CASE_MENUITEM"="Todo en minúsculas";
 "CAPITALIZE_MENUITEM"="Mayúsculas iniciales";
 // MARK: ---- Speech
-"SPEECH_MENU"="Speech";
-"SPEECH_MENUITEM"="Speech";
+"SPEECH_MENU"="Habla";
+"SPEECH_MENUITEM"="Habla";
 "START_SPEAKING_MENUITEM"="Iniciar locución";
 "STOP_SPEAKING_MENUITEM"="Detener locución";
 // MARK: -- Format
-"FORMAT_MENU"="Format";
-"FORMAT_MENUITEM"="Format";
+"FORMAT_MENU"="Formato";
+"FORMAT_MENUITEM"="Formato";
 // MARK: ---- Font
 "FONT_MENU"="Tipo de letra";
 "FONT_MENUITEM"="Tipo de letra";
@@ -182,8 +182,8 @@
 "COPY_STYLE_MENUITEM"="Copiar estilo";
 "PASTE_STYLE_MENUITEM"="Pegar estilo";
 // MARK: ------ Kern
-"KERN_MENU"="Kern";
-"KERN_MENUITEM"="Kern";
+"KERN_MENU"="Interletraje";
+"KERN_MENUITEM"="Interletraje";
 "USE_DEFAULT_MENUITEM"="Valor por omisión";
 "USE_NONE_MENUITEM"="Ninguno";
 "TIGHTEN_MENUITEM"="Reducir";
@@ -193,8 +193,8 @@
 "LIGATURES_MENUITEM"="Ligaduras";
 "USE_ALL_MENUITEM"="Usar todas";
 // MARK: ------ Baseline
-"BASELINE_MENU"="Baseline";
-"BASELINE_MENUITEM"="Baseline";
+"BASELINE_MENU"="Línea base";
+"BASELINE_MENUITEM"="Línea base";
 "SUPERSCRIPT_MENUITEM"="Superíndice";
 "SUBSCRIPT_MENUITEM"="Subíndice";
 "RAISE_MENUITEM"="Subir";
@@ -210,9 +210,9 @@
 "COPY_RULER_MENUITEM"="Copiar regla";
 "PASTE_RULER_MENUITEM"="Pegar regla";
 // MARK: ------ Writing Direction
-"WRITING_DIRECTION_MENU"="Writing Direction";
-"WRITING_DIRECTION_MENUITEM"="Writing Direction";
-"PARAGRAPH_MENUITEM"="Paragraph";
+"WRITING_DIRECTION_MENU"="Sentido de la escritura";
+"WRITING_DIRECTION_MENUITEM"="Sentido de la escritura";
+"PARAGRAPH_MENUITEM"="Párrafo";
 "SELECTION_MENUITEM"="Selección";
 "DEFAULT_MENUITEM"="\tPor omisión";
 "LEFT_TO_RIGHT_MENUITEM"="\tDe izquierda a derecha";
@@ -225,8 +225,8 @@
 "SHOW_SIDEBAR_MENUITEM"="Show Sidebar";
 "ENTER_FULL_SCREEN_MENUITEM"="Enter Full Screen";
 // MARK: -- Window
-"WINDOW_MENU"="Window";
-"WINDOW_MENUITEM"="Window";
+"WINDOW_MENU"="Ventana";
+"WINDOW_MENUITEM"="Ventana";
 "MINIMIZE_MENUITEM"="Minimizar";
 "ZOOM_MENUITEM"="Zoom";
 "BRING_ALL_TO_FRONT_MENUITEM"="Traer todo al frente";
