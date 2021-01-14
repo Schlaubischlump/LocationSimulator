@@ -1,0 +1,272 @@
+/*
+ Localizable.strings
+ LocationSimulator
+
+ Created by David Klopp on 16.08.19.
+ Copyright © 2019 David Klopp. All rights reserved.
+ */
+
+// MARK: - General
+// Total distance label in the bottom bar.
+"TOTAL_DISTANCE"="Total distance: %.3fkm";
+// Current location annotation
+"CURRENT_LOCATION"="Current Location";
+// Device sidebar
+"DEVICE_HEADER"="Devices";
+// The tooltip for the warning triangle in the lower right corner.
+"WARNING_TRIANGLE_TOOLTIP"="Device not paired";
+
+// MARK: - Alert Titles
+"UNKNOWN_ERROR"="Unknown error";
+"NO_DEVICE_ERROR"="No device found";
+"MOUNT_ERROR"="Could not mount DeveloperDiskImage.dmg";
+"PRODUCT_INFO_ERROR"="Could not get product info";
+"PERMISSION_ERROR"="Permission error";
+"DEVDISK_NOT_FOUND"="DeveloperDiskImage files not found";
+"DEVDISK_DOWNLOAD_FAILED_ERROR"="DeveloperDiskImage download failed";
+// Location change
+"LOCATION_CHANGE_ERROR"="Error changing location";
+// Use mac location
+"LOCATION_SERVICE_DISABLED"="Enable location services";
+"GET_LOCATION_ERROR"="Could not get location";
+// GPX Alert
+"CHOOSE_GPX_FILE"="Choose a .gpx file";
+"ERROR_OPEN_GPX"="Error Opening GPX File";
+"ERROR_PARSE_GPX"="Error Parsing GPX File";
+"EMPTY_ROUTE"="Empty Route";
+// Confirm teleportation.
+"CONFIRM_TELEPORT"="Confirm Teleportation";
+
+// MARK: - Alert Messages
+"PAIR_ERROR_MSG"="Could not establish a connection to the device.";
+"MOUNT_ERROR_MSG"="The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked?";
+"UNKNOWN_ERROR_MSG"="An unknown error occured. Please disconnect your device and try again.";
+"PERMISSION_ERROR_MSG"="Can not access Application Support folder.";
+"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG"="Failed to download DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature";
+// Use mac location
+"LOCATION_SERVICE_DISABLED_MSG"="Location services seem to be disabled. Please activate location services inside System Preferences.";
+"GET_LOCATION_ERROR_MSG"="Could not get the current location. Did you allow LocationSimulator to access this mac's location?";
+// Location change
+"TELEPORT_OR_NAVIGATE_MSG"="Do you want to teleport or navigate to the destination?";
+"LOCATION_RESET_ERROR_MSG"="Could not reset location.";
+"LOCATION_CHANGE_ERROR_MSG"="Could not change the location.";
+// GPXAlert
+"ERROR_PARSE_GPX_MSG"="Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
+"TELEPORT_OR_NAVIGATE_GPX_MSG"="Do you want to navigate or teleport to the start location of this route?";
+"EMPTY_ROUTE_MSG"="Not enough coordinates available to start the navigation.";
+"ERROR_OPEN_GPX_MSG"="Could not open the selected GPX file.";
+// Confirm teleportation.
+"CONFIRM_TELEPORT_MSG"="Do you really want to teleport?";
+
+// MARK: - Alert Buttons
+"DESTINATION"="Destination";
+"NAVIGATE"="Navigate";
+"TELEPORT"="Teleport";
+"CANCEL"="Cancel";
+"OK"="OK";
+
+// MARK: - GPXSelectionView
+"CHOOSE"="Choose";
+"TRACK_SEGMENT"="Segment";
+"TRACK"="Track";
+"ROUTE"="Route";
+"WAYPOINTS"="Waypoints";
+"GPX_SELECTION"="Choose Coordinates";
+"GPX_SELECTION_MSG"="Choose a Track, Track Segment, Route or the Waypoints to start the navigation.";
+
+// MARK: - ProgressView
+"PROGRESS"="Download iOS support files";
+"DEVDISK_DOWNLOAD_DESC"="Downloading DeveloperDiskImage.dmg";
+"DEVSIGN_DOWNLOAD_DESC"="Downloading DeveloperDiskImage.dmg.signature";
+
+// MARK: - CoordinateSelectionView
+"LAT"="Lat";
+"LONG"="Long";
+
+// MARK: - NoDeviceView
+"NO_DEVICE"="No Device Selected";
+"NO_DEVICE_MSG"="Please connect a device and select it in the sidebar to start.";
+
+// MARK: - MenuItem
+"MAIN_MENU"="Main Menu";
+// MARK: -- LocationSimulator
+"ABOUT_MENUITEM"="À propos de LocationSimulator";
+"PREFERENCES_MENUITEM"="Préférences…";
+"SERVICES_MENUITEM"="Services";
+"HIDE_APP_MENUITEM"="Masquer LocationSimulator";
+"HIDE_OTHERS_MENUITEM"="Masquer les autres";
+"SHOW_ALL_MENUITEM"="Tout afficher";
+"QUIT_APP_MENUITEM"="Quitter LocationSimulator";
+// MARK: -- Navigation
+"NAVIGATION_MENU"="Navigation";
+"WALK_MENUITEM"="Walk";
+"CYCLE_MENUITEM"="Cycle";
+"DRIVE_MENUITEM"="Drive";
+"SET_LOCATION_MENUITEM"="Set Location…";
+"RESET_LOCATION_MENUITEM"="Reset Location";
+"MAC_LOCATION_MENUITEM"="Use Mac Location";
+"RECENT_LOCATIONS_MENU"="Recent Locations";
+"RECENT_LOCATIONS_MENUITEM"="Recent Locations";
+"CLEAR_MENU_MENUITEM"="Effacer le menu";
+"TOGGLE_AUTOMOVE_MENUITEM"="Toggle Automove";
+"STOP_NAVIGATION_MENUITEM"="Stop Navigation";
+"MOVE_UP_MENUITEM"="Move Up";
+"MOVE_DOWN_MENUITEM"="Move Down";
+"ROTATE_CLOCKWISE_MENUITEM"="Rotate Clockwise";
+"ROTATE_COUNTERCLOCKWISE_MENUITEM"="Rotate Counterclockwise";
+// MARK: -- File
+"FILE_MENU"="Fichier";
+"OPEN_GPX_FILE_MENUITEM"="Open GPX File…";
+"CLOSE_MENUITEM"="Fermer";
+// MARK: -- Edit
+"EDIT_MENU"="Édition";
+"UNDO_MENUITEM"="Annuler";
+"REDO_MENUITEM"="Rétablir";
+"CUT_MENUITEM"="Couper";
+"COPY_MENUITEM"="Copier";
+"PASTE_MENUITEM"="Coller";
+"PASTE_AND_MATCH_STYLE_MENUITEM"="Coller et adapter le style";
+"DELETE_MENUITEM"="Supprimer";
+"SELECT_ALL_MENUITEM"="Tout sélectionner";
+// MARK: ---- Find
+"FIND_MENU"="Rechercher";
+"FIND_MENUITEM"="Rechercher";
+"FIND..._MENUITEM"="Rechercher…";
+"FIND_AND_REPLACE_..._MENUITEM"="Rechercher et remplacer…";
+"FIND_NEXT_MENUITEM"="Rechercher le suivant";
+"FIND_PREVIOUS_MENUITEM"="Rechercher le précédent";
+"USE_SELECTION_FOR_FIND_MENUITEM"="Rechercher la sélection";
+"JUMP_TO_SELECTION_MENUITEM"="Aller à la sélection";
+// MARK: ---- Spelling and Grammar
+"SPELLING_GRAMMAR_MENU"="Orthographe et grammaire";
+"SPELLING_GRAMMAR_MENUITEM"="Orthographe et grammaire";
+"SHOW_SPELLING_AND_GRAMMAR_MENUITEM"="Afficher l’orthographe et la grammaire";
+"CHECK_DOCUMENT_NOW_MENUITEM"="Vérifier le document maintenant";
+"CHECK_SPELLING_WHILE_TYPING_MENUITEM"="Vérifier l’orthographe lors de la saisie";
+"CHECK_GRAMMAR_WHILE_SPELLING"="Vérifier la grammaire et l’orthographe";
+"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM"="Corriger l’orthographe automatiquement";
+// MARK: ---- Substitutions
+"SUBSTITUTIONS_MENU"="Substitutions";
+"SUBSTITUTIONS_MENUITEM"="Substitutions";
+"SHOW_SUBSTITUTIONS_MENUITEM"="Afficher les substitutions";
+"SMART_COPY_PASTE_MENUITEM"="Copier-coller intelligent";
+"SMART_QUOTES_MENUITEM"="Guillemets courbes";
+"SMART_DASHES_MENUITEM"="Tirets intelligents";
+"SMART_LINKS_MENUITEM"="Liens intelligents";
+"DATA_DETECTORS_MENUITEM"="Détection de données";
+"TEXT_REPLACEMENT_MENUITEM"="Remplacement de texte";
+// MARK: ---- Transformations
+"TRANSFORMATIONS_MENU"="Transformations";
+"TRANSFORMATIONS_MENUITEM"="Transformations";
+"MAKE_UPPER_CASE_MENUITEM"="Mettre en majuscules";
+"MAKE_LOWER_CASE_MENUITEM"="Mettre en minuscules";
+"CAPITALIZE_MENUITEM"="Mettre la première lettre en majuscule";
+// MARK: ---- Speech
+"SPEECH_MENU"="Parole";
+"SPEECH_MENUITEM"="Parole";
+"START_SPEAKING_MENUITEM"="Commencer la lecture";
+"STOP_SPEAKING_MENUITEM"="Arrêter la lecture";
+// MARK: -- Format
+"FORMAT_MENU"="Format";
+"FORMAT_MENUITEM"="Format";
+// MARK: ---- Font
+"FONT_MENU"="Police";
+"FONT_MENUITEM"="Police";
+"SHOW_FONTS_MENUITEM"="Afficher les polices";
+"BOLD_MENUITEM"="Gras";
+"ITALIC_MENUITEM"="Italique";
+"UNDERLINE_MENUITEM"="Souligné";
+"BIGGER_MENUITEM"="Plus grand";
+"SMALLER_MENUITEM"="Plus petit";
+"SHOW_COLORS_MENUITEM"="Afficher les couleurs";
+"COPY_STYLE_MENUITEM"="Copier le style";
+"PASTE_STYLE_MENUITEM"="Coller le style";
+// MARK: ------ Kern
+"KERN_MENU"="Crénage";
+"KERN_MENUITEM"="Crénage";
+"USE_DEFAULT_MENUITEM"="Valeur par défaut";
+"USE_NONE_MENUITEM"="Use None";
+"TIGHTEN_MENUITEM"="Resserrer";
+"LOOSEN_MENUITEM"="Desserrer";
+// MARK: ------ Ligatures
+"LIGATURES_MENU"="Ligatures";
+"LIGATURES_MENUITEM"="Ligatures";
+"USE_ALL_MENUITEM"="Toutes";
+// MARK: ------ Baseline
+"BASELINE_MENU"="Ligne de base";
+"BASELINE_MENUITEM"="Ligne de base";
+"SUPERSCRIPT_MENUITEM"="Exposant";
+"SUBSCRIPT_MENUITEM"="Indice";
+"RAISE_MENUITEM"="Élever";
+"LOWER_MENUITEM"="Abaisser";
+// MARK: ---- Text
+"TEXT_MENU"="Texte";
+"TEXT_MENUITEM"="Texte";
+"ALIGN_LEFT_MENUITEM"="Aligner à gauche";
+"CENTER_MENUITEM"="Centrer";
+"JUSTIFY_MENUITEM"="Justifier";
+"ALIGN_RIGHT_MENUITEM"="Aligner à droite";
+"SHOW_RULER_MENUITEM"="Afficher la règle";
+"COPY_RULER_MENUITEM"="Copier la règle";
+"PASTE_RULER_MENUITEM"="Coller la règle";
+// MARK: ------ Writing Direction
+"WRITING_DIRECTION_MENU"="Sens de l’écriture";
+"WRITING_DIRECTION_MENUITEM"="Sens de l’écriture";
+"PARAGRAPH_MENUITEM"="Paragraphe";
+"SELECTION_MENUITEM"="Sélection";
+"DEFAULT_MENUITEM"="\tPar défaut";
+"LEFT_TO_RIGHT_MENUITEM"="\tDe gauche à droite";
+"RIGHT_TO_LEFT_MENUITEM"="\tDe droite à gauche";
+// MARK: -- View
+"VIEW_MENU"="Présentation";
+"VIEW_MENUITEM"="Présentation";
+"SHOW_TOOLBAR_MENUITEM"="Toggle Toolbar";
+"CUSTOMIZE_TOOLBAR_MENUITEM"="Customize Toolbar…";
+"SHOW_SIDEBAR_MENUITEM"="Toggle Sidebar";
+"ENTER_FULL_SCREEN_MENUITEM"="Toggle Full Screen";
+// MARK: -- Window
+"WINDOW_MENU"="Fenêtre";
+"WINDOW_MENUITEM"="Fenêtre";
+"MINIMIZE_MENUITEM"="Placer dans le Dock";
+"ZOOM_MENUITEM"="Réduire/agrandir";
+"BRING_ALL_TO_FRONT_MENUITEM"="Tout ramener au premier plan";
+// MARK: -- Help
+"HELP_MENU"="Aide";
+"HELP_MENUITEM"="Aide";
+"APP_HELP_MENUITEM"="Aide LocationSimulator";
+"OPEN_PROJECT_PAGE_MENUITEM"="Open Project Page";
+"REPORT_A_BUG_MENUITEM"="Report a Bug";
+
+// MARK: - Settings
+// MARK: -- INFO
+"INFO_TITLE_SETTING"="Info";
+"WELCOME"="Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.";
+"CHANGELOG"="Changes in this version are:\n\n1. App Sandbox support\n2.German localization\n3. Bug fixes\n";
+// MARK: -- NETWORK
+"NETWORK_TITEL_SETTING"="Network";
+"ALLOW_NETWORK_DEVICES_SETTING"="Allow network devices";
+"ALLOW_NETWORK_DEVICES_MSG_SETTING"="Disable this option to only allow USB devices.";
+"PREFER_NETWORK_DEVICES_SETTING"="Prefer network devices";
+"PREFER_NETWORK_DEVICES_MSG_SETTING"="Always use the network connection even if a device is connected over USB.";
+// MARK: -- General
+"GENERAL_TITEL_SETTING"="General";
+"CONFIRM_TELEPORTATION_SETTING"="Confirm Teleportation";
+"CONFIRM_TELEPORTATION_MSG_SETTING"="Always ask before teleporting.";
+// MARK: -- License
+"LICENSE_TITLE_SETTING"="License";
+
+// MARK: - Toolbar
+"SEARCH_PLACEHOLDER"="Search";
+// Palette Label
+"SEARCH_TOOLBARITEM_PALETTELABEL"="Search";
+"AUTOFOCUS_TOOLBARITEM_PALETTELABEL"="Autofocus Location";
+"MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="Current Location";
+"MOVETYPES_TOOLBARITEM_PALETTELABEL"="Move Types";
+"RESET_TOOLBARITEM_PALETTELABEL"="Reset";
+// Tooltip
+"RESET_TOOLBARITEM_TOOLTIP"="Stop faking the device location";
+"MAC_LOCATION_TOOLBARITEM_TOOLTIP"="Set Mac location to current location";
+"AUTOFOCUS_TOOLBARITEM_TOOLTIP"="Autofocus current location";
+"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"="Show Color Panel";
+"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"="Show Font Panel";
+"PRINT_TOOLBARITEM_TOOLTIP"="Print";

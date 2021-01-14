@@ -179,6 +179,8 @@
 		63C799F12596291F0099B794 /* ViewMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenubarItem.swift; sourceTree = "<group>"; };
 		63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTouchbarItem+Extension.swift"; sourceTree = "<group>"; };
 		63C799FC259659740099B794 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		63D56BB725B09ADF00DE5E05 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localization/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		63D56BB825B09C0700DE5E05 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Localization/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		63DBFFE125961563005EAB02 /* NSResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSResponder+Extension.swift"; sourceTree = "<group>"; };
 		63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusbmuxd-2.0.6.dylib"; path = "../../../../usr/local/Cellar/libusbmuxd/2.0.2/lib/libusbmuxd-2.0.6.dylib"; sourceTree = "<group>"; };
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
@@ -645,6 +647,8 @@
 				en,
 				de,
 				es,
+				fr,
+				"zh-Hans",
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
@@ -805,6 +809,8 @@
 				633C74BF25AA28DF00161DB4 /* en */,
 				633C74FA25AA5E5800161DB4 /* de */,
 				633C750E25AAB0B700161DB4 /* es */,
+				63D56BB725B09ADF00DE5E05 /* fr */,
+				63D56BB825B09C0700DE5E05 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
