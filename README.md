@@ -127,3 +127,6 @@ Since I maintain this project in my freetime, I always appreciate any help I get
 
 ## Enhancement ideas
 Look at the [`Projects`](https://github.com/Schlaubischlump/LocationSimulator/projects) tab to see a list of planned features for the next releases. 
+
+## Acknowledgement
+Special thanks to @bailaowai and his son for the Spanish translation.
