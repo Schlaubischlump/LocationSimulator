@@ -1211,7 +1211,7 @@
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="compact" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="240" y="240" width="728" height="480"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="640" height="480"/>
                         <toolbar key="toolbar" implicitIdentifier="85BEC97E-E606-461B-9DB8-F1B8A3EF02FF" displayMode="iconAndLabel" sizeMode="regular" id="ERa-CM-KNB">
                             <allowedToolbarItems>
@@ -1916,7 +1916,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="INFO_TITLE_KEY"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="INFO_TITLE_SETTING"/>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <customObject id="mX0-Ez-e8l" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

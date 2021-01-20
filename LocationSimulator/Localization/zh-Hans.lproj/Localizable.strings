@@ -4,119 +4,121 @@
 
  Created by David Klopp on 16.08.19.
  Copyright © 2019 David Klopp. All rights reserved.
+
+ Translated by bailaowai (https://github.com/bailaowai)
  */
 
 // MARK: - General
 // Total distance label in the bottom bar.
-"TOTAL_DISTANCE"="Total distance: %.3fkm";
+"TOTAL_DISTANCE"="总距离:% .3fkm";
 // Current location annotation
-"CURRENT_LOCATION"="Current Location";
+"CURRENT_LOCATION"="当前位置";
 // Device sidebar
-"DEVICE_HEADER"="Devices";
+"DEVICE_HEADER"="设备";
 // The tooltip for the warning triangle in the lower right corner.
-"WARNING_TRIANGLE_TOOLTIP"="Device not paired";
+"WARNING_TRIANGLE_TOOLTIP"="设备不配对";
 
 // MARK: - Alert Titles
-"UNKNOWN_ERROR"="Unknown error";
-"NO_DEVICE_ERROR"="No device found";
-"MOUNT_ERROR"="Could not mount DeveloperDiskImage.dmg";
-"PRODUCT_INFO_ERROR"="Could not get product info";
-"PERMISSION_ERROR"="Permission error";
-"DEVDISK_NOT_FOUND"="DeveloperDiskImage files not found";
-"DEVDISK_DOWNLOAD_FAILED_ERROR"="DeveloperDiskImage download failed";
+"UNKNOWN_ERROR"="未知错误";
+"NO_DEVICE_ERROR"="没有发现设备";
+"MOUNT_ERROR"="无法安装DeveloperDiskImage.dmg";
+"PRODUCT_INFO_ERROR"="无法获取产品信息";
+"PERMISSION_ERROR"="许可错误";
+"DEVDISK_NOT_FOUND"="DeveloperDiskImage文件未找到";
+"DEVDISK_DOWNLOAD_FAILED_ERROR"="DeveloperDiskImage下载失败";
 // Location change
-"LOCATION_CHANGE_ERROR"="Error changing location";
+"LOCATION_CHANGE_ERROR"="错误改变位置";
 // Use mac location
-"LOCATION_SERVICE_DISABLED"="Enable location services";
-"GET_LOCATION_ERROR"="Could not get location";
+"LOCATION_SERVICE_DISABLED"="启用定位服务";
+"GET_LOCATION_ERROR"="无法获取位置";
 // GPX Alert
-"CHOOSE_GPX_FILE"="Choose a .gpx file";
-"ERROR_OPEN_GPX"="Error Opening GPX File";
-"ERROR_PARSE_GPX"="Error Parsing GPX File";
-"EMPTY_ROUTE"="Empty Route";
+"CHOOSE_GPX_FILE"="选择一个gpx文件";
+"ERROR_OPEN_GPX"="打开GPX文件错误";
+"ERROR_PARSE_GPX"="错误解析GPX文件";
+"EMPTY_ROUTE"="空路线";
 // Confirm teleportation.
-"CONFIRM_TELEPORT"="Confirm Teleportation";
+"CONFIRM_TELEPORT"="确认传送";
 
-// MARK: - Alert Messages
-"PAIR_ERROR_MSG"="Could not establish a connection to the device.";
-"MOUNT_ERROR_MSG"="The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked?";
-"UNKNOWN_ERROR_MSG"="An unknown error occured. Please disconnect your device and try again.";
-"PERMISSION_ERROR_MSG"="Can not access Application Support folder.";
-"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG"="Failed to download DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature";
+// MARK: — Alert Messages
+"PAIR_ERROR_MSG"="无法与设备建立连接";
+"MOUNT_ERROR_MSG"="无法挂载此设备的DeveloperDiskImage。位置欺骗不会起作用。你的设备锁上了吗?";
+"UNKNOWN_ERROR_MSG"="发生未知错误。请断开设备，然后重试。";
+"PERMISSION_ERROR_MSG"="无法访问应用程序支持文件夹";
+"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG"="下载DeveloperDiskImage.dmg或DeveloperDiskImage.dmg.signature 失败";
 // Use mac location
-"LOCATION_SERVICE_DISABLED_MSG"="Location services seem to be disabled. Please activate location services inside System Preferences.";
-"GET_LOCATION_ERROR_MSG"="Could not get the current location. Did you allow LocationSimulator to access this mac's location?";
+"LOCATION_SERVICE_DISABLED_MSG"="位置服务似乎被禁用。请在系统首选项内激活定位服务。";
+"GET_LOCATION_ERROR_MSG"="无法获取当前位置。你允许LocationSimulator访问mac的位置吗?";
 // Location change
-"TELEPORT_OR_NAVIGATE_MSG"="Do you want to teleport or navigate to the destination?";
-"LOCATION_RESET_ERROR_MSG"="Could not reset location.";
-"LOCATION_CHANGE_ERROR_MSG"="Could not change the location.";
+"TELEPORT_OR_NAVIGATE_MSG"="您要传送或导航到目的地吗?";
+"LOCATION_RESET_ERROR_MSG"="无法重置位置";
+"LOCATION_CHANGE_ERROR_MSG"="无法更改位置";
 // GPXAlert
-"ERROR_PARSE_GPX_MSG"="Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
-"TELEPORT_OR_NAVIGATE_GPX_MSG"="Do you want to navigate or teleport to the start location of this route?";
-"EMPTY_ROUTE_MSG"="Not enough coordinates available to start the navigation.";
-"ERROR_OPEN_GPX_MSG"="Could not open the selected GPX file.";
+"ERROR_PARSE_GPX_MSG"="无法解析所选的GPX文件。文件可能已损坏或格式不正确。";
+"TELEPORT_OR_NAVIGATE_GPX_MSG"="您要导航或传送到此路由的起始位置吗?";
+"EMPTY_ROUTE_MSG"="没有足够的坐标来启动导航";
+"ERROR_OPEN_GPX_MSG"="无法打开所选的GPX文件";
 // Confirm teleportation.
-"CONFIRM_TELEPORT_MSG"="Do you really want to teleport?";
+"CONFIRM_TELEPORT_MSG"="您真的要传送吗?";
 
 // MARK: - Alert Buttons
-"DESTINATION"="Destination";
-"NAVIGATE"="Navigate";
-"TELEPORT"="Teleport";
-"CANCEL"="Cancel";
+"DESTINATION"="目的地";
+"NAVIGATE"="导航";
+"TELEPORT"="传送";
+"CANCEL"="取消";
 "OK"="OK";
 
 // MARK: - GPXSelectionView
-"CHOOSE"="Choose";
-"TRACK_SEGMENT"="Segment";
-"TRACK"="Track";
-"ROUTE"="Route";
-"WAYPOINTS"="Waypoints";
-"GPX_SELECTION"="Choose Coordinates";
-"GPX_SELECTION_MSG"="Choose a Track, Track Segment, Route or the Waypoints to start the navigation.";
+"CHOOSE"="选择";
+"TRACK_SEGMENT"="段";
+"TRACK"="跟踪";
+"ROUTE"="路线";
+"WAYPOINTS"="锚点";
+"GPX_SELECTION"="选择坐标";
+"GPX_SELECTION_MSG"="选择赛道、赛道段、路线或路径点开始导航";
 
 // MARK: - ProgressView
-"PROGRESS"="Download iOS support files";
-"DEVDISK_DOWNLOAD_DESC"="Downloading DeveloperDiskImage.dmg";
-"DEVSIGN_DOWNLOAD_DESC"="Downloading DeveloperDiskImage.dmg.signature";
+"PROGRESS"="下载iOS支持文件";
+"DEVDISK_DOWNLOAD_DESC"="下载DeveloperDiskImage.dmg";
+"DEVSIGN_DOWNLOAD_DESC"="下载DeveloperDiskImage.dmg.signature";
 
 // MARK: - CoordinateSelectionView
-"LAT"="Lat";
-"LONG"="Long";
+"LAT"="纬度";
+"LONG"="长";
 
-// MARK: - NoDeviceView
-"NO_DEVICE"="No Device Selected";
-"NO_DEVICE_MSG"="Please connect a device and select it in the sidebar to start.";
+// MARK: — NoDeviceView
+"NO_DEVICE"="没有设备选择";
+"NO_DEVICE_MSG"="请连接设备并在侧边栏中选择启动它";
 
-// MARK: - MenuItem
-"MAIN_MENU"="Main Menu";
+// MARK: — MenuItem
+"MAIN_MENU"="主菜单";
 // MARK: -- LocationSimulator
-"ABOUT_MENUITEM"="关于 LocationSimulator";
-"PREFERENCES_MENUITEM"="偏好设置…";
-"SERVICES_MENUITEM"="Services";
-"HIDE_APP_MENUITEM"="隐藏 LocationSimulator";
+"ABOUT_MENUITEM"="关于LocationSimulator";
+"PREFERENCES_MENUITEM"="偏好设置……";
+"SERVICES_MENUITEM"="服务";
+"HIDE_APP_MENUITEM"="隐藏LocationSimulator";
 "HIDE_OTHERS_MENUITEM"="隐藏其他";
 "SHOW_ALL_MENUITEM"="全部显示";
-"QUIT_APP_MENUITEM"="退出 LocationSimulator";
+"QUIT_APP_MENUITEM"="退出LocationSimulator";
 // MARK: -- Navigation
-"NAVIGATION_MENU"="Navigation";
-"WALK_MENUITEM"="Walk";
-"CYCLE_MENUITEM"="Cycle";
-"DRIVE_MENUITEM"="Drive";
-"SET_LOCATION_MENUITEM"="Set Location…";
-"RESET_LOCATION_MENUITEM"="Reset Location";
-"MAC_LOCATION_MENUITEM"="Use Mac Location";
-"RECENT_LOCATIONS_MENU"="Recent Locations";
-"RECENT_LOCATIONS_MENUITEM"="Recent Locations";
+"NAVIGATION_MENU"="导航";
+"WALK_MENUITEM"="走";
+"CYCLE_MENUITEM"="循环";
+"DRIVE_MENUITEM"="驱动";
+"SET_LOCATION_MENUITEM"="设置位置…";
+"RESET_LOCATION_MENUITEM"="复位位置";
+"MAC_LOCATION_MENUITEM"="使用Mac位置";
+"RECENT_LOCATIONS_MENU"="最近的地方";
+"RECENT_LOCATIONS_MENUITEM"="最近的地方";
 "CLEAR_MENU_MENUITEM"="清除菜单";
-"TOGGLE_AUTOMOVE_MENUITEM"="Toggle Automove";
-"STOP_NAVIGATION_MENUITEM"="Stop Navigation";
-"MOVE_UP_MENUITEM"="Move Up";
-"MOVE_DOWN_MENUITEM"="Move Down";
-"ROTATE_CLOCKWISE_MENUITEM"="Rotate Clockwise";
-"ROTATE_COUNTERCLOCKWISE_MENUITEM"="Rotate Counterclockwise";
+"TOGGLE_AUTOMOVE_MENUITEM"="切换Automove";
+"STOP_NAVIGATION_MENUITEM"="停止导航";
+"MOVE_UP_MENUITEM"="上移";
+"MOVE_DOWN_MENUITEM"="向下";
+"ROTATE_CLOCKWISE_MENUITEM"="顺时针旋转";
+"ROTATE_COUNTERCLOCKWISE_MENUITEM"="逆时针";
 // MARK: -- File
 "FILE_MENU"="文件";
-"OPEN_GPX_FILE_MENUITEM"="Open GPX File…";
+"OPEN_GPX_FILE_MENUITEM"="打开GPX文件…";
 "CLOSE_MENUITEM"="关闭";
 // MARK: -- Edit
 "EDIT_MENU"="编辑";
@@ -129,8 +131,8 @@
 "DELETE_MENUITEM"="删除";
 "SELECT_ALL_MENUITEM"="全选";
 // MARK: ---- Find
-"FIND_MENU"="Find";
-"FIND_MENUITEM"="Find";
+"FIND_MENU"="找到";
+"FIND_MENUITEM"="找到";
 "FIND..._MENUITEM"="查找…";
 "FIND_AND_REPLACE_..._MENUITEM"="查找和替换…";
 "FIND_NEXT_MENUITEM"="查找下一个";
@@ -146,8 +148,8 @@
 "CHECK_GRAMMAR_WHILE_SPELLING"="检查拼写和语法";
 "CORRECT_SPELLING_AUTOMATICALLY_MENUITEM"="自动纠正拼写";
 // MARK: ---- Substitutions
-"SUBSTITUTIONS_MENU"="Substitutions";
-"SUBSTITUTIONS_MENUITEM"="Substitutions";
+"SUBSTITUTIONS_MENU"="替换";
+"SUBSTITUTIONS_MENUITEM"="替换";
 "SHOW_SUBSTITUTIONS_MENUITEM"="显示替换";
 "SMART_COPY_PASTE_MENUITEM"="智能拷贝/粘贴";
 "SMART_QUOTES_MENUITEM"="智能引号";
@@ -156,19 +158,19 @@
 "DATA_DETECTORS_MENUITEM"="数据检测器";
 "TEXT_REPLACEMENT_MENUITEM"="文本替换";
 // MARK: ---- Transformations
-"TRANSFORMATIONS_MENU"="Transformations";
-"TRANSFORMATIONS_MENUITEM"="Transformations";
+"TRANSFORMATIONS_MENU"="转换";
+"TRANSFORMATIONS_MENUITEM"="转换";
 "MAKE_UPPER_CASE_MENUITEM"="变为大写";
 "MAKE_LOWER_CASE_MENUITEM"="变为小写";
 "CAPITALIZE_MENUITEM"="首字母大写";
 // MARK: ---- Speech
-"SPEECH_MENU"="Speech";
-"SPEECH_MENUITEM"="Speech";
+"SPEECH_MENU"="演讲";
+"SPEECH_MENUITEM"="演讲";
 "START_SPEAKING_MENUITEM"="开始朗读";
 "STOP_SPEAKING_MENUITEM"="停止朗读";
 // MARK: -- Format
-"FORMAT_MENU"="Format";
-"FORMAT_MENUITEM"="Format";
+"FORMAT_MENU"="格式";
+"FORMAT_MENUITEM"="格式";
 // MARK: ---- Font
 "FONT_MENU"="字体";
 "FONT_MENUITEM"="字体";
@@ -182,8 +184,8 @@
 "COPY_STYLE_MENUITEM"="拷贝样式";
 "PASTE_STYLE_MENUITEM"="粘贴样式";
 // MARK: ------ Kern
-"KERN_MENU"="Kern";
-"KERN_MENUITEM"="Kern";
+"KERN_MENU"="核";
+"KERN_MENUITEM"="核";
 "USE_DEFAULT_MENUITEM"="使用默认";
 "USE_NONE_MENUITEM"="取消使用";
 "TIGHTEN_MENUITEM"="紧排";
@@ -193,8 +195,8 @@
 "LIGATURES_MENUITEM"="连字";
 "USE_ALL_MENUITEM"="全部使用";
 // MARK: ------ Baseline
-"BASELINE_MENU"="Baseline";
-"BASELINE_MENUITEM"="Baseline";
+"BASELINE_MENU"="基线";
+"BASELINE_MENUITEM"="基线";
 "SUPERSCRIPT_MENUITEM"="上标";
 "SUBSCRIPT_MENUITEM"="下标";
 "RAISE_MENUITEM"="升高";
@@ -210,8 +212,8 @@
 "COPY_RULER_MENUITEM"="拷贝标尺";
 "PASTE_RULER_MENUITEM"="粘贴标尺";
 // MARK: ------ Writing Direction
-"WRITING_DIRECTION_MENU"="Writing Direction";
-"WRITING_DIRECTION_MENUITEM"="Writing Direction";
+"WRITING_DIRECTION_MENU"="写作方向";
+"WRITING_DIRECTION_MENUITEM"="写作方向";
 "PARAGRAPH_MENUITEM"="Paragraph";
 "SELECTION_MENUITEM"="所选";
 "DEFAULT_MENUITEM"="\t默认";
@@ -220,13 +222,13 @@
 // MARK: -- View
 "VIEW_MENU"="显示";
 "VIEW_MENUITEM"="显示";
-"SHOW_TOOLBAR_MENUITEM"="Toggle Toolbar";
-"CUSTOMIZE_TOOLBAR_MENUITEM"="Customize Toolbar…";
-"SHOW_SIDEBAR_MENUITEM"="Toggle Sidebar";
-"ENTER_FULL_SCREEN_MENUITEM"="Toggle Full Screen";
+"SHOW_TOOLBAR_MENUITEM"="切换工具栏";
+"CUSTOMIZE_TOOLBAR_MENUITEM"="自定义工具栏…";
+"SHOW_SIDEBAR_MENUITEM"="切换栏";
+"ENTER_FULL_SCREEN_MENUITEM"="切换全屏";
 // MARK: -- Window
-"WINDOW_MENU"="Window";
-"WINDOW_MENUITEM"="Window";
+"WINDOW_MENU"="窗口";
+"WINDOW_MENUITEM"="窗口";
 "MINIMIZE_MENUITEM"="最小化";
 "ZOOM_MENUITEM"="缩放";
 "BRING_ALL_TO_FRONT_MENUITEM"="前置全部窗口";
@@ -234,39 +236,38 @@
 "HELP_MENU"="帮助";
 "HELP_MENUITEM"="帮助";
 "APP_HELP_MENUITEM"="LocationSimulator 帮助";
-"OPEN_PROJECT_PAGE_MENUITEM"="Open Project Page";
-"REPORT_A_BUG_MENUITEM"="Report a Bug";
+"OPEN_PROJECT_PAGE_MENUITEM"="开放项目页面";
+"REPORT_A_BUG_MENUITEM"="错误报告";
 
 // MARK: - Settings
 // MARK: -- INFO
-"INFO_TITLE_SETTING"="Info";
-"WELCOME"="Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.";
-"CHANGELOG"="Changes in this version are:\n\n1. App Sandbox support\n2.German localization\n3. Bug fixes\n";
+"INFO_TITLE_SETTING"="信息";
+"WELCOME"="感谢使用位置模拟器!\n\n这个软件还在测试阶段。请报告你发现的任何错误。";
+"CHANGELOG"="这个版本的更改是:\n\n1。应用程序沙箱支持\ n2。德国本地化\ n3。Bug修复\ n";
 // MARK: -- NETWORK
-"NETWORK_TITEL_SETTING"="Network";
-"ALLOW_NETWORK_DEVICES_SETTING"="Allow network devices";
-"ALLOW_NETWORK_DEVICES_MSG_SETTING"="Disable this option to only allow USB devices.";
-"PREFER_NETWORK_DEVICES_SETTING"="Prefer network devices";
-"PREFER_NETWORK_DEVICES_MSG_SETTING"="Always use the network connection even if a device is connected over USB.";
+"NETWORK_TITEL_SETTING"="网络名称设置";
+"ALLOW_NETWORK_DEVICES_SETTING"="允许网络设备";
+"ALLOW_NETWORK_DEVICES_MSG_SETTING"="禁用此选项仅允许USB设备";
+"PREFER_NETWORK_DEVICES_SETTING"="首选网络设备";
+"PREFER_NETWORK_DEVICES_MSG_SETTING"="即使设备通过USB连接，也始终使用网络连接。";
 // MARK: -- General
-"GENERAL_TITEL_SETTING"="General";
-"CONFIRM_TELEPORTATION_SETTING"="Confirm Teleportation";
-"CONFIRM_TELEPORTATION_MSG_SETTING"="Always ask before teleporting.";
+"GENERAL_TITEL_SETTING"="一般";
+"CONFIRM_TELEPORTATION_SETTING"="确认传送";
+"CONFIRM_TELEPORTATION_MSG_SETTING"="传送前总是询问。";
 // MARK: -- License
-"LICENSE_TITLE_SETTING"="License";
-
+"LICENSE_TITLE_SETTING"="许可证";
 // MARK: - Toolbar
-"SEARCH_PLACEHOLDER"="Search";
+"SEARCH_PLACEHOLDER"="搜索";
 // Palette Label
-"SEARCH_TOOLBARITEM_PALETTELABEL"="Search";
-"AUTOFOCUS_TOOLBARITEM_PALETTELABEL"="Autofocus Location";
-"MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="Current Location";
-"MOVETYPES_TOOLBARITEM_PALETTELABEL"="Move Types";
-"RESET_TOOLBARITEM_PALETTELABEL"="Reset";
+"SEARCH_TOOLBARITEM_PALETTELABEL"="搜索";
+"AUTOFOCUS_TOOLBARITEM_PALETTELABEL"="自动对焦位置";
+"MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="当前位置";
+"MOVETYPES_TOOLBARITEM_PALETTELABEL"="移动类型";
+"RESET_TOOLBARITEM_PALETTELABEL"="重置";
 // Tooltip
-"RESET_TOOLBARITEM_TOOLTIP"="Stop faking the device location";
-"MAC_LOCATION_TOOLBARITEM_TOOLTIP"="Set Mac location to current location";
-"AUTOFOCUS_TOOLBARITEM_TOOLTIP"="Autofocus current location";
-"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"="Show Color Panel";
-"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"="Show Font Panel";
-"PRINT_TOOLBARITEM_TOOLTIP"="Print";
+"RESET_TOOLBARITEM_TOOLTIP"="停止伪造设备位置";
+"MAC_LOCATION_TOOLBARITEM_TOOLTIP"="设置Mac位置为当前位置";
+"AUTOFOCUS_TOOLBARITEM_TOOLTIP"="自动对焦当前位置";
+"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"="显示颜色面板";
+"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"="显示字体面板";
+"PRINT_TOOLBARITEM_TOOLTIP"="打印";
