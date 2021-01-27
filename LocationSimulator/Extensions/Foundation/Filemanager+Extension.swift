@@ -72,27 +72,29 @@ extension FileManager {
     /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
     /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
     func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> ([URL], [URL]) {
-        if let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist") {
-            let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath)
-            if let downloadLinksForOS: NSDictionary = downloadLinksPlist?[os] as? NSDictionary,
-               let downloadLinks: NSDictionary = downloadLinksForOS[version] as? NSDictionary,
-               let dmgLinks = downloadLinks["Image"] as? [String],
-               let signLinks = downloadLinks["Signature"] as? [String] {
-                    return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
-            }
-
-            // Try to use the fallback links if no direct links were found
-            if let fallbackLinks: NSDictionary = downloadLinksPlist?["Fallback"] as? NSDictionary,
-               let dmgLinks = fallbackLinks["Image"] as? [String],
-               let signLinks = fallbackLinks["Signature"] as? [String] {
-                return (dmgLinks.map {
-                            URL(string: String(format: $0, version))!
-                        },
-                        signLinks.map {
-                            URL(string: String(format: $0, version))!
-                        })
-            }
+        // Check if the plist file and the platform inside the file can be found.
+        guard let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist"),
+              let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath),
+              let downloadLinksForOS: NSDictionary = downloadLinksPlist[os] as? NSDictionary else {
+            return ([], [])
         }
+
+        // Check if a specific download URL is available.
+        if let downloadLinks: NSDictionary = downloadLinksForOS[version] as? NSDictionary,
+           let dmgLinks = downloadLinks["Image"] as? [String],
+           let signLinks = downloadLinks["Signature"] as? [String] {
+            return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
+        }
+
+        // Try to use the fallback links if no direct links were found.
+        if let fallbackLinks: NSDictionary = downloadLinksForOS["Fallback"] as? NSDictionary,
+           let dmgLinks = fallbackLinks["Image"] as? [String],
+           let signLinks = fallbackLinks["Signature"] as? [String] {
+            return (dmgLinks.map { URL(string: String(format: $0, version))! },
+                    signLinks.map { URL(string: String(format: $0, version))! })
+        }
+
+        // We did not find any download link.
         return ([], [])
     }
 
