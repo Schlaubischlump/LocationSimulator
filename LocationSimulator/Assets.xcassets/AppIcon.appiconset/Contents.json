@@ -31,25 +31,25 @@
       "size" : "128x128"
     },
     {
-      "filename" : "AppIcon-1.png",
+      "filename" : "AppIcon_256.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "AppIcon@2x-1.png",
+      "filename" : "AppIcon_256@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "AppIcon.png",
+      "filename" : "AppIcon_512.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "AppIcon@2x.png",
+      "filename" : "AppIcon_512@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
