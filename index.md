@@ -4,7 +4,9 @@ LocationSimulator is a macOS app (10.15.x / 11.x) which allows spoofing the loca
 
 # Install 
 
-Use homebrew to install LocationSimulator.
+Click on `Download .zip`, extract the file and run `LocationSimulator.app` by right-clicking on `open` to grant a Gatekeeper exception.
+
+Alternatively you can use homebrew to install LocationSimulator. The version can be slightly outdated, when installed this way.
 
 1. Install [homebrew](https://brew.sh) by entering the following command in your terminal: 
 
