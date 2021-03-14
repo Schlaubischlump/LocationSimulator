@@ -20,7 +20,7 @@ protocol SidebarItem {
 }
 
 /// Support the Device type as sidebar item.
-extension Device: SidebarItem {
+extension IOSDevice: SidebarItem {
     var image: NSImage? {
         return self.usesNetwork ? NSImage(named: "wifi") : NSImage(named: "usb")
     }
@@ -34,8 +34,42 @@ extension Device: SidebarItem {
     }
 }
 
+extension SimulatorDevice: SidebarItem {
+    var image: NSImage? {
+        return nil
+    }
+
+    var isGroupItem: Bool {
+        return false
+    }
+
+    var identifier: NSUserInterfaceItemIdentifier {
+        return NSUserInterfaceItemIdentifier(rawValue: "DeviceCell")
+    }
+}
+
+
+/// The main Header table view cell, which contains all simulator devices.
+struct SimDeviceHeader: SidebarItem {
+    var name: String {
+        return NSLocalizedString("SIMULATOR_HEADER", comment: "")
+    }
+
+    var image: NSImage? {
+        return nil
+    }
+
+    var isGroupItem: Bool {
+        return true
+    }
+
+    var identifier: NSUserInterfaceItemIdentifier {
+        return NSUserInterfaceItemIdentifier(rawValue: "HeaderCell")
+    }
+}
+
 /// The main Header table view cell, which contains all devices.
-struct DeviceHeader: SidebarItem {
+struct IOSDeviceHeader: SidebarItem {
     var name: String {
         return NSLocalizedString("DEVICE_HEADER", comment: "")
     }

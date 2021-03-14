@@ -30,17 +30,18 @@ class SidebarViewController: NSViewController {
         self.dataSource = SidebarDataSource(sidebarView: self.outlineView)
 
         // Load the default value for network devices.
-        Device.detectNetworkDevices = UserDefaults.standard.detectNetworkDevices
+        IOSDevice.detectNetworkDevices = UserDefaults.standard.detectNetworkDevices
 
         // Tell the datas source to start listening for new devices.
-        if Device.startGeneratingDeviceNotifications() {
-            self.dataSource?.registerDeviceNotifications()
-        }
+        self.dataSource?.registerDeviceNotifications()
+        IOSDevice.startGeneratingDeviceNotifications()
+        SimulatorDevice.startGeneratingDeviceNotifications()
     }
 
     deinit {
         // Stop listening for new devices
-        Device.stopGeneratingDeviceNotifications()
+        IOSDevice.stopGeneratingDeviceNotifications()
+        SimulatorDevice.stopGeneratingDeviceNotifications()
 
         // Remove the selection observer.
         if let observer = self.selectionObserver {

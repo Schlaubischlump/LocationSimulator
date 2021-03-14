@@ -6,3 +6,4 @@
 //  Copyright © 2020 David Klopp. All rights reserved.
 //
 #include "mobiledevice.h"
+#include "simulatordevice.h"

@@ -52,9 +52,9 @@ class NetworkViewController: NSViewController {
         UserDefaults.standard.detectNetworkDevices = detectNetworkDevices
 
         // Update the UI
-        Device.detectNetworkDevices = detectNetworkDevices
-        Device.stopGeneratingDeviceNotifications()
-        Device.startGeneratingDeviceNotifications()
+        IOSDevice.detectNetworkDevices = detectNetworkDevices
+        IOSDevice.stopGeneratingDeviceNotifications()
+        IOSDevice.startGeneratingDeviceNotifications()
     }
 
     /// Callback when the prefer network devices toggle changes the state.
@@ -63,8 +63,8 @@ class NetworkViewController: NSViewController {
 
         UserDefaults.standard.preferNetworkDevices = preferNetworkDevices
 
-        Device.preferNetworkConnectionDefault = preferNetworkDevices
-        Device.stopGeneratingDeviceNotifications()
-        Device.startGeneratingDeviceNotifications()
+        IOSDevice.preferNetworkConnectionDefault = preferNetworkDevices
+        IOSDevice.stopGeneratingDeviceNotifications()
+        IOSDevice.startGeneratingDeviceNotifications()
     }
 }

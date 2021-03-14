@@ -13,12 +13,18 @@ class SidebarDataSource: NSObject {
     public weak var sidebarView: NSOutlineView?
 
     /// List with all currently detected devices.
-    public var devices: [Device] = []
+    public var realDevices: [IOSDevice] = []
+
+    /// List with all currently detected simulator devices.
+    public var simDevices: [SimulatorDevice] = []
 
     /// The currently selected device.
     public var selectedDevice: Device? {
         let row = (self.sidebarView?.selectedRow ?? 0) - 1
-        return row >= 0 ? self.devices[row] : nil
+        if row >= self.realDevices.count {
+            return self.simDevices[row-self.realDevices.count-1]
+        }
+        return row >= 0 ? self.realDevices[row] : nil
     }
 
     // MARK: - Constructor
@@ -37,9 +43,9 @@ class SidebarDataSource: NSObject {
     /// Update the text and image for the cell at the specific index.
     func updateCell(atIndex index: Int) {
         guard let cell = self.sidebarView?.view(atColumn: 0, row: index, makeIfNecessary: false) as? NSTableCellView,
-              index < self.devices.count+1, index > 0 else { return }
+              index < self.realDevices.count+1, index > 0 else { return }
 
-        let device = self.devices[index-1]
+        let device = self.realDevices[index-1]
         cell.textField?.stringValue = device.name
         cell.imageView?.image = device.image
     }
@@ -49,7 +55,16 @@ class SidebarDataSource: NSObject {
 
 extension SidebarDataSource: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        return index == 0 ? DeviceHeader() : self.devices[index-1]
+        if index == 0 {
+            return IOSDeviceHeader()
+        }
+        if index <= self.realDevices.count {
+            return self.realDevices[index-1]
+        }
+        if index == self.realDevices.count+1 {
+            return SimDeviceHeader()
+        }
+        return self.simDevices[index-self.realDevices.count-2]
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
@@ -57,7 +72,7 @@ extension SidebarDataSource: NSOutlineViewDataSource {
     }
 
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        return 1 + self.devices.count
+        return 1 + self.realDevices.count + 1 + self.simDevices.count
     }
 }
 
@@ -78,13 +93,19 @@ extension SidebarDataSource: NSOutlineViewDelegate {
 
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         // Do not allow selecting a header cell.
-        if (item as AnyObject) as? DeviceHeader != nil {
+        if (item as AnyObject) as? IOSDeviceHeader != nil || (item as AnyObject) as? SimDeviceHeader != nil {
             return false
         }
+
         // Allow selecting a device, if it is not already selected.
-        if let device = (item as AnyObject) as? Device {
-            return self.selectedDevice != device
+        if let device = (item as AnyObject) as? IOSDevice {
+            return ((self.selectedDevice as? IOSDevice) != device)
         }
+
+        if let simDevice = (item as AnyObject) as? SimulatorDevice {
+            return ((self.selectedDevice as? SimulatorDevice) != simDevice)
+        }
+
         // Default, should never be the case.
         return false
     }
