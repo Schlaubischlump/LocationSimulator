@@ -22,7 +22,7 @@ public extension Notification.Name {
 }
 
 protocol Device: CustomStringConvertible {//: Hashable {//, CustomStringConvertible {
-    /// Unique Device ID (UDID) string.
+    /// Unique device ID (UDID) string.
     var udid: String { get }
     /// The device name e.g. John's iPhone
     var name: String { get }
@@ -31,7 +31,7 @@ protocol Device: CustomStringConvertible {//: Hashable {//, CustomStringConverti
     /// True if we currently generate device notifications, false otherwise.
     static var isGeneratingDeviceNotifications: Bool { get }
 
-    /// Start an observer for newly added, paired or removed iOS devices.
+    /// Start an observer for newly added, paired or removed devices.
     /// - Return: True if the observer could be started, false otherwise.
     @discardableResult
     static func startGeneratingDeviceNotifications() -> Bool
@@ -39,11 +39,7 @@ protocol Device: CustomStringConvertible {//: Hashable {//, CustomStringConverti
     /// - Return: True if the observer could be closed, False otherwise.
     @discardableResult
     static func stopGeneratingDeviceNotifications() -> Bool
-    /// Pair the specific iOS Device with this computer and try to upload the DeveloperDiskImage.
-    /// - Throws:
-    ///    * `DeviceError.pair`: The pairing process failed
-    ///    * See `mountDeveloperDiskImage`
-    /// - Return: Device instance
+    /// Pair the specific device with this computer and try to upload the DeveloperDiskImage.
     func pair() throws
     /// Set the device location to the new coordinates.
     /// - Parameter location: new coordinates

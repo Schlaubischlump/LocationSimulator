@@ -18,14 +18,11 @@ struct IOSDevice: Device {
     /// The default `preferNetworkConnection` value.
     /// Change this value to change the `preferNetworkConnection` on initialisation for all devices.
     public static var preferNetworkConnectionDefault: Bool = false
-
     /// Set this value to true to find network & USB devices or to false to only find USB devices.
     public static var detectNetworkDevices: Bool = true
-
     /// True if we currently generate device notifications, false otherwise.
     public internal(set) static var isGeneratingDeviceNotifications: Bool = false
-
-    /// Unique Device ID (UDID) string.
+    /// Unique device ID (UDID) string.
     public internal(set) var udid: String = ""
     /// The device name e.g. John's iPhone
     public internal(set) var name: String = ""
@@ -36,7 +33,6 @@ struct IOSDevice: Device {
 
     /// Prefer the network connection even if the device is paired via USB.
     public var preferNetworkConnection: Bool = false
-
     /// Readonly: Get the current lookup flags to perform the request. This allows changing from USB to network.
     public var lookupOps: idevice_options {
         // Get the current lookup operations for this connection type. This might be USB, network or both.
@@ -47,7 +43,6 @@ struct IOSDevice: Device {
         }
         return ops
     }
-
     /// Readonly: True when the devices uses the network connection, otherwise false.
     public var usesNetwork: Bool {
         return (self.connectionType == .network) ||

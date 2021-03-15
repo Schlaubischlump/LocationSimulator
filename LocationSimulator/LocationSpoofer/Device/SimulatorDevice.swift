@@ -16,13 +16,15 @@ struct SimulatorDevice: Device {
     public internal(set) var name: String = ""
     /// The connection type (USB, Network or Unknown)
     public internal(set) var connectionType: ConnectionType = .unknown
-
+    /// Internal wrapper around the simulator device
     private var wrapper: SimDeviceWrapper?
 
+    /// Are we currently generating simulator device notifications.
     public static var isGeneratingDeviceNotifications: Bool {
         return SimulatorDevice.subscriberID != nil
     }
 
+    /// The internal handler id for simulator device notifications
     static private var subscriberID: UInt?
 
     @discardableResult
@@ -59,7 +61,7 @@ struct SimulatorDevice: Device {
     }
 
     func disableSimulation() -> Bool {
-        return true
+        return self.wrapper?.resetLocation() ?? false
     }
 }
 

@@ -70,20 +70,19 @@ extension SidebarDataSource {
     /// Callback when a device is changed. This might happen if a network device is additionally connected over USB.
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func deviceChanged(_ notification: Notification) {
-        if var device: IOSDevice = notification.userInfo?["device"] as? IOSDevice {
+        guard var device: IOSDevice = notification.userInfo?["device"] as? IOSDevice else { return }
 
-            // the internal `preferNetworkConnection` might not be updated for the cached device
-            device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
+        // the internal `preferNetworkConnection` might not be updated for the cached device
+        device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
 
-            // Device is a struct. We therefore need to update the existing struct to write the changes.
-            if let index: Int = self.realDevices.firstIndex(of: device) {
-                self.realDevices[index] = device
+        // Device is a struct. We therefore need to update the existing struct to write the changes.
+        if let index: Int = self.realDevices.firstIndex(of: device) {
+            self.realDevices[index] = device
 
-                print("[INFO]: Update device: \(device.name) with UDID: \(device.udid)")
+            print("[INFO]: Update device: \(device.name) with UDID: \(device.udid)")
 
-                // Update the image and the text. index+1 for the HeaderCell
-                self.updateCell(atIndex: index+1)
-            }
+            // Update the image and the text. index+1 for the HeaderCell
+            self.updateCell(atIndex: index+1)
         }
     }
 
