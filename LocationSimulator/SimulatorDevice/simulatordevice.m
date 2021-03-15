@@ -12,8 +12,10 @@
 @interface SimDeviceWrapper() {
     SimDevice *_device;
     SimulatorBridge *_bridge;
+    pid_t _pid;
 }
-- (instancetype)initWithDevice:(SimDevice * _Nonnull)device andBridge:(SimulatorBridge * _Nullable)bridge;
+- (instancetype)initWithDevice:(SimDevice * _Nonnull)device andBridge:(SimulatorBridge * _Nullable)bridge
+                        forSimulatorPID:(pid_t)pid;
 @end
 
 @implementation SimDeviceWrapper
@@ -33,12 +35,31 @@ static SimDeviceSet *defaultSet = nil;
 
 + (NSUInteger)subscribe:(void (^ _Nonnull)(SimDeviceWrapper * _Nonnull))handler {
     // Send a notification for all currently connected devices.
-    NSArray<NSString *>* simualtorPorts = getSimulatorBridgePortNames();
+    NSArray<NSNumber *>* simualtorPorts = getSimulatorPIDs();
     for (SimDevice *device in defaultSet.availableDevices) {
-        for (NSString *portName in simualtorPorts) {
-            SimulatorBridge *bridge = bridgeForSimDevice(device, portName);
+        for (NSNumber *simPID in simualtorPorts) {
+            pid_t pid = (pid_t)simPID.intValue;
+            SimulatorBridge *bridge = bridgeForSimDevice(device, getBridgePortName(pid));
             if (!bridge) break;
-            handler([[SimDeviceWrapper alloc] initWithDevice:device andBridge:bridge]);
+
+            __block SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:device
+                                                                                     andBridge:bridge
+                                                                               forSimulatorPID:pid];
+            // Listen for terminations of the Simulator app to disconnect the device
+            NSNotificationCenter *workspaceNC = NSWorkspace.sharedWorkspace.notificationCenter;
+            [workspaceNC addObserverForName:NSWorkspaceDidTerminateApplicationNotification
+                                     object:nil
+                                      queue:nil
+                                 usingBlock:^(NSNotification * _Nonnull notification) {
+                // If this device belongs to the currently terminated Simulator.app instance
+                if ([notification.userInfo[@"NSApplicationProcessIdentifier"] intValue] == deviceWrapper->_pid) {
+                    deviceWrapper->_bridge = nil;
+                    handler(deviceWrapper);
+                }
+            }];
+
+            // Add the device
+            handler(deviceWrapper);
         }
     }
 
@@ -52,14 +73,31 @@ static SimDeviceSet *defaultSet = nil;
                 if (bootInfo.isTerminalStatus && bootInfo.status == SimBootStatusFinished)
                 {
                     // Iterate over all running simulator instances to find the correct one
-                    for (NSString *portName in getSimulatorBridgePortNames()) {
+                    for (NSNumber *simPID in getSimulatorPIDs()) {
                         SimDevice *device = info[@"device"];
                         SimulatorBridge *bridge = nil;
+                        pid_t pid = (pid_t)simPID.intValue;
                         // New device connected
                         if (previousBootInfo.status != SimBootStatusFinished)
-                            bridge = bridgeForSimDevice(device, portName);
+                            bridge = bridgeForSimDevice(device, getBridgePortName(pid));
                         // If the device is disconnected bridge will be nil
-                        handler([[SimDeviceWrapper alloc] initWithDevice:device andBridge:bridge]);
+                        __block SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:device
+                                                                                                 andBridge:bridge
+                                                                                           forSimulatorPID:pid];
+                        // Listen for terminations of the Simulator app to disconnect the device
+                        NSNotificationCenter *workspaceNC = NSWorkspace.sharedWorkspace.notificationCenter;
+                        [workspaceNC addObserverForName:NSWorkspaceDidTerminateApplicationNotification
+                                                 object:nil
+                                                  queue:nil
+                                             usingBlock:^(NSNotification * _Nonnull notification) {
+                            // If this device belongs to the currently terminated Simulator.app instance
+                            if ([notification.userInfo[@"NSApplicationProcessIdentifier"] intValue] == deviceWrapper->_pid) {
+                                deviceWrapper->_bridge = nil;
+                                handler(deviceWrapper);
+                            }
+                        }];
+                        // Add the device
+                        handler(deviceWrapper);
                         break;
                     }
                 }
@@ -71,16 +109,22 @@ static SimDeviceSet *defaultSet = nil;
     return [defaultSet unregisterNotificationHandler:handlerID error:NULL];
 }
 
-- (instancetype)initWithDevice:(SimDevice * _Nonnull)device andBridge:(SimulatorBridge * _Nullable)bridge {
+- (instancetype)initWithDevice:(SimDevice * _Nonnull)device andBridge:(SimulatorBridge * _Nullable)bridge
+               forSimulatorPID:(pid_t)pid {
     if (self = [super init]) {
         _device = device;
         _bridge = bridge;
+        _pid = pid;
     }
     return self;
 }
 
 - (NSString * _Nonnull)udid {
     return _device.UDID.UUIDString;
+}
+
+- (pid_t)simulatorPID {
+    return _pid;
 }
 
 - (NSString * _Nonnull)name {

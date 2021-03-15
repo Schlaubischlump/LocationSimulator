@@ -39,14 +39,23 @@ void* _Nullable load_bundle(NSString * _Nonnull path) {
 /**
  - Return: All possible simulator bridge port names for each Simulator.app instance.
  */
-NSArray<NSString * >* _Nonnull getSimulatorBridgePortNames() {
-    NSMutableArray<NSString *> *portNames = [[NSMutableArray alloc] init];
+NSArray<NSNumber *>* _Nonnull getSimulatorPIDs() {
+    NSMutableArray<NSNumber *> *ports = [[NSMutableArray alloc] init];
     for (NSRunningApplication *app in NSWorkspace.sharedWorkspace.runningApplications) {
         if ([app.bundleIdentifier isEqualToString: kSimBundleID]) {
-            [portNames addObject:[NSString stringWithFormat:@"%@.bridge.%d", kSimBundleID, app.processIdentifier]];
+            [ports addObject:[NSNumber numberWithInt:app.processIdentifier]];
         }
     }
-    return portNames;
+    return ports;
+}
+
+/**
+ Get the bridge port name for a given port.
+ - Parameter pid: the iphonesimulator instance pid
+ - Return: portname for the simulator bridge
+ */
+NSString * _Nonnull getBridgePortName(pid_t pid) {
+    return [NSString stringWithFormat:@"%@.bridge.%d", kSimBundleID, pid];
 }
 
 
