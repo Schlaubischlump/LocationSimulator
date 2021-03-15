@@ -12,7 +12,7 @@ import AppKit
 class SidebarDataSource: NSObject {
     public weak var sidebarView: NSOutlineView?
 
-    /// List with all currently detected devices.
+    /// List with all currently detected iOS devices.
     public var realDevices: [IOSDevice] = []
 
     /// List with all currently detected simulator devices.
@@ -20,11 +20,17 @@ class SidebarDataSource: NSObject {
 
     /// The currently selected device.
     public var selectedDevice: Device? {
-        let row = (self.sidebarView?.selectedRow ?? 0) - 1
-        if row >= self.realDevices.count {
-            return self.simDevices[row-self.realDevices.count-1]
+        let numIOSDevices = self.realDevices.count
+        let numSimDevices = self.simDevices.count
+        let row = (self.sidebarView?.selectedRow ?? 0)
+        if row <= numIOSDevices {
+            // A real iOS Device was selected
+            return row >= 1 ? self.realDevices[row-1] : nil
+        } else if row > numIOSDevices && row < numIOSDevices + numSimDevices + 2 {
+            // A simulator device was selected
+            return row > numIOSDevices+1 ? self.simDevices[row-numIOSDevices-2] : nil
         }
-        return row >= 0 ? self.realDevices[row] : nil
+        return nil
     }
 
     // MARK: - Constructor

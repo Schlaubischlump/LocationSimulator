@@ -121,7 +121,7 @@ extension SidebarDataSource {
                     windowController?.mapViewController?.device = nil
                 }
 
-                // index +1 for the HeaderCell
+                // index +2 for the HeaderCells + the real device count
                 let newIndex = 1 + self.realDevices.count + 1 + index
                 self.sidebarView?.removeItems(at: [newIndex], inParent: nil, withAnimation: .effectGap)
             }

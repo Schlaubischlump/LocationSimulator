@@ -1554,15 +1554,15 @@
             <objects>
                 <viewController storyboardIdentifier="NoDeviceViewControlelr" id="tcb-Qe-tEw" customClass="NoDeviceViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="99T-F2-swI" customClass="NoDeviceView" customModule="LocationSimulator" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="306"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-Lb-Ak9">
-                                <rect key="frame" x="100" y="75" width="200" height="200"/>
+                                <rect key="frame" x="100" y="120" width="200" height="200"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Connect" id="y3h-BP-061"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EvP-HI-DSe">
-                                <rect key="frame" x="18" y="48" width="364" height="19"/>
+                                <rect key="frame" x="18" y="93" width="364" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Titel" id="zbm-ZU-4S2">
                                     <font key="font" metaFont="systemBold" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1570,7 +1570,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Nyx-wT-i19">
-                                <rect key="frame" x="18" y="24" width="364" height="16"/>
+                                <rect key="frame" x="18" y="69" width="364" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="center" title="Message" id="U2d-pp-GIv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1579,6 +1579,7 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="width" relation="lessThanOrEqual" secondItem="99T-F2-swI" secondAttribute="height" multiplier="0.5" id="4ES-oi-eoQ"/>
                             <constraint firstAttribute="trailing" secondItem="EvP-HI-DSe" secondAttribute="trailing" constant="20" symbolic="YES" id="4ZH-Wd-wEC"/>
                             <constraint firstItem="EPN-Lb-Ak9" firstAttribute="centerX" secondItem="99T-F2-swI" secondAttribute="centerX" id="JOW-Mb-mgn"/>
                             <constraint firstItem="Nyx-wT-i19" firstAttribute="leading" secondItem="99T-F2-swI" secondAttribute="leading" constant="20" symbolic="YES" id="LWd-rp-FbD"/>
@@ -1587,7 +1588,7 @@
                             <constraint firstItem="Nyx-wT-i19" firstAttribute="top" secondItem="EvP-HI-DSe" secondAttribute="bottom" constant="8" symbolic="YES" id="ifQ-lT-E71"/>
                             <constraint firstItem="EvP-HI-DSe" firstAttribute="leading" secondItem="99T-F2-swI" secondAttribute="leading" constant="20" symbolic="YES" id="nI3-DC-aab"/>
                             <constraint firstItem="EPN-Lb-Ak9" firstAttribute="width" secondItem="99T-F2-swI" secondAttribute="width" multiplier="0.5" id="sV4-9v-AJk"/>
-                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="top" secondItem="99T-F2-swI" secondAttribute="centerY" multiplier="0.2" id="uua-Gt-09V"/>
+                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="top" secondItem="99T-F2-swI" secondAttribute="centerY" multiplier="0.4" id="uua-Gt-09V"/>
                             <constraint firstItem="EvP-HI-DSe" firstAttribute="top" secondItem="EPN-Lb-Ak9" secondAttribute="bottom" constant="8" symbolic="YES" id="x2J-tZ-2qN"/>
                         </constraints>
                         <connections>
