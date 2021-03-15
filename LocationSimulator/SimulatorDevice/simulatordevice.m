@@ -84,18 +84,25 @@ static SimDeviceSet *defaultSet = nil;
                         __block SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:device
                                                                                                  andBridge:bridge
                                                                                            forSimulatorPID:pid];
-                        // Listen for terminations of the Simulator app to disconnect the device
+                        // If a device was connected
                         NSNotificationCenter *workspaceNC = NSWorkspace.sharedWorkspace.notificationCenter;
-                        [workspaceNC addObserverForName:NSWorkspaceDidTerminateApplicationNotification
-                                                 object:nil
-                                                  queue:nil
-                                             usingBlock:^(NSNotification * _Nonnull notification) {
-                            // If this device belongs to the currently terminated Simulator.app instance
-                            if ([notification.userInfo[@"NSApplicationProcessIdentifier"] intValue] == deviceWrapper->_pid) {
-                                deviceWrapper->_bridge = nil;
-                                handler(deviceWrapper);
-                            }
-                        }];
+
+                        if (bridge != nil) {
+                            // Listen for terminations of the Simulator app to disconnect the device
+                            [workspaceNC addObserverForName:NSWorkspaceDidTerminateApplicationNotification
+                                                     object:nil
+                                                      queue:nil
+                                                 usingBlock:^(NSNotification * _Nonnull notification) {
+                                // If this device belongs to the currently terminated Simulator.app instance
+                                if ([notification.userInfo[@"NSApplicationProcessIdentifier"] intValue] == deviceWrapper->_pid) {
+                                    deviceWrapper->_bridge = nil;
+                                    handler(deviceWrapper);
+                                }
+                            }];
+                        } else {
+                            // The device was disconnected. Stop listening for app termination.
+                            [workspaceNC removeObserver:deviceWrapper];
+                        }
                         // Add the device
                         handler(deviceWrapper);
                         break;
