@@ -15,6 +15,7 @@
 "CURRENT_LOCATION"="Localización Actual";
 // Device sidebar
 "DEVICE_HEADER"="Dispositivos";
+"SIMULATOR_HEADER"="Simuladoras";
 // The tooltip for the warning triangle in the lower right corner.
 "WARNING_TRIANGLE_TOOLTIP"="Dispositivo no emparejado";
 

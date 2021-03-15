@@ -45,24 +45,24 @@ static SimDeviceSet *defaultSet = nil;
     // Register a handler for all new devices.
     return [defaultSet registerNotificationHandler:^(NSDictionary* info) {
             NSString *notification_name = info[@"notification"];
-            if ([notification_name isEqualToString: @"device_state"]) {
-                SimDevice *device = info[@"device"];
-                SimBootState new_state = [info[@"new_state"] unsignedIntValue];
-                if (new_state == SimBootStatusBooted) {
-                    // New device added
+            if ([notification_name isEqualToString: @"SimDeviceNotificationType_BootStatus"]) {
+                // This notificaton appears when the device did finish booting
+                SimDeviceBootInfo* bootInfo = info[@"SimDeviceNotification_NewBootStatus"];
+                SimDeviceBootInfo* previousBootInfo = info[@"SimDeviceNotification_PreviousBootStatus"];
+                if (bootInfo.isTerminalStatus && bootInfo.status == SimBootStatusFinished)
+                {
+                    // Iterate over all running simulator instances to find the correct one
                     for (NSString *portName in getSimulatorBridgePortNames()) {
-                        // TODO: This is called to early. Use the other method I posted on github.
-                        SimulatorBridge *bridge = bridgeForSimDevice(device, portName);
-                        if (bridge != nil) {
-                            handler([[SimDeviceWrapper alloc] initWithDevice:device andBridge:bridge]);
-                            break;
-                        }
+                        SimDevice *device = info[@"device"];
+                        SimulatorBridge *bridge = nil;
+                        // New device connected
+                        if (previousBootInfo.status != SimBootStatusFinished)
+                            bridge = bridgeForSimDevice(device, portName);
+                        // If the device is disconnected bridge will be nil
+                        handler([[SimDeviceWrapper alloc] initWithDevice:device andBridge:bridge]);
+                        break;
                     }
-                } else if (new_state == SimBootStatusShutdown) {
-                    // Device removed
-                    handler([[SimDeviceWrapper alloc] initWithDevice:device andBridge:nil]);
                 }
-
             }
         }];
 }
@@ -93,16 +93,13 @@ static SimDeviceSet *defaultSet = nil;
 
 - (BOOL)setLocationWithLatitude:(double)latitude andLongitude:(double)longitude {
     if (!_bridge) return FALSE;
-    // TODO: IDEA: Use NotificationCenter instead
-    //[_bridge setLocationWithLatitude:latitude andLongitude:longitude];
-
+    [_bridge setLocationWithLatitude:latitude andLongitude:longitude];
     return TRUE;
 }
 
 - (BOOL)resetLocation {
-    if (!_bridge) return FALSE;
-    // TODO: IDEA: Use NotificationCenter instead
-    return TRUE;
+    // FIXME: There is currently no reset function
+    return _bridge != nil;
 }
 
 @end

@@ -15,6 +15,7 @@
 "CURRENT_LOCATION"="当前位置";
 // Device sidebar
 "DEVICE_HEADER"="设备";
+"SIMULATOR_HEADER"="模拟器";
 // The tooltip for the warning triangle in the lower right corner.
 "WARNING_TRIANGLE_TOOLTIP"="设备不配对";
 

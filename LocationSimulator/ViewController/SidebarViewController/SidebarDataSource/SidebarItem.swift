@@ -36,7 +36,7 @@ extension IOSDevice: SidebarItem {
 
 extension SimulatorDevice: SidebarItem {
     var image: NSImage? {
-        return nil
+        return NSImage(named: "Simulator")
     }
 
     var isGroupItem: Bool {
@@ -47,7 +47,6 @@ extension SimulatorDevice: SidebarItem {
         return NSUserInterfaceItemIdentifier(rawValue: "DeviceCell")
     }
 }
-
 
 /// The main Header table view cell, which contains all simulator devices.
 struct SimDeviceHeader: SidebarItem {

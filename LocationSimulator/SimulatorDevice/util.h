@@ -60,14 +60,17 @@ SimulatorBridge * _Nullable bridgeForSimDevice(SimDevice * _Nonnull device, NSSt
     NSError *error = nil;
     mach_port_t bridgePort = [device lookup:portName error:&error];
     if (error == nil && bridgePort != 0) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         NSPort *bridgeMachPort = [NSMachPort portWithMachPort:bridgePort];
         NSConnection *bridgeConnection = [NSConnection connectionWithReceivePort:nil sendPort: bridgeMachPort];
         NSDistantObject *bridgeDistantObject = [bridgeConnection rootProxy];
         if ([bridgeDistantObject respondsToSelector:@selector(setLocationScenarioWithPath:)]) {
+#pragma clang diagnostic pop
             return (SimulatorBridge *) bridgeDistantObject;
-        } else {
-            NSLog(@"Distant Object for port: '%@' is not a SimulatorBridge", portName);
         }
+        NSLog(@"Distant Object for port: '%@' is not a SimulatorBridge", portName);
     } else {
         NSLog(@"Could not get port for name: '%@'", portName);
     }

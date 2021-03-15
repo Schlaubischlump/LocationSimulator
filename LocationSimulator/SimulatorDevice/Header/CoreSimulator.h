@@ -13,11 +13,23 @@
 
 // This might not be accurate
 typedef NS_ENUM(NSUInteger, SimBootState) {
-    SimBootStatusOffline = 1,
-    SimBootStatusBooting = 2,
-    SimBootStatusBooted = 3,
-    SimBootStatusShutdown = 4
+    SimBootStateOffline = 1,
+    SimBootStateBooting = 2,
+    SimBootStateBooted = 3,
+    SimBootStateShutdown = 4
 };
+
+// This might not be accurate
+typedef NS_ENUM(NSUInteger, SimBootStatus) {
+    SimBootStatusWaitingOnSystemApp = 4,
+    SimBootStatusFinished = 4294967295
+};
+
+@interface SimDeviceBootInfo : NSObject
+@property(retain, nonatomic) NSDictionary * _Nonnull info;
+@property(nonatomic) BOOL isTerminalStatus;
+@property(nonatomic) NSUInteger status;
+@end
 
 @interface SimDevice : NSObject
 @property(copy, nonatomic) NSUUID * _Nonnull UDID;

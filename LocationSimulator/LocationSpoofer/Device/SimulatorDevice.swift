@@ -46,37 +46,19 @@ struct SimulatorDevice: Device {
     @discardableResult
     static func stopGeneratingDeviceNotifications() -> Bool {
         guard SimulatorDevice.isGeneratingDeviceNotifications else { return false }
-        // TODO: Remove all known simulators 
+        // TODO: Remove known devices. Since this only called when the app is closed, this is not relevant
         return SimDeviceWrapper.unsubscribe(SimulatorDevice.subscriberID!)
     }
 
     func pair() throws {
         // Nothing to do here
-        // TODO: Create the bridge connection here. While status is booting, wait.
     }
 
     func simulateLocation(_ location: CLLocationCoordinate2D) -> Bool {
         return self.wrapper?.setLocationWithLatitude(location.latitude, andLongitude: location.longitude) ?? false
-        /*let userInfo: [AnyHashable: Any] = [
-            "simulateLocationLatitude": location.latitude,
-            "simulateLocationLongitude": location.longitude,
-            "simulateLocationDevices": [wrapper?.udid()]
-        ]
-
-        let notification = Notification(name: Notification.Name(rawValue: "com.apple.iphonesimulator.simulateLocation"),
-                                        object: nil, userInfo: userInfo)
-        DistributedNotificationCenter.default().post(notification)
-        return true*/
     }
 
     func disableSimulation() -> Bool {
-        /*let userInfo: [AnyHashable: Any] = [
-            "simulateLocationDevices": [wrapper?.udid()]
-        ]
-
-        let notification = Notification(name: Notification.Name(rawValue: "com.apple.iphonesimulator.simulateLocation"),
-                                        object: nil, userInfo: userInfo)
-        DistributedNotificationCenter.default().post(notification)*/
         return true
     }
 }

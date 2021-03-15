@@ -13,6 +13,7 @@
 "CURRENT_LOCATION"="Current Location";
 // Device sidebar
 "DEVICE_HEADER"="Devices";
+"SIMULATOR_HEADER"="Simulators";
 // The tooltip for the warning triangle in the lower right corner.
 "WARNING_TRIANGLE_TOOLTIP"="Device not paired";
 
