@@ -32,6 +32,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 ## Features
 
 - [x] Spoof the iOS device location without a jailbreak or installing an app on the device.
+- [x] Spoof the iPhoneSimulator device location.
 - [x] Automatically try to download the DeveloperDiskImage files for your iOS Version.
 - [x] Set the device location with a long click on the map.
 - [x] Support 3 movement speeds (Walk/Cycle/Drive).
