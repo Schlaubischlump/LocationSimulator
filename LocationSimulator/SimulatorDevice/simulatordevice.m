@@ -24,7 +24,7 @@ static SimDeviceSet *defaultSet = nil;
 
 + (void)initialize {
     // Load the CoreSimulator library or fail if it can not be loaded
-    if (!load_bundle(@"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulator")) {
+    if (!load_bundle(@"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulato")) {
         return;
     }
 
@@ -36,6 +36,8 @@ static SimDeviceSet *defaultSet = nil;
 }
 
 + (NSUInteger)subscribe:(void (^ _Nonnull)(SimDeviceWrapper * _Nonnull))handler {
+    if (!defaultSet)
+        return -1;
     // Send a notification for all already connected devices.
     NSArray<NSNumber *>* simualtorPorts = getSimulatorPIDs();
     for (SimDevice *device in defaultSet.availableDevices) {
@@ -115,6 +117,8 @@ static SimDeviceSet *defaultSet = nil;
 }
 
 + (BOOL)unsubscribe:(NSUInteger)handlerID {
+    if (!defaultSet)
+        return FALSE;
     return [defaultSet unregisterNotificationHandler:handlerID error:NULL];
 }
 
