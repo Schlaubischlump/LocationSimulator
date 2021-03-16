@@ -32,6 +32,7 @@ void* _Nullable load_bundle(NSString * _Nonnull path) {
     void* fw = dlopen(path.UTF8String, RTLD_NOW | RTLD_GLOBAL);
     if (!fw) {
         NSLog(@"ERROR: %s", dlerror());
+        return nil;
     }
     return fw;
 }
@@ -90,16 +91,31 @@ SimulatorBridge * _Nullable bridgeForSimDevice(SimDevice * _Nonnull device, NSSt
  - Return: path to the currently active developer dir
  */
 NSString * _Nullable getActiveDeveloperDir() {
+    NSString *xcodeSelectPath = @"/usr/bin/xcode-select";
+
+    // If xcode-select is not installed, just skip the simulator support.
+    if (![NSFileManager.defaultManager fileExistsAtPath:xcodeSelectPath]) {
+        NSLog(@"[Error]: Could not find: %@", xcodeSelectPath);
+        return nil;
+    }
+
     NSPipe *pipe = [NSPipe pipe];
     NSFileHandle *file = pipe.fileHandleForReading;
 
     NSTask *task = [[NSTask alloc] init];
-    task.launchPath = @"/usr/bin/xcode-select";
+    task.launchPath = xcodeSelectPath;
     task.arguments = @[@"-p"];
     task.standardOutput = pipe;
     [task launch];
+    [task waitUntilExit];
 
-    NSString *grepOutput = [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+
+    NSString *grepOutput = nil;
+
+    // Make sure no error occured.
+    if (task.terminationStatus == 0) {
+        grepOutput = [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+    }
     [file closeFile];
 
     return grepOutput;
