@@ -115,6 +115,8 @@ NSString * _Nullable getActiveDeveloperDir() {
     // Make sure no error occured.
     if (task.terminationStatus == 0) {
         grepOutput = [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
+    } else {
+        NSLog(@"%@ failed with error code: %d", xcodeSelectPath, task.terminationStatus);
     }
     [file closeFile];
 

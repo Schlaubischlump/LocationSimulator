@@ -23,21 +23,39 @@
 static SimDeviceSet *defaultSet = nil;
 
 + (void)initialize {
-    // Load the CoreSimulator library or fail if it can not be loaded
-    if (!load_bundle(@"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulator")) {
+    // Load the CoreSimulator library or fail if it can not be loaded.
+    NSString *coreSimulatorPath = @"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulator";
+    if (!load_bundle(coreSimulatorPath)) {
+        NSLog(@"[Error]: Could not load library: %@", coreSimulatorPath);
         return;
     }
-
+    // Get the active developer directory.
     NSString *path = getActiveDeveloperDir();
-    if (!path) return;
-    SimServiceContext* context = [NSClassFromString(@"SimServiceContext") serviceContextForDeveloperDir:path error:NULL];
-    if (!context) return;
-    defaultSet = [context defaultDeviceSetWithError:nil];
+    if (!path) {
+        NSLog(@"[Error]: Could not get active developer directory.");
+        return;
+    }
+    // Try to create a SimServiceContext instance for the active developer directory.
+    NSError *error = nil;
+    SimServiceContext* context = [NSClassFromString(@"SimServiceContext") serviceContextForDeveloperDir:path
+                                                                                                  error:&error];
+    if (!context || (error != nil)) {
+        NSLog(@"[Error]: Could not create 'SimServiceContext' instance.");
+        return;
+    }
+    // Create a default device set based on the SimServiceContext.
+    SimDeviceSet *set = [context defaultDeviceSetWithError:&error];
+    if (error != nil) {
+        NSLog(@"[Error]: Could not get default 'SimDeviceSet'.");
+        return;
+    }
+    defaultSet = set;
 }
 
 + (NSUInteger)subscribe:(void (^ _Nonnull)(SimDeviceWrapper * _Nonnull))handler {
     if (!defaultSet)
         return -1;
+
     // Send a notification for all already connected devices.
     NSArray<NSNumber *>* simualtorPorts = getSimulatorPIDs();
     for (SimDevice *device in defaultSet.availableDevices) {
