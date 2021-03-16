@@ -24,7 +24,7 @@ static SimDeviceSet *defaultSet = nil;
 
 + (void)initialize {
     // Load the CoreSimulator library or fail if it can not be loaded
-    if (!load_bundle(@"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulato")) {
+    if (!load_bundle(@"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulator")) {
         return;
     }
 
