@@ -18,25 +18,25 @@
 "WARNING_TRIANGLE_TOOLTIP" = "Enhet ej parad";
 
 // MARK: - Alert Titles
-"UNKNOWN_ERROR" = "Unknown error";
-"NO_DEVICE_ERROR" = "No device found";
-"MOUNT_ERROR" = "Could not mount DeveloperDiskImage.dmg";
+"UNKNOWN_ERROR" = "Okänt fel";
+"NO_DEVICE_ERROR" = "Ingen enhet upptäckt";
+"MOUNT_ERROR" = "Kunde inte montera DeveloperDiskImage.dmg";
 "PRODUCT_INFO_ERROR" = "Could not get product info";
-"PERMISSION_ERROR" = "Permission error";
-"DEVDISK_NOT_FOUND" = "DeveloperDiskImage files not found";
-"DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage download failed";
+"PERMISSION_ERROR" = "Åtkomstfel";
+"DEVDISK_NOT_FOUND" = "DeveloperDiskImage filer hittades ej";
+"DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage nedladdning misslyckades";
 // Location change
-"LOCATION_CHANGE_ERROR" = "Error changing location";
+"LOCATION_CHANGE_ERROR" = "Fel vid platsbyte";
 // Use mac location
-"LOCATION_SERVICE_DISABLED" = "Enable location services";
-"GET_LOCATION_ERROR" = "Could not get location";
+"LOCATION_SERVICE_DISABLED" = "Aktivera platstjänster";
+"GET_LOCATION_ERROR" = "Kunde inte hämta platsinformation";
 // GPX Alert
-"CHOOSE_GPX_FILE" = "Choose a .gpx file";
-"ERROR_OPEN_GPX" = "Error Opening GPX File";
-"ERROR_PARSE_GPX" = "Error Parsing GPX File";
-"EMPTY_ROUTE" = "Empty Route";
+"CHOOSE_GPX_FILE" = "Välj en .gpx fil";
+"ERROR_OPEN_GPX" = "Fel vid öppning av GPX-fil";
+"ERROR_PARSE_GPX" = "Fel vid tolkning av GPX-fil";
+"EMPTY_ROUTE" = "Tom rutt";
 // Confirm teleportation.
-"CONFIRM_TELEPORT" = "Confirm Teleportation";
+"CONFIRM_TELEPORT" = "Bekräfta teleportering";
 
 // MARK: - Alert Messages
 "PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
