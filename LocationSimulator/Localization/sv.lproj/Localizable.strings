@@ -61,9 +61,9 @@
 
 // MARK: - Alert Buttons
 "DESTINATION" = "Destination";
-"NAVIGATE" = "Navigate";
-"TELEPORT" = "Teleport";
-"CANCEL" = "Cancel";
+"NAVIGATE" = "Navigera";
+"TELEPORT" = "Teleportera";
+"CANCEL" = "Avbryt";
 "OK" = "OK";
 
 // MARK: - GPXSelectionView
