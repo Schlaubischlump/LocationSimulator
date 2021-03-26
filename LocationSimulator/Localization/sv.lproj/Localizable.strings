@@ -116,36 +116,36 @@
 "ROTATE_CLOCKWISE_MENUITEM" = "Rotera medsols";
 "ROTATE_COUNTERCLOCKWISE_MENUITEM" = "Rotera motsols";
 // MARK: -- File
-"FILE_MENU" = "File";
-"OPEN_GPX_FILE_MENUITEM" = "Open GPX File…";
-"CLOSE_MENUITEM" = "Close";
+"FILE_MENU" = "Fil";
+"OPEN_GPX_FILE_MENUITEM" = "Öppna GPX-fil…";
+"CLOSE_MENUITEM" = "Stäng";
 // MARK: -- Edit
-"EDIT_MENU" = "Edit";
-"UNDO_MENUITEM" = "Undo";
-"REDO_MENUITEM" = "Redo";
-"CUT_MENUITEM" = "Cut";
-"COPY_MENUITEM" = "Copy";
-"PASTE_MENUITEM" = "Paste";
-"PASTE_AND_MATCH_STYLE_MENUITEM" = "Paste and Match Style";
-"DELETE_MENUITEM" = "Delete";
-"SELECT_ALL_MENUITEM" = "Select All";
+"EDIT_MENU" = "Redigera";
+"UNDO_MENUITEM" = "Ångra";
+"REDO_MENUITEM" = "Gör om";
+"CUT_MENUITEM" = "Klipp";
+"COPY_MENUITEM" = "Kopiera";
+"PASTE_MENUITEM" = "Klistra in";
+"PASTE_AND_MATCH_STYLE_MENUITEM" = "Klistra in och matcha stil";
+"DELETE_MENUITEM" = "Ta bort";
+"SELECT_ALL_MENUITEM" = "Välj alla";
 // MARK: ---- Find
-"FIND_MENU" = "Find";
-"FIND_MENUITEM" = "Find";
-"FIND..._MENUITEM" = "Find…";
-"FIND_AND_REPLACE_..._MENUITEM" = "Find and Replace…";
-"FIND_NEXT_MENUITEM" = "Find Next";
-"FIND_PREVIOUS_MENUITEM" = "Find Previous";
-"USE_SELECTION_FOR_FIND_MENUITEM" = "Use Selection for Find";
-"JUMP_TO_SELECTION_MENUITEM" = "Jump to Selection";
+"FIND_MENU" = "Sök";
+"FIND_MENUITEM" = "Sök";
+"FIND..._MENUITEM" = "Sök…";
+"FIND_AND_REPLACE_..._MENUITEM" = "Sök och ersätt…";
+"FIND_NEXT_MENUITEM" = "Sök nästa";
+"FIND_PREVIOUS_MENUITEM" = "Sök föregående";
+"USE_SELECTION_FOR_FIND_MENUITEM" = "Använd markering för sök";
+"JUMP_TO_SELECTION_MENUITEM" = "Hoppa till markering";
 // MARK: ---- Spelling and Grammar
-"SPELLING_GRAMMAR_MENU" = "Spelling and Grammar";
-"SPELLING_GRAMMAR_MENUITEM" = "Spelling and Grammar";
-"SHOW_SPELLING_AND_GRAMMAR_MENUITEM" = "Show Spelling and Grammar";
-"CHECK_DOCUMENT_NOW_MENUITEM" = "Check Document Now";
-"CHECK_SPELLING_WHILE_TYPING_MENUITEM" = "Check Spelling While Typing";
-"CHECK_GRAMMAR_WHILE_SPELLING" = "Check Grammar With Spelling";
-"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Correct Spelling Automatically";
+"SPELLING_GRAMMAR_MENU" = "Stavning och grammatik";
+"SPELLING_GRAMMAR_MENUITEM" = "Stavning och grammatik";
+"SHOW_SPELLING_AND_GRAMMAR_MENUITEM" = "Visa stavning och grammatik";
+"CHECK_DOCUMENT_NOW_MENUITEM" = "Kontrollera dokumentet nu";
+"CHECK_SPELLING_WHILE_TYPING_MENUITEM" = "Kontrollera stavning när jag skriver";
+"CHECK_GRAMMAR_WHILE_SPELLING" = "Kontrollera grammatik med stavning";
+"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Åtgärda stavning automatiskt";
 // MARK: ---- Substitutions
 "SUBSTITUTIONS_MENU" = "Substitutions";
 "SUBSTITUTIONS_MENUITEM" = "Substitutions";
