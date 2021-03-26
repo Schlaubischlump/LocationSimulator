@@ -8,14 +8,14 @@
 
 // MARK: - General
 // Total distance label in the bottom bar.
-"TOTAL_DISTANCE" = "Total distance: %.3fkm";
+"TOTAL_DISTANCE" = "Sammanlagd sträcka: %.3fkm";
 // Current location annotation
-"CURRENT_LOCATION" = "Current Location";
+"CURRENT_LOCATION" = "Nuvarande plats";
 // Device sidebar
-"DEVICE_HEADER" = "Devices";
-"SIMULATOR_HEADER" = "Simulators";
+"DEVICE_HEADER" = "Enheter";
+"SIMULATOR_HEADER" = "Simulatorer";
 // The tooltip for the warning triangle in the lower right corner.
-"WARNING_TRIANGLE_TOOLTIP" = "Device not paired";
+"WARNING_TRIANGLE_TOOLTIP" = "Enhet ej parad";
 
 // MARK: - Alert Titles
 "UNKNOWN_ERROR" = "Unknown error";
