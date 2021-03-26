@@ -39,25 +39,25 @@
 "CONFIRM_TELEPORT" = "Bekräfta teleportering";
 
 // MARK: - Alert Messages
-"PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
-"MOUNT_ERROR_MSG" = "The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked?";
-"UNKNOWN_ERROR_MSG" = "An unknown error occured. Please disconnect your device and try again.";
-"PERMISSION_ERROR_MSG" = "Can not access Application Support folder.";
-"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Failed to download DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature";
+"PAIR_ERROR_MSG" = "Kunde inte upprätta en anslutning till enheten.";
+"MOUNT_ERROR_MSG" = "DeveloperDiskImage för denna enhet kunde inte monteras. Plats-spoofing kommer inte att fungera.\nÄr din enhet låst?";
+"UNKNOWN_ERROR_MSG" = "Ett okänt fel inträffade. Vänligen koppla ifrån din enhet och försök igen.";
+"PERMISSION_ERROR_MSG" = "Kan inte komma åt mappen Application Support.";
+"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Nedladdning av DeveloperDiskImage.dmg eller DeveloperDiskImage.dmg.signature misslyckades.";
 // Use mac location
-"LOCATION_SERVICE_DISABLED_MSG" = "Location services seem to be disabled. Please activate location services inside System Preferences.";
-"GET_LOCATION_ERROR_MSG" = "Could not get the current location. Did you allow LocationSimulator to access this mac's location?";
+"LOCATION_SERVICE_DISABLED_MSG" = "Platstjänster verkar vara avstängda. Vänligen aktivera platstjänster via Systeminställningar.";
+"GET_LOCATION_ERROR_MSG" = "Kunde inte hämta aktuell platsinformation. Har du givit LocationSimulator åtkomst till platsinformation för denna macs?";
 // Location change
-"TELEPORT_OR_NAVIGATE_MSG" = "Do you want to teleport or navigate to the destination?";
-"LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
-"LOCATION_CHANGE_ERROR_MSG" = "Could not change the location.";
+"TELEPORT_OR_NAVIGATE_MSG" = "Vill du teleportera eller navigera till destinationen?";
+"LOCATION_RESET_ERROR_MSG" = "Kunde inte nollställa platsinformation.";
+"LOCATION_CHANGE_ERROR_MSG" = "Kunde inte ändra aktuell platsinformation.";
 // GPXAlert
-"ERROR_PARSE_GPX_MSG" = "Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
-"TELEPORT_OR_NAVIGATE_GPX_MSG" = "Do you want to navigate or teleport to the start location of this route?";
-"EMPTY_ROUTE_MSG" = "Not enough coordinates available to start the navigation.";
-"ERROR_OPEN_GPX_MSG" = "Could not open the selected GPX file.";
+"ERROR_PARSE_GPX_MSG" = "Kunde inte tolka den givna GPX-filen. Filen är möjligen skadad eller ogiltigt formatterad.";
+"TELEPORT_OR_NAVIGATE_GPX_MSG" = "Vill du teleportera eller navigera till startpositionen för denna rutt?";
+"EMPTY_ROUTE_MSG" = "Inte tillräckligt med koordinater tillgängliga för att påbörja navigationen.";
+"ERROR_OPEN_GPX_MSG" = "Kunde inte öppna den givna GPX-filen.";
 // Confirm teleportation.
-"CONFIRM_TELEPORT_MSG" = "Do you really want to teleport?";
+"CONFIRM_TELEPORT_MSG" = "Vill du verkligen teleportera?";
 
 // MARK: - Alert Buttons
 "DESTINATION" = "Destination";
