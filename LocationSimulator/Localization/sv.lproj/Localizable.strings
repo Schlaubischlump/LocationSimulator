@@ -76,9 +76,9 @@
 "GPX_SELECTION_MSG" = "Välj ett spår, spårsegment, rutt eller vägpunkter för att starta navigationen.";
 
 // MARK: - ProgressView
-"PROGRESS" = "Download iOS support files";
-"DEVDISK_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg";
-"DEVSIGN_DOWNLOAD_DESC" = "Downloading DeveloperDiskImage.dmg.signature";
+"PROGRESS" = "Ladda ned iOS support files";
+"DEVDISK_DOWNLOAD_DESC" = "Laddar ned DeveloperDiskImage.dmg";
+"DEVSIGN_DOWNLOAD_DESC" = "Laddar ned DeveloperDiskImage.dmg.signature";
 
 // MARK: - CoordinateSelectionView
 "LAT" = "Lat";
