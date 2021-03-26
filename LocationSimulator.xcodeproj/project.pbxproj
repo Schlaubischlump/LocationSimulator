@@ -993,8 +993,8 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
 					/usr/local/Cellar/libplist/2.2.0/include/,
-					/opt/Cellar/libimobiledevice/1.3.0/include,
-					/opt/Cellar/libplist/2.2.0/include/,
+					/opt/homebrew/Cellar/libimobiledevice/1.3.0/include,
+					/opt/homebrew/Cellar/libplist/2.2.0/include/,
 				);
 				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1006,10 +1006,10 @@
 					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
 					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
 					"/usr/local/Cellar/openssl@1.1/1.1.1i/lib",
-					/opt/Cellar/libplist/2.2.0/lib,
-					/opt/Cellar/libusbmuxd/2.0.2/lib,
-					/opt/Cellar/libimobiledevice/1.3.0/lib,
-					"/opt/Cellar/openssl@1.1/1.1.1i/lib",
+					/opt/homebrew/Cellar/libplist/2.2.0/lib,
+					/opt/homebrew/Cellar/libusbmuxd/2.0.2/lib,
+					/opt/homebrew/Cellar/libimobiledevice/1.3.0/lib,
+					"/opt/homebrew/Cellar/openssl@1.1/1.1.1i/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
@@ -1044,8 +1044,8 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
 					/usr/local/Cellar/libplist/2.2.0/include/,
-					/opt/Cellar/libimobiledevice/1.3.0/include,
-					/opt/Cellar/libplist/2.2.0/include/,
+					/opt/homebrew/Cellar/libimobiledevice/1.3.0/include,
+					/opt/homebrew/Cellar/libplist/2.2.0/include/,
 				);
 				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1057,10 +1057,10 @@
 					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
 					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
 					"/usr/local/Cellar/openssl@1.1/1.1.1i/lib",
-					/opt/Cellar/libplist/2.2.0/lib,
-					/opt/Cellar/libusbmuxd/2.0.2/lib,
-					/opt/Cellar/libimobiledevice/1.3.0/lib,
-					"/opt/Cellar/openssl@1.1/1.1.1i/lib",
+					/opt/homebrew/Cellar/libplist/2.2.0/lib,
+					/opt/homebrew/Cellar/libusbmuxd/2.0.2/lib,
+					/opt/homebrew/Cellar/libimobiledevice/1.3.0/lib,
+					"/opt/homebrew/Cellar/openssl@1.1/1.1.1i/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
@@ -1151,8 +1151,8 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/libimobiledevice/1.3.0/include,
 					/usr/local/Cellar/libplist/2.2.0/include/,
-					/opt/Cellar/libimobiledevice/1.3.0/include,
-					/opt/Cellar/libplist/2.2.0/include/,
+					/opt/homebrew/Cellar/libimobiledevice/1.3.0/include,
+					/opt/homebrew/Cellar/libplist/2.2.0/include/,
 				);
 				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1164,10 +1164,10 @@
 					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
 					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
 					"/usr/local/Cellar/openssl@1.1/1.1.1i/lib",
-					/opt/Cellar/libplist/2.2.0/lib,
-					/opt/Cellar/libusbmuxd/2.0.2/lib,
-					/opt/Cellar/libimobiledevice/1.3.0/lib,
-					"/opt/Cellar/openssl@1.1/1.1.1i/lib",
+					/opt/homebrew/Cellar/libplist/2.2.0/lib,
+					/opt/homebrew/Cellar/libusbmuxd/2.0.2/lib,
+					/opt/homebrew/Cellar/libimobiledevice/1.3.0/lib,
+					"/opt/homebrew/Cellar/openssl@1.1/1.1.1i/lib",
 				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (

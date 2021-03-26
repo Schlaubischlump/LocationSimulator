@@ -48,7 +48,7 @@ struct SimulatorDevice: Device {
     @discardableResult
     static func stopGeneratingDeviceNotifications() -> Bool {
         guard SimulatorDevice.isGeneratingDeviceNotifications else { return false }
-        // TODO: Remove known devices. Since this only called when the app is closed, this is not relevant
+        // TODO: Remove known devices. Since this is only called when the app is closed, this is not relevant
         return SimDeviceWrapper.unsubscribe(SimulatorDevice.subscriberID!)
     }
 
