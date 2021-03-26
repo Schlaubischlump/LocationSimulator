@@ -96,6 +96,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044AD6C9260E1E9700F42E76 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Localization/sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		130F510920AE9634002A61F1 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		130F510B20AED69B002A61F1 /* NSView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extension.swift"; sourceTree = "<group>"; };
 		13BA351620A433EE00A0431C /* LocationSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -684,6 +685,7 @@
 				es,
 				fr,
 				"zh-Hans",
+				sv,
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
@@ -849,6 +851,7 @@
 				633C750E25AAB0B700161DB4 /* es */,
 				63D56BB725B09ADF00DE5E05 /* fr */,
 				63D56BB825B09C0700DE5E05 /* zh-Hans */,
+				044AD6C9260E1E9700F42E76 /* sv */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
