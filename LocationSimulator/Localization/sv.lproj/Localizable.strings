@@ -89,32 +89,32 @@
 "NO_DEVICE_MSG" = "Vänligen anslut en enhet och markera den i sidofältet för att komma igång.";
 
 // MARK: - MenuItem
-"MAIN_MENU" = "Main Menu";
+"MAIN_MENU" = "Huvudmeny";
 // MARK: -- LocationSimulator
-"ABOUT_MENUITEM" = "About LocationSimulator";
-"PREFERENCES_MENUITEM" = "Preferences…";
-"SERVICES_MENUITEM" = "Services";
-"HIDE_APP_MENUITEM" = "Hide LocationSimulator";
-"HIDE_OTHERS_MENUITEM" = "Hide Others";
-"SHOW_ALL_MENUITEM" = "Show All";
-"QUIT_APP_MENUITEM" = "Quit LocationSimulator";
+"ABOUT_MENUITEM" = "Om LocationSimulator";
+"PREFERENCES_MENUITEM" = "Preferenser…";
+"SERVICES_MENUITEM" = "Tjänster";
+"HIDE_APP_MENUITEM" = "Göm LocationSimulator";
+"HIDE_OTHERS_MENUITEM" = "Göm andra";
+"SHOW_ALL_MENUITEM" = "Visa alla";
+"QUIT_APP_MENUITEM" = "Avsluta LocationSimulator";
 // MARK: -- Navigation
-"NAVIGATION_MENU" = "Navigation";
-"WALK_MENUITEM" = "Walk";
-"CYCLE_MENUITEM" = "Cycle";
-"DRIVE_MENUITEM" = "Drive";
-"SET_LOCATION_MENUITEM" = "Set Location…";
-"RESET_LOCATION_MENUITEM" = "Reset Location";
-"MAC_LOCATION_MENUITEM" = "Use Mac Location";
-"RECENT_LOCATIONS_MENU" = "Recent Locations";
-"RECENT_LOCATIONS_MENUITEM" = "Recent Locations";
-"CLEAR_MENU_MENUITEM" = "Clear Menu";
-"TOGGLE_AUTOMOVE_MENUITEM" = "Toggle Automove";
-"STOP_NAVIGATION_MENUITEM" = "Stop Navigation";
-"MOVE_UP_MENUITEM" = "Move Up";
-"MOVE_DOWN_MENUITEM" = "Move Down";
-"ROTATE_CLOCKWISE_MENUITEM" = "Rotate Clockwise";
-"ROTATE_COUNTERCLOCKWISE_MENUITEM" = "Rotate Counterclockwise";
+"NAVIGATION_MENU" = "Navigering";
+"WALK_MENUITEM" = "Gå";
+"CYCLE_MENUITEM" = "Cykla";
+"DRIVE_MENUITEM" = "Kör";
+"SET_LOCATION_MENUITEM" = "Ange plats…";
+"RESET_LOCATION_MENUITEM" = "Nollställ platsinformation";
+"MAC_LOCATION_MENUITEM" = "Använd Macens plats";
+"RECENT_LOCATIONS_MENU" = "Senaste platser";
+"RECENT_LOCATIONS_MENUITEM" = "Senaste platser";
+"CLEAR_MENU_MENUITEM" = "Rensa meny";
+"TOGGLE_AUTOMOVE_MENUITEM" = "Toggla auto-förflyttning";
+"STOP_NAVIGATION_MENUITEM" = "Avsluta navigering";
+"MOVE_UP_MENUITEM" = "Flytta upp";
+"MOVE_DOWN_MENUITEM" = "Flytta ned";
+"ROTATE_CLOCKWISE_MENUITEM" = "Rotera medsols";
+"ROTATE_COUNTERCLOCKWISE_MENUITEM" = "Rotera motsols";
 // MARK: -- File
 "FILE_MENU" = "File";
 "OPEN_GPX_FILE_MENUITEM" = "Open GPX File…";
