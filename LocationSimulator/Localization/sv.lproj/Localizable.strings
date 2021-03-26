@@ -85,8 +85,8 @@
 "LONG" = "Long";
 
 // MARK: - NoDeviceView
-"NO_DEVICE" = "No Device Selected";
-"NO_DEVICE_MSG" = "Please connect a device and select it in the sidebar to start.";
+"NO_DEVICE" = "Ingen Enhet Markerad";
+"NO_DEVICE_MSG" = "Vänligen anslut en enhet och markera den i sidofältet för att komma igång.";
 
 // MARK: - MenuItem
 "MAIN_MENU" = "Main Menu";
