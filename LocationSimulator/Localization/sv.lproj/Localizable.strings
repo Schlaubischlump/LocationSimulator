@@ -232,11 +232,11 @@
 "ZOOM_MENUITEM" = "Zooma";
 "BRING_ALL_TO_FRONT_MENUITEM" = "Flytta alla till framkant";
 // MARK: -- Help
-"HELP_MENU" = "Help";
-"HELP_MENUITEM" = "Help";
-"APP_HELP_MENUITEM" = "LocationSimulator Help";
-"OPEN_PROJECT_PAGE_MENUITEM" = "Open Project Page";
-"REPORT_A_BUG_MENUITEM" = "Report a Bug";
+"HELP_MENU" = "Hjälp";
+"HELP_MENUITEM" = "Hjälp";
+"APP_HELP_MENUITEM" = "LocationSimulator hjälp";
+"OPEN_PROJECT_PAGE_MENUITEM" = "Öppna projektsida";
+"REPORT_A_BUG_MENUITEM" = "Rapportera en bugg";
 
 // MARK: - Settings
 // MARK: -- INFO
