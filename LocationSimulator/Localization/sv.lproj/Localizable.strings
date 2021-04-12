@@ -219,12 +219,12 @@
 "LEFT_TO_RIGHT_MENUITEM" = "\tVänster till höger";
 "RIGHT_TO_LEFT_MENUITEM" = "\tHöger till vänster";
 // MARK: -- View
-"VIEW_MENU" = "View";
-"VIEW_MENUITEM" = "View";
-"SHOW_TOOLBAR_MENUITEM" = "Toggle Toolbar";
-"CUSTOMIZE_TOOLBAR_MENUITEM" = "Customize Toolbar…";
-"SHOW_SIDEBAR_MENUITEM" = "Toggle Sidebar";
-"ENTER_FULL_SCREEN_MENUITEM" = "Toggle Full Screen";
+"VIEW_MENU" = "Visa";
+"VIEW_MENUITEM" = "Visa";
+"SHOW_TOOLBAR_MENUITEM" = "Toggla verktygsrad";
+"CUSTOMIZE_TOOLBAR_MENUITEM" = "Anpassa verktygsrad…";
+"SHOW_SIDEBAR_MENUITEM" = "Toggla sidofält";
+"ENTER_FULL_SCREEN_MENUITEM" = "Toggla helskärm";
 // MARK: -- Window
 "WINDOW_MENU" = "Window";
 "WINDOW_MENUITEM" = "Window";
