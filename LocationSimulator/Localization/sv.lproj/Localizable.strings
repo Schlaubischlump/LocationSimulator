@@ -1,0 +1,273 @@
+/*
+ Localizable.strings
+ LocationSimulator
+
+ Created by David Klopp on 16.08.19.
+ Copyright © 2019 David Klopp. All rights reserved.
+ */
+
+// MARK: - General
+// Total distance label in the bottom bar.
+"TOTAL_DISTANCE" = "Sammanlagd sträcka: %.3fkm";
+// Current location annotation
+"CURRENT_LOCATION" = "Nuvarande plats";
+// Device sidebar
+"DEVICE_HEADER" = "Enheter";
+"SIMULATOR_HEADER" = "Simulatorer";
+// The tooltip for the warning triangle in the lower right corner.
+"WARNING_TRIANGLE_TOOLTIP" = "Enhet ej parad";
+
+// MARK: - Alert Titles
+"UNKNOWN_ERROR" = "Okänt fel";
+"NO_DEVICE_ERROR" = "Ingen enhet upptäckt";
+"MOUNT_ERROR" = "Kunde inte montera DeveloperDiskImage.dmg";
+"PRODUCT_INFO_ERROR" = "Could not get product info";
+"PERMISSION_ERROR" = "Åtkomstfel";
+"DEVDISK_NOT_FOUND" = "DeveloperDiskImage filer hittades ej";
+"DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage nedladdning misslyckades";
+// Location change
+"LOCATION_CHANGE_ERROR" = "Fel vid platsbyte";
+// Use mac location
+"LOCATION_SERVICE_DISABLED" = "Aktivera platstjänster";
+"GET_LOCATION_ERROR" = "Kunde inte hämta platsinformation";
+// GPX Alert
+"CHOOSE_GPX_FILE" = "Välj en .gpx fil";
+"ERROR_OPEN_GPX" = "Fel vid öppning av GPX-fil";
+"ERROR_PARSE_GPX" = "Fel vid tolkning av GPX-fil";
+"EMPTY_ROUTE" = "Tom rutt";
+// Confirm teleportation.
+"CONFIRM_TELEPORT" = "Bekräfta teleportering";
+
+// MARK: - Alert Messages
+"PAIR_ERROR_MSG" = "Kunde inte upprätta en anslutning till enheten.";
+"MOUNT_ERROR_MSG" = "DeveloperDiskImage för denna enhet kunde inte monteras. Plats-spoofing kommer inte att fungera.\nÄr din enhet låst?";
+"UNKNOWN_ERROR_MSG" = "Ett okänt fel inträffade. Vänligen koppla ifrån din enhet och försök igen.";
+"PERMISSION_ERROR_MSG" = "Kan inte komma åt mappen Application Support.";
+"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Nedladdning av DeveloperDiskImage.dmg eller DeveloperDiskImage.dmg.signature misslyckades.";
+// Use mac location
+"LOCATION_SERVICE_DISABLED_MSG" = "Platstjänster verkar vara avstängda. Vänligen aktivera platstjänster via Systeminställningar.";
+"GET_LOCATION_ERROR_MSG" = "Kunde inte hämta aktuell platsinformation. Har du givit LocationSimulator åtkomst till platsinformation för denna macs?";
+// Location change
+"TELEPORT_OR_NAVIGATE_MSG" = "Vill du teleportera eller navigera till destinationen?";
+"LOCATION_RESET_ERROR_MSG" = "Kunde inte nollställa platsinformation.";
+"LOCATION_CHANGE_ERROR_MSG" = "Kunde inte ändra aktuell platsinformation.";
+// GPXAlert
+"ERROR_PARSE_GPX_MSG" = "Kunde inte tolka den givna GPX-filen. Filen är möjligen skadad eller ogiltigt formatterad.";
+"TELEPORT_OR_NAVIGATE_GPX_MSG" = "Vill du teleportera eller navigera till startpositionen för denna rutt?";
+"EMPTY_ROUTE_MSG" = "Inte tillräckligt med koordinater tillgängliga för att påbörja navigationen.";
+"ERROR_OPEN_GPX_MSG" = "Kunde inte öppna den givna GPX-filen.";
+// Confirm teleportation.
+"CONFIRM_TELEPORT_MSG" = "Vill du verkligen teleportera?";
+
+// MARK: - Alert Buttons
+"DESTINATION" = "Destination";
+"NAVIGATE" = "Navigera";
+"TELEPORT" = "Teleportera";
+"CANCEL" = "Avbryt";
+"OK" = "OK";
+
+// MARK: - GPXSelectionView
+"CHOOSE" = "Välj";
+"TRACK_SEGMENT" = "Spårsegment";
+"TRACK" = "Spår";
+"ROUTE" = "Rutt";
+"WAYPOINTS" = "Vägpunkter";
+"GPX_SELECTION" = "Välj koordinater";
+"GPX_SELECTION_MSG" = "Välj ett spår, spårsegment, rutt eller vägpunkter för att starta navigationen.";
+
+// MARK: - ProgressView
+"PROGRESS" = "Ladda ned iOS support files";
+"DEVDISK_DOWNLOAD_DESC" = "Laddar ned DeveloperDiskImage.dmg";
+"DEVSIGN_DOWNLOAD_DESC" = "Laddar ned DeveloperDiskImage.dmg.signature";
+
+// MARK: - CoordinateSelectionView
+"LAT" = "Lat";
+"LONG" = "Long";
+
+// MARK: - NoDeviceView
+"NO_DEVICE" = "Ingen Enhet Markerad";
+"NO_DEVICE_MSG" = "Vänligen anslut en enhet och markera den i sidofältet för att komma igång.";
+
+// MARK: - MenuItem
+"MAIN_MENU" = "Huvudmeny";
+// MARK: -- LocationSimulator
+"ABOUT_MENUITEM" = "Om LocationSimulator";
+"PREFERENCES_MENUITEM" = "Preferenser…";
+"SERVICES_MENUITEM" = "Tjänster";
+"HIDE_APP_MENUITEM" = "Göm LocationSimulator";
+"HIDE_OTHERS_MENUITEM" = "Göm andra";
+"SHOW_ALL_MENUITEM" = "Visa alla";
+"QUIT_APP_MENUITEM" = "Avsluta LocationSimulator";
+// MARK: -- Navigation
+"NAVIGATION_MENU" = "Navigering";
+"WALK_MENUITEM" = "Gå";
+"CYCLE_MENUITEM" = "Cykla";
+"DRIVE_MENUITEM" = "Kör";
+"SET_LOCATION_MENUITEM" = "Ange plats…";
+"RESET_LOCATION_MENUITEM" = "Nollställ platsinformation";
+"MAC_LOCATION_MENUITEM" = "Använd Macens plats";
+"RECENT_LOCATIONS_MENU" = "Senaste platser";
+"RECENT_LOCATIONS_MENUITEM" = "Senaste platser";
+"CLEAR_MENU_MENUITEM" = "Rensa meny";
+"TOGGLE_AUTOMOVE_MENUITEM" = "Toggla auto-förflyttning";
+"STOP_NAVIGATION_MENUITEM" = "Avsluta navigering";
+"MOVE_UP_MENUITEM" = "Flytta upp";
+"MOVE_DOWN_MENUITEM" = "Flytta ned";
+"ROTATE_CLOCKWISE_MENUITEM" = "Rotera medsols";
+"ROTATE_COUNTERCLOCKWISE_MENUITEM" = "Rotera motsols";
+// MARK: -- File
+"FILE_MENU" = "Fil";
+"OPEN_GPX_FILE_MENUITEM" = "Öppna GPX-fil…";
+"CLOSE_MENUITEM" = "Stäng";
+// MARK: -- Edit
+"EDIT_MENU" = "Redigera";
+"UNDO_MENUITEM" = "Ångra";
+"REDO_MENUITEM" = "Gör om";
+"CUT_MENUITEM" = "Klipp";
+"COPY_MENUITEM" = "Kopiera";
+"PASTE_MENUITEM" = "Klistra in";
+"PASTE_AND_MATCH_STYLE_MENUITEM" = "Klistra in och matcha stil";
+"DELETE_MENUITEM" = "Ta bort";
+"SELECT_ALL_MENUITEM" = "Välj alla";
+// MARK: ---- Find
+"FIND_MENU" = "Sök";
+"FIND_MENUITEM" = "Sök";
+"FIND..._MENUITEM" = "Sök…";
+"FIND_AND_REPLACE_..._MENUITEM" = "Sök och ersätt…";
+"FIND_NEXT_MENUITEM" = "Sök nästa";
+"FIND_PREVIOUS_MENUITEM" = "Sök föregående";
+"USE_SELECTION_FOR_FIND_MENUITEM" = "Använd markering för sök";
+"JUMP_TO_SELECTION_MENUITEM" = "Hoppa till markering";
+// MARK: ---- Spelling and Grammar
+"SPELLING_GRAMMAR_MENU" = "Stavning och grammatik";
+"SPELLING_GRAMMAR_MENUITEM" = "Stavning och grammatik";
+"SHOW_SPELLING_AND_GRAMMAR_MENUITEM" = "Visa stavning och grammatik";
+"CHECK_DOCUMENT_NOW_MENUITEM" = "Kontrollera dokumentet nu";
+"CHECK_SPELLING_WHILE_TYPING_MENUITEM" = "Kontrollera stavning när jag skriver";
+"CHECK_GRAMMAR_WHILE_SPELLING" = "Kontrollera grammatik med stavning";
+"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Åtgärda stavning automatiskt";
+// MARK: ---- Substitutions
+"SUBSTITUTIONS_MENU" = "Ersättningar";
+"SUBSTITUTIONS_MENUITEM" = "Ersättningar";
+"SHOW_SUBSTITUTIONS_MENUITEM" = "Visa ersättningar";
+"SMART_COPY_PASTE_MENUITEM" = "Smart kopiera/klistra";
+"SMART_QUOTES_MENUITEM" = "Smarta citattecken";
+"SMART_DASHES_MENUITEM" = "Smarta talstreck";
+"SMART_LINKS_MENUITEM" = "Smarta länkar";
+"DATA_DETECTORS_MENUITEM" = "Datadetektorer";
+"TEXT_REPLACEMENT_MENUITEM" = "Textersättningar";
+// MARK: ---- Transformations
+"TRANSFORMATIONS_MENU" = "Transformationer";
+"TRANSFORMATIONS_MENUITEM" = "Transformationer";
+"MAKE_UPPER_CASE_MENUITEM" = "Omvandla till stora bokstäver";
+"MAKE_LOWER_CASE_MENUITEM" = "Omvandla till små bokstäver";
+"CAPITALIZE_MENUITEM" = "Omvandla begynnelsebokstäver till stora bokstäver";
+// MARK: ---- Speech
+"SPEECH_MENU" = "Tal";
+"SPEECH_MENUITEM" = "Tal";
+"START_SPEAKING_MENUITEM" = "Börja tala";
+"STOP_SPEAKING_MENUITEM" = "Sluta tala";
+// MARK: -- Format
+"FORMAT_MENU" = "Format";
+"FORMAT_MENUITEM" = "Format";
+// MARK: ---- Font
+"FONT_MENU" = "Typsnitt";
+"FONT_MENUITEM" = "Typsnitt";
+"SHOW_FONTS_MENUITEM" = "Visa typsnitt";
+"BOLD_MENUITEM" = "Fetstil";
+"ITALIC_MENUITEM" = "Kursivera";
+"UNDERLINE_MENUITEM" = "Understryk";
+"BIGGER_MENUITEM" = "Större";
+"SMALLER_MENUITEM" = "Mindre";
+"SHOW_COLORS_MENUITEM" = "Visa färger";
+"COPY_STYLE_MENUITEM" = "Kopiera stiler";
+"PASTE_STYLE_MENUITEM" = "Klistra stiler";
+// MARK: ------ Kern
+"KERN_MENU" = "Kern";
+"KERN_MENUITEM" = "Kern";
+"USE_DEFAULT_MENUITEM" = "Använd förval";
+"USE_NONE_MENUITEM" = "Använd ingen";
+"TIGHTEN_MENUITEM" = "Flytta närmare";
+"LOOSEN_MENUITEM" = "Flytta längre ifrån";
+// MARK: ------ Ligatures
+"LIGATURES_MENU" = "Ligaturer";
+"LIGATURES_MENUITEM" = "Ligaturer";
+"USE_ALL_MENUITEM" = "Använd all";
+// MARK: ------ Baseline
+"BASELINE_MENU" = "Baslinje";
+"BASELINE_MENUITEM" = "Baslinje";
+"SUPERSCRIPT_MENUITEM" = "Upphöjd";
+"SUBSCRIPT_MENUITEM" = "Nedsänkt";
+"RAISE_MENUITEM" = "Höj";
+"LOWER_MENUITEM" = "Sänk";
+// MARK: ---- Text
+"TEXT_MENU" = "Text";
+"TEXT_MENUITEM" = "Text";
+"ALIGN_LEFT_MENUITEM" = "Vänsterjustera";
+"CENTER_MENUITEM" = "Centrera";
+"JUSTIFY_MENUITEM" = "Marginaljustera";
+"ALIGN_RIGHT_MENUITEM" = "Högerjustera";
+"SHOW_RULER_MENUITEM" = "Visa linjal";
+"COPY_RULER_MENUITEM" = "Kopiera linjal";
+"PASTE_RULER_MENUITEM" = "Klistra linjal";
+// MARK: ------ Writing Direction
+"WRITING_DIRECTION_MENU" = "Skrivriktning";
+"WRITING_DIRECTION_MENUITEM" = "Skrivriktning";
+"PARAGRAPH_MENUITEM" = "Stycke";
+"SELECTION_MENUITEM" = "Selektion";
+"DEFAULT_MENUITEM" = "\tFörval";
+"LEFT_TO_RIGHT_MENUITEM" = "\tVänster till höger";
+"RIGHT_TO_LEFT_MENUITEM" = "\tHöger till vänster";
+// MARK: -- View
+"VIEW_MENU" = "Visa";
+"VIEW_MENUITEM" = "Visa";
+"SHOW_TOOLBAR_MENUITEM" = "Toggla verktygsrad";
+"CUSTOMIZE_TOOLBAR_MENUITEM" = "Anpassa verktygsrad…";
+"SHOW_SIDEBAR_MENUITEM" = "Toggla sidofält";
+"ENTER_FULL_SCREEN_MENUITEM" = "Toggla helskärm";
+// MARK: -- Window
+"WINDOW_MENU" = "Fönster";
+"WINDOW_MENUITEM" = "Fönster";
+"MINIMIZE_MENUITEM" = "Minimera";
+"ZOOM_MENUITEM" = "Zooma";
+"BRING_ALL_TO_FRONT_MENUITEM" = "Flytta alla till framkant";
+// MARK: -- Help
+"HELP_MENU" = "Hjälp";
+"HELP_MENUITEM" = "Hjälp";
+"APP_HELP_MENUITEM" = "LocationSimulator hjälp";
+"OPEN_PROJECT_PAGE_MENUITEM" = "Öppna projektsida";
+"REPORT_A_BUG_MENUITEM" = "Rapportera en bugg";
+
+// MARK: - Settings
+// MARK: -- INFO
+"INFO_TITLE_SETTING" = "Information";
+"WELCOME" = "Tack för att du använder LocationSimulator!\n\nDen här mjukvaran är fortfarande i beta. Vänligen rapportera all eventuella buggar du stöter på.";
+"CHANGELOG" = "Ändringar i denna version är:\n\n1. Stöd för App Sandbox\n2. Tysk lokalisering\n3. Stöd för iPhoneSimulator\n4. Buggfixar\n";
+// MARK: -- NETWORK
+"NETWORK_TITEL_SETTING" = "Nätverk";
+"ALLOW_NETWORK_DEVICES_SETTING" = "Tillåt nätverksenheter";
+"ALLOW_NETWORK_DEVICES_MSG_SETTING" = "Avmarkera detta val för att endast tillåta USB-enheter.";
+"PREFER_NETWORK_DEVICES_SETTING" = "Föredra nätverksenheter";
+"PREFER_NETWORK_DEVICES_MSG_SETTING" = "Använd alltid nätverksanslutning, även om en enhet är ansluten via USB.";
+// MARK: -- General
+"GENERAL_TITEL_SETTING" = "Allmänt";
+"CONFIRM_TELEPORTATION_SETTING" = "Bekräfta teleportering";
+"CONFIRM_TELEPORTATION_MSG_SETTING" = "Fråga alltid före teleporting.";
+// MARK: -- License
+"LICENSE_TITLE_SETTING" = "Licens";
+
+// MARK: - Toolbar
+"SEARCH_PLACEHOLDER" = "Sök";
+// Palette Label
+"SEARCH_TOOLBARITEM_PALETTELABEL" = "Sök";
+"AUTOFOCUS_TOOLBARITEM_PALETTELABEL" = "Autofokusera nuvarande plats";
+"MAC_LOCATION_TOOLBARITEM_PALETTELABEL" = "Nuvarande plats";
+"MOVETYPES_TOOLBARITEM_PALETTELABEL" = "Färdtyper";
+"RESET_TOOLBARITEM_PALETTELABEL" = "Nollställ";
+// Tooltip
+"RESET_TOOLBARITEM_TOOLTIP" = "Sluta simulera enhetens platsinformation";
+"MAC_LOCATION_TOOLBARITEM_TOOLTIP" = "Sätt Macens plats till nuvarande plats";
+"AUTOFOCUS_TOOLBARITEM_TOOLTIP" = "Autofokusera nuvarande plats";
+"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP" = "Visa färgpanel";
+"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP" = "Visa typsnittspanel";
+"PRINT_TOOLBARITEM_TOOLTIP" = "Skriv ut";
