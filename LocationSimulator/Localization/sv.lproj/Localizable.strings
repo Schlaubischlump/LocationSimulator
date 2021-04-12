@@ -244,11 +244,11 @@
 "WELCOME" = "Tack för att du använder LocationSimulator!\n\nDen här mjukvaran är fortfarande i beta. Vänligen rapportera all eventuella buggar du stöter på.";
 "CHANGELOG" = "Ändringar i denna version är:\n\n1. Stöd för App Sandbox\n2. Tysk lokalisering\n3. Stöd för iPhoneSimulator\n4. Buggfixar\n";
 // MARK: -- NETWORK
-"NETWORK_TITEL_SETTING" = "Network";
-"ALLOW_NETWORK_DEVICES_SETTING" = "Allow network devices";
-"ALLOW_NETWORK_DEVICES_MSG_SETTING" = "Disable this option to only allow USB devices.";
-"PREFER_NETWORK_DEVICES_SETTING" = "Prefer network devices";
-"PREFER_NETWORK_DEVICES_MSG_SETTING" = "Always use the network connection even if a device is connected over USB.";
+"NETWORK_TITEL_SETTING" = "Nätverk";
+"ALLOW_NETWORK_DEVICES_SETTING" = "Tillåt nätverksenheter";
+"ALLOW_NETWORK_DEVICES_MSG_SETTING" = "Avmarkera detta val för att endast tillåta USB-enheter.";
+"PREFER_NETWORK_DEVICES_SETTING" = "Föredra nätverksenheter";
+"PREFER_NETWORK_DEVICES_MSG_SETTING" = "Använd alltid nätverksanslutning, även om en enhet är ansluten via USB.";
 // MARK: -- General
 "GENERAL_TITEL_SETTING" = "General";
 "CONFIRM_TELEPORTATION_SETTING" = "Confirm Teleportation";
