@@ -240,9 +240,9 @@
 
 // MARK: - Settings
 // MARK: -- INFO
-"INFO_TITLE_SETTING" = "Info";
-"WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.";
-"CHANGELOG" = "Changes in this version are:\n\n1. App Sandbox support\n2. German localization\n3. iPhoneSimulator support\n4. Bug fixes\n";
+"INFO_TITLE_SETTING" = "Information";
+"WELCOME" = "Tack för att du använder LocationSimulator!\n\nDen här mjukvaran är fortfarande i beta. Vänligen rapportera all eventuella buggar du stöter på.";
+"CHANGELOG" = "Ändringar i denna version är:\n\n1. Stöd för App Sandbox\n2. Tysk lokalisering\n3. Stöd för iPhoneSimulator\n4. Buggfixar\n";
 // MARK: -- NETWORK
 "NETWORK_TITEL_SETTING" = "Network";
 "ALLOW_NETWORK_DEVICES_SETTING" = "Allow network devices";
