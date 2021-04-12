@@ -147,15 +147,15 @@
 "CHECK_GRAMMAR_WHILE_SPELLING" = "Kontrollera grammatik med stavning";
 "CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Åtgärda stavning automatiskt";
 // MARK: ---- Substitutions
-"SUBSTITUTIONS_MENU" = "Substitutions";
-"SUBSTITUTIONS_MENUITEM" = "Substitutions";
-"SHOW_SUBSTITUTIONS_MENUITEM" = "Show Substitutions";
-"SMART_COPY_PASTE_MENUITEM" = "Smart Copy/Paste";
-"SMART_QUOTES_MENUITEM" = "Smart Quotes";
-"SMART_DASHES_MENUITEM" = "Smart Dashes";
-"SMART_LINKS_MENUITEM" = "Smart Links";
-"DATA_DETECTORS_MENUITEM" = "Data Detectors";
-"TEXT_REPLACEMENT_MENUITEM" = "Text Replacement";
+"SUBSTITUTIONS_MENU" = "Ersättningar";
+"SUBSTITUTIONS_MENUITEM" = "Ersättningar";
+"SHOW_SUBSTITUTIONS_MENUITEM" = "Visa ersättningar";
+"SMART_COPY_PASTE_MENUITEM" = "Smart kopiera/klistra";
+"SMART_QUOTES_MENUITEM" = "Smarta citattecken";
+"SMART_DASHES_MENUITEM" = "Smarta talstreck";
+"SMART_LINKS_MENUITEM" = "Smarta länkar";
+"DATA_DETECTORS_MENUITEM" = "Datadetektorer";
+"TEXT_REPLACEMENT_MENUITEM" = "Textersättningar";
 // MARK: ---- Transformations
 "TRANSFORMATIONS_MENU" = "Transformations";
 "TRANSFORMATIONS_MENUITEM" = "Transformations";
