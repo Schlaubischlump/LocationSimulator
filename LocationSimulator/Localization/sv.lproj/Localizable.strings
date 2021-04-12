@@ -190,9 +190,9 @@
 "TIGHTEN_MENUITEM" = "Flytta närmare";
 "LOOSEN_MENUITEM" = "Flytta längre ifrån";
 // MARK: ------ Ligatures
-"LIGATURES_MENU" = "Ligatures";
-"LIGATURES_MENUITEM" = "Ligatures";
-"USE_ALL_MENUITEM" = "Use All";
+"LIGATURES_MENU" = "Ligaturer";
+"LIGATURES_MENUITEM" = "Ligaturer";
+"USE_ALL_MENUITEM" = "Använd all";
 // MARK: ------ Baseline
 "BASELINE_MENU" = "Baseline";
 "BASELINE_MENUITEM" = "Baseline";
