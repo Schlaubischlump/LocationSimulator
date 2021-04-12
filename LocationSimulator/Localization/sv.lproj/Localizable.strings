@@ -254,7 +254,7 @@
 "CONFIRM_TELEPORTATION_SETTING" = "Bekräfta teleportering";
 "CONFIRM_TELEPORTATION_MSG_SETTING" = "Fråga alltid före teleporting.";
 // MARK: -- License
-"LICENSE_TITLE_SETTING" = "License";
+"LICENSE_TITLE_SETTING" = "Licens";
 
 // MARK: - Toolbar
 "SEARCH_PLACEHOLDER" = "Search";
