@@ -194,12 +194,12 @@
 "LIGATURES_MENUITEM" = "Ligaturer";
 "USE_ALL_MENUITEM" = "Använd all";
 // MARK: ------ Baseline
-"BASELINE_MENU" = "Baseline";
-"BASELINE_MENUITEM" = "Baseline";
-"SUPERSCRIPT_MENUITEM" = "Superscript";
-"SUBSCRIPT_MENUITEM" = "Subscript";
-"RAISE_MENUITEM" = "Raise";
-"LOWER_MENUITEM" = "Lower";
+"BASELINE_MENU" = "Baslinje";
+"BASELINE_MENUITEM" = "Baslinje";
+"SUPERSCRIPT_MENUITEM" = "Upphöjd";
+"SUBSCRIPT_MENUITEM" = "Nedsänkt";
+"RAISE_MENUITEM" = "Höj";
+"LOWER_MENUITEM" = "Sänk";
 // MARK: ---- Text
 "TEXT_MENU" = "Text";
 "TEXT_MENUITEM" = "Text";
