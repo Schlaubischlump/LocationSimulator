@@ -265,9 +265,9 @@
 "MOVETYPES_TOOLBARITEM_PALETTELABEL" = "Färdtyper";
 "RESET_TOOLBARITEM_PALETTELABEL" = "Nollställ";
 // Tooltip
-"RESET_TOOLBARITEM_TOOLTIP" = "Stop faking the device location";
-"MAC_LOCATION_TOOLBARITEM_TOOLTIP" = "Set Mac location to current location";
-"AUTOFOCUS_TOOLBARITEM_TOOLTIP" = "Autofocus current location";
-"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP" = "Show Color Panel";
-"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP" = "Show Font Panel";
-"PRINT_TOOLBARITEM_TOOLTIP" = "Print";
+"RESET_TOOLBARITEM_TOOLTIP" = "Sluta simulera enhetens platsinformation";
+"MAC_LOCATION_TOOLBARITEM_TOOLTIP" = "Sätt Macens plats till nuvarande plats";
+"AUTOFOCUS_TOOLBARITEM_TOOLTIP" = "Autofokusera nuvarande plats";
+"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP" = "Visa färgpanel";
+"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP" = "Visa typsnittspanel";
+"PRINT_TOOLBARITEM_TOOLTIP" = "Skriv ut";
