@@ -257,7 +257,7 @@
 "LICENSE_TITLE_SETTING" = "Licens";
 
 // MARK: - Toolbar
-"SEARCH_PLACEHOLDER" = "Search";
+"SEARCH_PLACEHOLDER" = "Sök";
 // Palette Label
 "SEARCH_TOOLBARITEM_PALETTELABEL" = "Search";
 "AUTOFOCUS_TOOLBARITEM_PALETTELABEL" = "Autofocus Location";
