@@ -163,10 +163,10 @@
 "MAKE_LOWER_CASE_MENUITEM" = "Omvandla till små bokstäver";
 "CAPITALIZE_MENUITEM" = "Omvandla begynnelsebokstäver till stora bokstäver";
 // MARK: ---- Speech
-"SPEECH_MENU" = "Speech";
-"SPEECH_MENUITEM" = "Speech";
-"START_SPEAKING_MENUITEM" = "Start Speaking";
-"STOP_SPEAKING_MENUITEM" = "Stop Speaking";
+"SPEECH_MENU" = "Tal";
+"SPEECH_MENUITEM" = "Tal";
+"START_SPEAKING_MENUITEM" = "Börja tala";
+"STOP_SPEAKING_MENUITEM" = "Sluta tala";
 // MARK: -- Format
 "FORMAT_MENU" = "Format";
 "FORMAT_MENUITEM" = "Format";
