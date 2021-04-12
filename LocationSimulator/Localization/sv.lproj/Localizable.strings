@@ -171,17 +171,17 @@
 "FORMAT_MENU" = "Format";
 "FORMAT_MENUITEM" = "Format";
 // MARK: ---- Font
-"FONT_MENU" = "Font";
-"FONT_MENUITEM" = "Font";
-"SHOW_FONTS_MENUITEM" = "Show Fonts";
-"BOLD_MENUITEM" = "Bold";
-"ITALIC_MENUITEM" = "Italic";
-"UNDERLINE_MENUITEM" = "Underline";
-"BIGGER_MENUITEM" = "Bigger";
-"SMALLER_MENUITEM" = "Smaller";
-"SHOW_COLORS_MENUITEM" = "Show Colors";
-"COPY_STYLE_MENUITEM" = "Copy Style";
-"PASTE_STYLE_MENUITEM" = "Paste Style";
+"FONT_MENU" = "Typsnitt";
+"FONT_MENUITEM" = "Typsnitt";
+"SHOW_FONTS_MENUITEM" = "Visa typsnitt";
+"BOLD_MENUITEM" = "Fetstil";
+"ITALIC_MENUITEM" = "Kursivera";
+"UNDERLINE_MENUITEM" = "Understryk";
+"BIGGER_MENUITEM" = "Större";
+"SMALLER_MENUITEM" = "Mindre";
+"SHOW_COLORS_MENUITEM" = "Visa färger";
+"COPY_STYLE_MENUITEM" = "Kopiera stiler";
+"PASTE_STYLE_MENUITEM" = "Klistra stiler";
 // MARK: ------ Kern
 "KERN_MENU" = "Kern";
 "KERN_MENUITEM" = "Kern";
