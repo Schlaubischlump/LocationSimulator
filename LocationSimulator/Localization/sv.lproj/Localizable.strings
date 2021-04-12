@@ -185,10 +185,10 @@
 // MARK: ------ Kern
 "KERN_MENU" = "Kern";
 "KERN_MENUITEM" = "Kern";
-"USE_DEFAULT_MENUITEM" = "Use Default";
-"USE_NONE_MENUITEM" = "Use None";
-"TIGHTEN_MENUITEM" = "Tighten";
-"LOOSEN_MENUITEM" = "Loosen";
+"USE_DEFAULT_MENUITEM" = "Använd förval";
+"USE_NONE_MENUITEM" = "Använd ingen";
+"TIGHTEN_MENUITEM" = "Flytta närmare";
+"LOOSEN_MENUITEM" = "Flytta längre ifrån";
 // MARK: ------ Ligatures
 "LIGATURES_MENU" = "Ligatures";
 "LIGATURES_MENUITEM" = "Ligatures";
