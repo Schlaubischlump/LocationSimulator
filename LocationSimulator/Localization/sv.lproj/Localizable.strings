@@ -157,11 +157,11 @@
 "DATA_DETECTORS_MENUITEM" = "Datadetektorer";
 "TEXT_REPLACEMENT_MENUITEM" = "Textersättningar";
 // MARK: ---- Transformations
-"TRANSFORMATIONS_MENU" = "Transformations";
-"TRANSFORMATIONS_MENUITEM" = "Transformations";
-"MAKE_UPPER_CASE_MENUITEM" = "Make Upper Case";
-"MAKE_LOWER_CASE_MENUITEM" = "Make Lower Case";
-"CAPITALIZE_MENUITEM" = "Capitalize";
+"TRANSFORMATIONS_MENU" = "Transformationer";
+"TRANSFORMATIONS_MENUITEM" = "Transformationer";
+"MAKE_UPPER_CASE_MENUITEM" = "Omvandla till stora bokstäver";
+"MAKE_LOWER_CASE_MENUITEM" = "Omvandla till små bokstäver";
+"CAPITALIZE_MENUITEM" = "Omvandla begynnelsebokstäver till stora bokstäver";
 // MARK: ---- Speech
 "SPEECH_MENU" = "Speech";
 "SPEECH_MENUITEM" = "Speech";
