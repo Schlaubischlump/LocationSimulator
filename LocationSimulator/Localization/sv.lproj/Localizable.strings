@@ -211,13 +211,13 @@
 "COPY_RULER_MENUITEM" = "Kopiera linjal";
 "PASTE_RULER_MENUITEM" = "Klistra linjal";
 // MARK: ------ Writing Direction
-"WRITING_DIRECTION_MENU" = "Writing Direction";
-"WRITING_DIRECTION_MENUITEM" = "Writing Direction";
-"PARAGRAPH_MENUITEM" = "Paragraph";
-"SELECTION_MENUITEM" = "Selection";
-"DEFAULT_MENUITEM" = "\tDefault";
-"LEFT_TO_RIGHT_MENUITEM" = "\tLeft to Right";
-"RIGHT_TO_LEFT_MENUITEM" = "\tRight to Left";
+"WRITING_DIRECTION_MENU" = "Skrivriktning";
+"WRITING_DIRECTION_MENUITEM" = "Skrivriktning";
+"PARAGRAPH_MENUITEM" = "Stycke";
+"SELECTION_MENUITEM" = "Selektion";
+"DEFAULT_MENUITEM" = "\tFörval";
+"LEFT_TO_RIGHT_MENUITEM" = "\tVänster till höger";
+"RIGHT_TO_LEFT_MENUITEM" = "\tHöger till vänster";
 // MARK: -- View
 "VIEW_MENU" = "View";
 "VIEW_MENUITEM" = "View";
