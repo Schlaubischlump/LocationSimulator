@@ -250,9 +250,9 @@
 "PREFER_NETWORK_DEVICES_SETTING" = "Föredra nätverksenheter";
 "PREFER_NETWORK_DEVICES_MSG_SETTING" = "Använd alltid nätverksanslutning, även om en enhet är ansluten via USB.";
 // MARK: -- General
-"GENERAL_TITEL_SETTING" = "General";
-"CONFIRM_TELEPORTATION_SETTING" = "Confirm Teleportation";
-"CONFIRM_TELEPORTATION_MSG_SETTING" = "Always ask before teleporting.";
+"GENERAL_TITEL_SETTING" = "Allmänt";
+"CONFIRM_TELEPORTATION_SETTING" = "Bekräfta teleportering";
+"CONFIRM_TELEPORTATION_MSG_SETTING" = "Fråga alltid före teleporting.";
 // MARK: -- License
 "LICENSE_TITLE_SETTING" = "License";
 
