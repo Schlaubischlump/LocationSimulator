@@ -203,13 +203,13 @@
 // MARK: ---- Text
 "TEXT_MENU" = "Text";
 "TEXT_MENUITEM" = "Text";
-"ALIGN_LEFT_MENUITEM" = "Align Left";
-"CENTER_MENUITEM" = "Center";
-"JUSTIFY_MENUITEM" = "Justify";
-"ALIGN_RIGHT_MENUITEM" = "Align Right";
-"SHOW_RULER_MENUITEM" = "Show Ruler";
-"COPY_RULER_MENUITEM" = "Copy Ruler";
-"PASTE_RULER_MENUITEM" = "Paste Ruler";
+"ALIGN_LEFT_MENUITEM" = "Vänsterjustera";
+"CENTER_MENUITEM" = "Centrera";
+"JUSTIFY_MENUITEM" = "Marginaljustera";
+"ALIGN_RIGHT_MENUITEM" = "Högerjustera";
+"SHOW_RULER_MENUITEM" = "Visa linjal";
+"COPY_RULER_MENUITEM" = "Kopiera linjal";
+"PASTE_RULER_MENUITEM" = "Klistra linjal";
 // MARK: ------ Writing Direction
 "WRITING_DIRECTION_MENU" = "Writing Direction";
 "WRITING_DIRECTION_MENUITEM" = "Writing Direction";
