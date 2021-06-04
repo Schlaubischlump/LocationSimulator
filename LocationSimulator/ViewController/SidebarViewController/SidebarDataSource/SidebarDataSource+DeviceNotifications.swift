@@ -89,36 +89,41 @@ extension SidebarDataSource {
     /// Callback when a device gets disconnected.
     /// - Parameter notification: notification with device information (UDID)
     @objc func deviceDisconnected(_ notification: Notification) {
+        let selectedDevices = self.selectedDevices
+        
         if let device: IOSDevice = notification.userInfo?["device"] as? IOSDevice {
             // remove the device from the list and the list popup
             if let index: Int = self.realDevices.firstIndex(of: device) {
                 print("[INFO]: Disconnect device: \(device.name) with UDID: \(device.udid)")
+                self.realDevices.remove(at: index)
 
-                // True if the currently selected device was removed.
-                let removeCurrent = (self.selectedDevice as? IOSDevice == self.realDevices.remove(at: index))
-
-                // If the current device was removed, we need to change the status to disconnect.
-                // We do this by removing the device instance.
-                if removeCurrent {
-                    let windowController = self.sidebarView?.window?.windowController as? WindowController
-                    windowController?.mapViewController?.device = nil
+                // True if a currently selected device was removed.
+                for selectedDevice in selectedDevices {
+                    // If a currently selected device was removed, we may need to change the status to disconnect.
+                    // We do this by removing the device instance.
+                    if selectedDevice as? IOSDevice == device {
+                        let windowController = self.sidebarView?.window?.windowController as? WindowController
+                        windowController?.mapViewController?.devices = selectedDevices
+                        break
+                    }
                 }
-
                 // index +1 for the HeaderCell
                 self.sidebarView?.removeItems(at: [index+1], inParent: nil, withAnimation: .effectGap)
             }
         } else if let device: SimulatorDevice = notification.userInfo?["device"] as? SimulatorDevice {
             if let index: Int = self.simDevices.firstIndex(of: device) {
                 print("[INFO]: Disconnect simulator device: \(device.name) with UDID: \(device.udid)")
-
-                // True if the currently selected device was removed.
-                let removeCurrent = (self.selectedDevice as? SimulatorDevice == self.simDevices.remove(at: index))
-
-                // If the current device was removed, we need to change the status to disconnect.
-                // We do this by removing the device instance.
-                if removeCurrent {
-                    let windowController = self.sidebarView?.window?.windowController as? WindowController
-                    windowController?.mapViewController?.device = nil
+                self.simDevices.remove(at: index)
+                
+                // True if a currently selected device was removed.
+                for selectedDevice in selectedDevices {
+                    // If a currently selected device was removed, we may need to change the status to disconnect.
+                    // We do this by removing the device instance.
+                    if selectedDevice as? SimulatorDevice == device {
+                        let windowController = self.sidebarView?.window?.windowController as? WindowController
+                        windowController?.mapViewController?.devices = selectedDevices
+                        break
+                    }
                 }
 
                 // index +2 for the HeaderCells + the real device count

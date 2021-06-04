@@ -18,19 +18,29 @@ class SidebarDataSource: NSObject {
     /// List with all currently detected simulator devices.
     public var simDevices: [SimulatorDevice] = []
 
-    /// The currently selected device.
-    public var selectedDevice: Device? {
+    /// The currently selected devices.
+    public var selectedDevices: [Device] {
+        var selectedDevices = [Device]()
+        
         let numIOSDevices = self.realDevices.count
         let numSimDevices = self.simDevices.count
-        let row = (self.sidebarView?.selectedRow ?? 0)
-        if row <= numIOSDevices {
-            // A real iOS Device was selected
-            return row >= 1 ? self.realDevices[row-1] : nil
-        } else if row > numIOSDevices && row < numIOSDevices + numSimDevices + 2 {
-            // A simulator device was selected
-            return row > numIOSDevices+1 ? self.simDevices[row-numIOSDevices-2] : nil
+        
+        if self.sidebarView != nil {
+            for (_, row) in self.sidebarView!.selectedRowIndexes.enumerated() {
+                if row <= numIOSDevices {
+                    // A real iOS Device was selected
+                    if row >= 1 {
+                        selectedDevices.append(self.realDevices[row-1])
+                    }
+                } else if row > numIOSDevices && row < numIOSDevices + numSimDevices + 2 {
+                    // A simulator device was selected
+                    if row > numIOSDevices+1 {
+                        selectedDevices.append(self.simDevices[row-numIOSDevices-2])
+                    }
+                }
+            }
         }
-        return nil
+        return selectedDevices
     }
 
     // MARK: - Constructor
@@ -104,16 +114,22 @@ extension SidebarDataSource: NSOutlineViewDelegate {
         }
 
         // Allow selecting a device, if it is not already selected.
-        if let device = (item as AnyObject) as? IOSDevice {
-            return ((self.selectedDevice as? IOSDevice) != device)
-        }
+        var deviceAlreadySelected = false
+        for selectedDevice in self.selectedDevices {
+            if let device = (item as AnyObject) as? IOSDevice {
+                deviceAlreadySelected = ((selectedDevice as? IOSDevice) == device)
+            }
 
-        if let simDevice = (item as AnyObject) as? SimulatorDevice {
-            return ((self.selectedDevice as? SimulatorDevice) != simDevice)
+            if let simDevice = (item as AnyObject) as? SimulatorDevice {
+                deviceAlreadySelected = ((selectedDevice as? SimulatorDevice) == simDevice)
+            }
+            
+            if deviceAlreadySelected {
+                break
+            }
         }
-
         // Default, should never be the case.
-        return false
+        return !deviceAlreadySelected
     }
 
     func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {

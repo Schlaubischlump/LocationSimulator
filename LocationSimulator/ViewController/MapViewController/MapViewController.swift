@@ -33,15 +33,15 @@ class MapViewController: NSViewController {
     /// The current device managed by this viewController. Assigning this property will NOT automatically try to connect
     /// the device. You still need to call `connectDevice`. That beeing said, changing a device assigned to this
     /// viewController is not officially supported.
-    public var device: Device? {
-        get { return self.spoofer?.device }
+    public var devices: [Device]? {
+        get { return self.spoofer?.devices }
         set {
             // Either we removed the device or the new device is not connected yet.
-            self.deviceIsConnectd = false
+            self.deviceIsConnected = false
             // Check that the device exists.
-            guard let device = newValue else { return }
+            guard let devices = newValue else { return }
             // Create a spoofer instance for this device.
-            self.spoofer = LocationSpoofer(device)
+            self.spoofer = LocationSpoofer(devices)
             self.spoofer?.delegate = self
         }
     }
@@ -73,15 +73,11 @@ class MapViewController: NSViewController {
     var isShowingAlert: Bool = false
 
     /// True if the current device is connected, false otherwise.
-    public private(set) var deviceIsConnectd: Bool = false {
+    public private(set) var deviceIsConnected: Bool = false {
         didSet {
-            var userInfo: [String: Any] = [
-                "status": self.deviceIsConnectd ? DeviceStatus.connected : DeviceStatus.disconnected
+            let userInfo: [String: Any] = [
+                "status": self.deviceIsConnected ? DeviceStatus.connected : DeviceStatus.disconnected
             ]
-            // Add the device to the info if available.
-            if let device = self.device {
-                userInfo["device"] = device
-            }
             // Post a notifcation about the new device status.
             NotificationCenter.default.post(name: .StatusChanged, object: self, userInfo: userInfo)
         }
@@ -260,20 +256,24 @@ class MapViewController: NSViewController {
     @discardableResult
     func connectDevice() -> Bool {
         // Make sure we have a device to connect, which is not already connected. We need a window to show errors.
-        guard !self.deviceIsConnectd, let device = self.device, let window = self.view.window else { return false }
+        guard !self.deviceIsConnected, let devices = self.devices, let window = self.view.window else { return false }
         do {
             // Show the error indicator and a progress spinner.
             self.contentView?.showErrorInidcator()
             // If the pairing and uploading of the developer disk image is successfull create a spoofer instance.
-            try device.pair()
+            if self.devices != nil {
+                for device in self.devices! {
+                    try device.pair()
+                }
+            }
             // Hide the error indicator if the device was connected sucessfully.
             self.contentView?.hideErrorInidcator()
             // We successfully connected the device.
-            self.deviceIsConnectd = true
+            self.deviceIsConnected = true
         } catch let error {
             // Stop the spinner even if an error occured.
             self.contentView?.stopSpinner()
-            self.deviceIsConnectd = false
+            self.deviceIsConnected = false
             // Handle the error message
             switch error {
             case DeviceError.pair:

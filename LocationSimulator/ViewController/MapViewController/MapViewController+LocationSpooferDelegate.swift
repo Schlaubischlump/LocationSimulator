@@ -90,7 +90,6 @@ extension MapViewController: LocationSpooferDelegate {
 
         // Post the update for the current app status.
         NotificationCenter.default.post(name: .StatusChanged, object: self, userInfo: [
-            "device": spoofer.device,
             "status": status
         ])
     }
@@ -119,7 +118,6 @@ extension MapViewController: LocationSpooferDelegate {
 
         // Update the current application status.
         NotificationCenter.default.post(name: .StatusChanged, object: self, userInfo: [
-            "device": spoofer.device,
             "status": status
         ])
     }
