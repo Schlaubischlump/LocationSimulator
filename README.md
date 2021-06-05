@@ -68,6 +68,8 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 	brew install locationsimulator
 	```
 
+or download the latest release / nighlty build from github to get the latest changes.
+
 ## Build
 
 ### Requirements
@@ -102,6 +104,29 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 > If you want to build a standalone application which can be copied to another Mac without installing the dependencies choose the `LocationSimulator` scheme and switch the configuration to `Release` before running. If you do not want to bundle the dependencies, but want to create a release build choose the `Homebrew` scheme.
 
 ## Usage
+
+### Allow network devices (optional):
+
+<details>
+	<summary>1. Make sure you can sync your device over Wi-Fi and access it inside the Finder.</summary>    
+
+> **Sync your content using Wi-Fi**
+>
+>After you set up syncing with the Finder using USB, you can set up the Finder to sync to your device with Wi-Fi instead of USB.
+>
+>1. Connect your device to your computer with a USB cable, then open a Finder window and select your device. 
+>
+>2. Select “Show this [device] when on Wi-Fi." 
+>
+>3. Click Apply.
+>
+>When the computer and the device are on the same Wi-Fi network, the device appears in the Finder. The device syncs automatically whenever it's plugged in to power.
+</details>
+
+<details>
+	<summary>2. Make sure that "LocationSimulator" -> "Preferences..." -> "Network" -> "Allow network devices" is enabled</summary>   
+	<img src="Preview/network_settings.png" width="200">
+</details>
 
 ### Start spoofing:
   1. Connect the iOS device to your computer via USB or Wi-Fi.
