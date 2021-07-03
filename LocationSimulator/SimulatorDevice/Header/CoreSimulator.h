@@ -35,7 +35,9 @@ typedef NS_ENUM(NSUInteger, SimBootStatus) {
 @property(copy, nonatomic) NSUUID * _Nonnull UDID;
 @property(readonly, nonatomic) NSString * _Nonnull name;
 - (SimDeviceBootInfo * _Nonnull )bootStatus;
+// XCode <= 12.4
 - (mach_port_t)lookup:(NSString * _Nonnull)portName error:(NSError * _Nullable * _Nullable)error;
+// XCode => 12.5
 - (BOOL)setLocationWithLatitude:(double)latitude
                    andLongitude:(double)longitude
                           error:(NSError * _Nullable * _Nullable)error;

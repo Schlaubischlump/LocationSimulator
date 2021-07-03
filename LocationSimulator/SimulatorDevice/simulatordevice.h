@@ -36,7 +36,7 @@
  */
 - (NSString * _Nonnull)name;
 /**
- True if the location can be spoofed, False otherwise.
+ Indicate if the location of this device can be spoofed.
  - Return: True if the location can be spoofed, False otherwise.
  */
 - (BOOL)isConnected;
@@ -48,7 +48,7 @@
  */
 - (BOOL)setLocationWithLatitude:(double)latitude andLongitude:(double)longitude;
 /**
-This stops the simulation spoofing for Xcode >= 12.5.
+This stops the simulation spoofing. For Xcode <= 12.4 this is a NOP.
  - Return: True if the location was reset, False otherwise.
  */
 - (BOOL)resetLocation;
