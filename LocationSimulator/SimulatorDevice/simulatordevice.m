@@ -86,7 +86,7 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
                 handler(deviceWrapper);
             }
         }
-        // When ever any device status changes.
+        // Whenever any device status changes
         if ([notification_name isEqualToString: @"availableDevices_changed"]) {
             NSArray<NSString *> *udids = [defaultSet.availableDevices valueForKeyPath:@"UDID.UUIDString"];
 
