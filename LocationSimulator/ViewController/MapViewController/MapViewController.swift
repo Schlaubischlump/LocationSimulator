@@ -369,7 +369,7 @@ class MapViewController: NSViewController {
         alert.beginSheetModal(for: window) {[weak self] response, _ in
             self?.isShowingAlert = false
             switch response {
-            ///Teleport to the start of the route and contiune the navigation from there on.
+            // Teleport to the start of the route and contiune the navigation from there on.
             case .teleport:
                 guard let startCoord = route.first else { return }
                 // Update the Recent location menu.

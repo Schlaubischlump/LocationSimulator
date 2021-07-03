@@ -24,7 +24,7 @@ extension MapView: MKMapViewDelegate {
         }
         let renderer = MKPolylineRenderer(polyline: polyline)
         renderer.strokeColor = NSColor(calibratedRed: 0.0, green: 162.0/255.0, blue: 1.0, alpha: 1.0)
-        //renderer.lineDashPattern = [0, 10]
+        // renderer.lineDashPattern = [0, 10]
         renderer.lineWidth = 8
         return renderer
     }

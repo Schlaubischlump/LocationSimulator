@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-protocol LocationSpooferDelegate: class {
+protocol LocationSpooferDelegate: AnyObject {
     /// Called when the `moveType` is about to change.
     /// - Parameter spoofer: instance of the location spoofer
     /// - Parameter moveState: the new moveState

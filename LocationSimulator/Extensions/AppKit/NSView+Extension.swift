@@ -23,8 +23,6 @@ extension NSView {
         oldPoint = oldPoint.applying(layer.affineTransform())
 
         var position = layer.position
-        //position.x = position.x - oldPoint.x + newPoint.x
-        //position.y = position.y - oldPoint.y + newPoint.y
         position.x += newPoint.x - oldPoint.x
         position.y += newPoint.y - oldPoint.y
 

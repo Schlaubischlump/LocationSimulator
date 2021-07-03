@@ -14,7 +14,7 @@ extension NSWindow {
     /// - Parameter message: alert message
     /// - Parameter localize: true to localize the title and message
     /// - Return: the modal response
-    //@discardableResult
+    // @discardableResult
     func showError(_ title: String, message: String, localize: Bool = true) {// -> NSApplication.ModalResponse {
         let alert = NSAlert()
         alert.messageText = localize ? NSLocalizedString(title, comment: "") : title
@@ -23,7 +23,7 @@ extension NSWindow {
         // Calling runModal will block the .common runloop. This runloop is used by DispatchQueue.main.async. This
         // function is used by MKMapView to load the map. That means, calling runModal, blocks the MapView from loading
         // the map. Since we do not need the modal response, we just leave it out and present the view as sheet instead.
-        //return alert.runModal()
+        // return alert.runModal()
         alert.beginSheetModal(for: self)
     }
 

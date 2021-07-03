@@ -82,7 +82,7 @@ extension MapViewController: LocationSpooferDelegate {
             if  self.autoFocusCurrentLocation && !self.mapView.isUserInteracting {
                 // Center the view, without zooming in.
                 self.mapView.setCenter(toCoordinate!, animated: true)
-                //self.mapView.zoomToLocation(toCoordinate!, animated: true)
+                // self.mapView.zoomToLocation(toCoordinate!, animated: true)
             }
             // Show the movement controls
             self.contentView?.controlsHidden = false

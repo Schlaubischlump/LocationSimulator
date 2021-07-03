@@ -36,11 +36,10 @@
  */
 - (NSString * _Nonnull)name;
 /**
- True if a bridge connection to this device established. A bridge connection is required to remote control the device
- and change the current location.
- - Return: True if a bridge for this device exists. False otherwise.
+ True if the location can be spoofed, False otherwise.
+ - Return: True if the location can be spoofed, False otherwise.
  */
-- (BOOL)hasBridge;
+- (BOOL)isConnected;
 /**
  Change the current device location to a new location.
  - Parameter latitude: the new latitude
@@ -49,8 +48,8 @@
  */
 - (BOOL)setLocationWithLatitude:(double)latitude andLongitude:(double)longitude;
 /**
- Currently a NOP. This should stop the simulation spoofing in the future, if an API becomes available.
- - Return: True if a bridge connection exists, False otherwise.
+This stops the simulation spoofing for Xcode >= 12.5.
+ - Return: True if the location was reset, False otherwise.
  */
 - (BOOL)resetLocation;
 @end

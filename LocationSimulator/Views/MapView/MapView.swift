@@ -35,8 +35,8 @@ class MapView: MKMapView {
         self.delegate = self
         self.showsZoomControls = false
         self.showsScale = true
-        //self.wantsLayer = true
-        //self.showsUserLocation = true
+        // self.wantsLayer = true
+        // self.showsUserLocation = true
 
         // Add long press gesture recognizer
         let mapPressGesture = NSPressGestureRecognizer(target: self, action: #selector(mapViewPressed(_:)))
@@ -141,7 +141,7 @@ class MapView: MKMapView {
         self.addOverlay(self.navigationOverlay!, level: .aboveLabels)
         // FixMe: force a redraw to show the overlay... for some reason display is not working
         // this does block the UI for a little less then a second :/
-        //self.mapView.setCenter(self.mapView.centerCoordinate, animated: true)
+        // self.mapView.setCenter(self.mapView.centerCoordinate, animated: true)
         return true
     }
 

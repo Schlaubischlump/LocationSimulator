@@ -34,7 +34,12 @@ typedef NS_ENUM(NSUInteger, SimBootStatus) {
 @interface SimDevice : NSObject
 @property(copy, nonatomic) NSUUID * _Nonnull UDID;
 @property(readonly, nonatomic) NSString * _Nonnull name;
+- (SimDeviceBootInfo * _Nonnull )bootStatus;
 - (mach_port_t)lookup:(NSString * _Nonnull)portName error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)setLocationWithLatitude:(double)latitude
+                   andLongitude:(double)longitude
+                          error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)clearSimulatedLocationWithError:(NSError * _Nullable * _Nullable)error;
 @end
 
 @interface SimDeviceSet : NSObject

@@ -13,14 +13,21 @@
     SimDevice *_device;
     SimulatorBridge *_bridge;
     pid_t _pid;
+    BOOL _isConnected;
 }
-- (instancetype)initWithDevice:(SimDevice * _Nonnull)device andBridge:(SimulatorBridge * _Nullable)bridge
-                        forSimulatorPID:(pid_t)pid;
+- (instancetype)initWithDevice:(SimDevice * _Nonnull)device;
+/**
+ True if simulator bridge is required to spoof the location, False otherwise.
+ Xcode <= 12.4 require the simulator bridge. Xcode >= 12.5 can use SimDevice directly.
+ */
+- (BOOL)requiresBrdige;
 @end
 
 @implementation SimDeviceWrapper
 
 static SimDeviceSet *defaultSet = nil;
+/// Keep a list with all currently available devices.
+static NSMutableSet<SimDeviceWrapper *> *knownDevices;
 
 + (void)initialize {
     // Load the CoreSimulator library or fail if it can not be loaded.
@@ -50,6 +57,7 @@ static SimDeviceSet *defaultSet = nil;
         return;
     }
     defaultSet = set;
+    knownDevices = [[NSMutableSet<SimDeviceWrapper *> alloc] init];
 }
 
 + (NSUInteger)subscribe:(void (^ _Nonnull)(SimDeviceWrapper * _Nonnull))handler {
@@ -57,81 +65,45 @@ static SimDeviceSet *defaultSet = nil;
         return -1;
 
     // Send a notification for all already connected devices.
-    NSArray<NSNumber *>* simualtorPorts = getSimulatorPIDs();
     for (SimDevice *device in defaultSet.availableDevices) {
-        for (NSNumber *simPID in simualtorPorts) {
-            pid_t pid = (pid_t)simPID.intValue;
-            SimulatorBridge *bridge = bridgeForSimDevice(device, getBridgePortName(pid));
-            if (!bridge) break;
-
-            __block SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:device
-                                                                                     andBridge:bridge
-                                                                               forSimulatorPID:pid];
-            // Listen for terminations of the Simulator app to disconnect the device
-            NSNotificationCenter *workspaceNC = NSWorkspace.sharedWorkspace.notificationCenter;
-            [workspaceNC addObserverForName:NSWorkspaceDidTerminateApplicationNotification
-                                     object:nil
-                                      queue:nil
-                                 usingBlock:^(NSNotification * _Nonnull notification) {
-                // If this device belongs to the currently terminated Simulator.app instance
-                if ([notification.userInfo[@"NSApplicationProcessIdentifier"] intValue] == deviceWrapper->_pid) {
-                    deviceWrapper->_bridge = nil;
-                    handler(deviceWrapper);
-                }
-            }];
-
-            // Add the device
-            handler(deviceWrapper);
-        }
+        SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:device];
+        // The device might not be ready yet. Just skip it, the device detection notification will handle it.
+        if (![deviceWrapper isConnected])
+            continue;
+        [knownDevices addObject:deviceWrapper];
+        handler(deviceWrapper);
     }
 
-    // Register a handler for all new devices.
     return [defaultSet registerNotificationHandler:^(NSDictionary* info) {
-            NSString *notification_name = info[@"notification"];
-            if ([notification_name isEqualToString: @"SimDeviceNotificationType_BootStatus"]) {
-                // This notificaton appears when the device did finish booting
-                SimDeviceBootInfo* bootInfo = info[@"SimDeviceNotification_NewBootStatus"];
-                SimDeviceBootInfo* previousBootInfo = info[@"SimDeviceNotification_PreviousBootStatus"];
-                if (bootInfo.isTerminalStatus && bootInfo.status == SimBootStatusFinished)
-                {
-                    // Iterate over all running simulator instances to find the correct one
-                    for (NSNumber *simPID in getSimulatorPIDs()) {
-                        SimDevice *device = info[@"device"];
-                        SimulatorBridge *bridge = nil;
-                        pid_t pid = (pid_t)simPID.intValue;
-                        // New device connected
-                        if (previousBootInfo.status != SimBootStatusFinished)
-                            bridge = bridgeForSimDevice(device, getBridgePortName(pid));
-                        // If the device is disconnected bridge will be nil
-                        __block SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:device
-                                                                                                 andBridge:bridge
-                                                                                           forSimulatorPID:pid];
-                        // If a device was connected
-                        NSNotificationCenter *workspaceNC = NSWorkspace.sharedWorkspace.notificationCenter;
+        NSString *notification_name = info[@"notification"];
+        if ([notification_name isEqualToString: @"SimDeviceNotificationType_BootStatus"]) {
+            // This notificaton appears when the device did finish booting
+            SimDeviceBootInfo* bootInfo = info[@"SimDeviceNotification_NewBootStatus"];
+            if (bootInfo.isTerminalStatus && bootInfo.status == SimBootStatusFinished)
+            {
+                SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:info[@"device"]];
+                [knownDevices addObject:deviceWrapper];
+                handler(deviceWrapper);
+            }
+        }
+        // When ever any device status changes.
+        if ([notification_name isEqualToString: @"availableDevices_changed"]) {
+            NSArray<NSString *> *udids = [defaultSet.availableDevices valueForKeyPath:@"UDID.UUIDString"];
 
-                        if (bridge != nil) {
-                            // Listen for terminations of the Simulator app to disconnect the device
-                            [workspaceNC addObserverForName:NSWorkspaceDidTerminateApplicationNotification
-                                                     object:nil
-                                                      queue:nil
-                                                 usingBlock:^(NSNotification * _Nonnull notification) {
-                                // If this device belongs to the currently terminated Simulator.app instance
-                                if ([notification.userInfo[@"NSApplicationProcessIdentifier"] intValue] == deviceWrapper->_pid) {
-                                    deviceWrapper->_bridge = nil;
-                                    handler(deviceWrapper);
-                                }
-                            }];
-                        } else {
-                            // The device was disconnected. Stop listening for app termination.
-                            [workspaceNC removeObserver:deviceWrapper];
-                        }
-                        // Add the device
-                        handler(deviceWrapper);
-                        break;
-                    }
+            NSMutableArray<SimDeviceWrapper *> *devicesToRemove = [[NSMutableArray alloc] init];
+            for (SimDeviceWrapper *deviceWrapper in knownDevices) {
+                if (![udids containsObject:deviceWrapper.udid]) {
+                    [deviceWrapper disconnect];
+                    [devicesToRemove addObject:deviceWrapper];
+                    handler(deviceWrapper);
                 }
             }
-        }];
+            
+            for (SimDeviceWrapper *deviceWrapper in devicesToRemove) {
+                [knownDevices removeObject:deviceWrapper];
+            }
+        }
+    }];
 }
 
 + (BOOL)unsubscribe:(NSUInteger)handlerID {
@@ -140,12 +112,13 @@ static SimDeviceSet *defaultSet = nil;
     return [defaultSet unregisterNotificationHandler:handlerID error:NULL];
 }
 
-- (instancetype)initWithDevice:(SimDevice * _Nonnull)device andBridge:(SimulatorBridge * _Nullable)bridge
-               forSimulatorPID:(pid_t)pid {
+- (instancetype)initWithDevice:(SimDevice * _Nonnull)device {
     if (self = [super init]) {
         _device = device;
-        _bridge = bridge;
-        _pid = pid;
+        _bridge = NULL;
+        _pid = 0;
+
+        [self connect];
     }
     return self;
 }
@@ -154,27 +127,84 @@ static SimDeviceSet *defaultSet = nil;
     return _device.UDID.UUIDString;
 }
 
-- (pid_t)simulatorPID {
-    return _pid;
-}
-
 - (NSString * _Nonnull)name {
     return _device.name;
 }
 
-- (BOOL)hasBridge {
-    return _bridge != NULL;
-}
-
-- (BOOL)setLocationWithLatitude:(double)latitude andLongitude:(double)longitude {
-    if (!_bridge) return FALSE;
-    [_bridge setLocationWithLatitude:latitude andLongitude:longitude];
+- (BOOL)requiresBrdige {
+    if ([_device respondsToSelector:@selector(setLocationWithLatitude:andLongitude:error:)]) {
+        return FALSE;
+    }
     return TRUE;
 }
 
+- (void)connect {
+    // Find the correct pid and get a bridge connection (XCode <= 12.4)
+    if ([self requiresBrdige]) {
+        _isConnected = FALSE;
+        NSArray<NSNumber *>* simualtorPorts = getSimulatorPIDs();
+
+        for (NSNumber *simPID in simualtorPorts) {
+            _pid = (pid_t)simPID.intValue;
+            _bridge = bridgeForSimDevice(_device, getBridgePortName(_pid));
+            if (_bridge != NULL) {
+                _isConnected = TRUE;
+                break;
+            }
+        }
+    } else {
+        _isConnected = TRUE;
+    }
+}
+
+- (void)disconnect {
+    _isConnected = FALSE;
+    _bridge = NULL;
+    _pid = 0;
+}
+
+- (BOOL)isConnected {
+    if ([self requiresBrdige] && _bridge == NULL) {
+        return FALSE;
+    }
+    return _isConnected;
+}
+
+- (BOOL)setLocationWithLatitude:(double)latitude andLongitude:(double)longitude {
+    if ([self requiresBrdige]) {
+        if (!_bridge) return FALSE;
+        [_bridge setLocationWithLatitude:latitude andLongitude:longitude];
+        return TRUE;
+    }
+
+    NSError *error;
+    [_device setLocationWithLatitude:latitude andLongitude:longitude error:&error];
+    return error == NULL;
+}
+
 - (BOOL)resetLocation {
-    // FIXME: There is currently no reset function
-    return _bridge != nil;
+    // There is no reset function for Xcode <= 12.4
+    if ([self requiresBrdige])
+        return _bridge != nil;
+
+    NSError *error;
+    [_device clearSimulatedLocationWithError:&error];
+    return error == NULL;
+}
+
+@end
+
+
+@implementation SimDeviceWrapper(Equatable)
+
+- (BOOL)isEqual:(SimDeviceWrapper *)device
+{
+    return [self.udid isEqual:device.udid];
+}
+
+- (NSUInteger)hash
+{
+    return [self.udid hash];
 }
 
 @end

@@ -36,7 +36,8 @@ struct SimulatorDevice: Device {
             let udid = simDeviceWrapper.udid()
             let name = simDeviceWrapper.name()
             let device = SimulatorDevice(udid: udid, name: name, connectionType: .unknown, wrapper: simDeviceWrapper)
-            let notification: Notification.Name = simDeviceWrapper.hasBridge() ? .DeviceConnected : .DeviceDisconnected
+            let connected =  simDeviceWrapper.isConnected()
+            let notification: Notification.Name = connected ? .DeviceConnected : .DeviceDisconnected
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: notification, object: nil, userInfo: ["device": device])
             }
