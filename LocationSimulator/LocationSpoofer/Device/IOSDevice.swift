@@ -175,6 +175,8 @@ struct IOSDevice: Device {
             throw DeviceError.pair("Could not pair device!")
         }
 
+        print("Did pair the device: ", self.name)
+
         // try to mount the DeveloperDiskImage.dmg
         try self.mountDeveloperDiskImage()
     }

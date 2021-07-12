@@ -65,6 +65,10 @@ extension SidebarDataSource {
     @objc func devicePaired(_ notification: Notification) {
         guard let device: Device = notification.userInfo?["device"] as? Device else { return }
         print("[INFO]: Paired device: \(device.name) with UDID: \(device.udid)")
+
+        // Reupload the Developerdiskimage by reapplying the selection if the unpaired device is already selected.
+        guard device.udid == self.selectedDevice?.udid else { return }
+        NotificationCenter.default.post(name: NSOutlineView.selectionDidChangeNotification, object: self.sidebarView)
     }
 
     /// Callback when a device is changed. This might happen if a network device is additionally connected over USB.

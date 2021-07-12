@@ -39,7 +39,7 @@
 "CONFIRM_TELEPORT"="Teleportieren bestätigen";
 
 // MARK: - Alert Messages
-"PAIR_ERROR_MSG" = "Verbindung zum Gerät konnte nicht hergestellt werden.";
+"PAIR_ERROR_MSG" = "Verbindung zum Gerät konnte nicht hergestellt werden. Stelle auf deinem iOS-Gerät sicher, dass du diesem Computer vertraust.";
 "MOUNT_ERROR_MSG" = "Das DeveloperDiskImage für dieses Gerät konnte nicht eingebunden werden. Die Standortfälschung wird nicht funktionieren.Ist das Gerät entsperrt?";
 "UNKNOWN_ERROR_MSG" = "Ein unbekannter Fehler ist aufgetreten. Bitte trenne das Gerät und versuche es erneut.";
 "PERMISSION_ERROR_MSG" = "Application Support folder konnte nicht geöffnet werden.";

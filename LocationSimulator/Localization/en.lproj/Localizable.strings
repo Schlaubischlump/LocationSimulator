@@ -39,7 +39,7 @@
 "CONFIRM_TELEPORT"="Confirm Teleportation";
 
 // MARK: - Alert Messages
-"PAIR_ERROR_MSG"="Could not establish a connection to the device.";
+"PAIR_ERROR_MSG"="Could not establish a connection to the device. Make sure to trust this computer on you device.";
 "MOUNT_ERROR_MSG"="The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked?";
 "UNKNOWN_ERROR_MSG"="An unknown error occured. Please disconnect your device and try again.";
 "PERMISSION_ERROR_MSG"="Can not access Application Support folder.";
