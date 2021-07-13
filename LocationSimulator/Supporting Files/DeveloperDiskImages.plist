@@ -4,6 +4,50 @@
 <dict>
 	<key>iPhone OS</key>
 	<dict>
+		<key>10.0</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/raw/master/Developer%20Disk%20Image/10.0%20(14A345)/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/raw/master/Developer%20Disk%20Image/10.0%20(14A345)/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>
+		<key>10.1</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/raw/master/Developer%20Disk%20Image/10.1%20(14B72)/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/raw/master/Developer%20Disk%20Image/10.1%20(14B72)/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>
+		<key>10.2</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/raw/master/Developer%20Disk%20Image/10.2%20(14C5062c)/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/raw/master/Developer%20Disk%20Image/10.2%20(14C5062c)/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>
+		<key>10.3</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/blob/master/Developer%20Disk%20Image/10.3%20(14E269)/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/xushuduo/Xcode-iOS-Developer-Disk-Image/blob/master/Developer%20Disk%20Image/10.3%20(14E269)/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>
 		<key>11.0</key>
 		<dict>
 			<key>Image</key>
