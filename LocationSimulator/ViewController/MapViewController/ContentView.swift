@@ -128,8 +128,12 @@ class ContentView: NSView {
     override func layout() {
         if #available(OSX 11.0, *) {
             // Layout the compass view.
-            self.compassButton?.frame = self.convert(self.movementDirectionHUD.frame, from: self.movementContainer)
-            self.compassButton?.frame.origin.x = self.frame.size.width - (self.compassButton?.bounds.width ?? 0) - 20
+            //self.compassButton?.frame = self.convert(self.movementDirectionHUD.frame, from: self.movementContainer)
+            let controlFrame = self.convert(self.movementDirectionHUD.frame, from: self.movementContainer)
+            let padX = controlFrame.origin.x
+            let padY = controlFrame.origin.y
+            self.compassButton?.frame.origin.x = self.frame.size.width - (self.compassButton?.bounds.width ?? 0) - padX
+            self.compassButton?.frame.origin.y = padY
         }
         super.layout()
     }
