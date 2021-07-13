@@ -52,6 +52,13 @@ class ProgressView: NSView {
         super.init(frame: frameRect)
         self.setup()
         self.downloader.delegate = self
+        // Fix progressbar on macOS Big Sur
+        // MacOS BigSur changes the default value of `usesThreadedAnimation` property of NSProgressIndication to `true`.
+        // This causes problems, since we are calling the update method by `performSelector(onMainThread:)`. The
+        // background thread responsible to update the progressbar, when `usesThreadedAnimation` is `true` is therefore
+        // not called periodically leading to the observed behaviour.
+        self.progressBarTop.usesThreadedAnimation = false
+        self.progressBarBottom.usesThreadedAnimation = false
     }
 
     required init?(coder: NSCoder) {
