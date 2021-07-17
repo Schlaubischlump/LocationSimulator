@@ -102,7 +102,7 @@ class LocationSpoofer {
     }
 
     /// The connected iOS Device.
-    public let device: Device
+    public let devices: [Device]
 
     /// Total moved distance in m
     public var totalDistance: Double = 0.0
@@ -118,9 +118,9 @@ class LocationSpoofer {
 
     // MARK: - Constructor
 
-    init(_ device: Device) {
+    init(_ devices: [Device]) {
         self.route = []
-        self.device = device
+        self.devices = devices
         self.currentLocation = nil
         self.dispatchQueue = DispatchQueue(label: "locationUpdates", qos: .userInteractive)
     }
@@ -146,7 +146,16 @@ class LocationSpoofer {
 
         dispatchQueue.async { [weak self] in
             // try to reset the location
-            let success: Bool = self?.device.disableSimulation() ?? false
+            var success = false
+            if let devices = self?.devices {
+                success = true
+                for device in devices {
+                    if !device.disableSimulation() {
+                        success = false
+                    }
+                }
+            }
+            
             if success {
                 self?.totalDistance = 0.0
                 self?.currentLocation = nil
@@ -200,7 +209,16 @@ class LocationSpoofer {
 
         dispatchQueue.async { [weak self] in
             // try to simulate the location on the device
-            let success: Bool = self?.device.simulateLocation(coordinate) ?? false
+            var success = false
+            if let devices = self?.devices {
+                success = true
+                for device in devices {
+                    if !device.simulateLocation(coordinate) {
+                        success = false
+                    }
+                }
+            }
+            
             if success {
                 self?.totalDistance += self?.currentLocation?.distanceTo(coordinate: coordinate) ?? 0
                 self?.currentLocation = coordinate
