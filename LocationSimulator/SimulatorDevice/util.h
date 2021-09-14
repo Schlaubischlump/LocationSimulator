@@ -62,7 +62,7 @@ static inline NSString * _Nonnull getBridgePortName(pid_t pid) {
 
 /**
  Get the SimulatorBridge instance for a SimDevice.
- - Parameter device: the SimDevice isntance
+ - Parameter device: the SimDevice instance
  - Parameter portName: the port name of the bridge
  - Return: SimulatorBridge instance
  */
@@ -112,7 +112,7 @@ static inline NSString * _Nullable getActiveDeveloperDir() {
 
     NSString *grepOutput = nil;
 
-    // Make sure no error occured.
+    // Make sure no error occurred.
     if (task.terminationStatus == 0) {
         grepOutput = [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
     } else {
