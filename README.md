@@ -1,4 +1,4 @@
-If you got an `Unable to install/mount DeveloperDiskImage.dmg` error, verify that you tried everything mentioned [here](https://github.com/Schlaubischlump/LocationSimulator/issues/76) before openening a new issue.
+If you got an `Unable to install/mount DeveloperDiskImage.dmg` error, verify that you tried everything mentioned [here](https://github.com/Schlaubischlump/LocationSimulator/issues/76) before opening a new issue.
 
 [![License: GNU General Public License version 3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0)
 
@@ -27,7 +27,7 @@ LocationSimulator is a macOS app (10.15.x / 11.x) which allows spoofing the loca
 
 ## Background
 
-While I originally planed to build upon the fantastic work of [Watanabe Toshinoris](https://github.com/watanabetoshinori) [LocationSimulator](https://github.com/watanabetoshinori/LocationSimulator/issues) I decided to recreate and change the whole project because of the projects (back then) missing [license](https://github.com/watanabetoshinori/LocationSimulator/issues/5). I created all necessary images and source code files and removed all dependencies except for [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice). Even [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) is not required anymore. You just need the `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` files for your iOS Version.
+While I originally planed to build upon the fantastic work of [Watanabe Toshinori](https://github.com/watanabetoshinori) [LocationSimulator](https://github.com/watanabetoshinori/LocationSimulator/issues) I decided to recreate and change the whole project because of the projects (back then) missing [license](https://github.com/watanabetoshinori/LocationSimulator/issues/5). I created all necessary images and source code files and removed all dependencies except for [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice). Even [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) is not required anymore. You just need the `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` files for your iOS Version.
 
 ## Features
 
@@ -68,7 +68,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 	brew install locationsimulator
 	```
 
-or download the latest release / nighlty build from github to get the latest changes.
+or download the latest release / nightly build from github to get the latest changes.
 
 ## Build
 
@@ -151,7 +151,7 @@ or download the latest release / nighlty build from github to get the latest cha
 The whole project is licensed under the [GNU General Public License version 3](LICENSE) unless specified otherwise in the specific subdirectories.
 
 ## Contribute
-Since I maintain this project in my freetime, I always appreciate any help I get. Even if you are not a programmer and do not know anything about coding you can still help out. Currently this project is only available in English, Chinese, Spanish, Swedish and German. It would be great if more languages were available. If you know any other language and you are willing to invest some time to help with the translation let me know [here](https://github.com/Schlaubischlump/LocationSimulator/issues/65)! I want this software to be as stable as possible, if you find any bug please report it by opening a new issue. If you are a programmer, feel free to contribute bug fixes or new features. It would be greate if you run swift-lint on your code before submitting pull requests.
+Since I maintain this project in my freetime, I always appreciate any help I get. Even if you are not a programmer and do not know anything about coding you can still help out. Currently this project is only available in English, Chinese, Spanish, Swedish and German. It would be great if more languages were available. If you know any other language and you are willing to invest some time to help with the translation let me know [here](https://github.com/Schlaubischlump/LocationSimulator/issues/65)! I want this software to be as stable as possible, if you find any bug please report it by opening a new issue. If you are a programmer, feel free to contribute bug fixes or new features. It would be great if you run swift-lint on your code before submitting pull requests.
 
 While you are here, consider leaving a Github star. It keeps me motivated. 
 

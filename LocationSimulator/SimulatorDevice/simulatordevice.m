@@ -20,7 +20,7 @@
  True if simulator bridge is required to spoof the location, False otherwise.
  Xcode <= 12.4 require the simulator bridge. Xcode >= 12.5 can use SimDevice directly.
  */
-- (BOOL)requiresBrdige;
+- (BOOL)requiresBridge;
 @end
 
 @implementation SimDeviceWrapper
@@ -131,7 +131,7 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
     return _device.name;
 }
 
-- (BOOL)requiresBrdige {
+- (BOOL)requiresBridge {
     if ([_device respondsToSelector:@selector(setLocationWithLatitude:andLongitude:error:)]) {
         return FALSE;
     }
@@ -140,7 +140,7 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
 
 - (void)connect {
     // Find the correct pid and get a bridge connection (XCode <= 12.4)
-    if ([self requiresBrdige]) {
+    if ([self requiresBridge]) {
         _isConnected = FALSE;
         NSArray<NSNumber *>* simualtorPorts = getSimulatorPIDs();
 
@@ -164,14 +164,14 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
 }
 
 - (BOOL)isConnected {
-    if ([self requiresBrdige] && _bridge == NULL) {
+    if ([self requiresBridge] && _bridge == NULL) {
         return FALSE;
     }
     return _isConnected;
 }
 
 - (BOOL)setLocationWithLatitude:(double)latitude andLongitude:(double)longitude {
-    if ([self requiresBrdige]) {
+    if ([self requiresBridge]) {
         if (!_bridge) return FALSE;
         [_bridge setLocationWithLatitude:latitude andLongitude:longitude];
         return TRUE;
@@ -184,7 +184,7 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
 
 - (BOOL)resetLocation {
     // There is no reset function for Xcode <= 12.4
-    if ([self requiresBrdige])
+    if ([self requiresBridge])
         return _bridge != nil;
 
     NSError *error;
