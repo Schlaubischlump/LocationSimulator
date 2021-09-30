@@ -46,9 +46,9 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 > LocationSimulator will try to download the corresponding `DeveloperDiskImage.dmg` and `DeveloperDiskImage.dmg.signature` for your iOS Version from github, since I can not legally distribute these files. If the download should not work, get the files by installing Xcode and copy or link them to:    
 > 
 >```
->~/Library/Application Support/LocationSimulator/{YOU_PLATFORM}/{MAJOR_YOUR_IOS_VERSION}.{MINOR_YOUR_IOS_VERSION}/
+>~/Library/Application Support/LocationSimulator/{YOUR_PLATFORM}/{MAJOR_YOUR_IOS_VERSION}.{MINOR_YOUR_IOS_VERSION}/
 >```    
-> `YOU_PLATFORM` might be `iPhone OS` (iPhone and iPad), `Watch OS` (Apple Watch) or `Tv OS` (Apple TV). `MAJOR_YOUR_IOS_VERSION` might `14` and `MINOR_YOUR_IOS_VERSION` might be `3` for a device running iOS 14.3.
+> `YOUR_PLATFORM` might be `iPhone OS` (iPhone and iPad), `Watch OS` (Apple Watch) or `Tv OS` (Apple TV). `MAJOR_YOUR_IOS_VERSION` might `14` and `MINOR_YOUR_IOS_VERSION` might be `3` for a device running iOS 14.3.
 >
 > As of v0.1.8 this folder moved to: 
 >```
