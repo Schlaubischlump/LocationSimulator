@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import CoreLocation
 
 let kProjectWebsite = "https://schlaubischlump.github.io/LocationSimulator/"
 let kGithubWebseite = "https://github.com/Schlaubischlump/LocationSimulator"
