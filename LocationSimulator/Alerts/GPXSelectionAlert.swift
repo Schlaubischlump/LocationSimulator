@@ -8,6 +8,7 @@
 
 import AppKit
 import GPXParser
+import CoreLocation
 
 typealias GPXSelectionCompletionHandler = ((NSApplication.ModalResponse, [CLLocationCoordinate2D]) -> Void)
 
