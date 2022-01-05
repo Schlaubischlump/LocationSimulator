@@ -377,7 +377,18 @@
 			<array>
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature</string>
 			</array>
-		</dict>		
+		</dict>	
+		<key>15.1</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.0/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.0/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>	
 		<key>Fallback</key>
 		<dict>
 			<key>Image</key>
