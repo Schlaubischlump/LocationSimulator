@@ -57,9 +57,9 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 
 ## Install
 
-Download the latest [release](https://github.com/Schlaubischlump/LocationSimulator/releases) build from github to get the latest changes.
+Download the latest [release](https://github.com/Schlaubischlump/LocationSimulator/releases) build from github to get the latest changes or
 
-<!--- 1. Install [homebrew](https://brew.sh) by entering the following command in your terminal: 
+1. Install [homebrew](https://brew.sh) by entering the following command in your terminal: 
 
 	```shell
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -69,8 +69,6 @@ Download the latest [release](https://github.com/Schlaubischlump/LocationSimulat
 	```shell
 	brew install locationsimulator
 	```
-
-or download the latest release / nightly build from github to get the latest changes.-->
 
 ## Build
 
