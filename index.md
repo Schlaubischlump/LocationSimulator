@@ -34,6 +34,12 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.8
+- Support for iOS 15.x
+- Fix DeveloperDiskImage fallback URL
+- Swedish localization
+- Sandbox support
+
 ### v0.1.7
 - Drop official support for 10.13 / 10.14
 - Confirm teleportation option
