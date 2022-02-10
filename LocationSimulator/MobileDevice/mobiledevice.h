@@ -12,8 +12,6 @@
 #include <stdbool.h>
 #include <libimobiledevice/libimobiledevice.h>
 
-// TODO: Remove the constant flags and change the remaining functions to use dynamic lookup ops
-
 // Reset the currently spoofed location of an iOS device to the original one.
 bool resetLocation(const char* udid, enum idevice_options lookup_ops);
 
