@@ -18,9 +18,9 @@ class ProgressAlert: NSAlert {
     public var progressView: ProgressView? {
         return self.accessoryView as? ProgressView
     }
-    /// The os to download the files for.
+    /// The os to download the files for e.g iPhone OS
     public private(set) var os: String
-    /// The iOS version to download the file for.
+    /// The iOS version to download the file for e.g 15.2
     public private(set) var version: String
 
     init(os: String, version: String) {
@@ -53,7 +53,7 @@ class ProgressAlert: NSAlert {
         self.beginSheetModal(for: window)
     }
 
-    /// Run a sheet modal an block until the user canceled the operation or the download finished.
+    /// Run a sheet modal and block until the user cancels the operation or the download is finished.
     /// While this sheet is showing, the user can not interact with the app. It is therefore reasonable to
     /// block until the operation is finished.
     /// - Parameter window: the window to present the alert in.
