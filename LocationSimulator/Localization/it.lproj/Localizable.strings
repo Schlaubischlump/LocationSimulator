@@ -8,88 +8,88 @@
 
 // MARK: - General
 // Total distance label in the bottom bar.
-"TOTAL_DISTANCE"="Total distance: %.3fkm";
+"TOTAL_DISTANCE"="Distanza complessiva: %.3fkm";
 // Current location annotation
-"CURRENT_LOCATION"="Current Location";
+"CURRENT_LOCATION"="Posizione attuale";
 // Device sidebar
-"DEVICE_HEADER"="Devices";
-"SIMULATOR_HEADER"="Simulators";
+"DEVICE_HEADER"="Dispositivi";
+"SIMULATOR_HEADER"="Simulatori";
 // The tooltip for the warning triangle in the lower right corner.
-"WARNING_TRIANGLE_TOOLTIP"="Device not paired";
+"WARNING_TRIANGLE_TOOLTIP"="Dispositivo non accoppiato";
 
 // MARK: - Alert Titles
-"UNKNOWN_ERROR"="Unknown error";
-"NO_DEVICE_ERROR"="No device found";
-"MOUNT_ERROR"="Could not mount DeveloperDiskImage.dmg";
-"PRODUCT_INFO_ERROR"="Could not get product info";
-"PERMISSION_ERROR"="Permission error";
-"DEVDISK_NOT_FOUND"="DeveloperDiskImage files not found";
-"DEVDISK_DOWNLOAD_FAILED_ERROR"="DeveloperDiskImage download failed";
+"UNKNOWN_ERROR"="Errore sconosciuto";
+"NO_DEVICE_ERROR"="Nessun dispositivo rilevato";
+"MOUNT_ERROR"="Impossibile montare DeveloperDiskImage.dmg";
+"PRODUCT_INFO_ERROR"="Impossibile ottenere informazioni sul prodotto";
+"PERMISSION_ERROR"="Errore di permessi";
+"DEVDISK_NOT_FOUND"="File DeveloperDiskImage non trovati";
+"DEVDISK_DOWNLOAD_FAILED_ERROR"="DeveloperDiskImage download fallito";
 // Location change
-"LOCATION_CHANGE_ERROR"="Error changing location";
+"LOCATION_CHANGE_ERROR"="Errore nel cambio di posizione";
 // Use mac location
-"LOCATION_SERVICE_DISABLED"="Enable location services";
-"GET_LOCATION_ERROR"="Could not get location";
+"LOCATION_SERVICE_DISABLED"="Abilita i servizi di localizzazione";
+"GET_LOCATION_ERROR"="Impossibile ottenere posizione";
 // GPX Alert
-"CHOOSE_GPX_FILE"="Choose a .gpx file";
-"ERROR_OPEN_GPX"="Error Opening GPX File";
-"ERROR_PARSE_GPX"="Error Parsing GPX File";
-"EMPTY_ROUTE"="Empty Route";
+"CHOOSE_GPX_FILE"="Scegli un file .gpx";
+"ERROR_OPEN_GPX"="Errore nell'aprire file GPX";
+"ERROR_PARSE_GPX"="Errore nel parsing del file GPX";
+"EMPTY_ROUTE"="Percorso vuoto";
 // Confirm teleportation.
-"CONFIRM_TELEPORT"="Confirm Teleportation";
+"CONFIRM_TELEPORT"="Conferma Teletrasporto";
 
 // MARK: - Alert Messages
-"PAIR_ERROR_MSG"="Could not establish a connection to the device. Make sure to trust this computer on you device.";
-"MOUNT_ERROR_MSG"="The DeveloperDiskImage for this device could not be mounted. Location spoofing will not work.\nIs your device locked?";
-"UNKNOWN_ERROR_MSG"="An unknown error occured. Please disconnect your device and try again.";
-"PERMISSION_ERROR_MSG"="Can not access Application Support folder.";
-"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG"="Failed to download DeveloperDiskImage.dmg or DeveloperDiskImage.dmg.signature";
+"PAIR_ERROR_MSG"="Impossibile stabilire una connessione con il dispositivo. Assicurati di aver dato i permessi questo computer sul tuo dispositivo.";
+"MOUNT_ERROR_MSG"="Il DeveloperDiskImage per questo dispositivo non può essere montato. Lo spoofing della posizione non funzionerà.\nIl tuo dispositivo è bloccato?";
+"UNKNOWN_ERROR_MSG"="Si è verificato un errore sconosciuto. Si prega di scollegare il dispositivo e riprova.";
+"PERMISSION_ERROR_MSG"="Impossibile accedere alla cartella Application Support";
+"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG"="Impossibile scaricare DeveloperDiskImage.dmg o DeveloperDiskImage.dmg.signature";
 // Use mac location
-"LOCATION_SERVICE_DISABLED_MSG"="Location services seem to be disabled. Please activate location services inside System Preferences.";
-"GET_LOCATION_ERROR_MSG"="Could not get the current location. Did you allow LocationSimulator to access this mac's location?";
+"LOCATION_SERVICE_DISABLED_MSG"="I servizi di localizzazione sembrano essere disabilitati. Attiva i servizi di localizzazione nelle Preferenze di Sistema..";
+"GET_LOCATION_ERROR_MSG"="Impossibile ottenere la posizione attuale. Hai permesso a LocationSimulator di accedere alla posizione di questo Mac?";
 // Location change
-"TELEPORT_OR_NAVIGATE_MSG"="Do you want to teleport or navigate to the destination?";
-"LOCATION_RESET_ERROR_MSG"="Could not reset location.";
-"LOCATION_CHANGE_ERROR_MSG"="Could not change the location.";
+"TELEPORT_OR_NAVIGATE_MSG"="Vuoi teletrasportarti o navigare verso la destinazione?";
+"LOCATION_RESET_ERROR_MSG"="Impossibile effettuare il reset di posizione.";
+"LOCATION_CHANGE_ERROR_MSG"="Impossibile cambiare posizione.";
 // GPXAlert
-"ERROR_PARSE_GPX_MSG"="Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
-"TELEPORT_OR_NAVIGATE_GPX_MSG"="Do you want to navigate or teleport to the start location of this route?";
-"EMPTY_ROUTE_MSG"="Not enough coordinates available to start the navigation.";
-"ERROR_OPEN_GPX_MSG"="Could not open the selected GPX file.";
+"ERROR_PARSE_GPX_MSG"="Impossibile analizzare il file GPX selezionato. Il file è probabilmente danneggiato o formattato in modo errato.";
+"TELEPORT_OR_NAVIGATE_GPX_MSG"="Vuoi navigare o teletrasportarti al punto di partenza di questo percorso?";
+"EMPTY_ROUTE_MSG"="Non ci sono abbastanza coordinate disponibili per iniziare la navigazione.";
+"ERROR_OPEN_GPX_MSG"="Impossibile aprire il file GPX.";
 // Confirm teleportation.
-"CONFIRM_TELEPORT_MSG"="Do you really want to teleport?";
+"CONFIRM_TELEPORT_MSG"="Sei sicuro di volerti teletrasportare?";
 
 // MARK: - Alert Buttons
-"DESTINATION"="Destination";
-"NAVIGATE"="Navigate";
-"TELEPORT"="Teleport";
-"CANCEL"="Cancel";
+"DESTINATION"="Destinazione";
+"NAVIGATE"="Navigare";
+"TELEPORT"="Teletrasporto";
+"CANCEL"="Annulla";
 "OK"="OK";
 
 // MARK: - GPXSelectionView
-"CHOOSE"="Choose";
-"TRACK_SEGMENT"="Segment";
-"TRACK"="Track";
-"ROUTE"="Route";
+"CHOOSE"="Scegli";
+"TRACK_SEGMENT"="Segmento";
+"TRACK"="Traccia";
+"ROUTE"="Percorso";
 "WAYPOINTS"="Waypoints";
-"GPX_SELECTION"="Choose Coordinates";
-"GPX_SELECTION_MSG"="Choose a Track, Track Segment, Route or the Waypoints to start the navigation.";
+"GPX_SELECTION"="Scegli Coordinate";
+"GPX_SELECTION_MSG"="Scelga una traccia, un segmento di traccia, un percorso o i waypoint per iniziare la navigazione.";
 
 // MARK: - ProgressView
-"PROGRESS"="Download iOS support files";
-"DEVDISK_DOWNLOAD_DESC"="Downloading DeveloperDiskImage.dmg";
-"DEVSIGN_DOWNLOAD_DESC"="Downloading DeveloperDiskImage.dmg.signature";
+"PROGRESS"="Download file di supporto iOS";
+"DEVDISK_DOWNLOAD_DESC"="Scarcinado DeveloperDiskImage.dmg";
+"DEVSIGN_DOWNLOAD_DESC"="Scaricando DeveloperDiskImage.dmg.signature";
 
 // MARK: - CoordinateSelectionView
-"LAT"="Lat";
-"LONG"="Long";
+"LAT"="LAT";
+"LONG"="LONG";
 
 // MARK: - NoDeviceView
-"NO_DEVICE"="No Device Selected";
-"NO_DEVICE_MSG"="Please connect a device and select it in the sidebar to start.";
+"NO_DEVICE"="Nessun dispositivo selezionato";
+"NO_DEVICE_MSG"="Si prega di collegare un dispositivo e selezionarlo nella barra laterale per iniziare.";
 
 // MARK: - MenuItem
-"MAIN_MENU"="Main Menu";
+"MAIN_MENU"="Menù principale";
 // MARK: -- LocationSimulator
 "ABOUT_MENUITEM"="Informazioni su LocationSimulator";
 "PREFERENCES_MENUITEM"="Preferenze…";
@@ -100,27 +100,27 @@
 "QUIT_APP_MENUITEM"="Esci da LocationSimulator";
 // MARK: -- Navigation
 "NAVIGATION_MENU"="Navigation";
-"WALK_MENUITEM"="Walk";
-"CYCLE_MENUITEM"="Cycle";
-"DRIVE_MENUITEM"="Drive";
-"SET_LOCATION_MENUITEM"="Set Location…";
-"RESET_LOCATION_MENUITEM"="Reset Location";
-"MAC_LOCATION_MENUITEM"="Use Mac Location";
-"RECENT_LOCATIONS_MENU"="Recent Locations";
-"RECENT_LOCATIONS_MENUITEM"="Recent Locations";
+"WALK_MENUITEM"="Cammina";
+"CYCLE_MENUITEM"="In bici";
+"DRIVE_MENUITEM"="Guidare";
+"SET_LOCATION_MENUITEM"="Imposta posizione…";
+"RESET_LOCATION_MENUITEM"="Reset posizione";
+"MAC_LOCATION_MENUITEM"="Utilizza posizione del Mac";
+"RECENT_LOCATIONS_MENU"="Posizioni recenti";
+"RECENT_LOCATIONS_MENUITEM"="Posizioni recenti";
 "CLEAR_MENU_MENUITEM"="Cancella Menu";
-"TOGGLE_AUTOMOVE_MENUITEM"="Toggle Automove";
-"STOP_NAVIGATION_MENUITEM"="Stop Navigation";
-"MOVE_UP_MENUITEM"="Move Up";
-"MOVE_DOWN_MENUITEM"="Move Down";
-"ROTATE_CLOCKWISE_MENUITEM"="Rotate Clockwise";
-"ROTATE_COUNTERCLOCKWISE_MENUITEM"="Rotate Counterclockwise";
+"TOGGLE_AUTOMOVE_MENUITEM"="Attiva/disattiva Automove";
+"STOP_NAVIGATION_MENUITEM"="Ferma navigazione";
+"MOVE_UP_MENUITEM"="Sposta su";
+"MOVE_DOWN_MENUITEM"="Sposta giù";
+"ROTATE_CLOCKWISE_MENUITEM"="Ruotare in senso orario";
+"ROTATE_COUNTERCLOCKWISE_MENUITEM"="Ruotare in senso antiorario";
 // MARK: -- File
 "FILE_MENU"="File";
-"OPEN_GPX_FILE_MENUITEM"="Open GPX File…";
+"OPEN_GPX_FILE_MENUITEM"="Apri file";
 "CLOSE_MENUITEM"="Chiudi";
 // MARK: -- Edit
-"EDIT_MENU"="Edit";
+"EDIT_MENU"="Modifica";
 "UNDO_MENUITEM"="Annulla";
 "REDO_MENUITEM"="Ripristina originale";
 "CUT_MENUITEM"="Taglia";
@@ -137,7 +137,7 @@
 "FIND_NEXT_MENUITEM"="Cerca successivo";
 "FIND_PREVIOUS_MENUITEM"="Cerca precedente";
 "USE_SELECTION_FOR_FIND_MENUITEM"="Usa selezione per cercare";
-"JUMP_TO_SELECTION_MENUITEM"="Vai fino alla selezione";
+"JUMP_TO_SELECTION_MENUITEM"="Salta alla selezione";
 // MARK: ---- Spelling and Grammar
 "SPELLING_GRAMMAR_MENU"="Ortografia e grammatica";
 "SPELLING_GRAMMAR_MENUITEM"="Ortografia e grammatica";
@@ -228,46 +228,46 @@
 // MARK: -- Window
 "WINDOW_MENU"="Finestra";
 "WINDOW_MENUITEM"="Finestra";
-"MINIMIZE_MENUITEM"="Contrai";
+"MINIMIZE_MENUITEM"="Minimizza";
 "ZOOM_MENUITEM"="Ridimensiona";
 "BRING_ALL_TO_FRONT_MENUITEM"="Porta tutto in primo piano";
 // MARK: -- Help
 "HELP_MENU"="Aiuto";
 "HELP_MENUITEM"="Aiuto";
 "APP_HELP_MENUITEM"="Aiuto LocationSimulator";
-"OPEN_PROJECT_PAGE_MENUITEM"="Open Project Page";
-"REPORT_A_BUG_MENUITEM"="Report a Bug";
+"OPEN_PROJECT_PAGE_MENUITEM"="Apri pagina progetto";
+"REPORT_A_BUG_MENUITEM"="Segnala un bug";
 
 // MARK: - Settings
 // MARK: -- INFO
 "INFO_TITLE_SETTING"="Info";
-"WELCOME"="Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.";
-"CHANGELOG"="Changes in this version are:\n\n1. App Sandbox support\n2. German localization\n3. iPhoneSimulator support\n4. Bug fixes\n";
+"WELCOME"="Grazie per aver usato LocationSimulator! Questo software è ancora in versione beta. Si prega di segnalare qualsiasi bug che si trova.";
+"CHANGELOG"="Cambiamenti in questa versione sono:\n\n1. App Sandbox support\n2. German localization\n3. iPhoneSimulator support\n4. Bug fixes\n";
 // MARK: -- NETWORK
-"NETWORK_TITEL_SETTING"="Network";
-"ALLOW_NETWORK_DEVICES_SETTING"="Allow network devices";
-"ALLOW_NETWORK_DEVICES_MSG_SETTING"="Disable this option to only allow USB devices.";
-"PREFER_NETWORK_DEVICES_SETTING"="Prefer network devices";
-"PREFER_NETWORK_DEVICES_MSG_SETTING"="Always use the network connection even if a device is connected over USB.";
+"NETWORK_TITEL_SETTING"="Rete";
+"ALLOW_NETWORK_DEVICES_SETTING"="Consenti dispositivi di rete";
+"ALLOW_NETWORK_DEVICES_MSG_SETTING"="Disabilita questa opzione per permettere solo i dispositivi USB.";
+"PREFER_NETWORK_DEVICES_SETTING"="Preferire dispositivi di rete";
+"PREFER_NETWORK_DEVICES_MSG_SETTING"="Usa sempre la connessione di rete anche se un dispositivo è collegato tramite USB.";
 // MARK: -- General
-"GENERAL_TITEL_SETTING"="General";
-"CONFIRM_TELEPORTATION_SETTING"="Confirm Teleportation";
-"CONFIRM_TELEPORTATION_MSG_SETTING"="Always ask before teleporting.";
+"GENERAL_TITEL_SETTING"="Generale";
+"CONFIRM_TELEPORTATION_SETTING"="Conferma Teletrasporto";
+"CONFIRM_TELEPORTATION_MSG_SETTING"="Chiedi sempre prima di teletrasportare.";
 // MARK: -- License
-"LICENSE_TITLE_SETTING"="License";
+"LICENSE_TITLE_SETTING"="Licenza";
 
 // MARK: - Toolbar
-"SEARCH_PLACEHOLDER"="Search";
+"SEARCH_PLACEHOLDER"="Cerca";
 // Palette Label
-"SEARCH_TOOLBARITEM_PALETTELABEL"="Search";
-"AUTOFOCUS_TOOLBARITEM_PALETTELABEL"="Autofocus Location";
-"MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="Current Location";
-"MOVETYPES_TOOLBARITEM_PALETTELABEL"="Move Types";
+"SEARCH_TOOLBARITEM_PALETTELABEL"="Cerca";
+"AUTOFOCUS_TOOLBARITEM_PALETTELABEL"="Autofocus Posizione";
+"MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="Posizione attuale";
+"MOVETYPES_TOOLBARITEM_PALETTELABEL"="Tipo di movimento";
 "RESET_TOOLBARITEM_PALETTELABEL"="Reset";
 // Tooltip
-"RESET_TOOLBARITEM_TOOLTIP"="Stop faking the device location";
-"MAC_LOCATION_TOOLBARITEM_TOOLTIP"="Set Mac location to current location";
-"AUTOFOCUS_TOOLBARITEM_TOOLTIP"="Autofocus current location";
-"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"="Show Color Panel";
-"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"="Show Font Panel";
-"PRINT_TOOLBARITEM_TOOLTIP"="Print";
+"RESET_TOOLBARITEM_TOOLTIP"="Interrompere la falsificazione della posizione";
+"MAC_LOCATION_TOOLBARITEM_TOOLTIP"="Imposta posizione del Mac come posizione attuale";
+"AUTOFOCUS_TOOLBARITEM_TOOLTIP"="Autofocus posizione attuale";
+"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"="Mostra pannello colori";
+"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"="Mostra pannello font";
+"PRINT_TOOLBARITEM_TOOLTIP"="Stampa";
