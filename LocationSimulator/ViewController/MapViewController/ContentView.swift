@@ -18,15 +18,26 @@ class ContentView: NSView {
     @IBOutlet weak var mapView: MapView! {
         didSet {
             if #available(OSX 11.0, *) {
-                guard self.compassButton == nil else { return }
-                // Hide the default compass.
-                self.mapView?.showsCompass = false
-                // Create a new compass button.
-                let compass = MKCompassButton(mapView: self.mapView)
-                compass.compassVisibility = .visible
-                self.addSubview(compass)
-                // Assign the new compass button
-                self.compassButton = compass
+                if self.compassButton == nil {
+                    // Hide the default compass.
+                    self.mapView?.showsCompass = false
+                    // Create a new compass button.
+                    let compass = MKCompassButton(mapView: self.mapView)
+                    compass.compassVisibility = .visible
+                    self.addSubview(compass)
+                    // Assign the new compass button
+                    self.compassButton = compass
+                }
+
+                if self.zoomControl == nil {
+                    // Hide the original zoom controls
+                    self.mapView?.showsZoomControls = false
+                    // Add the new zoom controls
+                    let zoomControl = MKZoomControl(mapView: self.mapView)
+                    self.addSubview(zoomControl)
+                    // Assign the new zoom controls
+                    self.zoomControl = zoomControl
+                }
             }
         }
 
@@ -98,6 +109,9 @@ class ContentView: NSView {
     /// MacOS 11 > only: The custom compass view.
     private var compassButton: NSView?
 
+    /// MacOS 11 > only: The custom zoom control.
+    private var zoomControl: NSView?
+
     // MARK: - Interaction
 
     /// Show or hide the navigation controls in the lower left corner.
@@ -132,8 +146,14 @@ class ContentView: NSView {
             let controlFrame = self.convert(self.movementDirectionHUD.frame, from: self.movementContainer)
             let padX = controlFrame.origin.x
             let padY = controlFrame.origin.y
-            self.compassButton?.frame.origin.x = self.frame.size.width - (self.compassButton?.bounds.width ?? 0) - padX
+            let offX = self.frame.size.width - (self.compassButton?.bounds.width ?? 0) - padX
+
+            self.compassButton?.frame.origin.x = offX
             self.compassButton?.frame.origin.y = padY
+
+            let zoomControlWidth = self.zoomControl?.frame.width ?? 0
+            self.zoomControl?.frame.origin.x = (self.compassButton?.frame.minX ?? 0) - zoomControlWidth - padX
+            self.zoomControl?.frame.origin.y = padY
         }
         super.layout()
     }

@@ -33,7 +33,8 @@ class MapView: MKMapView {
     // MARK: - Constructor
     private func setup() {
         self.delegate = self
-        self.showsZoomControls = false
+        self.showsZoomControls = true
+        self.showsCompass = true
         self.showsScale = true
         // self.wantsLayer = true
         // self.showsUserLocation = true
