@@ -34,6 +34,11 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.8.1
+- Italian support
+- Add zoom control to map
+- Fix support for macOS Catalina
+
 ### v0.1.8
 - Support for iOS 15.x
 - Fix DeveloperDiskImage fallback URL
