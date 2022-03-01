@@ -59,8 +59,7 @@ extension SidebarDataSource {
 
     }
 
-    /// Callback when a device gets paired for the first time with this computer. We could restart the device creation
-    /// process here... For now we just asume the device is already paired and trusted.
+    /// Callback when a device gets paired for the first time with this computer.
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func devicePaired(_ notification: Notification) {
         guard let device: Device = notification.userInfo?["device"] as? Device else { return }
@@ -71,7 +70,7 @@ extension SidebarDataSource {
         NotificationCenter.default.post(name: NSOutlineView.selectionDidChangeNotification, object: self.sidebarView)
     }
 
-    /// Callback when a device is changed. This might happen if a network device is additionally connected over USB.
+    /// Callback when a device changes. This might happen if a network device is additionally connected over USB.
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func deviceChanged(_ notification: Notification) {
         guard var device: IOSDevice = notification.userInfo?["device"] as? IOSDevice else { return }
