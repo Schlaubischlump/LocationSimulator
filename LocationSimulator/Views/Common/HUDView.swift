@@ -101,7 +101,7 @@ class HUDView: NSView {
         effectView.state = .active
     }
 
-    /// Change the corner radius to the effectView and this view depending on the OS Version and dark / light mode.
+    /// Change the corner radius of the effectView and this view depending on the OS Version and dark / light mode.
     /// - Parameter radius: the new corner radius
     private func applyCornerRadius(_ radius: CGFloat) {
         self.layer?.cornerRadius = radius
