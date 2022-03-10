@@ -147,3 +147,16 @@ extension NSViewController: XIBLocalizable {
         }
     }
 }
+
+// MARK: - NSTableColumn
+
+extension NSTableColumn: XIBLocalizable {
+    @IBInspectable var localeKey: String? {
+        get { return nil }
+        set(key) {
+            if let localized = key?.localized, key != localized {
+                self.title = localized
+            }
+        }
+    }
+}

@@ -256,6 +256,18 @@
 // MARK: -- License
 "LICENSE_TITLE_SETTING"="License";
 
+// MARK: -- DeveloperDiskImages
+"DEVELOPER_DISK_IMAGES_TITLE_SETTING"="DiskImages";
+"DEVDISK_DELETE_FAILED_ERROR"="DeveloperDiskImage deletion failed";
+"DEVDISK_DELETE_FAILED_ERROR_MSG"="Could not delete the selected DeveloperDiskImage. Try to delete it manually using the finder.";
+"DEVDISK_REFRESH_FAILED_ERROR"="DeveloperDiskImage refresh failed";
+"DEVDISK_BACKUP_FAILED_ERROR_MSG"="Could not backup existing DeveloperDiskImage files.";
+"SHOW_IN_FINDER"="Show in Finder";
+"ADD"="Add";
+"IMAGE_FILE"="Image";
+"SIGNATURE_FILE"="Signature";
+"VERSION"="Version";
+
 // MARK: - Toolbar
 "SEARCH_PLACEHOLDER"="Search";
 // Palette Label

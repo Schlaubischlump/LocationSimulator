@@ -62,7 +62,11 @@ class ProgressView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) is not available")
+        super.init(coder: coder)
+        self.setup()
+        self.downloader.delegate = self
+        self.progressBarTop.usesThreadedAnimation = false
+        self.progressBarBottom.usesThreadedAnimation = false
     }
 
     private func setup() {

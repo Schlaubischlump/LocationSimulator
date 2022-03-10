@@ -9,20 +9,6 @@
 import Foundation
 import AppKit
 
-/// String extenstion to match a String instance against a regex.
-extension String {
-
-    /// Operator overload to check if a String matches a regex.
-    /// - Parameter lhs: String to check
-    /// - Parameter rhs: regex to match
-    /// - Return: True if lhs matches the regex rhs, False otherwise.
-    static func ~= (lhs: String, rhs: String) -> Bool {
-        guard let regex = try? NSRegularExpression(pattern: rhs) else { return false }
-        let range = NSRange(location: 0, length: lhs.utf16.count)
-        return regex.firstMatch(in: lhs, options: [], range: range) != nil
-    }
-}
-
 /// Generic coodinate formatter subclass to match coordinates strings. Do not use this class directly. Use the
 /// corresponding `LatFormatter` and `LongFormatter` subclasses.
 class CoodinateFormatter: NumberFormatter {

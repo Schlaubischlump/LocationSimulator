@@ -41,7 +41,51 @@ extension FileManager {
         return appSupportDir
     }
 
+    /// Get the version number for all avaiable versions downloaded for a platform.
+    /// - Parameter os: the platform or operating system e.g. iPhone OS
+    /// - Return: List with version numbers (e.g. [15.0, 15.1, 15.2])
+    func getAvailableVersions(os: String) -> [String] {
+        if let url = self.getAppSupportDirectory(create: true) {
+            let osFolder: URL = url.appendingPathComponent(os)
+            if let content = try? self.contentsOfDirectory(at: osFolder,
+                                                           includingPropertiesForKeys: [.isDirectoryKey],
+                                                           options: [.skipsHiddenFiles, .producesRelativePathURLs]) {
+                return content.compactMap { url in
+                    if let value = try? url.resourceValues(forKeys: [.isDirectoryKey]), value.isDirectory ?? false {
+                        let devDisk = url.appendingPathComponent("DeveloperDiskImage.dmg")
+                        let devDiskSig = url.appendingPathComponent("DeveloperDiskImage.dmg.signature")
+                        if self.fileExists(atPath: devDisk.path) && self.fileExists(atPath: devDiskSig.path) {
+                            return url.lastPathComponent
+                        }
+                        return nil
+                    }
+                    return nil
+                }.filter { $0.isVersionString }.sorted { $0 > $1 }
+            }
+        }
+        return []
+    }
+
+    /// Remove the downlaoded DeveloperDiskImage and the corresponding signature file for a specific version.
+    /// - Parameter os: the platform or operating system e.g. iPhone OS
+    /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
+    /// - Return: true on success, false otherwise
+    func removeDownload(os: String, iOSVersion: String) -> Bool {
+        if let url = self.getAppSupportDirectory(create: false) {
+            let osFolder: URL = url.appendingPathComponent(os)
+            let versionFolder: URL = osFolder.appendingPathComponent(iOSVersion)
+            do {
+                try self.removeItem(at: versionFolder)
+                return true
+            } catch {
+                return false
+            }
+        }
+        return false
+    }
+
     /// Get the path to the DeveloperDiskImage.dmg inside the applications Support directory.
+    /// - Parameter os: the platform or operating system e.g. iPhone OS
     /// - Parameter iOSVersion: version string for the iOS device, e.g. 13.0
     /// - Return: path to DeveloperDiskImage.dmg
     func getDeveloperDiskImage(os: String, iOSVersion: String) -> URL? {

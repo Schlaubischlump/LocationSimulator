@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AddDeveloperDiskImageView" customModule="LocationSimulator" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="eSw-Sk-EGH" id="inn-vl-n5e"/>
+                <outlet property="contentView" destination="c22-O7-iKe" id="zBc-ot-CJK"/>
+                <outlet property="devImageDropBox" destination="eyZ-Iw-zha" id="6qe-Dg-lNP"/>
+                <outlet property="devSignatureDropBox" destination="JHV-2C-5FM" id="tv3-LO-hOx"/>
+                <outlet property="imageFileTextField" destination="vHc-8C-iDx" id="P3W-Yf-XjU"/>
+                <outlet property="signatureFileTextField" destination="Rtx-QV-oIG" id="iyJ-o9-mFL"/>
+                <outlet property="versionTextField" destination="i1E-yc-J7S" id="yFV-bt-ywR"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customFormatter id="EIs-Zl-KCC" customClass="VersionNumberFormatter" customModule="LocationSimulator" customModuleProvider="target"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="191"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="izE-Xl-Zh5">
+                    <rect key="frame" x="346" y="13" width="76" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GC3-Xm-UuK">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CANCEL"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="cancel:" target="-2" id="doD-1h-rgL"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eSw-Sk-EGH">
+                    <rect key="frame" x="419" y="13" width="62" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="push" title="ADD" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r4p-zT-D3E">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="ADD"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="add:" target="-2" id="Q4s-JV-WFd"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LRs-AA-d5b">
+                    <rect key="frame" x="13" y="113" width="71" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Image" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1oa-8F-FWB">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="IMAGE_FILE"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="selectDeveloperDiskImage:" target="-2" id="uoN-ki-IWL"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6t1-OC-Ok3">
+                    <rect key="frame" x="13" y="81" width="92" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Signature" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T5Q-9d-AaF">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SIGNATURE_FILE"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="selectDeveloperDiskImageSignature:" target="-2" id="8ve-WS-Fak"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vHc-8C-iDx">
+                    <rect key="frame" x="106" y="119" width="236" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="wF5-er-bC8">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rtx-QV-oIG">
+                    <rect key="frame" x="106" y="88" width="236" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="jfD-a8-nQ6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box fixedFrame="YES" title="Image" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="eyZ-Iw-zha" customClass="DragAndDropBox" customModule="LocationSimulator" customModuleProvider="target">
+                    <rect key="frame" x="355" y="84" width="58" height="58"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <view key="contentView" id="qSb-pg-Vck">
+                        <rect key="frame" x="3" y="3" width="52" height="52"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <font key="titleFont" metaFont="system" size="10"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="IMAGE_FILE"/>
+                    </userDefinedRuntimeAttributes>
+                </box>
+                <box fixedFrame="YES" title="Signature" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="JHV-2C-5FM" customClass="DragAndDropBox" customModule="LocationSimulator" customModuleProvider="target">
+                    <rect key="frame" x="423" y="84" width="58" height="58"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <view key="contentView" id="rVR-oF-Zct">
+                        <rect key="frame" x="3" y="3" width="52" height="52"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <font key="titleFont" metaFont="system" size="10"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="SIGNATURE_FILE"/>
+                    </userDefinedRuntimeAttributes>
+                </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ht-zi-8xj">
+                    <rect key="frame" x="425" y="66" width="55" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Signature" id="DUu-5I-I73">
+                        <font key="font" metaFont="system" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SIGNATURE_FILE"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zdz-B7-Sg4">
+                    <rect key="frame" x="20" y="155" width="53" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Version:" id="ClN-PT-pk0">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="VERSION"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i1E-yc-J7S">
+                    <rect key="frame" x="106" y="150" width="54" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="15.2" drawsBackground="YES" id="LLP-zj-qMP">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <outlet property="formatter" destination="EIs-Zl-KCC" id="leH-7E-8bl"/>
+                        </connections>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yw5-uO-NdE">
+                    <rect key="frame" x="366" y="66" width="36" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Image" id="qF8-xW-RcL">
+                        <font key="font" metaFont="system" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="IMAGE_FILE"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="141" y="67.5"/>
+        </customView>
+    </objects>
+</document>
