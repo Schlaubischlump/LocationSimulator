@@ -43,8 +43,9 @@ class PreferencesTabViewController: NSTabViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        if let item = self.tabView.selectedTabViewItem {
-            self.resizeWindowToFit(tabViewItem: item)
+        if let tabViewItem = self.tabView.selectedTabViewItem {
+            self.view.window?.title = tabViewItem.label
+            self.resizeWindowToFit(tabViewItem: tabViewItem)
         }
     }
 
