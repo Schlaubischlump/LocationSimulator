@@ -91,7 +91,8 @@ class LogViewController: NSViewController {
 
     private func createRightClickMenu() -> NSMenu {
         let menu = NSMenu()
-        let copyItem = NSMenuItem(title: "COPY".localized, action: #selector(copyLines(sender:)), keyEquivalent: "c")
+        let copyItem = NSMenuItem(title: "COPY_MENUITEM".localized, action: #selector(copyLines(sender:)),
+                                  keyEquivalent: "c")
         copyItem.keyEquivalentModifierMask = .command
         menu.addItem(copyItem)
         return menu

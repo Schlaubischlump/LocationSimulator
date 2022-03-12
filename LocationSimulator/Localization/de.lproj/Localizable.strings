@@ -1,272 +1,726 @@
-/*
- Localizable.strings
- LocationSimulator
 
- Created by David Klopp on 16.08.19.
- Copyright © 2019 David Klopp. All rights reserved.
- */
+/* MARK: -- LocationSimulator */
+"ABOUT_MENUITEM" = "Über LocationSimulator";
 
-// MARK: - General
-// Total distance label in the bottom bar.
-"TOTAL_DISTANCE" = "Gesamtdistanz: %.3fkm";
-// Current location annotation
-"CURRENT_LOCATION" = "Aktueller Standort";
-// Device sidebar
-"DEVICE_HEADER" = "Geräte";
-"SIMULATOR_HEADER"="Simulatoren";
-// The tooltip for the warning triangle in the lower right corner.
-"WARNING_TRIANGLE_TOOLTIP"="Gerät nicht autorisiert";
+/*  */
+"ADD" = "Hinzufügen";
 
-// MARK: - Alert Titles
-"UNKNOWN_ERROR" = "Unbekannter Fehler";
-"NO_DEVICE_ERROR" = "Kein Gerät gefunden";
-"MOUNT_ERROR" = "Fehler beim Einbinden des DeveloperDiskImage.dmg";
-"PRODUCT_INFO_ERROR" = "Fehler beim Lesen der Produktinformationen";
-"PERMISSION_ERROR" = "Berechtigungsfehler";
-"DEVDISK_NOT_FOUND" = "DeveloperDiskImage wurden nicht gefunden";
-"DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage Download ist fehlgeschlagen";
-// Location change
-"LOCATION_CHANGE_ERROR" = "Fehler beim Ändern des Standorts";
-// Use mac location
-"LOCATION_SERVICE_DISABLED" = "Aktiviere die Ortungsdienste";
-"GET_LOCATION_ERROR" = "Fehler beim Bestimmen des Standorts";
-// GPX Alert
-"CHOOSE_GPX_FILE" = "Wähle eine .gpx Datei";
-"ERROR_OPEN_GPX" = "Fehler beim Öffnen der GPX Datei";
-"ERROR_PARSE_GPX" = "Fehler beim Einlesen der GPX Datei";
-"EMPTY_ROUTE" = "Keine Route gefunden";
-// Confirm teleportation.
-"CONFIRM_TELEPORT"="Teleportieren bestätigen";
 
-// MARK: - Alert Messages
-"PAIR_ERROR_MSG" = "Verbindung zum Gerät konnte nicht hergestellt werden. Stelle auf deinem iOS-Gerät sicher, dass du diesem Computer vertraust.";
-"MOUNT_ERROR_MSG" = "Das DeveloperDiskImage für dieses Gerät konnte nicht eingebunden werden. Die Standortfälschung wird nicht funktionieren.Ist das Gerät entsperrt?";
-"UNKNOWN_ERROR_MSG" = "Ein unbekannter Fehler ist aufgetreten. Bitte trenne das Gerät und versuche es erneut.";
-"PERMISSION_ERROR_MSG" = "Application Support folder konnte nicht geöffnet werden.";
-"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "DeveloperDiskImage.dmg oder DeveloperDiskImage.dmg.signature konnten nicht heruntergeladen werden.";
-// Use mac location
-"LOCATION_SERVICE_DISABLED_MSG" = "Die Ortungsdienste scheinen deaktiviert zu sein. Bitte aktiviere die Ortungsdienste in den Systemeinstellungen.";
-"GET_LOCATION_ERROR_MSG" = "Aktueller Standort konnte nicht bestimmt werden. Stelle sicher, dass LocationSimulator die Berechtigung hat auf den Standort deines Macs zuzugreifen.";
-// Location change
-"TELEPORT_OR_NAVIGATE_MSG" = "Möchtest du zum Zielstandort teleportieren oder navigieren?";
-"LOCATION_RESET_ERROR_MSG" = "Standort konnte nicht zurückgesetzt werden.";
-"LOCATION_CHANGE_ERROR_MSG" = "Standort konnte nicht geändert werden.";
-// GPXAlert
-"ERROR_PARSE_GPX_MSG" = "GPX Datei konnte nicht eingelesen werden. Die Datei ist möglicherweise beschädigt oder falsch formatiert.";
-"TELEPORT_OR_NAVIGATE_GPX_MSG" = "Möchtest du zum Startpunkt dieser Route teleportieren oder navigieren?";
-"EMPTY_ROUTE_MSG" = "Zu wenige Wegpunkte vorhanden, um eine Navigation zu starten.";
-"ERROR_OPEN_GPX_MSG" = "Die ausgewählte GPX Datei konnte nicht geöffnet werden.";
-// Confirm teleportation.
-"CONFIRM_TELEPORT_MSG"="Möchtest du wirklich teleportieren?";
+"ALIGN_LEFT_MENUITEM" = "Linksbündig";
 
-// MARK: - Alert Buttons
-"DESTINATION" = "Zielort";
-"NAVIGATE" = "Navigieren";
-"TELEPORT" = "Teleportieren";
+
+"ALIGN_RIGHT_MENUITEM" = "Rechtsbündig";
+
+
+"ALLOW_NETWORK_DEVICES_MSG_SETTING" = "Deaktivieren um nur USB Geräte zu erlauben.";
+
+
+"ALLOW_NETWORK_DEVICES_SETTING" = "Netzwerk Geräten erlauben";
+
+
+"APP_HELP_MENUITEM" = "LocationSimulator Hilfe";
+
+
+"AUTOFOCUS_TOOLBARITEM_PALETTELABEL" = "Standort verfolgen";
+
+
+"AUTOFOCUS_TOOLBARITEM_TOOLTIP" = "Standort verfolgen";
+
+/* MARK: ------ Baseline */
+"BASELINE_MENU" = "Schriftlinie";
+
+
+"BASELINE_MENUITEM" = "Schriftlinie";
+
+
+"BIGGER_MENUITEM" = "Größer";
+
+
+"BOLD_MENUITEM" = "Fett";
+
+
+"BRING_ALL_TO_FRONT_MENUITEM" = "Alle nach vorne bringen";
+
+
 "CANCEL" = "Abbrechen";
-"OK"="OK";
 
-// MARK: - GPXSelectionView
+
+"CAPITALIZE_MENUITEM" = "Großschreiben";
+
+
+"CENTER_MENUITEM" = "Zentriert";
+
+
+"CHANGELOG" = "Letzte Änderrungen:\n\n1. Besseres logging zur Fehleranalyse\n2. Eigner Dateisupportordner";
+
+/*  */
+"CHANGING_SUPPORT_DIRECTORY_FAILED" = "Ändern Dateisupportordner fehlgeschlagen ";
+
+/*  */
+"CHANGING_SUPPORT_DIRECTORY_FAILED_MSG" = "Der Dateisupportordner konnte nicht geändert werden.";
+
+
+"CHECK_DOCUMENT_NOW_MENUITEM" = "Dokument jetzt prüfen";
+
+
+"CHECK_GRAMMAR_WHILE_SPELLING" = "Rechtschreib- und Grammatikprüfung";
+
+
+"CHECK_SPELLING_WHILE_TYPING_MENUITEM" = "Während der Texteingabe prüfen";
+
+/* MARK: - GPXSelectionView */
 "CHOOSE" = "Wählen";
-"TRACK_SEGMENT" = "Segment";
-"TRACK" = "Track";
-"ROUTE" = "Route";
-"WAYPOINTS" = "Wegpunkte";
-"GPX_SELECTION" = "Koordinaten wählen";
-"GPX_SELECTION_MSG" = "Wähle einen Track, ein Track Segment, eine Route oder die Wegpunkte, um die Navigation zu starten.";
 
-// MARK: - ProgressView
-"PROGRESS" = "Herunterladen der iOS support Dateien";
+/*  */
+"CHOOSE_DEVELOPER_DISK_IMAGE_PATH" = "Wählen";
+
+/*  */
+"CHOOSE_DEVELOPER_DISK_IMAGE_PATH_TITLE" = "Dateisupportordner auswählen";
+
+/* GPX Alert */
+"CHOOSE_GPX_FILE" = "Wähle eine .gpx Datei";
+
+
+"CLEAR_MENU_MENUITEM" = "Einträge löschen";
+
+
+"CLOSE_MENUITEM" = "Schließen";
+
+/* Confirm teleportation. */
+"CONFIRM_TELEPORT" = "Teleportieren bestätigen";
+
+
+"CONFIRM_TELEPORTATION_MSG_SETTING" = "Teleportieren zusätzlich bestätigen.";
+
+
+"CONFIRM_TELEPORTATION_SETTING" = "Teleportieren bestätigen";
+
+/* Confirm teleportation. */
+"CONFIRM_TELEPORT_MSG" = "Möchtest du wirklich teleportieren?";
+
+
+"COPY_MENUITEM" = "Kopieren";
+
+
+"COPY_RULER_MENUITEM" = "Lineal kopieren";
+
+
+"COPY_STYLE_MENUITEM" = "Stil kopieren";
+
+
+"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Rechtschreibung automatisch korrigieren";
+
+/*  */
+"CREATE_LOG_FAILED" = "Erstellung der Logdatei fehlgeschlagen";
+
+/*  */
+"CREATE_LOG_FAILED_MSG" = "Die log Daten konnten nicht exportiert werden. Bitte aktualisieren Sie die anzeige und versuchen Sie es erneut.";
+
+/* Current location annotation */
+"CURRENT_LOCATION" = "Aktueller Standort";
+
+
+"CUSTOMIZE_TOOLBAR_MENUITEM" = "Symbolleiste anpassen …";
+
+/*  */
+"CUSTOM_DEVELOPER_DISK_IMAGE" = "Eigener Dateisupportordner aktivieren";
+
+/*  */
+"CUSTOM_DEVELOPER_DISK_IMAGE_DESCRIPTION" = "Das Aktivieren dieser Option erlaubt den Downlaod der DeveloperDiskImages in einen benutzerdefinierten Ordner.";
+
+
+"CUT_MENUITEM" = "Ausschneiden";
+
+
+"CYCLE_MENUITEM" = "Radeln";
+
+
+"DATA_DETECTORS_MENUITEM" = "Datenerkennung";
+
+
+"DEFAULT_MENUITEM" = "	Standard verwenden";
+
+/*  */
+"DELETE_LOG_FAILED" = "Log löschen fehlgeschlagen";
+
+/*  */
+"DELETE_LOG_FAILED_MSG" = "Die Logdateien konnten nicht gelöscht werden.";
+
+/*  */
+"DELETE_LOG_TOOLBARITEM" = "Löschen";
+
+/*  */
+"DELETE_LOG_TOOLBARITEM_TOOLTIP" = "Log löschen";
+
+
+"DELETE_MENUITEM" = "Löschen";
+
+/* MARK: - Alert Buttons */
+"DESTINATION" = "Zielort";
+
+/*  */
+"DEVDISK_BACKUP_FAILED_ERROR_MSG" = "Bestehende DeveloperDiskImage konnten nicht gesichert werden.";
+
+/*  */
+"DEVDISK_DELETE_FAILED_ERROR" = "DeveloperDiskImage Löschung fehlgeschlagen";
+
+/*  */
+"DEVDISK_DELETE_FAILED_ERROR_MSG" = "Das ausgewählte DeveloperDiskImage konnte nicht gelöscht werden.";
+
+
 "DEVDISK_DOWNLOAD_DESC" = "DeveloperDiskImage.dmg herunterladen";
+
+
+"DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage Download ist fehlgeschlagen";
+
+
+"DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "DeveloperDiskImage.dmg oder DeveloperDiskImage.dmg.signature konnten nicht heruntergeladen werden.";
+
+
+"DEVDISK_NOT_FOUND" = "DeveloperDiskImage wurden nicht gefunden";
+
+/*  */
+"DEVDISK_REFRESH_FAILED_ERROR" = "DeveloperDiskImage Aktualisierung fehlgeschlagen";
+
+/*  */
+"DEVELOPER_DISK_IMAGES_TITLE_SETTING" = "DiskImages";
+
+/* Device sidebar */
+"DEVICE_HEADER" = "Geräte";
+
+
 "DEVSIGN_DOWNLOAD_DESC" = "DeveloperDiskImage.dmg.signature herunterladen";
 
-// MARK: - CoordinateSelectionView
-"LAT" = "Lat"; // This is an international abbreviation
-"LONG" = "Long"; // This is an international abbreviation
 
-// MARK: - NoDeviceView
-"NO_DEVICE"="Kein Gerät ausgewählt";
-"NO_DEVICE_MSG"="Bitte verbinde ein Gerät und wähle es in der Seitenleiste aus, um zu beginnen.";
+"DRIVE_MENUITEM" = "Fahren";
 
-// MARK: - MenuItem
-"MAIN_MENU"="Hauptmenü";
-// MARK: -- LocationSimulator
-"ABOUT_MENUITEM" = "Über LocationSimulator";
-"PREFERENCES_MENUITEM" = "Einstellungen …";
-"SERVICES_MENUITEM" = "Dienste";
+/* MARK: -- Edit */
+"EDIT_MENU" = "Bearbeiten";
+
+
+"EMPTY_ROUTE" = "Keine Route gefunden";
+
+
+"EMPTY_ROUTE_MSG" = "Zu wenige Wegpunkte vorhanden, um eine Navigation zu starten.";
+
+
+"ENTER_FULL_SCREEN_MENUITEM" = "Vollbildmodus";
+
+
+"ERROR_OPEN_GPX" = "Fehler beim Öffnen der GPX Datei";
+
+
+"ERROR_OPEN_GPX_MSG" = "Die ausgewählte GPX Datei konnte nicht geöffnet werden.";
+
+
+"ERROR_PARSE_GPX" = "Fehler beim Einlesen der GPX Datei";
+
+/* GPXAlert */
+"ERROR_PARSE_GPX_MSG" = "GPX Datei konnte nicht eingelesen werden. Die Datei ist möglicherweise beschädigt oder falsch formatiert.";
+
+/*  */
+"EXPORT_LOG_TITLE" = "LocationSimulator Log exportieren";
+
+/*  */
+"EXPORT_TOOLBARITEM" = "Exportieren";
+
+/*  */
+"EXPORT_TOOLBARITEM_TOOLTIP" = "Log exportieren";
+
+/* MARK: -- File */
+"FILE_MENU" = "Ablage";
+
+
+"FIND..._MENUITEM" = "Suchen …";
+
+
+"FIND_AND_REPLACE_..._MENUITEM" = "Suchen und Ersetzen …";
+
+/* MARK: ---- Find */
+"FIND_MENU" = "Suchen";
+
+
+"FIND_MENUITEM" = "Suchen";
+
+
+"FIND_NEXT_MENUITEM" = "Weitersuchen (vorwärts)";
+
+
+"FIND_PREVIOUS_MENUITEM" = "Weitersuchen (rückwärts)";
+
+/* MARK: ---- Font */
+"FONT_MENU" = "Schrift";
+
+
+"FONT_MENUITEM" = "Schrift";
+
+/* MARK: -- Format */
+"FORMAT_MENU" = "Format";
+
+
+"FORMAT_MENUITEM" = "Format";
+
+/* MARK: -- General */
+"GENERAL_TITEL_SETTING" = "Allgemein";
+
+
+"GET_LOCATION_ERROR" = "Fehler beim Bestimmen des Standorts";
+
+
+"GET_LOCATION_ERROR_MSG" = "Aktueller Standort konnte nicht bestimmt werden. Stelle sicher, dass LocationSimulator die Berechtigung hat auf den Standort deines Macs zuzugreifen.";
+
+
+"GPX_SELECTION" = "Koordinaten wählen";
+
+
+"GPX_SELECTION_MSG" = "Wähle einen Track, ein Track Segment, eine Route oder die Wegpunkte, um die Navigation zu starten.";
+
+/* MARK: -- Help */
+"HELP_MENU" = "Hilfe";
+
+
+"HELP_MENUITEM" = "Hilfe";
+
+
 "HIDE_APP_MENUITEM" = "LocationSimulator ausblenden";
-"HIDE_OTHERS_MENUITEM" = "Andere ausblenden";
-"SHOW_ALL_MENUITEM" = "Alle einblenden";
-"QUIT_APP_MENUITEM" = "LocationSimulator beenden";
-// MARK: -- Navigation
-"NAVIGATION_MENU"="Navigation";
-"WALK_MENUITEM"="Gehen";
-"CYCLE_MENUITEM"="Radeln";
-"DRIVE_MENUITEM"="Fahren";
-"SET_LOCATION_MENUITEM"="Standort festlegen …";
-"RESET_LOCATION_MENUITEM"="Standort zurücksetzen";
-"MAC_LOCATION_MENUITEM"="Mac Standort verwenden";
-"RECENT_LOCATIONS_MENU"="Letzte Standorte";
-"RECENT_LOCATIONS_MENUITEM"="Letzte Standorte";
-"CLEAR_MENU_MENUITEM"="Einträge löschen";
-"TOGGLE_AUTOMOVE_MENUITEM"="Automatisches Bewegen";
-"STOP_NAVIGATION_MENUITEM"="Navigation beenden";
-"MOVE_UP_MENUITEM"="Nach oben bewegen";
-"MOVE_DOWN_MENUITEM"="Nach unten bewegen";
-"ROTATE_CLOCKWISE_MENUITEM"="Im Uhrzeigersinn rotieren";
-"ROTATE_COUNTERCLOCKWISE_MENUITEM"="Gegen Uhrzeigersinn rotieren";
-// MARK: -- File
-"FILE_MENU"="Ablage";
-"OPEN_GPX_FILE_MENUITEM"="GPX Datei öffnen …";
-"CLOSE_MENUITEM"="Schließen";
-// MARK: -- Edit
-"EDIT_MENU"="Bearbeiten";
-"UNDO_MENUITEM"="Widerrufen";
-"REDO_MENUITEM"="Wiederholen";
-"CUT_MENUITEM"="Ausschneiden";
-"COPY_MENUITEM"="Kopieren";
-"PASTE_MENUITEM"="Einfügen";
-"PASTE_AND_MATCH_STYLE_MENUITEM"="Einsetzen und Stil anpassen";
-"DELETE_MENUITEM"="Löschen";
-"SELECT_ALL_MENUITEM"="Alle auswählen";
-// MARK: ---- Find
-"FIND_MENU"="Suchen";
-"FIND_MENUITEM"="Suchen";
-"FIND..._MENUITEM"="Suchen …";
-"FIND_AND_REPLACE_..._MENUITEM"="Suchen und Ersetzen …";
-"FIND_NEXT_MENUITEM"="Weitersuchen (vorwärts)";
-"FIND_PREVIOUS_MENUITEM"="Weitersuchen (rückwärts)";
-"USE_SELECTION_FOR_FIND_MENUITEM"="Auswahl für Suche übernehmen";
-"JUMP_TO_SELECTION_MENUITEM"="Auswahl anzeigen";
-// MARK: ---- Spelling and Grammar
-"SPELLING_GRAMMAR_MENU"="Rechtschreibung und Grammatik";
-"SPELLING_GRAMMAR_MENUITEM"="Rechtschreibung und Grammatik";
-"SHOW_SPELLING_AND_GRAMMAR_MENUITEM"="Rechtschreibung und Grammatik einblenden";
-"CHECK_DOCUMENT_NOW_MENUITEM"="Dokument jetzt prüfen";
-"CHECK_SPELLING_WHILE_TYPING_MENUITEM"="Während der Texteingabe prüfen";
-"CHECK_GRAMMAR_WHILE_SPELLING"="Rechtschreib- und Grammatikprüfung";
-"CORRECT_SPELLING_AUTOMATICALLY_MENUITEM"="Rechtschreibung automatisch korrigieren";
-// MARK: ---- Substitutions
-"SUBSTITUTIONS_MENU"="Ersetzungen";
-"SUBSTITUTIONS_MENUITEM"="Ersetzungen";
-"SHOW_SUBSTITUTIONS_MENUITEM"="Ersetzungen einblenden";
-"SMART_COPY_PASTE_MENUITEM"="Intelligentes Kopieren/Einsetzen";
-"SMART_QUOTES_MENUITEM"="Intelligente Anführungszeichen";
-"SMART_DASHES_MENUITEM"="Intelligente Bindestriche";
-"SMART_LINKS_MENUITEM"="Intelligente Links";
-"DATA_DETECTORS_MENUITEM"="Datenerkennung";
-"TEXT_REPLACEMENT_MENUITEM"="Text ersetzen";
-// MARK: ---- Transformations
-"TRANSFORMATIONS_MENU"="Transformationen";
-"TRANSFORMATIONS_MENUITEM"="Transformationen";
-"MAKE_UPPER_CASE_MENUITEM"="Großbuchstaben";
-"MAKE_LOWER_CASE_MENUITEM"="Kleinbuchstaben";
-"CAPITALIZE_MENUITEM"="Großschreiben";
-// MARK: ---- Speech
-"SPEECH_MENU"="Sprache";
-"SPEECH_MENUITEM"="Sprache";
-"START_SPEAKING_MENUITEM"="Sprachausgabe starten";
-"STOP_SPEAKING_MENUITEM"="Sprachausgabe stoppen";
-// MARK: -- Format
-"FORMAT_MENU"="Format";
-"FORMAT_MENUITEM"="Format";
-// MARK: ---- Font
-"FONT_MENU"="Schrift";
-"FONT_MENUITEM"="Schrift";
-"SHOW_FONTS_MENUITEM"="Schriften einblenden";
-"BOLD_MENUITEM"="Fett";
-"ITALIC_MENUITEM"="Kursiv";
-"UNDERLINE_MENUITEM"="Unterstreichen";
-"BIGGER_MENUITEM"="Größer";
-"SMALLER_MENUITEM"="Kleiner";
-"SHOW_COLORS_MENUITEM"="Farben einblenden";
-"COPY_STYLE_MENUITEM"="Stil kopieren";
-"PASTE_STYLE_MENUITEM"="Stil einsetzen";
-// MARK: ------ Kern
-"KERN_MENU"="Zeichenabstand";
-"KERN_MENUITEM"="Zeichenabstand";
-"USE_DEFAULT_MENUITEM"="Normal";
-"USE_NONE_MENUITEM"="Nicht verwenden";
-"TIGHTEN_MENUITEM"="Enger";
-"LOOSEN_MENUITEM"="Weiter";
-// MARK: ------ Ligatures
-"LIGATURES_MENU"="Ligaturen";
-"LIGATURES_MENUITEM"="Ligaturen";
-"USE_ALL_MENUITEM"="Alle verwenden";
-// MARK: ------ Baseline
-"BASELINE_MENU"="Schriftlinie";
-"BASELINE_MENUITEM"="Schriftlinie";
-"SUPERSCRIPT_MENUITEM"="Hochgestellt";
-"SUBSCRIPT_MENUITEM"="Tiefgestellt";
-"RAISE_MENUITEM"="Höher";
-"LOWER_MENUITEM"="Niedriger";
-// MARK: ---- Text
-"TEXT_MENU"="Text";
-"TEXT_MENUITEM"="Text";
-"ALIGN_LEFT_MENUITEM"="Linksbündig";
-"CENTER_MENUITEM"="Zentriert";
-"JUSTIFY_MENUITEM"="Blocksatz";
-"ALIGN_RIGHT_MENUITEM"="Rechtsbündig";
-"SHOW_RULER_MENUITEM"="Lineal einblenden";
-"COPY_RULER_MENUITEM"="Lineal kopieren";
-"PASTE_RULER_MENUITEM"="Lineal einsetzen";
-// MARK: ------ Writing Direction
-"WRITING_DIRECTION_MENU"="Richtung beim Schreiben";
-"WRITING_DIRECTION_MENUITEM"="Richtung beim Schreiben";
-"PARAGRAPH_MENUITEM"="Absatz";
-"SELECTION_MENUITEM"="Auswahl";
-"DEFAULT_MENUITEM"="\tStandard verwenden";
-"LEFT_TO_RIGHT_MENUITEM"="\tVon links nach rechts";
-"RIGHT_TO_LEFT_MENUITEM"="\tVon rechts nach links";
-// MARK: -- View
-"VIEW_MENU"="Darstellung";
-"VIEW_MENUITEM"="Darstellung";
-"SHOW_TOOLBAR_MENUITEM"="Symbolleiste aus-/einblenden";
-"CUSTOMIZE_TOOLBAR_MENUITEM"="Symbolleiste anpassen …";
-"SHOW_SIDEBAR_MENUITEM"="Seitenleiste aus-/einblenden";
-"ENTER_FULL_SCREEN_MENUITEM"="Vollbildmodus";
-// MARK: -- Window
-"WINDOW_MENU"="Fenster";
-"WINDOW_MENUITEM"="Fenster";
-"MINIMIZE_MENUITEM"="Minimieren";
-"ZOOM_MENUITEM"="Zoomen";
-"BRING_ALL_TO_FRONT_MENUITEM"="Alle nach vorne bringen";
-// MARK: -- Help
-"HELP_MENU"="Hilfe";
-"HELP_MENUITEM"="Hilfe";
-"APP_HELP_MENUITEM"="LocationSimulator Hilfe";
-"OPEN_PROJECT_PAGE_MENUITEM"="Projekt Website öffnen";
-"REPORT_A_BUG_MENUITEM"="Einen Fehler melden";
 
-// MARK: - Settings
-// MARK: -- INFO
-"INFO_TITLE_SETTING"="Info";
+
+"HIDE_OTHERS_MENUITEM" = "Andere ausblenden";
+
+/*  */
+"IMAGE_FILE" = "Image";
+
+/* MARK: -- INFO */
+"INFO_TITLE_SETTING" = "Info";
+
+
+"ITALIC_MENUITEM" = "Kursiv";
+
+
+"JUMP_TO_SELECTION_MENUITEM" = "Auswahl anzeigen";
+
+
+"JUSTIFY_MENUITEM" = "Blocksatz";
+
+/* MARK: ------ Kern */
+"KERN_MENU" = "Zeichenabstand";
+
+
+"KERN_MENUITEM" = "Zeichenabstand";
+
+/* MARK: - CoordinateSelectionView */
+"LAT" = "Lat";
+
+
+"LEFT_TO_RIGHT_MENUITEM" = "	Von links nach rechts";
+
+/*  */
+"LEVEL" = "Level";
+
+/* MARK: -- License */
+"LICENSE_TITLE_SETTING" = "Lizenz";
+
+/* MARK: ------ Ligatures */
+"LIGATURES_MENU" = "Ligaturen";
+
+
+"LIGATURES_MENUITEM" = "Ligaturen";
+
+/*  */
+"LINE_NUMBER" = "Zeile";
+
+/* Location change */
+"LOCATION_CHANGE_ERROR" = "Fehler beim Ändern des Standorts";
+
+
+"LOCATION_CHANGE_ERROR_MSG" = "Standort konnte nicht geändert werden.";
+
+
+"LOCATION_RESET_ERROR_MSG" = "Standort konnte nicht zurückgesetzt werden.";
+
+/* Use mac location */
+"LOCATION_SERVICE_DISABLED" = "Aktiviere die Ortungsdienste";
+
+/* Use mac location */
+"LOCATION_SERVICE_DISABLED_MSG" = "Die Ortungsdienste scheinen deaktiviert zu sein. Bitte aktiviere die Ortungsdienste in den Systemeinstellungen.";
+
+/*  */
+"LOG_TITLE" = "Log";
+
+/* This is an international abbreviation */
+"LONG" = "Long";
+
+
+"LOOSEN_MENUITEM" = "Weiter";
+
+
+"LOWER_MENUITEM" = "Niedriger";
+
+
+"MAC_LOCATION_MENUITEM" = "Mac Standort verwenden";
+
+
+"MAC_LOCATION_TOOLBARITEM_PALETTELABEL" = "Aktueller Standort";
+
+
+"MAC_LOCATION_TOOLBARITEM_TOOLTIP" = "Mac Standort als aktuellen Standort verwenden";
+
+/* MARK: - MenuItem */
+"MAIN_MENU" = "Hauptmenü";
+
+
+"MAKE_LOWER_CASE_MENUITEM" = "Kleinbuchstaben";
+
+
+"MAKE_UPPER_CASE_MENUITEM" = "Großbuchstaben";
+
+/*  */
+"MESSAGE" = "Nachricht";
+
+
+"MINIMIZE_MENUITEM" = "Minimieren";
+
+
+"MOUNT_ERROR" = "Fehler beim Einbinden des DeveloperDiskImage.dmg";
+
+
+"MOUNT_ERROR_MSG" = "Das DeveloperDiskImage für dieses Gerät konnte nicht eingebunden werden. Die Standortfälschung wird nicht funktionieren.Ist das Gerät entsperrt?";
+
+
+"MOVETYPES_TOOLBARITEM_PALETTELABEL" = "Bewegungsart";
+
+
+"MOVE_DOWN_MENUITEM" = "Nach unten bewegen";
+
+
+"MOVE_UP_MENUITEM" = "Nach oben bewegen";
+
+
+"NAVIGATE" = "Navigieren";
+
+/* MARK: -- Navigation */
+"NAVIGATION_MENU" = "Navigation";
+
+/* MARK: -- Network */
+"NETWORK_TITEL_SETTING" = "Netzwerk";
+
+/* MARK: - NoDeviceView */
+"NO_DEVICE" = "Kein Gerät ausgewählt";
+
+
+"NO_DEVICE_ERROR" = "Kein Gerät gefunden";
+
+
+"NO_DEVICE_MSG" = "Bitte verbinde ein Gerät und wähle es in der Seitenleiste aus, um zu beginnen.";
+
+
+"OK" = "OK";
+
+
+"OPEN_GPX_FILE_MENUITEM" = "GPX Datei öffnen …";
+
+
+"OPEN_PROJECT_PAGE_MENUITEM" = "Projekt Website öffnen";
+
+/* MARK: - Alert Messages */
+"PAIR_ERROR_MSG" = "Verbindung zum Gerät konnte nicht hergestellt werden. Stelle auf deinem iOS-Gerät sicher, dass du diesem Computer vertraust.";
+
+
+"PARAGRAPH_MENUITEM" = "Absatz";
+
+
+"PASTE_AND_MATCH_STYLE_MENUITEM" = "Einsetzen und Stil anpassen";
+
+
+"PASTE_MENUITEM" = "Einfügen";
+
+
+"PASTE_RULER_MENUITEM" = "Lineal einsetzen";
+
+
+"PASTE_STYLE_MENUITEM" = "Stil einsetzen";
+
+
+"PERMISSION_ERROR" = "Berechtigungsfehler";
+
+
+"PERMISSION_ERROR_MSG" = "Application Support folder konnte nicht geöffnet werden.";
+
+
+"PREFERENCES_MENUITEM" = "Einstellungen …";
+
+
+"PREFER_NETWORK_DEVICES_MSG_SETTING" = "Immer die Netzwerkverbindung verwenden, auch wenn das Gerät über USB verbunden ist.";
+
+
+"PREFER_NETWORK_DEVICES_SETTING" = "Netzwerk Geräte bevorzugen";
+
+
+"PRINT_TOOLBARITEM_TOOLTIP" = "Drucken";
+
+
+"PRODUCT_INFO_ERROR" = "Fehler beim Lesen der Produktinformationen";
+
+/* MARK: - ProgressView */
+"PROGRESS" = "Herunterladen der iOS support Dateien";
+
+
+"QUIT_APP_MENUITEM" = "LocationSimulator beenden";
+
+
+"RAISE_MENUITEM" = "Höher";
+
+
+"RECENT_LOCATIONS_MENU" = "Letzte Standorte";
+
+
+"RECENT_LOCATIONS_MENUITEM" = "Letzte Standorte";
+
+
+"REDO_MENUITEM" = "Wiederholen";
+
+/*  */
+"REFRESH_TOOLBARITEM" = "Aktualisieren";
+
+/*  */
+"REFRESH_TOOLBARITEM_TOOLTIP" = "Log aktualisieren";
+
+
+"REPORT_A_BUG_MENUITEM" = "Einen Fehler melden";
+
+
+"RESET_LOCATION_MENUITEM" = "Standort zurücksetzen";
+
+
+"RESET_TOOLBARITEM_PALETTELABEL" = "Zurücksetzen";
+
+/* Tooltip */
+"RESET_TOOLBARITEM_TOOLTIP" = "Standort nicht mehr fälschen";
+
+
+"RIGHT_TO_LEFT_MENUITEM" = "	Von rechts nach links";
+
+
+"ROTATE_CLOCKWISE_MENUITEM" = "Im Uhrzeigersinn rotieren";
+
+
+"ROTATE_COUNTERCLOCKWISE_MENUITEM" = "Gegen Uhrzeigersinn rotieren";
+
+
+"ROUTE" = "Route";
+
+/*  */
+"SAVE_LOG_FAILED" = "Log sichern fehlgeschlagen";
+
+/*  */
+"SAVE_LOG_FAILED_MSG" = "Die Log-Datei konnte nicht gespeichert werden. Stellen Sie sicher, dass Sie die nötigen Rechte zum Schreiben des Ordners besitzen.";
+
+/* MARK: - Toolbar */
+"SEARCH_PLACEHOLDER" = "Suchen";
+
+/* Palette Label */
+"SEARCH_TOOLBARITEM_PALETTELABEL" = "Suchen";
+
+
+"SELECTION_MENUITEM" = "Auswahl";
+
+
+"SELECT_ALL_MENUITEM" = "Alle auswählen";
+
+
+"SERVICES_MENUITEM" = "Dienste";
+
+
+"SET_LOCATION_MENUITEM" = "Standort festlegen …";
+
+
+"SHOW_ALL_MENUITEM" = "Alle einblenden";
+
+
+"SHOW_COLORS_MENUITEM" = "Farben einblenden";
+
+
+"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP" = "Farbauswahl anzeigen";
+
+
+"SHOW_FONTS_MENUITEM" = "Schriften einblenden";
+
+
+"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP" = "Schriftauswahl anzeigen";
+
+/*  */
+"SHOW_IN_FINDER" = "Im Finder anzeigen";
+
+/*  */
+"SHOW_LOG" = "Log...";
+
+
+"SHOW_RULER_MENUITEM" = "Lineal einblenden";
+
+
+"SHOW_SIDEBAR_MENUITEM" = "Seitenleiste aus-/einblenden";
+
+
+"SHOW_SPELLING_AND_GRAMMAR_MENUITEM" = "Rechtschreibung und Grammatik einblenden";
+
+
+"SHOW_SUBSTITUTIONS_MENUITEM" = "Ersetzungen einblenden";
+
+
+"SHOW_TOOLBAR_MENUITEM" = "Symbolleiste aus-/einblenden";
+
+/*  */
+"SIGNATURE_FILE" = "Signature";
+
+
+"SIMULATOR_HEADER" = "Simulatoren";
+
+
+"SMALLER_MENUITEM" = "Kleiner";
+
+
+"SMART_COPY_PASTE_MENUITEM" = "Intelligentes Kopieren/Einsetzen";
+
+
+"SMART_DASHES_MENUITEM" = "Intelligente Bindestriche";
+
+
+"SMART_LINKS_MENUITEM" = "Intelligente Links";
+
+
+"SMART_QUOTES_MENUITEM" = "Intelligente Anführungszeichen";
+
+/* MARK: ---- Speech */
+"SPEECH_MENU" = "Sprache";
+
+
+"SPEECH_MENUITEM" = "Sprache";
+
+/* MARK: ---- Spelling and Grammar */
+"SPELLING_GRAMMAR_MENU" = "Rechtschreibung und Grammatik";
+
+
+"SPELLING_GRAMMAR_MENUITEM" = "Rechtschreibung und Grammatik";
+
+
+"START_SPEAKING_MENUITEM" = "Sprachausgabe starten";
+
+
+"STOP_NAVIGATION_MENUITEM" = "Navigation beenden";
+
+
+"STOP_SPEAKING_MENUITEM" = "Sprachausgabe stoppen";
+
+
+"SUBSCRIPT_MENUITEM" = "Tiefgestellt";
+
+/* MARK: ---- Substitutions */
+"SUBSTITUTIONS_MENU" = "Ersetzungen";
+
+
+"SUBSTITUTIONS_MENUITEM" = "Ersetzungen";
+
+
+"SUPERSCRIPT_MENUITEM" = "Hochgestellt";
+
+
+"TELEPORT" = "Teleportieren";
+
+
+"TELEPORT_OR_NAVIGATE_GPX_MSG" = "Möchtest du zum Startpunkt dieser Route teleportieren oder navigieren?";
+
+/* Location change */
+"TELEPORT_OR_NAVIGATE_MSG" = "Möchtest du zum Zielstandort teleportieren oder navigieren?";
+
+/* MARK: ---- Text */
+"TEXT_MENU" = "Text";
+
+
+"TEXT_MENUITEM" = "Text";
+
+
+"TEXT_REPLACEMENT_MENUITEM" = "Text ersetzen";
+
+/*  */
+"THREAD" = "Thread";
+
+
+"TIGHTEN_MENUITEM" = "Enger";
+
+/*  */
+"TIME" = "Zeit";
+
+
+"TOGGLE_AUTOMOVE_MENUITEM" = "Automatisches Bewegen";
+
+/* Total distance label in the bottom bar. */
+"TOTAL_DISTANCE" = "Gesamtdistanz: %.3fkm";
+
+
+"TRACK" = "Track";
+
+
+"TRACK_SEGMENT" = "Segment";
+
+/* MARK: ---- Transformations */
+"TRANSFORMATIONS_MENU" = "Transformationen";
+
+
+"TRANSFORMATIONS_MENUITEM" = "Transformationen";
+
+
+"UNDERLINE_MENUITEM" = "Unterstreichen";
+
+
+"UNDO_MENUITEM" = "Widerrufen";
+
+/* MARK: - Alert Titles */
+"UNKNOWN_ERROR" = "Unbekannter Fehler";
+
+
+"UNKNOWN_ERROR_MSG" = "Ein unbekannter Fehler ist aufgetreten. Bitte trenne das Gerät und versuche es erneut.";
+
+
+"USE_ALL_MENUITEM" = "Alle verwenden";
+
+
+"USE_DEFAULT_MENUITEM" = "Normal";
+
+
+"USE_NONE_MENUITEM" = "Nicht verwenden";
+
+
+"USE_SELECTION_FOR_FIND_MENUITEM" = "Auswahl für Suche übernehmen";
+
+/* MARK: -- View */
+"VIEW_MENU" = "Darstellung";
+
+
+"VIEW_MENUITEM" = "Darstellung";
+
+
+"WALK_MENUITEM" = "Gehen";
+
+/* The tooltip for the warning triangle in the lower right corner. */
+"WARNING_TRIANGLE_TOOLTIP" = "Gerät nicht autorisiert";
+
+
+"WAYPOINTS" = "Wegpunkte";
+
+
 "WELCOME" = "Danke, dass du LocationSimulator verwendest!\n\nBei dieser Software handelt es sich um Beta Software.\nBitte melde jeden Fehler den du findest.";
-"CHANGELOG" = "Letzte Änderrungen:\n\n1. App Sandbox Unterstützung\n2.Deutsche Übersetzung\n3. Fehlerbehebungen\n";
-// MARK: -- Network
-"NETWORK_TITEL_SETTING"="Netzwerk";
-"ALLOW_NETWORK_DEVICES_SETTING"="Netzwerk Geräten erlauben";
-"ALLOW_NETWORK_DEVICES_MSG_SETTING"="Deaktivieren um nur USB Geräte zu erlauben.";
-"PREFER_NETWORK_DEVICES_SETTING"="Netzwerk Geräte bevorzugen";
-"PREFER_NETWORK_DEVICES_MSG_SETTING"="Immer die Netzwerkverbindung verwenden, auch wenn das Gerät über USB verbunden ist.";
-// MARK: -- General
-"GENERAL_TITEL_SETTING"="Allgemein";
-"CONFIRM_TELEPORTATION_SETTING"="Teleportieren bestätigen";
-"CONFIRM_TELEPORTATION_MSG_SETTING"="Teleportieren zusätzlich bestätigen.";
-// MARK: -- License
-"LICENSE_TITLE_SETTING"="Lizenz";
-// MARK: - Toolbar
-"SEARCH_PLACEHOLDER"="Suchen";
-// Palette Label
-"SEARCH_TOOLBARITEM_PALETTELABEL"="Suchen";
-"AUTOFOCUS_TOOLBARITEM_PALETTELABEL"="Standort verfolgen";
-"MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="Aktueller Standort";
-"MOVETYPES_TOOLBARITEM_PALETTELABEL"="Bewegungsart";
-"RESET_TOOLBARITEM_PALETTELABEL"="Zurücksetzen";
-// Tooltip
-"RESET_TOOLBARITEM_TOOLTIP"="Standort nicht mehr fälschen";
-"MAC_LOCATION_TOOLBARITEM_TOOLTIP"="Mac Standort als aktuellen Standort verwenden";
-"AUTOFOCUS_TOOLBARITEM_TOOLTIP"="Standort verfolgen";
-"SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"="Farbauswahl anzeigen";
-"SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"="Schriftauswahl anzeigen";
-"PRINT_TOOLBARITEM_TOOLTIP"="Drucken";
+
+/* MARK: -- Window */
+"WINDOW_MENU" = "Fenster";
+
+
+"WINDOW_MENUITEM" = "Fenster";
+
+/* MARK: ------ Writing Direction */
+"WRITING_DIRECTION_MENU" = "Richtung beim Schreiben";
+
+
+"WRITING_DIRECTION_MENUITEM" = "Richtung beim Schreiben";
+
+
+"ZOOM_MENUITEM" = "Zoomen";
