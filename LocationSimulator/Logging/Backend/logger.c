@@ -112,7 +112,9 @@ static long getCurrentThreadID(void)
 #elif __linux__
     return syscall(SYS_gettid);
 #elif defined(__APPLE__) && defined(__MACH__)
-    return syscall(SYS_thread_selfid);
+    uint64_t tid64;
+    pthread_threadid_np(NULL, &tid64);
+    return (pid_t)tid64;
 #else
     return (long) pthread_self();
 #endif /* defined(_WIN32) || defined(_WIN64) */
@@ -220,6 +222,16 @@ void logger_flush()
     if (hasFlag(s_logger, kFileLogger)) {
         fflush(s_flog.output);
     }
+}
+
+int logger_clear() {
+    // Flush all existing data
+    logger_flush();
+    fclose(s_flog.output);
+    int success = remove(s_flog.filename);
+    s_flog.output = fopen(s_flog.filename, "a");
+    return success;
+
 }
 
 static char *getLevelDesc(LogLevel level)

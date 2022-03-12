@@ -231,6 +231,7 @@
 "MINIMIZE_MENUITEM"="Minimize";
 "ZOOM_MENUITEM"="Zoom";
 "BRING_ALL_TO_FRONT_MENUITEM"="Bring All to Front";
+"SHOW_LOG"="Log…";
 // MARK: -- Help
 "HELP_MENU"="Help";
 "HELP_MENUITEM"="Help";
@@ -283,6 +284,8 @@
 "MAC_LOCATION_TOOLBARITEM_PALETTELABEL"="Current Location";
 "MOVETYPES_TOOLBARITEM_PALETTELABEL"="Move Types";
 "RESET_TOOLBARITEM_PALETTELABEL"="Reset";
+"EXPORT_TOOLBARITEM"="Export";
+"REFRESH_TOOLBARITEM"="Refresh";
 // Tooltip
 "RESET_TOOLBARITEM_TOOLTIP"="Stop faking the device location";
 "MAC_LOCATION_TOOLBARITEM_TOOLTIP"="Set Mac location to current location";
@@ -290,3 +293,23 @@
 "SHOW_COLOR_PANEL_TOOLBARITEM_TOOLTIP"="Show Color Panel";
 "SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP"="Show Font Panel";
 "PRINT_TOOLBARITEM_TOOLTIP"="Print";
+"EXPORT_TOOLBARITEM_TOOLTIP"="Export log";
+"REFRESH_TOOLBARITEM_TOOLTIP"="Refresh log";
+
+// MARK: - Log
+"LOG_TITLE"="Log";
+"LINE_NUMBER"="Row";
+"TIME"="Time";
+"LEVEL"="Level";
+"THREAD"="Thread";
+"MESSAGE"="Message";
+"COPY"="Copy";
+"EXPORT_LOG_TITLE"="Export LocationSimulator log";
+"CREATE_LOG_FAILED"="Log generation failed";
+"CREATE_LOG_FAILED_MSG"="Could not export the log data. Please refresh the log and try again.";
+"SAVE_LOG_FAILED"="Saving Log failed";
+"SAVE_LOG_FAILED_MSG"="Could not save the log file. Please make sure your user has write permission to this directory.";
+"DELETE_LOG_TOOLBARITEM"="Clear";
+"DELETE_LOG_TOOLBARITEM_TOOLTIP"="Clear Log";
+"DELETE_LOG_FAILED"="Log deletion failed";
+"DELETE_LOG_FAILED_MSG"="Could not delete the log files. Please try again.";

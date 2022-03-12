@@ -127,16 +127,20 @@ class DeveloperDiskImagesViewController: NSViewController {
         self.customSupportPathTextField.stringValue = UserDefaults.standard.customSupportDirectory?.path ?? ""
 
         // Setup the right click menu
+        self.tableView.menu = self.createRightClickMenu()
+
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.reloadData()
+    }
+
+    private func createRightClickMenu() -> NSMenu {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "SHOW_IN_FINDER".localized,
                                 action: #selector(openClikedInFinder(sender:)),
                                 keyEquivalent: "")
         )
-        self.tableView.menu = menu
-
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.reloadData()
+        return menu
     }
 
     /// Open the currently right clicked item in the Finder.
@@ -241,7 +245,7 @@ class DeveloperDiskImagesViewController: NSViewController {
         }
     }
 
-    /// Disable the remove and refresh based on the current selection.
+    /// Disable the toolbar items based on the current selection and the directory acccess rights.
     private func updateDesturctiveToolbarItemsAvailibility() {
         let enabled = self.selectedVersion != nil
         let isWriteable = FileManager.default.isSupportDirectoryWriteable
@@ -251,6 +255,7 @@ class DeveloperDiskImagesViewController: NSViewController {
         self.toolbarSegment.setEnabled(enabled && isWriteable, forSegment: 2) // Refresh item
     }
 
+    /// Disable or enable the path selection button based on the checkbox.
     private func updateCustomSupportPathSelectionAvailibility() {
         let enabled = (self.customSupportPathCheckbox.state == .on)
         self.customSupportPathFooter.alphaValue = enabled ? 1.0 : 0.2

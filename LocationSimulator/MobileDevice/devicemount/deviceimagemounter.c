@@ -43,24 +43,24 @@ bool developerImageIsMountedForDevice(const char *udid, enum idevice_options loo
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
     if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
-        LOG_ERROR("No device found.");
+        LOG_ERROR("Device \"%s\": Not found.", udid);
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new_with_handshake(device, &lckd, "deviceimagemounter"))) {
-        LOG_ERROR("Could not connect to lockdown, error code %d.", ldret);
+        LOG_ERROR("Device \"%s\": Could not connect to lockdownd, error code %d.", udid, ldret);
         goto leave;
     }
 
     lockdownd_start_service(lckd, "com.apple.mobile.mobile_image_mounter", &service);
 
     if (!service || service->port == 0) {
-        LOG_ERROR("Could not start mobile_image_mounter service!");
+        LOG_ERROR("Device \"%s\": Could not start mobile_image_mounter service!", udid);
         goto leave;
     }
 
     if (mobile_image_mounter_new(device, service, &mim) != MOBILE_IMAGE_MOUNTER_E_SUCCESS) {
-        LOG_ERROR("Could not connect to mobile_image_mounter!");
+        LOG_ERROR("Device \"%s\": Could not connect to mobile_image_mounter!", udid);
         goto leave;
     }
 
@@ -92,7 +92,7 @@ bool developerImageIsMountedForDevice(const char *udid, enum idevice_options loo
         }
         free(it);
     } else {
-        LOG_ERROR("lookup_image returned %d", err);
+        LOG_ERROR("Device \"%s\": lookup_image returned %d.", udid, err);
     }
 
     // perform hangup command
@@ -100,7 +100,7 @@ bool developerImageIsMountedForDevice(const char *udid, enum idevice_options loo
     // free client
     mobile_image_mounter_free(mim);
 
-    LOG_INFO("DeveloperDiskImage is already mounted.");
+    LOG_INFO("Device \"%s\": DeveloperDiskImage is already mounted.", udid);
 
 leave:
     if (lckd) {
@@ -134,12 +134,12 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
     if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
-        LOG_ERROR("No device found.");
+        LOG_ERROR("Device \"%s\": Not found.", udid);
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new_with_handshake(device, &lckd, "deviceimagemounter"))) {
-        LOG_ERROR("Could not connect to lockdown, error code %d.", ldret);
+        LOG_ERROR("Device \"%s\": Could not connect to lockdownd, error code %d.", udid, ldret);
         goto leave;
     }
 
@@ -165,12 +165,12 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     lockdownd_start_service(lckd, "com.apple.mobile.mobile_image_mounter", &service);
 
     if (!service || service->port == 0) {
-        LOG_ERROR("Could not start mobile_image_mounter service!");
+        LOG_ERROR("Device \"%s\": Could not start mobile_image_mounter service!", udid);
         goto leave;
     }
 
     if (mobile_image_mounter_new(device, service, &mim) != MOBILE_IMAGE_MOUNTER_E_SUCCESS) {
-        LOG_ERROR("Could not connect to mobile_image_mounter!");
+        LOG_ERROR("Device \"%s\": Could not connect to mobile_image_mounter!", udid);
         goto leave;
     }
 
@@ -182,11 +182,11 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     struct stat fst;
     if (disk_image_upload_type == DISK_IMAGE_UPLOAD_TYPE_AFC) {
         if ((lockdownd_start_service(lckd, "com.apple.afc", &service) != LOCKDOWN_E_SUCCESS) || !service || !service->port) {
-            LOG_ERROR("Could not start com.apple.afc!");
+            LOG_ERROR("Device \"%s\": Could not start com.apple.afc!", udid);
             goto leave;
         }
         if (afc_client_new(device, service, &afc) != AFC_E_SUCCESS) {
-            LOG_ERROR("Could not connect to AFC!");
+            LOG_ERROR("Device \"%s\": Could not connect to AFC!", udid);
             goto leave;
         }
         if (service) {
@@ -196,13 +196,13 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     }
 
     if (stat(devDMG, &fst) != 0) {
-        LOG_ERROR("stat: %s: %s", devDMG, strerror(errno));
+        LOG_ERROR("Device \"%s\": stat: %s: %s", udid, devDMG, strerror(errno));
         goto leave;
     }
 
     size_t image_size = fst.st_size;
     if (stat(devSign, &fst) != 0) {
-        LOG_ERROR("stat: %s: %s", devSign, strerror(errno));
+        LOG_ERROR("Device \"%s\": stat: %s: %s", udid, devSign, strerror(errno));
         goto leave;
     }
 
@@ -211,19 +211,19 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     size_t sig_length = 0;
     FILE *f = fopen(devSign, "rb");
     if (!f) {
-        LOG_ERROR("opening signature file '%s': %s", devSign, strerror(errno));
+        LOG_ERROR("Device \"%s\": Could not open signature file '%s': %s", udid, devSign, strerror(errno));
         goto leave;
     }
     sig_length = fread(sig, 1, sizeof(sig), f);
     fclose(f);
     if (sig_length == 0) {
-        LOG_ERROR("Could not read signature from file '%s'", devSign);
+        LOG_ERROR("Device \"%s\": Could not read signature from file '%s'", udid, devSign);
         goto leave;
     }
 
     f = fopen(devDMG, "rb");
     if (!f) {
-        LOG_ERROR("opening image file '%s': %s", devDMG, strerror(errno));
+        LOG_ERROR("Device \"%s\": Could not open image file '%s': %s", udid, devDMG, strerror(errno));
         goto leave;
     }
 
@@ -240,16 +240,16 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
 
     switch(disk_image_upload_type) {
         case DISK_IMAGE_UPLOAD_TYPE_UPLOAD_IMAGE:
-            LOG_INFO("Uploading %s", devDMG);
+            LOG_INFO("Device \"%s\": Uploading %s", udid, devDMG);
             mobile_image_mounter_upload_image(mim, "Developer", image_size, sig, sig_length, mim_upload_cb, f);
             break;
         case DISK_IMAGE_UPLOAD_TYPE_AFC:
         default:
-            LOG_INFO("Uploading %s --> afc:///%s", devDMG, targetname);
+            LOG_INFO("Device \"%s\": Uploading %s --> afc:///%s", udid, devDMG, targetname);
             char **strs = NULL;
             if (afc_get_file_info(afc, PKG_PATH, &strs) != AFC_E_SUCCESS) {
                 if (afc_make_directory(afc, PKG_PATH) != AFC_E_SUCCESS) {
-                    LOG_WARN("Could not create directory '%s' on device!", PKG_PATH);
+                    LOG_WARN("Device \"%s\": Could not create directory '%s' on device!", udid, PKG_PATH);
                 }
             }
             if (strs) {
@@ -265,7 +265,7 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
             if ((afc_file_open(afc, targetname, AFC_FOPEN_WRONLY, &af) !=
                  AFC_E_SUCCESS) || !af) {
                 fclose(f);
-                LOG_ERROR("afc_file_open on '%s' failed!", targetname);
+                LOG_ERROR("Device \"%s\": afc_file_open on '%s' failed!", udid, targetname);
                 goto leave;
             }
 
@@ -278,13 +278,13 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
                     while (total < amount) {
                         written = 0;
                         if (afc_file_write(afc, af, buf, (uint32_t)amount, &written) != AFC_E_SUCCESS) {
-                            LOG_ERROR("AFC Write error!");
+                            LOG_ERROR("Device \"%s\": AFC Write error!", udid);
                             break;
                         }
                         total += written;
                     }
                     if (total != amount) {
-                        LOG_ERROR("wrote only %d of %d", total, (unsigned int)amount);
+                        LOG_ERROR("Device \"%s\": Wrote only %d of %d", udid, total, (unsigned int)amount);
                         afc_file_close(afc, af);
                         fclose(f);
                         goto leave;
@@ -303,7 +303,7 @@ bool mountImageForDevice(const char *udid, const char *devDMG, const char *devSi
     mobile_image_mounter_error_t err = mobile_image_mounter_mount_image(mim, mountname, sig, sig_length, "Developer", &result);
     res = (err == MOBILE_IMAGE_MOUNTER_E_SUCCESS);
     if (!res) {
-        LOG_ERROR("mount_image returned %d", err);
+        LOG_ERROR("Device \"%s\": mount_image returned %d.", udid, err);
     }
 
     if (result) {

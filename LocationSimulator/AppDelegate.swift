@@ -15,18 +15,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var menubarController: MenubarController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Init the logger
-        let documentDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let logFile = documentDir.appendingPathComponent("log.txt")
+        let logPath = FileManager.default.logfile.path
 
+        // Init the logger
+        logger_autoFlush(5000) // Flush every 5 seconds
         logger_initConsoleLogger(nil)
-        logger_initFileLogger(logFile.path, 1024*1024*5, 5) // 5MB limit per file
+        logInfo("Using log file: \(logPath)")
+        logger_initFileLogger(logPath, 1024*1024*5, 5) // 5MB limit per file
 
         // Register all the default setting values for this application.
         let defaults = UserDefaults.standard
         defaults.registerGeneralDefaultValues()
         defaults.registerNetworkDefaultValues()
         defaults.registerRecentLocationDefaultValues()
+        defaults.registerDeveloperDiskImagesDefaultValues()
         // Load the recent locations after the app finished launching.
         self.menubarController.loadRecentLocations()
     }

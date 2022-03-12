@@ -35,7 +35,6 @@ extension String {
     }
 }
 
-
 // MARK: - Number
 
 extension String {

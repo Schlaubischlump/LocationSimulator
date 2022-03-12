@@ -28,12 +28,12 @@ const char *deviceProductVersion(const char *udid, enum idevice_options lookup_o
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
     if (ret != IDEVICE_E_SUCCESS) {
-        LOG_ERROR("No device found with udid %s, is it plugged in?", udid);
+        LOG_ERROR("Device \"%s\": Not found.", udid);
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new(device, &client, "deviceinfo"))) {
-        LOG_ERROR("Could not connect to lockdownd, error code %d", ldret);
+        LOG_ERROR("Device \"%s\": Could not connect to lockdownd, error code %d.", udid, ldret);
         idevice_free(device);
         return NULL;
     }
@@ -73,12 +73,12 @@ const char *deviceProductName(const char *udid, enum idevice_options lookup_ops)
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
     if (ret != IDEVICE_E_SUCCESS) {
-        LOG_ERROR("No device found with udid %s, is it plugged in?", udid);
+        LOG_ERROR("Device \"%s\": Not found.", udid);
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new(device, &client, "deviceinfo"))) {
-        LOG_ERROR("Could not connect to lockdownd, error code %d", ldret);
+        LOG_ERROR("Device \"%s\": Could not connect to lockdownd, error code %d.", udid, ldret);
         idevice_free(device);
         return NULL;
     }
@@ -108,19 +108,19 @@ const char *deviceName(const char *udid, enum idevice_options lookup_ops) {
     lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
 
     if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
-        LOG_ERROR("No device found with udid %s, is it plugged in?", udid);
+        LOG_ERROR("Device \"%s\": Not found.", udid);
         return NULL;
     }
 
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new(device, &client, "devicename"))) {
-        LOG_ERROR("Could not connect to lockdownd, error code %d", ldret);
+        LOG_ERROR("Device \"%s\": Could not connect to lockdownd, error code %d.", udid, ldret);
         idevice_free(device);
         return NULL;
     }
 
     char* name = NULL;
     if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_get_device_name(client, &name))) {
-        LOG_ERROR("Could not get device name, error code %d", ldret);
+        LOG_ERROR("Device \"%s\": Could not get device name, error code %d.", udid, ldret);
     }
 
     lockdownd_client_free(client);

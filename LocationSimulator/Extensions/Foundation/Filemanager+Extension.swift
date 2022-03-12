@@ -352,3 +352,42 @@ extension FileManager {
         return [:]
     }
 }
+
+// MARK: - Logger
+
+let kLogFileName = "log.txt"
+
+extension FileManager {
+    public var logDir: URL {
+        let documentDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let logsDir = documentDir.appendingPathComponent("logs")
+        if !self.createFolder(atUrl: logsDir) {
+            logError("Could not create 'logs' directory. Only stdout logs are available.")
+        }
+        return logsDir
+    }
+
+    public var logfile: URL {
+        return self.logDir.appendingPathComponent(kLogFileName)
+    }
+
+    @discardableResult
+    public func clearBackupLogs() -> Bool {
+        var success = true
+        let enumerator = self.enumerator(atPath: self.logDir.path)
+        while let file = enumerator?.nextObject() as? String {
+            // Skip the current log
+            if file == kLogFileName {
+                continue
+            }
+
+            do {
+                try self.removeItem(atPath: file)
+            } catch {
+                logError("Could not delete logs. Reason: \(error.localizedDescription)")
+                success = false
+            }
+        }
+        return success
+    }
+}

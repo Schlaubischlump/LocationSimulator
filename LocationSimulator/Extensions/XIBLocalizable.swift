@@ -43,6 +43,7 @@ extension NSToolbarItem: TooltipXIBLocalizable, PaletteLabelXIBLocalizable {
         set(key) {
             if let localized = key?.localized, key != localized {
                 self.paletteLabel = localized
+                self.label = localized
             }
         }
     }

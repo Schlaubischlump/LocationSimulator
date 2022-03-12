@@ -29,7 +29,7 @@ extension SidebarDataSource {
         if var device: IOSDevice = notification.userInfo?["device"] as? IOSDevice {
             // This should never be the case, but let's make sure that a device is unique.
             if self.realDevices.contains(device) { return }
-            logInfo("Connect device: \(device.name) with UDID: \(device.udid)")
+            logInfo("Device \"\(device.udid)\" - \(device.name): Connected.")
             // The internal `preferNetworkConnection` might not be updated for the cached device
             device.preferNetworkConnection = UserDefaults.standard.preferNetworkDevices
             // Insert the device alphabetically at the correct index.
@@ -47,7 +47,7 @@ extension SidebarDataSource {
         } else if let device: SimulatorDevice = notification.userInfo?["device"] as? SimulatorDevice {
             // This should never be the case, but let's make sure that a device is unique.
             if self.simDevices.contains(device) { return }
-            logInfo("Connect simulator device: \(device.name) with UDID: \(device.udid)")
+            logInfo("SimulatorDevice \"\(device.udid)\" - \(device.name): Connected.")
             // Insert the device alphabetically at the correct index.
             let index = self.simDevices.insertionIndexOf(device) { $0.name < $1.name }
             // Add the new device to the internal list and update the UI
@@ -63,7 +63,7 @@ extension SidebarDataSource {
     /// - Parameter notification: notification with device information (UDID and name)
     @objc func devicePaired(_ notification: Notification) {
         guard let device: Device = notification.userInfo?["device"] as? Device else { return }
-        logInfo("Paired device: \(device.name) with UDID: \(device.udid)")
+        logInfo("Device \"\(device.udid)\" - \(device.name): Paired.")
 
         // Reupload the Developerdiskimage by reapplying the selection if the unpaired device is already selected.
         guard device.udid == self.selectedDevice?.udid else { return }
@@ -82,7 +82,7 @@ extension SidebarDataSource {
         if let index: Int = self.realDevices.firstIndex(of: device) {
             self.realDevices[index] = device
 
-            logInfo("Update device: \(device.name) with UDID: \(device.udid)")
+            logInfo("Device \"\(device.udid)\" - \(device.name): Updated.")
 
             // Update the image and the text. index+1 for the HeaderCell
             self.updateCell(atIndex: index+1)
@@ -95,7 +95,7 @@ extension SidebarDataSource {
         if let device: IOSDevice = notification.userInfo?["device"] as? IOSDevice {
             // remove the device from the list and the list popup
             if let index: Int = self.realDevices.firstIndex(of: device) {
-                logInfo("Disconnect device: \(device.name) with UDID: \(device.udid)")
+                logInfo("Device \"\(device.udid)\" - \(device.name): Disconnected.")
 
                 // True if the currently selected device was removed.
                 let removeCurrent = (self.selectedDevice as? IOSDevice == self.realDevices.remove(at: index))
@@ -112,7 +112,7 @@ extension SidebarDataSource {
             }
         } else if let device: SimulatorDevice = notification.userInfo?["device"] as? SimulatorDevice {
             if let index: Int = self.simDevices.firstIndex(of: device) {
-                logInfo("Disconnect simulator device: \(device.name) with UDID: \(device.udid)")
+                logInfo("SimulatorDevice \"\(device.udid)\" - \(device.name): Disconnected.")
 
                 // True if the currently selected device was removed.
                 let removeCurrent = (self.selectedDevice as? SimulatorDevice == self.simDevices.remove(at: index))

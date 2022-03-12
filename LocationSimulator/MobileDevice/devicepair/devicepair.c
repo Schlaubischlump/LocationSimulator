@@ -25,13 +25,14 @@ bool pairDevice(const char* udid, enum idevice_options lookup_ops) {
     lockdownd_client_t client = NULL;
 
     if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
-        LOG_ERROR("Could not create device with UDID: %s", udid);
+        LOG_ERROR("Device \"%s\": Not found.", udid);
         return false;
     }
 
     // try to perform the handshake
-    if (LOCKDOWN_E_SUCCESS != lockdownd_client_new_with_handshake(device, &client, "devicepair")) {
-        LOG_ERROR("Could not pair device with UDID: %s", udid);
+    lockdownd_error_t ldret = LOCKDOWN_E_UNKNOWN_ERROR;
+    if (LOCKDOWN_E_SUCCESS != (ldret = lockdownd_client_new_with_handshake(device, &client, "devicepair"))) {
+        LOG_ERROR("Device \"%s\": Could not connect to lockdownd, error code %d.", udid, ldret);
         idevice_free(device);
         return false;
     }

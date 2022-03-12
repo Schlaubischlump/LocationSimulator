@@ -22,6 +22,7 @@ extern "C" {
 #define LOG_FATAL(fmt, ...) logger_log(LogLevel_FATAL, fmt, ##__VA_ARGS__)
 
 typedef enum {
+    LogLevel_NONE = -1,
     LogLevel_TRACE,
     LogLevel_DEBUG,
     LogLevel_INFO,
@@ -98,6 +99,8 @@ void logger_flush(void);
  * @param[in] ... Additional arguments
  */
 void logger_log(LogLevel level, const char* fmt, ...);
+
+int logger_clear(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
