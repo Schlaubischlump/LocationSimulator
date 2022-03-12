@@ -15,6 +15,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var menubarController: MenubarController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // Init the logger
+        let documentDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let logFile = documentDir.appendingPathComponent("log.txt")
+
+        logger_initConsoleLogger(nil)
+        logger_initFileLogger(logFile.path, 1024*1024*5, 5) // 5MB limit per file
+
         // Register all the default setting values for this application.
         let defaults = UserDefaults.standard
         defaults.registerGeneralDefaultValues()

@@ -67,6 +67,8 @@
 		63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */; };
 		6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376756A258EC809000DCEF3 /* SeparatorLine.swift */; };
 		637FD228259578B700E84EDB /* TouchbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FD227259578B700E84EDB /* TouchbarController.swift */; };
+		63864C0727DC2207005F94F3 /* logger.c in Sources */ = {isa = PBXBuildFile; fileRef = 63864C0527DC2207005F94F3 /* logger.c */; };
+		63864C0927DC221E005F94F3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63864C0827DC221E005F94F3 /* LICENSE */; };
 		63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */; };
 		63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */; };
 		63888DDA2592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */; };
@@ -171,6 +173,9 @@
 		63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
 		6376756A258EC809000DCEF3 /* SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		637FD227259578B700E84EDB /* TouchbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarController.swift; sourceTree = "<group>"; };
+		63864C0327DC2207005F94F3 /* logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logger.h; sourceTree = "<group>"; };
+		63864C0527DC2207005F94F3 /* logger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = logger.c; sourceTree = "<group>"; };
+		63864C0827DC221E005F94F3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarDataSource.swift; sourceTree = "<group>"; };
 		63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidebarDataSource+DeviceNotifications.swift"; sourceTree = "<group>"; };
@@ -268,6 +273,7 @@
 				13BA351920A433EE00A0431C /* AppDelegate.swift */,
 				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				633C74D425AA2CE800161DB4 /* Main.storyboard */,
+				63864BF827DC1CF9005F94F3 /* Logging */,
 				632C465723F4B5F5004E5092 /* Menubar */,
 				638B909D254B513300A520E0 /* Preferences */,
 				637206342591479800293EA8 /* Alerts */,
@@ -474,6 +480,7 @@
 		63525957258E8FC80031F289 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */,
 				63525958258E8FC80031F289 /* HUDView.swift */,
 				6376756A258EC809000DCEF3 /* SeparatorLine.swift */,
 			);
@@ -516,6 +523,24 @@
 				637FD227259578B700E84EDB /* TouchbarController.swift */,
 			);
 			path = TouchbarController;
+			sourceTree = "<group>";
+		};
+		63864BF827DC1CF9005F94F3 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				63864BF927DC1F85005F94F3 /* Backend */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		63864BF927DC1F85005F94F3 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				63864C0827DC221E005F94F3 /* LICENSE */,
+				63864C0527DC2207005F94F3 /* logger.c */,
+				63864C0327DC2207005F94F3 /* logger.h */,
+			);
+			path = Backend;
 			sourceTree = "<group>";
 		};
 		63888DCC2592AEB000B1DFC9 /* MapViewController */ = {
@@ -588,7 +613,6 @@
 			isa = PBXGroup;
 			children = (
 				63D5DF3D27D913F500F2DCD3 /* VersionNumberFormatter.swift */,
-				63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */,
 				63D5DF3727D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift */,
 				63D5DF3927D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib */,
 			);
@@ -739,6 +763,7 @@
 				633C74C025AA28DF00161DB4 /* Localizable.strings in Resources */,
 				63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */,
 				63D5DF3A27D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib in Resources */,
+				63864C0927DC221E005F94F3 /* LICENSE in Resources */,
 				6305075423FB06A700EF529A /* Credits.rtf in Resources */,
 				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
 				633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */,
@@ -863,6 +888,7 @@
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
 				63D5DF3C27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift in Sources */,
 				63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */,
+				63864C0727DC2207005F94F3 /* logger.c in Sources */,
 				63D5DF3827D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift in Sources */,
 				631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */,
 				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,

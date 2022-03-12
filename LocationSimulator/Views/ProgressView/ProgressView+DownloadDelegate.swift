@@ -50,15 +50,18 @@ extension ProgressView: DownloaderDelegate {
 
     func downloadCanceled(downloader: Downloader, task: DownloadTask) {
         guard downloader.tasks.count == 0 else { return }
+        if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
         self.downloadFinishedAction?(.cancel)
     }
 
     func downloadFinished(downloader: Downloader, task: DownloadTask) {
         guard downloader.tasks.count == 0 else { return }
+        if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
         self.downloadFinishedAction?(.success)
     }
 
     func downloadError(downloader: Downloader, task: DownloadTask, error: Error) {
+        if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
         self.downloadFinishedAction?(.failure)
     }
 }

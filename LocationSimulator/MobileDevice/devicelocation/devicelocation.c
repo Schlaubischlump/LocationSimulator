@@ -30,22 +30,22 @@ bool resetLocation(const char* udid, enum idevice_options lookup_ops) {
     lockdownd_service_descriptor_t service = NULL;
 
     if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
-        LOG_ERR("No iOS device with specified udid found.");
+        LOG_ERROR("No iOS device with specified udid found.");
         goto leave_and_cleanup;
     }
 
     if (LOCKDOWN_E_SUCCESS != lockdownd_client_new_with_handshake(device, &client, "devicelocation")) {
-        LOG_ERR("Could not connect to lockdownd client.");
+        LOG_ERROR("Could not connect to lockdownd client.");
         goto leave_and_cleanup;
     }
 
     if ((lockdownd_start_service(client, "com.apple.dt.simulatelocation",  &service) != LOCKDOWN_E_SUCCESS) || !service) {
-        LOG_ERR("Could not start com.apple.dt.simulatelocation!");
+        LOG_ERROR("Could not start com.apple.dt.simulatelocation!");
         goto leave_and_cleanup;
     }
 
     if (service_client_new(device, service, &service_client)) {
-        LOG_ERR("Could not create service client.");
+        LOG_ERROR("Could not create service client.");
         goto leave_and_cleanup;
     }
     uint32_t send_bytes = 0;
@@ -53,7 +53,7 @@ bool resetLocation(const char* udid, enum idevice_options lookup_ops) {
     if (service_send(service_client, (void*)&stopMessage, sizeof(stopMessage), &send_bytes)
         || send_bytes != sizeof(stopMessage))
     {
-        LOG_ERR("Could not send stop data to service client.");
+        LOG_ERROR("Could not send stop data to service client.");
         goto leave_and_cleanup;
     }
     res = true;
@@ -81,22 +81,22 @@ bool sendLocation(const char *lat, const char *lng, const char* udid, enum idevi
     lockdownd_service_descriptor_t service = NULL;
 
     if (IDEVICE_E_SUCCESS != idevice_new_with_options(&device, udid, lookup_ops)) {
-        LOG_ERR("No iOS device with specified udid found.");
+        LOG_ERROR("No iOS device with specified udid found.");
         goto leave_and_cleanup;
     }
 
     if (LOCKDOWN_E_SUCCESS != lockdownd_client_new_with_handshake(device, &client, "devicelocation")) {
-        LOG_ERR("Could not connect to lockdownd.");
+        LOG_ERROR("Could not connect to lockdownd.");
         goto leave_and_cleanup;
     }
 
     if ((lockdownd_start_service(client, "com.apple.dt.simulatelocation",  &service) != LOCKDOWN_E_SUCCESS) || !service) {
-        LOG_ERR("Could not start com.apple.dt.simulatelocation!");
+        LOG_ERROR("Could not start com.apple.dt.simulatelocation!");
         goto leave_and_cleanup;
     }
 
     if (service_client_new(device, service, &service_client)) {
-        LOG_ERR("Could not create service client.");
+        LOG_ERROR("Could not create service client.");
         goto leave_and_cleanup;
     } else {
         uint32_t send_bytes = 0;
@@ -107,7 +107,7 @@ bool sendLocation(const char *lat, const char *lng, const char* udid, enum idevi
         // send start
         if (service_send(service_client, (void*)&startMsg, sizeof(startMsg), &send_bytes)
             || send_bytes != sizeof(startMsg)) {
-            LOG_ERR("Could not send start data to service client.");
+            LOG_ERROR("Could not send start data to service client.");
             goto leave_and_cleanup;
         }
 
@@ -117,7 +117,7 @@ bool sendLocation(const char *lat, const char *lng, const char* udid, enum idevi
             || service_send(service_client, lat, (uint32_t)strlen(lat), &send_bytes)
             || send_bytes != (uint32_t)strlen(lat))
         {
-            LOG_ERR("Could not send lat data to service client.");
+            LOG_ERROR("Could not send lat data to service client.");
             goto leave_and_cleanup;
         }
 
@@ -127,7 +127,7 @@ bool sendLocation(const char *lat, const char *lng, const char* udid, enum idevi
             || service_send(service_client, lng, (uint32_t)strlen(lng), &send_bytes)
             || send_bytes != (uint32_t)strlen(lng))
         {
-            LOG_ERR("Could not send lng data to service client.");
+            LOG_ERROR("Could not send lng data to service client.");
             goto leave_and_cleanup;
         }
         res = true;

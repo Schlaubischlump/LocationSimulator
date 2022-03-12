@@ -187,7 +187,14 @@ struct IOSDevice: Device {
     ///    * `DeviceError.productInfo`: Could not read the devices product version string
     private func mountDeveloperDiskImage() throws {
         // developer image is already mounted
-        if developerImageIsMountedForDevice(udid, self.lookupOps) {
+        let manager: FileManager = FileManager.default
+
+        // elevate the access privilege level if required
+        let startAccess = manager.startAccessingSupportDirectory()
+        let isMounted = developerImageIsMountedForDevice(udid, self.lookupOps)
+        if startAccess { manager.stopAccessingSupportDirectory() }
+
+        if isMounted {
             return
         }
 
@@ -198,19 +205,20 @@ struct IOSDevice: Device {
             // Get the current product name e.g. iPhone OS
             let productName = String(cString: retName)
             // get the path to the developer disk images
-            let manager: FileManager = FileManager.default
-            if let devDMG: URL = manager.getDeveloperDiskImage(os: productName, iOSVersion: productVersion),
-                let devSign: URL = manager.getDeveloperDiskImageSignature(os: productName, iOSVersion: productVersion) {
+            if let devDMG: URL = manager.getDeveloperDiskImage(os: productName, version: productVersion),
+                let devSign: URL = manager.getDeveloperDiskImageSignature(os: productName, version: productVersion) {
 
-                var isDir: ObjCBool = false
-                if !manager.fileExists(atPath: devDMG.path, isDirectory: &isDir) || isDir.boolValue ||
-                    !manager.fileExists(atPath: devSign.path, isDirectory: &isDir) || isDir.boolValue {
-                        throw DeviceError.devDiskImageNotFound("DeveloperDiskImage not found!",
-                                                               os: productName, version: productVersion)
+                if !manager.hasDownloadedSupportFiles(os: productName, version: productVersion) {
+                    throw DeviceError.devDiskImageNotFound("DeveloperDiskImage not found!", os: productName,
+                                                           version: productVersion)
                 }
 
                 // try to mount the developer image
-                if !mountImageForDevice(udid, devDMG.path, devSign.path, self.lookupOps) {
+                let startAccess = manager.startAccessingSupportDirectory()
+                let isMounted = mountImageForDevice(udid, devDMG.path, devSign.path, self.lookupOps)
+                if startAccess { manager.stopAccessingSupportDirectory() }
+
+                if !isMounted {
                     throw DeviceError.devDiskImageMount("Mount error!", os: productName, version: productVersion)
                 }
             } else {

@@ -8,6 +8,57 @@
 
 import AppKit
 
+let kCustomSupportDirectoryKey: String = "com.schlaubischlump.locationsimulator.customsupportdirectory"
+let kCustomSupportDirectoryEnabledKey: String = "com.schlaubischlump.locationsimulator.customsupportdirectoryenabled"
+
+// Extend the UserDefaults with all keys relevant for this tab.
+extension UserDefaults {
+    @objc dynamic var customSupportDirectoryEnabled: Bool {
+        get { return self.bool(forKey: kCustomSupportDirectoryEnabledKey) }
+        set { self.setValue(newValue, forKey: kCustomSupportDirectoryEnabledKey) }
+    }
+
+    @objc dynamic var customSupportDirectory: URL? {
+        get {
+            guard let data = self.data(forKey: kCustomSupportDirectoryKey) else { return nil }
+            var isStale: Bool = false
+            let url = try? URL(resolvingBookmarkData: data,
+                            options: .withSecurityScope,
+                            relativeTo: nil,
+                            bookmarkDataIsStale: &isStale)
+
+            // Try to renew our url if it is stale
+            guard isStale else { return url }
+
+            if let data = try? url?.bookmarkData(options: .withSecurityScope,
+                                                 includingResourceValuesForKeys: nil,
+                                                 relativeTo: nil) {
+                self.setValue(data, forKey: kCustomSupportDirectoryKey)
+                return try? URL(resolvingBookmarkData: data,
+                                options: .withSecurityScope,
+                                relativeTo: nil,
+                                bookmarkDataIsStale: &isStale)
+            }
+            return nil
+        }
+        set {
+            if let data = try? newValue?.bookmarkData(options: .withSecurityScope,
+                                                      includingResourceValuesForKeys: nil,
+                                                      relativeTo: nil) {
+                self.setValue(data, forKey: kCustomSupportDirectoryKey)
+            }
+        }
+    }
+
+    /// Register the default NSUserDefault values.
+    func registerDeveloperDiskImagesDefaultValues() {
+        UserDefaults.standard.register(defaults: [
+            kCustomSupportDirectoryKey: URL(fileURLWithPath: ""),
+            kCustomSupportDirectoryEnabledKey: false
+        ])
+    }
+}
+
 enum Platform: String {
     case iPhoneOS = "iPhone OS"
     case watchOS = "Watch OS"
@@ -26,6 +77,11 @@ class DeveloperDiskImagesViewController: NSViewController {
     /// The main table view that lists all available os versions
     @IBOutlet var tableView: NSTableView!
 
+    @IBOutlet var customSupportPathCheckbox: NSButton!
+    @IBOutlet var chooseCustomSupportPathButton: NSButton!
+    @IBOutlet var customSupportPathTextField: NSTextField!
+    @IBOutlet var customSupportPathFooter: NSTextField!
+
     /// The segmented control to change the current platform
     @IBOutlet var platformSegment: NSSegmentedControl! {
         didSet {
@@ -41,7 +97,7 @@ class DeveloperDiskImagesViewController: NSViewController {
     /// The toolbar elements at the bottom of the table view
     @IBOutlet var toolbarSegment: NSSegmentedControl! {
         didSet {
-            self.updateDesturctiveToolbarItems()
+            self.updateDesturctiveToolbarItemsAvailibility()
         }
     }
 
@@ -65,6 +121,11 @@ class DeveloperDiskImagesViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.customSupportPathCheckbox.state = UserDefaults.standard.customSupportDirectoryEnabled ? .on : .off
+        self.updateCustomSupportPathSelectionAvailibility()
+
+        self.customSupportPathTextField.stringValue = UserDefaults.standard.customSupportDirectory?.path ?? ""
+
         // Setup the right click menu
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "SHOW_IN_FINDER".localized,
@@ -84,9 +145,7 @@ class DeveloperDiskImagesViewController: NSViewController {
         guard row >= 0 else { return }
 
         let version = self.cachedOsVersions[row]
-        if let path = FileManager.default.getDeveloperDiskImage(os: self.selectedPlatform, iOSVersion: version) {
-            NSWorkspace.shared.open(path.deletingLastPathComponent())
-        }
+        FileManager.default.showDeveloperDiskImageInFinder(os: self.selectedPlatform, version: version)
     }
 
     /// Add a new DeveleoperDiskImage.dmg + signature combination to the list by asking the user to download one or
@@ -99,10 +158,15 @@ class DeveloperDiskImagesViewController: NSViewController {
             guard response == .OK else { return }
 
             let manager = FileManager.default
-            if let devDiskPath = manager.getDeveloperDiskImage(os: alert.os, iOSVersion: alert.version),
-                let devDiskSigPath = manager.getDeveloperDiskImageSignature(os: alert.os, iOSVersion: alert.version) {
-                  try? manager.copyItem(at: alert.developerDiskImageFile, to: devDiskPath)
-                  try? manager.copyItem(at: alert.developerDiskImageSignatureFile, to: devDiskSigPath)
+
+            if let devDiskPath = manager.getDeveloperDiskImage(os: alert.os, version: alert.version),
+                let devDiskSigPath = manager.getDeveloperDiskImageSignature(os: alert.os, version: alert.version) {
+
+                try? manager.accessSupportDirectory {
+                    try? manager.copyItem(at: alert.developerDiskImageFile, to: devDiskPath)
+                    try? manager.copyItem(at: alert.developerDiskImageSignatureFile, to: devDiskSigPath)
+                }
+
                 self.reloadData()
             }
         }
@@ -114,7 +178,7 @@ class DeveloperDiskImagesViewController: NSViewController {
 
         let fileManager = FileManager.default
 
-        if fileManager.removeDownload(os: self.selectedPlatform, iOSVersion: version) {
+        if fileManager.removeDownload(os: self.selectedPlatform, version: version) {
             self.reloadData()
         } else {
             self.view.window?.showError("DEVDISK_DELETE_FAILED_ERROR", message: "DEVDISK_DELETE_FAILED_ERROR_MSG")
@@ -125,36 +189,31 @@ class DeveloperDiskImagesViewController: NSViewController {
     private func refreshSelectedDeveloperDiskImageFiles() {
         guard let version = self.selectedVersion, let window = self.view.window else { return }
 
+        let platform = self.selectedPlatform
         let fileManager = FileManager.default
 
         // Backup the existing files
-        let tmpDir = fileManager.temporaryDirectory
-        let devDisk = fileManager.getDeveloperDiskImage(os: self.selectedPlatform, iOSVersion: version)!
-        let devDiskSig = fileManager.getDeveloperDiskImageSignature(os: self.selectedPlatform, iOSVersion: version)!
-        let devDiskTmp = tmpDir.appendingPathComponent(UUID().uuidString)
-        let devDiskSigTmp = tmpDir.appendingPathComponent(UUID().uuidString)
-
+        var token: BackupToken?
         do {
-            try fileManager.copyItem(at: devDisk, to: devDiskTmp)
-            try fileManager.copyItem(at: devDiskSig, to: devDiskSigTmp)
+            token = try fileManager.backupSupportFiles(os: platform, version: version)
         } catch {
             window.showError("DEVDISK_REFRESH_FAILED_ERROR", message: "DEVDISK_BACKUP_FAILED_ERROR_MSG")
         }
 
-        // Download the new one
-        let alert = ProgressAlert(os: self.selectedPlatform, version: version)
+        // Download the new files
+        let alert = ProgressAlert(os: platform, version: version)
         let result = alert.runSheetModal(forWindow: window)
+
         if result == .failed {
             window.showError("DEVDISK_REFRESH_FAILED_ERROR", message: "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG")
         }
 
         // The download failed or it was canceled => restore the original files
-        if result != .OK {
+        if result != .OK, let token = token {
             do {
-                _ = try fileManager.replaceItemAt(devDisk, withItemAt: devDiskTmp)
-                _ = try fileManager.replaceItemAt(devDiskSig, withItemAt: devDiskSigTmp)
+                try fileManager.restoreSupportFiles(token: token)
             } catch {
-                print("[ERROR]: \(self.selectedPlatform) \(version): Could not rollback DeveloperDiskImage files.")
+                logError("\(platform) \(version): Could not rollback DeveloperDiskImage files.")
             }
         }
     }
@@ -165,7 +224,7 @@ class DeveloperDiskImagesViewController: NSViewController {
         self.cachedOsVersions = osVersions
 
         self.tableView.reloadData()
-        self.updateDesturctiveToolbarItems()
+        self.updateDesturctiveToolbarItemsAvailibility()
     }
 
     @IBAction func platformSelectionDidChange(_ sender: NSSegmentedControl) {
@@ -183,10 +242,49 @@ class DeveloperDiskImagesViewController: NSViewController {
     }
 
     /// Disable the remove and refresh based on the current selection.
-    private func updateDesturctiveToolbarItems() {
+    private func updateDesturctiveToolbarItemsAvailibility() {
         let enabled = self.selectedVersion != nil
-        self.toolbarSegment.setEnabled(enabled, forSegment: 1) // Remove item
-        self.toolbarSegment.setEnabled(enabled, forSegment: 2) // Refresh item
+        let isWriteable = FileManager.default.isSupportDirectoryWriteable
+
+        self.toolbarSegment.setEnabled(isWriteable, forSegment: 0) // Add item
+        self.toolbarSegment.setEnabled(enabled && isWriteable, forSegment: 1) // Remove item
+        self.toolbarSegment.setEnabled(enabled && isWriteable, forSegment: 2) // Refresh item
+    }
+
+    private func updateCustomSupportPathSelectionAvailibility() {
+        let enabled = (self.customSupportPathCheckbox.state == .on)
+        self.customSupportPathFooter.alphaValue = enabled ? 1.0 : 0.2
+        // We can not allow the user to enter a path. The user must select the path, so that we can gain access to it.
+        // Otherwise the sanbox blocks our attempt to access the file.
+        self.customSupportPathTextField.isEnabled = false // enabled
+        self.chooseCustomSupportPathButton.isEnabled = enabled
+    }
+
+    @IBAction func customPathCheckboxChanged(_ sender: NSButton) {
+        UserDefaults.standard.customSupportDirectoryEnabled = (sender.state == .on)
+        self.updateCustomSupportPathSelectionAvailibility()
+        self.reloadData()
+    }
+
+    @IBAction func chooseCustomPath(_ sender: NSButton) {
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseFiles = false
+        openPanel.canChooseDirectories = true
+        openPanel.allowsMultipleSelection = false
+        openPanel.title = "CHOOSE_DEVELOPER_DISK_IMAGE_PATH_TITLE".localized
+        if openPanel.runModal() == .OK {
+            let url = openPanel.url
+            self.customSupportPathTextField.stringValue = url?.path ?? ""
+            UserDefaults.standard.customSupportDirectory = url
+
+            // Add a security bookmark to keep access to the file even after a restart of the application
+            if UserDefaults.standard.customSupportDirectory == nil {
+                self.view.window?.showError("CHANGING_SUPPORT_DIRECTORY_FAILED",
+                                            message: "CHANGING_SUPPORT_DIRECTORY_FAILED_MSG")
+            }
+
+            self.reloadData()
+        }
     }
 }
 
@@ -209,6 +307,6 @@ extension DeveloperDiskImagesViewController: NSTableViewDelegate {
 
     func tableViewSelectionDidChange(_ notification: Notification) {
         guard notification.object as? NSTableView == self.tableView else { return }
-        self.updateDesturctiveToolbarItems()
+        self.updateDesturctiveToolbarItemsAvailibility()
     }
 }

@@ -46,6 +46,9 @@ class ProgressView: NSView {
     /// The DeveloperDiskImageSignature download task.
     private var devSignTask: DownloadTask?
 
+    /// True if the support directory is currently accessed, False otherwise
+    public private(set) var isAccessingSupportDir: Bool = false
+
     // MARK: - Constructor
 
     override init(frame frameRect: NSRect) {
@@ -88,8 +91,8 @@ class ProgressView: NSView {
     @objc public func prepareDownload(os: String, iOSVersion: String) -> Bool {
         // Check if the path for the image and signature file can be created.
         let manager = FileManager.default
-        guard let devDMG = manager.getDeveloperDiskImage(os: os, iOSVersion: iOSVersion),
-              let devSign = manager.getDeveloperDiskImageSignature(os: os, iOSVersion: iOSVersion) else {
+        guard let devDMG = manager.getDeveloperDiskImage(os: os, version: iOSVersion),
+              let devSign = manager.getDeveloperDiskImageSignature(os: os, version: iOSVersion) else {
             return false
         }
 
@@ -118,6 +121,7 @@ class ProgressView: NSView {
 
         self.isDownloading = true
         // Start the downlaod process.
+        self.isAccessingSupportDir = FileManager.default.startAccessingSupportDirectory()
         self.downloader.start(devDiskTask)
         self.downloader.start(devSignTask)
         return true

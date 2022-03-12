@@ -38,7 +38,7 @@ class AddDeveloperDiskImageView: NSView {
         self.contentView.frame = self.bounds
         self.addSubview(self.contentView)
 
-        // Only enable the addButton if the user selected a valid image and a signature file
+        // Only enable the addButton if the user filled out the form correctly
         self.addButton.isEnabled = false
         self.versionTextField.delegate = self
         self.imageFileTextField.delegate = self
@@ -61,7 +61,7 @@ class AddDeveloperDiskImageView: NSView {
     @IBAction func add(_ sender: NSButton) {
         guard let window = self.window else { return }
 
-        // Apply the formatter before we dismiss the sheet
+        // Make sure we have a valid version number before we exit
         var version = self.versionTextField.stringValue
         if version.last == "." {
             version += "0"
@@ -115,10 +115,10 @@ class AddDeveloperDiskImageView: NSView {
         let signatureExists = fileManager.fileExists(atPath: signatureFile, isDirectory: &isDir) && !isDir.boolValue
 
         // Update the preview on the right side
-        if imageExists {
+        if imageExists && imageFile.split(separator: ".").last == "dmg" {
             self.devImageDropBox.filePath = imageFile
         }
-        if signatureExists {
+        if signatureExists && signatureFile.split(separator: ".").last == "signature"{
             self.devSignatureDropBox.filePath = signatureFile
         }
 
