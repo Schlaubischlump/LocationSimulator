@@ -2113,9 +2113,6 @@
                             <outlet property="delegate" destination="rSB-OX-bfh" id="Ydf-Th-S6D"/>
                         </connections>
                     </tabView>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="PREFERENCES_TITLE"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="uVV-Vv-12T" kind="relationship" relationship="tabItems" id="odq-jy-Lbr"/>
                         <segue destination="eae-4P-ykM" kind="relationship" relationship="tabItems" id="A2N-3S-Vxn"/>
