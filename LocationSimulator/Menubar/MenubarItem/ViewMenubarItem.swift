@@ -13,6 +13,8 @@ let kViewMenuTag: Int = 3
 /// The main File menu.
 enum ViewMenubarItem: Int, CaseIterable, MenubarItem {
     case toggleSidebar = 3
+    case zoomIn = 6
+    case zoomOut = 7
 
     static public var menu: NSMenu? {
         return NSApp.menu?.item(withTag: kViewMenuTag)?.submenu

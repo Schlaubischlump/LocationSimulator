@@ -34,25 +34,29 @@ enum DeviceStatus {
     public var enabledMenubarItems: [MenubarItem] {
         var navigationItems: [NavigationMenubarItem] = [.walk, .cycle, .drive]
         let fileMenuItems: [FileMenubarItem] = [.openGPXFile]
-        let viewMenuItems: [ViewMenubarItem] = [.toggleSidebar]
+        var viewMenuItems: [ViewMenubarItem] = [.toggleSidebar]
 
         switch self {
         case .disconnected:
             return navigationItems
         case .connected:
             navigationItems += [.setLocation, .recentLocation, .useMacLocation]
+            viewMenuItems += [.zoomIn, .zoomOut]
             return navigationItems + fileMenuItems + viewMenuItems
         case .manual:
             navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
                                 .moveClockwise, .moveCounterclockwise, .moveUp, .moveDown]
+            viewMenuItems += [.zoomIn, .zoomOut]
             return navigationItems + fileMenuItems + viewMenuItems
         case .auto:
             navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
                                 .moveClockwise, .moveCounterclockwise]
+            viewMenuItems += [.zoomIn, .zoomOut]
             return navigationItems + fileMenuItems + viewMenuItems
         case .navigation:
             navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
                                 .stopNavigation]
+            viewMenuItems += [.zoomIn, .zoomOut]
             return navigationItems + fileMenuItems + viewMenuItems
         }
     }

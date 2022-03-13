@@ -353,8 +353,7 @@ class MapViewController: NSViewController {
         }
     }
 
-    /// Request the routing for a GPX route. First teleport or navigate to the start of the route. Than navigate
-    /// along the route.
+    /// Request routing for a GPX route. Teleport or navigate to the start of the route, then navigate along the route.
     /// - Parameter route: the coordinates for this GPX route
     func requestGPXRouting(route: [CLLocationCoordinate2D]) {
         // make sure we can spoof a location and no dialog is currently showing
@@ -388,5 +387,13 @@ class MapViewController: NSViewController {
             default: break
             }
         }
+    }
+
+    public func zoomIn() {
+        self.mapView.zoomIn()
+    }
+
+    public func zoomOut() {
+        self.mapView.zoomOut()
     }
 }

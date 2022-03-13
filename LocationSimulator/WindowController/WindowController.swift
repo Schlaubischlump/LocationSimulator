@@ -249,4 +249,14 @@ class WindowController: NSWindowController {
             window.showError("ERROR_OPEN_GPX", message: "ERROR_OPEN_GPX_MSG")
         }
     }
+
+    /// Zoom in the mapView.
+    public func zoomInMap() {
+        self.mapViewController?.zoomIn()
+    }
+
+    /// Zoom out the mapView.
+    public func zoomOutMap() {
+        self.mapViewController?.zoomOut()
+    }
 }

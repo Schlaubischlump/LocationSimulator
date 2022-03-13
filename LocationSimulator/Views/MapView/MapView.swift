@@ -157,4 +157,29 @@ class MapView: MKMapView {
         }
         return false
     }
+
+    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        // This is ugly...
+        // We want to prevent the zoom in and zoom out default key bindings, so that our menu bar action gets performed
+        // and lights up.
+        let flags = event.modifierFlags
+        let commandDown = flags.contains(.command) &&
+                            !flags.contains(.option) &&
+                            !flags.contains(.shift) &&
+                            !flags.contains(.control)
+        if (event.keyCode == 30 || event.keyCode == 44) && commandDown {
+            return false
+        }
+        return super.performKeyEquivalent(with: event)
+    }
+
+    public func zoomIn() {
+        // Perform the default NSResponder zoomIn.
+        self.perform(Selector(("zoomIn:")), with: nil)
+    }
+
+    public func zoomOut() {
+        // Perform the default NSResponder zoomOut
+        self.perform(Selector(("zoomOut:")), with: nil)
+    }
 }

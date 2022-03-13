@@ -723,3 +723,9 @@
 
 
 "ZOOM_MENUITEM" = "Zoom";
+
+
+"ZOOM_IN_MENUITEM" = "Zoom In";
+
+
+"ZOOM_OUT_MENUITEM" = "Zoom Out";

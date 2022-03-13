@@ -261,4 +261,13 @@ class MenubarController: NSResponder {
     @IBAction func toggleSidebar(_ sender: NSMenuItem) {
         self.windowController?.toggleSidebar()
     }
+
+    @IBAction func zoomInView(_ sender: NSMenuItem) {
+        self.windowController?.zoomInMap()
+    }
+
+    @IBAction func zoomOutView(_ sender: NSMenuItem) {
+        self.windowController?.zoomOutMap()
+    }
+
 }
