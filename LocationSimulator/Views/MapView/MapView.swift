@@ -183,7 +183,7 @@ class MapView: MKMapView {
     public func zoomOut() {
         // Perform the default NSResponder zoomOut
         if !self.tryToPerform(Selector(("zoomOut:")), with: nil) {
-            logError("\(String(describing: MenubarController.self)): Could not selector zoomOut ")
+            logError("\(String(describing: MenubarController.self)): Could not perform zoomOut")
         }
     }
 }
