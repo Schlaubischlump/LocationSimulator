@@ -58,6 +58,7 @@ extension FileManager {
         do {
             try self.createDirectory(at: url, withIntermediateDirectories: false, attributes: .none)
         } catch {
+            logError("Folder \(url.path): Could not be created. Reason: \(error.localizedDescription)")
             return false
         }
         return true
@@ -103,33 +104,37 @@ extension FileManager {
     /// - Parameter os: the platform or operating system e.g. iPhone OS
     /// - Return: List with version numbers (e.g. [15.0, 15.1, 15.2])
     public func getAvailableVersions(os: String) -> [String] {
-        guard let url = self.getSupportDirectory(create: true) else { return [] }
+        guard let supportFolder = self.getSupportDirectory(create: true) else { return [] }
 
-        let startAccess = url.startAccessingSecurityScopedResource()
+        let startAccess = supportFolder.startAccessingSecurityScopedResource()
 
         defer {
             if startAccess {
-                url.stopAccessingSecurityScopedResource()
+                supportFolder.stopAccessingSecurityScopedResource()
             }
         }
 
-        let osFolder: URL = url.appendingPathComponent(os)
-        guard let content = try? self.contentsOfDirectory(at: osFolder, includingPropertiesForKeys: [.isDirectoryKey],
-                                                          options: [.skipsHiddenFiles]) else {
-            return []
-        }
+        let osFolder: URL = supportFolder.appendingPathComponent(os)
+        let enumerator = self.enumerator(at: osFolder, includingPropertiesForKeys: [.isDirectoryKey],
+                                         options: .skipsHiddenFiles, errorHandler: { url, error  in
+            logError("DeveloperDiskImage directory \(url.path): Skipping. Reason: \(error.localizedDescription)")
+            return true
+        })
 
-        return content.compactMap { url in
+        return enumerator?.compactMap { url in
+            guard let url = url as? URL else { return nil }
+
             if let value = try? url.resourceValues(forKeys: [.isDirectoryKey]), value.isDirectory ?? false {
                 let devDisk = url.appendingPathComponent("DeveloperDiskImage.dmg")
                 let devDiskSig = url.appendingPathComponent("DeveloperDiskImage.dmg.signature")
                 if self.fileExists(atPath: devDisk.path) && self.fileExists(atPath: devDiskSig.path) {
                     return url.lastPathComponent
+                } else {
+                    logWarning("DeveloperDiskImage directory \(url.path): Skipping. Reason: Missing support files.")
                 }
-                return nil
             }
             return nil
-        }.filter { $0.isVersionString }.sorted { $0 > $1 }
+        }.filter { $0.isVersionString }.sorted { $0 > $1 } ?? []
     }
 
     /// Check if the DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature for a specific platform and version
@@ -174,6 +179,8 @@ extension FileManager {
         do {
             try self.removeItem(at: versionFolder)
         } catch {
+            let errorMsg = error.localizedDescription
+            logError("DeveloperDiskImage directory \(versionFolder.path): Could not be deleted. Reason: \(errorMsg)")
             return false
         }
 
@@ -320,6 +327,7 @@ extension FileManager {
         guard let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist"),
               let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath),
               let downloadLinksForOS: NSDictionary = downloadLinksPlist[os] as? NSDictionary else {
+            logError("DeveloperDiskImage download links: Not found. Corrupted plist file!")
             return ([], [])
         }
 
@@ -328,6 +336,8 @@ extension FileManager {
            let dmgLinks = downloadLinks["Image"] as? [String],
            let signLinks = downloadLinks["Signature"] as? [String] {
             return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
+        } else {
+            logInfo("DeveloperDiskImage download links: Not found. Using fallback...")
         }
 
         // Try to use the fallback links if no direct links were found.
@@ -336,6 +346,8 @@ extension FileManager {
            let signLinks = fallbackLinks["Signature"] as? [String] {
             return (dmgLinks.map { URL(string: String(format: $0, version))! },
                     signLinks.map { URL(string: String(format: $0, version))! })
+        } else {
+            logError("DeveloperDiskImage download links: Fallback url not found!")
         }
 
         // We did not find any download link.
@@ -348,46 +360,9 @@ extension FileManager {
         if let plistPath = Bundle.main.path(forResource: "Licenses", ofType: "plist") {
             let licenseDict = NSDictionary(contentsOfFile: plistPath) as? [String: String]
             return licenseDict ?? [:]
+        } else {
+            logError("Licenses: Could not be loaded.")
         }
         return [:]
-    }
-}
-
-// MARK: - Logger
-
-let kLogFileName = "log.txt"
-
-extension FileManager {
-    public var logDir: URL {
-        let documentDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let logsDir = documentDir.appendingPathComponent("logs")
-        if !self.createFolder(atUrl: logsDir) {
-            logError("Could not create 'logs' directory. Only stdout logs are available.")
-        }
-        return logsDir
-    }
-
-    public var logfile: URL {
-        return self.logDir.appendingPathComponent(kLogFileName)
-    }
-
-    @discardableResult
-    public func clearBackupLogs() -> Bool {
-        var success = true
-        let enumerator = self.enumerator(atPath: self.logDir.path)
-        while let file = enumerator?.nextObject() as? String {
-            // Skip the current log
-            if file == kLogFileName {
-                continue
-            }
-
-            do {
-                try self.removeItem(atPath: file)
-            } catch {
-                logError("Could not delete logs. Reason: \(error.localizedDescription)")
-                success = false
-            }
-        }
-        return success
     }
 }

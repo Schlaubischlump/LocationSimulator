@@ -11,10 +11,11 @@
 		6305075423FB06A700EF529A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6305075323FB06A700EF529A /* Credits.rtf */; };
 		630BC72027DCFFBE00675426 /* LogToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC71F27DCFFBE00675426 /* LogToolbarController.swift */; };
 		630BC72227DD09C800675426 /* NSTableCellView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */; };
+		630C0C9627DE024600C3D5A9 /* FileManager+Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */; };
 		630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4A142593ECD100442713 /* NoDeviceView.swift */; };
 		6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B794230C13AF00AABF3E /* LocationSpoofer.swift */; };
 		6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */; };
-		6311B799230C150D00AABF3E /* Filemanager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B798230C150D00AABF3E /* Filemanager+Extension.swift */; };
+		6311B799230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */; };
 		63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156BFA22FAD16D0086D5F6 /* devicelocation.c */; };
 		63156C0422FB67610086D5F6 /* devicepair.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C0322FB67610086D5F6 /* devicepair.c */; };
 		63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C0A22FB78B60086D5F6 /* deviceimagemounter.c */; };
@@ -121,10 +122,11 @@
 		6305075323FB06A700EF529A /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Supporting Files/Credits.rtf"; sourceTree = "<group>"; };
 		630BC71F27DCFFBE00675426 /* LogToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToolbarController.swift; sourceTree = "<group>"; };
 		630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableCellView+Extension.swift"; sourceTree = "<group>"; };
+		630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Logger.swift"; sourceTree = "<group>"; };
 		630C4A142593ECD100442713 /* NoDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
 		6311B794230C13AF00AABF3E /* LocationSpoofer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpoofer.swift; sourceTree = "<group>"; };
 		6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Protocol.swift"; sourceTree = "<group>"; };
-		6311B798230C150D00AABF3E /* Filemanager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Filemanager+Extension.swift"; sourceTree = "<group>"; };
+		6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DeveloperDiskImages.swift"; sourceTree = "<group>"; };
 		63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LocationSimulator-Bridging-Header.h"; sourceTree = "<group>"; };
 		63156BFA22FAD16D0086D5F6 /* devicelocation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = devicelocation.c; sourceTree = "<group>"; };
 		63156BFC22FAD1C60086D5F6 /* endianness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = endianness.h; sourceTree = "<group>"; };
@@ -467,7 +469,8 @@
 				633C750125AA78F900161DB4 /* String+Extension.swift */,
 				635C13882596EA9800BEB53B /* Array+Extension.swift */,
 				631EBFE2259409190066D5BB /* Notification+Extension.swift */,
-				6311B798230C150D00AABF3E /* Filemanager+Extension.swift */,
+				630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */,
+				6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -866,7 +869,7 @@
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
 				632A962C254811AC0078B8DD /* ContentView.swift in Sources */,
 				6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */,
-				6311B799230C150D00AABF3E /* Filemanager+Extension.swift in Sources */,
+				6311B799230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift in Sources */,
 				63C799FD259659740099B794 /* InfoViewController.swift in Sources */,
 				633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */,
 				63525922258B74290031F289 /* NavigationMenuabrItem.swift in Sources */,
@@ -909,6 +912,7 @@
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
 				63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
+				630C0C9627DE024600C3D5A9 /* FileManager+Logger.swift in Sources */,
 				638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */,
 				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,

@@ -38,7 +38,7 @@ struct LogLine {
         case "ERROR":   return .systemRed
         case "TRACE":   return .systemGray
         case "FATAL":   return .systemPurple
-        case "WARN":    return .systemOrange
+        case "WARNING": return .systemOrange
         default:        return .black
         }
     }
