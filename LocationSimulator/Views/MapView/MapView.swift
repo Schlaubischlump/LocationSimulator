@@ -175,11 +175,15 @@ class MapView: MKMapView {
 
     public func zoomIn() {
         // Perform the default NSResponder zoomIn.
-        self.perform(Selector(("zoomIn:")), with: nil)
+        if !self.tryToPerform(Selector(("zoomIn:")), with: nil) {
+            logError("\(String(describing: MenubarController.self)): Could not perform zoomIn")
+        }
     }
 
     public func zoomOut() {
         // Perform the default NSResponder zoomOut
-        self.perform(Selector(("zoomOut:")), with: nil)
+        if !self.tryToPerform(Selector(("zoomOut:")), with: nil) {
+            logError("\(String(describing: MenubarController.self)): Could not selector zoomOut")
+        }
     }
 }
