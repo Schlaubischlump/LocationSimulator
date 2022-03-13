@@ -1,5 +1,3 @@
-
-/* MARK: -- LocationSimulator */
 "ABOUT_MENUITEM" = "Om LocationSimulator";
 
 
@@ -23,7 +21,7 @@
 
 "AUTOFOCUS_TOOLBARITEM_TOOLTIP" = "Autofokusera nuvarande plats";
 
-/* MARK: ------ Baseline */
+
 "BASELINE_MENU" = "Baslinje";
 
 
@@ -59,13 +57,13 @@
 
 "CHECK_SPELLING_WHILE_TYPING_MENUITEM" = "Kontrollera stavning när jag skriver";
 
-/* MARK: - GPXSelectionView */
+
 "CHOOSE" = "Välj";
 
-/*  */
+
 "CHOOSE_DEVELOPER_DISK_IMAGE_PATH" = "Välj";
 
-/* GPX Alert */
+
 "CHOOSE_GPX_FILE" = "Välj en .gpx fil";
 
 
@@ -74,7 +72,7 @@
 
 "CLOSE_MENUITEM" = "Stäng";
 
-/* Confirm teleportation. */
+
 "CONFIRM_TELEPORT" = "Bekräfta teleportering";
 
 
@@ -83,7 +81,7 @@
 
 "CONFIRM_TELEPORTATION_SETTING" = "Bekräfta teleportering";
 
-/* Confirm teleportation. */
+
 "CONFIRM_TELEPORT_MSG" = "Vill du verkligen teleportera?";
 
 
@@ -98,7 +96,7 @@
 
 "CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Åtgärda stavning automatiskt";
 
-/* Current location annotation */
+
 "CURRENT_LOCATION" = "Nuvarande plats";
 
 
@@ -119,7 +117,7 @@
 
 "DELETE_MENUITEM" = "Ta bort";
 
-/* MARK: - Alert Buttons */
+
 "DESTINATION" = "Destination";
 
 
@@ -134,10 +132,10 @@
 
 "DEVDISK_NOT_FOUND" = "DeveloperDiskImage filer hittades ej";
 
-/*  */
+
 "DEVELOPER_DISK_IMAGES_TITLE_SETTING" = "DiskImages";
 
-/* Device sidebar */
+
 "DEVICE_HEADER" = "Enheter";
 
 
@@ -146,7 +144,7 @@
 
 "DRIVE_MENUITEM" = "Kör";
 
-/* MARK: -- Edit */
+
 "EDIT_MENU" = "Redigera";
 
 
@@ -167,10 +165,10 @@
 
 "ERROR_PARSE_GPX" = "Fel vid tolkning av GPX-fil";
 
-/* GPXAlert */
+
 "ERROR_PARSE_GPX_MSG" = "Kunde inte tolka den givna GPX-filen. Filen är möjligen skadad eller ogiltigt formatterad.";
 
-/* MARK: -- File */
+
 "FILE_MENU" = "Fil";
 
 
@@ -179,7 +177,7 @@
 
 "FIND_AND_REPLACE_..._MENUITEM" = "Sök och ersätt…";
 
-/* MARK: ---- Find */
+
 "FIND_MENU" = "Sök";
 
 
@@ -191,19 +189,19 @@
 
 "FIND_PREVIOUS_MENUITEM" = "Sök föregående";
 
-/* MARK: ---- Font */
+
 "FONT_MENU" = "Typsnitt";
 
 
 "FONT_MENUITEM" = "Typsnitt";
 
-/* MARK: -- Format */
+
 "FORMAT_MENU" = "Format";
 
 
 "FORMAT_MENUITEM" = "Format";
 
-/* MARK: -- General */
+
 "GENERAL_TITEL_SETTING" = "Allmänt";
 
 
@@ -218,7 +216,7 @@
 
 "GPX_SELECTION_MSG" = "Välj ett spår, spårsegment, rutt eller vägpunkter för att starta navigationen.";
 
-/* MARK: -- Help */
+
 "HELP_MENU" = "Hjälp";
 
 
@@ -230,7 +228,7 @@
 
 "HIDE_OTHERS_MENUITEM" = "Göm andra";
 
-/* MARK: -- INFO */
+
 "INFO_TITLE_SETTING" = "Information";
 
 
@@ -242,28 +240,28 @@
 
 "JUSTIFY_MENUITEM" = "Marginaljustera";
 
-/* MARK: ------ Kern */
+
 "KERN_MENU" = "Kern";
 
 
 "KERN_MENUITEM" = "Kern";
 
-/* MARK: - CoordinateSelectionView */
+
 "LAT" = "Lat";
 
 
 "LEFT_TO_RIGHT_MENUITEM" = "	Vänster till höger";
 
-/* MARK: -- License */
+
 "LICENSE_TITLE_SETTING" = "Licens";
 
-/* MARK: ------ Ligatures */
+
 "LIGATURES_MENU" = "Ligaturer";
 
 
 "LIGATURES_MENUITEM" = "Ligaturer";
 
-/* Location change */
+
 "LOCATION_CHANGE_ERROR" = "Fel vid platsbyte";
 
 
@@ -272,10 +270,10 @@
 
 "LOCATION_RESET_ERROR_MSG" = "Kunde inte nollställa platsinformation.";
 
-/* Use mac location */
+
 "LOCATION_SERVICE_DISABLED" = "Aktivera platstjänster";
 
-/* Use mac location */
+
 "LOCATION_SERVICE_DISABLED_MSG" = "Platstjänster verkar vara avstängda. Vänligen aktivera platstjänster via Systeminställningar.";
 
 
@@ -296,7 +294,7 @@
 
 "MAC_LOCATION_TOOLBARITEM_TOOLTIP" = "Sätt Macens plats till nuvarande plats";
 
-/* MARK: - MenuItem */
+
 "MAIN_MENU" = "Huvudmeny";
 
 
@@ -326,13 +324,13 @@
 
 "NAVIGATE" = "Navigera";
 
-/* MARK: -- Navigation */
+
 "NAVIGATION_MENU" = "Navigering";
 
-/* MARK: -- NETWORK */
+
 "NETWORK_TITEL_SETTING" = "Nätverk";
 
-/* MARK: - NoDeviceView */
+
 "NO_DEVICE" = "Ingen Enhet Markerad";
 
 
@@ -350,7 +348,7 @@
 
 "OPEN_PROJECT_PAGE_MENUITEM" = "Öppna projektsida";
 
-/* MARK: - Alert Messages */
+
 "PAIR_ERROR_MSG" = "Kunde inte upprätta en anslutning till enheten.";
 
 
@@ -389,7 +387,7 @@
 
 "PRODUCT_INFO_ERROR" = "Could not get product info";
 
-/* MARK: - ProgressView */
+
 "PROGRESS" = "Ladda ned iOS support files";
 
 
@@ -416,7 +414,7 @@
 
 "RESET_TOOLBARITEM_PALETTELABEL" = "Nollställ";
 
-/* Tooltip */
+
 "RESET_TOOLBARITEM_TOOLTIP" = "Sluta simulera enhetens platsinformation";
 
 
@@ -431,10 +429,10 @@
 
 "ROUTE" = "Rutt";
 
-/* MARK: - Toolbar */
+
 "SEARCH_PLACEHOLDER" = "Sök";
 
-/* Palette Label */
+
 "SEARCH_TOOLBARITEM_PALETTELABEL" = "Sök";
 
 
@@ -497,13 +495,13 @@
 
 "SMART_QUOTES_MENUITEM" = "Smarta citattecken";
 
-/* MARK: ---- Speech */
+
 "SPEECH_MENU" = "Tal";
 
 
 "SPEECH_MENUITEM" = "Tal";
 
-/* MARK: ---- Spelling and Grammar */
+
 "SPELLING_GRAMMAR_MENU" = "Stavning och grammatik";
 
 
@@ -521,7 +519,7 @@
 
 "SUBSCRIPT_MENUITEM" = "Nedsänkt";
 
-/* MARK: ---- Substitutions */
+
 "SUBSTITUTIONS_MENU" = "Ersättningar";
 
 
@@ -536,10 +534,10 @@
 
 "TELEPORT_OR_NAVIGATE_GPX_MSG" = "Vill du teleportera eller navigera till startpositionen för denna rutt?";
 
-/* Location change */
+
 "TELEPORT_OR_NAVIGATE_MSG" = "Vill du teleportera eller navigera till destinationen?";
 
-/* MARK: ---- Text */
+
 "TEXT_MENU" = "Text";
 
 
@@ -548,7 +546,7 @@
 
 "TEXT_REPLACEMENT_MENUITEM" = "Textersättningar";
 
-/*  */
+
 "THREAD" = "Thread";
 
 
@@ -557,7 +555,7 @@
 
 "TOGGLE_AUTOMOVE_MENUITEM" = "Toggla auto-förflyttning";
 
-/* Total distance label in the bottom bar. */
+
 "TOTAL_DISTANCE" = "Sammanlagd sträcka: %.3fkm";
 
 
@@ -566,7 +564,7 @@
 
 "TRACK_SEGMENT" = "Spårsegment";
 
-/* MARK: ---- Transformations */
+
 "TRANSFORMATIONS_MENU" = "Transformationer";
 
 
@@ -578,7 +576,7 @@
 
 "UNDO_MENUITEM" = "Ångra";
 
-/* MARK: - Alert Titles */
+
 "UNKNOWN_ERROR" = "Okänt fel";
 
 
@@ -596,7 +594,7 @@
 
 "USE_SELECTION_FOR_FIND_MENUITEM" = "Använd markering för sök";
 
-/* MARK: -- View */
+
 "VIEW_MENU" = "Visa";
 
 
@@ -605,7 +603,7 @@
 
 "WALK_MENUITEM" = "Gå";
 
-/* The tooltip for the warning triangle in the lower right corner. */
+
 "WARNING_TRIANGLE_TOOLTIP" = "Enhet ej parad";
 
 
@@ -614,13 +612,13 @@
 
 "WELCOME" = "Tack för att du använder LocationSimulator!\n\nDen här mjukvaran är fortfarande i beta. Vänligen rapportera all eventuella buggar du stöter på.";
 
-/* MARK: -- Window */
+
 "WINDOW_MENU" = "Fönster";
 
 
 "WINDOW_MENUITEM" = "Fönster";
 
-/* MARK: ------ Writing Direction */
+
 "WRITING_DIRECTION_MENU" = "Skrivriktning";
 
 
@@ -628,3 +626,9 @@
 
 
 "ZOOM_MENUITEM" = "Zooma";
+
+
+"ZOOM_IN_MENUITEM" = "Zoom In";
+
+
+"ZOOM_OUT_MENUITEM" = "Zoom Out";

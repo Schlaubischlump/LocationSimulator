@@ -1,5 +1,3 @@
-
-/* MARK: -- LocationSimulator */
 "ABOUT_MENUITEM" = "À propos de LocationSimulator";
 
 
@@ -23,7 +21,7 @@
 
 "AUTOFOCUS_TOOLBARITEM_TOOLTIP" = "Autofocus current location";
 
-/* MARK: ------ Baseline */
+
 "BASELINE_MENU" = "Ligne de base";
 
 
@@ -59,13 +57,13 @@
 
 "CHECK_SPELLING_WHILE_TYPING_MENUITEM" = "Vérifier l’orthographe lors de la saisie";
 
-/* MARK: - GPXSelectionView */
+
 "CHOOSE" = "Choose";
 
-/*  */
+
 "CHOOSE_DEVELOPER_DISK_IMAGE_PATH" = "Choose";
 
-/* GPX Alert */
+
 "CHOOSE_GPX_FILE" = "Choose a .gpx file";
 
 
@@ -74,7 +72,7 @@
 
 "CLOSE_MENUITEM" = "Fermer";
 
-/* Confirm teleportation. */
+
 "CONFIRM_TELEPORT" = "Confirm Teleportation";
 
 
@@ -83,7 +81,7 @@
 
 "CONFIRM_TELEPORTATION_SETTING" = "Confirm Teleportation";
 
-/* Confirm teleportation. */
+
 "CONFIRM_TELEPORT_MSG" = "Do you really want to teleport?";
 
 
@@ -98,7 +96,7 @@
 
 "CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Corriger l’orthographe automatiquement";
 
-/* Current location annotation */
+
 "CURRENT_LOCATION" = "Current Location";
 
 
@@ -119,7 +117,7 @@
 
 "DELETE_MENUITEM" = "Supprimer";
 
-/* MARK: - Alert Buttons */
+
 "DESTINATION" = "Destination";
 
 
@@ -134,10 +132,10 @@
 
 "DEVDISK_NOT_FOUND" = "DeveloperDiskImage files not found";
 
-/*  */
+
 "DEVELOPER_DISK_IMAGES_TITLE_SETTING" = "DiskImages";
 
-/* Device sidebar */
+
 "DEVICE_HEADER" = "Devices";
 
 
@@ -146,7 +144,7 @@
 
 "DRIVE_MENUITEM" = "Drive";
 
-/* MARK: -- Edit */
+
 "EDIT_MENU" = "Édition";
 
 
@@ -167,10 +165,10 @@
 
 "ERROR_PARSE_GPX" = "Error Parsing GPX File";
 
-/* GPXAlert */
+
 "ERROR_PARSE_GPX_MSG" = "Could not parse the selected GPX file. The file is possibly damaged or incorrectly formatted.";
 
-/* MARK: -- File */
+
 "FILE_MENU" = "Fichier";
 
 
@@ -179,7 +177,7 @@
 
 "FIND_AND_REPLACE_..._MENUITEM" = "Rechercher et remplacer…";
 
-/* MARK: ---- Find */
+
 "FIND_MENU" = "Rechercher";
 
 
@@ -191,19 +189,19 @@
 
 "FIND_PREVIOUS_MENUITEM" = "Rechercher le précédent";
 
-/* MARK: ---- Font */
+
 "FONT_MENU" = "Police";
 
 
 "FONT_MENUITEM" = "Police";
 
-/* MARK: -- Format */
+
 "FORMAT_MENU" = "Format";
 
 
 "FORMAT_MENUITEM" = "Format";
 
-/* MARK: -- General */
+
 "GENERAL_TITEL_SETTING" = "General";
 
 
@@ -218,7 +216,7 @@
 
 "GPX_SELECTION_MSG" = "Choose a Track, Track Segment, Route or the Waypoints to start the navigation.";
 
-/* MARK: -- Help */
+
 "HELP_MENU" = "Aide";
 
 
@@ -230,7 +228,7 @@
 
 "HIDE_OTHERS_MENUITEM" = "Masquer les autres";
 
-/* MARK: -- INFO */
+
 "INFO_TITLE_SETTING" = "Info";
 
 
@@ -242,28 +240,28 @@
 
 "JUSTIFY_MENUITEM" = "Justifier";
 
-/* MARK: ------ Kern */
+
 "KERN_MENU" = "Crénage";
 
 
 "KERN_MENUITEM" = "Crénage";
 
-/* MARK: - CoordinateSelectionView */
+
 "LAT" = "Lat";
 
 
 "LEFT_TO_RIGHT_MENUITEM" = "	De gauche à droite";
 
-/* MARK: -- License */
+
 "LICENSE_TITLE_SETTING" = "License";
 
-/* MARK: ------ Ligatures */
+
 "LIGATURES_MENU" = "Ligatures";
 
 
 "LIGATURES_MENUITEM" = "Ligatures";
 
-/* Location change */
+
 "LOCATION_CHANGE_ERROR" = "Error changing location";
 
 
@@ -272,10 +270,10 @@
 
 "LOCATION_RESET_ERROR_MSG" = "Could not reset location.";
 
-/* Use mac location */
+
 "LOCATION_SERVICE_DISABLED" = "Enable location services";
 
-/* Use mac location */
+
 "LOCATION_SERVICE_DISABLED_MSG" = "Location services seem to be disabled. Please activate location services inside System Preferences.";
 
 
@@ -296,7 +294,7 @@
 
 "MAC_LOCATION_TOOLBARITEM_TOOLTIP" = "Set Mac location to current location";
 
-/* MARK: - MenuItem */
+
 "MAIN_MENU" = "Main Menu";
 
 
@@ -326,13 +324,13 @@
 
 "NAVIGATE" = "Navigate";
 
-/* MARK: -- Navigation */
+
 "NAVIGATION_MENU" = "Navigation";
 
-/* MARK: -- NETWORK */
+
 "NETWORK_TITEL_SETTING" = "Network";
 
-/* MARK: - NoDeviceView */
+
 "NO_DEVICE" = "No Device Selected";
 
 
@@ -350,7 +348,7 @@
 
 "OPEN_PROJECT_PAGE_MENUITEM" = "Open Project Page";
 
-/* MARK: - Alert Messages */
+
 "PAIR_ERROR_MSG" = "Could not establish a connection to the device.";
 
 
@@ -389,7 +387,7 @@
 
 "PRODUCT_INFO_ERROR" = "Could not get product info";
 
-/* MARK: - ProgressView */
+
 "PROGRESS" = "Download iOS support files";
 
 
@@ -416,7 +414,7 @@
 
 "RESET_TOOLBARITEM_PALETTELABEL" = "Reset";
 
-/* Tooltip */
+
 "RESET_TOOLBARITEM_TOOLTIP" = "Stop faking the device location";
 
 
@@ -431,10 +429,10 @@
 
 "ROUTE" = "Route";
 
-/* MARK: - Toolbar */
+
 "SEARCH_PLACEHOLDER" = "Search";
 
-/* Palette Label */
+
 "SEARCH_TOOLBARITEM_PALETTELABEL" = "Search";
 
 
@@ -494,13 +492,13 @@
 
 "SMART_QUOTES_MENUITEM" = "Guillemets courbes";
 
-/* MARK: ---- Speech */
+
 "SPEECH_MENU" = "Parole";
 
 
 "SPEECH_MENUITEM" = "Parole";
 
-/* MARK: ---- Spelling and Grammar */
+
 "SPELLING_GRAMMAR_MENU" = "Orthographe et grammaire";
 
 
@@ -518,7 +516,7 @@
 
 "SUBSCRIPT_MENUITEM" = "Indice";
 
-/* MARK: ---- Substitutions */
+
 "SUBSTITUTIONS_MENU" = "Substitutions";
 
 
@@ -533,10 +531,10 @@
 
 "TELEPORT_OR_NAVIGATE_GPX_MSG" = "Do you want to navigate or teleport to the start location of this route?";
 
-/* Location change */
+
 "TELEPORT_OR_NAVIGATE_MSG" = "Do you want to teleport or navigate to the destination?";
 
-/* MARK: ---- Text */
+
 "TEXT_MENU" = "Texte";
 
 
@@ -545,7 +543,7 @@
 
 "TEXT_REPLACEMENT_MENUITEM" = "Remplacement de texte";
 
-/*  */
+
 "THREAD" = "Thread";
 
 
@@ -554,7 +552,7 @@
 
 "TOGGLE_AUTOMOVE_MENUITEM" = "Toggle Automove";
 
-/* Total distance label in the bottom bar. */
+
 "TOTAL_DISTANCE" = "Total distance: %.3fkm";
 
 
@@ -563,7 +561,7 @@
 
 "TRACK_SEGMENT" = "Segment";
 
-/* MARK: ---- Transformations */
+
 "TRANSFORMATIONS_MENU" = "Transformations";
 
 
@@ -575,7 +573,7 @@
 
 "UNDO_MENUITEM" = "Annuler";
 
-/* MARK: - Alert Titles */
+
 "UNKNOWN_ERROR" = "Unknown error";
 
 
@@ -593,7 +591,7 @@
 
 "USE_SELECTION_FOR_FIND_MENUITEM" = "Rechercher la sélection";
 
-/* MARK: -- View */
+
 "VIEW_MENU" = "Présentation";
 
 
@@ -602,7 +600,7 @@
 
 "WALK_MENUITEM" = "Walk";
 
-/* The tooltip for the warning triangle in the lower right corner. */
+
 "WARNING_TRIANGLE_TOOLTIP" = "Device not paired";
 
 
@@ -611,13 +609,13 @@
 
 "WELCOME" = "Thanks for using LocationSimulator !\n\nThis software is still in beta. Please report any bugs you find.";
 
-/* MARK: -- Window */
+
 "WINDOW_MENU" = "Fenêtre";
 
 
 "WINDOW_MENUITEM" = "Fenêtre";
 
-/* MARK: ------ Writing Direction */
+
 "WRITING_DIRECTION_MENU" = "Sens de l’écriture";
 
 
@@ -625,3 +623,9 @@
 
 
 "ZOOM_MENUITEM" = "Réduire/agrandir";
+
+
+"ZOOM_IN_MENUITEM" = "Zoom In";
+
+
+"ZOOM_OUT_MENUITEM" = "Zoom Out";

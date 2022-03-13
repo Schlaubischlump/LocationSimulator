@@ -725,3 +725,9 @@
 
 
 "ZOOM_MENUITEM" = "Zoomen";
+
+
+"ZOOM_IN_MENUITEM" = "Vergößern";
+
+
+"ZOOM_OUT_MENUITEM" = "Verkleinern";
