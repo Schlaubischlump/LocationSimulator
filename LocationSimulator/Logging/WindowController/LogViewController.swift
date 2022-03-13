@@ -163,7 +163,9 @@ extension LogViewController: NSTableViewDelegate {
         guard let identifier = tableColumn?.identifier.rawValue else { return nil }
 
         let logline = self.cachedData[row]
-        cell.textField?.stringValue = logline[identifier]
+        let text = logline[identifier]
+        cell.textField?.stringValue = text
+        cell.toolTip = text
 
         if identifier == "LEVEL" {
             cell.textField?.textColor = logline.levelColor
