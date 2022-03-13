@@ -2179,14 +2179,12 @@
                             </scrollView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-QT-zgv">
                                 <rect key="frame" x="18" y="257" width="400" height="24"/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yKm-gM-V3h">
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="rounded" trackingMode="selectOne" id="yKm-gM-V3h">
                                     <font key="font" metaFont="system"/>
                                     <segments>
                                         <segment width="130"/>
                                         <segment width="129" selected="YES" tag="1"/>
-                                        <segment width="129">
-                                            <nil key="label"/>
-                                        </segment>
+                                        <segment width="129"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
@@ -2195,11 +2193,11 @@
                             </segmentedControl>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="E1J-z2-5Z2" firstAttribute="trailing" secondItem="sVg-QT-zgv" secondAttribute="trailing" id="CJ4-as-i9W"/>
+                            <constraint firstItem="E1J-z2-5Z2" firstAttribute="trailing" secondItem="7Rv-sQ-Sau" secondAttribute="trailing" constant="-20" id="CJ4-as-i9W"/>
+                            <constraint firstItem="sVg-QT-zgv" firstAttribute="centerX" secondItem="7Rv-sQ-Sau" secondAttribute="centerX" id="LZO-Ak-q5b"/>
                             <constraint firstItem="E1J-z2-5Z2" firstAttribute="top" secondItem="sVg-QT-zgv" secondAttribute="bottom" constant="8" symbolic="YES" id="Qg9-B0-alC"/>
-                            <constraint firstItem="sVg-QT-zgv" firstAttribute="leading" secondItem="7Rv-sQ-Sau" secondAttribute="leading" constant="20" symbolic="YES" id="RiU-0F-iBk"/>
-                            <constraint firstItem="E1J-z2-5Z2" firstAttribute="leading" secondItem="sVg-QT-zgv" secondAttribute="leading" id="SVR-u9-MWq"/>
-                            <constraint firstItem="sVg-QT-zgv" firstAttribute="width" secondItem="7Rv-sQ-Sau" secondAttribute="width" constant="-40" id="VhL-ym-DBH"/>
+                            <constraint firstItem="E1J-z2-5Z2" firstAttribute="leading" secondItem="7Rv-sQ-Sau" secondAttribute="leading" constant="20" id="SVR-u9-MWq"/>
+                            <constraint firstItem="sVg-QT-zgv" firstAttribute="width" relation="lessThanOrEqual" secondItem="7Rv-sQ-Sau" secondAttribute="width" constant="-40" id="VhL-ym-DBH"/>
                             <constraint firstItem="sVg-QT-zgv" firstAttribute="top" secondItem="7Rv-sQ-Sau" secondAttribute="top" constant="20" symbolic="YES" id="X9z-4c-sSl"/>
                             <constraint firstAttribute="bottom" secondItem="E1J-z2-5Z2" secondAttribute="bottom" constant="20" symbolic="YES" id="nJJ-AI-9Oy"/>
                         </constraints>

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AppKit
 
 // MARK: Localizable
 public protocol Localizable {
@@ -42,5 +43,13 @@ extension String {
     /// changing the DeveloperDiskImage. We therefore ignore the revision in version numbers (major.minor.revision).
     var isVersionString: Bool {
         return self ~= "^\\d{1,2}\\.\\d{1,2}$"
+    }
+}
+
+// MARK: - Size
+
+extension String {
+    public func fittingWidth(forFont font: NSFont) -> CGFloat {
+        return (self as NSString).size(withAttributes: [.font: font]).width
     }
 }

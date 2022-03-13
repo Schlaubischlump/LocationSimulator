@@ -24,12 +24,12 @@ class LogToolbarController: NSResponder {
         super.init(coder: coder)
     }
 
-    @IBAction func refreshClicked(_ sender: Any) {
+    @IBAction func refreshClicked(_ sender: NSButton) {
         logger_flush()
         self.viewController?.reloadData()
     }
 
-    @IBAction func exportClicked(_ sender: Any) {
+    @IBAction func exportClicked(_ sender: NSButton) {
         guard let window = self.windowController?.window else { return }
 
         guard let logData = self.viewController?.logData else {
@@ -56,7 +56,7 @@ class LogToolbarController: NSResponder {
         }
     }
 
-    @IBAction func clearLogClicked(_ sender: Any) {
+    @IBAction func clearLogClicked(_ sender: NSButton) {
         if logger_clear() != 0 || !FileManager.default.clearBackupLogs() {
             self.windowController?.window?.showError("DELETE_LOG_FAILED", message: "DELETE_LOG_FAILED_MSG")
         } else {
