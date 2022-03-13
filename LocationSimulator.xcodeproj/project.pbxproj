@@ -12,6 +12,7 @@
 		630BC72027DCFFBE00675426 /* LogToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC71F27DCFFBE00675426 /* LogToolbarController.swift */; };
 		630BC72227DD09C800675426 /* NSTableCellView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */; };
 		630C0C9627DE024600C3D5A9 /* FileManager+Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */; };
+		630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9927DE4CC500C3D5A9 /* Float+Extension.swift */; };
 		630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4A142593ECD100442713 /* NoDeviceView.swift */; };
 		6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B794230C13AF00AABF3E /* LocationSpoofer.swift */; };
 		6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */; };
@@ -123,6 +124,7 @@
 		630BC71F27DCFFBE00675426 /* LogToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToolbarController.swift; sourceTree = "<group>"; };
 		630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableCellView+Extension.swift"; sourceTree = "<group>"; };
 		630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Logger.swift"; sourceTree = "<group>"; };
+		630C0C9927DE4CC500C3D5A9 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		630C4A142593ECD100442713 /* NoDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
 		6311B794230C13AF00AABF3E /* LocationSpoofer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpoofer.swift; sourceTree = "<group>"; };
 		6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Protocol.swift"; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				631EBFE2259409190066D5BB /* Notification+Extension.swift */,
 				630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */,
 				6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */,
+				630C0C9927DE4CC500C3D5A9 /* Float+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 				633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
+				630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
 				63D7042725FD7616004F6774 /* SimulatorDevice.swift in Sources */,
 				6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */,

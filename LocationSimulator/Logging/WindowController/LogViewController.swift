@@ -64,6 +64,8 @@ extension LogLine: CustomStringConvertible {
 class LogViewController: NSViewController {
     @IBOutlet var tableView: NSTableView!
 
+    private var optimalColumnWidth: [String: CGFloat] = [:]
+
     /// The cached log file data. Since we now the log size, we are sure that it always fits into the memory.
     private var cachedData: [LogLine] = []
 
@@ -81,8 +83,6 @@ class LogViewController: NSViewController {
         self.tableView.dataSource = self
 
         self.tableView.tableColumns.forEach { column in
-            // column.minWidth = 10
-            column.width = 10
             column.sortDescriptorPrototype = NSSortDescriptor(key: column.identifier.rawValue, ascending: true)
         }
 
@@ -140,6 +140,14 @@ class LogViewController: NSViewController {
         }
         self.sortData()
     }
+
+    override func viewDidAppear() {
+        self.tableView.tableColumns.forEach { column in
+            column.width = self.optimalColumnWidth[column.identifier.rawValue] ?? 10
+        }
+
+        super.viewDidAppear()
+    }
 }
 
 // MARK: - TableViewDataSource
@@ -171,39 +179,19 @@ extension LogViewController: NSTableViewDelegate {
             cell.textField?.textColor = logline.levelColor
         }
 
-        // Update the tableColumn width based on the required table width
+        // Calculate the optimal column width to fit the content
         guard let column = tableColumn else { return cell }
-        column.width = max(column.minWidth, min(max(cell.textFittingWidth, column.width), column.maxWidth))
+
+        // Add some padding to each cell to truly fit the content
+        let currentWidth = max(cell.textFittingWidth + 5, self.optimalColumnWidth[identifier] ?? 10)
+        self.optimalColumnWidth[identifier] = currentWidth.limitedBy(min: column.minWidth, max: column.maxWidth)
 
         return cell
     }
 
+    /// Called when the space between two table headers is double clicked. Resize the column to the optimal width.
     func tableView(_ tableView: NSTableView, sizeToFitWidthOfColumn column: Int) -> CGFloat {
-        let rowRange = tableView.rows(in: tableView.visibleRect)
-        let numberOfRows = tableView.numberOfRows
-
-        let minRow = max(0, rowRange.location - 50)
-        let maxRow = min(numberOfRows, rowRange.location + rowRange.length + 50)
-
-        let tableColumn = tableView.tableColumns[column]
-        let minWidth = tableColumn.minWidth
-        let maxWidth = tableColumn.maxWidth
-        var width = minWidth
-
-        for row in minRow..<maxRow {
-            if let cell = tableView.view(atColumn: column, row: row, makeIfNecessary: true) as? NSTableCellView {
-                let fittingWidth: CGFloat = cell.textFittingWidth
-
-                if fittingWidth > width {
-                    width = fittingWidth
-
-                    if width >= maxWidth {
-                        break
-                    }
-                }
-            }
-        }
-        return min(maxWidth, width+5)
+        return self.optimalColumnWidth[tableView.tableColumns[column].identifier.rawValue] ?? 10
     }
 
     func tableViewColumnDidResize(_ notification: Notification) {
