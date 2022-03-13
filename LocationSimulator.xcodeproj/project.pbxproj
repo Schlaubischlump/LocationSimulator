@@ -656,10 +656,10 @@
 		63D7042925FD77FA004F6774 /* SimulatorDevice */ = {
 			isa = PBXGroup;
 			children = (
+				63D7042D25FD7886004F6774 /* Header */,
 				63D7042E25FD78F9004F6774 /* util.h */,
 				63D7042A25FD7829004F6774 /* simulatordevice.h */,
 				63D7043025FD7988004F6774 /* simulatordevice.m */,
-				63D7042D25FD7886004F6774 /* Header */,
 			);
 			path = SimulatorDevice;
 			sourceTree = "<group>";

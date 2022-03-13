@@ -17,6 +17,7 @@
 
 #import "Header/CoreSimulator.h"
 #import "Header/SimulatorBridge.h"
+#include "logger.h"
 
 // The iOS Simulator bundle identifier
 NSString * _Nonnull const kSimBundleID = @"com.apple.iphonesimulator";
@@ -26,12 +27,12 @@ NSString * _Nonnull const kSimBundleID = @"com.apple.iphonesimulator";
  */
 static inline void* _Nullable load_bundle(NSString * _Nonnull path) {
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSLog(@"[Error]: Bundle is not present at path: %@", path);
+        LOG_ERROR("Bundle at path %s: Not found!", path.UTF8String);
         return nil;
     }
     void* fw = dlopen(path.UTF8String, RTLD_NOW | RTLD_GLOBAL);
     if (!fw) {
-        NSLog(@"[Error]: %s", dlerror());
+        LOG_ERROR("Bundle at path %s: Could not be opened. Reason: %s", path.UTF8String, dlerror());
         return nil;
     }
     return fw;
@@ -80,9 +81,10 @@ static inline SimulatorBridge * _Nullable bridgeForSimDevice(SimDevice * _Nonnul
 #pragma clang diagnostic pop
             return (SimulatorBridge *) bridgeDistantObject;
         }
-        NSLog(@"[Error]: Distant Object for port: '%@' is not a SimulatorBridge", portName);
+        LOG_ERROR("SimDevice %s: Distant Object for port: '%s' is not a SimulatorBridge.", device.name.UTF8String,
+                  portName.UTF8String);
     } else {
-        NSLog(@"[Error]: Could not get port for name: '%@'", portName);
+        LOG_ERROR("SimDevice %s: Could not get port for name: '%s'", device.name.UTF8String, portName.UTF8String);
     }
     return nil;
 }
@@ -95,7 +97,7 @@ static inline NSString * _Nullable getActiveDeveloperDir() {
 
     // If xcode-select is not installed, just skip the simulator support.
     if (![NSFileManager.defaultManager fileExistsAtPath:xcodeSelectPath]) {
-        NSLog(@"[Error]: Could not find: %@", xcodeSelectPath);
+        LOG_ERROR("xcode-select '%s': Not found!", xcodeSelectPath.UTF8String);
         return nil;
     }
 
@@ -116,7 +118,7 @@ static inline NSString * _Nullable getActiveDeveloperDir() {
     if (task.terminationStatus == 0) {
         grepOutput = [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];
     } else {
-        NSLog(@"[Error]: %@ failed with error code: %d", xcodeSelectPath, task.terminationStatus);
+        LOG_ERROR("xcode-select '%s': Failed with error code %d", xcodeSelectPath.UTF8String, task.terminationStatus);
     }
     [file closeFile];
 

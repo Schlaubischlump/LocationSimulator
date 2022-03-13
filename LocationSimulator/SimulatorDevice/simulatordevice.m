@@ -33,13 +33,13 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
     // Load the CoreSimulator library or fail if it can not be loaded.
     NSString *coreSimulatorPath = @"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulator";
     if (!load_bundle(coreSimulatorPath)) {
-        NSLog(@"[Error]: Could not load library: %@", coreSimulatorPath);
+        LOG_ERROR("CoreSimulator '%s': Load failed!", coreSimulatorPath.UTF8String);
         return;
     }
     // Get the active developer directory.
     NSString *path = getActiveDeveloperDir();
     if (!path) {
-        NSLog(@"[Error]: Could not get active developer directory.");
+        LOG_ERROR("Could not get active developer directory!", coreSimulatorPath.UTF8String);
         return;
     }
     // Try to create a SimServiceContext instance for the active developer directory.
@@ -47,13 +47,13 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
     SimServiceContext* context = [NSClassFromString(@"SimServiceContext") serviceContextForDeveloperDir:path
                                                                                                   error:&error];
     if (!context || (error != nil)) {
-        NSLog(@"[Error]: Could not create 'SimServiceContext' instance.");
+        LOG_ERROR("Could not create 'SimServiceContext' instance.");
         return;
     }
     // Create a default device set based on the SimServiceContext.
     SimDeviceSet *set = [context defaultDeviceSetWithError:&error];
     if (error != nil) {
-        NSLog(@"[Error]: Could not get default 'SimDeviceSet'.");
+        LOG_ERROR("Could not get default 'SimDeviceSet'.");
         return;
     }
     defaultSet = set;
