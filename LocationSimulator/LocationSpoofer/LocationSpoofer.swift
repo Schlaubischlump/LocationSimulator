@@ -116,6 +116,14 @@ class LocationSpoofer {
     /// True if a location update task is already running, false otehrwise.
     private var hasPendingTask: Bool = false
 
+    /// True if the navigation is currently paused
+    public var navigationIsPaused: Bool {
+        if self.moveState == .manual || self.route.count == 0 {
+            return false
+        }
+        return self.autoMoveTimer == nil
+    }
+
     // MARK: - Constructor
 
     init(_ device: Device) {
@@ -286,10 +294,14 @@ class LocationSpoofer {
         if self.moveState == .manual || self.route.count == 0 { return }
 
         if self.autoMoveTimer != nil {
+            self.delegate?.willPauseNavigation(spoofer: self)
             self.autoMoveTimer?.invalidate()
             self.autoMoveTimer = nil
+            self.delegate?.didPauseNavigation(spoofer: self)
         } else {
+            self.delegate?.willResumeNavigation(spoofer: self)
             self.move()
+            self.delegate?.didResumeNavigation(spoofer: self)
         }
     }
 

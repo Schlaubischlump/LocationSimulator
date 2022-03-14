@@ -5,9 +5,7 @@
 //  Created by David Klopp on 18.08.19.
 //  Copyright © 2019 David Klopp. All rights reserved.
 //
-// Using [weak self] should in theory prevent deallocated MapViewController to send notifications
 
-// TODO: Fix location spoofing is working although the dev disk image is not marked as uploaded
 // TODO: Fix UI blocks when the developer disk image is uploaded.
 
 import Cocoa

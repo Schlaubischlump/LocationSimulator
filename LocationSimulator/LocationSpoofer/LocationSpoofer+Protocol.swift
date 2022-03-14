@@ -44,6 +44,22 @@ protocol LocationSpooferDelegate: AnyObject {
     /// - Parameter spoofer: instance of the location spoofer
     /// - Parameter toCoordinate: the new location which should be set or nil if the loction should be reset
     func errorChangingLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?)
+
+    /// Called when a currently running navigation is about to be paused.
+    /// - Parameter spoofer: instance of the location spoofer
+    func willPauseNavigation(spoofer: LocationSpoofer)
+
+    /// Called when a currently running navigation is paused.
+    /// - Parameter spoofer: instance of the location spoofer
+    func didPauseNavigation(spoofer: LocationSpoofer)
+
+    /// Called when a currently running navigation is about to be resumed.
+    /// - Parameter spoofer: instance of the location spoofer
+    func willResumeNavigation(spoofer: LocationSpoofer)
+
+    /// Called when a currently running navigation is resumed.
+    /// - Parameter spoofer: instance of the location spoofer
+    func didResumeNavigation(spoofer: LocationSpoofer)
 }
 
 extension LocationSpooferDelegate {
@@ -55,6 +71,12 @@ extension LocationSpooferDelegate {
 
     func willChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {}
     func didChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {}
+
+    func willResumeNavigation(spoofer: LocationSpoofer) {}
+    func didResumeNavigation(spoofer: LocationSpoofer) {}
+
+    func willPauseNavigation(spoofer: LocationSpoofer) {}
+    func didPauseNavigation(spoofer: LocationSpoofer) {}
 
     func errorChangingLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {}
 }

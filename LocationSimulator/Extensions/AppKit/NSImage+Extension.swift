@@ -45,4 +45,8 @@ extension NSImage {
     static var moveImage: NSImage = NSImage(named: "Move")!
 
     static var controlsImage: NSImage =  NSImage(named: "Controls")!
+
+    static var playImage: NSImage = NSImage(named: "Play")!
+
+    static var pauseImage: NSImage = NSImage(named: "Pause")!
 }

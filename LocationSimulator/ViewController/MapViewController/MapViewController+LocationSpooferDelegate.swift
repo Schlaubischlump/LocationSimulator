@@ -18,13 +18,10 @@ extension MapViewController: LocationSpooferDelegate {
     func willChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
         // show a progress spinner when we request a location change
         self.contentView?.startSpinner()
-
         // remove the route overlay if it is present to fake an animation
         self.mapView.removeNavigationOverlay()
-
         // make sure the spoofer is setup
         guard let coord = toCoordinate, let spoofer = self.spoofer else { return }
-
         // if we are still navigating => update the overlay
         if !spoofer.route.isEmpty {
             self.mapView.addNavigationOverlay(withPath: [coord] + spoofer.route)
@@ -107,11 +104,15 @@ extension MapViewController: LocationSpooferDelegate {
             self.contentView?.movementButtonHUD.highlight = false
             // allow all movement to navigate manual
             status = .manual
+            // Hide or show the pause indicator depeding on wether we are currently navigating
+            self.contentView?.hidePlayPauseIndicator()
         case .auto:
             // Highlight the move button
             self.contentView?.movementButtonHUD.highlight = true
             // we are moving automatically or navigating
             status = spoofer.route.isEmpty ? .auto : .navigation
+            // Show the automove indicator
+            self.contentView?.showPauseIndicator()
         }
 
         // Remove the animatoon overlay if a navigation was canceled.
@@ -122,5 +123,13 @@ extension MapViewController: LocationSpooferDelegate {
             "device": spoofer.device,
             "status": status
         ])
+    }
+
+    public func didPauseNavigation(spoofer: LocationSpoofer) {
+        self.contentView?.showPlayIndicator()
+    }
+
+    public func didResumeNavigation(spoofer: LocationSpoofer) {
+        self.contentView?.showPauseIndicator()
     }
 }

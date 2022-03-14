@@ -2027,7 +2027,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="460" height="20"/>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NRh-IM-EPn">
-                                <rect key="frame" x="6" y="0.0" width="418" height="20"/>
+                                <rect key="frame" x="6" y="0.0" width="388" height="20"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Total distance: 0.0km" id="tGq-gI-j9V">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2036,7 +2036,18 @@
                             </textField>
                             <imageView hidden="YES" toolTip="Device not paired." horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JDL-Z8-47m">
                                 <rect key="frame" x="422" y="0.0" width="38" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="dqw-DY-JaW"/>
+                                </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="PiT-Ks-S1v"/>
+                            </imageView>
+                            <imageView hidden="YES" toolTip="Device not paired." horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P3G-jl-oKZ" userLabel="Play Pause Indicator">
+                                <rect key="frame" x="384" y="3" width="46" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="JFf-4T-OBo"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Play" id="YnU-oW-JKH"/>
+                                <color key="contentTintColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -2044,29 +2055,32 @@
                             <constraint firstItem="TG5-U0-nYN" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="2ZF-zC-WuN"/>
                             <constraint firstItem="NRh-IM-EPn" firstAttribute="top" secondItem="UPy-aZ-mQr" secondAttribute="bottom" id="973-3b-ooQ"/>
                             <constraint firstAttribute="bottom" secondItem="UPy-aZ-mQr" secondAttribute="bottom" constant="20" symbolic="YES" id="9dM-UV-Ckm"/>
+                            <constraint firstItem="P3G-jl-oKZ" firstAttribute="top" secondItem="NRh-IM-EPn" secondAttribute="top" constant="3" id="B3Z-m0-lVg"/>
                             <constraint firstItem="TG5-U0-nYN" firstAttribute="top" secondItem="NRh-IM-EPn" secondAttribute="top" id="Has-7X-t2c"/>
                             <constraint firstItem="UPy-aZ-mQr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ImC-oZ-TEm"/>
                             <constraint firstAttribute="trailing" secondItem="boF-o9-C5b" secondAttribute="trailing" constant="20" id="JO6-OV-mcd"/>
                             <constraint firstItem="JDL-Z8-47m" firstAttribute="height" secondItem="NRh-IM-EPn" secondAttribute="height" id="K0Y-1v-tOD"/>
                             <constraint firstItem="UPy-aZ-mQr" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="NtY-be-ghW"/>
-                            <constraint firstItem="NRh-IM-EPn" firstAttribute="trailing" secondItem="m2S-Jp-Qdl" secondAttribute="trailing" constant="-38" id="QS3-fW-Ot6"/>
+                            <constraint firstItem="NRh-IM-EPn" firstAttribute="trailing" secondItem="P3G-jl-oKZ" secondAttribute="leading" constant="8" symbolic="YES" id="QS3-fW-Ot6"/>
                             <constraint firstItem="T9r-7L-rgY" firstAttribute="leading" secondItem="UPy-aZ-mQr" secondAttribute="leading" id="TK0-2c-tqf"/>
                             <constraint firstItem="T9r-7L-rgY" firstAttribute="trailing" secondItem="JDL-Z8-47m" secondAttribute="trailing" id="VxL-gq-jhl"/>
                             <constraint firstItem="Xym-3b-sFG" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="Yc3-dH-aOJ"/>
-                            <constraint firstAttribute="trailing" secondItem="JDL-Z8-47m" secondAttribute="trailing" id="aMP-YC-YXt"/>
+                            <constraint firstItem="JDL-Z8-47m" firstAttribute="trailing" secondItem="m2S-Jp-Qdl" secondAttribute="trailing" id="aMP-YC-YXt"/>
                             <constraint firstItem="Xym-3b-sFG" firstAttribute="bottom" secondItem="m2S-Jp-Qdl" secondAttribute="bottom" constant="-23" id="ary-ft-mTb"/>
                             <constraint firstItem="TG5-U0-nYN" firstAttribute="bottom" secondItem="NRh-IM-EPn" secondAttribute="bottom" id="cM2-e5-RRI"/>
-                            <constraint firstItem="JDL-Z8-47m" firstAttribute="leading" secondItem="NRh-IM-EPn" secondAttribute="trailing" id="kDe-Xj-1mv"/>
+                            <constraint firstItem="P3G-jl-oKZ" firstAttribute="height" secondItem="NRh-IM-EPn" secondAttribute="height" constant="-6" id="isL-Bb-Vyp"/>
                             <constraint firstItem="T9r-7L-rgY" firstAttribute="bottom" secondItem="NRh-IM-EPn" secondAttribute="top" id="kQc-28-XrG"/>
                             <constraint firstItem="boF-o9-C5b" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="45" id="kut-FC-EeK"/>
                             <constraint firstAttribute="trailing" secondItem="UPy-aZ-mQr" secondAttribute="trailing" id="p7b-ys-8N4"/>
                             <constraint firstAttribute="bottom" secondItem="NRh-IM-EPn" secondAttribute="bottom" id="sG2-RO-xti"/>
+                            <constraint firstItem="P3G-jl-oKZ" firstAttribute="trailing" secondItem="JDL-Z8-47m" secondAttribute="leading" constant="8" symbolic="YES" id="xyc-To-rtd"/>
                             <constraint firstAttribute="trailing" secondItem="TG5-U0-nYN" secondAttribute="trailing" id="yqU-E3-UnL"/>
                             <constraint firstItem="JDL-Z8-47m" firstAttribute="top" secondItem="NRh-IM-EPn" secondAttribute="top" id="zIY-at-UPb"/>
                         </constraints>
                         <connections>
                             <outlet property="bottomConstraint" destination="9dM-UV-Ckm" id="E8l-Cd-dsC"/>
                             <outlet property="errorIndicator" destination="JDL-Z8-47m" id="yQh-Ov-Vt7"/>
+                            <outlet property="errorIndicatorWidthConstraint" destination="dqw-DY-JaW" id="mVz-TN-FzO"/>
                             <outlet property="labelHUD" destination="TG5-U0-nYN" id="TpW-ro-gdF"/>
                             <outlet property="mapView" destination="UPy-aZ-mQr" id="5GP-em-5ES"/>
                             <outlet property="movementButtonHUD" destination="ESA-EZ-scL" id="Bid-ke-fWU"/>
@@ -2074,6 +2088,7 @@
                             <outlet property="movementContainerHeightConstraint" destination="hVC-lo-kIi" id="GOU-od-GY3"/>
                             <outlet property="movementContainerWidthConstraint" destination="OUR-HS-s9j" id="j1Q-X2-JTq"/>
                             <outlet property="movementDirectionHUD" destination="Zt8-yG-DDP" id="09m-td-eqU"/>
+                            <outlet property="playPauseIndicator" destination="P3G-jl-oKZ" id="lG7-2s-TzE"/>
                             <outlet property="spinnerHUD" destination="boF-o9-C5b" id="fCE-FN-AFy"/>
                             <outlet property="totalDistanceLabel" destination="NRh-IM-EPn" id="duw-xI-axp"/>
                             <outlet property="totalDistanceLabelTopConstraint" destination="973-3b-ooQ" id="oCn-f3-ZDS"/>
@@ -2585,6 +2600,7 @@
         <image name="NSShareTemplate" width="15" height="17"/>
         <image name="NSStopProgressTemplate" width="14" height="13"/>
         <image name="NSTouchBarDeleteTemplate" width="15" height="17"/>
+        <image name="Play" width="72" height="80"/>
         <namedColor name="HighlightColor">
             <color red="0.3919999897480011" green="0.60799998044967651" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

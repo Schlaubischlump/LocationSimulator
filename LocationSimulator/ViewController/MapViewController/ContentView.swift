@@ -61,6 +61,11 @@ class ContentView: NSView {
         }
     }
 
+    @IBOutlet var errorIndicatorWidthConstraint: NSLayoutConstraint!
+
+    /// The play pause indicator to show if a navigation is active
+    @IBOutlet var playPauseIndicator: NSImageView!
+
     /// The label in the bottom bar which displays the total amount of meters you walked.
     @IBOutlet var totalDistanceLabel: NSTextField!
 
@@ -208,11 +213,30 @@ class ContentView: NSView {
 
     /// Show the warning triangle in the lower right corner.
     public func showErrorInidcator() {
+        self.errorIndicatorWidthConstraint.constant = 38
         self.errorIndicator.isHidden = false
     }
 
     /// Hide the warning triangle in the lower right corner.
     public func hideErrorInidcator() {
+        self.errorIndicatorWidthConstraint.constant = 0
         self.errorIndicator.isHidden = true
+    }
+
+    /// Show a pause icon in the  lower right corner.
+    public func showPauseIndicator() {
+        self.playPauseIndicator.image = .pauseImage.tint(color: .secondaryLabelColor)
+        self.playPauseIndicator.isHidden = false
+    }
+
+    /// Show a play icon in the  lower right corner.
+    public func showPlayIndicator() {
+        self.playPauseIndicator.image = .playImage.tint(color: .secondaryLabelColor)
+        self.playPauseIndicator.isHidden = false
+    }
+
+    /// Hide the play or pause icon in the lower right corner.
+    public func hidePlayPauseIndicator() {
+        self.playPauseIndicator.isHidden = true
     }
  }
