@@ -34,7 +34,7 @@ enum DeviceStatus {
     public var enabledMenubarItems: [MenubarItem] {
         var navigationItems: [NavigationMenubarItem] = [.walk, .cycle, .drive]
         let fileMenuItems: [FileMenubarItem] = [.openGPXFile]
-        var viewMenuItems: [ViewMenubarItem] = [.toggleSidebar]
+        var viewMenuItems: [ViewMenubarItem] = [.toggleSidebar, .explore, .hybrid, .satellite]
 
         switch self {
         case .disconnected:

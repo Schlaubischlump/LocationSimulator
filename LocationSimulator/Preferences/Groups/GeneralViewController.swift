@@ -7,11 +7,18 @@
 //
 
 import AppKit
+import MapKit
 
 let kConfirmTeleportationKey: String = "com.schlaubischlump.locationsimulator.confirmteleportation"
+let kMapTypeKey: String = "com.schlaubischlump.locationsimulator.maptype"
 
 // Extend the UserDefaults with all keys relevant for this tab.
 extension UserDefaults {
+    @objc dynamic var mapType: MKMapType {
+        get { return MKMapType(rawValue: UInt(self.integer(forKey: kMapTypeKey))) ?? .standard }
+        set { self.setValue(newValue.rawValue, forKey: kMapTypeKey) }
+    }
+
     @objc dynamic var confirmTeleportation: Bool {
         get { return self.bool(forKey: kConfirmTeleportationKey) }
         set { self.setValue(newValue, forKey: kConfirmTeleportationKey) }
@@ -20,7 +27,8 @@ extension UserDefaults {
     /// Register the default NSUserDefault values.
     func registerGeneralDefaultValues() {
         UserDefaults.standard.register(defaults: [
-            kConfirmTeleportationKey: false
+            kConfirmTeleportationKey: false,
+            kMapTypeKey: MKMapType.standard.rawValue
         ])
     }
 }

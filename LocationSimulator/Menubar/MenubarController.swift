@@ -8,6 +8,7 @@
 
 import AppKit
 import CoreLocation
+import MapKit
 
 let kProjectWebsite = "https://schlaubischlump.github.io/LocationSimulator/"
 let kGithubWebseite = "https://github.com/Schlaubischlump/LocationSimulator"
@@ -106,6 +107,14 @@ class MenubarController: NSResponder {
             guard self?.windowController?.window == notification.object as? NSWindow else { return }
             self?.isSearching = false
         }
+    }
+
+    // MARK: - Load defaults
+
+    public func loadDefaults() {
+        self.loadRecentLocations()
+        NavigationMenubarItem.selectMoveItem(forMoveType: .walk)
+        ViewMenubarItem.selectMapTypeItem(forMapType: UserDefaults.standard.mapType)
     }
 
     // MARK: - Search
@@ -270,4 +279,19 @@ class MenubarController: NSResponder {
         self.windowController?.zoomOutMap()
     }
 
+    @IBAction func setMapType(_ sender: NSMenuItem) {
+        var type: MKMapType = .standard
+
+        switch ViewMenubarItem(rawValue: sender.tag) {
+        case .explore:   type = .standard
+        case .satellite: type = .satellite
+        case .hybrid:    type = .hybrid
+
+        default: return
+        }
+
+        UserDefaults.standard.mapType = type
+
+        self.windowController?.setMapType(type)
+    }
 }

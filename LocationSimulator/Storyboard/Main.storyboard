@@ -423,6 +423,7 @@
                                 <menu key="submenu" title="Navigation" autoenablesItems="NO" id="rdu-o6-dXR">
                                     <items>
                                         <menuItem title="Walk" keyEquivalent="1" id="FcQ-9J-hOu" userLabel="Walk">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="WALK_MENUITEM"/>
                                             </userDefinedRuntimeAttributes>
@@ -431,6 +432,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Cycle" tag="1" keyEquivalent="2" id="Fr9-v0-Je1">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="CYCLE_MENUITEM"/>
                                             </userDefinedRuntimeAttributes>
@@ -439,6 +441,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Drive" tag="2" keyEquivalent="3" id="7E4-fJ-nHN">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="DRIVE_MENUITEM"/>
                                             </userDefinedRuntimeAttributes>
@@ -1445,6 +1448,31 @@
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="zoomOutView:" target="hKL-9b-YFG" id="wtZ-ST-j0u"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="G4A-YX-CZX"/>
+                                        <menuItem title="Explore" tag="9" keyEquivalent="1" id="2nz-S0-aGy">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="STANDARD_MENU_ITEM"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="setMapType:" target="hKL-9b-YFG" id="T2Z-bS-jzl"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Satellite" tag="10" keyEquivalent="2" id="Fsv-cq-bGf" userLabel="Satellite">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="SATELLITE_MENU_ITEM"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="setMapType:" target="hKL-9b-YFG" id="mpI-x7-GV3"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hybrid" tag="11" keyEquivalent="3" id="vOb-5b-Tl2">
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="HYBRID_MENU_ITEM"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="setMapType:" target="hKL-9b-YFG" id="67r-P0-KRh"/>
                                             </connections>
                                         </menuItem>
                                     </items>

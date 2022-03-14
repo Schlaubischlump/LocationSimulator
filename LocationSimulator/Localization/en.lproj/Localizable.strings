@@ -729,3 +729,12 @@
 
 
 "ZOOM_OUT_MENUITEM" = "Zoom Out";
+
+
+"HYBRID_MENU_ITEM" = "Hybrid";
+
+
+"SATELLITE_MENU_ITEM" = "Satellite";
+
+
+"STANDARD_MENU_ITEM" = "Explore";

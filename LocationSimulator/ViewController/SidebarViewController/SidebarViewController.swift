@@ -76,6 +76,7 @@ class SidebarViewController: NSViewController {
                         // Set the currently selected move type.
                         let windowController = self.view.window?.windowController as? WindowController
                         mapViewController.moveType = windowController?.moveType
+                        mapViewController.mapType = UserDefaults.standard.mapType
                     }
                 } else {
                     drawSeparator = false

@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defaults.registerRecentLocationDefaultValues()
         defaults.registerDeveloperDiskImagesDefaultValues()
         // Load the recent locations after the app finished launching.
-        self.menubarController.loadRecentLocations()
+        self.menubarController.loadDefaults()
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

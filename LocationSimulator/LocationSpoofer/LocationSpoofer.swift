@@ -22,7 +22,7 @@ enum MoveState {
     case auto
 }
 
-enum MoveType: Int {
+enum MoveType: Int, CaseIterable {
     case walk = 0
     case cycle
     case car

@@ -30,4 +30,10 @@ enum NavigationMenubarItem: Int, CaseIterable, MenubarItem {
     static public var menu: NSMenu? {
         return NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu
     }
+
+    static public func selectMoveItem(forMoveType moveType: MoveType) {
+        let menuBarItems: [MoveType: NavigationMenubarItem] = [.walk: .walk, .cycle: .cycle, .car: .drive]
+        menuBarItems.forEach { $1.off() }
+        menuBarItems[moveType]?.on()
+    }
 }

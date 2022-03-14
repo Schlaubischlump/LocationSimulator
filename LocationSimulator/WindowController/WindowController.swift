@@ -153,6 +153,9 @@ class WindowController: NSWindowController {
         self.touchbarController.moveType = moveType
         // Update the actual move type.
         self.mapViewController?.moveType = moveType
+
+        // Update the menubar selection
+        NavigationMenubarItem.selectMoveItem(forMoveType: moveType)
     }
 
     /// Toggle between the automove and the manual move state. If a navigation is running, it will be paused / resumed.
@@ -258,5 +261,11 @@ class WindowController: NSWindowController {
     /// Zoom out the mapView.
     public func zoomOutMap() {
         self.mapViewController?.zoomOut()
+    }
+
+    /// Change the MapType of the current map.
+    public func setMapType(_ mapType: MKMapType) {
+        self.mapViewController?.mapType = mapType
+        ViewMenubarItem.selectMapTypeItem(forMapType: mapType)
     }
 }

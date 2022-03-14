@@ -18,11 +18,32 @@ protocol MenubarItem {
     func setEnabled(_ enabled: Bool)
     func enable()
     func disable()
+
+    // Change the menu bar item state.
+    func setState(_ state: NSControl.StateValue)
+    func on()
+    func off()
 }
 
 extension MenubarItem {
-    func setEnabled(_ enabled: Bool) {
-        Self.menu?.item(withTag: self.rawValue)?.isEnabled = enabled
+    private var item: NSMenuItem? {
+        return Self.menu?.item(withTag: self.rawValue)
+    }
+
+    public func setState(_ state: NSControl.StateValue) {
+        self.item?.state = state
+    }
+
+    public func on() {
+        self.setState(.on)
+    }
+
+    public func off() {
+        self.setState(.off)
+    }
+
+    public func setEnabled(_ enabled: Bool) {
+        self.item?.isEnabled = enabled
     }
 
     func enable() {

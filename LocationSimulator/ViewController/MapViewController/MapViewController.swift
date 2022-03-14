@@ -53,6 +53,11 @@ class MapViewController: NSViewController {
         }
     }
 
+    var mapType: MKMapType {
+        get { return self.mapView.mapType }
+        set { self.mapView.mapType = newValue }
+    }
+
     /// True to autofocus current location when the location changes, false otherwise.
     var autoFocusCurrentLocation = false {
         didSet {
@@ -274,17 +279,13 @@ class MapViewController: NSViewController {
             self.deviceIsConnectd = false
             // Handle the error message
             switch error {
-            case DeviceError.pair:
-                window.showError("PAIR_ERROR_MSG", message: "PAIR_ERROR_MSG")
             case DeviceError.devDiskImageNotFound(_, let os, let iOSVersion):
                 // Try to download the developer disk image. Note this call is blocking.
                 return self.downloadDeveloperDiskImage(os: os, iOSVersion: iOSVersion) ? self.connectDevice() : false
-            case DeviceError.permisson:
-                window.showError("PERMISSION_ERROR", message: "PERMISSION_ERROR_MSG")
-            case DeviceError.devDiskImageMount:
-                window.showError("MOUNT_ERROR", message: "MOUNT_ERROR_MSG")
-            default:
-                window.showError("UNKNOWN_ERROR", message: "UNKNOWN_ERROR_MSG")
+            case DeviceError.permisson:         window.showError("PERMISSION_ERROR", message: "PERMISSION_ERROR_MSG")
+            case DeviceError.devDiskImageMount: window.showError("MOUNT_ERROR", message: "MOUNT_ERROR_MSG")
+            case DeviceError.pair:              window.showError("PAIR_ERROR_MSG", message: "PAIR_ERROR_MSG")
+            default:                            window.showError("UNKNOWN_ERROR", message: "UNKNOWN_ERROR_MSG")
             }
             return false
         }
