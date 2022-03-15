@@ -30,7 +30,7 @@ class UserLocationView: MKAnnotationView {
         }
     }
 
-    public var annotationColor = NSColor(calibratedRed: 0, green: 0.478, blue: 1.0, alpha: 1.0) {
+    public var annotationColor: NSColor = .currentLocationBlue {
         didSet {
             guard self.superview != nil else { return }
             self.rebuildLayers()

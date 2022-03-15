@@ -23,7 +23,7 @@ extension MapView: MKMapViewDelegate {
             fatalError("Could not cast overlay to MKPolyline.")
         }
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = NSColor(calibratedRed: 0.0, green: 162.0/255.0, blue: 1.0, alpha: 1.0)
+        renderer.strokeColor = .overlayBlue
         // renderer.lineDashPattern = [0, 10]
         renderer.lineWidth = 8
         return renderer
