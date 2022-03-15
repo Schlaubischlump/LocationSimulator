@@ -49,14 +49,14 @@ extension GPXSelectionView: NSBrowserDelegate {
             if row < self.tracks.count {
                 let track = self.tracks[row]
                 let name: String = track.name != nil ? " - " + track.name! : ""
-                cell.title = NSLocalizedString("TRACK", comment: "") + " \(row + 1)" + name
+                cell.title = "TRACK".localized + " \(row + 1)" + name
             } else if self.waypoints.count > 0 && row == self.browser(browser, numberOfRowsInColumn: 0) - 1 {
-                cell.title = NSLocalizedString("WAYPOINTS", comment: "")
+                cell.title = "WAYPOINTS".localized
                 cell.isLeaf = true
             } else {
                 let route = self.routes[row]
                 let name: String = route.name != nil ? " - " + route.name! : ""
-                cell.title = NSLocalizedString("ROUTE", comment: "") + " \(row + 1)" + name
+                cell.title = "ROUTE".localized + " \(row + 1)" + name
                 cell.isLeaf = true
             }
         } else {
@@ -64,7 +64,7 @@ extension GPXSelectionView: NSBrowserDelegate {
             let selectedRowInColumn0 = browser.selectedRow(inColumn: 0)
             let segment = self.tracks[selectedRowInColumn0].segments[row]
             let name: String = segment.name != nil ? " - " + segment.name! : ""
-            cell.title = NSLocalizedString("TRACK_SEGMENT", comment: "") + " \(row + 1)" + name
+            cell.title = "TRACK_SEGMENT".localized + " \(row + 1)" + name
             cell.isLeaf = true
         }
     }

@@ -25,10 +25,10 @@ class GPXSelectionAlert: NSAlert {
     init(tracks: [Track], routes: [Route], waypoints: [WayPoint]) {
         super.init()
 
-        self.messageText = NSLocalizedString("GPX_SELECTION", comment: "")
-        self.informativeText = NSLocalizedString("GPX_SELECTION_MSG", comment: "")
-        self.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-        self.addButton(withTitle: NSLocalizedString("CHOOSE", comment: ""))
+        self.messageText = "GPX_SELECTION".localized
+        self.informativeText = "GPX_SELECTION_MSG".localized
+        self.addButton(withTitle: "CANCEL".localized)
+        self.addButton(withTitle: "CHOOSE".localized)
 
         // Initialise the GPXSelectionView.
         let gpxView = GPXSelectionView(frame: CGRect(x: 0, y: 0, width: 330, height: 100))

@@ -51,7 +51,7 @@ extension SimulatorDevice: SidebarItem {
 /// The main Header table view cell, which contains all simulator devices.
 struct SimDeviceHeader: SidebarItem {
     var name: String {
-        return NSLocalizedString("SIMULATOR_HEADER", comment: "")
+        return "SIMULATOR_HEADER".localized
     }
 
     var image: NSImage? {
@@ -70,7 +70,7 @@ struct SimDeviceHeader: SidebarItem {
 /// The main Header table view cell, which contains all devices.
 struct IOSDeviceHeader: SidebarItem {
     var name: String {
-        return NSLocalizedString("DEVICE_HEADER", comment: "")
+        return "DEVICE_HEADER".localized
     }
 
     var image: NSImage? {

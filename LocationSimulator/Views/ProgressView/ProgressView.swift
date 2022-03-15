@@ -104,9 +104,9 @@ class ProgressView: NSView {
 
         // We use the first download link. In theory we could add multiple links for the same image.
         self.devDiskTask = DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDMG,
-                                       description: NSLocalizedString("DEVDISK_DOWNLOAD_DESC", comment: ""))
+                                       description: "DEVDISK_DOWNLOAD_DESC".localized)
         self.devSignTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSign,
-                                       description: NSLocalizedString("DEVSIGN_DOWNLOAD_DESC", comment: ""))
+                                       description: "DEVSIGN_DOWNLOAD_DESC".localized)
 
         return true
     }

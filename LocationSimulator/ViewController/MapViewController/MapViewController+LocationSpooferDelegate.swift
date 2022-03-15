@@ -37,8 +37,7 @@ extension MapViewController: LocationSpooferDelegate {
         self.contentView?.stopSpinner()
 
         // inform the user that the location could not be changed
-        self.view.window!.showError(NSLocalizedString("LOCATION_CHANGE_ERROR", comment: ""),
-                                    message: NSLocalizedString(errorMsg, comment: ""))
+        self.view.window!.showError("LOCATION_CHANGE_ERROR", message: errorMsg)
     }
 
     func didChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {

@@ -38,13 +38,13 @@ class CoordinateSelectionAlert: NSAlert {
         self.showsNavigationButton = showNavigationButton
         self.showsUserInput = showUserInput
 
-        self.messageText = NSLocalizedString("DESTINATION", comment: "")
-        self.informativeText = NSLocalizedString("TELEPORT_OR_NAVIGATE_MSG", comment: "")
-        self.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
+        self.messageText = "DESTINATION".localized
+        self.informativeText = "TELEPORT_OR_NAVIGATE_MSG".localized
+        self.addButton(withTitle: "CANCEL".localized)
         if showNavigationButton {
-            self.addButton(withTitle: NSLocalizedString("NAVIGATE", comment: ""))
+            self.addButton(withTitle: "NAVIGATE".localized)
         }
-        self.addButton(withTitle: NSLocalizedString("TELEPORT", comment: ""))
+        self.addButton(withTitle: "TELEPORT".localized)
         self.alertStyle = .informational
 
         if showsUserInput {

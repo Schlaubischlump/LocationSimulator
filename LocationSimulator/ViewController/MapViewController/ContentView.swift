@@ -207,7 +207,7 @@ class ContentView: NSView {
     /// - Parameter meter: the amount of meters walked
     public func setTotalDistance(meter: Double) {
         let totalDistanceInKM = meter / 1000.0
-        let labelText = NSLocalizedString("TOTAL_DISTANCE", comment: "")
+        let labelText = "TOTAL_DISTANCE".localized
         self.totalDistanceLabel.stringValue = String(format: labelText, totalDistanceInKM)
     }
 

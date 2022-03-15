@@ -12,7 +12,6 @@ import MapKit
 import CoreLocation
 import GPXParser
 
-
 /// The main window controller instance which hosts the map view and the toolbar.
 class WindowController: NSWindowController {
     // MARK: - Enums
@@ -217,7 +216,7 @@ class WindowController: NSWindowController {
         guard let window = self.window else { return }
 
         // Prepare the open file dialog
-        let title = NSLocalizedString("CHOOSE_GPX_FILE", comment: "")
+        let title = "CHOOSE_GPX_FILE"
         let (res, url): (NSApplication.ModalResponse, URL?) = window.showOpenPanel(title, extensions: ["gpx"])
 
         // Make sure everything is working as expected.

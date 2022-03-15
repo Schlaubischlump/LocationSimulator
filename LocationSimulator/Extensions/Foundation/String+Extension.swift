@@ -15,8 +15,20 @@ public protocol Localizable {
 }
 
 extension String: Localizable {
+    /// Localize a string for the current language and fallback to the base localization if a key is missing.
     public var localized: String {
-        return NSLocalizedString(self, comment: "")
+        let localized = NSLocalizedString(self, comment: "")
+
+        if self != localized {
+            return localized
+        }
+
+        // Use the base localization as fallback for missing keys
+        guard let path = Bundle.main.path(forResource: "Base", ofType: "lproj"), let bundle = Bundle(path: path) else {
+            return localized
+        }
+
+        return NSLocalizedString(self, bundle: bundle, comment: "")
     }
 }
 

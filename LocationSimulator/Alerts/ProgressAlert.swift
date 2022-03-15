@@ -29,9 +29,9 @@ class ProgressAlert: NSAlert {
 
         super.init()
 
-        self.messageText = NSLocalizedString("PROGRESS", comment: "")
-        self.informativeText = NSLocalizedString("", comment: "")
-        let cancelButton = self.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
+        self.messageText = "PROGRESS".localized
+        self.informativeText = ""
+        let cancelButton = self.addButton(withTitle: "CANCEL".localized)
         self.alertStyle = .critical
 
         // Setup the accessory view with the download progress bars and status labels.

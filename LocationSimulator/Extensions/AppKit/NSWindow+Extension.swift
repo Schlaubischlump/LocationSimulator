@@ -17,8 +17,8 @@ extension NSWindow {
     // @discardableResult
     func showError(_ title: String, message: String, localize: Bool = true) {// -> NSApplication.ModalResponse {
         let alert = NSAlert()
-        alert.messageText = localize ? NSLocalizedString(title, comment: "") : title
-        alert.informativeText = localize ? NSLocalizedString(message, comment: "") : message
+        alert.messageText = localize ? title.localized : title
+        alert.informativeText = localize ? message.localized : message
         alert.alertStyle = .critical
         // Calling runModal will block the .common runloop. This runloop is used by DispatchQueue.main.async. This
         // function is used by MKMapView to load the map. That means, calling runModal, blocks the MapView from loading
@@ -30,10 +30,10 @@ extension NSWindow {
     /// Ask for confirmation.
     func showConfirmation(_ title: String, message: String, localize: Bool = true) -> NSApplication.ModalResponse {
         let alert = NSAlert()
-        alert.messageText = localize ? NSLocalizedString(title, comment: "") : title
-        alert.informativeText = localize ? NSLocalizedString(message, comment: "") : message
-        alert.addButton(withTitle: NSLocalizedString("CANCEL", comment: ""))
-        alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+        alert.messageText = localize ? title.localized : title
+        alert.informativeText = localize ? message.localized : message
+        alert.addButton(withTitle: "CANCEL".localized)
+        alert.addButton(withTitle: "OK".localized)
         alert.alertStyle = .informational
         switch alert.runModal() {
         case .alertFirstButtonReturn:  return .cancel
@@ -47,9 +47,10 @@ extension NSWindow {
     /// - Parameter extensions: permitted file extensions
     /// - Return: the modal response
     @discardableResult
-    func showOpenPanel(_ tilte: String, extensions: [String]) -> (NSApplication.ModalResponse, URL?) {
+    func showOpenPanel(_ tilte: String, extensions: [String], localize: Bool = true)
+    -> (NSApplication.ModalResponse, URL?) {
         let dialog = NSOpenPanel()
-        dialog.title                   = title
+        dialog.title                   = localize ? title.localized : title
         dialog.showsResizeIndicator    = true
         dialog.showsHiddenFiles        = false
         dialog.canChooseDirectories    = false

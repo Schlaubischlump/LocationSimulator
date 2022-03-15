@@ -93,7 +93,7 @@ class MapView: MKMapView {
         // No marker does currenty exist => create and place the current location marker on the map
         if self.currentLocationMarker == nil {
             let marker = MKPointAnnotation()
-            marker.title = NSLocalizedString("CURRENT_LOCATION", comment: "")
+            marker.title = "CURRENT_LOCATION".localized
             self.addAnnotation(marker)
             self.currentLocationMarker = marker
             // the marker was created

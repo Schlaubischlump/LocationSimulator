@@ -18,10 +18,10 @@ class CoordinateSelectionView: NSView {
     @IBOutlet var latTextField: NSTextField!
 
     @IBOutlet var latLabel: NSTextField! {
-        didSet { self.latLabel.stringValue = NSLocalizedString("LAT", comment: "") + ":" }
+        didSet { self.latLabel.stringValue = "LAT".localized + ":" }
     }
     @IBOutlet var longLabel: NSTextField! {
-        didSet { self.longLabel.stringValue = NSLocalizedString("LONG", comment: "") + ":" }
+        didSet { self.longLabel.stringValue = "LONG".localized + ":" }
     }
 
     @IBOutlet var longStepper: LongStepper!

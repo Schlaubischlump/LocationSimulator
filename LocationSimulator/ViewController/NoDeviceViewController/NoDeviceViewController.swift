@@ -19,7 +19,6 @@ class NoDeviceViewController: NSViewController {
         super.viewDidLoad()
 
         // Set the `no device` text when the view finished loading.
-        self.noDeviceView.set(title: NSLocalizedString("NO_DEVICE", comment: ""),
-                              message: NSLocalizedString("NO_DEVICE_MSG", comment: ""))
+        self.noDeviceView.set(title: "NO_DEVICE".localized, message: "NO_DEVICE_MSG".localized)
     }
 }
