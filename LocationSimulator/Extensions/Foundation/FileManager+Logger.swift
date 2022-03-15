@@ -10,7 +10,9 @@ import Foundation
 
 let kLogFileName = "log.txt"
 
-extension FileManager {
+var loggerIsInitialized = false
+
+@objc extension FileManager {
     /// The path to the currently used logging directory.
     public var logDir: URL {
         let documentDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -24,6 +26,21 @@ extension FileManager {
     /// The path to the currently used log file.
     public var logfile: URL {
         return self.logDir.appendingPathComponent(kLogFileName)
+    }
+
+    /// Create a logger instance for stdout and the log file.
+    public func initLogger() {
+        guard !loggerIsInitialized else { return }
+
+        loggerIsInitialized = true
+
+        let logPath = FileManager.default.logfile.path
+
+        // Init the logger
+        logger_autoFlush(5000) // Flush every 5 seconds
+        logger_initConsoleLogger(nil)
+        logInfo("Logger: Using log file: \(logPath)")
+        logger_initFileLogger(logPath, 1024*1024*5, 5) // 5MB limit per file
     }
 
     /// Delete all old, rotated backup files.

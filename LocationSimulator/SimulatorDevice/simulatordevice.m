@@ -6,6 +6,7 @@
 //  Copyright © 2021 David Klopp. All rights reserved.
 //
 
+#import "LocationSimulator-Swift.h"
 #include "simulatordevice.h"
 #include "util.h"
 
@@ -30,6 +31,9 @@ static SimDeviceSet *defaultSet = nil;
 static NSMutableSet<SimDeviceWrapper *> *knownDevices;
 
 + (void)initialize {
+    // This is called before any other function... Make sure the logger exists
+    [[NSFileManager defaultManager] initLogger];
+
     // Load the CoreSimulator library or fail if it can not be loaded.
     NSString *coreSimulatorPath = @"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulator";
     if (!load_bundle(coreSimulatorPath)) {

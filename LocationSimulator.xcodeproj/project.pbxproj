@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -849,6 +849,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		63A4F9272403656600C3D877 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -862,7 +863,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Only copy the libraries into the app bundle if we build for a normal release.\nif [ $CONFIGURATION == \"Release\" ]; then\n    echo \"Embedding libraries...\"\n    ./tools/copy_dylibs.py\n    echo \"Done.\"\nfi\n";
+			shellScript = "# Only copy the libraries into the app bundle if we build for a normal release.\nif [ $CONFIGURATION == \"Release\" ] || [ $CONFIGURATION == \"Archive\" ]; then\n    echo \"Embedding libraries...\"\n    ./tools/copy_dylibs.py\n    echo \"Done.\"\nfi\n";
 		};
 		63AB676E24794655008AED2F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

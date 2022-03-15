@@ -15,14 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var menubarController: MenubarController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let logPath = FileManager.default.logfile.path
-
-        // Init the logger
-        logger_autoFlush(5000) // Flush every 5 seconds
-        logger_initConsoleLogger(nil)
-        logInfo("Logger: Using log file: \(logPath)")
-        logger_initFileLogger(logPath, 1024*1024*5, 5) // 5MB limit per file
-
+        // Most likely the logger is already initialized in SimulatorDevice. Just to be sure, check again
+        FileManager.default.initLogger()
         // Register all the default setting values for this application.
         let defaults = UserDefaults.standard
         defaults.registerGeneralDefaultValues()
