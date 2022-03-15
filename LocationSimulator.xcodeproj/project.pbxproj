@@ -14,6 +14,7 @@
 		630C0C9627DE024600C3D5A9 /* FileManager+Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */; };
 		630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9927DE4CC500C3D5A9 /* Float+Extension.swift */; };
 		630C0C9E27DE72A600C3D5A9 /* FileManager+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */; };
+		630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */; };
 		630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4A142593ECD100442713 /* NoDeviceView.swift */; };
 		6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B794230C13AF00AABF3E /* LocationSpoofer.swift */; };
 		6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */; };
@@ -127,6 +128,7 @@
 		630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Logger.swift"; sourceTree = "<group>"; };
 		630C0C9927DE4CC500C3D5A9 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+License.swift"; sourceTree = "<group>"; };
+		630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationView.swift; sourceTree = "<group>"; };
 		630C4A142593ECD100442713 /* NoDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
 		6311B794230C13AF00AABF3E /* LocationSpoofer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpoofer.swift; sourceTree = "<group>"; };
 		6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Protocol.swift"; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 		63720622259121C600293EA8 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */,
 				6372061C25911CED00293EA8 /* MapView.swift */,
 				63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */,
 			);
@@ -936,6 +939,7 @@
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
 				63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
+				630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */,
 				630C0C9627DE024600C3D5A9 /* FileManager+Logger.swift in Sources */,
 				638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */,
 				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,

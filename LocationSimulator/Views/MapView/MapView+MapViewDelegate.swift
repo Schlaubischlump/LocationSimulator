@@ -36,21 +36,11 @@ extension MapView: MKMapViewDelegate {
         if let pointAnnotation = annotation as? MKPointAnnotation, pointAnnotation == self.currentLocationMarker {
             var annotationView = mapView.dequeueReusableAnnotationView(
                 withIdentifier: kAnnotationViewCurrentLocationIdentifier)
-            if annotationView == nil {
-                annotationView = MKAnnotationView(annotation: annotation,
-                                                  reuseIdentifier: kAnnotationViewCurrentLocationIdentifier)
-                annotationView!.image = #imageLiteral(resourceName: "UserLocation").resize(width: 24.0, height: 24.0)
-                annotationView!.canShowCallout = true
-                annotationView!.collisionMode = .circle
-                annotationView!.isDraggable = true
-                annotationView!.displayPriority = .required
 
-                // add a drop shadow to the location marker
-                let shadow = NSShadow()
-                shadow.shadowColor = NSColor(calibratedWhite: 0.0, alpha: 0.6)
-                shadow.shadowBlurRadius = 18.0
-                shadow.shadowOffset = NSSize(width: 0.0, height: 0.0)
-                annotationView!.shadow = shadow
+            if annotationView == nil {
+                annotationView = UserLocationView(annotation: annotation,
+                                                  reuseIdentifier: kAnnotationViewCurrentLocationIdentifier)
+
             }
 
             annotationView?.annotation = pointAnnotation
