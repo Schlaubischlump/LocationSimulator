@@ -12,6 +12,7 @@ import MapKit
 import CoreLocation
 import GPXParser
 
+
 /// The main window controller instance which hosts the map view and the toolbar.
 class WindowController: NSWindowController {
     // MARK: - Enums

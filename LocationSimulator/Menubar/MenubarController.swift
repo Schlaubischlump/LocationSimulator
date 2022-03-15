@@ -21,9 +21,9 @@ class MenubarController: NSResponder {
     private var searchStartObserver: NSObjectProtocol?
     private var searchEndObserver: NSObjectProtocol?
 
-    /// The main menu should always represent the status of the key window.
+    /// The main menu should always represent the status of the application window, not any util windows.
     private var windowController: WindowController? {
-        return NSApp.keyWindow?.windowController as? WindowController
+        return NSApp.windows.compactMap { $0.windowController as? WindowController }.first
     }
 
     /// The current status.
