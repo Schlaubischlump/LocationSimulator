@@ -34,6 +34,17 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.8.2
+
+- ⚠️ Language support other than english and german is partially incomplete
+- Change the map type (satellite, hybrid, explore)
+- Select the menubar items when changing the move type
+- Add zoom-in and zoom-out menubar items
+- Add pause / continue indicator to navigation
+- Add a Log view to easier diagnose errors (Help -> Log...)
+- Choose a custom DeveloperDiskImage directory (Preferences -> DeveloperDiskImages)
+- Manage the DeveloperDiskImages from the preference window (Preferences -> DeveloperDiskImages)
+
 ### v0.1.8.1
 - Italian support
 - Add zoom control to map
