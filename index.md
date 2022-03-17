@@ -34,6 +34,10 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.8.3
+- Fix UI lockup if Xcode 13.3 is installed
+- Xcode 13.3 support for iPhoneSimulator
+
 ### v0.1.8.2
 
 - ⚠️ Language support other than english and german is partially incomplete
