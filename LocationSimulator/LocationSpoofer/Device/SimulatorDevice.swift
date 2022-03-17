@@ -62,7 +62,11 @@ struct SimulatorDevice: Device {
     }
 
     func disableSimulation() -> Bool {
-        return self.wrapper?.resetLocation() ?? false
+        if self.wrapper?.resetLocation() ?? false {
+            return true
+        }
+        logError("SimulatorDevice \"\(self.udid)\" - \(self.name): Could not reset location.")
+        return false
     }
 }
 

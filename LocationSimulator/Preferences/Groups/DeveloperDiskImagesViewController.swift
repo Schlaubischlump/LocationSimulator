@@ -97,7 +97,7 @@ class DeveloperDiskImagesViewController: NSViewController {
     /// The toolbar elements at the bottom of the table view
     @IBOutlet var toolbarSegment: NSSegmentedControl! {
         didSet {
-            self.updateDesturctiveToolbarItemsAvailibility()
+            self.updateToolbarItemsAvailibility()
         }
     }
 
@@ -228,7 +228,7 @@ class DeveloperDiskImagesViewController: NSViewController {
         self.cachedOsVersions = osVersions
 
         self.tableView.reloadData()
-        self.updateDesturctiveToolbarItemsAvailibility()
+        self.updateToolbarItemsAvailibility()
     }
 
     @IBAction func platformSelectionDidChange(_ sender: NSSegmentedControl) {
@@ -246,7 +246,7 @@ class DeveloperDiskImagesViewController: NSViewController {
     }
 
     /// Disable the toolbar items based on the current selection and the directory acccess rights.
-    private func updateDesturctiveToolbarItemsAvailibility() {
+    private func updateToolbarItemsAvailibility() {
         let enabled = self.selectedVersion != nil
         let isWriteable = FileManager.default.isSupportDirectoryWriteable
 
@@ -266,7 +266,17 @@ class DeveloperDiskImagesViewController: NSViewController {
     }
 
     @IBAction func customPathCheckboxChanged(_ sender: NSButton) {
-        UserDefaults.standard.customSupportDirectoryEnabled = (sender.state == .on)
+        if sender.state == .off {
+            UserDefaults.standard.customSupportDirectoryEnabled = false
+        } else {
+            // If no path is currently selected show the path selection popup directly
+            if  UserDefaults.standard.customSupportDirectory?.path.isEmpty ?? true {
+                self.chooseCustomPath(sender)
+            } else {
+                UserDefaults.standard.customSupportDirectoryEnabled = true
+            }
+        }
+
         self.updateCustomSupportPathSelectionAvailibility()
         self.reloadData()
     }
@@ -280,6 +290,8 @@ class DeveloperDiskImagesViewController: NSViewController {
         if openPanel.runModal() == .OK {
             let url = openPanel.url
             self.customSupportPathTextField.stringValue = url?.path ?? ""
+
+            UserDefaults.standard.customSupportDirectoryEnabled = true
             UserDefaults.standard.customSupportDirectory = url
 
             // Add a security bookmark to keep access to the file even after a restart of the application
@@ -289,6 +301,11 @@ class DeveloperDiskImagesViewController: NSViewController {
             }
 
             self.reloadData()
+        } else {
+            // If the path is empty after the selection, disable the checkbox again
+            if  UserDefaults.standard.customSupportDirectory?.path.isEmpty ?? true {
+                self.customSupportPathCheckbox.state = .off
+            }
         }
     }
 }
@@ -312,6 +329,6 @@ extension DeveloperDiskImagesViewController: NSTableViewDelegate {
 
     func tableViewSelectionDidChange(_ notification: Notification) {
         guard notification.object as? NSTableView == self.tableView else { return }
-        self.updateDesturctiveToolbarItemsAvailibility()
+        self.updateToolbarItemsAvailibility()
     }
 }

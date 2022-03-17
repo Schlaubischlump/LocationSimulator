@@ -37,27 +37,35 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
     // Load the CoreSimulator library or fail if it can not be loaded.
     NSString *coreSimulatorPath = @"/Library/Developer/PrivateFrameworks/CoreSimulator.framework/CoreSimulator";
     if (!load_bundle(coreSimulatorPath)) {
-        LOG_ERROR("CoreSimulator '%s': Load failed!", coreSimulatorPath.UTF8String);
+        LOG_ERROR("SimDeviceWrapper: CoreSimulator '%s': Load failed!", coreSimulatorPath.UTF8String);
         return;
     }
     // Get the active developer directory.
     NSString *path = getActiveDeveloperDir();
     if (!path) {
-        LOG_ERROR("Could not get active developer directory!", coreSimulatorPath.UTF8String);
+        LOG_ERROR("SimDeviceWrapper: Could not get active developer directory!", coreSimulatorPath.UTF8String);
         return;
     }
     // Try to create a SimServiceContext instance for the active developer directory.
     NSError *error = nil;
-    SimServiceContext* context = [NSClassFromString(@"SimServiceContext") serviceContextForDeveloperDir:path
-                                                                                                  error:&error];
+
+    Class _SimServiceContext = NSClassFromString(@"SimServiceContext");
+    SimServiceContext* context = NULL;
+    if ([_SimServiceContext respondsToSelector:@selector(serviceContextForDeveloperDir:error:)]) {
+        context = [_SimServiceContext serviceContextForDeveloperDir:path error:&error];
+    }
+
     if (!context || (error != nil)) {
-        LOG_ERROR("Could not create 'SimServiceContext' instance.");
+        LOG_ERROR("SimDeviceWrapper: Could not create 'SimServiceContext' instance.");
         return;
     }
     // Create a default device set based on the SimServiceContext.
-    SimDeviceSet *set = [context defaultDeviceSetWithError:&error];
-    if (error != nil) {
-        LOG_ERROR("Could not get default 'SimDeviceSet'.");
+    SimDeviceSet *set = NULL;
+    if ([context respondsToSelector:@selector(defaultDeviceSetWithError:)]) {
+        set = [context defaultDeviceSetWithError:&error];
+    }
+    if (!set || (error != nil)) {
+        LOG_ERROR("SimDeviceWrapper: Could not get default 'SimDeviceSet'.");
         return;
     }
     defaultSet = set;
@@ -78,11 +86,16 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
         handler(deviceWrapper);
     }
 
-    return [defaultSet registerNotificationHandler:^(NSDictionary* info) {
+    void (^deviceDetectedHandler)(NSDictionary * _Nullable) = ^(NSDictionary* info) {
         NSString *notification_name = info[@"notification"];
         if ([notification_name isEqualToString: @"SimDeviceNotificationType_BootStatus"]) {
             // This notificaton appears when the device did finish booting
             SimDeviceBootInfo* bootInfo = info[@"SimDeviceNotification_NewBootStatus"];
+
+            if (bootInfo == nil) {
+                LOG_FATAL("SimDeviceWrapper: 'SimDeviceNotification_NewBootStatus' not found in info dictionary.");
+            }
+
             if (bootInfo.isTerminalStatus && bootInfo.status == SimBootStatusFinished)
             {
                 SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:info[@"device"]];
@@ -102,18 +115,38 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
                     handler(deviceWrapper);
                 }
             }
-            
+
             for (SimDeviceWrapper *deviceWrapper in devicesToRemove) {
                 [knownDevices removeObject:deviceWrapper];
             }
         }
-    }];
+    };
+
+    if ([defaultSet respondsToSelector:@selector(registerNotificationHandler:)]) {
+        // Xcode 12.x
+        return [defaultSet registerNotificationHandler: deviceDetectedHandler];
+    } else if ([defaultSet respondsToSelector:@selector(registerNotificationHandlerOnQueue:handler:)]) {
+        // Xcode 13.x
+        return [defaultSet registerNotificationHandlerOnQueue: NULL handler: deviceDetectedHandler];
+    } else {
+        LOG_FATAL("SimDeviceWrapper: Could not register notification handler. No viable method found.");
+    }
+    return -1;
 }
 
 + (BOOL)unsubscribe:(NSUInteger)handlerID {
     if (!defaultSet)
         return FALSE;
-    return [defaultSet unregisterNotificationHandler:handlerID error:NULL];
+
+    if ([defaultSet respondsToSelector:@selector(unregisterNotificationHandler:error:)]) {
+        NSError *error = nil;
+        BOOL success = [defaultSet unregisterNotificationHandler:handlerID error:&error];
+        return success && error == nil;
+    } else {
+        LOG_FATAL("SimDeviceWrapper: Could not unregister notification handler. No viable method found.");
+    }
+
+    return FALSE;
 }
 
 - (instancetype)initWithDevice:(SimDevice * _Nonnull)device {
@@ -136,6 +169,8 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
 }
 
 - (BOOL)requiresBridge {
+    // FIXME: This is not the best check... If apple decides to change this method name in the future, we will fallback
+    // FIXME: to using the bridge connection, which will fail. Keep an eye on this.
     if ([_device respondsToSelector:@selector(setLocationWithLatitude:andLongitude:error:)]) {
         return FALSE;
     }
@@ -181,6 +216,7 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
         return TRUE;
     }
 
+    // Requires bridge checks that this function exists. It is save to call it here.
     NSError *error;
     [_device setLocationWithLatitude:latitude andLongitude:longitude error:&error];
     return error == NULL;
@@ -191,9 +227,14 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
     if ([self requiresBridge])
         return _bridge != nil;
 
-    NSError *error;
-    [_device clearSimulatedLocationWithError:&error];
-    return error == NULL;
+    NSError *error = NULL;
+    if ([_device respondsToSelector:@selector(clearSimulatedLocationWithError:)]) {
+        [_device clearSimulatedLocationWithError:&error];
+        return error == NULL;
+    }
+
+    LOG_FATAL("SimDeviceWrapper: Could not clear location. No viable method found.");
+    return FALSE;
 }
 
 @end

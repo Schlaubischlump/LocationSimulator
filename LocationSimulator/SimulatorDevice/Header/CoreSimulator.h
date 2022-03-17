@@ -45,13 +45,17 @@ typedef NS_ENUM(NSUInteger, SimBootStatus) {
 @end
 
 @interface SimDeviceSet : NSObject
-- (NSUInteger)registerNotificationHandler:(void (^_Nonnull)(NSDictionary * _Nullable))handler;
+- (NSUInteger)registerNotificationHandlerOnQueue:(id _Nullable)arg2
+                                         handler:(void (^_Nonnull)(NSDictionary * _Nullable))handler;
+- (NSUInteger)registerNotificationHandler:(void (^_Nonnull)(NSDictionary * _Nullable))handler; // Xcode <= 12.x
 - (BOOL)unregisterNotificationHandler:(NSUInteger)handlerID error:(NSError * _Nullable * _Nullable)error;
 @property(readonly, nonatomic) NSArray * _Nonnull availableDevices;
++(NSString * _Nullable)defaultSetPath;
 @end
 
 @interface SimServiceContext : NSObject
-+ (instancetype _Nonnull)serviceContextForDeveloperDir:(NSString * _Nonnull)path error:(NSError * _Nullable * _Nullable)error;
++ (instancetype _Nonnull)serviceContextForDeveloperDir:(NSString * _Nonnull)path
+                                                 error:(NSError * _Nullable * _Nullable)error;
 - (SimDeviceSet * _Nonnull)defaultDeviceSetWithError:(NSError * _Nullable * _Nullable)error;
 @end
 
