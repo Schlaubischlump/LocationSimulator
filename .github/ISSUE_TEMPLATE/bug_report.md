@@ -32,8 +32,9 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
 - [ ] Installed via homebrew ?
- - macOS: [e.g. 10.15 Catalina]
- - LocationSimulator version [e.g. 0.1.7]
+ - macOS: [e.g. 12.3 Monterey]
+ - LocationSimulator version [e.g. 0.1.8.2]
+ - Xcode version [e.g 13.3]
 
 **Smartphone (please complete the following information):**
  - Device: [e.g. iPhone6]
