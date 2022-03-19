@@ -126,7 +126,7 @@
 "CUSTOM_DEVELOPER_DISK_IMAGE" = "Eget val av supportkatalog";
 
 /*  */
-"CUSTOM_DEVELOPER_DISK_IMAGE_DESCRIPTION" = "Om inställningen aktiveras laddas DeveloperDiskImages ned till den mapp du valt.";
+"CUSTOM_DEVELOPER_DISK_IMAGE_DESCRIPTION" = "Om inställningen aktiveras laddas utvecklarskivavbilder ned till den katalog du valt.";
 
 
 "CUT_MENUITEM" = "Klipp";
@@ -159,31 +159,31 @@
 "DESTINATION" = "Destination";
 
 /*  */
-"DEVDISK_BACKUP_FAILED_ERROR_MSG" = "Kunde inte säkerhetskopiera befintliga DeveloperDiskImage-filer.";
+"DEVDISK_BACKUP_FAILED_ERROR_MSG" = "Kunde inte säkerhetskopiera befintliga utvecklarskivavbilder.";
 
 /*  */
-"DEVDISK_DELETE_FAILED_ERROR" = "Borttagning av DeveloperDiskImage misslyckades";
+"DEVDISK_DELETE_FAILED_ERROR" = "Borttagning av utvecklarskivavbild misslyckades";
 
 /*  */
-"DEVDISK_DELETE_FAILED_ERROR_MSG" = "Kunde inte ta bort den angivna DeveloperDiskImage. Vänligen försök att ta bort den manuellt med hjälp av finder.";
+"DEVDISK_DELETE_FAILED_ERROR_MSG" = "Kunde inte ta bort den angivna utvecklarskivavbilden. Vänligen försök att ta bort den manuellt med hjälp av Finder.";
 
 
 "DEVDISK_DOWNLOAD_DESC" = "Laddar ned DeveloperDiskImage.dmg";
 
 
-"DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage nedladdning misslyckades";
+"DEVDISK_DOWNLOAD_FAILED_ERROR" = "Nedladdning av utvecklarskivavbild misslyckades";
 
 
 "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Nedladdning av DeveloperDiskImage.dmg eller DeveloperDiskImage.dmg.signature misslyckades.";
 
 
-"DEVDISK_NOT_FOUND" = "DeveloperDiskImage filer hittades ej";
+"DEVDISK_NOT_FOUND" = "Utvecklarskivavbilder hittades ej";
 
 /*  */
-"DEVDISK_REFRESH_FAILED_ERROR" = "Uppdatering av DeveloperDiskImage misslyckades";
+"DEVDISK_REFRESH_FAILED_ERROR" = "Uppdatering av utvecklarskivavbild misslyckades";
 
 
-"DEVELOPER_DISK_IMAGES_TITLE_SETTING" = "DiskImages";
+"DEVELOPER_DISK_IMAGES_TITLE_SETTING" = "Utvecklarskivavbilder";
 
 
 "DEVICE_HEADER" = "Enheter";
@@ -291,7 +291,7 @@
 "HYBRID_MENU_ITEM" = "Hybrid";
 
 /*  */
-"IMAGE_FILE" = "Bild";
+"IMAGE_FILE" = "Skivavbild";
 
 
 "INFO_TITLE_SETTING" = "Information";
@@ -387,7 +387,7 @@
 "MOUNT_ERROR" = "Kunde inte montera DeveloperDiskImage.dmg";
 
 
-"MOUNT_ERROR_MSG" = "DeveloperDiskImage för denna enhet kunde inte monteras. Plats-spoofing kommer inte att fungera.\nÄr din enhet låst?";
+"MOUNT_ERROR_MSG" = "Utvecklarskivavbild för denna enhet kunde inte monteras. Plats-spoofing kommer inte att fungera.\nÄr din enhet låst?";
 
 
 "MOVETYPES_TOOLBARITEM_PALETTELABEL" = "Färdtyper";
@@ -699,7 +699,7 @@
 "USE_NONE_MENUITEM" = "Använd ingen";
 
 
-"USE_SELECTION_FOR_FIND_MENUITEM" = "Använd markering för sök";
+"USE_SELECTION_FOR_FIND_MENUITEM" = "Använd markering för sökning";
 
 /*  */
 "VERSION" = "Version";
@@ -735,10 +735,10 @@
 "WRITING_DIRECTION_MENUITEM" = "Skrivriktning";
 
 
-"ZOOM_IN_MENUITEM" = "Zoom In";
+"ZOOM_IN_MENUITEM" = "Zooma in";
 
 
 "ZOOM_MENUITEM" = "Zooma";
 
 
-"ZOOM_OUT_MENUITEM" = "Zoom Out";
+"ZOOM_OUT_MENUITEM" = "Zooma ut";
