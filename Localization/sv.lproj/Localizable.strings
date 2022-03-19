@@ -1,4 +1,9 @@
+
+
 "ABOUT_MENUITEM" = "Om LocationSimulator";
+
+/*  */
+"ADD" = "Lägg till";
 
 
 "ALIGN_LEFT_MENUITEM" = "Vänsterjustera";
@@ -48,6 +53,12 @@
 
 "CHANGELOG" = "Ändringar i denna version är:\n\n1. Stöd för App Sandbox\n2. Tysk lokalisering\n3. Stöd för iPhoneSimulator\n4. Buggfixar\n";
 
+/*  */
+"CHANGING_SUPPORT_DIRECTORY_FAILED" = "Byte av supportkatalog misslyckades";
+
+/*  */
+"CHANGING_SUPPORT_DIRECTORY_FAILED_MSG" = "Kunde inte byta supportkatalog.";
+
 
 "CHECK_DOCUMENT_NOW_MENUITEM" = "Kontrollera dokumentet nu";
 
@@ -62,6 +73,9 @@
 
 
 "CHOOSE_DEVELOPER_DISK_IMAGE_PATH" = "Välj";
+
+/*  */
+"CHOOSE_DEVELOPER_DISK_IMAGE_PATH_TITLE" = "Välj supportkatalog";
 
 
 "CHOOSE_GPX_FILE" = "Välj en .gpx fil";
@@ -96,11 +110,23 @@
 
 "CORRECT_SPELLING_AUTOMATICALLY_MENUITEM" = "Åtgärda stavning automatiskt";
 
+/*  */
+"CREATE_LOG_FAILED" = "Kunde inte skapa logg";
+
+/*  */
+"CREATE_LOG_FAILED_MSG" = "Kunde inte exportera loggdata. Vänligen ladda om loggen och försök på nytt.";
+
 
 "CURRENT_LOCATION" = "Nuvarande plats";
 
 
 "CUSTOMIZE_TOOLBAR_MENUITEM" = "Anpassa verktygsrad…";
+
+/*  */
+"CUSTOM_DEVELOPER_DISK_IMAGE" = "Eget val av supportkatalog";
+
+/*  */
+"CUSTOM_DEVELOPER_DISK_IMAGE_DESCRIPTION" = "Om inställningen aktiveras laddas utvecklarskivavbilder ned till den katalog du valt.";
 
 
 "CUT_MENUITEM" = "Klipp";
@@ -114,26 +140,50 @@
 
 "DEFAULT_MENUITEM" = "	Förval";
 
+/*  */
+"DELETE_LOG_FAILED" = "Loggborttagning misslyckades";
+
+/*  */
+"DELETE_LOG_FAILED_MSG" = "Kunde inte ta bort loggfilerna. Vänligen försök igen.";
+
+/*  */
+"DELETE_LOG_TOOLBARITEM" = "Töm";
+
+/*  */
+"DELETE_LOG_TOOLBARITEM_TOOLTIP" = "Töm logg";
+
 
 "DELETE_MENUITEM" = "Ta bort";
 
 
 "DESTINATION" = "Destination";
 
+/*  */
+"DEVDISK_BACKUP_FAILED_ERROR_MSG" = "Kunde inte säkerhetskopiera befintliga utvecklarskivavbilder.";
+
+/*  */
+"DEVDISK_DELETE_FAILED_ERROR" = "Borttagning av utvecklarskivavbild misslyckades";
+
+/*  */
+"DEVDISK_DELETE_FAILED_ERROR_MSG" = "Kunde inte ta bort den angivna utvecklarskivavbilden. Vänligen försök att ta bort den manuellt med hjälp av Finder.";
+
 
 "DEVDISK_DOWNLOAD_DESC" = "Laddar ned DeveloperDiskImage.dmg";
 
 
-"DEVDISK_DOWNLOAD_FAILED_ERROR" = "DeveloperDiskImage nedladdning misslyckades";
+"DEVDISK_DOWNLOAD_FAILED_ERROR" = "Nedladdning av utvecklarskivavbild misslyckades";
 
 
 "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG" = "Nedladdning av DeveloperDiskImage.dmg eller DeveloperDiskImage.dmg.signature misslyckades.";
 
 
-"DEVDISK_NOT_FOUND" = "DeveloperDiskImage filer hittades ej";
+"DEVDISK_NOT_FOUND" = "Utvecklarskivavbilder hittades ej";
+
+/*  */
+"DEVDISK_REFRESH_FAILED_ERROR" = "Uppdatering av utvecklarskivavbild misslyckades";
 
 
-"DEVELOPER_DISK_IMAGES_TITLE_SETTING" = "DiskImages";
+"DEVELOPER_DISK_IMAGES_TITLE_SETTING" = "Utvecklarskivavbilder";
 
 
 "DEVICE_HEADER" = "Enheter";
@@ -167,6 +217,15 @@
 
 
 "ERROR_PARSE_GPX_MSG" = "Kunde inte tolka den givna GPX-filen. Filen är möjligen skadad eller ogiltigt formatterad.";
+
+/*  */
+"EXPORT_LOG_TITLE" = "Exportera logg för LocationSimulator";
+
+/*  */
+"EXPORT_TOOLBARITEM" = "Exportera";
+
+/*  */
+"EXPORT_TOOLBARITEM_TOOLTIP" = "Exportera logg";
 
 
 "FILE_MENU" = "Fil";
@@ -228,6 +287,12 @@
 
 "HIDE_OTHERS_MENUITEM" = "Göm andra";
 
+/*  */
+"HYBRID_MENU_ITEM" = "Hybrid";
+
+/*  */
+"IMAGE_FILE" = "Skivavbild";
+
 
 "INFO_TITLE_SETTING" = "Information";
 
@@ -252,6 +317,9 @@
 
 "LEFT_TO_RIGHT_MENUITEM" = "	Vänster till höger";
 
+/*  */
+"LEVEL" = "Nivå";
+
 
 "LICENSE_TITLE_SETTING" = "Licens";
 
@@ -260,6 +328,9 @@
 
 
 "LIGATURES_MENUITEM" = "Ligaturer";
+
+/*  */
+"LINE_NUMBER" = "Rad";
 
 
 "LOCATION_CHANGE_ERROR" = "Fel vid platsbyte";
@@ -275,6 +346,9 @@
 
 
 "LOCATION_SERVICE_DISABLED_MSG" = "Platstjänster verkar vara avstängda. Vänligen aktivera platstjänster via Systeminställningar.";
+
+/*  */
+"LOG_TITLE" = "Logg";
 
 
 "LONG" = "Long";
@@ -303,6 +377,9 @@
 
 "MAKE_UPPER_CASE_MENUITEM" = "Omvandla till stora bokstäver";
 
+/*  */
+"MESSAGE" = "Meddelande";
+
 
 "MINIMIZE_MENUITEM" = "Minimera";
 
@@ -310,7 +387,7 @@
 "MOUNT_ERROR" = "Kunde inte montera DeveloperDiskImage.dmg";
 
 
-"MOUNT_ERROR_MSG" = "DeveloperDiskImage för denna enhet kunde inte monteras. Plats-spoofing kommer inte att fungera.\nÄr din enhet låst?";
+"MOUNT_ERROR_MSG" = "Utvecklarskivavbild för denna enhet kunde inte monteras. Plats-spoofing kommer inte att fungera.\nÄr din enhet låst?";
 
 
 "MOVETYPES_TOOLBARITEM_PALETTELABEL" = "Färdtyper";
@@ -331,7 +408,7 @@
 "NETWORK_TITEL_SETTING" = "Nätverk";
 
 
-"NO_DEVICE" = "Ingen Enhet Markerad";
+"NO_DEVICE" = "Ingen enhet markerad";
 
 
 "NO_DEVICE_ERROR" = "Ingen enhet upptäckt";
@@ -388,7 +465,7 @@
 "PRODUCT_INFO_ERROR" = "Could not get product info";
 
 
-"PROGRESS" = "Ladda ned iOS support files";
+"PROGRESS" = "Ladda ned iOS supportfiler";
 
 
 "QUIT_APP_MENUITEM" = "Avsluta LocationSimulator";
@@ -404,6 +481,12 @@
 
 
 "REDO_MENUITEM" = "Gör om";
+
+/*  */
+"REFRESH_TOOLBARITEM" = "Uppdatera";
+
+/*  */
+"REFRESH_TOOLBARITEM_TOOLTIP" = "Uppdatera logg";
 
 
 "REPORT_A_BUG_MENUITEM" = "Rapportera en bugg";
@@ -428,6 +511,15 @@
 
 
 "ROUTE" = "Rutt";
+
+/*  */
+"SATELLITE_MENU_ITEM" = "Satellit";
+
+/*  */
+"SAVE_LOG_FAILED" = "Misslyckades att spara logg";
+
+/*  */
+"SAVE_LOG_FAILED_MSG" = "Kunde inte spara logg. Vänligen säkerställ att din användare har rätt att skriva till mappen.";
 
 
 "SEARCH_PLACEHOLDER" = "Sök";
@@ -462,6 +554,12 @@
 
 "SHOW_FONT_PANEL_TOOLBARITEM_TOOLTIP" = "Visa typsnittspanel";
 
+/*  */
+"SHOW_IN_FINDER" = "Visa i Finder";
+
+/*  */
+"SHOW_LOG" = "Log...";
+
 
 "SHOW_RULER_MENUITEM" = "Visa linjal";
 
@@ -476,6 +574,9 @@
 
 
 "SHOW_TOOLBAR_MENUITEM" = "Toggla verktygsrad";
+
+/*  */
+"SIGNATURE_FILE" = "Signatur";
 
 
 "SIMULATOR_HEADER" = "Simulatorer";
@@ -506,6 +607,9 @@
 
 
 "SPELLING_GRAMMAR_MENUITEM" = "Stavning och grammatik";
+
+/*  */
+"STANDARD_MENU_ITEM" = "Utforska";
 
 
 "START_SPEAKING_MENUITEM" = "Börja tala";
@@ -547,10 +651,13 @@
 "TEXT_REPLACEMENT_MENUITEM" = "Textersättningar";
 
 
-"THREAD" = "Thread";
+"THREAD" = "Tråd";
 
 
 "TIGHTEN_MENUITEM" = "Flytta närmare";
+
+/*  */
+"TIME" = "Tid";
 
 
 "TOGGLE_AUTOMOVE_MENUITEM" = "Toggla auto-förflyttning";
@@ -592,7 +699,10 @@
 "USE_NONE_MENUITEM" = "Använd ingen";
 
 
-"USE_SELECTION_FOR_FIND_MENUITEM" = "Använd markering för sök";
+"USE_SELECTION_FOR_FIND_MENUITEM" = "Använd markering för sökning";
+
+/*  */
+"VERSION" = "Version";
 
 
 "VIEW_MENU" = "Visa";
@@ -625,10 +735,10 @@
 "WRITING_DIRECTION_MENUITEM" = "Skrivriktning";
 
 
+"ZOOM_IN_MENUITEM" = "Zooma in";
+
+
 "ZOOM_MENUITEM" = "Zooma";
 
 
-"ZOOM_IN_MENUITEM" = "Zoom In";
-
-
-"ZOOM_OUT_MENUITEM" = "Zoom Out";
+"ZOOM_OUT_MENUITEM" = "Zooma ut";
