@@ -5,7 +5,6 @@
 //  Created by David Klopp on 18.08.19.
 //  Copyright © 2019 David Klopp. All rights reserved.
 //
-
 // TODO: Fix UI blocks when the developer disk image is uploaded.
 
 import Cocoa
@@ -51,6 +50,11 @@ class MapViewController: NSViewController {
             guard let moveType = newValue else { return }
             self.spoofer?.moveType = moveType
         }
+    }
+
+    var speed: Double {
+        get { return self.spoofer?.speed ?? 0 }
+        set { self.spoofer?.speed = newValue }
     }
 
     var mapType: MKMapType {
@@ -154,12 +158,8 @@ class MapViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // reset the total distance label
-        self.contentView?.setTotalDistance(meter: 0)
-        // hide the controls
-        self.contentView?.controlsHidden = true
-        // show the error indicator on first view appearance.
-        self.contentView?.showErrorInidcator()
+        // Reset the contentView to its default values
+        self.contentView?.reset()
         // register all actions for the mapView
         self.registerMapViewActions()
         // register all actions for the controls in the lower left corner

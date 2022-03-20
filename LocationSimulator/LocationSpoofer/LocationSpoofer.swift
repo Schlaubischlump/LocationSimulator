@@ -27,15 +27,15 @@ enum MoveType: Int, CaseIterable {
     case cycle
     case car
 
-    var distance: Double {
-        // distance meters per second
+    /// Speed in meters per second
+    var speed: Double {
         switch self {
         case .walk:
-            return 1.38 // 5km/h
+            return 1.39 // 5km/h
         case .cycle:
-            return 4.2  // 15km/h
+            return 4.167  // 15km/h
         case .car:
-            return 11.1 // 40km/h
+            return 11.112 // 40km/h
         }
     }
 }
@@ -123,6 +123,9 @@ class LocationSpoofer {
         }
         return self.autoMoveTimer == nil
     }
+
+    /// Change the current speed
+    public var speed: Double = 0
 
     // MARK: - Constructor
 
@@ -317,9 +320,9 @@ class LocationSpoofer {
         var distance: Double = 0
         if let userInfo = timer?.userInfo as? [String: UInt64], let lastTime = userInfo["time"] {
             let durationInSeconds = Double(DispatchTime.now().uptimeNanoseconds - lastTime) / 1000000000
-            distance = moveType.distance * durationInSeconds
+            distance = self.speed * durationInSeconds
         } else {
-            distance = moveType.distance * kAutoMoveDuration
+            distance = self.speed * kAutoMoveDuration
         }
 
         // calculate the next location based on the distance we want to move

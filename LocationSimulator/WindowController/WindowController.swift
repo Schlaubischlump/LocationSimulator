@@ -63,10 +63,17 @@ class WindowController: NSWindowController {
         return self.toolbarController.moveType
     }
 
+    public var speed: Double {
+        return self.toolbarController.speed
+    }
+
     // MARK: - Window lifecycle
 
     override func windowDidLoad() {
         super.windowDidLoad()
+
+        // Set the default move type
+        self.setMoveType(.walk)
 
         // Disable the touchbar and toolbar.
         self.toolbarController.updateForDeviceStatus(.disconnected)
@@ -75,9 +82,9 @@ class WindowController: NSWindowController {
         // Request the permission to access the mac's location.
         // Otherwise the current location button won't work.
         if #available(OSX 10.15, *) {
-            locationManager.requestAlwaysAuthorization()
+            self.locationManager.requestAlwaysAuthorization()
         }
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
         // Listen for state changes to update the toolbar and touchbar.
         self.statusObserver = NotificationCenter.default.addObserver(forName: .StatusChanged, object: nil,
@@ -156,6 +163,15 @@ class WindowController: NSWindowController {
 
         // Update the menubar selection
         NavigationMenubarItem.selectMoveItem(forMoveType: moveType)
+
+        // Change the speed to the default speed value for this move type
+        self.mapViewController?.speed = moveType.speed
+    }
+
+    /// Change the current movement speed.
+    /// - Parameter speed: new speed value in m/s
+    public func setSpeed(_ speed: Double) {
+        self.mapViewController?.speed = speed
     }
 
     /// Toggle between the automove and the manual move state. If a navigation is running, it will be paused / resumed.

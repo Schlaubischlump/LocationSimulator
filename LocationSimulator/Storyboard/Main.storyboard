@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="19500"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
-        <plugIn identifier="com.apple.MapKitIBPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="20037"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
@@ -1716,6 +1716,50 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="SEARCH_TOOLBARITEM_PALETTELABEL"/>
                                     </userDefinedRuntimeAttributes>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="FD6FCF4B-B9C9-46D1-BEDF-F3BA0F331319" label="Custom View" paletteLabel="Custom View" tag="-1" id="DtP-9S-bsL">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="120" height="30"/>
+                                    <size key="maxSize" width="150" height="30"/>
+                                    <customView key="view" id="Qam-nM-edY">
+                                        <rect key="frame" x="0.0" y="14" width="150" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <subviews>
+                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gVf-Th-yut" customClass="ValueTrackingSlider" customModule="LocationSimulator" customModuleProvider="target">
+                                                <rect key="frame" x="23" y="-1" width="104" height="28"/>
+                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="3" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="yax-Rp-0ir" customClass="ValueTrackingSliderCell" customModule="LocationSimulator" customModuleProvider="target"/>
+                                                <connections>
+                                                    <action selector="speedValueChanged:" target="NQO-h4-qY4" id="fKy-Qd-Wlx"/>
+                                                </connections>
+                                            </slider>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="awb-iA-yN8">
+                                                <rect key="frame" x="0.0" y="-19" width="20" height="68"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="6zh-SG-Is9"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Tortoise" id="nwW-8P-4PD"/>
+                                            </imageView>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fu1-k3-RW4">
+                                                <rect key="frame" x="130" y="-30" width="20" height="90"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="wjZ-GJ-fvN"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Hare" id="kcF-1l-7n0"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="gVf-Th-yut" firstAttribute="trailing" secondItem="fu1-k3-RW4" secondAttribute="leading" constant="-5" id="BNc-q2-ADr"/>
+                                            <constraint firstAttribute="trailing" secondItem="fu1-k3-RW4" secondAttribute="trailing" id="K6c-nN-mlH"/>
+                                            <constraint firstItem="gVf-Th-yut" firstAttribute="leading" secondItem="awb-iA-yN8" secondAttribute="trailing" constant="5" id="Muj-wh-yNZ"/>
+                                            <constraint firstItem="gVf-Th-yut" firstAttribute="centerY" secondItem="Qam-nM-edY" secondAttribute="centerY" id="NKP-Tp-OZH"/>
+                                            <constraint firstItem="fu1-k3-RW4" firstAttribute="centerY" secondItem="Qam-nM-edY" secondAttribute="centerY" id="OtU-DP-UZh"/>
+                                            <constraint firstItem="awb-iA-yN8" firstAttribute="centerY" secondItem="Qam-nM-edY" secondAttribute="centerY" id="QiO-lQ-X2k"/>
+                                            <constraint firstItem="awb-iA-yN8" firstAttribute="leading" secondItem="Qam-nM-edY" secondAttribute="leading" id="xgH-4d-U6I"/>
+                                        </constraints>
+                                    </customView>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="SPEED_TOOLBARITEM_PALETTELABEL"/>
+                                    </userDefinedRuntimeAttributes>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="K12-Gb-eXb"/>
@@ -1807,6 +1851,8 @@
                         <outlet property="resetLocationItem" destination="K12-Gb-eXb" id="ftW-vq-eSF"/>
                         <outlet property="searchField" destination="dZ6-JS-ZNU" id="yzU-HT-xa0"/>
                         <outlet property="searchFieldItem" destination="4aF-Km-tnN" id="2te-x1-DUE"/>
+                        <outlet property="speedSlider" destination="gVf-Th-yut" id="001-sb-oJ0"/>
+                        <outlet property="speedSliderItem" destination="DtP-9S-bsL" id="QaU-3W-g7Z"/>
                         <outlet property="windowController" destination="B8D-0N-5wS" id="rEd-ck-9cf"/>
                     </connections>
                 </customObject>
@@ -2614,6 +2660,7 @@
     <resources>
         <image name="Connect" width="142" height="200"/>
         <image name="CurrentLocation" width="51" height="51"/>
+        <image name="Hare" width="127" height="90"/>
         <image name="NSActionTemplate" width="15" height="15"/>
         <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSCaution" width="32" height="32"/>
@@ -2629,6 +2676,7 @@
         <image name="NSStopProgressTemplate" width="14" height="13"/>
         <image name="NSTouchBarDeleteTemplate" width="15" height="17"/>
         <image name="Play" width="72" height="80"/>
+        <image name="Tortoise" width="136" height="68"/>
         <namedColor name="HighlightColor">
             <color red="0.3919999897480011" green="0.60799998044967651" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

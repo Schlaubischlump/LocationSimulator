@@ -90,6 +90,7 @@
 		6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB3D2593CB9900B0CABA /* SidebarItem.swift */; };
 		6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB412593D63000B0CABA /* SplitviewController.swift */; };
 		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
+		63A1ABC827E7832100C9EDE0 /* ValueTrackingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */; };
 		63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */ = {isa = PBXBuildFile; productRef = 63AEA2F1259AB41D0084F74B /* SuggestionPopup */; };
 		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
 		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
@@ -206,6 +207,7 @@
 		6390AB3D2593CB9900B0CABA /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		6390AB412593D63000B0CABA /* SplitviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitviewController.swift; sourceTree = "<group>"; };
 		6390AB442593E23700B0CABA /* NoDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceViewController.swift; sourceTree = "<group>"; };
+		63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTrackingSlider.swift; sourceTree = "<group>"; };
 		63ACAEB625FED97400DE389D /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
 		63ACAEB925FED98E00DE389D /* libplist++-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist++-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist++-2.0.3.dylib"; sourceTree = "<group>"; };
 		63ACAEBB25FED9A300DE389D /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 				63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */,
 				63525958258E8FC80031F289 /* HUDView.swift */,
 				6376756A258EC809000DCEF3 /* SeparatorLine.swift */,
+				63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -920,6 +923,7 @@
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
 				63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */,
 				630BC72027DCFFBE00675426 /* LogToolbarController.swift in Sources */,
+				63A1ABC827E7832100C9EDE0 /* ValueTrackingSlider.swift in Sources */,
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				63864C0D27DC343A005F94F3 /* LogViewController.swift in Sources */,
 				63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */,

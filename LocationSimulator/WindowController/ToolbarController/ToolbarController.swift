@@ -10,6 +10,9 @@ import AppKit
 import MapKit
 import SuggestionPopup
 
+let kSpeedSliderLogBase = 16.0
+let kSpeedSliderMaxExponent = 2.0
+
 class ToolbarController: NSResponder {
     /// The corresponding windowController for this toolbar controller.
     @IBOutlet weak var windowController: WindowController?
@@ -34,6 +37,18 @@ class ToolbarController: NSResponder {
     @IBOutlet weak var currentLocationButton: NSButton!
 
     @IBOutlet weak var resetLocationButton: NSButton!
+
+    @IBOutlet weak var speedSlider: ValueTrackingSlider! {
+        didSet {
+            self.speedSlider.minValue = 0
+            self.speedSlider.maxValue = kSpeedSliderMaxExponent
+
+            self.speedSlider.formatHandler = { value in
+                let speedInKmH = pow(kSpeedSliderLogBase, value)
+                return "\(round(speedInKmH * 10)/10) km/h"
+            }
+        }
+    }
 
     @IBOutlet weak var searchField: NSSearchField! {
         didSet {
@@ -73,6 +88,8 @@ class ToolbarController: NSResponder {
 
     @IBOutlet weak var moveTypeSegmentItem: NSToolbarItem!
 
+    @IBOutlet weak var speedSliderItem: NSToolbarItem!
+
     // MARK: - Constructor
 
     private func setup() {
@@ -91,10 +108,25 @@ class ToolbarController: NSResponder {
 
     // MARK: - Helper
 
+    /// The current speed value in meters per second.
+    public var speed: Double {
+        let speedInKmH = pow(kSpeedSliderLogBase, self.speedSlider.doubleValue)
+        let speedInMS = (speedInKmH * 1000)/(60*60)
+        return speedInMS
+    }
+
     /// Get or set the currently selected moveType.
     public var moveType: MoveType {
-        get { return MoveType(rawValue: self.moveTypeSegment.selectedSegment)! }
-        set { self.moveTypeSegment.selectedSegment = newValue.rawValue }
+        get {
+            return MoveType(rawValue: self.moveTypeSegment.selectedSegment)!
+        }
+        set {
+            self.moveTypeSegment.selectedSegment = newValue.rawValue
+
+            // Change the currently displayed speed value to the default speed for this move type
+            let speedInKmH = newValue.speed * 3.6
+            self.speedSlider.doubleValue = log(speedInKmH)/log(kSpeedSliderLogBase)
+        }
     }
 
     // MARK: - Notification
@@ -156,9 +188,19 @@ class ToolbarController: NSResponder {
     }
 
     /// Change the move speed to walk / cycle / drive based on the selected segment.
-    /// - Parameter sender: the segmented control instance inside the tool- or touchbar.
+    /// - Parameter sender: the segmented control instance inside the toolbar.
     @IBAction func moveTypeSegmentChanged(_ sender: NSSegmentedControl) {
-        self.windowController?.setMoveType(MoveType(rawValue: sender.selectedSegment)!)
+        guard let moveType = MoveType(rawValue: sender.selectedSegment) else { return }
+        self.windowController?.setMoveType(moveType)
     }
 
+    /// Callback when the speed slider is moved.
+    /// - Parameter sender: slider inside the toolbar
+    @IBAction func speedValueChanged(_ sender: NSSlider) {
+        // Calculate a logarithmic speed value
+        let speedInKmH = pow(kSpeedSliderLogBase, sender.doubleValue)
+        let speedInMS = (speedInKmH * 1000)/(60*60)
+
+        self.windowController?.setSpeed(speedInMS)
+    }
 }

@@ -738,3 +738,6 @@
 
 
 "STANDARD_MENU_ITEM" = "Explore";
+
+
+"SPEED_TOOLBARITEM_PALETTELABEL" = "Speed";

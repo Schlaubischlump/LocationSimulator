@@ -135,6 +135,15 @@ class ContentView: NSView {
 
     // MARK: - Helper
 
+    public func reset() {
+        // reset the total distance label
+        self.setTotalDistance(meter: 0)
+        // hide the controls
+        self.controlsHidden = true
+        // show the error indicator on first view appearance.
+        self.showErrorInidcator()
+    }
+
     @objc private func errorIndicatorClicked(_ sender: Any) {
         // Disable the user interaction while the action is performed.
         self.errorIndicator.isEnabled = false
