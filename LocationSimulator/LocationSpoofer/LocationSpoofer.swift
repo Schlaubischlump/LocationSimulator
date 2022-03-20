@@ -11,7 +11,7 @@ import CoreLocation
 
 // MARK: - Constants
 
-let kAutoMoveDuration: Double = 1.0
+let kAutoMoveDuration: Double = 0.05
 
 typealias SucessHandler = (_ sucessfull: Bool) -> Void
 
