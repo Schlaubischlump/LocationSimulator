@@ -34,6 +34,11 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.8.4
+- Fix Swedish localization thanks to @devmaximilian !
+- Add a speed slider to the toolbar (Right click -> Customize toolbar)
+- Decrease the location update interval for smoother movements
+
 ### v0.1.8.3
 - Fix UI lockup if Xcode 13.3 is installed
 - Xcode 13.3 support for iPhoneSimulator
