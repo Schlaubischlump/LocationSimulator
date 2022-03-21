@@ -14,14 +14,16 @@ class ValueTrackingSliderCell: NSSliderCell {
     }
 
     override func startTracking(at startPoint: NSPoint, in controlView: NSView) -> Bool {
+        let result = super.startTracking(at: startPoint, in: controlView)
         self.slider?.startTracking(at: startPoint, in: controlView)
-        return super.startTracking(at: startPoint, in: controlView)
+        return result
     }
 
     override func continueTracking(last lastPoint: NSPoint, current currentPoint: NSPoint,
                                    in controlView: NSView) -> Bool {
+        let result = super.continueTracking(last: lastPoint, current: currentPoint, in: controlView)
         self.slider?.continueTracking(last: lastPoint, current: currentPoint, in: controlView)
-        return super.continueTracking(last: lastPoint, current: currentPoint, in: controlView)
+        return result
     }
 
     override func stopTracking(last lastPoint: NSPoint, current stopPoint: NSPoint, in controlView: NSView,
@@ -60,6 +62,8 @@ class ValueTrackingSlider: NSSlider {
     }()
 
     private var dismissPopoverTimer: Timer?
+
+    private var showPopoverTimer: Timer?
 
     // MARK: - Scrollwheel
 
@@ -105,11 +109,39 @@ class ValueTrackingSlider: NSSlider {
                                                         userInfo: nil, repeats: false)
     }
 
+    // MARK: - Hover
+
+    override func updateTrackingAreas() {
+        super.updateTrackingAreas()
+
+        for trackingArea in self.trackingAreas {
+            self.removeTrackingArea(trackingArea)
+        }
+
+        let options: NSTrackingArea.Options = [.mouseEnteredAndExited, .activeAlways]
+        let trackingArea = NSTrackingArea(rect: self.bounds, options: options, owner: self, userInfo: nil)
+        self.addTrackingArea(trackingArea)
+    }
+
+    override func mouseEntered(with event: NSEvent) {
+        super.mouseEntered(with: event)
+
+        self.showPopoverTimer?.invalidate()
+        self.showPopoverTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self,
+                                                     selector: #selector(self.showInformationPopover),
+                                                     userInfo: nil, repeats: false)
+    }
+
+    override func mouseExited(with event: NSEvent) {
+        super.mouseExited(with: event)
+        self.dismissInformationPopover()
+    }
+
     // MARK: - Popover
 
     /// Show or update the information popover. The arrow is repositioned above the knob if you call this function and
     /// the slider value information text is updated. The contentSize is updated to fit the information text.
-    public func showInformationPopover() {
+    @objc public func showInformationPopover() {
         if let label = self.informationPopover.contentViewController?.view as? NSTextField {
             let text = self.formatHandler?(self.doubleValue) ?? ""
             let font = label.font ?? NSFont.systemFont(ofSize: NSFont.labelFontSize)
@@ -119,14 +151,27 @@ class ValueTrackingSlider: NSSlider {
             self.informationPopover.contentSize = label.frame.size
         }
 
-        let rect = (self.cell as? NSSliderCell)?.knobRect(flipped: false) ?? self.bounds
+        // Default behaviour: Just show the popup in the middle of the slider. This is hopefully never the case.
+        var rect = self.bounds
+
+        if let knobRect = (self.cell as? NSSliderCell)?.knobRect(flipped: false) {
+            // If you click inside the slider, the knobRect is not yet upadted. This formular calculates the real knob
+            // position so that the popup appears below the target position.
+            let percentage = (self.doubleValue - self.minValue) / (self.maxValue - self.minValue)
+            rect = CGRect(x: (self.frame.width - knobRect.width) * percentage,
+                              y: knobRect.origin.y, width: knobRect.width, height: knobRect.height)
+        }
+
         self.informationPopover.show(relativeTo: rect, of: self, preferredEdge: NSRectEdge.maxY)
     }
 
     /// Dismiss the information popup
     @objc public func dismissInformationPopover() {
-        print("Fire it up!!!")
         self.informationPopover.close()
+
+        self.showPopoverTimer?.invalidate()
+        self.showPopoverTimer = nil
+
         self.dismissPopoverTimer?.invalidate()
         self.dismissPopoverTimer = nil
     }
