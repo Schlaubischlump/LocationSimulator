@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import CLogger
 
 let kCustomSupportDirectoryKey: String = "com.schlaubischlump.locationsimulator.customsupportdirectory"
 let kCustomSupportDirectoryEnabledKey: String = "com.schlaubischlump.locationsimulator.customsupportdirectoryenabled"
@@ -62,13 +63,11 @@ extension UserDefaults {
 enum Platform: String {
     case iPhoneOS = "iPhone OS"
     case watchOS = "Watch OS"
-
-    // TV OS seems to report back as iPhone OS
-    // case tvOS = "TV OS"
+    case tvOS = "Apple TVOS"
 
     // We use a variable and not a CaseIterable, to keep a user defined order
     static var values: [Platform] {
-        return [.iPhoneOS, .watchOS]
+        return [.iPhoneOS, .watchOS, .tvOS]
     }
 }
 

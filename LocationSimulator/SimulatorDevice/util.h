@@ -17,7 +17,7 @@
 
 #import "Header/CoreSimulator.h"
 #import "Header/SimulatorBridge.h"
-#include "logger.h"
+#include "CLogger.h"
 
 // The iOS Simulator bundle identifier
 NSString * _Nonnull const kSimBundleID = @"com.apple.iphonesimulator";

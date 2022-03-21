@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CLogger
 
 extension FileManager {
     /// Get all dependeny names with their corresponding license text in a dictionary.

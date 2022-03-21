@@ -204,6 +204,7 @@ struct IOSDevice: Device {
             let productVersion = String(cString: retVersion)
             // Get the current product name e.g. iPhone OS
             let productName = String(cString: retName)
+
             // get the path to the developer disk images
             if let devDMG: URL = manager.getDeveloperDiskImage(os: productName, version: productVersion),
                 let devSign: URL = manager.getDeveloperDiskImageSignature(os: productName, version: productVersion) {

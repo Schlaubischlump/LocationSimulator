@@ -11,7 +11,6 @@
 		6305075423FB06A700EF529A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6305075323FB06A700EF529A /* Credits.rtf */; };
 		630BC72027DCFFBE00675426 /* LogToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC71F27DCFFBE00675426 /* LogToolbarController.swift */; };
 		630BC72227DD09C800675426 /* NSTableCellView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */; };
-		630C0C9627DE024600C3D5A9 /* FileManager+Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */; };
 		630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9927DE4CC500C3D5A9 /* Float+Extension.swift */; };
 		630C0C9E27DE72A600C3D5A9 /* FileManager+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */; };
 		630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */; };
@@ -73,8 +72,6 @@
 		63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */; };
 		6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376756A258EC809000DCEF3 /* SeparatorLine.swift */; };
 		637FD228259578B700E84EDB /* TouchbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FD227259578B700E84EDB /* TouchbarController.swift */; };
-		63864C0727DC2207005F94F3 /* logger.c in Sources */ = {isa = PBXBuildFile; fileRef = 63864C0527DC2207005F94F3 /* logger.c */; };
-		63864C0927DC221E005F94F3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63864C0827DC221E005F94F3 /* LICENSE */; };
 		63864C0B27DC3405005F94F3 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63864C0A27DC3405005F94F3 /* LogWindowController.swift */; };
 		63864C0D27DC343A005F94F3 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63864C0C27DC343A005F94F3 /* LogViewController.swift */; };
 		63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */; };
@@ -104,6 +101,8 @@
 		63D7042325FD6CC1004F6774 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7042225FD6CC1004F6774 /* Device.swift */; };
 		63D7042725FD7616004F6774 /* SimulatorDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7042625FD7616004F6774 /* SimulatorDevice.swift */; };
 		63D7043225FD80C1004F6774 /* simulatordevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D7043025FD7988004F6774 /* simulatordevice.m */; };
+		63D734F027E903370044918C /* FileManager+Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D734EF27E903370044918C /* FileManager+Logger.swift */; };
+		63D734FE27E90C800044918C /* CLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 63D734FD27E90C800044918C /* CLogger */; };
 		63DAFBD827E132D800C09864 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63DAFBD627E132D800C09864 /* Localizable.strings */; };
 		63DBFFE225961563005EAB02 /* NSResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBFFE125961563005EAB02 /* NSResponder+Extension.swift */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
@@ -127,7 +126,6 @@
 		6305075323FB06A700EF529A /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Supporting Files/Credits.rtf"; sourceTree = "<group>"; };
 		630BC71F27DCFFBE00675426 /* LogToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToolbarController.swift; sourceTree = "<group>"; };
 		630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableCellView+Extension.swift"; sourceTree = "<group>"; };
-		630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Logger.swift"; sourceTree = "<group>"; };
 		630C0C9927DE4CC500C3D5A9 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+License.swift"; sourceTree = "<group>"; };
 		630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationView.swift; sourceTree = "<group>"; };
@@ -189,9 +187,6 @@
 		63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
 		6376756A258EC809000DCEF3 /* SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		637FD227259578B700E84EDB /* TouchbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarController.swift; sourceTree = "<group>"; };
-		63864C0327DC2207005F94F3 /* logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logger.h; sourceTree = "<group>"; };
-		63864C0527DC2207005F94F3 /* logger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = logger.c; sourceTree = "<group>"; };
-		63864C0827DC221E005F94F3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		63864C0A27DC3405005F94F3 /* LogWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
 		63864C0C27DC343A005F94F3 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +224,7 @@
 		63D7042C25FD787B004F6774 /* SimulatorBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorBridge.h; sourceTree = "<group>"; };
 		63D7042E25FD78F9004F6774 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		63D7043025FD7988004F6774 /* simulatordevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = simulatordevice.m; sourceTree = "<group>"; };
+		63D734EF27E903370044918C /* FileManager+Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Logger.swift"; sourceTree = "<group>"; };
 		63DAFBCA27E12DDA00C09864 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Localization/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		63DAFBD727E132D800C09864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Localizable.strings; sourceTree = "<group>"; };
 		63DBFFE125961563005EAB02 /* NSResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSResponder+Extension.swift"; sourceTree = "<group>"; };
@@ -249,6 +245,7 @@
 			files = (
 				63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */,
 				635C13862596EA6600BEB53B /* Downloader in Frameworks */,
+				63D734FE27E90C800044918C /* CLogger in Frameworks */,
 				635C13812596EA5700BEB53B /* GPXParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,7 +501,7 @@
 				633C750125AA78F900161DB4 /* String+Extension.swift */,
 				635C13882596EA9800BEB53B /* Array+Extension.swift */,
 				631EBFE2259409190066D5BB /* Notification+Extension.swift */,
-				630C0C9527DE024600C3D5A9 /* FileManager+Logger.swift */,
+				63D734EF27E903370044918C /* FileManager+Logger.swift */,
 				630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */,
 				6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */,
 			);
@@ -595,19 +592,8 @@
 			isa = PBXGroup;
 			children = (
 				630BC72327DD35B200675426 /* WindowController */,
-				63864BF927DC1F85005F94F3 /* Backend */,
 			);
 			path = Logging;
-			sourceTree = "<group>";
-		};
-		63864BF927DC1F85005F94F3 /* Backend */ = {
-			isa = PBXGroup;
-			children = (
-				63864C0827DC221E005F94F3 /* LICENSE */,
-				63864C0527DC2207005F94F3 /* logger.c */,
-				63864C0327DC2207005F94F3 /* logger.h */,
-			);
-			path = Backend;
 			sourceTree = "<group>";
 		};
 		63888DCC2592AEB000B1DFC9 /* MapViewController */ = {
@@ -765,6 +751,7 @@
 				635C13802596EA5700BEB53B /* GPXParser */,
 				635C13852596EA6600BEB53B /* Downloader */,
 				63AEA2F1259AB41D0084F74B /* SuggestionPopup */,
+				63D734FD27E90C800044918C /* CLogger */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -816,6 +803,7 @@
 				635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */,
 				635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */,
 				63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
+				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -837,7 +825,6 @@
 				633C74C025AA28DF00161DB4 /* Localizable.strings in Resources */,
 				63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */,
 				63D5DF3A27D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib in Resources */,
-				63864C0927DC221E005F94F3 /* LICENSE in Resources */,
 				6305075423FB06A700EF529A /* Credits.rtf in Resources */,
 				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
 				63DAFBD827E132D800C09864 /* Localizable.strings in Resources */,
@@ -900,6 +887,7 @@
 				63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */,
 				63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */,
 				631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */,
+				63D734F027E903370044918C /* FileManager+Logger.swift in Sources */,
 				633C750225AA78F900161DB4 /* String+Extension.swift in Sources */,
 				63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
@@ -961,7 +949,6 @@
 				63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
 				630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */,
-				630C0C9627DE024600C3D5A9 /* FileManager+Logger.swift in Sources */,
 				638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */,
 				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
@@ -973,7 +960,6 @@
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
 				63D5DF3C27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift in Sources */,
 				63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */,
-				63864C0727DC2207005F94F3 /* logger.c in Sources */,
 				63D5DF3827D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift in Sources */,
 				631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */,
 				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,
@@ -1391,6 +1377,14 @@
 				minimumVersion = 0.0.3;
 			};
 		};
+		63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Schlaubischlump/CLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1408,6 +1402,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */;
 			productName = SuggestionPopup;
+		};
+		63D734FD27E90C800044918C /* CLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */;
+			productName = CLogger;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -129,7 +129,7 @@ class LogViewController: NSViewController {
     /// Reload the data from the log file and update the UI.
     public func reloadData() {
         let fileManager = FileManager.default
-        let logfile = fileManager.logfile
+        let logfile = fileManager.logFile
 
         if let data = fileManager.contents(atPath: logfile.path) {
             let stringData = String(data: data, encoding: .utf8)

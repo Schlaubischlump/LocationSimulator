@@ -9,6 +9,7 @@
 import AppKit
 import MapKit
 import CoreLocation
+import CLogger
 
 // source location, destination location
 typealias MapViewAction = (CLLocationCoordinate2D?, CLLocationCoordinate2D) -> Void

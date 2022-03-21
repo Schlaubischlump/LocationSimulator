@@ -57,7 +57,8 @@ class LogToolbarController: NSResponder {
     }
 
     @IBAction func clearLogClicked(_ sender: NSButton) {
-        if logger_clear() != 0 || !FileManager.default.clearBackupLogs() {
+        let fileManager = FileManager.default
+        if !fileManager.deleteActiveLog() || !fileManager.deleteBackupLogs() {
             self.windowController?.window?.showError("DELETE_LOG_FAILED", message: "DELETE_LOG_FAILED_MSG")
         } else {
             self.viewController?.reloadData()

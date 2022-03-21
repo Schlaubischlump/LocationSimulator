@@ -8,6 +8,7 @@
 
 import Foundation
 import AppKit.NSWorkspace
+import CLogger
 
 public struct BackupToken {
     let os: String
@@ -48,7 +49,7 @@ extension FileManager {
 
     /// Create a new folder at the specified URL.
     /// - Return: True if the folder was created or did already exist. False otherwise.
-    public func createFolder(atUrl url: URL) -> Bool {
+    /*public func createFolder(atUrl url: URL) -> Bool {
         // if the folder does exist just return
         var isDir: ObjCBool = false
         if self.fileExists(atPath: url.path, isDirectory: &isDir) && isDir.boolValue {
@@ -62,7 +63,7 @@ extension FileManager {
             return false
         }
         return true
-    }
+    }*/
 
     /// Get the path to the systems Application Support directory for this application.
     /// - Parameter create: True: try to create the folder if it does not exist, False: just return the path
@@ -327,7 +328,7 @@ extension FileManager {
         guard let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist"),
               let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath),
               let downloadLinksForOS: NSDictionary = downloadLinksPlist[os] as? NSDictionary else {
-            logError("DeveloperDiskImage download links: Not found. Corrupted plist file!")
+            logError("DeveloperDiskImage download links: Not found for os: \(os)!")
             return ([], [])
         }
 

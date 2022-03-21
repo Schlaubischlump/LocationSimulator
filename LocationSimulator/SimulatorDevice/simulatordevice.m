@@ -7,6 +7,7 @@
 //
 
 #import "LocationSimulator-Swift.h"
+
 #include "simulatordevice.h"
 #include "util.h"
 

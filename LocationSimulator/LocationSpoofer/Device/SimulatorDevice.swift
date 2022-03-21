@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import CLogger
 
 struct SimulatorDevice: Device {
     /// Unique Device ID (UDID) string.

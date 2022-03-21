@@ -11,6 +11,6 @@
 
 #include <errno.h>
 #include <libimobiledevice/libimobiledevice.h>
-#include "logger.h"
+#include "CLogger.h"
 
 #endif /* Config_h */

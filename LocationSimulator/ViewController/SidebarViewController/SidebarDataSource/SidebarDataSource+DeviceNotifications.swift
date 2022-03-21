@@ -8,6 +8,7 @@
 
 import Foundation
 import AppKit
+import CLogger
 
 extension SidebarDataSource {
 
