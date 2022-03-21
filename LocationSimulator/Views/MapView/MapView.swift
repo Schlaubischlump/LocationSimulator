@@ -105,8 +105,8 @@ class MapView: MKMapView {
 
          // Animate the marker to the new position.
         NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
-            context.duration = 0.5
-            context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+            context.duration = 0.25
+            context.timingFunction = CAMediaTimingFunction(name: .linear)
             context.allowsImplicitAnimation = true
             self.currentLocationMarker?.coordinate = coordinate
         }, completionHandler: nil)

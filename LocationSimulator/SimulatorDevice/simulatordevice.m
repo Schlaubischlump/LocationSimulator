@@ -96,7 +96,7 @@ static NSMutableSet<SimDeviceWrapper *> *knownDevices;
                 LOG_FATAL("SimDeviceWrapper: 'SimDeviceNotification_NewBootStatus' not found in info dictionary.");
             }
 
-            if (bootInfo.isTerminalStatus && bootInfo.status == SimBootStatusFinished)
+            if (bootInfo != nil && bootInfo.isTerminalStatus && bootInfo.status == SimBootStatusFinished)
             {
                 SimDeviceWrapper *deviceWrapper = [[SimDeviceWrapper alloc] initWithDevice:info[@"device"]];
                 [knownDevices addObject:deviceWrapper];
