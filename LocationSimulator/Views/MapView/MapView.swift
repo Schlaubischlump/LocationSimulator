@@ -108,7 +108,8 @@ class MapView: MKMapView {
         NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
             context.duration = 0.25
             context.timingFunction = CAMediaTimingFunction(name: .linear)
-            context.allowsImplicitAnimation = true
+            // This fixes the error, that the current location marker is movin, if you move the map
+            context.allowsImplicitAnimation = false
             self.currentLocationMarker?.coordinate = coordinate
         }, completionHandler: nil)
 
