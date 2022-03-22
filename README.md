@@ -7,7 +7,7 @@ If you got an `Unable to install/mount DeveloperDiskImage.dmg` error, verify tha
   <h2 align="center">LocationSimulator</h2>
 </div>
 
-LocationSimulator is a macOS app (10.15.x / 11.x) which allows spoofing the location of an iOS or iPhoneSimulator device. The target audience of this project are developers who want to test their location service based application.
+LocationSimulator is a macOS app (10.15.x / 11.x, 12.x) which allows spoofing the location of an iOS or iPhoneSimulator device. The target audience of this project are developers who want to test their location service based application.
 
 ![LocationSimulator screenshot](Preview/screenshot.png)
 
