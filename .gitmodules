@@ -3,4 +3,4 @@
 	url = https://github.com/Schlaubischlump/xcodedevtools
 [submodule "Localization"]
 	path = Localization
-	url = git@github.com:Schlaubischlump/LocationSimulator-Localization.git
+	url = https://github.com/Schlaubischlump/LocationSimulator-Localization
