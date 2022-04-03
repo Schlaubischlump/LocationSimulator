@@ -10,9 +10,6 @@ import AppKit
 import CoreLocation
 import MapKit
 
-let kProjectWebsite = "https://schlaubischlump.github.io/LocationSimulator/"
-let kGithubWebseite = "https://github.com/Schlaubischlump/LocationSimulator"
-
 class MenubarController: NSResponder {
     /// The notification observer for status changes.
     private var statusObserver: NSObjectProtocol?
@@ -260,7 +257,7 @@ class MenubarController: NSResponder {
 
     /// Open the report an issue website in a browser.
     @IBAction func reportBugPage(_ sender: Any) {
-        if let url = URL(string: kGithubWebseite + "/issues") {
+        if let url = URL(string: kGithubWebsite + "/issues") {
             NSWorkspace.shared.open(url)
         }
     }

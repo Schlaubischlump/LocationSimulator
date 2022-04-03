@@ -18,13 +18,16 @@ extension MapViewController: LocationSpooferDelegate {
     func willChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
         // show a progress spinner when we request a location change
         self.contentView?.startSpinner()
-        // remove the route overlay if it is present to fake an animation
-        self.mapView.removeNavigationOverlay()
         // make sure the spoofer is setup
         guard let coord = toCoordinate, let spoofer = self.spoofer else { return }
+
         // if we are still navigating => update the overlay
         if !spoofer.route.isEmpty {
-            self.mapView.addNavigationOverlay(withPath: [coord] + spoofer.route)
+            // We need to add the start coordinate if we have not moved enough from the starting point yet
+            let traveledRoute = spoofer.traveledRoute + [coord]
+            let route = [coord] + spoofer.route
+
+            self.mapView.updateNavigationOverlay(withInactiveRoute: traveledRoute, activeRoute: route)
         }
     }
 

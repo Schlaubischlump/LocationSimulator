@@ -29,7 +29,8 @@ class MapView: MKMapView {
     public private(set) var currentLocationMarker: MKPointAnnotation?
 
     /// Current navigation overlay that shows the path.
-    private var navigationOverlay: MKOverlay?
+    private var navigationOverlay: NavigationOverlay?
+    internal var navigationRenderer: NavigationRenderer?
 
     // MARK: - Constructor
     private func setup() {
@@ -108,7 +109,7 @@ class MapView: MKMapView {
         NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
             context.duration = 0.25
             context.timingFunction = CAMediaTimingFunction(name: .linear)
-            // This fixes the error, that the current location marker is movin, if you move the map
+            // This fixes the error, that the current location marker is moving, if you move the map
             context.allowsImplicitAnimation = false
             self.currentLocationMarker?.coordinate = coordinate
         }, completionHandler: nil)
@@ -130,22 +131,23 @@ class MapView: MKMapView {
 
     // MARK: - Overlay
 
-    /// Add the navigation overlay. If a current overlay is active this function will not add the overlay.
-    /// Remove the navigation overlay before calling this function.
-    /// Return: true on success, false otherwise
-    @discardableResult
-    public func addNavigationOverlay(withPath path: [CLLocationCoordinate2D]) -> Bool {
-        // We only ever allow one navigation overlay.
-        guard self.navigationOverlay == nil else {
-            return false
+    /// Add the navigation overlay. If a current overlay is active this function redraw the overlay.
+    public func updateNavigationOverlay(withInactiveRoute inactiveRoute: [CLLocationCoordinate2D],
+                                        activeRoute: [CLLocationCoordinate2D]) {
+        // Add the overlay, if we don't have one yet
+        let addOverlay = self.navigationOverlay == nil
+        if addOverlay {
+            let overlay = NavigationOverlay()
+            self.addOverlay(overlay, level: .aboveLabels)
+            self.navigationOverlay = overlay
         }
 
-        self.navigationOverlay = MKPolyline(coordinates: path, count: path.count)
-        self.addOverlay(self.navigationOverlay!, level: .aboveLabels)
-        // FixMe: force a redraw to show the overlay... for some reason display is not working
-        // this does block the UI for a little less then a second :/
-        // self.mapView.setCenter(self.mapView.centerCoordinate, animated: true)
-        return true
+        // Redraw the route and calculate the bounding map rect if we add a the overlay
+        if let boundingRect = self.navigationOverlay?.update(activeRoute: activeRoute,
+                                                             inactiveRoute: inactiveRoute,
+                                                             invalidateBoundingMapRect: addOverlay) {
+            self.navigationRenderer?.setNeedsDisplay(boundingRect)
+        }
     }
 
     /// Remove the navigation overlay.
@@ -155,6 +157,7 @@ class MapView: MKMapView {
         if let overlay = self.navigationOverlay {
             self.removeOverlay(overlay)
             self.navigationOverlay = nil
+            self.navigationRenderer = nil
             return true
         }
         return false

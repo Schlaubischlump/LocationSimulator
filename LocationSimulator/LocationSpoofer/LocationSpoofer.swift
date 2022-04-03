@@ -11,7 +11,7 @@ import CoreLocation
 
 // MARK: - Constants
 
-let kAutoMoveDuration: Double = 0.05
+let kAutoMoveDuration: Double = 0.25
 
 typealias SucessHandler = (_ sucessfull: Bool) -> Void
 
@@ -56,6 +56,8 @@ class LocationSpoofer {
     /// This list will be consumed while the path updates.
     public var route: [CLLocationCoordinate2D]
 
+    public var traveledRoute: [CLLocationCoordinate2D]
+
     /// Delegate which is informed about location changes.
     public weak var delegate: LocationSpooferDelegate?
 
@@ -76,6 +78,7 @@ class LocationSpoofer {
                 self.autoMoveTimer = nil
                 // reset the route if we change to manual moving
                 self.route = []
+                self.traveledRoute = []
             }
 
             DispatchQueue.main.async { [weak self] in
@@ -131,6 +134,7 @@ class LocationSpoofer {
 
     init(_ device: Device) {
         self.route = []
+        self.traveledRoute = []
         self.device = device
         self.currentLocation = nil
         self.dispatchQueue = DispatchQueue(label: "locationUpdates", qos: .userInteractive)
@@ -151,7 +155,10 @@ class LocationSpoofer {
     public func resetLocation() {
         self.hasPendingTask = true
         // inform delegate that the location will be reset
-        self.delegate?.willChangeLocation(spoofer: self, toCoordinate: nil)
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.delegate?.willChangeLocation(spoofer: strongSelf, toCoordinate: nil)
+        }
         // disable automoving
         self.moveState = .manual
 
@@ -207,7 +214,10 @@ class LocationSpoofer {
     private func setLocation(_ coordinate: CLLocationCoordinate2D, completion:@escaping SucessHandler) {
         self.hasPendingTask = true
         // inform delegate that the location will change
-        self.delegate?.willChangeLocation(spoofer: self, toCoordinate: coordinate)
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.delegate?.willChangeLocation(spoofer: strongSelf, toCoordinate: coordinate)
+        }
 
         dispatchQueue.async { [weak self] in
             // try to simulate the location on the device
@@ -251,10 +261,10 @@ class LocationSpoofer {
             // snap into place if we are close enough to a marker
             if nextLocation.distanceTo(coordinate: coord) <= distance {
                 nextLocation = coord
-                // remove the coordinate from the path
-                self.route = Array(self.route.dropFirst())
+                // remove the coordinate from the active route and add it to the traveled route
+                self.traveledRoute.append(self.route.removeFirst())
 
-                // stop moving if we reached the end of the path
+                // stop moving if we reached the end of the route
                 if self.route.count == 0 {
                     self.moveState = .manual
                 }
@@ -332,6 +342,11 @@ class LocationSpoofer {
 
         // save the time when we start sending the location information
         let time = DispatchTime.now().uptimeNanoseconds
+
+        // We started a new navigation, so add the starting point to the current location
+        if self.moveState == .auto && !self.route.isEmpty && self.traveledRoute.isEmpty {
+            self.traveledRoute = [self.currentLocation!]
+        }
 
         // send the new location information
         self.setLocation(nextLocation) { [weak self] successfull in

@@ -19,13 +19,21 @@ extension MapView: MKMapViewDelegate {
 
     /// Create the renderer for the navigation overlay.
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? MKPolyline else {
+        guard let polyline = overlay as? NavigationOverlay else {
             fatalError("Could not cast overlay to MKPolyline.")
         }
-        let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = .overlayBlue
-        // renderer.lineDashPattern = [0, 10]
-        renderer.lineWidth = 8
+
+        if let renderer = self.navigationRenderer {
+            return renderer
+        }
+
+        let renderer = NavigationRenderer(overlay: polyline, activeFill: .overlayBlue)
+        renderer.inactiveFill = nil // We might want to change this in the future
+        renderer.borderColor = .blue
+        renderer.setNeedsDisplay(mapView.visibleMapRect)
+
+        self.navigationRenderer = renderer
+
         return renderer
     }
 
