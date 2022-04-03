@@ -77,13 +77,18 @@ class NavigationOverlay: NSObject, MKOverlay {
         block(self.inactiveRoute, self.activeRoute)
     }
 
-    /**
-     Calculate the bounding map rect based on all coordinates in the active and inactive route.
-     */
+    /// Calculate the bounding map rect based on all coordinates in the active and inactive route.
     private func calculateBoundingRect() -> MKMapRect {
+        var points = self.inactiveRoute + self.activeRoute
+        guard !points.isEmpty else {
+            return MKMapRect(x: 0, y: 0, width: 0, height: 0)
+        }
+
+        let point = points.removeFirst()
         let size = MKMapSize(width: 0, height: 0)
-        let initialRect = MKMapRect(origin: MKMapPoint(x: 0, y: 0), size: size)
-        return (self.inactiveRoute + self.activeRoute).reduce(initialRect) { result, nextCoord in
+
+        let initialRect = MKMapRect(origin: MKMapPoint(point), size: size)
+        return points.reduce(initialRect) { result, nextCoord in
             result.union(MKMapRect(origin: MKMapPoint(nextCoord), size: size))
         }
     }

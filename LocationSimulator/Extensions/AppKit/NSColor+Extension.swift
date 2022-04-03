@@ -12,5 +12,6 @@ extension NSColor {
     static let highlight = NSColor(named: "HighlightColor")!
     static let separator = NSColor(named: "SeparatorColor")!
     static let overlayBlue = NSColor(named: "OverlayBlueColor")!
+    static let darkOverlayBlue = NSColor(named: "DarkOverlayBlueColor")!
     static let currentLocationBlue = NSColor(named: "CurrentLocationBlueColor")!
 }

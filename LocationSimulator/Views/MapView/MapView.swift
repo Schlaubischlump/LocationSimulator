@@ -131,7 +131,7 @@ class MapView: MKMapView {
 
     // MARK: - Overlay
 
-    /// Add the navigation overlay. If a current overlay is active this function redraw the overlay.
+    /// Add the navigation overlay. If a current overlay is active this function redraws the overlay.
     public func updateNavigationOverlay(withInactiveRoute inactiveRoute: [CLLocationCoordinate2D],
                                         activeRoute: [CLLocationCoordinate2D]) {
         // Add the overlay, if we don't have one yet
@@ -147,6 +147,13 @@ class MapView: MKMapView {
                                                              inactiveRoute: inactiveRoute,
                                                              invalidateBoundingMapRect: addOverlay) {
             self.navigationRenderer?.setNeedsDisplay(boundingRect)
+
+            // Zoom in / out to show the complete route
+            if addOverlay {
+                self.setVisibleMapRect(boundingRect,
+                                       edgePadding: NSEdgeInsets(top: 35, left: 35, bottom: 35, right: 35),
+                                       animated: true)
+            }
         }
     }
 

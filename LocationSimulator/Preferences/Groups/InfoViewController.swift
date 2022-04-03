@@ -21,8 +21,8 @@ class InfoViewController: NSViewController {
 
         // Add the welcome text and resize the view
         let welcomeString = "WELCOME".localized
-        // let changelogString = "CHANGELOG".localized
-        infoField.stringValue = "\n" + welcomeString// + "\n" + changelogString + "\n"
+        let changelogString = "CHANGELOG".localized
+        infoField.stringValue = "\n" + welcomeString + "\n" + changelogString + "\n"
         infoField.sizeToFit()
 
         // Add some padding to the left and right

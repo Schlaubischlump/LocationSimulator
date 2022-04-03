@@ -28,9 +28,8 @@ extension MapView: MKMapViewDelegate {
         }
 
         let renderer = NavigationRenderer(overlay: polyline, activeFill: .overlayBlue)
-        renderer.inactiveFill = nil // We might want to change this in the future
+        renderer.inactiveFill = .darkOverlayBlue
         renderer.borderColor = .blue
-        renderer.setNeedsDisplay(mapView.visibleMapRect)
 
         self.navigationRenderer = renderer
 

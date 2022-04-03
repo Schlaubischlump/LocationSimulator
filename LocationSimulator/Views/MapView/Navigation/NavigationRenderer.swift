@@ -48,11 +48,13 @@ class NavigationRenderer: MKOverlayRenderer {
         let overlay = self.overlay as? NavigationOverlay
 
         let width = max(self.lineWidth/zoomScale, MKRoadWidthAtZoomScale(zoomScale))
-        let clipRect = mapRect.insetBy(dx: -width, dy: -width)
+        let borderWidth = width * (1.0 + self.borderWidth)
+
+        let clipRect = mapRect.insetBy(dx: -borderWidth, dy: -borderWidth)
 
         var paths: (borderPath: CGMutablePath?, inactivePath: CGMutablePath?, activePath: CGMutablePath?)?
         overlay?.readCoordinatesAndWait { [weak self] inactiveRoute, activeRoute in
-            paths = self?.recalcultePaths(inactiveRoute: inactiveRoute, activeRoute: activeRoute,
+            paths = self?.calcultePaths(inactiveRoute: inactiveRoute, activeRoute: activeRoute,
                                           clipRect: clipRect, zoomScale: zoomScale)
         }
 
@@ -60,12 +62,13 @@ class NavigationRenderer: MKOverlayRenderer {
             return
         }
 
+        context.setMiterLimit(0)
         context.setLineJoin(CGLineJoin.round)
         context.setLineCap(CGLineCap.round)
 
         if let borderPath = paths.borderPath, let borderColor = self.borderColor, borderColor != .clear {
             context.addPath(borderPath)
-            context.setLineWidth(width * (1.0 + self.borderWidth))
+            context.setLineWidth(borderWidth)
             context.setStrokeColor(borderColor.cgColor)
             context.strokePath()
         }
@@ -121,10 +124,10 @@ class NavigationRenderer: MKOverlayRenderer {
         return path
     }
 
-    private func recalcultePaths(inactiveRoute: [CLLocationCoordinate2D],
-                                 activeRoute: [CLLocationCoordinate2D],
-                                 clipRect mapRect: MKMapRect,
-                                 zoomScale: MKZoomScale)
+    private func calcultePaths(inactiveRoute: [CLLocationCoordinate2D],
+                               activeRoute: [CLLocationCoordinate2D],
+                               clipRect mapRect: MKMapRect,
+                               zoomScale: MKZoomScale)
     -> (borderPath: CGMutablePath?, inactivePath: CGMutablePath?, activePath: CGMutablePath?) {
         return (self.calculatePath(points: inactiveRoute + activeRoute, clipRect: mapRect, zoomScale: zoomScale),
                 self.calculatePath(points: inactiveRoute, clipRect: mapRect, zoomScale: zoomScale),
