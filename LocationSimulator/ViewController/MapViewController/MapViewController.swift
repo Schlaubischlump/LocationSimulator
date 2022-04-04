@@ -40,6 +40,10 @@ class MapViewController: NSViewController {
             // Create a spoofer instance for this device.
             self.spoofer = LocationSpoofer(device)
             self.spoofer?.delegate = self
+            // Apply the settings to the spoofer instance
+            if UserDefaults.standard.varyMovementSpeed {
+                self.spoofer?.movementSpeedVariance = kDefaultMovementSpeedVariance
+            }
         }
     }
 
@@ -61,6 +65,9 @@ class MapViewController: NSViewController {
         get { return self.mapView.mapType }
         set { self.mapView.mapType = newValue }
     }
+
+    /// Observe the vary movement speed setting
+    var varyMovementSpeedSettingObserver: NSKeyValueObservation?
 
     /// True to autofocus current location when the location changes, false otherwise.
     var autoFocusCurrentLocation = false {
@@ -164,6 +171,12 @@ class MapViewController: NSViewController {
         self.registerMapViewActions()
         // register all actions for the controls in the lower left corner
         self.registerControlsHUDActions()
+        // listen for setting changes
+        let userDefaults = UserDefaults.standard
+        self.varyMovementSpeedSettingObserver = userDefaults.observe(\.varyMovementSpeed,
+                                                                      options: [.initial, .new]) { (_, _) in
+            self.spoofer?.movementSpeedVariance = userDefaults.varyMovementSpeed ? kDefaultMovementSpeedVariance : nil
+        }
     }
 
     override func viewDidAppear() {

@@ -22,23 +22,23 @@ private func lineBetween(point p0: MKMapPoint, andPoint p1: MKMapPoint, intersec
 
 class NavigationRenderer: MKOverlayRenderer {
     /// The active, upcoming route fill color
-    var activeFill: NSColor
+    public var activeFill: NSColor
     /// The inactive, already traveled path fill color
-    var inactiveFill: NSColor?
+    public var inactiveFill: NSColor?
     /// The border color around the path
-    var borderColor: NSColor?
+    public var borderColor: NSColor?
 
     /// The line width to use
-    var lineWidth: CGFloat = 12.0
+    public var lineWidth: CGFloat = 12.0
     /// The border width in percentage of the road width
-    var borderWidth: CGFloat = 0.3
+    public var borderWidth: CGFloat = 0.4
 
     // MARK: Init
 
     /// Initializes a new NavigationRenderer from a given polyline.
     /// - Parameter polyline: The polyline to render
     /// - Parameter activeFill: The active path color
-    init(overlay: NavigationOverlay, activeFill: NSColor) {
+    public init(overlay: NavigationOverlay, activeFill: NSColor) {
         self.activeFill = activeFill
 
         super.init(overlay: overlay)

@@ -150,9 +150,9 @@ class MapView: MKMapView {
 
             // Zoom in / out to show the complete route
             if addOverlay {
-                self.setVisibleMapRect(boundingRect,
-                                       edgePadding: NSEdgeInsets(top: 35, left: 35, bottom: 35, right: 35),
-                                       animated: true)
+                let pad = 35.0
+                let inset = NSEdgeInsets(top: pad, left: pad, bottom: pad, right: pad)
+                self.setVisibleMapRect(boundingRect, edgePadding: inset, animated: true)
             }
         }
     }

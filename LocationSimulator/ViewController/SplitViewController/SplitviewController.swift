@@ -71,7 +71,7 @@ class SplitViewController: NSSplitViewController {
         self.toggleSidebar(nil)
     }
 
-    // MARK: NSSplitViewDelegate
+    // MARK: - NSSplitViewDelegate
 
     override func splitView(_ splitView: NSSplitView, canCollapseSubview subview: NSView) -> Bool {
         return false

@@ -32,12 +32,13 @@ extension UserDefaults {
     }
 }
 
-class NetworkViewController: NSViewController {
+class NetworkViewController: PreferenceViewControllerBase {
     @IBOutlet weak var allowNetworkDevicesCheckbox: NSButton!
     @IBOutlet weak var preferNetworkDevicesCheckbox: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.widthToFit()
 
         // load the current user settings
         self.allowNetworkDevicesCheckbox.state = UserDefaults.standard.detectNetworkDevices ? .on : .off

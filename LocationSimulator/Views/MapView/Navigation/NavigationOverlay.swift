@@ -22,8 +22,8 @@ class NavigationOverlay: NSObject, MKOverlay {
         return coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
     }
 
-    public var activeRoute: [CLLocationCoordinate2D]
-    public var inactiveRoute: [CLLocationCoordinate2D]
+    private var activeRoute: [CLLocationCoordinate2D]
+    private var inactiveRoute: [CLLocationCoordinate2D]
 
     private let lock = NSLock()
 

@@ -8,7 +8,7 @@
 
 import AppKit
 
-class LicenseViewController: NSViewController {
+class LicenseViewController: PreferenceViewControllerBase {
 
     @IBOutlet var licenseSelection: NSSegmentedControl!
 

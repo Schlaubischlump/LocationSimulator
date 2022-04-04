@@ -23,10 +23,8 @@ extension MapViewController: LocationSpooferDelegate {
 
         // if we are still navigating => update the overlay
         if !spoofer.route.isEmpty {
-            // We need to add the start coordinate if we have not moved enough from the starting point yet
             let traveledRoute = spoofer.traveledRoute + [coord]
             let route = [coord] + spoofer.route
-
             self.mapView.updateNavigationOverlay(withInactiveRoute: traveledRoute, activeRoute: route)
         }
     }

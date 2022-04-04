@@ -71,7 +71,7 @@ enum Platform: String {
     }
 }
 
-class DeveloperDiskImagesViewController: NSViewController {
+class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
 
     /// The main table view that lists all available os versions
     @IBOutlet var tableView: NSTableView!

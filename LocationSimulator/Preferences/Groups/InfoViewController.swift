@@ -8,7 +8,7 @@
 
 import AppKit
 
-class InfoViewController: NSViewController {
+class InfoViewController: PreferenceViewControllerBase {
     override func loadView() {
         let infoField = NSTextField(frame: .zero)
         infoField.isEditable = false

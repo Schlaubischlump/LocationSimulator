@@ -75,7 +75,7 @@ class UserLocationView: MKAnnotationView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func rebuildLayers() {
+    private func rebuildLayers() {
         self.layer?.removeAllAnimations()
 
         self.outerDotLayer?.removeFromSuperlayer()

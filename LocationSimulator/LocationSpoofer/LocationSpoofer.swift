@@ -11,7 +11,7 @@ import CoreLocation
 
 // MARK: - Constants
 
-let kAutoMoveDuration: Double = 0.25
+let kAutoMoveInterval: Double = 0.25
 
 typealias SucessHandler = (_ sucessfull: Bool) -> Void
 
@@ -56,7 +56,13 @@ class LocationSpoofer {
     /// This list will be consumed while the path updates.
     public var route: [CLLocationCoordinate2D]
 
+    /// The route already traveled.
     public var traveledRoute: [CLLocationCoordinate2D]
+
+    /// The movement speed variance in percentage of current speed. Set this value to vary the current movement speed.
+    /// Set this value to nil to disable the movement speed variance. E.g a range of 0.8..1.2 would mean, the movement
+    /// speed will be at least 0.8 of the current speed and at most 1.2 of the current speed value.
+    public var movementSpeedVariance: Range<Double>?
 
     /// Delegate which is informed about location changes.
     public weak var delegate: LocationSpooferDelegate?
@@ -326,13 +332,19 @@ class LocationSpoofer {
         // we don't want to append a new task
         if !appendToPendingTasks && self.hasPendingTask { return }
 
+        // apply the variance to the speed if required
+        var distance = 0.0
+        var speed = self.speed
+        if let variance = self.movementSpeedVariance {
+            speed = max(0.0, speed * Double.random(in: variance))
+        }
+
         // if the `setLocation` takes to long we might need to move a little bit more to keep the speed.
-        var distance: Double = 0
         if let userInfo = timer?.userInfo as? [String: UInt64], let lastTime = userInfo["time"] {
             let durationInSeconds = Double(DispatchTime.now().uptimeNanoseconds - lastTime) / 1000000000
-            distance = self.speed * durationInSeconds
+            distance = speed * durationInSeconds
         } else {
-            distance = self.speed * kAutoMoveDuration
+            distance = speed * kAutoMoveInterval
         }
 
         // calculate the next location based on the distance we want to move
@@ -355,7 +367,7 @@ class LocationSpoofer {
 
             // reschedule ourself
             if strongSelf.moveState == .auto {
-                strongSelf.autoMoveTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoMoveDuration),
+                strongSelf.autoMoveTimer = Timer.scheduledTimer(timeInterval: TimeInterval(kAutoMoveInterval),
                                                                 target: strongSelf,
                                                                 selector: #selector(strongSelf
                                                                     .move(timer:appendToPendingTasks:)),

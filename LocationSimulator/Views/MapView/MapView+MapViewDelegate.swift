@@ -19,21 +19,22 @@ extension MapView: MKMapViewDelegate {
 
     /// Create the renderer for the navigation overlay.
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? NavigationOverlay else {
-            fatalError("Could not cast overlay to MKPolyline.")
-        }
+        if let navigationOverlay = overlay as? NavigationOverlay {
+            if let renderer = self.navigationRenderer {
+                return renderer
+            }
 
-        if let renderer = self.navigationRenderer {
+            let renderer = NavigationRenderer(overlay: navigationOverlay, activeFill: .overlayBlue)
+            renderer.inactiveFill = .darkOverlayBlue
+            renderer.borderColor = .blue
+
+            self.navigationRenderer = renderer
+
             return renderer
         }
-
-        let renderer = NavigationRenderer(overlay: polyline, activeFill: .overlayBlue)
-        renderer.inactiveFill = .darkOverlayBlue
-        renderer.borderColor = .blue
-
-        self.navigationRenderer = renderer
-
-        return renderer
+        // This should never be the case. If apple sometimes in the future decides to add some overlays we should
+        // provide a default and not crash.
+        return MKOverlayRenderer(overlay: overlay)
     }
 
     // MARK: - Current location marker

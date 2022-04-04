@@ -9,6 +9,7 @@
 import AppKit
 import MapKit
 
+let kVaryMovementSpeed: String = "com.schlaubischlump.locationsimulator.varymovementspeed"
 let kConfirmTeleportationKey: String = "com.schlaubischlump.locationsimulator.confirmteleportation"
 let kMapTypeKey: String = "com.schlaubischlump.locationsimulator.maptype"
 
@@ -17,6 +18,11 @@ extension UserDefaults {
     @objc dynamic var mapType: MKMapType {
         get { return MKMapType(rawValue: UInt(self.integer(forKey: kMapTypeKey))) ?? .standard }
         set { self.setValue(newValue.rawValue, forKey: kMapTypeKey) }
+    }
+
+    @objc dynamic var varyMovementSpeed: Bool {
+        get { return self.bool(forKey: kVaryMovementSpeed) }
+        set { self.setValue(newValue, forKey: kVaryMovementSpeed) }
     }
 
     @objc dynamic var confirmTeleportation: Bool {
@@ -28,17 +34,23 @@ extension UserDefaults {
     func registerGeneralDefaultValues() {
         UserDefaults.standard.register(defaults: [
             kConfirmTeleportationKey: false,
+            kVaryMovementSpeed: false,
             kMapTypeKey: MKMapType.standard.rawValue
         ])
     }
 }
 
-class GeneralViewController: NSViewController {
+class GeneralViewController: PreferenceViewControllerBase {
     @IBOutlet weak var confirmTeleportationCheckbox: NSButton!
+
+    @IBOutlet weak var varyMovementSpeedCheckbox: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.widthToFit()
+
         // load the current user settings
+        self.varyMovementSpeedCheckbox.state = UserDefaults.standard.varyMovementSpeed ? .on : .off
         self.confirmTeleportationCheckbox.state = UserDefaults.standard.confirmTeleportation ? .on : .off
     }
 
@@ -46,4 +58,9 @@ class GeneralViewController: NSViewController {
     @IBAction func confirmTeleportationChanged(_ sender: NSButton) {
         UserDefaults.standard.confirmTeleportation = (sender.state == .on)
     }
+
+    @IBAction func varyMovementSpeedChanged(_ sender: NSButton) {
+        UserDefaults.standard.varyMovementSpeed = (sender.state == .on)
+    }
+
 }
