@@ -1,6 +1,3 @@
-[submodule "tools"]
-	path = tools
-	url = https://github.com/Schlaubischlump/xcodedevtools
 [submodule "Localization"]
 	path = Localization
 	url = https://github.com/Schlaubischlump/LocationSimulator-Localization
