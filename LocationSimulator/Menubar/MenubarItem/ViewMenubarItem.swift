@@ -25,7 +25,7 @@ extension UserDefaults {
     }
 }
 
-/// The main File menu.
+/// The main View menu.
 enum ViewMenubarItem: Int, CaseIterable, MenubarItem {
     case toggleSidebar = 3
     case zoomIn = 6
