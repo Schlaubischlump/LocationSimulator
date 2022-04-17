@@ -69,10 +69,10 @@ extension MapView: MKMapViewDelegate {
 
     // MARK: - User interaction
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        self.isUserInteracting = true
+        self.isUserMovingTheMap = true
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        self.isUserInteracting = false
+        self.isUserMovingTheMap = false
     }
 }

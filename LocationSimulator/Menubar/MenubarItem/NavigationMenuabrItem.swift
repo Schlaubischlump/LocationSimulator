@@ -8,6 +8,7 @@
 
 import Foundation
 import AppKit
+import LocationSpoofer
 
 let kNavigationMenuTag: Int = 1
 
@@ -32,7 +33,7 @@ enum NavigationMenubarItem: Int, CaseIterable, MenubarItem {
     }
 
     static public func selectMoveItem(forMoveType moveType: MoveType) {
-        let menuBarItems: [MoveType: NavigationMenubarItem] = [.walk: .walk, .cycle: .cycle, .car: .drive]
+        let menuBarItems: [MoveType: NavigationMenubarItem] = [.walk: .walk, .cycle: .cycle, .drive: .drive]
         menuBarItems.forEach { $1.off() }
         menuBarItems[moveType]?.on()
     }

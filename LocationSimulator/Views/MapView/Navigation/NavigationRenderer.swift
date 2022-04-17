@@ -9,23 +9,12 @@
 import Foundation
 import MapKit
 
-@inline(__always)
-private func lineBetween(point p0: MKMapPoint, andPoint p1: MKMapPoint, intersectRect rect: MKMapRect) -> Bool {
-    let minX = min(p0.x, p1.x)
-    let minY = min(p0.y, p1.y)
-    let maxX = max(p0.x, p1.x)
-    let maxY = max(p0.y, p1.y)
-
-    let rect2 = MKMapRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
-    return rect.intersects(rect2)
-}
-
 class NavigationRenderer: MKOverlayRenderer {
-    /// The active, upcoming route fill color
+    /// The active route fill color
     public var activeFill: NSColor
-    /// The inactive, already traveled path fill color
+    /// The inactive fill color. Use nil to not draw an inactive fill.
     public var inactiveFill: NSColor?
-    /// The border color around the path
+    /// The border color to outline the complete path. Use nil to not draw border.
     public var borderColor: NSColor?
 
     /// The line width to use
@@ -55,7 +44,7 @@ class NavigationRenderer: MKOverlayRenderer {
         var paths: (borderPath: CGMutablePath?, inactivePath: CGMutablePath?, activePath: CGMutablePath?)?
         overlay?.readCoordinatesAndWait { [weak self] inactiveRoute, activeRoute in
             paths = self?.calcultePaths(inactiveRoute: inactiveRoute, activeRoute: activeRoute,
-                                          clipRect: clipRect, zoomScale: zoomScale)
+                                        clipRect: clipRect, zoomScale: zoomScale)
         }
 
         guard overlay?.boundingMapRect.intersects(mapRect) ?? false, let paths = paths else {
@@ -88,7 +77,20 @@ class NavigationRenderer: MKOverlayRenderer {
         }
     }
 
+    @inline(__always)
+    private func lineBetween(point p0: MKMapPoint, andPoint p1: MKMapPoint, intersectRect rect: MKMapRect,
+                             inset: NSEdgeInsets) -> Bool {
+        let minX = min(p0.x, p1.x) - inset.left
+        let minY = min(p0.y, p1.y) - inset.bottom
+        let maxX = max(p0.x, p1.x) + inset.right
+        let maxY = max(p0.y, p1.y) + inset.top
+
+        let rect2 = MKMapRect(x: minX, y: minY, width: maxX - minX, height: maxY - minY)
+        return rect.intersects(rect2)
+    }
+
     // swiftlint:disable large_tuple
+    ///
     @inline(__always)
     private func calculatePath(points: [CLLocationCoordinate2D], clipRect mapRect: MKMapRect,
                                zoomScale: MKZoomScale) -> CGMutablePath? {
@@ -108,7 +110,12 @@ class NavigationRenderer: MKOverlayRenderer {
         for i in 1..<points.count {
             let point = MKMapPoint(points[i])
 
-            if lineBetween(point: point, andPoint: lastPoint, intersectRect: mapRect) {
+            let width = max(self.lineWidth/zoomScale, MKRoadWidthAtZoomScale(zoomScale))
+            let borderWidth = width * (1.0 + self.borderWidth)
+            let inset = borderWidth/2
+
+            if lineBetween(point: point, andPoint: lastPoint, intersectRect: mapRect,
+                           inset: NSEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)) {
                 if needsMove {
                     path.move(to: self.point(for: lastPoint))
                 }

@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import LocationSpoofer
 
 class SidebarViewController: NSViewController {
 

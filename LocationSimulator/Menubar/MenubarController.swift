@@ -9,6 +9,7 @@
 import AppKit
 import CoreLocation
 import MapKit
+import LocationSpoofer
 
 class MenubarController: NSResponder {
     /// The notification observer for status changes.
@@ -134,7 +135,7 @@ class MenubarController: NSResponder {
         switch NavigationMenubarItem(rawValue: sender.tag) {
         case .walk:  moveType = .walk
         case .cycle: moveType = .cycle
-        case .drive: moveType = .car
+        case .drive: moveType = .drive
         default: return
         }
         self.windowController?.setMoveType(moveType)
@@ -158,7 +159,7 @@ class MenubarController: NSResponder {
     /// Toggle between automove and manual move. If a navigation is running, the navigation will be paused.
     /// Call this function again to resume the navigation.
     @IBAction func toggleAutomoveState(_ sender: NSMenuItem) {
-        self.windowController?.toggleAutomoveState()
+        self.windowController?.toggleAutoMove()
     }
 
     @IBAction func stopNavigation(_ sender: Any) {

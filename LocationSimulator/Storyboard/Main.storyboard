@@ -1600,8 +1600,8 @@
                     <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="compact" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <rect key="contentRect" x="240" y="240" width="728" height="480"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
-                        <value key="minSize" type="size" width="640" height="480"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+                        <value key="minSize" type="size" width="728" height="480"/>
                         <toolbar key="toolbar" implicitIdentifier="85BEC97E-E606-461B-9DB8-F1B8A3EF02FF" displayMode="iconAndLabel" sizeMode="regular" id="ERa-CM-KNB">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="QDU-Z5-Bi7">
@@ -1634,6 +1634,25 @@
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="AUTOFOCUS_TOOLBARITEM_TOOLTIP"/>
                                         <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="AUTOFOCUS_TOOLBARITEM_PALETTELABEL"/>
+                                    </userDefinedRuntimeAttributes>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E08BA17C-7A1A-4FE7-8967-5C9E98076224" explicitItemIdentifier="autoReverse" label="" paletteLabel="" image="Reverse" bordered="YES" autovalidates="NO" id="rRr-qy-y0e" userLabel="Autoreverse">
+                                    <size key="minSize" width="37" height="25"/>
+                                    <size key="maxSize" width="38" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="kze-x3-meA" userLabel="Autofocus Location Button">
+                                        <rect key="frame" x="0.0" y="14" width="38" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Reverse" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="l2s-Wj-4PV">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="autoreverseClicked:" target="NQO-h4-qY4" id="bl7-Kv-Xn7"/>
+                                        </connections>
+                                    </button>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localeToolTipKey" value="AUTOREVERSE_TOOLBARITEM_TOOLTIP"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="AUTOREVERSE_TOOLBARITEM_PALETTELABEL"/>
                                     </userDefinedRuntimeAttributes>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="AB403377-7212-4E7B-9260-EC465F38CB7E" explicitItemIdentifier="currentLocation" label="" paletteLabel="" image="NSHomeTemplate" autovalidates="NO" id="Gar-ru-IyF" userLabel="Mac Location">
@@ -1810,8 +1829,8 @@
                             </touchBarItem>
                             <touchBarItem id="3I0-Yu-ztP">
                                 <viewController key="viewController" id="I3c-B6-Xz7">
-                                    <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ztw-f5-7tr">
-                                        <rect key="frame" x="0.0" y="0.0" width="190" height="30"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ztw-f5-7tr">
+                                        <rect key="frame" x="0.0" y="-2" width="194" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="1NT-QT-ght">
                                             <font key="font" metaFont="system"/>
@@ -1843,6 +1862,8 @@
                     <connections>
                         <outlet property="autofocusButton" destination="MDz-N6-VAD" id="ah9-w8-H8z"/>
                         <outlet property="autofocusItem" destination="HdA-HT-jQN" id="BXg-c2-81q"/>
+                        <outlet property="autoreverseButton" destination="kze-x3-meA" id="6xH-bB-Zkq"/>
+                        <outlet property="autoreverseItem" destination="rRr-qy-y0e" id="LlF-Mr-5ry"/>
                         <outlet property="currentLocationButton" destination="dNN-xU-QRQ" id="TTe-he-DU7"/>
                         <outlet property="currentLocationItem" destination="Gar-ru-IyF" id="xyG-ew-Wg1"/>
                         <outlet property="moveTypeSegment" destination="JrU-V8-kbc" id="mLR-xe-YHN"/>
@@ -1992,15 +2013,19 @@
             <objects>
                 <viewController storyboardIdentifier="NoDeviceViewControlelr" id="tcb-Qe-tEw" customClass="NoDeviceViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="99T-F2-swI" customClass="NoDeviceView" customModule="LocationSimulator" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="482" height="511"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-Lb-Ak9">
-                                <rect key="frame" x="100" y="120" width="200" height="200"/>
+                                <rect key="frame" x="116" y="131" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="ZFO-Gi-cN1"/>
+                                    <constraint firstAttribute="width" constant="250" id="c4f-Z4-r4t"/>
+                                </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Connect" id="y3h-BP-061"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EvP-HI-DSe">
-                                <rect key="frame" x="18" y="93" width="364" height="19"/>
+                                <rect key="frame" x="18" y="104" width="446" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Titel" id="zbm-ZU-4S2">
                                     <font key="font" metaFont="systemBold" size="15"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2008,7 +2033,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Nyx-wT-i19">
-                                <rect key="frame" x="18" y="69" width="364" height="16"/>
+                                <rect key="frame" x="18" y="80" width="446" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" alignment="center" title="Message" id="U2d-pp-GIv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2017,16 +2042,14 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="width" relation="lessThanOrEqual" secondItem="99T-F2-swI" secondAttribute="height" multiplier="0.5" id="4ES-oi-eoQ"/>
                             <constraint firstAttribute="trailing" secondItem="EvP-HI-DSe" secondAttribute="trailing" constant="20" symbolic="YES" id="4ZH-Wd-wEC"/>
+                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="centerY" secondItem="99T-F2-swI" secondAttribute="centerY" priority="500" id="8aF-gt-doq"/>
                             <constraint firstItem="EPN-Lb-Ak9" firstAttribute="centerX" secondItem="99T-F2-swI" secondAttribute="centerX" id="JOW-Mb-mgn"/>
                             <constraint firstItem="Nyx-wT-i19" firstAttribute="leading" secondItem="99T-F2-swI" secondAttribute="leading" constant="20" symbolic="YES" id="LWd-rp-FbD"/>
                             <constraint firstAttribute="trailing" secondItem="Nyx-wT-i19" secondAttribute="trailing" constant="20" symbolic="YES" id="UeM-zO-RtB"/>
-                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="height" secondItem="99T-F2-swI" secondAttribute="width" multiplier="0.5" id="Uhb-8N-qel"/>
                             <constraint firstItem="Nyx-wT-i19" firstAttribute="top" secondItem="EvP-HI-DSe" secondAttribute="bottom" constant="8" symbolic="YES" id="ifQ-lT-E71"/>
                             <constraint firstItem="EvP-HI-DSe" firstAttribute="leading" secondItem="99T-F2-swI" secondAttribute="leading" constant="20" symbolic="YES" id="nI3-DC-aab"/>
-                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="width" secondItem="99T-F2-swI" secondAttribute="width" multiplier="0.5" id="sV4-9v-AJk"/>
-                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="top" secondItem="99T-F2-swI" secondAttribute="centerY" multiplier="0.4" id="uua-Gt-09V"/>
+                            <constraint firstItem="EPN-Lb-Ak9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="99T-F2-swI" secondAttribute="top" constant="100" id="uua-Gt-09V"/>
                             <constraint firstItem="EvP-HI-DSe" firstAttribute="top" secondItem="EPN-Lb-Ak9" secondAttribute="bottom" constant="8" symbolic="YES" id="x2J-tZ-2qN"/>
                         </constraints>
                         <connections>
@@ -2041,7 +2064,7 @@
                 </viewController>
                 <customObject id="79x-93-hM7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294" y="1405"/>
+            <point key="canvasLocation" x="335" y="1460.5"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -2308,11 +2331,11 @@
             <objects>
                 <viewController id="eae-4P-ykM" customClass="GeneralViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OAa-Fi-hM2">
-                        <rect key="frame" x="0.0" y="0.0" width="312" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="312" height="192"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AOL-3Y-1IX">
-                                <rect key="frame" x="18" y="91" width="158" height="18"/>
+                                <rect key="frame" x="18" y="155" width="158" height="18"/>
                                 <buttonCell key="cell" type="check" title="Confirm Teleportation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="isp-Tm-ft7">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2325,7 +2348,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ufL-NS-UPy">
-                                <rect key="frame" x="18" y="68" width="187" height="16"/>
+                                <rect key="frame" x="18" y="132" width="187" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" enabled="NO" title="Always ask before teleporting." id="3Kt-Um-S7h">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -2339,7 +2362,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jtC-0U-nMU">
-                                <rect key="frame" x="18" y="43" width="163" height="18"/>
+                                <rect key="frame" x="18" y="107" width="163" height="18"/>
                                 <buttonCell key="cell" type="check" title="Vary Movement Speed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="C9W-fJ-Zm8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2352,7 +2375,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Rb6-St-yNW">
-                                <rect key="frame" x="18" y="20" width="274" height="16"/>
+                                <rect key="frame" x="18" y="84" width="274" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" enabled="NO" title="Add a little variance to the movement speed." id="DgX-hx-8wO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -2365,19 +2388,52 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="VARY_MOVEMENT_SPEED_MSG_SETTING"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ER2-2X-i1m">
+                                <rect key="frame" x="18" y="59" width="181" height="18"/>
+                                <buttonCell key="cell" type="check" title="Move When Standing Still" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ONR-WB-ZlE">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MOVE_WHEN_STANDING_STILL_SETTING"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="moveWhenStandingStillChanged:" target="eae-4P-ykM" id="t66-yC-cPh"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="HED-FI-fLw">
+                                <rect key="frame" x="18" y="20" width="296" height="32"/>
+                                <textFieldCell key="cell" selectable="YES" enabled="NO" title="Enable random movement if the GPS location did not change in a certain time frame." id="R5j-US-Zdf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localePlaceholderKey" value="CONFIRM_TELEPORTATION_MSG_SETTING"/>
+                                    </userDefinedRuntimeAttributes>
+                                </textFieldCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localeKey" value="MOVE_WHEN_STANDING_STILL_MSG_SETTING"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="ER2-2X-i1m" firstAttribute="width" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="width" constant="-20" id="8M3-dy-9kE"/>
                             <constraint firstItem="Rb6-St-yNW" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="9If-vS-l4c"/>
                             <constraint firstItem="Rb6-St-yNW" firstAttribute="top" secondItem="jtC-0U-nMU" secondAttribute="bottom" constant="8" symbolic="YES" id="AMY-o2-bEA"/>
                             <constraint firstItem="AOL-3Y-1IX" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="CYh-Te-RVA"/>
+                            <constraint firstItem="HED-FI-fLw" firstAttribute="width" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="width" constant="-20" id="CyP-gh-caR"/>
                             <constraint firstItem="jtC-0U-nMU" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="EtE-7P-ddg"/>
+                            <constraint firstItem="ER2-2X-i1m" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="IFo-ZJ-WE9"/>
                             <constraint firstItem="ufL-NS-UPy" firstAttribute="top" secondItem="AOL-3Y-1IX" secondAttribute="bottom" constant="8" symbolic="YES" id="KhA-oR-8Ku"/>
                             <constraint firstItem="Rb6-St-yNW" firstAttribute="leading" secondItem="jtC-0U-nMU" secondAttribute="leading" id="LKi-Bu-kh3"/>
+                            <constraint firstItem="HED-FI-fLw" firstAttribute="leading" secondItem="ER2-2X-i1m" secondAttribute="leading" id="Pj1-Co-5QI"/>
                             <constraint firstItem="jtC-0U-nMU" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="YM2-hK-q1C"/>
                             <constraint firstItem="jtC-0U-nMU" firstAttribute="top" secondItem="ufL-NS-UPy" secondAttribute="bottom" constant="8" symbolic="YES" id="bb3-Jt-E67"/>
                             <constraint firstItem="ufL-NS-UPy" firstAttribute="leading" secondItem="AOL-3Y-1IX" secondAttribute="leading" id="esy-MK-WvX"/>
-                            <constraint firstAttribute="bottom" secondItem="Rb6-St-yNW" secondAttribute="bottom" constant="20" symbolic="YES" id="pCp-Ro-AxU"/>
+                            <constraint firstItem="HED-FI-fLw" firstAttribute="top" secondItem="ER2-2X-i1m" secondAttribute="bottom" constant="8" symbolic="YES" id="kLL-Cw-Kar"/>
+                            <constraint firstItem="ER2-2X-i1m" firstAttribute="top" secondItem="Rb6-St-yNW" secondAttribute="bottom" constant="8" symbolic="YES" id="pCp-Ro-AxU"/>
                             <constraint firstItem="AOL-3Y-1IX" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="vuz-Ef-qaa"/>
+                            <constraint firstAttribute="bottom" secondItem="HED-FI-fLw" secondAttribute="bottom" constant="20" symbolic="YES" id="wuw-se-l1b"/>
                             <constraint firstItem="AOL-3Y-1IX" firstAttribute="top" secondItem="OAa-Fi-hM2" secondAttribute="top" constant="20" symbolic="YES" id="xYo-Vn-mcm"/>
                             <constraint firstItem="ufL-NS-UPy" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="yvJ-qO-oEa"/>
                         </constraints>
@@ -2387,25 +2443,26 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="confirmTeleportationCheckbox" destination="AOL-3Y-1IX" id="I83-IW-OI5"/>
+                        <outlet property="moveWhenStandingStillCheckbox" destination="ER2-2X-i1m" id="Iaz-sl-e2W"/>
                         <outlet property="varyMovementSpeedCheckbox" destination="jtC-0U-nMU" id="84c-1X-GTq"/>
                     </connections>
                 </viewController>
                 <customObject id="31H-zk-lrr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-495" y="1205"/>
+            <point key="canvasLocation" x="-495" y="1237"/>
         </scene>
         <!--Developer Disk Images View Controller-->
         <scene sceneID="R3p-Uy-B7j">
             <objects>
                 <viewController id="ToF-vt-NtF" customClass="DeveloperDiskImagesViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="YfJ-uP-0xM">
-                        <rect key="frame" x="0.0" y="0.0" width="227" height="425"/>
+                    <view key="view" id="YfJ-uP-0xM">
+                        <rect key="frame" x="0.0" y="0.0" width="267" height="425"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-tL-iw9">
-                                <rect key="frame" x="20" y="35" width="207" height="250"/>
+                                <rect key="frame" x="20" y="35" width="227" height="250"/>
                                 <clipView key="contentView" id="3ld-57-Iej">
-                                    <rect key="frame" x="1" y="1" width="205" height="248"/>
+                                    <rect key="frame" x="1" y="1" width="225" height="248"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="cnR-eo-JKu">
@@ -2458,8 +2515,8 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="C3E-8o-9An">
-                                    <rect key="frame" x="1" y="233" width="205" height="16"/>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="C3E-8o-9An">
+                                    <rect key="frame" x="1" y="233" width="85" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="cLO-Jm-K3v">
@@ -2468,7 +2525,7 @@
                                 </scroller>
                             </scrollView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-KZ-F6L">
-                                <rect key="frame" x="20" y="283" width="187" height="23"/>
+                                <rect key="frame" x="20" y="283" width="227" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="bBe-oX-oAl">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -2482,7 +2539,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VaG-O8-E1G" userLabel="Add Remove Segment">
-                                <rect key="frame" x="20" y="14" width="207" height="23"/>
+                                <rect key="frame" x="20" y="14" width="227" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="5v1-mC-Drn">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -2499,7 +2556,7 @@
                                 </connections>
                             </segmentedControl>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BHm-g2-ImW">
-                                <rect key="frame" x="18" y="388" width="189" height="18"/>
+                                <rect key="frame" x="18" y="388" width="229" height="18"/>
                                 <buttonCell key="cell" type="check" title="Custom DeveloperDiskImagePath" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WMO-1M-pcy">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2539,7 +2596,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0t-cb-vDt">
-                                <rect key="frame" x="66" y="354" width="141" height="25"/>
+                                <rect key="frame" x="66" y="354" width="181" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" drawsBackground="YES" id="Qge-O6-1Wz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -2709,6 +2766,7 @@
         <image name="NSStopProgressTemplate" width="14" height="13"/>
         <image name="NSTouchBarDeleteTemplate" width="15" height="17"/>
         <image name="Play" width="72" height="80"/>
+        <image name="Reverse" width="100" height="100"/>
         <image name="Tortoise" width="136" height="68"/>
         <namedColor name="HighlightColor">
             <color red="0.3919999897480011" green="0.60799998044967651" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

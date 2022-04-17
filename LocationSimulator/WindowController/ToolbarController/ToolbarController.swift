@@ -9,6 +9,7 @@
 import AppKit
 import MapKit
 import SuggestionPopup
+import LocationSpoofer
 
 let kSpeedSliderLogBase = 16.0
 let kSpeedSliderMaxExponent = 2.0
@@ -34,6 +35,8 @@ class ToolbarController: NSResponder {
 
     @IBOutlet weak var autofocusButton: NSButton!
 
+    @IBOutlet weak var autoreverseButton: NSButton!
+
     @IBOutlet weak var currentLocationButton: NSButton!
 
     @IBOutlet weak var resetLocationButton: NSButton!
@@ -54,6 +57,8 @@ class ToolbarController: NSResponder {
         didSet {
             self.searchCompleter = LocationSearchCompleter(searchField: self.searchField)
             self.searchCompleter.onSelect = { [weak self] _, suggestion in
+                // Disable autofocus since we want to zoom on the searched location and not on the current position
+                self?.windowController?.setAutofocusEnabled(false)
                 // Zoom into the map at the searched location.
                 guard let comp = suggestion as? MKLocalSearchCompletion else { return }
                 let request: MKLocalSearch.Request = MKLocalSearch.Request(completion: comp)
@@ -79,6 +84,8 @@ class ToolbarController: NSResponder {
     // MARK: - ToolbarItems
 
     @IBOutlet weak var autofocusItem: NSToolbarItem!
+
+    @IBOutlet weak var autoreverseItem: NSToolbarItem!
 
     @IBOutlet weak var currentLocationItem: NSToolbarItem!
 
@@ -157,6 +164,7 @@ class ToolbarController: NSResponder {
         let deviceDisconnected = (deviceStatus == .disconnected)
         let hasSpoofedLocation = (deviceStatus == .manual || deviceStatus == .auto || deviceStatus == .navigation)
         self.autofocusItem.isEnabled = !deviceDisconnected
+        self.autoreverseItem.isEnabled = deviceStatus == .navigation
         self.currentLocationItem.isEnabled = !deviceDisconnected
         self.searchFieldItem.isEnabled = !deviceDisconnected
         self.resetLocationItem.isEnabled = hasSpoofedLocation
@@ -173,6 +181,12 @@ class ToolbarController: NSResponder {
     /// - Parameter sender: the button which triggered the action
     @IBAction func autofocusLocationClicked(_ sender: NSButton) {
         self.windowController?.setAutofocusEnabled(sender.state == .on)
+    }
+
+    /// Toggle the autoreverse status to repeat the currently navigated route.
+    /// - Parameter sender: the button which triggered the action
+    @IBAction func autoreverseClicked(_ sender: NSButton) {
+        self.windowController?.setAutoreverseEnabled(sender.state == .on)
     }
 
     /// Set the current location to the mac's location.

@@ -11,6 +11,20 @@ import MapKit
 
 let kViewMenuTag: Int = 3
 
+extension UserDefaults {
+    @objc dynamic var mapType: MKMapType {
+        get { return MKMapType(rawValue: UInt(self.integer(forKey: kMapTypeKey))) ?? .standard }
+        set { self.setValue(newValue.rawValue, forKey: kMapTypeKey) }
+    }
+
+    /// Register the default NSUserDefault values.
+    func registerMapTypeDefaultValue() {
+        UserDefaults.standard.register(defaults: [
+            kMapTypeKey: MKMapType.standard.rawValue
+        ])
+    }
+}
+
 /// The main File menu.
 enum ViewMenubarItem: Int, CaseIterable, MenubarItem {
     case toggleSidebar = 3

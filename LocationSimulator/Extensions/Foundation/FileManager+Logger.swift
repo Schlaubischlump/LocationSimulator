@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CLogger
 
 var loggerIsInitialized = false
 
@@ -55,6 +56,7 @@ let kLogFileName = "log.txt"
         // Init the console logger
         logger_autoFlush(5000) // Flush every 5 seconds
         logger_initConsoleLogger(nil)
+        logger_setLevel(LogLevel_DEBUG)
 
         // Init the file logger
         let logPath = FileManager.default.logFile.path

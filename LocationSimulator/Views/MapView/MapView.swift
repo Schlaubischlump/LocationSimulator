@@ -23,10 +23,18 @@ class MapView: MKMapView {
     public var markerDragAction: MapViewAction?
 
     /// True if the user is currently interacting with the map, false otherwise.
-    public var isUserInteracting: Bool = false
+    public var isUserMovingTheMap: Bool = false
 
     /// Current marker on the mapView.
     public private(set) var currentLocationMarker: MKPointAnnotation?
+
+    /// Enable or disable the user interaction
+    public var userInteractionEnabled: Bool = true {
+        didSet {
+            self.isZoomEnabled = self.userInteractionEnabled
+            self.isScrollEnabled = self.userInteractionEnabled
+        }
+    }
 
     /// Current navigation overlay that shows the path.
     private var navigationOverlay: NavigationOverlay?
@@ -56,6 +64,15 @@ class MapView: MKMapView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setup()
+    }
+
+    // MARK: - User interaction enabled
+
+    override func hitTest(_ point: NSPoint) -> NSView? {
+        if !self.userInteractionEnabled {
+            return nil
+        }
+        return super.hitTest(point)
     }
 
     // MARK: - Long press

@@ -57,7 +57,7 @@ class SplitViewController: NSSplitViewController {
             self.sidebarSplitViewItem.titlebarSeparatorStyle = .none
         }
         self.sidebarSplitViewItem.minimumThickness = 150
-        self.sidebarSplitViewItem.maximumThickness = 200
+        self.sidebarSplitViewItem.maximumThickness = 250
     }
 
     // MARK: - Toggle Sidebar

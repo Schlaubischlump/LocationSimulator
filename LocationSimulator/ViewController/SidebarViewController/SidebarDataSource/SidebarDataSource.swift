@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import LocationSpoofer
 
 /// This class is responsible for managing the devices.
 class SidebarDataSource: NSObject {
@@ -92,6 +93,7 @@ extension SidebarDataSource: NSOutlineViewDelegate {
         // Create the NSTableView cell for the outline view.
         let cell = self.sidebarView?.makeView(withIdentifier: item.identifier, owner: self) as? NSTableCellView
         cell?.textField?.stringValue = item.name
+        cell?.toolTip = item.name
         cell?.imageView?.image = item.image
 
         return cell

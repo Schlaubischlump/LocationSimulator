@@ -11,6 +11,7 @@ import AppKit
 import MapKit
 import CoreLocation
 import GPXParser
+import LocationSpoofer
 
 /// The main window controller instance which hosts the map view and the toolbar.
 class WindowController: NSWindowController {
@@ -118,7 +119,13 @@ class WindowController: NSWindowController {
     /// Enabled / Disable the autofocus to current location feature.
     /// - Parameter enabled: enable or disable the autofocus
     public func setAutofocusEnabled(_ enabled: Bool) {
-        self.mapViewController?.autoFocusCurrentLocation = enabled
+        self.mapViewController?.autofocusCurrentLocation = enabled
+    }
+
+    /// Enabled / Disable the autoreverse feature when navigating.
+    /// - Parameter enabled: enable or disable the autoreverse
+    public func setAutoreverseEnabled(_ enabled: Bool) {
+        self.mapViewController?.autoreverseRoute = enabled
     }
 
     /// Reset the current location.
@@ -175,8 +182,8 @@ class WindowController: NSWindowController {
     }
 
     /// Toggle between the automove and the manual move state. If a navigation is running, it will be paused / resumed.
-    public func toggleAutomoveState() {
-        self.mapViewController?.toggleAutomoveState()
+    public func toggleAutoMove() {
+        self.mapViewController?.toggleAutoMove()
     }
 
     /// Stop the current navigation.

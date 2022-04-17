@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import LocationSpoofer
 
 protocol SidebarItem {
     /// The TableViewCell text.

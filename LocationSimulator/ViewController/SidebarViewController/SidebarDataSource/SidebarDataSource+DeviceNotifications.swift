@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 import CLogger
+import LocationSpoofer
 
 extension SidebarDataSource {
 

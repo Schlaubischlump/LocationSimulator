@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,14 +15,7 @@
 		630C0C9E27DE72A600C3D5A9 /* FileManager+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */; };
 		630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */; };
 		630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4A142593ECD100442713 /* NoDeviceView.swift */; };
-		6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B794230C13AF00AABF3E /* LocationSpoofer.swift */; };
-		6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */; };
 		6311B799230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */; };
-		63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156BFA22FAD16D0086D5F6 /* devicelocation.c */; };
-		63156C0422FB67610086D5F6 /* devicepair.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C0322FB67610086D5F6 /* devicepair.c */; };
-		63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C0A22FB78B60086D5F6 /* deviceimagemounter.c */; };
-		63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 63156C1022FB86160086D5F6 /* deviceinfo.c */; };
-		63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */ = {isa = PBXBuildFile; fileRef = 63156C1322FB9A5D0086D5F6 /* COPYRIGHT */; };
 		631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE2259409190066D5BB /* Notification+Extension.swift */; };
 		631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE8259415250066D5BB /* DeviceStatus.swift */; };
 		631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFF325941C880066D5BB /* ToolbarController.swift */; };
@@ -35,6 +28,7 @@
 		632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */; };
 		632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466223F4D9C8004E5092 /* CoordinateStepper.swift */; };
 		632C466523F7638A004E5092 /* MenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466423F7638A004E5092 /* MenubarItem.swift */; };
+		63303A47280C2E8E000E9D19 /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 63303A46280C2E8E000E9D19 /* LocationSpoofer */; };
 		6336A39927F5EDA20065C798 /* NavigationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336A39827F5EDA20065C798 /* NavigationOverlay.swift */; };
 		633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351920A433EE00A0431C /* AppDelegate.swift */; };
 		633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510920AE9634002A61F1 /* WindowController.swift */; };
@@ -60,6 +54,9 @@
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */; };
+		637169D627FD880200386021 /* LocationSpoofer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D527FD880200386021 /* LocationSpoofer+Extension.swift */; };
+		637169D827FD8D0A00386021 /* Device+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D727FD8D0A00386021 /* Device+Extension.swift */; };
+		637169DA27FF1C2400386021 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D927FF1C2400386021 /* main.swift */; };
 		6372061D25911CED00293EA8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372061C25911CED00293EA8 /* MapView.swift */; };
 		63720628259141EF00293EA8 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720627259141EF00293EA8 /* ProgressView.swift */; };
 		63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */; };
@@ -79,9 +76,6 @@
 		63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */; };
 		63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */; };
 		63888DDA2592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */; };
-		638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9096254B3C6600A520E0 /* ConnectionType.swift */; };
-		638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9097254B3C6600A520E0 /* DeviceError.swift */; };
-		638B909B254B3C6600A520E0 /* IOSDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B9098254B3C6600A520E0 /* IOSDevice.swift */; };
 		638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B909E254B514C00A520E0 /* PreferenceWindowController.swift */; };
 		638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A2254B5A1800A520E0 /* GeneralViewController.swift */; };
 		638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B90A6254B5A4400A520E0 /* NetworkViewController.swift */; };
@@ -100,9 +94,6 @@
 		63D5DF3C27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5DF3B27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift */; };
 		63D5DF3E27D913F500F2DCD3 /* VersionNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5DF3D27D913F500F2DCD3 /* VersionNumberFormatter.swift */; };
 		63D5DF4027D969E800F2DCD3 /* DragAndDropBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */; };
-		63D7042325FD6CC1004F6774 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7042225FD6CC1004F6774 /* Device.swift */; };
-		63D7042725FD7616004F6774 /* SimulatorDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7042625FD7616004F6774 /* SimulatorDevice.swift */; };
-		63D7043225FD80C1004F6774 /* simulatordevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D7043025FD7988004F6774 /* simulatordevice.m */; };
 		63D734F027E903370044918C /* FileManager+Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D734EF27E903370044918C /* FileManager+Logger.swift */; };
 		63D734FE27E90C800044918C /* CLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 63D734FD27E90C800044918C /* CLogger */; };
 		63D7350027EB74F10044918C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D734FF27EB74F10044918C /* Constants.swift */; };
@@ -126,7 +117,6 @@
 		13BA351D20A433EF00A0431C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13BA352220A433EF00A0431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		13BA352320A433EF00A0431C /* LocationSimulator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = LocationSimulator.entitlements; path = "Supporting Files/LocationSimulator.entitlements"; sourceTree = "<group>"; };
-		6305075223FAEB9500EF529A /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		6305075323FB06A700EF529A /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Credits.rtf; path = "Supporting Files/Credits.rtf"; sourceTree = "<group>"; };
 		630BC71F27DCFFBE00675426 /* LogToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogToolbarController.swift; sourceTree = "<group>"; };
 		630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTableCellView+Extension.swift"; sourceTree = "<group>"; };
@@ -134,17 +124,7 @@
 		630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+License.swift"; sourceTree = "<group>"; };
 		630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationView.swift; sourceTree = "<group>"; };
 		630C4A142593ECD100442713 /* NoDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
-		6311B794230C13AF00AABF3E /* LocationSpoofer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpoofer.swift; sourceTree = "<group>"; };
-		6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Protocol.swift"; sourceTree = "<group>"; };
 		6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DeveloperDiskImages.swift"; sourceTree = "<group>"; };
-		63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LocationSimulator-Bridging-Header.h"; sourceTree = "<group>"; };
-		63156BFA22FAD16D0086D5F6 /* devicelocation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = devicelocation.c; sourceTree = "<group>"; };
-		63156BFC22FAD1C60086D5F6 /* endianness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = endianness.h; sourceTree = "<group>"; };
-		63156C0322FB67610086D5F6 /* devicepair.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = devicepair.c; sourceTree = "<group>"; };
-		63156C0A22FB78B60086D5F6 /* deviceimagemounter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deviceimagemounter.c; sourceTree = "<group>"; };
-		63156C1022FB86160086D5F6 /* deviceinfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = deviceinfo.c; sourceTree = "<group>"; };
-		63156C1322FB9A5D0086D5F6 /* COPYRIGHT */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYRIGHT; sourceTree = "<group>"; };
-		63156C1522FB9A7A0086D5F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		631EBFE2259409190066D5BB /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		631EBFE8259415250066D5BB /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
 		631EBFF325941C880066D5BB /* ToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarController.swift; sourceTree = "<group>"; };
@@ -153,7 +133,6 @@
 		631F9D23230A063200A7A8CF /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		632A962B254811AC0078B8DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		632B4038258FFE6600202647 /* MenubarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarController.swift; sourceTree = "<group>"; };
-		632B4049258FFEE500202647 /* mobiledevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobiledevice.h; sourceTree = "<group>"; };
 		632C465823F4B611004E5092 /* CoordinateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionView.swift; sourceTree = "<group>"; };
 		632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateFormatter.swift; sourceTree = "<group>"; };
 		632C466223F4D9C8004E5092 /* CoordinateStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateStepper.swift; sourceTree = "<group>"; };
@@ -179,6 +158,9 @@
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewControllerBase.swift; sourceTree = "<group>"; };
+		637169D527FD880200386021 /* LocationSpoofer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Extension.swift"; sourceTree = "<group>"; };
+		637169D727FD8D0A00386021 /* Device+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Extension.swift"; sourceTree = "<group>"; };
+		637169D927FF1C2400386021 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6372061C25911CED00293EA8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		63720627259141EF00293EA8 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+DownloadDelegate.swift"; sourceTree = "<group>"; };
@@ -198,9 +180,6 @@
 		63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		63888DD32592B23D00B1DFC9 /* SidebarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarDataSource.swift; sourceTree = "<group>"; };
 		63888DD92592B94900B1DFC9 /* SidebarDataSource+DeviceNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SidebarDataSource+DeviceNotifications.swift"; sourceTree = "<group>"; };
-		638B9096254B3C6600A520E0 /* ConnectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
-		638B9097254B3C6600A520E0 /* DeviceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceError.swift; sourceTree = "<group>"; };
-		638B9098254B3C6600A520E0 /* IOSDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSDevice.swift; sourceTree = "<group>"; };
 		638B909E254B514C00A520E0 /* PreferenceWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceWindowController.swift; sourceTree = "<group>"; };
 		638B90A2254B5A1800A520E0 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		638B90A6254B5A4400A520E0 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
@@ -223,13 +202,6 @@
 		63D5DF3B27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeveloperDiskImageAlert.swift; sourceTree = "<group>"; };
 		63D5DF3D27D913F500F2DCD3 /* VersionNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionNumberFormatter.swift; sourceTree = "<group>"; };
 		63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragAndDropBox.swift; sourceTree = "<group>"; };
-		63D7042225FD6CC1004F6774 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		63D7042625FD7616004F6774 /* SimulatorDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDevice.swift; sourceTree = "<group>"; };
-		63D7042A25FD7829004F6774 /* simulatordevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = simulatordevice.h; sourceTree = "<group>"; };
-		63D7042B25FD785E004F6774 /* CoreSimulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreSimulator.h; sourceTree = "<group>"; };
-		63D7042C25FD787B004F6774 /* SimulatorBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulatorBridge.h; sourceTree = "<group>"; };
-		63D7042E25FD78F9004F6774 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
-		63D7043025FD7988004F6774 /* simulatordevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = simulatordevice.m; sourceTree = "<group>"; };
 		63D734EF27E903370044918C /* FileManager+Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Logger.swift"; sourceTree = "<group>"; };
 		63D734FF27EB74F10044918C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63D7350127EDACA90044918C /* NavigationRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRenderer.swift; sourceTree = "<group>"; };
@@ -251,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63303A47280C2E8E000E9D19 /* LocationSpoofer in Frameworks */,
 				63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */,
 				635C13862596EA6600BEB53B /* Downloader in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
@@ -296,10 +269,10 @@
 		13BA351820A433EE00A0431C /* LocationSimulator */ = {
 			isa = PBXGroup;
 			children = (
+				637169D927FF1C2400386021 /* main.swift */,
 				63D734FF27EB74F10044918C /* Constants.swift */,
 				631EBFE8259415250066D5BB /* DeviceStatus.swift */,
 				13BA351920A433EE00A0431C /* AppDelegate.swift */,
-				63156BF922FAD16D0086D5F6 /* LocationSimulator-Bridging-Header.h */,
 				633C74D425AA2CE800161DB4 /* Main.storyboard */,
 				63864BF827DC1CF9005F94F3 /* Logging */,
 				638B909D254B513300A520E0 /* Preferences */,
@@ -308,10 +281,7 @@
 				63525956258E8F9A0031F289 /* Views */,
 				63FC47A22306243300BBB2E8 /* WindowController */,
 				638ADBE2230203B20061612D /* ViewController */,
-				6311B793230C13AF00AABF3E /* LocationSpoofer */,
 				63FC479523022D3A00BBB2E8 /* Extensions */,
-				63D7042925FD77FA004F6774 /* SimulatorDevice */,
-				63156C0522FB6A3E0086D5F6 /* MobileDevice */,
 				1344BEBD20D10AFD00355F49 /* Supporting Files */,
 			);
 			path = LocationSimulator;
@@ -372,64 +342,6 @@
 				6390AB412593D63000B0CABA /* SplitviewController.swift */,
 			);
 			path = SplitViewController;
-			sourceTree = "<group>";
-		};
-		6311B793230C13AF00AABF3E /* LocationSpoofer */ = {
-			isa = PBXGroup;
-			children = (
-				638B9095254B3C6600A520E0 /* Device */,
-				6311B794230C13AF00AABF3E /* LocationSpoofer.swift */,
-				6311B795230C13AF00AABF3E /* LocationSpoofer+Protocol.swift */,
-			);
-			path = LocationSpoofer;
-			sourceTree = "<group>";
-		};
-		63156BF822FAD1550086D5F6 /* devicelocation */ = {
-			isa = PBXGroup;
-			children = (
-				63156BFC22FAD1C60086D5F6 /* endianness.h */,
-				63156BFA22FAD16D0086D5F6 /* devicelocation.c */,
-			);
-			path = devicelocation;
-			sourceTree = "<group>";
-		};
-		63156C0222FB67360086D5F6 /* devicepair */ = {
-			isa = PBXGroup;
-			children = (
-				63156C0322FB67610086D5F6 /* devicepair.c */,
-			);
-			path = devicepair;
-			sourceTree = "<group>";
-		};
-		63156C0522FB6A3E0086D5F6 /* MobileDevice */ = {
-			isa = PBXGroup;
-			children = (
-				6305075223FAEB9500EF529A /* config.h */,
-				632B4049258FFEE500202647 /* mobiledevice.h */,
-				63156C1322FB9A5D0086D5F6 /* COPYRIGHT */,
-				63156C1522FB9A7A0086D5F6 /* README.md */,
-				63156C0E22FB86040086D5F6 /* deviceinfo */,
-				63156C0922FB78960086D5F6 /* devicemount */,
-				63156C0222FB67360086D5F6 /* devicepair */,
-				63156BF822FAD1550086D5F6 /* devicelocation */,
-			);
-			path = MobileDevice;
-			sourceTree = "<group>";
-		};
-		63156C0922FB78960086D5F6 /* devicemount */ = {
-			isa = PBXGroup;
-			children = (
-				63156C0A22FB78B60086D5F6 /* deviceimagemounter.c */,
-			);
-			path = devicemount;
-			sourceTree = "<group>";
-		};
-		63156C0E22FB86040086D5F6 /* deviceinfo */ = {
-			isa = PBXGroup;
-			children = (
-				63156C1022FB86160086D5F6 /* deviceinfo.c */,
-			);
-			path = deviceinfo;
 			sourceTree = "<group>";
 		};
 		631EBFF225941C540066D5BB /* ToolbarController */ = {
@@ -493,6 +405,15 @@
 				63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		634855DF27FD74BC00095879 /* LocationSpoofer */ = {
+			isa = PBXGroup;
+			children = (
+				637169D727FD8D0A00386021 /* Device+Extension.swift */,
+				637169D527FD880200386021 /* LocationSpoofer+Extension.swift */,
+			);
+			path = LocationSpoofer;
 			sourceTree = "<group>";
 		};
 		63525951258E8EC50031F289 /* AppKit */ = {
@@ -655,18 +576,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		638B9095254B3C6600A520E0 /* Device */ = {
-			isa = PBXGroup;
-			children = (
-				638B9096254B3C6600A520E0 /* ConnectionType.swift */,
-				638B9097254B3C6600A520E0 /* DeviceError.swift */,
-				63D7042225FD6CC1004F6774 /* Device.swift */,
-				638B9098254B3C6600A520E0 /* IOSDevice.swift */,
-				63D7042625FD7616004F6774 /* SimulatorDevice.swift */,
-			);
-			path = Device;
-			sourceTree = "<group>";
-		};
 		638B909D254B513300A520E0 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,26 +597,6 @@
 			path = AddDeveloperDiskImageView;
 			sourceTree = "<group>";
 		};
-		63D7042925FD77FA004F6774 /* SimulatorDevice */ = {
-			isa = PBXGroup;
-			children = (
-				63D7042D25FD7886004F6774 /* Header */,
-				63D7042E25FD78F9004F6774 /* util.h */,
-				63D7042A25FD7829004F6774 /* simulatordevice.h */,
-				63D7043025FD7988004F6774 /* simulatordevice.m */,
-			);
-			path = SimulatorDevice;
-			sourceTree = "<group>";
-		};
-		63D7042D25FD7886004F6774 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				63D7042B25FD785E004F6774 /* CoreSimulator.h */,
-				63D7042C25FD787B004F6774 /* SimulatorBridge.h */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
 		63DAFBD527E132D800C09864 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +609,7 @@
 		63FC479523022D3A00BBB2E8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				634855DF27FD74BC00095879 /* LocationSpoofer */,
 				633C74FD25AA789100161DB4 /* XIBLocalizable.swift */,
 				63525952258E8EDC0031F289 /* Foundation */,
 				63525951258E8EC50031F289 /* AppKit */,
@@ -760,7 +650,6 @@
 				63AB676E24794655008AED2F /* ShellScript */,
 				13BA351320A433EE00A0431C /* Frameworks */,
 				13BA351420A433EE00A0431C /* Resources */,
-				63A4F9272403656600C3D877 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -772,6 +661,7 @@
 				635C13852596EA6600BEB53B /* Downloader */,
 				63AEA2F1259AB41D0084F74B /* SuggestionPopup */,
 				63D734FD27E90C800044918C /* CLogger */,
+				63303A46280C2E8E000E9D19 /* LocationSpoofer */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -784,7 +674,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1330;
 				ORGANIZATIONNAME = "David Klopp";
 				TargetAttributes = {
 					13BA351520A433EE00A0431C = {
@@ -824,6 +714,7 @@
 				635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */,
 				63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
 				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
+				63303A43280C2DF4000E9D19 /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -843,7 +734,6 @@
 				633C750D25AA8C6800161DB4 /* Main.storyboard in Resources */,
 				13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */,
 				633C74C025AA28DF00161DB4 /* Localizable.strings in Resources */,
-				63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */,
 				63D5DF3A27D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib in Resources */,
 				6305075423FB06A700EF529A /* Credits.rtf in Resources */,
 				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
@@ -857,24 +747,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		63A4F9272403656600C3D877 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Only copy the libraries into the app bundle if we build for a normal release.\nif [ $CONFIGURATION == \"Release\" ] || [ $CONFIGURATION == \"Archive\" ]; then\n    echo \"Embedding libraries...\"\n    ./tools/copy_dylibs.py\n    echo \"Done.\"\nfi\n";
-		};
 		63AB676E24794655008AED2F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -910,17 +782,13 @@
 				6336A39927F5EDA20065C798 /* NavigationOverlay.swift in Sources */,
 				63D734F027E903370044918C /* FileManager+Logger.swift in Sources */,
 				633C750225AA78F900161DB4 /* String+Extension.swift in Sources */,
-				63156C0B22FB78B60086D5F6 /* deviceimagemounter.c in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
 				635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */,
-				6311B796230C13AF00AABF3E /* LocationSpoofer.swift in Sources */,
 				6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */,
 				63D7350227EDACA90044918C /* NavigationRenderer.swift in Sources */,
 				63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */,
-				63156C0422FB67610086D5F6 /* devicepair.c in Sources */,
 				637FD228259578B700E84EDB /* TouchbarController.swift in Sources */,
 				63DBFFE225961563005EAB02 /* NSResponder+Extension.swift in Sources */,
-				638B909B254B3C6600A520E0 /* IOSDevice.swift in Sources */,
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
 				632A962C254811AC0078B8DD /* ContentView.swift in Sources */,
 				6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */,
@@ -939,16 +807,13 @@
 				63864C0D27DC343A005F94F3 /* LogViewController.swift in Sources */,
 				63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */,
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
-				63156BFB22FAD16D0086D5F6 /* devicelocation.c in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
-				63D7042325FD6CC1004F6774 /* Device.swift in Sources */,
 				63D5DF4027D969E800F2DCD3 /* DragAndDropBox.swift in Sources */,
 				633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
 				630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
-				63D7042725FD7616004F6774 /* SimulatorDevice.swift in Sources */,
 				6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */,
 				630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */,
 				630C0C9E27DE72A600C3D5A9 /* FileManager+License.swift in Sources */,
@@ -956,8 +821,6 @@
 				632C466523F7638A004E5092 /* MenubarItem.swift in Sources */,
 				6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */,
 				632B4039258FFE6600202647 /* MenubarController.swift in Sources */,
-				63156C1122FB86160086D5F6 /* deviceinfo.c in Sources */,
-				6311B797230C13AF00AABF3E /* LocationSpoofer+Protocol.swift in Sources */,
 				63720628259141EF00293EA8 /* ProgressView.swift in Sources */,
 				63D5DF3427D6720000F2DCD3 /* DeveloperDiskImagesViewController.swift in Sources */,
 				6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */,
@@ -966,6 +829,7 @@
 				6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */,
 				63D5DF3E27D913F500F2DCD3 /* VersionNumberFormatter.swift in Sources */,
 				630BC72227DD09C800675426 /* NSTableCellView+Extension.swift in Sources */,
+				637169DA27FF1C2400386021 /* main.swift in Sources */,
 				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
 				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
 				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
@@ -973,23 +837,22 @@
 				63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
 				630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */,
-				638B909A254B3C6600A520E0 /* DeviceError.swift in Sources */,
 				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				63525959258E8FC80031F289 /* HUDView.swift in Sources */,
-				638B9099254B3C6600A520E0 /* ConnectionType.swift in Sources */,
 				63864C0B27DC3405005F94F3 /* LogWindowController.swift in Sources */,
 				63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */,
 				63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */,
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
 				63D5DF3C27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift in Sources */,
 				63767567258EA9AA000DCEF3 /* NSImageView+Extension.swift in Sources */,
+				637169D827FD8D0A00386021 /* Device+Extension.swift in Sources */,
 				63D5DF3827D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift in Sources */,
 				631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */,
 				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,
 				631EC00B2594C1D60066D5BB /* NSViewController+Extension.swift in Sources */,
+				637169D627FD880200386021 /* LocationSpoofer+Extension.swift in Sources */,
 				638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */,
-				63D7043225FD80C1004F6774 /* simulatordevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1145,7 +1008,6 @@
 		13BA352720A433EF00A0431C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
@@ -1155,39 +1017,20 @@
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
-				HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/libimobiledevice/1.3.0/include,
-					/usr/local/Cellar/libplist/2.2.0/include/,
-					/opt/homebrew/Cellar/libimobiledevice/1.3.0/include,
-					/opt/homebrew/Cellar/libplist/2.2.0/include/,
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.2.0/lib,
-					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
-					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1i/lib",
-					/opt/homebrew/Cellar/libplist/2.2.0/lib,
-					/opt/homebrew/Cellar/libusbmuxd/2.0.2/lib,
-					/opt/homebrew/Cellar/libimobiledevice/1.3.0/lib,
-					"/opt/homebrew/Cellar/openssl@1.1/1.1.1i/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = (
-					"-l",
-					"imobiledevice-1.0",
-					"-l",
-					"plist-2.0",
-				);
+				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "LocationSimulator/LocationSimulator-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1196,7 +1039,6 @@
 		13BA352820A433EF00A0431C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
@@ -1206,39 +1048,20 @@
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
-				HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/libimobiledevice/1.3.0/include,
-					/usr/local/Cellar/libplist/2.2.0/include/,
-					/opt/homebrew/Cellar/libimobiledevice/1.3.0/include,
-					/opt/homebrew/Cellar/libplist/2.2.0/include/,
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.2.0/lib,
-					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
-					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1i/lib",
-					/opt/homebrew/Cellar/libplist/2.2.0/lib,
-					/opt/homebrew/Cellar/libusbmuxd/2.0.2/lib,
-					/opt/homebrew/Cellar/libimobiledevice/1.3.0/lib,
-					"/opt/homebrew/Cellar/openssl@1.1/1.1.1i/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = (
-					"-l",
-					"imobiledevice-1.0",
-					"-l",
-					"plist-2.0",
-				);
+				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "LocationSimulator/LocationSimulator-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1303,7 +1126,6 @@
 		63A4F929240366EA00C3D877 /* Homebrew */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
@@ -1313,40 +1135,21 @@
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
-				HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/libimobiledevice/1.3.0/include,
-					/usr/local/Cellar/libplist/2.2.0/include/,
-					/opt/homebrew/Cellar/libimobiledevice/1.3.0/include,
-					/opt/homebrew/Cellar/libplist/2.2.0/include/,
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "LocationSimulator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/libplist/2.2.0/lib,
-					/usr/local/Cellar/libusbmuxd/2.0.2/lib,
-					/usr/local/Cellar/libimobiledevice/1.3.0/lib,
-					"/usr/local/Cellar/openssl@1.1/1.1.1i/lib",
-					/opt/homebrew/Cellar/libplist/2.2.0/lib,
-					/opt/homebrew/Cellar/libusbmuxd/2.0.2/lib,
-					/opt/homebrew/Cellar/libimobiledevice/1.3.0/lib,
-					"/opt/homebrew/Cellar/openssl@1.1/1.1.1i/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = (
-					"-l",
-					"imobiledevice-1.0",
-					"-l",
-					"plist-2.0",
-				);
+				OTHER_LDFLAGS = "";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "LocationSimulator/LocationSimulator-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Homebrew;
@@ -1377,6 +1180,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		63303A43280C2DF4000E9D19 /* XCRemoteSwiftPackageReference "LocationSpoofer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Schlaubischlump/LocationSpoofer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 		635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/GPXParser";
@@ -1412,6 +1223,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		63303A46280C2E8E000E9D19 /* LocationSpoofer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63303A43280C2DF4000E9D19 /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
+			productName = LocationSpoofer;
+		};
 		635C13802596EA5700BEB53B /* GPXParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */;

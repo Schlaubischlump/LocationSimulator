@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import LocationSpoofer
 
 class TouchbarController: NSResponder {
     /// The corresponding windowController for this toolbar controller.

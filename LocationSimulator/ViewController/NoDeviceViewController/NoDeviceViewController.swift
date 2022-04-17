@@ -12,8 +12,6 @@ import AppKit
 class NoDeviceViewController: NSViewController {
 
     @IBOutlet weak var noDeviceView: NoDeviceView!
-    @IBOutlet var imageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var imageWidthConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()

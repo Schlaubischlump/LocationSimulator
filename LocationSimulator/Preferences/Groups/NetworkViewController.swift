@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import LocationSpoofer
 
 let kAllowNetworkDevicesKey: String = "com.schlaubischlump.locationsimulator.allownetworkdevices"
 let kPreferNetworkDevicesKey: String = "com.schlaubischlump.locationsimulator.prefernetworkdevices"

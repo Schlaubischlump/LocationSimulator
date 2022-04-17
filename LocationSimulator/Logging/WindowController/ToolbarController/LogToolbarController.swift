@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import CLogger
 
 class LogToolbarController: NSResponder {
     /// The corresponding windowController for this toolbar controller.

@@ -12,8 +12,11 @@ import CoreLocation
 import MapKit
 
 class NavigationOverlay: NSObject, MKOverlay {
+    /// The bounding rect for this route. This value is only updated if you call
+    /// `update:activeRoute:inactiveRoute:invalidateBoundingMapRect` method with `invalidateBoundingMapRect` true.
     public var boundingMapRect: MKMapRect
 
+    /// The first coordinate of the route. (0, 0) if the route is empty.
     public var coordinate: CLLocationCoordinate2D {
         var coordinate: CLLocationCoordinate2D?
         self.readCoordinatesAndWait { activeRoute, _ in
@@ -22,15 +25,22 @@ class NavigationOverlay: NSObject, MKOverlay {
         return coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
     }
 
+    /// The coordinates for the active route.
     private var activeRoute: [CLLocationCoordinate2D]
+    /// The coordinates for the inactive route.
     private var inactiveRoute: [CLLocationCoordinate2D]
 
+    /// Internal lock to prevent multiple threads from simultaneously changing the coordinates.
     private let lock = NSLock()
 
+    /// Create a new NavigationOverlay instance with an empty active and inactive path.
     convenience override init() {
         self.init(activePath: [], inactivePath: [])
     }
 
+    /// Create a new NavigationOverlay instance from an active and inactive path.
+    /// - Parameter activePath: The path to highlight with the active color
+    /// - Parameter inactivePath: The path to highlight with the inactive color
     public init(activePath: [CLLocationCoordinate2D], inactivePath: [CLLocationCoordinate2D]) {
         self.activeRoute = activePath
         self.inactiveRoute = inactivePath
@@ -67,13 +77,14 @@ class NavigationOverlay: NSObject, MKOverlay {
         return self.boundingMapRect
     }
 
-    public func readCoordinatesAndWait(withBlock block: ([CLLocationCoordinate2D], [CLLocationCoordinate2D]) -> Void) {
+    /// Thread safe blocking method to access the current traveled and upcoming coordinates.
+    /// - Parameter block: The completion block for the activeRoute and inactiveRoute after access is granted
+    public func readCoordinatesAndWait(withBlock block: (_ activeRoute: [CLLocationCoordinate2D],
+                                                         _ inactiveRoute: [CLLocationCoordinate2D]) -> Void) {
         defer {
             self.lock.unlock()
         }
-
         self.lock.lock()
-
         block(self.inactiveRoute, self.activeRoute)
     }
 
