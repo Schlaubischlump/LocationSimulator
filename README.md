@@ -79,30 +79,19 @@ Download the latest [release](https://github.com/Schlaubischlump/LocationSimulat
 - macOS 11.x+ SDK
 - swift 5.0+
 - swift-tools-version 5.2+
-- [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice)
-	- [libusbmuxd](https://github.com/libimobiledevice/libusbmuxd)
-	- [libplist](https://github.com/libimobiledevice/libplist)
-	- [libopenssl](https://github.com/openssl/openssl)
-	- [libcrypto](https://github.com/openssl/openssl)
 
 ### Build the app
 
 1. Install the latest [Xcode developer tools](https://developer.apple.com/xcode/downloads/) from Apple. (Using the AppStore is the easiest way)
-2. Install the latest version of [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) (and thereby all it's dependencies as well) with [homebrew](https://brew.sh):
 
-	```shell
-	brew install libimobiledevice
-	```
-3. Clone this repository:    
+2. Clone this repository:    
 
 	```shell
 	git clone --recurse-submodules https://github.com/Schlaubischlump/LocationSimulator
 	```
-4. Open `LocationSimulator.xcodeproj` in Xcode.
+3. Open `LocationSimulator.xcodeproj` in Xcode.
+4. Let it resolve all dependencies
 5. Tap `Run` to build and execute the app.
-
-> **Note**:  
-> If you want to build a standalone application which can be copied to another Mac without installing the dependencies choose the `LocationSimulator` scheme and switch the configuration to `Release` before running. If you do not want to bundle the dependencies, but want to create a release build choose the `Homebrew` scheme.
 
 ## Usage
 
@@ -160,4 +149,4 @@ While you are here, consider leaving a Github star. It keeps me motivated.
 Look at the [`Projects`](https://github.com/Schlaubischlump/LocationSimulator/projects) tab to see a list of planned features for the next releases. 
 
 ## Acknowledgement
-Special thanks to [@bailaowai](https://github.com/bailaowai) and his son for the Spanish and Chinese translation. [@Rithari](https://github.com/rithari) for the Italian translation and [@devmaximilian](https://github.com/devmaximilian) for his continuous contributions to the Swedish translation.
+Special thanks to [@bailaowai](https://github.com/bailaowai) and his son for the Spanish and Chinese translation. [@Rithari](https://github.com/rithari) for the Italian translation and [@devmaximilian](https://github.com/devmaximilian) for his continuous contributions to the Swedish translation. Special thanks goes to @bslatyer as well for his debugging support and his quick responses, when new issues arise !
