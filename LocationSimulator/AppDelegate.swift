@@ -10,7 +10,6 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    /// The toolbar controller instance to handle the toolbar validation as well as the toolbar actions.
     @IBOutlet var menubarController: MenubarController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -21,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defaults.registerMapTypeDefaultValue()
         defaults.registerRecentLocationDefaultValues()
         defaults.registerDeveloperDiskImagesDefaultValues()
-        // Load the recent locations after the app finished launching.
+
         self.menubarController.loadDefaults()
     }
 
