@@ -287,24 +287,6 @@
 			path = LocationSimulator;
 			sourceTree = "<group>";
 		};
-		630BC71E27DCFFAF00675426 /* ToolbarController */ = {
-			isa = PBXGroup;
-			children = (
-				630BC71F27DCFFBE00675426 /* LogToolbarController.swift */,
-			);
-			path = ToolbarController;
-			sourceTree = "<group>";
-		};
-		630BC72327DD35B200675426 /* WindowController */ = {
-			isa = PBXGroup;
-			children = (
-				630BC71E27DCFFAF00675426 /* ToolbarController */,
-				63864C0A27DC3405005F94F3 /* LogWindowController.swift */,
-				63864C0C27DC343A005F94F3 /* LogViewController.swift */,
-			);
-			path = WindowController;
-			sourceTree = "<group>";
-		};
 		630C0C9B27DE6DF400C3D5A9 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,7 +513,9 @@
 		63864BF827DC1CF9005F94F3 /* Logging */ = {
 			isa = PBXGroup;
 			children = (
-				630BC72327DD35B200675426 /* WindowController */,
+				630BC71F27DCFFBE00675426 /* LogToolbarController.swift */,
+				63864C0A27DC3405005F94F3 /* LogWindowController.swift */,
+				63864C0C27DC343A005F94F3 /* LogViewController.swift */,
 			);
 			path = Logging;
 			sourceTree = "<group>";
@@ -609,8 +593,8 @@
 		63FC479523022D3A00BBB2E8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				634855DF27FD74BC00095879 /* LocationSpoofer */,
 				633C74FD25AA789100161DB4 /* XIBLocalizable.swift */,
+				634855DF27FD74BC00095879 /* LocationSpoofer */,
 				63525952258E8EDC0031F289 /* Foundation */,
 				63525951258E8EC50031F289 /* AppKit */,
 				63525954258E8F000031F289 /* CoreLocation */,
