@@ -11,9 +11,7 @@ import CoreLocation
 import LocationSpoofer
 
 extension LocationSpoofer {
-    /// Update the move state and start automoving if required
     func switchToInteractiveMoveState() {
-        // Stop the auto update
         self.stopAutoUpdate()
         self.moveState = .manual
     }
