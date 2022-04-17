@@ -90,7 +90,7 @@ Download the latest [release](https://github.com/Schlaubischlump/LocationSimulat
 	git clone --recurse-submodules https://github.com/Schlaubischlump/LocationSimulator
 	```
 3. Open `LocationSimulator.xcodeproj` in Xcode.
-4. Let it resolve all dependencies
+4. Let XCode resolve all dependencies.
 5. Tap `Run` to build and execute the app.
 
 ## Usage
