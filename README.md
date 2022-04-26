@@ -21,6 +21,7 @@ LocationSimulator is a macOS app (10.15.x / 11.x, 12.x) which allows spoofing th
     - [Stop spoofing](#stop-spoofing)
 - [License](#license)
 - [Contribute](#contribute)
+- [Donate](#donate)
 - [Enhancement ideas](#enhancement-ideas)
 
 
@@ -140,6 +141,9 @@ The whole project is licensed under the [GNU General Public License version 3](L
 
 ## Contribute
 Since I maintain this project in my freetime, I always appreciate any help I get. Even if you are not a programmer and do not know anything about coding you can still help out. It would be great if more languages were available. If you know any other language and you are willing to invest some time to help with the translation let me know [here](https://github.com/Schlaubischlump/LocationSimulator/issues/65)! You can find the existing localization files [here](https://github.com/Schlaubischlump/LocationSimulator-Localization). I want this software to be as stable as possible, if you find any bug please report it by opening a new issue. If you are a programmer, feel free to contribute bug fixes or new features. It would be great if you run swift-lint on your code before submitting pull requests.
+
+## Donate
+Donations are always welcome! I will use the money to further develop the software in my free time and to fund the Apple Developer Membership to notarize the app. You can donate from inside the application. Choose `Help -> Donate...` or `LocationSimualtor -> Preferences -> Info -> Donate`. I'll add more donation options over time. Currently you can use PayPal or Ethereum. 
 
 While you are here, consider leaving a Github star. It keeps me motivated. 
 
