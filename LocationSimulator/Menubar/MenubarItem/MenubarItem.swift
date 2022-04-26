@@ -53,4 +53,14 @@ extension MenubarItem {
     func disable() {
         self.setEnabled(false)
     }
+
+    /// Trigger the action of the menu item.
+    @discardableResult
+    func triggerAction() -> Bool {
+        if let item = self.item, let index = Self.menu?.index(of: item) {
+            Self.menu?.performActionForItem(at: index)
+            return true
+        }
+        return false
+    }
 }

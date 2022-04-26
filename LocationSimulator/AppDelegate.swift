@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Register all the default setting values for this application.
         let defaults = UserDefaults.standard
+        defaults.registerInfoDefaultValues()
         defaults.registerGeneralDefaultValues()
         defaults.registerNetworkDefaultValues()
         defaults.registerMapTypeDefaultValue()
@@ -22,6 +23,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         defaults.registerDeveloperDiskImagesDefaultValues()
 
         self.menubarController.loadDefaults()
+    }
+
+    func applicationDidBecomeActive(_ notification: Notification) {
+        self.openInfoViewOnVersionUpdate()
+    }
+
+    /// Open the InfoViewController when the version number changed. This way we can inform the user about critical
+    /// changes and remind him/her to donate ;)
+    private func openInfoViewOnVersionUpdate() {
+        let defaults = UserDefaults.standard
+        if defaults.lastAppVersion != kAppVersion {
+            // Segue would be nicer, but does not work
+            AppMenubarItem.preferences.triggerAction()
+            // Update the last app version
+            defaults.lastAppVersion = kAppVersion
+        }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

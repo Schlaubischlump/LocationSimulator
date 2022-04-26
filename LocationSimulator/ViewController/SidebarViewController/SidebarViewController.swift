@@ -83,7 +83,7 @@ class SidebarViewController: NSViewController {
                 } else {
                     drawSeparator = false
                     // The last device was removed => create and show a NoDeviceViewController.
-                    viewController = self.storyboard?.instantiateController(withIdentifier: "NoDeviceViewControlelr")
+                    viewController = self.storyboard?.instantiateController(withIdentifier: "NoDeviceViewController")
                     // If the sidebar is currently hidden, show it. The user might not know where to select a device.
                     if splitViewController.isSidebarCollapsed {
                         splitViewController.toggleSidebar()

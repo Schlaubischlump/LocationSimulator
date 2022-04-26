@@ -9,6 +9,37 @@
 import AppKit
 
 extension NSImage {
+    /// Generate a qr code image from a string.
+    /// - Parameter fromString: The string to encode as qr code
+    /// - Parameter size: The size of the final image
+    static func generateQrCode(_ fromString: String, size: CGSize) -> NSImage? {
+        guard let data = fromString.data(using: .utf8) else {
+          return nil
+        }
+        // Filter
+        guard let filter = CIFilter(name: "CIQRCodeGenerator") else {
+          return nil
+        }
+        filter.setValue(data, forKey: "inputMessage")
+        filter.setValue("Q", forKey: "inputCorrectionLevel")
+
+        guard let ciImage = filter.outputImage else {
+          return nil
+        }
+
+        let rep = NSCIImageRep(ciImage: ciImage)
+        let image = NSImage(size: rep.size)
+        image.addRepresentation(rep)
+
+        let finalImage = NSImage(size: size)
+        finalImage.lockFocus()
+        NSGraphicsContext.current?.imageInterpolation = .none
+        image.draw(in: NSRect(origin: .zero, size: size))
+        finalImage.unlockFocus()
+
+        return finalImage
+    }
+
     /// Get a new resized image instance of this image.
     /// - Parameter width: new image width
     /// - Parameter height: new image height
@@ -49,4 +80,10 @@ extension NSImage {
     static var playImage: NSImage = NSImage(named: "Play")!
 
     static var pauseImage: NSImage = NSImage(named: "Pause")!
+
+    static var payPalImage: NSImage = NSImage(named: "PayPalLogo")!
+
+    static var githubImage: NSImage = NSImage(named: "GithubLogo")!
+
+    static var ethImage: NSImage = NSImage(named: "EthLogo")!
 }

@@ -51,6 +51,15 @@
 		635C13812596EA5700BEB53B /* GPXParser in Frameworks */ = {isa = PBXBuildFile; productRef = 635C13802596EA5700BEB53B /* GPXParser */; };
 		635C13862596EA6600BEB53B /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 635C13852596EA6600BEB53B /* Downloader */; };
 		635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C13882596EA9800BEB53B /* Array+Extension.swift */; };
+		635CF717280E03820092A99B /* DonateWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF716280E03820092A99B /* DonateWindowController.swift */; };
+		635CF719280E039B0092A99B /* DonateSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF718280E039B0092A99B /* DonateSidebarViewController.swift */; };
+		635CF71B280E03AB0092A99B /* DonateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */; };
+		635CF71D280E03B80092A99B /* DonateSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF71C280E03B80092A99B /* DonateSplitViewController.swift */; };
+		635CF71F280E15F00092A99B /* DonateMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF71E280E15F00092A99B /* DonateMethod.swift */; };
+		635CF721280EBF4D0092A99B /* DonateWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF720280EBF4D0092A99B /* DonateWindow.swift */; };
+		635CF723280EC3D30092A99B /* HelpMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF722280EC3D30092A99B /* HelpMenubarItem.swift */; };
+		635CF725280EC6CF0092A99B /* AppMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF724280EC6CF0092A99B /* AppMenubarItem.swift */; };
+		635CF727280ECC500092A99B /* DonateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF726280ECC500092A99B /* DonateButton.swift */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */; };
@@ -155,6 +164,15 @@
 		6352592A258B75190031F289 /* FileMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileMenubarItem.swift; sourceTree = "<group>"; };
 		63525958258E8FC80031F289 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		635C13882596EA9800BEB53B /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		635CF716280E03820092A99B /* DonateWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateWindowController.swift; sourceTree = "<group>"; };
+		635CF718280E039B0092A99B /* DonateSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateSidebarViewController.swift; sourceTree = "<group>"; };
+		635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateDetailViewController.swift; sourceTree = "<group>"; };
+		635CF71C280E03B80092A99B /* DonateSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateSplitViewController.swift; sourceTree = "<group>"; };
+		635CF71E280E15F00092A99B /* DonateMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateMethod.swift; sourceTree = "<group>"; };
+		635CF720280EBF4D0092A99B /* DonateWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateWindow.swift; sourceTree = "<group>"; };
+		635CF722280EC3D30092A99B /* HelpMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenubarItem.swift; sourceTree = "<group>"; };
+		635CF724280EC6CF0092A99B /* AppMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenubarItem.swift; sourceTree = "<group>"; };
+		635CF726280ECC500092A99B /* DonateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateButton.swift; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewControllerBase.swift; sourceTree = "<group>"; };
@@ -274,6 +292,7 @@
 				631EBFE8259415250066D5BB /* DeviceStatus.swift */,
 				13BA351920A433EE00A0431C /* AppDelegate.swift */,
 				633C74D425AA2CE800161DB4 /* Main.storyboard */,
+				635CF715280E03670092A99B /* Donate */,
 				63864BF827DC1CF9005F94F3 /* Logging */,
 				638B909D254B513300A520E0 /* Preferences */,
 				632C465723F4B5F5004E5092 /* Menubar */,
@@ -337,6 +356,8 @@
 		632B4037258FFE5100202647 /* MenubarItem */ = {
 			isa = PBXGroup;
 			children = (
+				635CF724280EC6CF0092A99B /* AppMenubarItem.swift */,
+				635CF722280EC3D30092A99B /* HelpMenubarItem.swift */,
 				632C466423F7638A004E5092 /* MenubarItem.swift */,
 				63525921258B74290031F289 /* NavigationMenuabrItem.swift */,
 				63525926258B74750031F289 /* RecentLocationMenubarItem.swift */,
@@ -467,8 +488,22 @@
 				63525958258E8FC80031F289 /* HUDView.swift */,
 				6376756A258EC809000DCEF3 /* SeparatorLine.swift */,
 				63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */,
+				635CF726280ECC500092A99B /* DonateButton.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		635CF715280E03670092A99B /* Donate */ = {
+			isa = PBXGroup;
+			children = (
+				635CF71E280E15F00092A99B /* DonateMethod.swift */,
+				635CF716280E03820092A99B /* DonateWindowController.swift */,
+				635CF720280EBF4D0092A99B /* DonateWindow.swift */,
+				635CF718280E039B0092A99B /* DonateSidebarViewController.swift */,
+				635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */,
+				635CF71C280E03B80092A99B /* DonateSplitViewController.swift */,
+			);
+			path = Donate;
 			sourceTree = "<group>";
 		};
 		63720622259121C600293EA8 /* MapView */ = {
@@ -774,8 +809,11 @@
 				637FD228259578B700E84EDB /* TouchbarController.swift in Sources */,
 				63DBFFE225961563005EAB02 /* NSResponder+Extension.swift in Sources */,
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
+				635CF717280E03820092A99B /* DonateWindowController.swift in Sources */,
 				632A962C254811AC0078B8DD /* ContentView.swift in Sources */,
 				6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */,
+				635CF71F280E15F00092A99B /* DonateMethod.swift in Sources */,
+				635CF723280EC3D30092A99B /* HelpMenubarItem.swift in Sources */,
 				63D7350027EB74F10044918C /* Constants.swift in Sources */,
 				6311B799230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift in Sources */,
 				63C799FD259659740099B794 /* InfoViewController.swift in Sources */,
@@ -796,6 +834,7 @@
 				633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
+				635CF727280ECC500092A99B /* DonateButton.swift in Sources */,
 				630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
 				6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */,
@@ -806,19 +845,24 @@
 				6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */,
 				632B4039258FFE6600202647 /* MenubarController.swift in Sources */,
 				63720628259141EF00293EA8 /* ProgressView.swift in Sources */,
+				635CF719280E039B0092A99B /* DonateSidebarViewController.swift in Sources */,
+				635CF725280EC6CF0092A99B /* AppMenubarItem.swift in Sources */,
 				63D5DF3427D6720000F2DCD3 /* DeveloperDiskImagesViewController.swift in Sources */,
 				6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */,
+				635CF721280EBF4D0092A99B /* DonateWindow.swift in Sources */,
 				63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */,
 				63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */,
 				6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */,
 				63D5DF3E27D913F500F2DCD3 /* VersionNumberFormatter.swift in Sources */,
 				630BC72227DD09C800675426 /* NSTableCellView+Extension.swift in Sources */,
+				635CF71D280E03B80092A99B /* DonateSplitViewController.swift in Sources */,
 				637169DA27FF1C2400386021 /* main.swift in Sources */,
 				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
 				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
 				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
 				63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */,
+				635CF71B280E03AB0092A99B /* DonateDetailViewController.swift in Sources */,
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
 				630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */,
 				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,
