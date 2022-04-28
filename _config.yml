@@ -1,6 +1,6 @@
 theme: jekyll-theme-cayman
 show_downloads: "true"
 github:
-  zip_url: https://github.com/Schlaubischlump/LocationSimulator/releases/download/v0.1.9/LocationSimulator.app.zip
-  tar_url: https://github.com/Schlaubischlump/LocationSimulator/archive/v0.1.9.tar.gz
+  zip_url: https://github.com/Schlaubischlump/LocationSimulator/releases/download/v0.1.9.1/LocationSimulator.app.zip
+  tar_url: https://github.com/Schlaubischlump/LocationSimulator/archive/v0.1.9.1.tar.gz
   owner_name: David Klopp
