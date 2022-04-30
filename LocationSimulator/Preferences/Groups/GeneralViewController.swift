@@ -13,6 +13,20 @@ let kVaryMovementSpeed: String = "com.schlaubischlump.locationsimulator.varymove
 let kMoveWhenStandingStill: String = "com.schlaubischlump.locationsimulator.movewhenstandingstill"
 let kConfirmTeleportationKey: String = "com.schlaubischlump.locationsimulator.confirmteleportation"
 let kMapTypeKey: String = "com.schlaubischlump.locationsimulator.maptype"
+let kMovementControlBehaviourKey: String = "com.schlaubischlump.locationsimulator.movementcontrolbehaviour"
+
+// Define the behaviour of the movement control when navigating using the arrow keys.
+@objc enum MovementControlBehaviour: Int {
+    case natural = 0
+    case traditional = 1
+
+    var localizedDescription: String {
+        switch self {
+        case .natural:     return "NATURAL_MOVEMENT_CONTROL_BEHAVIOUR_MSG_SETTING".localized
+        case .traditional: return "TRADITIONAL_MOVEMENT_CONTROL_BEHAVIOUR_MSG_SETTING".localized
+        }
+    }
+}
 
 // Extend the UserDefaults with all keys relevant for this tab.
 extension UserDefaults {
@@ -31,12 +45,20 @@ extension UserDefaults {
         set { self.setValue(newValue, forKey: kMoveWhenStandingStill) }
     }
 
+    @objc dynamic var movementControlBehaviour: MovementControlBehaviour {
+        get {
+            return MovementControlBehaviour(rawValue: self.integer(forKey: kMovementControlBehaviourKey)) ?? .natural
+        }
+        set { self.setValue(newValue.rawValue, forKey: kMovementControlBehaviourKey) }
+    }
+
     /// Register the default NSUserDefault values.
     func registerGeneralDefaultValues() {
         UserDefaults.standard.register(defaults: [
             kConfirmTeleportationKey: false,
             kMoveWhenStandingStill: false,
-            kVaryMovementSpeed: false
+            kVaryMovementSpeed: false,
+            kMovementControlBehaviourKey: MovementControlBehaviour.natural.rawValue
         ])
     }
 }
@@ -48,14 +70,22 @@ class GeneralViewController: PreferenceViewControllerBase {
 
     @IBOutlet weak var moveWhenStandingStillCheckbox: NSButton!
 
+    @IBOutlet weak var movementControlBehaviourPopupButton: NSPopUpButton!
+
+    @IBOutlet weak var movementControlBehaviourDescription: NSTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.widthToFit()
 
         // load the current user settings
-        self.confirmTeleportationCheckbox.state = UserDefaults.standard.confirmTeleportation ? .on : .off
-        self.varyMovementSpeedCheckbox.state = UserDefaults.standard.varyMovementSpeed ? .on : .off
-        self.moveWhenStandingStillCheckbox.state = UserDefaults.standard.moveWhenStandingStill ? .on : .off
+        self.confirmTeleportationCheckbox.state = UserDefaults.standard.confirmTeleportation    ? .on : .off
+        self.varyMovementSpeedCheckbox.state = UserDefaults.standard.varyMovementSpeed          ? .on : .off
+        self.moveWhenStandingStillCheckbox.state = UserDefaults.standard.moveWhenStandingStill  ? .on : .off
+
+        let controlBehaviour = UserDefaults.standard.movementControlBehaviour
+        self.movementControlBehaviourDescription.stringValue = controlBehaviour.localizedDescription
+        self.movementControlBehaviourPopupButton.selectItem(at: controlBehaviour.rawValue)
     }
 
     /// Callback when the allow network devices toggle changes the state.
@@ -71,4 +101,9 @@ class GeneralViewController: PreferenceViewControllerBase {
         UserDefaults.standard.moveWhenStandingStill = (sender.state == .on)
     }
 
+    @IBAction func movementControlBehaviourDidChange(_ sender: NSPopUpButton) {
+        let controlBehaviour = MovementControlBehaviour(rawValue: sender.indexOfSelectedItem) ?? .natural
+        UserDefaults.standard.movementControlBehaviour = controlBehaviour
+        self.movementControlBehaviourDescription.stringValue = controlBehaviour.localizedDescription
+    }
 }

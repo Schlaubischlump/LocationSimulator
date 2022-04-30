@@ -18,7 +18,6 @@ class DonateDetailViewController: NSViewController {
 
     @IBOutlet var qrCodeImageViewTopConstraint: NSLayoutConstraint!
 
-
     public var donateMethod: DonateMethod? {
         didSet {
             if self.isViewLoaded {

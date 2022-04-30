@@ -17,14 +17,16 @@ import LocationSpoofer
 class WindowController: NSWindowController {
     // MARK: - Enums
 
-    enum MoveDirection {
-        case up
-        case down
-    }
-
     enum RotateDirection {
         case clockwise
         case counterclockwise
+    }
+
+    enum MoveDirection {
+        case up
+        case down
+        case left
+        case right
     }
 
     // MARK: - Controller / Model
@@ -191,9 +193,9 @@ class WindowController: NSWindowController {
         self.mapViewController?.stopNavigation()
     }
 
-    /// Move the spoofed location.
+    /// Move the spoofed location using the traditional behaviour.
     /// - Parameter direction: up or down
-    public func move(_ direction: MoveDirection) {
+    public func moveTraditional(_ direction: MoveDirection) {
         guard let angle = self.mapViewController?.getDirectionViewAngle() else { return }
         switch direction {
         //    |                 x | x      x | x               x | x
@@ -204,6 +206,27 @@ class WindowController: NSWindowController {
         // ---|--- ==========> ---|--- or ---|--- ==========> ---|---
         //    |    arrow down   x | x      x | x  arrow down   x | x
         case .down: self.mapViewController?.move(flip: angle < 90 || angle > 270)
+        // Do nothing on left or right.
+        default: break
+        }
+    }
+
+    /// Move the spoofed location using the natural behaviour.
+    /// - Parameter direction: up, down, left or right
+    public func moveNatural(_ direction: MoveDirection) {
+        switch direction {
+        case .up:
+            self.mapViewController?.rotateDirectionViewTo(0)
+            self.mapViewController?.move(flip: false)
+        case .right:
+            self.mapViewController?.rotateDirectionViewTo(90)
+            self.mapViewController?.move(flip: false)
+        case .down:
+            self.mapViewController?.rotateDirectionViewTo(180)
+            self.mapViewController?.move(flip: false)
+        case .left:
+            self.mapViewController?.rotateDirectionViewTo(270)
+            self.mapViewController?.move(flip: false)
         }
     }
 

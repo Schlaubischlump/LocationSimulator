@@ -26,7 +26,7 @@ protocol MenubarItem {
 }
 
 extension MenubarItem {
-    private var item: NSMenuItem? {
+    public var item: NSMenuItem? {
         return Self.menu?.item(withTag: self.rawValue)
     }
 

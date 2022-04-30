@@ -19,6 +19,9 @@ class MenubarController: NSResponder {
     private var searchStartObserver: NSObjectProtocol?
     private var searchEndObserver: NSObjectProtocol?
 
+    // Observe the movement control behaviour
+    private var movementControlBehaviourObserver: NSKeyValueObservation?
+
     /// The main menu should always represent the status of the application window, not any util windows.
     private var windowController: WindowController? {
         return NSApp.windows.compactMap { $0.windowController as? WindowController }.first
@@ -73,6 +76,8 @@ class MenubarController: NSResponder {
 
     /// Listen for state changes
     public func registerNotifications() {
+        let userDefaults =  UserDefaults.standard
+
         self.statusObserver = NotificationCenter.default.addObserver(forName: .StatusChanged, object: nil,
                                                                      queue: .main) { [weak self] notification in
             // Make sure the request is send from the key window subview.
@@ -88,6 +93,13 @@ class MenubarController: NSResponder {
             // Disable the movement controls if we are searching.
             if self?.isSearching ?? false {
                 self?.disableMoveControls()
+            }
+            // Change the naming of the right and left arrow according to our use case
+            let traditional = userDefaults.movementControlBehaviour == .traditional
+            if newState == .auto || traditional {
+                NavigationMenubarItem.useClockwiseCounterClockwiseLabels()
+            } else {
+                NavigationMenubarItem.useLeftRightLabels()
             }
         }
 
@@ -105,6 +117,17 @@ class MenubarController: NSResponder {
             guard self?.windowController?.window == notification.object as? NSWindow else { return }
             self?.isSearching = false
         }
+
+        // Change the menubar item naming based on the movement control behaviour
+        self.movementControlBehaviourObserver = userDefaults.observe(\.movementControlBehaviour,
+                                                                      options: [.initial, .new]) { [weak self ](_, _) in
+            let traditional = userDefaults.movementControlBehaviour == .traditional
+            if self?.deviceStatus == .auto || traditional {
+                NavigationMenubarItem.useClockwiseCounterClockwiseLabels()
+            } else {
+                NavigationMenubarItem.useLeftRightLabels()
+            }
+        }
     }
 
     // MARK: - Load defaults
@@ -119,12 +142,12 @@ class MenubarController: NSResponder {
     private func enableMoveControls() {
         // Only enable the controls if required.
         guard self.deviceStatus == .manual else { return }
-        let moveControls: [NavigationMenubarItem] = [.moveUp, .moveDown, .moveClockwise, .moveCounterclockwise]
+        let moveControls: [NavigationMenubarItem] = [.moveUp, .moveDown, .moveLeft, .moveRight]
         moveControls.forEach { $0.enable() }
     }
 
     private func disableMoveControls() {
-        let moveControls: [NavigationMenubarItem] = [.moveUp, .moveDown, .moveClockwise, .moveCounterclockwise]
+        let moveControls: [NavigationMenubarItem] = [.moveUp, .moveDown, .moveLeft, .moveRight]
         moveControls.forEach { $0.disable() }
     }
 
@@ -167,11 +190,17 @@ class MenubarController: NSResponder {
     }
 
     @IBAction func move(_ sender: NSMenuItem) {
+        guard let windowController = windowController else {
+            return
+        }
+
+        let traditional = UserDefaults.standard.movementControlBehaviour == .traditional || self.deviceStatus == .auto
+
         switch NavigationMenubarItem(rawValue: sender.tag) {
-        case .moveCounterclockwise: self.windowController?.rotate(.counterclockwise)
-        case .moveClockwise:        self.windowController?.rotate(.clockwise)
-        case .moveDown:             self.windowController?.move(.down)
-        case .moveUp:               self.windowController?.move(.up)
+        case .moveRight: traditional ? windowController.rotate(.counterclockwise) : windowController.moveNatural(.right)
+        case .moveLeft:  traditional ? windowController.rotate(.clockwise)        : windowController.moveNatural(.left)
+        case .moveDown:  traditional ? windowController.moveTraditional(.down)    : windowController.moveNatural(.down)
+        case .moveUp:    traditional ? windowController.moveTraditional(.up)      : windowController.moveNatural(.up)
         default: break
         }
     }

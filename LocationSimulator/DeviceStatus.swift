@@ -45,12 +45,12 @@ enum DeviceStatus {
             return navigationItems + fileMenuItems + viewMenuItems
         case .manual:
             navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
-                                .moveClockwise, .moveCounterclockwise, .moveUp, .moveDown]
+                                .moveRight, .moveLeft, .moveUp, .moveDown]
             viewMenuItems += [.zoomIn, .zoomOut]
             return navigationItems + fileMenuItems + viewMenuItems
         case .auto:
             navigationItems += [.setLocation, .recentLocation, .resetLocation, .useMacLocation, .toggleAutomove,
-                                .moveClockwise, .moveCounterclockwise]
+                                .moveRight, .moveLeft]
             viewMenuItems += [.zoomIn, .zoomOut]
             return navigationItems + fileMenuItems + viewMenuItems
         case .navigation:

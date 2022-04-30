@@ -21,8 +21,8 @@ enum NavigationMenubarItem: Int, CaseIterable, MenubarItem {
     case toggleAutomove         = 6
     case moveUp                 = 8
     case moveDown               = 9
-    case moveCounterclockwise   = 10
-    case moveClockwise          = 11
+    case moveRight              = 10
+    case moveLeft               = 11
     case stopNavigation         = 12
     case resetLocation          = 13
     case recentLocation         = 14
@@ -36,5 +36,17 @@ enum NavigationMenubarItem: Int, CaseIterable, MenubarItem {
         let menuBarItems: [MoveType: NavigationMenubarItem] = [.walk: .walk, .cycle: .cycle, .drive: .drive]
         menuBarItems.forEach { $1.off() }
         menuBarItems[moveType]?.on()
+    }
+
+    /// Use the clockwise / counterclockwise label for the left and right arrow menu items.
+    static func useClockwiseCounterClockwiseLabels() {
+        NavigationMenubarItem.moveRight.item?.localeKey = "ROTATE_CLOCKWISE_MENUITEM"
+        NavigationMenubarItem.moveLeft.item?.localeKey = "ROTATE_COUNTERCLOCKWISE_MENUITEM"
+    }
+
+    /// Use the left / right label for the left and right arrow menu items.
+    static func useLeftRightLabels() {
+        NavigationMenubarItem.moveRight.item?.localeKey = "MOVE_RIGHT_MENUITEM"
+        NavigationMenubarItem.moveLeft.item?.localeKey = "MOVE_LEFT_MENUITEM"
     }
 }

@@ -263,14 +263,14 @@ class MapViewController: NSViewController {
 
     /// Rotate the movementDirectionHUD by a specific angle. The angle is added to the current heading.
     /// - Parameter angle: the angle in degree
-    func rotateDirectionViewBy(_ angle: Double) {
+    public func rotateDirectionViewBy(_ angle: Double) {
         // update the headingView and the spoofer heading
         self.rotateDirectionViewTo(self.getDirectionViewAngle() + angle)
     }
 
     /// Set a new heading given by an angle.
     /// - Parameter angle: the angle in degree
-    func rotateDirectionViewTo(_ angle: Double) {
+    public func rotateDirectionViewTo(_ angle: Double) {
         self.contentView?.rotateDirectionHUD(toAngleInDegrees: angle)
     }
 
