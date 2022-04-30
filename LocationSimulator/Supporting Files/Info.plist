@@ -6,6 +6,10 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>$(PROJECT_NAME)Help.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)help</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
@@ -17,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.9.1</string>
+	<string>0.1.9.2</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
@@ -27,7 +31,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019-2022 David Klopp. All rights reserved.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>User location is required to set the currently spoofed location to your Mac&apos;s location.</string>
+	<string>User location is required to set the currently spoofed location to your Mac's location.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>

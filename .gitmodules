@@ -1,3 +1,6 @@
 [submodule "Localization"]
 	path = Localization
 	url = https://github.com/Schlaubischlump/LocationSimulator-Localization
+[submodule "Help"]
+	path = Help
+	url = https://github.com/Schlaubischlump/LocationSimulator-Help

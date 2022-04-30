@@ -110,11 +110,22 @@
 		63DAFBD827E132D800C09864 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63DAFBD627E132D800C09864 /* Localizable.strings */; };
 		63DBFFE225961563005EAB02 /* NSResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DBFFE125961563005EAB02 /* NSResponder+Extension.swift */; };
 		63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */; };
+		63F8C637281ABE7400101E24 /* LocationSimulatorHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 63F8C631281AB51700101E24 /* LocationSimulatorHelp.help */; };
 		63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */; };
 		63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */; };
 		63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE223258F9E3300917412 /* GPXSelectionView.swift */; };
 		63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDE22C258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6347E26F281ACC6100A7F9C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13BA350E20A433ED00A0431C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63F8C630281AB51700101E24;
+			remoteInfo = LocationSimulatorHelp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		044AD6C9260E1E9700F42E76 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Localization/sv.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -156,6 +167,17 @@
 		633C74FD25AA789100161DB4 /* XIBLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizable.swift; sourceTree = "<group>"; };
 		633C750125AA78F900161DB4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		633C750E25AAB0B700161DB4 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localization/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6347E22C281ACACA00A7F9C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6347E252281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = _English; path = "topic-3.md"; sourceTree = "<group>"; };
+		6347E254281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = _English; path = overview.md; sourceTree = "<group>"; };
+		6347E256281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = _English; path = overview.svg; sourceTree = "<group>"; };
+		6347E258281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = _English; path = "topic-2.md"; sourceTree = "<group>"; };
+		6347E25A281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = _English; path = keyboard.md; sourceTree = "<group>"; };
+		6347E25C281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = _English; path = overview.png; sourceTree = "<group>"; };
+		6347E25E281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = _English; path = screenshot.png; sourceTree = "<group>"; };
+		6347E260281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = _English; path = InfoPlist.strings; sourceTree = "<group>"; };
+		6347E262281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = _English; path = index.md; sourceTree = "<group>"; };
+		6347E264281ACB7300A7F9C9 /* _English */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = _English; path = "topic-1.md"; sourceTree = "<group>"; };
 		6352590F258AC0950031F289 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Licenses.plist; path = "Supporting Files/Licenses.plist"; sourceTree = "<group>"; };
 		6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPasterboard+Extension.swift"; sourceTree = "<group>"; };
@@ -230,6 +252,7 @@
 		63E4B63124997AC0009B779B /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63E4B63324997AE9009B779B /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
 		63E8DA82230C258C000C75FF /* DeveloperDiskImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = DeveloperDiskImages.plist; path = "Supporting Files/DeveloperDiskImages.plist"; sourceTree = "<group>"; };
+		63F8C631281AB51700101E24 /* LocationSimulatorHelp.help */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationSimulatorHelp.help; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewController+LocationSpooferDelegate.swift"; sourceTree = "<group>"; };
 		63FC479E2305653000BBB2E8 /* MapView+MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+MapViewDelegate.swift"; sourceTree = "<group>"; };
 		63FDE223258F9E3300917412 /* GPXSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionView.swift; sourceTree = "<group>"; };
@@ -246,6 +269,13 @@
 				635C13862596EA6600BEB53B /* Downloader in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
 				635C13812596EA5700BEB53B /* GPXParser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63F8C62E281AB51700101E24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +298,7 @@
 		13BA350D20A433ED00A0431C = {
 			isa = PBXGroup;
 			children = (
+				6347E1F5281ACACA00A7F9C9 /* Help */,
 				63DAFBD527E132D800C09864 /* Base.lproj */,
 				633C74BE25AA28DF00161DB4 /* Localizable.strings */,
 				13BA351820A433EE00A0431C /* LocationSimulator */,
@@ -280,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				13BA351620A433EE00A0431C /* LocationSimulator.app */,
+				63F8C631281AB51700101E24 /* LocationSimulatorHelp.help */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -408,6 +440,40 @@
 				63E4B62F24997A90009B779B /* libusbmuxd-2.0.6.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6347E1F5281ACACA00A7F9C9 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				6347E250281ACB7300A7F9C9 /* _English.lproj */,
+				6347E24F281ACB6100A7F9C9 /* Supporting Files */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		6347E24F281ACB6100A7F9C9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6347E22C281ACACA00A7F9C9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6347E250281ACB7300A7F9C9 /* _English.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				6347E261281ACB7300A7F9C9 /* index.md */,
+				6347E25F281ACB7300A7F9C9 /* InfoPlist.strings */,
+				6347E259281ACB7300A7F9C9 /* keyboard.md */,
+				6347E253281ACB7300A7F9C9 /* overview.md */,
+				6347E25B281ACB7300A7F9C9 /* overview.png */,
+				6347E255281ACB7300A7F9C9 /* overview.svg */,
+				6347E25D281ACB7300A7F9C9 /* screenshot.png */,
+				6347E263281ACB7300A7F9C9 /* topic-1.md */,
+				6347E257281ACB7300A7F9C9 /* topic-2.md */,
+				6347E251281ACB7300A7F9C9 /* topic-3.md */,
+			);
+			path = _English.lproj;
 			sourceTree = "<group>";
 		};
 		634855DF27FD74BC00095879 /* LocationSpoofer */ = {
@@ -673,6 +739,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6347E270281ACC6100A7F9C9 /* PBXTargetDependency */,
 			);
 			name = LocationSimulator;
 			packageProductDependencies = (
@@ -685,6 +752,24 @@
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
 			productType = "com.apple.product-type.application";
+		};
+		63F8C630281AB51700101E24 /* LocationSimulatorHelp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63F8C632281AB51700101E24 /* Build configuration list for PBXNativeTarget "LocationSimulatorHelp" */;
+			buildPhases = (
+				63F8C62D281AB51700101E24 /* Sources */,
+				63F8C62E281AB51700101E24 /* Frameworks */,
+				63F8C62F281AB51700101E24 /* Resources */,
+				63F8C638281ABF3400101E24 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocationSimulatorHelp;
+			productName = LocationSimulatorHelp;
+			productReference = 63F8C631281AB51700101E24 /* LocationSimulatorHelp.help */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -711,6 +796,9 @@
 							};
 						};
 					};
+					63F8C630281AB51700101E24 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 13BA351120A433ED00A0431C /* Build configuration list for PBXProject "LocationSimulator" */;
@@ -726,6 +814,8 @@
 				sv,
 				it,
 				Base,
+				_English,
+				"-english",
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
@@ -740,6 +830,7 @@
 			projectRoot = "";
 			targets = (
 				13BA351520A433EE00A0431C /* LocationSimulator */,
+				63F8C630281AB51700101E24 /* LocationSimulatorHelp */,
 			);
 		};
 /* End PBXProject section */
@@ -749,6 +840,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63F8C637281ABE7400101E24 /* LocationSimulatorHelp.help in Resources */,
 				633C74C925AA293F00161DB4 /* ProgressView.xib in Resources */,
 				633C750D25AA8C6800161DB4 /* Main.storyboard in Resources */,
 				13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */,
@@ -760,6 +852,13 @@
 				633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */,
 				63525913258AC7F00031F289 /* Licenses.plist in Resources */,
 				633C74C325AA293300161DB4 /* CoordinateSelectionView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63F8C62F281AB51700101E24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,6 +881,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		63F8C638281ABF3400101E24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/bin/make -C \"$(dirname \"$PRODUCT_SETTINGS_PATH\")\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -884,7 +1000,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63F8C62D281AB51700101E24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6347E270281ACC6100A7F9C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63F8C630281AB51700101E24 /* LocationSimulatorHelp */;
+			targetProxy = 6347E26F281ACC6100A7F9C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		633C74BE25AA28DF00161DB4 /* Localizable.strings */ = {
@@ -899,6 +1030,86 @@
 				63DAFBCA27E12DDA00C09864 /* it */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		6347E251281ACB7300A7F9C9 /* topic-3.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E252281ACB7300A7F9C9 /* _English */,
+			);
+			name = "topic-3.md";
+			sourceTree = "<group>";
+		};
+		6347E253281ACB7300A7F9C9 /* overview.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E254281ACB7300A7F9C9 /* _English */,
+			);
+			name = overview.md;
+			sourceTree = "<group>";
+		};
+		6347E255281ACB7300A7F9C9 /* overview.svg */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E256281ACB7300A7F9C9 /* _English */,
+			);
+			name = overview.svg;
+			sourceTree = "<group>";
+		};
+		6347E257281ACB7300A7F9C9 /* topic-2.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E258281ACB7300A7F9C9 /* _English */,
+			);
+			name = "topic-2.md";
+			sourceTree = "<group>";
+		};
+		6347E259281ACB7300A7F9C9 /* keyboard.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E25A281ACB7300A7F9C9 /* _English */,
+			);
+			name = keyboard.md;
+			sourceTree = "<group>";
+		};
+		6347E25B281ACB7300A7F9C9 /* overview.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E25C281ACB7300A7F9C9 /* _English */,
+			);
+			name = overview.png;
+			sourceTree = "<group>";
+		};
+		6347E25D281ACB7300A7F9C9 /* screenshot.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E25E281ACB7300A7F9C9 /* _English */,
+			);
+			name = screenshot.png;
+			sourceTree = "<group>";
+		};
+		6347E25F281ACB7300A7F9C9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E260281ACB7300A7F9C9 /* _English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6347E261281ACB7300A7F9C9 /* index.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E262281ACB7300A7F9C9 /* _English */,
+			);
+			name = index.md;
+			sourceTree = "<group>";
+		};
+		6347E263281ACB7300A7F9C9 /* topic-1.md */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6347E264281ACB7300A7F9C9 /* _English */,
+			);
+			name = "topic-1.md";
 			sourceTree = "<group>";
 		};
 		63DAFBD627E132D800C09864 /* Localizable.strings */ = {
@@ -1182,6 +1393,79 @@
 			};
 			name = Homebrew;
 		};
+		63F8C633281AB51700101E24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YJ8XYES89R;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Help/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 David Klopp. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulatorhelp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = help;
+			};
+			name = Debug;
+		};
+		63F8C634281AB51700101E24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YJ8XYES89R;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Help/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 David Klopp. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulatorhelp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = help;
+			};
+			name = Release;
+		};
+		63F8C635281AB51700101E24 /* Homebrew */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YJ8XYES89R;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Help/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 David Klopp. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulatorhelp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = help;
+			};
+			name = Homebrew;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1201,6 +1485,16 @@
 				13BA352720A433EF00A0431C /* Debug */,
 				13BA352820A433EF00A0431C /* Release */,
 				63A4F929240366EA00C3D877 /* Homebrew */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63F8C632281AB51700101E24 /* Build configuration list for PBXNativeTarget "LocationSimulatorHelp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63F8C633281AB51700101E24 /* Debug */,
+				63F8C634281AB51700101E24 /* Release */,
+				63F8C635281AB51700101E24 /* Homebrew */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
