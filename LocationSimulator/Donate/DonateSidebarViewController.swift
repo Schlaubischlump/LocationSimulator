@@ -18,6 +18,15 @@ class DonateSidebarViewController: NSViewController {
 
         self.tableView.dataSource = self
         self.tableView.delegate = self
+
+        // Fix the layout for older macOS versions
+        let scrollView = self.tableView.enclosingScrollView
+        if #available(macOS 11.0, *) {
+            scrollView?.automaticallyAdjustsContentInsets = true
+        } else {
+            scrollView?.automaticallyAdjustsContentInsets = false
+            scrollView?.contentInsets = NSEdgeInsets(top: 25, left: 0, bottom: 0, right: 0)
+        }
     }
 
     override func viewWillAppear() {

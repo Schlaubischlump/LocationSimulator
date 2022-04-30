@@ -16,6 +16,9 @@ class DonateDetailViewController: NSViewController {
 
     @IBOutlet var donateButton: NSButton!
 
+    @IBOutlet var qrCodeImageViewTopConstraint: NSLayoutConstraint!
+
+
     public var donateMethod: DonateMethod? {
         didSet {
             if self.isViewLoaded {
@@ -35,6 +38,17 @@ class DonateDetailViewController: NSViewController {
         }
         self.linkLabel.attributedStringValue = NSAttributedString(string: donateMethod.value, attributes: attributes)
         self.donateButton.title = donateMethod.actionTitle
+    }
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+
+        if #available(macOS 11.0, *) {
+            // Nothing to do here, since the safeAreaInset is respected
+        } else {
+            // Fix the layout for older macOS versions
+            self.qrCodeImageViewTopConstraint.constant = -25
+        }
     }
 
     public override func viewWillAppear() {
