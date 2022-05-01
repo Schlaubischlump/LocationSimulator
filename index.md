@@ -35,12 +35,15 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 # Changelog
 
 ### v0.1.9
+- Add a donation option
 - Move when standing still
 - Autoreverse navigation
 - UI does not lock up anymore when uploading a DeveloperDiskImage
 - Hovering a device in the sidebar reveals the full name
 - Resizing the window if no device is connected is now possible
 - New backend code for spoofing
+- More natural keyboard navigation
+- Help menu entry
 
 ### v0.1.8.4
 - Fix Swedish localization thanks to @devmaximilian !
