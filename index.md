@@ -34,17 +34,24 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
-### v0.1.9
+### v0.1.9.2
+⚠️ Language support other than english and german is partially incomplete
+- More natural keyboard navigation
+- Help menu entry
+- Fix donation window on macOS Catalina
+
+### v0.1.9.1
 ⚠️ Language support other than english and german is partially incomplete
 - Add a donation option
+
+### v0.1.9
+⚠️ Language support other than english and german is partially incomplete
 - Move when standing still
 - Autoreverse navigation
 - UI does not lock up anymore when uploading a DeveloperDiskImage
 - Hovering a device in the sidebar reveals the full name
 - Resizing the window if no device is connected is now possible
 - New backend code for spoofing
-- More natural keyboard navigation
-- Help menu entry
 
 ### v0.1.8.4
 - Fix Swedish localization thanks to @devmaximilian !
@@ -52,12 +59,13 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 - Decrease the location update interval for smoother movements
 
 ### v0.1.8.3
+⚠️ Language support other than english and german is partially incomplete
 - Fix UI lockup if Xcode 13.3 is installed
 - Xcode 13.3 support for iPhoneSimulator
 
 ### v0.1.8.2
 
-- ⚠️ Language support other than english and german is partially incomplete
+⚠️ Language support other than english and german is partially incomplete
 - Change the map type (satellite, hybrid, explore)
 - Select the menubar items when changing the move type
 - Add zoom-in and zoom-out menubar items
