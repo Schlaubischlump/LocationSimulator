@@ -78,6 +78,7 @@ Download the latest [release](https://github.com/Schlaubischlump/LocationSimulat
 - macOS 11.x+ SDK
 - swift 5.0+
 - swift-tools-version 5.2+
+- [jekyll](https://jekyllrb.com) (and a symlink of jekyll to `/usr/local/bin/jekyll`)
 
 ### Build the app
 
