@@ -31,7 +31,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019-2022 David Klopp. All rights reserved.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>User location is required to set the currently spoofed location to your Mac's location.</string>
+	<string>User location is required to set the currently spoofed location to your Mac&apos;s location.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
