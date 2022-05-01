@@ -197,8 +197,8 @@ class MenubarController: NSResponder {
         let traditional = UserDefaults.standard.movementControlBehaviour == .traditional || self.deviceStatus == .auto
 
         switch NavigationMenubarItem(rawValue: sender.tag) {
-        case .moveRight: traditional ? windowController.rotate(.counterclockwise) : windowController.moveNatural(.right)
-        case .moveLeft:  traditional ? windowController.rotate(.clockwise)        : windowController.moveNatural(.left)
+        case .moveRight: traditional ? windowController.rotate(.clockwise)        : windowController.moveNatural(.right)
+        case .moveLeft:  traditional ? windowController.rotate(.counterclockwise) : windowController.moveNatural(.left)
         case .moveDown:  traditional ? windowController.moveTraditional(.down)    : windowController.moveNatural(.down)
         case .moveUp:    traditional ? windowController.moveTraditional(.up)      : windowController.moveNatural(.up)
         default: break

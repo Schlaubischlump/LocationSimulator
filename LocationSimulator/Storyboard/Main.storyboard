@@ -2555,11 +2555,11 @@
             <objects>
                 <viewController id="eae-4P-ykM" customClass="GeneralViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="OAa-Fi-hM2">
-                        <rect key="frame" x="0.0" y="0.0" width="312" height="257"/>
+                        <rect key="frame" x="0.0" y="0.0" width="312" height="289"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AOL-3Y-1IX">
-                                <rect key="frame" x="18" y="220" width="158" height="18"/>
+                                <rect key="frame" x="18" y="252" width="158" height="18"/>
                                 <buttonCell key="cell" type="check" title="Confirm Teleportation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="isp-Tm-ft7">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2572,7 +2572,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ufL-NS-UPy">
-                                <rect key="frame" x="18" y="197" width="187" height="16"/>
+                                <rect key="frame" x="18" y="229" width="187" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" enabled="NO" title="Always ask before teleporting." id="3Kt-Um-S7h">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -2586,7 +2586,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jtC-0U-nMU">
-                                <rect key="frame" x="18" y="172" width="163" height="18"/>
+                                <rect key="frame" x="18" y="204" width="163" height="18"/>
                                 <buttonCell key="cell" type="check" title="Vary Movement Speed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="C9W-fJ-Zm8">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2599,7 +2599,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Rb6-St-yNW">
-                                <rect key="frame" x="18" y="149" width="274" height="16"/>
+                                <rect key="frame" x="18" y="165" width="256" height="32"/>
                                 <textFieldCell key="cell" selectable="YES" enabled="NO" title="Add a little variance to the movement speed." id="DgX-hx-8wO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -2613,7 +2613,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ER2-2X-i1m">
-                                <rect key="frame" x="18" y="124" width="181" height="18"/>
+                                <rect key="frame" x="18" y="140" width="181" height="18"/>
                                 <buttonCell key="cell" type="check" title="Move When Standing Still" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ONR-WB-ZlE">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2626,7 +2626,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="HED-FI-fLw">
-                                <rect key="frame" x="18" y="85" width="296" height="32"/>
+                                <rect key="frame" x="18" y="85" width="276" height="48"/>
                                 <textFieldCell key="cell" selectable="YES" enabled="NO" title="Enable random movement if the GPS location did not change in a certain time frame." id="R5j-US-Zdf">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -2693,14 +2693,14 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ER2-2X-i1m" firstAttribute="width" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="width" constant="-20" id="8M3-dy-9kE"/>
-                            <constraint firstItem="Rb6-St-yNW" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="9If-vS-l4c"/>
+                            <constraint firstItem="ER2-2X-i1m" firstAttribute="width" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="width" constant="-40" id="8M3-dy-9kE"/>
+                            <constraint firstItem="Rb6-St-yNW" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-40" id="9If-vS-l4c"/>
                             <constraint firstItem="Rb6-St-yNW" firstAttribute="top" secondItem="jtC-0U-nMU" secondAttribute="bottom" constant="8" symbolic="YES" id="AMY-o2-bEA"/>
-                            <constraint firstItem="AOL-3Y-1IX" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="CYh-Te-RVA"/>
-                            <constraint firstItem="HED-FI-fLw" firstAttribute="width" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="width" constant="-20" id="CyP-gh-caR"/>
+                            <constraint firstItem="AOL-3Y-1IX" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-40" id="CYh-Te-RVA"/>
+                            <constraint firstItem="HED-FI-fLw" firstAttribute="width" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="width" constant="-40" id="CyP-gh-caR"/>
                             <constraint firstItem="orG-7R-4CM" firstAttribute="trailing" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="Epx-On-SpC"/>
                             <constraint firstItem="jtC-0U-nMU" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="EtE-7P-ddg"/>
-                            <constraint firstItem="ER2-2X-i1m" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="IFo-ZJ-WE9"/>
+                            <constraint firstItem="ER2-2X-i1m" firstAttribute="leading" secondItem="jtC-0U-nMU" secondAttribute="leading" id="IFo-ZJ-WE9"/>
                             <constraint firstItem="ufL-NS-UPy" firstAttribute="top" secondItem="AOL-3Y-1IX" secondAttribute="bottom" constant="8" symbolic="YES" id="KhA-oR-8Ku"/>
                             <constraint firstItem="Rb6-St-yNW" firstAttribute="leading" secondItem="jtC-0U-nMU" secondAttribute="leading" id="LKi-Bu-kh3"/>
                             <constraint firstItem="vUE-sO-TA9" firstAttribute="top" secondItem="27A-SN-hHB" secondAttribute="bottom" constant="8" symbolic="YES" id="Pga-ub-Mux"/>
@@ -2708,7 +2708,7 @@
                             <constraint firstItem="vUE-sO-TA9" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="RJ8-2P-21q"/>
                             <constraint firstItem="orG-7R-4CM" firstAttribute="top" secondItem="HED-FI-fLw" secondAttribute="bottom" constant="10" id="SF3-dk-nPQ"/>
                             <constraint firstAttribute="bottom" secondItem="vUE-sO-TA9" secondAttribute="bottom" constant="20" symbolic="YES" id="WEH-MV-4GJ"/>
-                            <constraint firstItem="jtC-0U-nMU" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="YM2-hK-q1C"/>
+                            <constraint firstItem="jtC-0U-nMU" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-40" id="YM2-hK-q1C"/>
                             <constraint firstItem="jtC-0U-nMU" firstAttribute="top" secondItem="ufL-NS-UPy" secondAttribute="bottom" constant="8" symbolic="YES" id="bb3-Jt-E67"/>
                             <constraint firstItem="27A-SN-hHB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="dEi-XL-GQu"/>
                             <constraint firstItem="ufL-NS-UPy" firstAttribute="leading" secondItem="AOL-3Y-1IX" secondAttribute="leading" id="esy-MK-WvX"/>
@@ -2718,11 +2718,11 @@
                             <constraint firstItem="ER2-2X-i1m" firstAttribute="top" secondItem="Rb6-St-yNW" secondAttribute="bottom" constant="8" symbolic="YES" id="pCp-Ro-AxU"/>
                             <constraint firstItem="8Xe-3b-vat" firstAttribute="centerY" secondItem="27A-SN-hHB" secondAttribute="centerY" id="pWX-13-9It"/>
                             <constraint firstItem="vUE-sO-TA9" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="r8I-3o-a2y"/>
-                            <constraint firstItem="8Xe-3b-vat" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="vpW-do-1ws"/>
-                            <constraint firstItem="AOL-3Y-1IX" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="vuz-Ef-qaa"/>
+                            <constraint firstItem="8Xe-3b-vat" firstAttribute="leading" secondItem="HED-FI-fLw" secondAttribute="leading" id="vpW-do-1ws"/>
+                            <constraint firstItem="AOL-3Y-1IX" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" id="vuz-Ef-qaa"/>
                             <constraint firstItem="AOL-3Y-1IX" firstAttribute="top" secondItem="OAa-Fi-hM2" secondAttribute="top" constant="20" symbolic="YES" id="xYo-Vn-mcm"/>
-                            <constraint firstItem="ufL-NS-UPy" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-20" id="yvJ-qO-oEa"/>
-                            <constraint firstItem="orG-7R-4CM" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" symbolic="YES" id="yxK-5y-Ogi"/>
+                            <constraint firstItem="ufL-NS-UPy" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="OAa-Fi-hM2" secondAttribute="trailing" constant="-40" id="yvJ-qO-oEa"/>
+                            <constraint firstItem="orG-7R-4CM" firstAttribute="leading" secondItem="OAa-Fi-hM2" secondAttribute="leading" constant="20" id="yxK-5y-Ogi"/>
                         </constraints>
                     </view>
                     <userDefinedRuntimeAttributes>
