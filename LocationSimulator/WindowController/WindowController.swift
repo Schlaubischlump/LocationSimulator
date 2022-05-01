@@ -218,13 +218,13 @@ class WindowController: NSWindowController {
         case .up:
             self.mapViewController?.rotateDirectionViewTo(0)
             self.mapViewController?.move(flip: false)
-        case .right:
+        case .left:
             self.mapViewController?.rotateDirectionViewTo(90)
             self.mapViewController?.move(flip: false)
         case .down:
             self.mapViewController?.rotateDirectionViewTo(180)
             self.mapViewController?.move(flip: false)
-        case .left:
+        case .right:
             self.mapViewController?.rotateDirectionViewTo(270)
             self.mapViewController?.move(flip: false)
         }

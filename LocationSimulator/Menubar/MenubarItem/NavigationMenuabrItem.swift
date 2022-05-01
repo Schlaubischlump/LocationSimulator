@@ -21,8 +21,8 @@ enum NavigationMenubarItem: Int, CaseIterable, MenubarItem {
     case toggleAutomove         = 6
     case moveUp                 = 8
     case moveDown               = 9
-    case moveRight              = 10
-    case moveLeft               = 11
+    case moveLeft               = 10
+    case moveRight              = 11
     case stopNavigation         = 12
     case resetLocation          = 13
     case recentLocation         = 14
