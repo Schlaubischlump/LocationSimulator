@@ -35,6 +35,7 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 # Changelog
 
 ### v0.1.9
+⚠️ Language support other than english and german is partially incomplete
 - Add a donation option
 - Move when standing still
 - Autoreverse navigation
