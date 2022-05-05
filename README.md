@@ -72,6 +72,17 @@ Download the latest [release](https://github.com/Schlaubischlump/LocationSimulat
 
 ## Build
 
+Since this project has gotten quite big over time, I exported some of the code to other packages. The list below contains all additional projects I created to make this project possible. They should all be downloaded automatically by swift:   
+ 
+- [LocationSimulator-Localization](https://github.com/Schlaubischlump/LocationSimulator-Localization): The LocationSimulator localization files.    
+- [LocationSimulator-Help](https://github.com/Schlaubischlump/LocationSimulator-Help): The LocationSimulator helpbook you see when you click on `Help` -> `LocationSimulator Help`.    
+- [LocationSpoofer](https://github.com/Schlaubischlump/LocationSpoofer): The backend code used to spoof the location of iOS or iPhoneSimulator devices.     
+- [XCF](https://github.com/Schlaubischlump/XCF): The low level frameworks used by LocationSpoofer.    
+- [CLogger](https://github.com/Schlaubischlump/CLogger): A C / Objective-C / Swift logging library used by LocationSpoofer and LocationSimulator.    
+- [SuggestionPopup](https://github.com/Schlaubischlump/SuggestionPopup): A simple Apple maps like popup list UI written for AppKit to search for locations.    
+- [Downloader](https://github.com/Schlaubischlump/Downloader): A simple swift library to download files from the internet more easily.    
+- [GPXParser](https://github.com/Schlaubischlump/GPXParser): A simple swift library to parse GPX files.
+
 ### Requirements
 
 - macOS 10.15+

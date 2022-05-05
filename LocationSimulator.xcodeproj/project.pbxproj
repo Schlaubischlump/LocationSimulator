@@ -375,6 +375,7 @@
 		630C0C9B27DE6DF400C3D5A9 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				63525958258E8FC80031F289 /* HUDView.swift */,
 				6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */,
 				6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */,
 				6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */,
@@ -568,7 +569,6 @@
 			isa = PBXGroup;
 			children = (
 				63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */,
-				63525958258E8FC80031F289 /* HUDView.swift */,
 				6376756A258EC809000DCEF3 /* SeparatorLine.swift */,
 				63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */,
 				635CF726280ECC500092A99B /* DonateButton.swift */,
@@ -1462,6 +1462,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_PKGINFO_FILE = YES;
 				INFOPLIST_FILE = Help/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 David Klopp. All rights reserved.";
 				INFOPLIST_KEY_NSPrincipalClass = "";
@@ -1487,6 +1488,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_PKGINFO_FILE = YES;
 				INFOPLIST_FILE = Help/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 David Klopp. All rights reserved.";
 				INFOPLIST_KEY_NSPrincipalClass = "";
@@ -1511,6 +1513,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				GENERATE_INFOPLIST_FILE = NO;
+				GENERATE_PKGINFO_FILE = YES;
 				INFOPLIST_FILE = Help/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 David Klopp. All rights reserved.";
 				INFOPLIST_KEY_NSPrincipalClass = "";
