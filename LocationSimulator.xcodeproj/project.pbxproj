@@ -28,7 +28,6 @@
 		632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */; };
 		632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466223F4D9C8004E5092 /* CoordinateStepper.swift */; };
 		632C466523F7638A004E5092 /* MenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466423F7638A004E5092 /* MenubarItem.swift */; };
-		63303A47280C2E8E000E9D19 /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 63303A46280C2E8E000E9D19 /* LocationSpoofer */; };
 		6336A39927F5EDA20065C798 /* NavigationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336A39827F5EDA20065C798 /* NavigationOverlay.swift */; };
 		633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351920A433EE00A0431C /* AppDelegate.swift */; };
 		633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510920AE9634002A61F1 /* WindowController.swift */; };
@@ -72,6 +71,11 @@
 		63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720635259147AB00293EA8 /* ProgressAlert.swift */; };
 		6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */; };
 		6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */; };
+		6372E3742824708200188416 /* applescript.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 6372E3732824708200188416 /* applescript.sdef */; };
+		6372E3762824772F00188416 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E3752824772F00188416 /* Application.swift */; };
+		6372E37928247BA900188416 /* ASDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E37828247BA800188416 /* ASDevice.swift */; };
+		6372E3852824F79100188416 /* Application+AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E3842824F79100188416 /* Application+AppleScript.swift */; };
+		6372E3882825B97200188416 /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 6372E3872825B97200188416 /* LocationSpoofer */; };
 		6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */; };
 		63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */; };
 		63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */; };
@@ -97,28 +101,6 @@
 		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
 		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
 		63C799FD259659740099B794 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799FC259659740099B794 /* InfoViewController.swift */; };
-		63CA735F281E0588007747D3 /* overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7341281E0588007747D3 /* overview.png */; };
-		63CA7360281E0588007747D3 /* devdiskimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7342281E0588007747D3 /* devdiskimage.png */; };
-		63CA7361281E0588007747D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7343281E0588007747D3 /* InfoPlist.strings */; };
-		63CA7362281E0588007747D3 /* index.md in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7345281E0588007747D3 /* index.md */; };
-		63CA7363281E0588007747D3 /* topic-2-gpx.md in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7348281E0588007747D3 /* topic-2-gpx.md */; };
-		63CA7364281E0588007747D3 /* select_route.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA734A281E0588007747D3 /* select_route.png */; };
-		63CA7365281E0588007747D3 /* navigate.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA734B281E0588007747D3 /* navigate.png */; };
-		63CA7366281E0588007747D3 /* topic-1-navigate.md in Resources */ = {isa = PBXBuildFile; fileRef = 63CA734C281E0588007747D3 /* topic-1-navigate.md */; };
-		63CA7367281E0588007747D3 /* diskimages_preferences.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA734F281E0588007747D3 /* diskimages_preferences.png */; };
-		63CA7368281E0588007747D3 /* add_diskimages.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7350281E0588007747D3 /* add_diskimages.png */; };
-		63CA7369281E0588007747D3 /* topic-1-developerdiskimage.md in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7351281E0588007747D3 /* topic-1-developerdiskimage.md */; };
-		63CA736A281E0588007747D3 /* topic-1-select-device.md in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7353281E0588007747D3 /* topic-1-select-device.md */; };
-		63CA736B281E0588007747D3 /* no_device.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7355281E0588007747D3 /* no_device.png */; };
-		63CA736C281E0588007747D3 /* move.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7356281E0588007747D3 /* move.png */; };
-		63CA736D281E0588007747D3 /* automove.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7357281E0588007747D3 /* automove.png */; };
-		63CA736E281E0588007747D3 /* reset.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7358281E0588007747D3 /* reset.png */; };
-		63CA736F281E0588007747D3 /* teleport_or_navigate.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA7359281E0588007747D3 /* teleport_or_navigate.png */; };
-		63CA7370281E0588007747D3 /* download_devdiskimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA735A281E0588007747D3 /* download_devdiskimage.png */; };
-		63CA7371281E0588007747D3 /* error_upload_devdiskimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA735B281E0588007747D3 /* error_upload_devdiskimage.png */; };
-		63CA7372281E0588007747D3 /* upload_devdiskimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CA735C281E0588007747D3 /* upload_devdiskimage.png */; };
-		63CA7373281E0588007747D3 /* topic-2-developerdiskimage.md in Resources */ = {isa = PBXBuildFile; fileRef = 63CA735D281E0588007747D3 /* topic-2-developerdiskimage.md */; };
-		63CA7374281E0588007747D3 /* topic-3-spoof-location.md in Resources */ = {isa = PBXBuildFile; fileRef = 63CA735E281E0588007747D3 /* topic-3-spoof-location.md */; };
 		63D5DF3427D6720000F2DCD3 /* DeveloperDiskImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5DF3327D6720000F2DCD3 /* DeveloperDiskImagesViewController.swift */; };
 		63D5DF3827D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5DF3727D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift */; };
 		63D5DF3A27D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D5DF3927D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib */; };
@@ -219,6 +201,10 @@
 		63720635259147AB00293EA8 /* ProgressAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAlert.swift; sourceTree = "<group>"; };
 		6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionAlert.swift; sourceTree = "<group>"; };
 		6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionAlert.swift; sourceTree = "<group>"; };
+		6372E3732824708200188416 /* applescript.sdef */ = {isa = PBXFileReference; lastKnownFileType = text; name = applescript.sdef; path = "Supporting Files/applescript.sdef"; sourceTree = "<group>"; };
+		6372E3752824772F00188416 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		6372E37828247BA800188416 /* ASDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASDevice.swift; sourceTree = "<group>"; };
+		6372E3842824F79100188416 /* Application+AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+AppleScript.swift"; sourceTree = "<group>"; };
 		6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerHUDView.swift; sourceTree = "<group>"; };
 		6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementButtonHUDView.swift; sourceTree = "<group>"; };
 		6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDirectionHUDView.swift; sourceTree = "<group>"; };
@@ -298,7 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63303A47280C2E8E000E9D19 /* LocationSpoofer in Frameworks */,
+				6372E3882825B97200188416 /* LocationSpoofer in Frameworks */,
 				63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */,
 				635C13862596EA6600BEB53B /* Downloader in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
@@ -325,6 +311,7 @@
 				13BA352320A433EF00A0431C /* LocationSimulator.entitlements */,
 				13BA352220A433EF00A0431C /* Info.plist */,
 				6305075323FB06A700EF529A /* Credits.rtf */,
+				6372E3732824708200188416 /* applescript.sdef */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -354,10 +341,12 @@
 			isa = PBXGroup;
 			children = (
 				637169D927FF1C2400386021 /* main.swift */,
+				6372E3752824772F00188416 /* Application.swift */,
 				63D734FF27EB74F10044918C /* Constants.swift */,
 				631EBFE8259415250066D5BB /* DeviceStatus.swift */,
 				13BA351920A433EE00A0431C /* AppDelegate.swift */,
 				633C74D425AA2CE800161DB4 /* Main.storyboard */,
+				6372E37728247B9500188416 /* AppleScript */,
 				635CF715280E03670092A99B /* Donate */,
 				63864BF827DC1CF9005F94F3 /* Logging */,
 				638B909D254B513300A520E0 /* Preferences */,
@@ -620,6 +609,15 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		6372E37728247B9500188416 /* AppleScript */ = {
+			isa = PBXGroup;
+			children = (
+				6372E3842824F79100188416 /* Application+AppleScript.swift */,
+				6372E37828247BA800188416 /* ASDevice.swift */,
+			);
+			path = AppleScript;
+			sourceTree = "<group>";
+		};
 		637FD2262595789C00E84EDB /* TouchbarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,7 +847,7 @@
 				635C13852596EA6600BEB53B /* Downloader */,
 				63AEA2F1259AB41D0084F74B /* SuggestionPopup */,
 				63D734FD27E90C800044918C /* CLogger */,
-				63303A46280C2E8E000E9D19 /* LocationSpoofer */,
+				6372E3872825B97200188416 /* LocationSpoofer */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -925,7 +923,7 @@
 				635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */,
 				63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
 				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
-				63303A43280C2DF4000E9D19 /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
+				6372E3862825B97200188416 /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -942,40 +940,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63CA7370281E0588007747D3 /* download_devdiskimage.png in Resources */,
 				63F8C637281ABE7400101E24 /* LocationSimulatorHelp.help in Resources */,
 				633C74C925AA293F00161DB4 /* ProgressView.xib in Resources */,
 				633C750D25AA8C6800161DB4 /* Main.storyboard in Resources */,
-				13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */,
-				63CA7361281E0588007747D3 /* InfoPlist.strings in Resources */,
-				63CA7363281E0588007747D3 /* topic-2-gpx.md in Resources */,
-				63CA736C281E0588007747D3 /* move.png in Resources */,
-				63CA736E281E0588007747D3 /* reset.png in Resources */,
-				63CA7373281E0588007747D3 /* topic-2-developerdiskimage.md in Resources */,
-				633C74C025AA28DF00161DB4 /* Localizable.strings in Resources */,
-				63CA7366281E0588007747D3 /* topic-1-navigate.md in Resources */,
 				63D5DF3A27D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib in Resources */,
-				63CA7360281E0588007747D3 /* devdiskimage.png in Resources */,
-				63CA7365281E0588007747D3 /* navigate.png in Resources */,
-				63CA735F281E0588007747D3 /* overview.png in Resources */,
-				63CA736F281E0588007747D3 /* teleport_or_navigate.png in Resources */,
-				63CA736D281E0588007747D3 /* automove.png in Resources */,
-				6305075423FB06A700EF529A /* Credits.rtf in Resources */,
-				63CA7364281E0588007747D3 /* select_route.png in Resources */,
-				63CA736A281E0588007747D3 /* topic-1-select-device.md in Resources */,
-				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
-				63DAFBD827E132D800C09864 /* Localizable.strings in Resources */,
-				63CA7368281E0588007747D3 /* add_diskimages.png in Resources */,
 				633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */,
-				63525913258AC7F00031F289 /* Licenses.plist in Resources */,
-				63CA7371281E0588007747D3 /* error_upload_devdiskimage.png in Resources */,
 				633C74C325AA293300161DB4 /* CoordinateSelectionView.xib in Resources */,
-				63CA7372281E0588007747D3 /* upload_devdiskimage.png in Resources */,
-				63CA736B281E0588007747D3 /* no_device.png in Resources */,
-				63CA7369281E0588007747D3 /* topic-1-developerdiskimage.md in Resources */,
-				63CA7374281E0588007747D3 /* topic-3-spoof-location.md in Resources */,
-				63CA7362281E0588007747D3 /* index.md in Resources */,
-				63CA7367281E0588007747D3 /* diskimages_preferences.png in Resources */,
+				13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */,
+				633C74C025AA28DF00161DB4 /* Localizable.strings in Resources */,
+				63DAFBD827E132D800C09864 /* Localizable.strings in Resources */,
+				6305075423FB06A700EF529A /* Credits.rtf in Resources */,
+				63525913258AC7F00031F289 /* Licenses.plist in Resources */,
+				63E8DA83230C258C000C75FF /* DeveloperDiskImages.plist in Resources */,
+				6372E3742824708200188416 /* applescript.sdef in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1040,6 +1017,7 @@
 				631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */,
 				6336A39927F5EDA20065C798 /* NavigationOverlay.swift in Sources */,
 				63D734F027E903370044918C /* FileManager+Logger.swift in Sources */,
+				6372E37928247BA900188416 /* ASDevice.swift in Sources */,
 				633C750225AA78F900161DB4 /* String+Extension.swift in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
 				635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */,
@@ -1071,6 +1049,7 @@
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
 				63D5DF4027D969E800F2DCD3 /* DragAndDropBox.swift in Sources */,
+				6372E3762824772F00188416 /* Application.swift in Sources */,
 				633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
@@ -1097,6 +1076,7 @@
 				630BC72227DD09C800675426 /* NSTableCellView+Extension.swift in Sources */,
 				635CF71D280E03B80092A99B /* DonateSplitViewController.swift in Sources */,
 				637169DA27FF1C2400386021 /* main.swift in Sources */,
+				6372E3852824F79100188416 /* Application+AppleScript.swift in Sources */,
 				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
 				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
 				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
@@ -1565,14 +1545,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		63303A43280C2DF4000E9D19 /* XCRemoteSwiftPackageReference "LocationSpoofer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Schlaubischlump/LocationSpoofer.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/GPXParser";
@@ -1584,6 +1556,14 @@
 		635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/Downloader";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
+		6372E3862825B97200188416 /* XCRemoteSwiftPackageReference "LocationSpoofer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Schlaubischlump/LocationSpoofer.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.2;
@@ -1608,11 +1588,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		63303A46280C2E8E000E9D19 /* LocationSpoofer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 63303A43280C2DF4000E9D19 /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
-			productName = LocationSpoofer;
-		};
 		635C13802596EA5700BEB53B /* GPXParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */;
@@ -1622,6 +1597,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */;
 			productName = Downloader;
+		};
+		6372E3872825B97200188416 /* LocationSpoofer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6372E3862825B97200188416 /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
+			productName = LocationSpoofer;
 		};
 		63AEA2F1259AB41D0084F74B /* SuggestionPopup */ = {
 			isa = XCSwiftPackageProductDependency;

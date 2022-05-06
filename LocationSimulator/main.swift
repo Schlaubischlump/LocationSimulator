@@ -9,14 +9,38 @@
 import Foundation
 import AppKit
 import CLogger
+import LocationSpoofer
 
 // Init the logger before we start the application.
 FileManager.default.initLogger()
 
-// TODO: Check if we are running in commandline mode and if so, execute a command line tool instead of the UI
+/// Start the application without any UI and without any dock or menubar entry. This is useful if you want to use the
+/// application as an AppleScript service.
+func launchWithoutUI() {
+    IOSDevice.startGeneratingDeviceNotifications()
+    SimulatorDevice.startGeneratingDeviceNotifications()
 
-// Start the UI
-let result = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
-if result != 0 {
-    logFatal("Unexpected Application exited with code \(result)")
+    let app = Application.shared
+    // We do not want to create a dock or a menubar entry
+    app.setActivationPolicy(.prohibited)
+    app.run()
+
+    IOSDevice.stopGeneratingDeviceNotifications()
+    SimulatorDevice.stopGeneratingDeviceNotifications()
+}
+
+/// Start the application normally with a UI.
+func launchWithUI() {
+    let result = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+    if result != 0 {
+        logFatal("Unexpected Application exited with code \(result)")
+    }
+}
+
+// Launch the application.
+let args = CommandLine.arguments
+if args.contains("--no-ui") {
+    launchWithoutUI()
+} else {
+    launchWithUI()
 }

@@ -28,6 +28,8 @@
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019-2022 David Klopp. All rights reserved.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -35,6 +37,8 @@
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
+	<string>LSApplication</string>
+	<key>OSAScriptingDefinition</key>
+	<string>applescript.sdef</string>
 </dict>
 </plist>
