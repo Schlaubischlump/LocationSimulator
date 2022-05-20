@@ -101,7 +101,7 @@ Since this project has gotten quite big over time, I exported some of the code t
 	git clone --recurse-submodules https://github.com/Schlaubischlump/LocationSimulator
 	```
 3. Open `LocationSimulator.xcodeproj` in Xcode.
-4. Let XCode resolve all dependencies.
+4. Let Xcode resolve all dependencies.
 5. Tap `Run` to build and execute the app.
 
 ## Usage
