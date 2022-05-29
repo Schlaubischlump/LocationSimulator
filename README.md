@@ -54,6 +54,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 >```
 >~/Library/Containers/com.schlaubi.LocationSimulator/Data/Library/Application Support/LocationSimulator/
 >```
+> As of v0.1.9 you can manage these files using the `DeveloperDisk` preferences tab.
 
 ## Install
 
