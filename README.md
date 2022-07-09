@@ -25,6 +25,7 @@ LocationSimulator is a macOS app (10.15.x, 11.x, 12.x) which allows spoofing the
 - [Donate](#donate)
 - [Enhancement ideas](#enhancement-ideas)
 
+If you got a problem with a beta version of iOS try [the following](https://github.com/Schlaubischlump/LocationSimulator/issues/128#issuecomment-1179526935). Replace iOS 16.0 with whatever iOS version you are using. 
 
 ## Background
 
