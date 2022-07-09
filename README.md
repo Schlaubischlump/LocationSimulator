@@ -1,3 +1,5 @@
+**I do not support beta versions of iOS or macOS ! You can nevertheless try [the following](https://github.com/Schlaubischlump/LocationSimulator/issues/128#issuecomment-1179526935) to fix your problems. Replace iOS 16.0 with whatever iOS version you are using.**
+
 [![License: GNU General Public License version 3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0) 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=9NR3CLRUG22SJ)
 
@@ -24,8 +26,6 @@ LocationSimulator is a macOS app (10.15.x, 11.x, 12.x) which allows spoofing the
 - [Contribute](#contribute)
 - [Donate](#donate)
 - [Enhancement ideas](#enhancement-ideas)
-
-If you got a problem with a beta version of iOS try [the following](https://github.com/Schlaubischlump/LocationSimulator/issues/128#issuecomment-1179526935). Replace iOS 16.0 with whatever iOS version you are using. 
 
 ## Background
 
