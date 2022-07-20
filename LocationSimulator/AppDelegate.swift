@@ -44,4 +44,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
+
+    func applicationWillTerminate(_ notification: Notification) {
+        // Reset the location for every device that currently has a spoofed location. We are not interested in updating
+        // any window UI, since we are closing the app. We therefore directly access the device and make a synchronous
+        // call to reset the location.
+        NSApplication.shared.windows.forEach { window in
+            let windowController = window.windowController as? WindowController
+            let device = windowController?.mapViewController?.device
+            device?.disableSimulation()
+        }
+    }
 }

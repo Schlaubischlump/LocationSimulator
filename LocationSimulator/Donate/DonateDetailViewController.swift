@@ -42,9 +42,7 @@ class DonateDetailViewController: NSViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(macOS 11.0, *) {
-            // Nothing to do here, since the safeAreaInset is respected
-        } else {
+        if #unavailable(macOS 11.0) {
             // Fix the layout for older macOS versions
             self.qrCodeImageViewTopConstraint.constant = -25
         }

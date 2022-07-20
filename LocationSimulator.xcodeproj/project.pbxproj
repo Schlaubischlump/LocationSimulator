@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -149,6 +149,10 @@
 		630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationView.swift; sourceTree = "<group>"; };
 		630C4A142593ECD100442713 /* NoDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDeviceView.swift; sourceTree = "<group>"; };
 		6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DeveloperDiskImages.swift"; sourceTree = "<group>"; };
+		6314CB452888203600EE0D09 /* topic-1-preparation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "topic-1-preparation.md"; sourceTree = "<group>"; };
+		6314CB462888203600EE0D09 /* topic-2-examples.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "topic-2-examples.md"; sourceTree = "<group>"; };
+		6314CB482888203600EE0D09 /* faq.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = faq.md; sourceTree = "<group>"; };
+		6314CB492888236E00EE0D09 /* topic-2-network.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "topic-2-network.md"; sourceTree = "<group>"; };
 		631EBFE2259409190066D5BB /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		631EBFE8259415250066D5BB /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
 		631EBFF325941C880066D5BB /* ToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarController.swift; sourceTree = "<group>"; };
@@ -399,6 +403,23 @@
 				6390AB412593D63000B0CABA /* SplitviewController.swift */,
 			);
 			path = SplitViewController;
+			sourceTree = "<group>";
+		};
+		6314CB442888203600EE0D09 /* order-4-applescript */ = {
+			isa = PBXGroup;
+			children = (
+				6314CB452888203600EE0D09 /* topic-1-preparation.md */,
+				6314CB462888203600EE0D09 /* topic-2-examples.md */,
+			);
+			path = "order-4-applescript";
+			sourceTree = "<group>";
+		};
+		6314CB472888203600EE0D09 /* order-last-faq */ = {
+			isa = PBXGroup;
+			children = (
+				6314CB482888203600EE0D09 /* faq.md */,
+			);
+			path = "order-last-faq";
 			sourceTree = "<group>";
 		};
 		631EBFF225941C540066D5BB /* ToolbarController */ = {
@@ -696,6 +717,8 @@
 				63CA7352281E0588007747D3 /* order-1-get-started */,
 				63CA7347281E0588007747D3 /* order-2-spoofing */,
 				63CA734D281E0588007747D3 /* order-3-preferences */,
+				6314CB442888203600EE0D09 /* order-4-applescript */,
+				6314CB472888203600EE0D09 /* order-last-faq */,
 			);
 			path = _English.lproj;
 			sourceTree = "<group>";
@@ -733,6 +756,7 @@
 			children = (
 				63CA734E281E0588007747D3 /* images */,
 				63CA7351281E0588007747D3 /* topic-1-developerdiskimage.md */,
+				6314CB492888236E00EE0D09 /* topic-2-network.md */,
 			);
 			path = "order-3-preferences";
 			sourceTree = "<group>";
@@ -878,7 +902,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "David Klopp";
 				TargetAttributes = {
 					13BA351520A433EE00A0431C = {
@@ -968,6 +992,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		63AB676E24794655008AED2F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -985,6 +1010,7 @@
 		};
 		63F8C638281ABF3400101E24 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1199,6 +1225,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1263,6 +1290,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1293,6 +1321,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -1324,6 +1353,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -1381,6 +1411,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1411,6 +1442,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -1440,6 +1472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				GENERATE_INFOPLIST_FILE = NO;
 				GENERATE_PKGINFO_FILE = YES;
@@ -1466,6 +1499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				GENERATE_INFOPLIST_FILE = NO;
 				GENERATE_PKGINFO_FILE = YES;
@@ -1491,6 +1525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YJ8XYES89R;
 				GENERATE_INFOPLIST_FILE = NO;
 				GENERATE_PKGINFO_FILE = YES;

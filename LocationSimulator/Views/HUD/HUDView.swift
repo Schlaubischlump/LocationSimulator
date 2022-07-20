@@ -73,9 +73,7 @@ class HUDView: NSView {
 
     /// Apply a drop shadow to the HUD.
     private func applyDropShadow() {
-        if #available(OSX 11.0, *) {
-            // Nothing to do on Big Sur
-        } else {
+        if #unavailable(OSX 11.0) {
             // Add a nice drop shadow around the HUD for older macOS versions.
             let shadow = NSShadow()
             shadow.shadowColor = NSColor(calibratedWhite: 0.0, alpha: 0.3)
@@ -107,9 +105,7 @@ class HUDView: NSView {
         self.layer?.cornerRadius = radius
         self.effectView.layer?.cornerRadius = radius
 
-        if #available(OSX 11.0, *) {
-            // Don't change anything for macOS Big Sur and greater
-        } else {
+        if #unavailable(OSX 11.0) {
             // Add a thin border for older macOS systems
             self.layer?.borderColor = NSColor.separator.cgColor
             self.layer?.borderWidth = 0.5
