@@ -411,6 +411,17 @@
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.2/DeveloperDiskImage.dmg.signature</string>
 			</array>
 		</dict>	
+		<key>15.6</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.5/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.5/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>			
 		<key>Fallback</key>
 		<dict>
 			<key>Image</key>
