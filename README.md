@@ -164,7 +164,7 @@ Since I maintain this project in my freetime, I always appreciate any help I get
 While you are here, consider leaving a Github star. It keeps me motivated. 
 
 ## Donate
-Donations are always welcome! I will use the money to further develop the software in my free time and to fund the Apple Developer Membership to notarize the app. You can donate from inside the application. Choose `Help -> Donate...` or `LocationSimualtor -> Preferences -> Info -> Donate`. I'll add more donation options over time. Currently you can use PayPal or Ethereum. 
+Donations are always welcome! I will use the money to further develop the software in my free time and to fund the Apple Developer Membership to notarize the app. You can donate from inside the application or from the github page using the sponsor button. Choose `Help -> Donate...` or `LocationSimualtor -> Preferences -> Info -> Donate` to donate from inside the app. I'll add more donation options over time. Currently you can use PayPal or Ethereum. 
 
 ## Enhancement ideas
 Look at the [`Projects`](https://github.com/Schlaubischlump/LocationSimulator/projects) tab to see a list of planned features for the next releases. 
