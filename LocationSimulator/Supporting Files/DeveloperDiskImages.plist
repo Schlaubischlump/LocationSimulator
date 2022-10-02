@@ -169,39 +169,6 @@
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg.signature</string>
 			</array>
 		</dict>
-		<key>12.6</key>
-		<dict>
-			<key>Image</key>
-			<array>
-				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg</string>
-			</array>
-			<key>Signature</key>
-			<array>
-				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg.signature</string>
-			</array>
-		</dict>
-		<key>12.7</key>
-		<dict>
-			<key>Image</key>
-			<array>
-				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg</string>
-			</array>
-			<key>Signature</key>
-			<array>
-				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg.signature</string>
-			</array>
-		</dict>
-		<key>12.8</key>
-		<dict>
-			<key>Image</key>
-			<array>
-				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg</string>
-			</array>
-			<key>Signature</key>
-			<array>
-				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg.signature</string>
-			</array>
-		</dict>
 		<key>13.0</key>
 		<dict>
 			<key>Image</key>
@@ -366,7 +333,7 @@
 			<array>
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature</string>
 			</array>
-		</dict>		
+		</dict>
 		<key>14.7</key>
 		<dict>
 			<key>Image</key>
@@ -377,7 +344,7 @@
 			<array>
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature</string>
 			</array>
-		</dict>	
+		</dict>
 		<key>14.8</key>
 		<dict>
 			<key>Image</key>
@@ -388,7 +355,7 @@
 			<array>
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature</string>
 			</array>
-		</dict>			
+		</dict>
 		<key>15.1</key>
 		<dict>
 			<key>Image</key>
@@ -399,7 +366,7 @@
 			<array>
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.0/DeveloperDiskImage.dmg.signature</string>
 			</array>
-		</dict>	
+		</dict>
 		<key>15.3</key>
 		<dict>
 			<key>Image</key>
@@ -410,7 +377,7 @@
 			<array>
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.2/DeveloperDiskImage.dmg.signature</string>
 			</array>
-		</dict>	
+		</dict>
 		<key>15.6</key>
 		<dict>
 			<key>Image</key>
@@ -421,7 +388,29 @@
 			<array>
 				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/15.5/DeveloperDiskImage.dmg.signature</string>
 			</array>
-		</dict>			
+		</dict>
+		<key>16.0.1</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/16.0/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/16.0/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>
+		<key>16.0.2</key>
+		<dict>
+			<key>Image</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/16.0/DeveloperDiskImage.dmg</string>
+			</array>
+			<key>Signature</key>
+			<array>
+				<string>https://github.com/pdso/DeveloperDiskImage/raw/master/16.0/DeveloperDiskImage.dmg.signature</string>
+			</array>
+		</dict>
 		<key>Fallback</key>
 		<dict>
 			<key>Image</key>
