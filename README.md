@@ -1,4 +1,8 @@
-**I do not support beta versions of iOS or macOS ! You can nevertheless try [the following](https://github.com/Schlaubischlump/LocationSimulator/issues/128#issuecomment-1179526935) to fix your problems. Replace iOS 16.0 with whatever iOS version you are using.**
+> **Warning**:    
+> I do not support beta versions of iOS or macOS ! You can nevertheless try [the following](https://github.com/Schlaubischlump/LocationSimulator/issues/128#issuecomment-1179526935) to fix your problems. Replace iOS 16.0 with whatever iOS version you are using.
+
+> **Note**:   
+> If you use iOS 16 or greater you need to enable DeveloperMode first. You need to connect your device to Xcode in order for DeveloperMode to show up inside settings. You can read the following [issue](https://github.com/Schlaubischlump/LocationSimulator/issues/128) for more infornations.
 
 [![License: GNU General Public License version 3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://opensource.org/licenses/gpl-3.0) 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=9NR3CLRUG22SJ)
@@ -160,7 +164,7 @@ Since I maintain this project in my freetime, I always appreciate any help I get
 While you are here, consider leaving a Github star. It keeps me motivated. 
 
 ## Donate
-Donations are always welcome! I will use the money to further develop the software in my free time and to fund the Apple Developer Membership to notarize the app. You can donate from inside the application. Choose `Help -> Donate...` or `LocationSimualtor -> Preferences -> Info -> Donate`. I'll add more donation options over time. Currently you can use PayPal or Ethereum. 
+Donations are always welcome! I will use the money to further develop the software in my free time and to fund the Apple Developer Membership to notarize the app. You can donate from inside the application or from the github page using the sponsor button. Choose `Help -> Donate...` or `LocationSimualtor -> Preferences -> Info -> Donate` to donate from inside the app. I'll add more donation options over time. Currently you can use PayPal or Ethereum. 
 
 ## Enhancement ideas
 Look at the [`Projects`](https://github.com/Schlaubischlump/LocationSimulator/projects) tab to see a list of planned features for the next releases. 
