@@ -34,7 +34,7 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
-### 0.1.9.4
+### v0.1.9.4
 ⚠️ Language support other than english and german is partially incomplete
 - Partial dutch localization
 - Prevent crash if the localization is partially incomplete
