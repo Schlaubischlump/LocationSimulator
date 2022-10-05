@@ -33,7 +33,7 @@ func launchWithoutUI() {
 func launchWithUI() {
     let result = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
     if result != 0 {
-        logFatal("Unexpected Application exited with code \(result)")
+        logFatal("Unexpected application exit with code \(result)")
     }
 }
 

@@ -19,7 +19,7 @@ extension String: Localizable {
     public var localized: String {
         let localized = NSLocalizedString(self, comment: "")
 
-        if self != localized {
+        if (self != localized) && !localized.isEmpty {
             return localized
         }
 
