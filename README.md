@@ -41,7 +41,7 @@ While I originally planed to build upon the fantastic work of [Watanabe Toshinor
 - [x] Spoof the iPhoneSimulator device location.
 - [x] Automatically try to download the DeveloperDiskImage files for your iOS Version.
 - [x] Set the device location with a long click on the map.
-- [x] Support 3 movement speeds (Walk/Cycle/Drive).
+- [x] Support custom and predefined (Walk/Cycle/Drive) movement speeds.
 - [x] Control the movement using the arrow keys.
 - [x] Navigate from the current location to a new location.
 - [x] Support network devices.
