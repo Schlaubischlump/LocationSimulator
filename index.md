@@ -24,7 +24,7 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 - Spoof the iOS device location without a jailbreak or installing an app on the device.
 - Automatically try to download the DeveloperDiskImage files for your iOS Version.
 - Set the device location with a long click on the map.
-- Support 3 movement speeds (Walk/Cycle/Drive).
+- Support custom and predefined (Walk/Cycle/Drive) movement speeds.
 - Control the movement using the arrow keys.
 - Navigate from the current location to a new location.
 - Open GPX files.
@@ -33,6 +33,18 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 - Support dark mode.
 
 # Changelog
+
+### 0.1.9.4**
+⚠️ Language support other than english and german is partially incomplete
+- Partial dutch localization
+- Prevent crash if the localization is partially incomplete
+
+### v0.1.9.3**
+⚠️ Language support other than english and german is partially incomplete
+- Fix download link for iOS 15.6
+- Add basic AppleScript support
+- Reset location of the connected device when LocationSimulator is closed
+- Add new FAQ entry to Help
 
 ### v0.1.9.2
 ⚠️ Language support other than english and german is partially incomplete
