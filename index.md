@@ -34,12 +34,12 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
-### 0.1.9.4**
+### 0.1.9.4
 ⚠️ Language support other than english and german is partially incomplete
 - Partial dutch localization
 - Prevent crash if the localization is partially incomplete
 
-### v0.1.9.3**
+### v0.1.9.3
 ⚠️ Language support other than english and german is partially incomplete
 - Fix download link for iOS 15.6
 - Add basic AppleScript support
