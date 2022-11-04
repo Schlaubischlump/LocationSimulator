@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		13BA351E20A433EF00A0431C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BA351D20A433EF00A0431C /* Assets.xcassets */; };
 		63016FAA2915AD9000785E9B /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 63016FA92915AD9000785E9B /* LocationSpoofer */; };
-		63016FAD2915C35A00785E9B /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 63016FAC2915C35A00785E9B /* LocationSpoofer */; };
+		63016FB02915CB0F00785E9B /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 63016FAF2915CB0F00785E9B /* LocationSpoofer */; };
 		6305075423FB06A700EF529A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6305075323FB06A700EF529A /* Credits.rtf */; };
 		630BC72027DCFFBE00675426 /* LogToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC71F27DCFFBE00675426 /* LogToolbarController.swift */; };
 		630BC72227DD09C800675426 /* NSTableCellView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */; };
@@ -299,7 +299,7 @@
 			files = (
 				63016FAA2915AD9000785E9B /* LocationSpoofer in Frameworks */,
 				63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */,
-				63016FAD2915C35A00785E9B /* LocationSpoofer in Frameworks */,
+				63016FB02915CB0F00785E9B /* LocationSpoofer in Frameworks */,
 				635C13862596EA6600BEB53B /* Downloader in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
 				635C13812596EA5700BEB53B /* GPXParser in Frameworks */,
@@ -884,7 +884,7 @@
 				63AEA2F1259AB41D0084F74B /* SuggestionPopup */,
 				63D734FD27E90C800044918C /* CLogger */,
 				63016FA92915AD9000785E9B /* LocationSpoofer */,
-				63016FAC2915C35A00785E9B /* LocationSpoofer */,
+				63016FAF2915CB0F00785E9B /* LocationSpoofer */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -961,7 +961,7 @@
 				635C13842596EA6600BEB53B /* XCRemoteSwiftPackageReference "Downloader" */,
 				63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
 				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
-				63016FAB2915C35A00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
+				63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -1591,12 +1591,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		63016FAB2915C35A00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */ = {
+		63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/LocationSpoofer.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
 			};
 		};
 		635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */ = {
@@ -1638,9 +1638,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = LocationSpoofer;
 		};
-		63016FAC2915C35A00785E9B /* LocationSpoofer */ = {
+		63016FAF2915CB0F00785E9B /* LocationSpoofer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 63016FAB2915C35A00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
+			package = 63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
 			productName = LocationSpoofer;
 		};
 		635C13802596EA5700BEB53B /* GPXParser */ = {
