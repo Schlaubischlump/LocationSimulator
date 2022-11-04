@@ -38,6 +38,7 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 ⚠️ Language support other than english and german is partially incomplete
 - Detect if Developer Mode is disabled and show a warning with instructions
 - Display the Developer Mode mode toggle in settings
+- Support iOS 15.7
 
 ### v0.1.9.4
 ⚠️ Language support other than english and german is partially incomplete
