@@ -347,6 +347,9 @@ class MapViewController: NSViewController {
                         if self?.downloadDeveloperDiskImage(os: os, iOSVersion: version) ?? false {
                             self?.connectDevice()
                         }
+                    case DeviceError.devMode:
+                        device.enabledDeveloperModeToggleInSettings()
+                        window.showError("DEVMODE_ERROR", message: "DEVMODE_ERROR_MSG")
                     case DeviceError.permisson: window.showError("PERMISSION_ERROR", message: "PERMISSION_ERROR_MSG")
                     case DeviceError.devDiskImageMount: window.showError("MOUNT_ERROR", message: "MOUNT_ERROR_MSG")
                     case DeviceError.pair: window.showError("PAIR_ERROR_MSG", message: "PAIR_ERROR_MSG")

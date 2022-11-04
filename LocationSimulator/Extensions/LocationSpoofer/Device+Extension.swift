@@ -12,16 +12,23 @@ import LocationSpoofer
 extension Device {
     /// Get the current iOS Version in major.minor format, without any additional revision number.
     public var majorMinorVersion: String? {
-        guard let components = self.version?.split(separator: "."), !components.isEmpty else {
+        guard let majorVersion = majorVersion else {
             return nil
         }
-        return components.count == 1 ? (components[0] + ".0") : (components[0] + "." + components[1])
+        return "\(majorVersion).\(minorVersion)"
+    }
+
+    public func enabledDeveloperModeToggleInSettings() {
+        // Only real iOS Devices require developer mode
+        guard let device = self as? IOSDevice else { return }
+        device.enabledDeveloperModeToggleInSettings()
     }
 
     /// Pair a new device by uploading the developer disk image if required.
     /// - Throws:
     ///    * `DeviceError.devDiskImageNotFound`: No DeveloperDiskImage.dmg or Signature file found in the support folder
     ///    * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage.dmg file
+    ///    * `DeviceError.devMode`: Developer mode is not enabled
     ///    * `DeviceError.permisson`: Permission error while accessing the App Support folder
     ///    * `DeviceError.productInfo`: Could not read the devices product version or name
     public func pair() throws {
