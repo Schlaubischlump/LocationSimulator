@@ -34,6 +34,11 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.9.5
+⚠️ Language support other than english and german is partially incomplete
+- Detect if Developer Mode is disabled and show a warning with instructions
+- Display the Developer Mode mode toggle in settings
+
 ### v0.1.9.4
 ⚠️ Language support other than english and german is partially incomplete
 - Partial dutch localization
