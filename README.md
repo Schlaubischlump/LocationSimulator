@@ -167,7 +167,7 @@ While you are here, consider leaving a Github star. It keeps me motivated.
 Donations are always welcome! I will use the money to further develop the software in my free time and to fund the Apple Developer Membership to notarize the app. You can donate from inside the application or from the github page using the sponsor button. Choose `Help -> Donate...` or `LocationSimualtor -> Preferences -> Info -> Donate` to donate from inside the app. I'll add more donation options over time. Currently you can use PayPal or Ethereum. 
 
 ## Enhancement ideas
-Look at the [`Projects`](https://github.com/Schlaubischlump/LocationSimulator/projects) tab to see a list of planned features for the next releases. 
+Look at the [`Projects`](https://github.com/Schlaubischlump/LocationSimulator/projects?type=classic) tab to see a list of planned features for the next releases. 
 
 ## Acknowledgement
 Special thanks to [@bailaowai](https://github.com/bailaowai) and his son for the Spanish and Chinese translation. [@Rithari](https://github.com/rithari) for the Italian translation, [@devmaximilian](https://github.com/devmaximilian) for his continuous contributions to the Swedish translation and [@Black-Dragon-Spirit](https://github.com/Black-Dragon-Spirit) for the dutch translation. Special thanks goes to [@bslatyer](https://github.com/bslatyer) as well for his debugging support and his quick responses, when new issues arise !
