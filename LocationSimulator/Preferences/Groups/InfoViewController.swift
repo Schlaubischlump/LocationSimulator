@@ -23,12 +23,21 @@ extension UserDefaults {
     }
 }
 
+struct DonateInfo : Codable {
+    var supporter: Int
+    var donations: Double
+    var donationTarget: Double
+    var targetName: String
+}
+
 class InfoViewController: PreferenceViewControllerBase {
     let donateProgress = DonateProgress()
 
-    var progressData: [String: Any]? {
+    var progressData: DonateInfo? {
         didSet {
-            self.applyProgressData()
+            DispatchQueue.main.async {
+                self.applyProgressData()
+            }
         }
     }
 
@@ -95,19 +104,10 @@ class InfoViewController: PreferenceViewControllerBase {
     private func loadProgressData() {
         self.donateProgress.startWaitAnimation()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            // TODO: Load json values from server
-            // TODO: Add localization strings
-            self.progressData = [
-                "hasAmount": 9.81,
-                "goalAmount": 99.0,
-                "goal": "Apple Developer License",
-                "supporter": 2
-            ]
-            DispatchQueue.main.async {
-                self.applyProgressData()
-            }
-        }
+        URLSession.shared.dataTask(with: URL(string: kDonationInfo)!) { (data, _, _) in
+            guard let data = data else { return }
+            self.progressData = try? JSONDecoder().decode(DonateInfo.self, from: data)
+        }.resume()
     }
 
     private func applyProgressData() {
@@ -118,9 +118,9 @@ class InfoViewController: PreferenceViewControllerBase {
 
         self.isProgressLoaded = true
         self.donateProgress.stopWaitAnimation()
-        self.donateProgress.hasAmount = (data["hasAmount"] as? Double) ?? 0
-        self.donateProgress.goalAmount = (data["goalAmount"] as? Double) ?? 0
-        self.donateProgress.goal = (data["goal"] as? String) ?? ""
+        self.donateProgress.hasAmount = data.donations
+        self.donateProgress.goalAmount = data.donationTarget
+        self.donateProgress.goal = data.targetName
     }
 
     @objc private func openDonateWindow(_ sender: NSButton) {

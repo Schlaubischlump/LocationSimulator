@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func openInfoViewOnVersionUpdate() {
         let defaults = UserDefaults.standard
         if defaults.lastAppVersion != kAppVersion {
-            // Segue would be nicer, but does not work
+            // FIXME: Segue would be nicer, but does not work
             AppMenubarItem.preferences.triggerAction()
             // Update the last app version
             defaults.lastAppVersion = kAppVersion

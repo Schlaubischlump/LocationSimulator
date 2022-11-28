@@ -19,6 +19,8 @@ let kProjectWebsite = "https://\(kUser.lowercased()).github.io/\(kRepo)/"
 let kGithubWebsite = "https://github.com/\(kUser)/\(kRepo)"
 // let kGithubStatsWebsite = "https://api.github.com/ repos/\(kUser)/\(kRepo)/releases"
 
+let kDonationInfo =  "\(kGithubWebsite)/raw/info/donation.json"
+
 // The variance to add to the movement speed. The lower bound is the minimum factor, the upper bounds the maximum
 // factor to apply to the current speed. See LocationSpoofer for more details.
 let kDefaultMovementSpeedVariance = 0.8..<1.2

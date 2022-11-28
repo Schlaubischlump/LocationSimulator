@@ -39,7 +39,7 @@ class DonateButton: NSButton {
         self.wantsLayer = true
         self.layer?.masksToBounds = false
 
-        self.font = .systemFont(ofSize: 16, weight: .medium)
+        self.font = .systemFont(ofSize: 16, weight: .semibold)
         self.contentTintColor = kDonateTextBlue
         self.backgroundColor = kDonateYellow
     }
