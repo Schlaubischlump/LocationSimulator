@@ -34,6 +34,11 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.9.6
+⚠️ Language support other than english, german and czech is partially incomplete
+- Czech localization (thanks to [Chuck3CZ](https://github.com/Chuck3CZ))
+- Donation progressbar (yearly 'Apple Developer Program' fee of 99€ needs to be paid)
+
 ### v0.1.9.5
 ⚠️ Language support other than english and german is partially incomplete
 - Detect if Developer Mode is disabled and show a warning with instructions
