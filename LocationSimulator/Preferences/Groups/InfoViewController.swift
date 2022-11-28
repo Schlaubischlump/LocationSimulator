@@ -23,7 +23,7 @@ extension UserDefaults {
     }
 }
 
-struct DonateInfo : Codable {
+struct DonateInfo: Codable {
     var supporter: Int
     var donations: Double
     var donationTarget: Double
