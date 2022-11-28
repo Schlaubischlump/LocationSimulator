@@ -30,6 +30,7 @@
 		632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */; };
 		632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466223F4D9C8004E5092 /* CoordinateStepper.swift */; };
 		632C466523F7638A004E5092 /* MenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C466423F7638A004E5092 /* MenubarItem.swift */; };
+		632DCA38293379FC004551C3 /* DonateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632DCA37293379FC004551C3 /* DonateProgress.swift */; };
 		6336A39927F5EDA20065C798 /* NavigationOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336A39827F5EDA20065C798 /* NavigationOverlay.swift */; };
 		633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA351920A433EE00A0431C /* AppDelegate.swift */; };
 		633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510920AE9634002A61F1 /* WindowController.swift */; };
@@ -41,6 +42,7 @@
 		633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C74FD25AA789100161DB4 /* XIBLocalizable.swift */; };
 		633C750225AA78F900161DB4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C750125AA78F900161DB4 /* String+Extension.swift */; };
 		633C750D25AA8C6800161DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633C74D425AA2CE800161DB4 /* Main.storyboard */; };
+		634069D829343F580045673A /* NSTextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634069D729343F580045673A /* NSTextField+Extension.swift */; };
 		63525910258AC0950031F289 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352590F258AC0950031F289 /* LicenseViewController.swift */; };
 		63525913258AC7F00031F289 /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63525912258AC7F00031F289 /* Licenses.plist */; };
 		6352591E258B6B430031F289 /* NSPasterboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352591D258B6B430031F289 /* NSPasterboard+Extension.swift */; };
@@ -168,6 +170,7 @@
 		632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateFormatter.swift; sourceTree = "<group>"; };
 		632C466223F4D9C8004E5092 /* CoordinateStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateStepper.swift; sourceTree = "<group>"; };
 		632C466423F7638A004E5092 /* MenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenubarItem.swift; sourceTree = "<group>"; };
+		632DCA37293379FC004551C3 /* DonateProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateProgress.swift; sourceTree = "<group>"; };
 		6336A39827F5EDA20065C798 /* NavigationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationOverlay.swift; sourceTree = "<group>"; };
 		633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoordinateSelectionView.xib; sourceTree = "<group>"; };
 		633C74C525AA293900161DB4 /* GPXSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPXSelectionView.xib; sourceTree = "<group>"; };
@@ -175,6 +178,7 @@
 		633C74D425AA2CE800161DB4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
 		633C74FD25AA789100161DB4 /* XIBLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizable.swift; sourceTree = "<group>"; };
 		633C750125AA78F900161DB4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		634069D729343F580045673A /* NSTextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextField+Extension.swift"; sourceTree = "<group>"; };
 		6347E22C281ACACA00A7F9C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6352590F258AC0950031F289 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		63525912258AC7F00031F289 /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Licenses.plist; path = "Supporting Files/Licenses.plist"; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 		63767566258EA9AA000DCEF3 /* NSImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImageView+Extension.swift"; sourceTree = "<group>"; };
 		63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSBezierPath+Extension.swift"; sourceTree = "<group>"; };
 		6376756A258EC809000DCEF3 /* SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
+		637EFA68293404E200BFC50A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		637FD227259578B700E84EDB /* TouchbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarController.swift; sourceTree = "<group>"; };
 		63864C0A27DC3405005F94F3 /* LogWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
 		63864C0C27DC343A005F94F3 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
@@ -536,6 +541,7 @@
 				63767568258EADC0000DCEF3 /* NSBezierPath+Extension.swift */,
 				631EC00A2594C1D60066D5BB /* NSViewController+Extension.swift */,
 				630BC72127DD09C800675426 /* NSTableCellView+Extension.swift */,
+				634069D729343F580045673A /* NSTextField+Extension.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -590,7 +596,6 @@
 				63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */,
 				6376756A258EC809000DCEF3 /* SeparatorLine.swift */,
 				63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */,
-				635CF726280ECC500092A99B /* DonateButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -610,12 +615,14 @@
 		635CF715280E03670092A99B /* Donate */ = {
 			isa = PBXGroup;
 			children = (
+				635CF726280ECC500092A99B /* DonateButton.swift */,
 				635CF71E280E15F00092A99B /* DonateMethod.swift */,
 				635CF716280E03820092A99B /* DonateWindowController.swift */,
 				635CF720280EBF4D0092A99B /* DonateWindow.swift */,
 				635CF718280E039B0092A99B /* DonateSidebarViewController.swift */,
 				635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */,
 				635CF71C280E03B80092A99B /* DonateSplitViewController.swift */,
+				632DCA37293379FC004551C3 /* DonateProgress.swift */,
 			);
 			path = Donate;
 			sourceTree = "<group>";
@@ -954,6 +961,7 @@
 				_English,
 				"-english",
 				nl,
+				cs,
 			);
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
@@ -1096,6 +1104,7 @@
 				633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
+				632DCA38293379FC004551C3 /* DonateProgress.swift in Sources */,
 				635CF727280ECC500092A99B /* DonateButton.swift in Sources */,
 				630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
@@ -1121,6 +1130,7 @@
 				637169DA27FF1C2400386021 /* main.swift in Sources */,
 				6372E3852824F79100188416 /* Application+AppleScript.swift in Sources */,
 				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
+				634069D829343F580045673A /* NSTextField+Extension.swift in Sources */,
 				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
 				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
@@ -1177,6 +1187,7 @@
 				6357230728EDD27A00E20D58 /* Base */,
 				6357230B28EDD27A00E20D58 /* fr */,
 				6357230C28EDD27A00E20D58 /* nl */,
+				637EFA68293404E200BFC50A /* cs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -9,8 +9,8 @@
 import Foundation
 import AppKit
 
-let kDonateYellow = NSColor(red: 245/255.0, green: 198/255.0, blue: 87/255.0, alpha: 1.0)
-let kDonateTextBlue = NSColor(red: 0, green: 104/255.0, blue: 218/255.0, alpha: 1.0)
+let kDonateYellow = NSColor(red: 254/255.0, green: 207/255.0, blue: 0/255.0, alpha: 1.0)
+let kDonateTextBlue = NSColor.systemBlue.usingColorSpace(.sRGB)!
 
 class DonateButton: NSButton {
     private var backgroundColor: NSColor? {
