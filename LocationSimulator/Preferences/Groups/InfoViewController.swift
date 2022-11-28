@@ -98,11 +98,12 @@ class InfoViewController: PreferenceViewControllerBase {
 
     override func viewWillAppear() {
         super.viewWillAppear()
+
         self.applyProgressData()
     }
 
     private func loadProgressData() {
-        self.donateProgress.startWaitAnimation()
+        self.donateProgress.hasAmount = 0
 
         URLSession.shared.dataTask(with: URL(string: kDonationInfo)!) { (data, _, _) in
             guard let data = data else { return }
@@ -112,12 +113,13 @@ class InfoViewController: PreferenceViewControllerBase {
 
     private func applyProgressData() {
         self.progressLock.lock()
-        defer { self.progressLock.unlock() }
+        defer {
+            self.progressLock.unlock()
+        }
 
         guard let data = self.progressData, !self.isProgressLoaded, self.isViewLoaded else { return }
 
         self.isProgressLoaded = true
-        self.donateProgress.stopWaitAnimation()
         self.donateProgress.hasAmount = data.donations
         self.donateProgress.goalAmount = data.donationTarget
         self.donateProgress.goal = data.targetName

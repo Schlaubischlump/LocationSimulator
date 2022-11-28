@@ -52,6 +52,7 @@ class DonateProgress: NSView {
 
     var hasAmount: Double = 0 {
         didSet {
+            guard oldValue != self.hasAmount else { return }
             self.hasAmountLabel.setStringValue("\(self.hasAmount)\(self.currencySymbol)", animated: true)
             self.updatePercentage()
         }
@@ -59,6 +60,7 @@ class DonateProgress: NSView {
 
     var goalAmount: Double = 100 {
         didSet {
+            guard oldValue != self.goalAmount else { return }
             let text = "OF".localized + " \(self.goalAmount)\(self.currencySymbol)"
             self.goalAmountLabel.setStringValue(text, animated: true)
             self.updatePercentage()
@@ -67,6 +69,7 @@ class DonateProgress: NSView {
 
     var goal: String = "Goal" {
         didSet {
+            guard oldValue != self.goal else { return }
             self.goalLabel.setStringValue(self.goal, animated: true)
         }
     }
@@ -93,8 +96,6 @@ class DonateProgress: NSView {
         return progressBar
     }()
 
-    private(set) var isAnimating: Bool = false
-
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         self.setup()
@@ -118,21 +119,6 @@ class DonateProgress: NSView {
 
     func sizeToFit() {
         self.layout()
-    }
-
-    func startWaitAnimation() {
-        guard !self.isAnimating else { return }
-        self.isAnimating = true
-        self.progressBar.doubleValue = 0
-        self.progressBar.isIndeterminate = true
-        self.progressBar.startAnimation(nil)
-    }
-
-    func stopWaitAnimation() {
-        guard self.isAnimating else { return }
-        self.isAnimating = false
-        self.progressBar.stopAnimation(nil)
-        self.progressBar.isIndeterminate = false
     }
 
     override func layout() {
