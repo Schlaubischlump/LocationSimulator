@@ -37,7 +37,7 @@ private func createLabel(kind: Kind, side: Side) -> NSTextField {
     }
 
     if kind == .primary && side == .right {
-        label.textColor = kDonateTextBlue
+        label.textColor = kDonateYellow
     }
 
     switch side {
@@ -50,7 +50,7 @@ private func createLabel(kind: Kind, side: Side) -> NSTextField {
 class DonateProgress: NSView {
     var currencySymbol: String = "€"
 
-    var hasAmount: Double = 0 {
+    var hasAmount: Float = 0 {
         didSet {
             guard oldValue != self.hasAmount else { return }
             self.hasAmountLabel.setStringValue("\(self.hasAmount)\(self.currencySymbol)", animated: true)
@@ -58,7 +58,7 @@ class DonateProgress: NSView {
         }
     }
 
-    var goalAmount: Double = 100 {
+    var goalAmount: Float = 100 {
         didSet {
             guard oldValue != self.goalAmount else { return }
             let text = "OF".localized + " \(self.goalAmount)\(self.currencySymbol)"
@@ -74,10 +74,10 @@ class DonateProgress: NSView {
         }
     }
 
-    private(set) var percentage: Double = 0 {
+    private(set) var percentage: Float = 0 {
         didSet {
             guard abs(oldValue - self.percentage) >= 0.01 else { return }
-            self.progressBar.doubleValue = Double(self.percentage)
+            self.progressBar.setProgress(self.percentage, animated: true)
             self.percentageLabel.setStringValue("\(Int(self.percentage * 100))%", animated: true)
         }
     }
@@ -86,13 +86,10 @@ class DonateProgress: NSView {
     private lazy var goalAmountLabel: NSTextField = createLabel(kind: .secondary, side: .left)
     private lazy var percentageLabel: NSTextField = createLabel(kind: .primary, side: .right)
     private lazy var goalLabel: NSTextField = createLabel(kind: .secondary, side: .right)
-    private lazy var progressBar: NSProgressIndicator = {
-        let progressBar = NSProgressIndicator()
-        progressBar.style = .bar
-        progressBar.isIndeterminate = false
-        progressBar.usesThreadedAnimation = true
-        progressBar.minValue = 0.0
-        progressBar.maxValue = 1.0
+    private lazy var progressBar: ProgressBar = {
+        let progressBar = ProgressBar()
+        progressBar.progress = 0
+        progressBar.progressTintColor = kDonateYellow
         return progressBar
     }()
 
@@ -124,6 +121,7 @@ class DonateProgress: NSView {
     override func layout() {
         super.layout()
 
+        let spaceY: CGFloat = 10
         let labelWidth = self.bounds.width/2
 
         self.hasAmountLabel.sizeToFit()
@@ -134,10 +132,9 @@ class DonateProgress: NSView {
         let firstRowHeight = max(self.hasAmountLabel.frame.height, self.percentageLabel.frame.height)
         let secondaryRowHeight = max(self.goalAmountLabel.frame.height, self.goalLabel.frame.height)
 
-        self.progressBar.sizeToFit()
-        self.progressBar.frame.size.width = self.bounds.width
+        self.progressBar.frame.size = CGSize(width: self.bounds.width, height: 12)
 
-        let yOffSecondRow = self.progressBar.frame.maxY
+        let yOffSecondRow = self.progressBar.frame.maxY + spaceY
         let yOffFirstRow = yOffSecondRow + secondaryRowHeight
 
         self.hasAmountLabel.frame = CGRect(x: 0, y: yOffFirstRow, width: labelWidth, height: firstRowHeight)

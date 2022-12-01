@@ -25,8 +25,8 @@ extension UserDefaults {
 
 struct DonateInfo: Codable {
     var supporter: Int
-    var donations: Double
-    var donationTarget: Double
+    var donations: Float
+    var donationTarget: Float
     var targetName: String
 }
 
