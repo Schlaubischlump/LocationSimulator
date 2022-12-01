@@ -21,7 +21,7 @@ public class ProgressBar: NSView {
     }
 
     /// The current progress of the progress bar.
-    @objc public dynamic var progress: Float = 0.5 {
+    @objc public dynamic var progress: Float = 0.0 {
         didSet {
             self.progress = min(max(self.progress, 0), 1)
             self.setNeedsDisplay(self.bounds)
@@ -39,16 +39,6 @@ public class ProgressBar: NSView {
             return super.defaultAnimation(forKey: key)
         }
     }
-
-    /*public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setup()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.setup()
-    }*/
 
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -75,9 +65,6 @@ public class ProgressBar: NSView {
         context.setStrokeColor(color.cgColor)
         context.beginPath()
         context.setLineWidth(lineHeight)
-        // uncomment this to make the slider start at true zero
-        // context.move(to: CGPoint(x: midY-(3*midY*(1-progress)), y: midY))
-        // context.addLine(to: CGPoint(x: progressEndX, y: midY))
         context.move(to: CGPoint(x: midY, y: midY))
         context.addLine(to: CGPoint(x: max(midY, progressEndX), y: midY))
         context.setLineCap(.round)
@@ -108,14 +95,4 @@ public class ProgressBar: NSView {
         context.endTransparencyLayer()
         context.restoreGState()
     }
-
-    /*override public func layout() {
-        super.layout()
-        self.layer?.cornerRadius = self.bounds.height/2
-    }
-
-    func setup() {
-        self.wantsLayer = true
-        self.layer?.masksToBounds = true
-    }*/
 }
