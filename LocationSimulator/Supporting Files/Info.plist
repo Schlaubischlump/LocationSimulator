@@ -23,7 +23,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.1.9</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>7</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -33,7 +33,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019-2022 David Klopp. All rights reserved.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>User location is required to set the currently spoofed location to your Mac&apos;s location.</string>
+	<string>User location is required to set the currently spoofed location to your Mac's location.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
