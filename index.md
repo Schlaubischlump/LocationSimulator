@@ -34,6 +34,10 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.9.7
+⚠️ Language support other than english, german and czech is partially incomplete
+- iOS 16.2 support
+
 ### v0.1.9.6
 ⚠️ Language support other than english, german and czech is partially incomplete
 - Czech localization (thanks to [Chuck3CZ](https://github.com/Chuck3CZ))
