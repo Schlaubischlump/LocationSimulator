@@ -299,11 +299,11 @@ class MapViewController: NSViewController {
     func downloadDeveloperDiskImage(os: String, iOSVersion: String) -> Bool {
         guard let window = self.view.window else { return false }
         // Show the alert and thereby start the download progress.
-        let alert = ProgressAlert(os: os, version: iOSVersion)
+        let alert = DownloadProgressAlert(os: os, version: iOSVersion)
         let response = alert.runSheetModal(forWindow: window)
         switch response {
         // Download was successfull
-        case .OK : return true
+        case .OK: return true
         // No download link available.
         case .failed: window.showError("DEVDISK_DOWNLOAD_FAILED_ERROR", message: "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG")
         default: break

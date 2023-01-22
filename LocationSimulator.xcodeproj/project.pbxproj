@@ -38,7 +38,6 @@
 		633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130F510B20AED69B002A61F1 /* NSView+Extension.swift */; };
 		633C74C325AA293300161DB4 /* CoordinateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */; };
 		633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C525AA293900161DB4 /* GPXSelectionView.xib */; };
-		633C74C925AA293F00161DB4 /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633C74C825AA293F00161DB4 /* ProgressView.xib */; };
 		633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C74FD25AA789100161DB4 /* XIBLocalizable.swift */; };
 		633C750225AA78F900161DB4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C750125AA78F900161DB4 /* String+Extension.swift */; };
 		633C750D25AA8C6800161DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 633C74D425AA2CE800161DB4 /* Main.storyboard */; };
@@ -67,6 +66,11 @@
 		635CF723280EC3D30092A99B /* HelpMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF722280EC3D30092A99B /* HelpMenubarItem.swift */; };
 		635CF725280EC6CF0092A99B /* AppMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF724280EC6CF0092A99B /* AppMenubarItem.swift */; };
 		635CF727280ECC500092A99B /* DonateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF726280ECC500092A99B /* DonateButton.swift */; };
+		635F9B9B2978A7A700F0B2E1 /* ProgressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9B9A2978A7A700F0B2E1 /* ProgressListView.swift */; };
+		635F9B9D2978A9A400F0B2E1 /* ProgressTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9B9C2978A9A400F0B2E1 /* ProgressTask.swift */; };
+		635F9B9F2978A9D200F0B2E1 /* ProgressListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9B9E2978A9D200F0B2E1 /* ProgressListEntryView.swift */; };
+		635F9BAA297D503A00F0B2E1 /* DownloadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9BA9297D503A00F0B2E1 /* DownloadListViewController.swift */; };
+		635F9BAC297D506000F0B2E1 /* DownloadTaskWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9BAB297D506000F0B2E1 /* DownloadTaskWrapper.swift */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */; };
@@ -74,8 +78,6 @@
 		637169D827FD8D0A00386021 /* Device+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D727FD8D0A00386021 /* Device+Extension.swift */; };
 		637169DA27FF1C2400386021 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D927FF1C2400386021 /* main.swift */; };
 		6372061D25911CED00293EA8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372061C25911CED00293EA8 /* MapView.swift */; };
-		63720628259141EF00293EA8 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720627259141EF00293EA8 /* ProgressView.swift */; };
-		63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */; };
 		63720636259147AB00293EA8 /* ProgressAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63720635259147AB00293EA8 /* ProgressAlert.swift */; };
 		6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */; };
 		6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */; };
@@ -175,7 +177,6 @@
 		6336A39827F5EDA20065C798 /* NavigationOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationOverlay.swift; sourceTree = "<group>"; };
 		633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoordinateSelectionView.xib; sourceTree = "<group>"; };
 		633C74C525AA293900161DB4 /* GPXSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPXSelectionView.xib; sourceTree = "<group>"; };
-		633C74C825AA293F00161DB4 /* ProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 		633C74D425AA2CE800161DB4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboard/Main.storyboard; sourceTree = "<group>"; };
 		633C74FD25AA789100161DB4 /* XIBLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizable.swift; sourceTree = "<group>"; };
 		633C750125AA78F900161DB4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -211,6 +212,11 @@
 		635CF722280EC3D30092A99B /* HelpMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpMenubarItem.swift; sourceTree = "<group>"; };
 		635CF724280EC6CF0092A99B /* AppMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenubarItem.swift; sourceTree = "<group>"; };
 		635CF726280ECC500092A99B /* DonateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateButton.swift; sourceTree = "<group>"; };
+		635F9B9A2978A7A700F0B2E1 /* ProgressListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressListView.swift; sourceTree = "<group>"; };
+		635F9B9C2978A9A400F0B2E1 /* ProgressTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTask.swift; sourceTree = "<group>"; };
+		635F9B9E2978A9D200F0B2E1 /* ProgressListEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListEntryView.swift; sourceTree = "<group>"; };
+		635F9BA9297D503A00F0B2E1 /* DownloadListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadListViewController.swift; sourceTree = "<group>"; };
+		635F9BAB297D506000F0B2E1 /* DownloadTaskWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskWrapper.swift; sourceTree = "<group>"; };
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewControllerBase.swift; sourceTree = "<group>"; };
@@ -218,8 +224,6 @@
 		637169D727FD8D0A00386021 /* Device+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Extension.swift"; sourceTree = "<group>"; };
 		637169D927FF1C2400386021 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6372061C25911CED00293EA8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		63720627259141EF00293EA8 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView+DownloadDelegate.swift"; sourceTree = "<group>"; };
 		63720635259147AB00293EA8 /* ProgressAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAlert.swift; sourceTree = "<group>"; };
 		6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionAlert.swift; sourceTree = "<group>"; };
 		6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXSelectionAlert.swift; sourceTree = "<group>"; };
@@ -587,7 +591,7 @@
 				63FDE21B258F9D2400917412 /* GPXSelectionView */,
 				630C0C9B27DE6DF400C3D5A9 /* HUD */,
 				63720622259121C600293EA8 /* MapView */,
-				637206262591418F00293EA8 /* ProgressView */,
+				637206262591418F00293EA8 /* ProgressListView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -630,6 +634,16 @@
 			path = Donate;
 			sourceTree = "<group>";
 		};
+		635F9BA8297D4EB300F0B2E1 /* DownloadProgress */ = {
+			isa = PBXGroup;
+			children = (
+				63720635259147AB00293EA8 /* ProgressAlert.swift */,
+				635F9BAB297D506000F0B2E1 /* DownloadTaskWrapper.swift */,
+				635F9BA9297D503A00F0B2E1 /* DownloadListViewController.swift */,
+			);
+			path = DownloadProgress;
+			sourceTree = "<group>";
+		};
 		63720622259121C600293EA8 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,20 +654,20 @@
 			path = MapView;
 			sourceTree = "<group>";
 		};
-		637206262591418F00293EA8 /* ProgressView */ = {
+		637206262591418F00293EA8 /* ProgressListView */ = {
 			isa = PBXGroup;
 			children = (
-				633C74C825AA293F00161DB4 /* ProgressView.xib */,
-				63720627259141EF00293EA8 /* ProgressView.swift */,
-				63720631259145B300293EA8 /* ProgressView+DownloadDelegate.swift */,
+				635F9B9C2978A9A400F0B2E1 /* ProgressTask.swift */,
+				635F9B9A2978A7A700F0B2E1 /* ProgressListView.swift */,
+				635F9B9E2978A9D200F0B2E1 /* ProgressListEntryView.swift */,
 			);
-			path = ProgressView;
+			path = ProgressListView;
 			sourceTree = "<group>";
 		};
 		637206342591479800293EA8 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				63720635259147AB00293EA8 /* ProgressAlert.swift */,
+				635F9BA8297D4EB300F0B2E1 /* DownloadProgress */,
 				6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */,
 				6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */,
 				63D5DF3B27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift */,
@@ -994,7 +1008,6 @@
 				6357231028EDD27A00E20D58 /* MainMenuTranslations.plist in Resources */,
 				6357231128EDD27A00E20D58 /* MainMenuTranslate.py in Resources */,
 				6357230E28EDD27A00E20D58 /* LICENSE in Resources */,
-				633C74C925AA293F00161DB4 /* ProgressView.xib in Resources */,
 				633C750D25AA8C6800161DB4 /* Main.storyboard in Resources */,
 				63D5DF3A27D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib in Resources */,
 				633C74C625AA293900161DB4 /* GPXSelectionView.xib in Resources */,
@@ -1073,6 +1086,7 @@
 				63D734F027E903370044918C /* FileManager+Logger.swift in Sources */,
 				6372E37928247BA900188416 /* ASDevice.swift in Sources */,
 				633C750225AA78F900161DB4 /* String+Extension.swift in Sources */,
+				635F9B9F2978A9D200F0B2E1 /* ProgressListEntryView.swift in Sources */,
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
 				635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */,
 				6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */,
@@ -1094,17 +1108,18 @@
 				632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */,
 				6352592B258B75190031F289 /* FileMenubarItem.swift in Sources */,
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
-				63720632259145B300293EA8 /* ProgressView+DownloadDelegate.swift in Sources */,
 				630BC72027DCFFBE00675426 /* LogToolbarController.swift in Sources */,
 				63A1ABC827E7832100C9EDE0 /* ValueTrackingSlider.swift in Sources */,
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				63864C0D27DC343A005F94F3 /* LogViewController.swift in Sources */,
 				63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */,
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
+				635F9B9B2978A7A700F0B2E1 /* ProgressListView.swift in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
 				63D5DF4027D969E800F2DCD3 /* DragAndDropBox.swift in Sources */,
 				6372E3762824772F00188416 /* Application.swift in Sources */,
 				633C74FE25AA789100161DB4 /* XIBLocalizable.swift in Sources */,
+				635F9BAC297D506000F0B2E1 /* DownloadTaskWrapper.swift in Sources */,
 				631EBFF425941C880066D5BB /* ToolbarController.swift in Sources */,
 				638B90AA254B5CFB00A520E0 /* PreferenceTabViewController.swift in Sources */,
 				632DCA38293379FC004551C3 /* DonateProgress.swift in Sources */,
@@ -1118,9 +1133,9 @@
 				632C466523F7638A004E5092 /* MenubarItem.swift in Sources */,
 				6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */,
 				632B4039258FFE6600202647 /* MenubarController.swift in Sources */,
-				63720628259141EF00293EA8 /* ProgressView.swift in Sources */,
 				635CF719280E039B0092A99B /* DonateSidebarViewController.swift in Sources */,
 				635CF725280EC6CF0092A99B /* AppMenubarItem.swift in Sources */,
+				635F9B9D2978A9A400F0B2E1 /* ProgressTask.swift in Sources */,
 				63D5DF3427D6720000F2DCD3 /* DeveloperDiskImagesViewController.swift in Sources */,
 				6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */,
 				635CF721280EBF4D0092A99B /* DonateWindow.swift in Sources */,
@@ -1146,6 +1161,7 @@
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				63525959258E8FC80031F289 /* HUDView.swift in Sources */,
 				63864C0B27DC3405005F94F3 /* LogWindowController.swift in Sources */,
+				635F9BAA297D503A00F0B2E1 /* DownloadListViewController.swift in Sources */,
 				63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */,
 				63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */,
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
@@ -1343,6 +1359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1375,6 +1392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1464,6 +1482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "LocationSimulator/Supporting Files/LocationSimulator.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;

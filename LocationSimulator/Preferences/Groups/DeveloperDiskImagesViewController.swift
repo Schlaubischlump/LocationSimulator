@@ -204,7 +204,7 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         }
 
         // Download the new files
-        let alert = ProgressAlert(os: platform, version: version)
+        let alert = DownloadProgressAlert(os: platform, version: version)
         let result = alert.runSheetModal(forWindow: window)
 
         if result == .failed {

@@ -1,3 +1,11 @@
 # rule identifiers turned on by default to exclude from running
 disabled_rules: 
    - identifier_name
+   - void_function_in_ternary
+
+file_length:
+   ignore_comment_only_lines: true
+   warning: 500
+   
+type_body_length:
+   warning: 250

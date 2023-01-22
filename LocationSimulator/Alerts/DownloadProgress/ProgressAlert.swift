@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import Downloader
 
 /// Extend the response for a more readable format.
 extension NSApplication.ModalResponse {
@@ -14,10 +15,13 @@ extension NSApplication.ModalResponse {
 }
 
 /// Alert view which manages and shows the download progress for the developer disk images.
-class ProgressAlert: NSAlert {
-    public var progressView: ProgressView? {
-        return self.accessoryView as? ProgressView
+class DownloadProgressAlert: NSAlert {
+    public var progressView: ProgressListView? {
+        return self.accessoryView as? ProgressListView
     }
+
+    public var downloadListViewController: DownloadListViewController
+
     /// The os to download the files for e.g iPhone OS
     public private(set) var os: String
     /// The iOS version to download the file for e.g 15.2
@@ -27,6 +31,8 @@ class ProgressAlert: NSAlert {
         self.os = os
         self.version = version
 
+        self.downloadListViewController = DownloadListViewController()
+
         super.init()
 
         self.messageText = "PROGRESS".localized
@@ -35,12 +41,11 @@ class ProgressAlert: NSAlert {
         self.alertStyle = .critical
 
         // Setup the accessory view with the download progress bars and status labels.
-        let progressView = ProgressView(frame: CGRect(x: 0, y: 0, width: 400, height: 100))
-        self.accessoryView = progressView
+        self.accessoryView = self.downloadListViewController.view
 
         // Cancel the download if the cancel button is clicked.
-        cancelButton.target = progressView
-        cancelButton.action = #selector(progressView.cancelDownload)
+        cancelButton.target = self.downloadListViewController
+        cancelButton.action = #selector(self.downloadListViewController.cancelDownload)
     }
 
     // MARK: - Sheet modal
@@ -58,13 +63,13 @@ class ProgressAlert: NSAlert {
     /// block until the operation is finished.
     /// - Parameter window: the window to present the alert in.
     func runSheetModal(forWindow window: NSWindow) -> NSApplication.ModalResponse {
-        guard let progressView = self.progressView else { return .failed }
-
         // Prepare the download
-        guard progressView.prepareDownload(os: self.os, iOSVersion: self.version) else { return .failed }
+        guard self.downloadListViewController.prepareDownload(os: self.os, iOSVersion: self.version) else {
+            return .failed
+        }
 
         // Add a callback when the download finished to dismiss the window.
-        progressView.downloadFinishedAction = { [unowned self] status in
+        self.downloadListViewController.downloadFinishedAction = { [unowned self] status in
             var response: NSApplication.ModalResponse = .failed
             switch status {
             case .failure: response = .failed
@@ -83,7 +88,7 @@ class ProgressAlert: NSAlert {
         let sheet = window.sheets.last
 
         // Start the download. This can not fail, because we prepared the download.
-        progressView.startDownload()
+        self.downloadListViewController.startDownload()
 
         // Wait till modal completion.
         let response = NSApp.runModal(for: window)
