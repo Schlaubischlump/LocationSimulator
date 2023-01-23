@@ -8,17 +8,12 @@
 
 import Foundation
 
-protocol ProgressTask: AnyObject {
+@objc protocol ProgressTask: NSObjectProtocol {
     // You must update this value from the outside
-    var progress: Float { get }
+    @objc dynamic var progress: Double { get set }
     var showSpinner: Bool { get }
     var showProgress: Bool { get }
 
-    // You must not set these values, but you should call these methods
-    var onProgress: ((Float) -> Void)? { get set }
-    var onCompletion: ((Float) -> Void)? { get set }
-    var onError: ((Error) -> Void)? { get set }
-
     // You should override this method
-    func description(forProgress: Float) -> String
+    func description(forProgress: Double) -> String
 }

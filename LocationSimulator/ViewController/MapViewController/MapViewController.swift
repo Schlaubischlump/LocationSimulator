@@ -304,7 +304,7 @@ class MapViewController: NSViewController {
         switch response {
         // Download was successfull
         case .OK: return true
-        // No download link available.
+        // No download link available
         case .failed: window.showError("DEVDISK_DOWNLOAD_FAILED_ERROR", message: "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG")
         default: break
         }

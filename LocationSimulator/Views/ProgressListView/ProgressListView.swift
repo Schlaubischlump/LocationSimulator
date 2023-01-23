@@ -9,14 +9,6 @@ import AppKit
 
 let kRemoveDelay = 5.0
 
-extension ProgressTask {
-    fileprivate func clear() {
-        self.onError = nil
-        self.onProgress = nil
-        self.onCompletion = nil
-    }
-}
-
 class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
     private(set) var tasks: [any ProgressTask] = []
 
@@ -75,19 +67,12 @@ class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
         let id = NSUserInterfaceItemIdentifier(rawValue: "cell")
         let cell = self.tableView.makeView(withIdentifier: id, owner: self) as? ProgressEntryView ?? ProgressEntryView()
         cell.identifier = id
-
-        // This causes problems... don't know why. We guard the guard cell?.task === task instead
-        // which isn't perfect since it requires object identity.
-        // cell.task?.onProgress = nil
-        // cell.task = nil
-
         return cell
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let task = self.tasks[row]
         let cell = self.reuseableCell(forRow: row)
-        cell.task = task
         cell.showProgress = task.showProgress
         cell.showSpinner = task.showSpinner
         if cell.showSpinner {
@@ -95,16 +80,13 @@ class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
         }
 
         cell.progressText = { progress in
-            task.description(forProgress: progress)
+            task.description(forProgress: Double(progress))
         }
-        cell.setProgress(task.progress, animated: false)
+        cell.setProgress(Float(task.progress), animated: false)
 
-        task.onProgress = { [weak cell] progress in
-            guard cell?.task === task else { return }
-            DispatchQueue.main.async {
-                cell?.progress = progress
-            }
-        }
+        let index = IndexSet(integer: row)
+        (self.tasks as NSArray).addObserver(self, toObjectsAt: index, forKeyPath: "progress", context: nil)
+
         return cell
     }
 
@@ -124,48 +106,53 @@ class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
 
     func add(task: ProgressTask) {
         self.tableView.beginUpdates()
+        let row = self.tasks.count
         self.tasks.append(task)
-        let indexPath = IndexSet(integer: self.tasks.count - 1)
+        let indexPath = IndexSet(integer: row)
         self.tableView.insertRows(at: indexPath, withAnimation: .slideUp)
-
-        // make sure we always clean up, even if no cell is created
-        task.onCompletion = { [weak self, weak task] _ in
-            guard let task = task  else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + kRemoveDelay) {
-                self?.remove(task: task)
-            }
-        }
-        task.onError = { [weak self, weak task] _ in
-            guard let task = task else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + kRemoveDelay) {
-                self?.remove(task: task)
-            }
-        }
         self.tableView.endUpdates()
     }
 
     func remove(task: ProgressTask) {
-        self.tableView.beginUpdates()
-        defer {
-            self.tableView.endUpdates()
-        }
         guard let index = self.tasks.firstIndex(where: { $0 === task }) else { return }
-        let taskToRemove = self.tasks.remove(at: index)
-        taskToRemove.clear()
-        let indexPath = IndexSet(integer: index)
-        self.tableView.removeRows(at: indexPath, withAnimation: .slideUp)
-
+        self.remove(taskAtIndex: index)
     }
 
     func remove(taskAtIndex index: Int) {
-        self.tableView.beginUpdates()
-        defer {
-            self.tableView.endUpdates()
-        }
         guard index >= 0 else { return }
-        let taskToRemove = self.tasks.remove(at: index)
-        taskToRemove.clear()
+        
+        self.tableView.beginUpdates()
         let indexPath = IndexSet(integer: index)
+        (self.tasks as NSArray).removeObserver(self, fromObjectsAt: indexPath, forKeyPath: "progress")
+        self.tasks.remove(at: index)
         self.tableView.removeRows(at: indexPath, withAnimation: .slideUp)
+        self.tableView.endUpdates()
+    }
+
+    @objc private func update(info: [String: NSNumber]) {
+        guard let index = info["index"]?.intValue, let progress = info["progress"]?.floatValue else { return }
+        let cell = self.tableView.view(atColumn: 0, row: index, makeIfNecessary: false) as? ProgressEntryView
+        cell?.setProgress(progress, animated: true)
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?,
+                               context: UnsafeMutableRawPointer?) {
+        guard keyPath == "progress", let task = object as? ProgressTask else { return }
+        // Note: This is sufficient for our use case, but not efficient if you decide to add thousands of tasks
+        guard let index = self.tasks.firstIndex(where: { $0 === task }) else { return }
+
+        // We need to run in the modalPanel run loop to make this work even if the progress list view is displayed
+        // inside an alert controller run as sheet modal
+        
+        /*RunLoop.main.perform(inModes: [.default, .common, .eventTracking, .modalPanel]) { [weak self] in
+            let cell = self?.tableView.view(atColumn: 0, row: index, makeIfNecessary: false) as? ProgressEntryView
+            cell?.setProgress(Float(task.progress), animated: true)
+        }*/
+
+        // This way we don't have to explictly define the run mode
+        self.performSelector(onMainThread: #selector(self.update(info:)), with: [
+            "index": NSNumber(value: index),
+            "progress": NSNumber(value: Float(task.progress))
+        ], waitUntilDone: false)
     }
 }

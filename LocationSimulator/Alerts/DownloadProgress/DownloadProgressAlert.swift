@@ -20,7 +20,7 @@ class DownloadProgressAlert: NSAlert {
         return self.accessoryView as? ProgressListView
     }
 
-    public var downloadListViewController: DownloadListViewController
+    public var downloadListViewController = DownloadListViewController()
 
     /// The os to download the files for e.g iPhone OS
     public private(set) var os: String
@@ -30,8 +30,6 @@ class DownloadProgressAlert: NSAlert {
     init(os: String, version: String) {
         self.os = os
         self.version = version
-
-        self.downloadListViewController = DownloadListViewController()
 
         super.init()
 
@@ -69,7 +67,7 @@ class DownloadProgressAlert: NSAlert {
         }
 
         // Add a callback when the download finished to dismiss the window.
-        self.downloadListViewController.downloadFinishedAction = { [unowned self] status in
+        self.downloadListViewController.downloadFinishedAction = { [weak self] status in
             var response: NSApplication.ModalResponse = .failed
             switch status {
             case .failure: response = .failed
@@ -78,8 +76,9 @@ class DownloadProgressAlert: NSAlert {
             }
 
             // Stop the modal. Make sure we use the correct runloop and thread by using performSelector.
-            self.performSelector(onMainThread: #selector(stopModal(_:)), with: NSNumber(value: response.rawValue),
-                                 waitUntilDone: true)
+            guard let strongSelf = self else { return }
+            strongSelf.performSelector(onMainThread: #selector(strongSelf.stopModal(_:)),
+                                       with: NSNumber(value: response.rawValue), waitUntilDone: true)
         }
 
         // Show the sheet. Make sure we use the correct runloop and thread by using performSelector.

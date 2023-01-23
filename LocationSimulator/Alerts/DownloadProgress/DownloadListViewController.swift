@@ -38,8 +38,6 @@ class DownloadListViewController: NSViewController {
         self.view as? ProgressListView
     }
 
-    private var taskMap: [String: DownloadTaskWrapper] = [:]
-
     init() {
         super.init(nibName: nil, bundle: nil)
         self.downloader.delegate = self
@@ -72,13 +70,9 @@ class DownloadListViewController: NSViewController {
                                        description: "DEVDISK_DOWNLOAD_DESC".localized)
         let devSignTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSign,
                                        description: "DEVSIGN_DOWNLOAD_DESC".localized)
-        let devDiskWrapper = DownloadTaskWrapper(downloadTask: devDiskTask)
-        let devSignWrapper = DownloadTaskWrapper(downloadTask: devSignTask)
 
-        self.taskMap = [devDiskTask.dID: devDiskWrapper, devSignTask.dID: devSignWrapper]
-
-        self.progressListView?.add(task: devDiskWrapper)
-        self.progressListView?.add(task: devSignWrapper)
+        self.progressListView?.add(task: devDiskTask)
+        self.progressListView?.add(task: devSignTask)
 
         return true
     }
@@ -93,7 +87,7 @@ class DownloadListViewController: NSViewController {
         // Start the downlaod process.
         self.isAccessingSupportDir = FileManager.default.startAccessingSupportDirectory()
         self.progressListView?.tasks.forEach {
-            guard let task = ($0 as? DownloadTaskWrapper)?.task else { return }
+            guard let task = ($0 as? DownloadTask) else { return }
             self.downloader.start(task)
         }
         return true
@@ -106,8 +100,8 @@ class DownloadListViewController: NSViewController {
         guard self.isDownloading else { return false }
 
         self.progressListView?.tasks.forEach {
-            guard let taskWrapper = ($0 as? DownloadTaskWrapper) else { return }
-            self.downloader.cancel(taskWrapper.task)
+            guard let task = ($0 as? DownloadTask) else { return }
+            self.downloader.cancel(task)
         }
 
         // Cleanup
@@ -117,41 +111,71 @@ class DownloadListViewController: NSViewController {
 }
 
 extension DownloadListViewController: DownloaderDelegate {
-    func downloadStarted(downloader: Downloader, task: DownloadTask) {
-        self.taskMap[task.dID]?.onProgress?(0)
+    /*func downloadStarted(downloader: Downloader, task: DownloadTask) {
+        // nothing to do here
     }
 
     func downloadProgressChanged(downloader: Downloader, task: DownloadTask) {
-        self.taskMap[task.dID]?.onProgress?(Float(task.progress))
-    }
+        // nothing to do here
+    }*/
 
     func downloadCanceled(downloader: Downloader, task: DownloadTask) {
-        /*DispatchQueue.main.async {
-            self.taskMap[task.dID]?.onError?(error) // TODO: Send some cancel error
-        }*/
-
         guard downloader.tasks.count == 0 else { return }
-        self.taskMap = [:]
 
         if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
         self.downloadFinishedAction?(.cancel)
     }
 
+    @objc private func removeTask(task: DownloadTask) {
+        self.progressListView?.remove(task: task)
+    }
+
+    @objc private func finishDownload() {
+        self.downloadFinishedAction?(.success)
+    }
+
+    // This is hacky as fuck... Why is this necessary you may ask ?
+    // Well we will add this viewcontroller's view to the content of an NSAlert. The NSAlert will run as a sheet modal.
+    // That means, the modalPanel runloop will be used. DispatchQueue.main will not run while the Runloop is executing
+    // in modalPanel mode. Timer and all those other fancy APIs will not work as well. So the only working solution
+    // I came up with, was to spawn a thread and just wait till we are ready to perform the dismiss task on the main
+    // thread. Note that performSelectorOnMainThread is indeed executed even in modalPanel mode, unlike the
+    // DispatchQueue.
+    @objc private func performSelector(onMainThread selector: Selector,
+                                       with object: Any?,
+                                       waitUntilDone: Bool,
+                                       afterDelay delay: Double) {
+        let thread = Thread {
+            let refDate = Date()
+            while abs(refDate.timeIntervalSinceNow) < delay {
+                // just wait
+            }
+            self.performSelector(onMainThread: selector, with: object, waitUntilDone: waitUntilDone)
+        }
+        thread.start()
+    }
+
     func downloadFinished(downloader: Downloader, task: DownloadTask) {
-        self.taskMap[task.dID]?.onCompletion?(Float(task.progress))
-        self.taskMap.removeValue(forKey: task.dID)
+        // Give the animations some time to finish
+        self.performSelector(onMainThread: #selector(self.removeTask(task:)),
+                             with: task,
+                             waitUntilDone: false,
+                             afterDelay: 1.0
+        )
 
         guard downloader.tasks.count == 0 else { return }
         if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
+
         // Give the animations some time to finish
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.downloadFinishedAction?(.success)
-        }
+        self.performSelector(onMainThread: #selector(self.finishDownload),
+                             with: nil,
+                             waitUntilDone: false,
+                             afterDelay: 1.0
+        )
     }
 
     func downloadError(downloader: Downloader, task: DownloadTask, error: Error) {
         if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
-        self.taskMap[task.dID]?.onError?(error)
         self.downloadFinishedAction?(.failure)
     }
 }

@@ -9,6 +9,7 @@
 import AppKit
 
 class ProgressEntryView: NSTableCellView {
+    // Use our custom progressBar, since the animations are working even when running with a different Runloop mode
     private let progressBar = ProgressBar()
 
     private let progressSpinner: NSProgressIndicator = {
@@ -20,8 +21,6 @@ class ProgressEntryView: NSTableCellView {
 
     private var padding = CGPoint(x: 10.0, y: 15.0)
     private var spacing = CGPoint(x: 5.0, y: 10.0)
-
-    internal var task: ProgressTask?
 
     var progressText: ((Float) -> (String))? {
         didSet { self.setProgress(self.progress, animated: true) }
