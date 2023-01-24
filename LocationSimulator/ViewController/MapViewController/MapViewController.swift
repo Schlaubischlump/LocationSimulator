@@ -311,53 +311,70 @@ class MapViewController: NSViewController {
         return false
     }
 
+    @objc private func pairingSuccessfull() {
+        /// The developer disk image has been upload successfully.
+        self.mapView.userInteractionEnabled = true
+        self.contentView?.stopSpinner()
+        self.contentView?.hideErrorInidcator()
+        self.deviceIsConnectd = true
+    }
+
+    @objc private func pairingFailed(error: Error) {
+        guard !self.deviceIsConnectd, let device = device, let window = self.view.window else { return }
+
+        self.contentView?.stopSpinner()
+        self.deviceIsConnectd = false
+
+        switch error {
+        case DeviceError.devDiskImageNotFound(_):
+            // Try to download the developer disk image and retry the upload.
+            let os = device.productName!
+            let version = device.majorMinorVersion!
+            if self.downloadDeveloperDiskImage(os: os, iOSVersion: version) {
+                self.connectDevice()
+            }
+        case DeviceError.devMode:
+            device.enabledDeveloperModeToggleInSettings()
+            window.showError("DEVMODE_ERROR", message: "DEVMODE_ERROR_MSG")
+        case DeviceError.permisson:
+            window.showError("PERMISSION_ERROR", message: "PERMISSION_ERROR_MSG")
+        case DeviceError.devDiskImageMount:
+            window.showError("MOUNT_ERROR", message: "MOUNT_ERROR_MSG")
+        case DeviceError.pair:
+            window.showError("PAIR_ERROR_MSG", message: "PAIR_ERROR_MSG")
+        default:
+            window.showError("UNKNOWN_ERROR", message: "UNKNOWN_ERROR_MSG")
+        }
+    }
+
+    @objc private func startPairing() {
+        guard !self.deviceIsConnectd, let device = device else { return }
+
+        do {
+            try device.pair()
+
+            self.performSelector(onMainThread: #selector(self.pairingSuccessfull), with: nil, waitUntilDone: false)
+        } catch let error {
+            self.performSelector(onMainThread: #selector(self.pairingFailed(error:)), with: error, waitUntilDone: false)
+        }
+    }
+
     /// Connect the current device. If no developer disk image is found, we try to download a matching one and reconnect
     /// the device.
     /// - Returns: true on success, false otherwise.
     func connectDevice() {
         // Make sure we have a device to connect, which is not already connected. We need a window to show errors.
-        guard !self.deviceIsConnectd, let device = device, let window = self.view.window else { return }
+        guard !self.deviceIsConnectd, device != nil else { return }
 
         self.mapView.userInteractionEnabled = false
         self.contentView?.startSpinner()
         self.contentView?.showErrorInidcator()
 
         // Run the pairing in a background thread
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                try device.pair()
-
-                DispatchQueue.main.async { [weak self] in
-                    /// The developer disk image has been upload successfully.
-                    self?.mapView.userInteractionEnabled = true
-                    self?.contentView?.stopSpinner()
-                    self?.contentView?.hideErrorInidcator()
-                    self?.deviceIsConnectd = true
-                }
-            } catch let error {
-                DispatchQueue.main.async { [weak self] in
-                    self?.contentView?.stopSpinner()
-                    self?.deviceIsConnectd = false
-
-                    switch error {
-                    case DeviceError.devDiskImageNotFound(_):
-                        // Try to download the developer disk image and retry the upload.
-                        let os = device.productName!
-                        let version = device.majorMinorVersion!
-                        if self?.downloadDeveloperDiskImage(os: os, iOSVersion: version) ?? false {
-                            self?.connectDevice()
-                        }
-                    case DeviceError.devMode:
-                        device.enabledDeveloperModeToggleInSettings()
-                        window.showError("DEVMODE_ERROR", message: "DEVMODE_ERROR_MSG")
-                    case DeviceError.permisson: window.showError("PERMISSION_ERROR", message: "PERMISSION_ERROR_MSG")
-                    case DeviceError.devDiskImageMount: window.showError("MOUNT_ERROR", message: "MOUNT_ERROR_MSG")
-                    case DeviceError.pair: window.showError("PAIR_ERROR_MSG", message: "PAIR_ERROR_MSG")
-                    default: window.showError("UNKNOWN_ERROR", message: "UNKNOWN_ERROR_MSG")
-                    }
-                }
-            }
-        }
+        // We do not use a DispatchQueue here on purpose ! Nesting to DispatchQueue.main.async calls will block, since
+        // since the inner call will wait for the outer call to finish. When we present the Alert we already use a
+        // DispatchQueue, thats why we use performSelector(inBackground:) here.
+        self.performSelector(inBackground: #selector(self.startPairing), with: nil)
     }
 
     // MARK: - Teleport or Navigate

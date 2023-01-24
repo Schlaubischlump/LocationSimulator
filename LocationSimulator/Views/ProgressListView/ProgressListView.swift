@@ -120,7 +120,7 @@ class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
 
     func remove(taskAtIndex index: Int) {
         guard index >= 0 else { return }
-        
+
         self.tableView.beginUpdates()
         let indexPath = IndexSet(integer: index)
         (self.tasks as NSArray).removeObserver(self, fromObjectsAt: indexPath, forKeyPath: "progress")
@@ -141,15 +141,7 @@ class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
         // Note: This is sufficient for our use case, but not efficient if you decide to add thousands of tasks
         guard let index = self.tasks.firstIndex(where: { $0 === task }) else { return }
 
-        // We need to run in the modalPanel run loop to make this work even if the progress list view is displayed
-        // inside an alert controller run as sheet modal
-        
-        /*RunLoop.main.perform(inModes: [.default, .common, .eventTracking, .modalPanel]) { [weak self] in
-            let cell = self?.tableView.view(atColumn: 0, row: index, makeIfNecessary: false) as? ProgressEntryView
-            cell?.setProgress(Float(task.progress), animated: true)
-        }*/
-
-        // This way we don't have to explictly define the run mode
+        // Use perform selector, this will work even if we are inside a DispatchQueue.main.async
         self.performSelector(onMainThread: #selector(self.update(info:)), with: [
             "index": NSNumber(value: index),
             "progress": NSNumber(value: Float(task.progress))

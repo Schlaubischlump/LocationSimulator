@@ -7,11 +7,24 @@
 //
 
 import Foundation
-import Downloader
 import AppKit
+import Downloader
+import CLogger
+//import Zip
 
 let kDevDiskTaskID = "DevDisk"
 let kDevSignTaskID = "DevSign"
+//let kDevZipTaskID = "DevZip"
+
+/*private class UnzipTask: NSObject, ProgressTask {
+    @objc dynamic var progress: Double = 0
+    var showSpinner: Bool { true }
+    var showProgress: Bool { true }
+
+    func description(forProgress: Double) -> String {
+        "DEVARCHIVE_EXTRACT_DESC".localized
+    }
+}*/
 
 public enum DownloadStatus: Int {
     case failure
@@ -22,6 +35,11 @@ public enum DownloadStatus: Int {
 typealias DownloadCompletionHandler = (DownloadStatus) -> Void
 
 class DownloadListViewController: NSViewController {
+    typealias Platform = String
+    typealias Version = String
+    typealias FileType = String
+    typealias JSonType = [Platform: [Version: [FileType: [String]]]]
+
     /// The downloader instance to manage.
     public let downloader: Downloader = Downloader()
 
@@ -51,28 +69,76 @@ class DownloadListViewController: NSViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// Parse the DeveloperDiskImages.json and return the download links for all DeveloperDiskImages files for every
+    /// iOS version.
+    /// - Parameter os: the platform or operating system e.g. iPhone OS
+    /// - Parameter version: version string for the iOS device, e.g. 13.0
+    /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
+    private func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> [String: [URL]] {
+        // Check if the plist file and the platform inside the file can be found.
+        guard let jsonPath = Bundle.main.url(forResource: "DeveloperDiskImages", withExtension: "json"),
+              let jsonData = try? Data(contentsOf: jsonPath, options: .mappedIfSafe),
+              let jsonResult = try? JSONSerialization.jsonObject(with: jsonData) as? JSonType else {
+            logError("DeveloperDiskImages.json not found!")
+            return [:]
+        }
+
+        let osLinks = jsonResult[os] ?? [:]
+        let versionLinks = osLinks[version] ?? [:]
+        let fallbackLinks = osLinks["Fallback"] ?? [:]
+        let resolvedFallbackLinks = fallbackLinks.mapValues { $0.map { String(format: $0, version) } }
+
+        let downloadLinks = versionLinks.merging(resolvedFallbackLinks) { $0 + $1 }
+        if downloadLinks.isEmpty {
+            logError("DeveloperDiskImages.json does not contain any download links!")
+        }
+
+        return downloadLinks.mapValues { links in
+            links.compactMap {
+                URL(string: $0)
+            }
+        }
+    }
+
     @objc func prepareDownload(os: String, iOSVersion: String) -> Bool {
         // Check if the path for the image and signature file can be created.
         let manager = FileManager.default
-        guard let devDMG = manager.getDeveloperDiskImage(os: os, version: iOSVersion),
-              let devSign = manager.getDeveloperDiskImageSignature(os: os, version: iOSVersion) else {
+        guard let devDmgPath = manager.getDeveloperDiskImage(os: os, version: iOSVersion),
+              let devSignPath = manager.getDeveloperDiskImageSignature(os: os, version: iOSVersion) else {
             return false
         }
+        //let devZipPath = FileManager.default.temporaryDirectory
 
         // Get the download links from the internal plist file.
-        let (diskLinks, signLinks) = manager.getDeveloperDiskImageDownloadLinks(os: os, version: iOSVersion)
-        if diskLinks.isEmpty || signLinks.isEmpty {
+        let links = self.getDeveloperDiskImageDownloadLinks(os: os, version: iOSVersion)
+
+        //let zipLinks = links["Archive"] ?? []
+        let diskLinks = links["Image"] ?? []
+        let signLinks = links["Signature"] ?? []
+
+        var tasks: [DownloadTask] = []
+        // We use the first download link. In theory we could add multiple links for the same image.
+        /*if !zipLinks.isEmpty {
+            tasks += [
+                DownloadTask(dID: kDevZipTaskID, source: zipLinks[0], destination: devZipPath,
+                             description: "DEVARCHIVE_DOWNLOAD_DESC".localized)
+            ]
+        } else */
+
+        if !diskLinks.isEmpty && !signLinks.isEmpty {
+            tasks += [
+                DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDmgPath,
+                             description: "DEVDISK_DOWNLOAD_DESC".localized),
+                DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSignPath,
+                             description: "DEVSIGN_DOWNLOAD_DESC".localized)
+            ]
+        } else {
             return false
         }
 
-        // We use the first download link. In theory we could add multiple links for the same image.
-        let devDiskTask = DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDMG,
-                                       description: "DEVDISK_DOWNLOAD_DESC".localized)
-        let devSignTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSign,
-                                       description: "DEVSIGN_DOWNLOAD_DESC".localized)
-
-        self.progressListView?.add(task: devDiskTask)
-        self.progressListView?.add(task: devSignTask)
+        tasks.forEach { [weak self] in
+            self?.progressListView?.add(task: $0)
+        }
 
         return true
     }
@@ -126,52 +192,76 @@ extension DownloadListViewController: DownloaderDelegate {
         self.downloadFinishedAction?(.cancel)
     }
 
-    @objc private func removeTask(task: DownloadTask) {
-        self.progressListView?.remove(task: task)
-    }
-
-    @objc private func finishDownload() {
-        self.downloadFinishedAction?(.success)
-    }
-
-    // This is hacky as fuck... Why is this necessary you may ask ?
-    // Well we will add this viewcontroller's view to the content of an NSAlert. The NSAlert will run as a sheet modal.
-    // That means, the modalPanel runloop will be used. DispatchQueue.main will not run while the Runloop is executing
-    // in modalPanel mode. Timer and all those other fancy APIs will not work as well. So the only working solution
-    // I came up with, was to spawn a thread and just wait till we are ready to perform the dismiss task on the main
-    // thread. Note that performSelectorOnMainThread is indeed executed even in modalPanel mode, unlike the
-    // DispatchQueue.
-    @objc private func performSelector(onMainThread selector: Selector,
-                                       with object: Any?,
-                                       waitUntilDone: Bool,
-                                       afterDelay delay: Double) {
-        let thread = Thread {
-            let refDate = Date()
-            while abs(refDate.timeIntervalSinceNow) < delay {
-                // just wait
-            }
-            self.performSelector(onMainThread: selector, with: object, waitUntilDone: waitUntilDone)
+    /*private func unzip(devArchive: URL, destination: URL, progress: ((Double) -> Void)?) -> Bool {
+        do {
+            try Zip.unzipFile(
+                devArchive,
+                destination: destination,
+                overwrite: true,
+                password: nil,
+                progress: progress
+            )
+            return true
+        } catch {
+            return false
         }
-        thread.start()
     }
+
+    func moveDeveloperDiskImageFiles(from dir: URL) -> Bool {
+        let manager = FileManager.default
+        let dmgFiles = manager.findAllFiles(at: dir, withExtension: ".dmg")
+        let sigFiles = manager.findAllFiles(at: dir, withExtension: ".signature")
+        print(dmgFiles, sigFiles)
+
+        /*guard let dmgDest = manager.getDeveloperDiskImage(os: , version: )
+            !dmgFiles.isEmpty, !sigFiles.isEmpty else { return false }*/
+
+        do {
+            try manager.moveItem(at: dmgFiles[0], to: destination)
+            try manager.moveItem(at: sigFiles[0], to: destination)
+        } catch let error {
+            print(error)
+        }
+        return true
+    }*/
 
     func downloadFinished(downloader: Downloader, task: DownloadTask) {
-        // Give the animations some time to finish
-        self.performSelector(onMainThread: #selector(self.removeTask(task:)),
-                             with: task,
-                             waitUntilDone: false,
-                             afterDelay: 1.0
-        )
+        // Give the progress fill animation some time to finish
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            self.progressListView?.remove(task: task)
+        }
 
         guard downloader.tasks.count == 0 else { return }
         if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
 
-        // Give the animations some time to finish
-        self.performSelector(onMainThread: #selector(self.finishDownload),
-                             with: nil,
-                             waitUntilDone: false,
-                             afterDelay: 1.0
-        )
+        // we only got a single task if we download a zip
+        /*var success = true
+        if task.dID == kDevZipTaskID {
+            let unzipTask = UnzipTask()
+            DispatchQueue.main.async { [weak self] in
+                self?.progressListView?.add(task: unzipTask)
+            }
+
+            let tmpDir = task.destination.deletingLastPathComponent()
+            success = self.unzip(devArchive: task.destination, destination: tmpDir) { [weak self] progress in
+                unzipTask.progress = progress
+
+                if (progress >= 1.0) {
+                    if !(self?.moveDeveloperDiskImageFiles(from: tmpDir) ?? true) {
+                        print("Could not move files...")
+                    }
+                    DispatchQueue.main.async {
+                        self?.progressListView?.remove(task: unzipTask)
+                    }
+                }
+            }
+        }*/
+
+        // Give the remove animation some time to finish
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            // self.downloadFinishedAction?(success ? .success : .failure)
+            self.downloadFinishedAction?(.success)
+        }
     }
 
     func downloadError(downloader: Downloader, task: DownloadTask, error: Error) {

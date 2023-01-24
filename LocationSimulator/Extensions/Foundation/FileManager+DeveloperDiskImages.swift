@@ -300,40 +300,12 @@ extension FileManager {
         return supportDir.stopAccessingSecurityScopedResource()
     }
 
-    /// Parse the DeveloperDiskImages.plist inside the applications bundle and return the download links for all
-    /// DeveloperDiskImages files for every iOS version.
-    /// - Parameter os: the platform or operating system e.g. iPhone OS
-    /// - Parameter version: version string for the iOS device, e.g. 13.0
-    /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
-    public func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> ([URL], [URL]) {
-        // Check if the plist file and the platform inside the file can be found.
-        guard let plistPath = Bundle.main.path(forResource: "DeveloperDiskImages", ofType: "plist"),
-              let downloadLinksPlist = NSDictionary(contentsOfFile: plistPath),
-              let downloadLinksForOS: NSDictionary = downloadLinksPlist[os] as? NSDictionary else {
-            logError("DeveloperDiskImage download links: Not found for os: \(os)!")
-            return ([], [])
-        }
-
-        // Check if a specific download URL is available.
-        if let downloadLinks: NSDictionary = downloadLinksForOS[version] as? NSDictionary,
-           let dmgLinks = downloadLinks["Image"] as? [String],
-           let signLinks = downloadLinks["Signature"] as? [String] {
-            return (dmgLinks.map { URL(string: $0)! }, signLinks.map { URL(string: $0)! })
-        } else {
-            logInfo("DeveloperDiskImage download links: Not found. Using fallback...")
-        }
-
-        // Try to use the fallback links if no direct links were found.
-        if let fallbackLinks: NSDictionary = downloadLinksForOS["Fallback"] as? NSDictionary,
-           let dmgLinks = fallbackLinks["Image"] as? [String],
-           let signLinks = fallbackLinks["Signature"] as? [String] {
-            return (dmgLinks.map { URL(string: String(format: $0, version))! },
-                    signLinks.map { URL(string: String(format: $0, version))! })
-        } else {
-            logError("DeveloperDiskImage download links: Fallback url not found!")
-        }
-
-        // We did not find any download link.
-        return ([], [])
-    }
+    /// Get all files with a specific extension in a folder
+    /*func findAllFiles(at path: URL, withExtension fileExtension: String) -> [URL] {
+        let enumerator = self.enumerator(at: path, includingPropertiesForKeys: [], options: .skipsHiddenFiles)
+        return enumerator?.compactMap { url in
+            guard let url = url as? URL, url.pathExtension == fileExtension else { return nil }
+            return url
+        } ?? []
+    }*/
 }
