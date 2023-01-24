@@ -31,7 +31,7 @@ extension Device {
     ///    * `DeviceError.devMode`: Developer mode is not enabled
     ///    * `DeviceError.permisson`: Permission error while accessing the App Support folder
     ///    * `DeviceError.productInfo`: Could not read the devices product version or name
-    public func pair() throws {        
+    public func pair() throws {    
         // Only real iOS Devices require a pairing
         guard let device = self as? IOSDevice else { return }
 

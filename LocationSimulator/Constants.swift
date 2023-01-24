@@ -20,6 +20,7 @@ let kGithubWebsite = "https://github.com/\(kUser)/\(kRepo)"
 // let kGithubStatsWebsite = "https://api.github.com/ repos/\(kUser)/\(kRepo)/releases"
 
 let kDonationInfo =  "\(kGithubWebsite)/raw/info/donation.json"
+let kDeveloperDiskImagesInfo = "\(kGithubWebsite)/raw/info/DeveloperDiskImages.json"
 
 // The variance to add to the movement speed. The lower bound is the minimum factor, the upper bounds the maximum
 // factor to apply to the current speed. See LocationSpoofer for more details.

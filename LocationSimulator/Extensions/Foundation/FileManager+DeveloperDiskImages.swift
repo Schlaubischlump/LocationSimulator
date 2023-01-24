@@ -299,13 +299,4 @@ extension FileManager {
         guard let supportDir = self.getSupportDirectory(create: true) else { return }
         return supportDir.stopAccessingSecurityScopedResource()
     }
-
-    /// Get all files with a specific extension in a folder
-    /*func findAllFiles(at path: URL, withExtension fileExtension: String) -> [URL] {
-        let enumerator = self.enumerator(at: path, includingPropertiesForKeys: [], options: .skipsHiddenFiles)
-        return enumerator?.compactMap { url in
-            guard let url = url as? URL, url.pathExtension == fileExtension else { return nil }
-            return url
-        } ?? []
-    }*/
 }

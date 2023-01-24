@@ -71,7 +71,6 @@
 		635F9BB0297F36D100F0B2E1 /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 635F9BAF297F36D100F0B2E1 /* LocationSpoofer */; };
 		635F9BBC297F3BE300F0B2E1 /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 635F9BBB297F3BE300F0B2E1 /* Downloader */; };
 		635F9BBE298075DE00F0B2E1 /* DeveloperDiskImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 635F9BBD298075DE00F0B2E1 /* DeveloperDiskImages.json */; };
-		635F9BC12980824E00F0B2E1 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 635F9BC02980824E00F0B2E1 /* Zip */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */; };
@@ -308,7 +307,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635F9BC12980824E00F0B2E1 /* Zip in Frameworks */,
 				63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
 				635F9BBC297F3BE300F0B2E1 /* Downloader in Frameworks */,
@@ -916,7 +914,6 @@
 				63D734FD27E90C800044918C /* CLogger */,
 				635F9BAF297F36D100F0B2E1 /* LocationSpoofer */,
 				635F9BBB297F3BE300F0B2E1 /* Downloader */,
-				635F9BC02980824E00F0B2E1 /* Zip */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -995,7 +992,6 @@
 				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
 				63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 				635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */,
-				635F9BBF2980824E00F0B2E1 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -1658,14 +1654,6 @@
 				minimumVersion = 0.0.3;
 			};
 		};
-		635F9BBF2980824E00F0B2E1 /* XCRemoteSwiftPackageReference "Zip" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/Zip.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/SuggestionPopup";
@@ -1699,11 +1687,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */;
 			productName = Downloader;
-		};
-		635F9BC02980824E00F0B2E1 /* Zip */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 635F9BBF2980824E00F0B2E1 /* XCRemoteSwiftPackageReference "Zip" */;
-			productName = Zip;
 		};
 		63AEA2F1259AB41D0084F74B /* SuggestionPopup */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -10,21 +10,9 @@ import Foundation
 import AppKit
 import Downloader
 import CLogger
-//import Zip
 
 let kDevDiskTaskID = "DevDisk"
 let kDevSignTaskID = "DevSign"
-//let kDevZipTaskID = "DevZip"
-
-/*private class UnzipTask: NSObject, ProgressTask {
-    @objc dynamic var progress: Double = 0
-    var showSpinner: Bool { true }
-    var showProgress: Bool { true }
-
-    func description(forProgress: Double) -> String {
-        "DEVARCHIVE_EXTRACT_DESC".localized
-    }
-}*/
 
 public enum DownloadStatus: Int {
     case failure
@@ -75,8 +63,10 @@ class DownloadListViewController: NSViewController {
     /// - Parameter version: version string for the iOS device, e.g. 13.0
     /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
     private func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> [String: [URL]] {
+        // TODO: This should just access the file from the disk
+        // TODO: We should first start a task to download the file
         // Check if the plist file and the platform inside the file can be found.
-        guard let jsonPath = Bundle.main.url(forResource: "DeveloperDiskImages", withExtension: "json"),
+        guard let jsonPath = URL(string: kDeveloperDiskImagesInfo),
               let jsonData = try? Data(contentsOf: jsonPath, options: .mappedIfSafe),
               let jsonResult = try? JSONSerialization.jsonObject(with: jsonData) as? JSonType else {
             logError("DeveloperDiskImages.json not found!")
@@ -107,38 +97,25 @@ class DownloadListViewController: NSViewController {
               let devSignPath = manager.getDeveloperDiskImageSignature(os: os, version: iOSVersion) else {
             return false
         }
-        //let devZipPath = FileManager.default.temporaryDirectory
 
         // Get the download links from the internal plist file.
         let links = self.getDeveloperDiskImageDownloadLinks(os: os, version: iOSVersion)
 
-        //let zipLinks = links["Archive"] ?? []
         let diskLinks = links["Image"] ?? []
         let signLinks = links["Signature"] ?? []
 
-        var tasks: [DownloadTask] = []
         // We use the first download link. In theory we could add multiple links for the same image.
-        /*if !zipLinks.isEmpty {
-            tasks += [
-                DownloadTask(dID: kDevZipTaskID, source: zipLinks[0], destination: devZipPath,
-                             description: "DEVARCHIVE_DOWNLOAD_DESC".localized)
-            ]
-        } else */
-
-        if !diskLinks.isEmpty && !signLinks.isEmpty {
-            tasks += [
-                DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDmgPath,
-                             description: "DEVDISK_DOWNLOAD_DESC".localized),
-                DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSignPath,
-                             description: "DEVSIGN_DOWNLOAD_DESC".localized)
-            ]
-        } else {
+        guard !diskLinks.isEmpty && !signLinks.isEmpty else {
             return false
         }
 
-        tasks.forEach { [weak self] in
-            self?.progressListView?.add(task: $0)
-        }
+        let dmgTask = DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDmgPath,
+                                   description: "DEVDISK_DOWNLOAD_DESC".localized)
+        let sigTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSignPath,
+                                   description: "DEVSIGN_DOWNLOAD_DESC".localized)
+
+        self.progressListView?.add(task: dmgTask)
+        self.progressListView?.add(task: sigTask)
 
         return true
     }
@@ -192,39 +169,6 @@ extension DownloadListViewController: DownloaderDelegate {
         self.downloadFinishedAction?(.cancel)
     }
 
-    /*private func unzip(devArchive: URL, destination: URL, progress: ((Double) -> Void)?) -> Bool {
-        do {
-            try Zip.unzipFile(
-                devArchive,
-                destination: destination,
-                overwrite: true,
-                password: nil,
-                progress: progress
-            )
-            return true
-        } catch {
-            return false
-        }
-    }
-
-    func moveDeveloperDiskImageFiles(from dir: URL) -> Bool {
-        let manager = FileManager.default
-        let dmgFiles = manager.findAllFiles(at: dir, withExtension: ".dmg")
-        let sigFiles = manager.findAllFiles(at: dir, withExtension: ".signature")
-        print(dmgFiles, sigFiles)
-
-        /*guard let dmgDest = manager.getDeveloperDiskImage(os: , version: )
-            !dmgFiles.isEmpty, !sigFiles.isEmpty else { return false }*/
-
-        do {
-            try manager.moveItem(at: dmgFiles[0], to: destination)
-            try manager.moveItem(at: sigFiles[0], to: destination)
-        } catch let error {
-            print(error)
-        }
-        return true
-    }*/
-
     func downloadFinished(downloader: Downloader, task: DownloadTask) {
         // Give the progress fill animation some time to finish
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
@@ -234,32 +178,8 @@ extension DownloadListViewController: DownloaderDelegate {
         guard downloader.tasks.count == 0 else { return }
         if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
 
-        // we only got a single task if we download a zip
-        /*var success = true
-        if task.dID == kDevZipTaskID {
-            let unzipTask = UnzipTask()
-            DispatchQueue.main.async { [weak self] in
-                self?.progressListView?.add(task: unzipTask)
-            }
-
-            let tmpDir = task.destination.deletingLastPathComponent()
-            success = self.unzip(devArchive: task.destination, destination: tmpDir) { [weak self] progress in
-                unzipTask.progress = progress
-
-                if (progress >= 1.0) {
-                    if !(self?.moveDeveloperDiskImageFiles(from: tmpDir) ?? true) {
-                        print("Could not move files...")
-                    }
-                    DispatchQueue.main.async {
-                        self?.progressListView?.remove(task: unzipTask)
-                    }
-                }
-            }
-        }*/
-
         // Give the remove animation some time to finish
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            // self.downloadFinishedAction?(success ? .success : .failure)
             self.downloadFinishedAction?(.success)
         }
     }
