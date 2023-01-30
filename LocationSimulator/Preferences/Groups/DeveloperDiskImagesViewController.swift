@@ -9,11 +9,17 @@
 import AppKit
 import CLogger
 
+let kDevDiskDefinitionUpdateKey: String = "com.schlaubischlump.locationsimulator.lastdeveloperdiskimagedefintionupdate"
 let kCustomSupportDirectoryKey: String = "com.schlaubischlump.locationsimulator.customsupportdirectory"
 let kCustomSupportDirectoryEnabledKey: String = "com.schlaubischlump.locationsimulator.customsupportdirectoryenabled"
 
 // Extend the UserDefaults with all keys relevant for this tab.
 extension UserDefaults {
+    @objc dynamic var lastDeveloperDiskDefinitionUpdate: Date {
+        get { Date(timeIntervalSince1970: self.double(forKey: kDevDiskDefinitionUpdateKey)) }
+        set { self.setValue(newValue.timeIntervalSince1970, forKey: kDevDiskDefinitionUpdateKey) }
+    }
+
     @objc dynamic var customSupportDirectoryEnabled: Bool {
         get { return self.bool(forKey: kCustomSupportDirectoryEnabledKey) }
         set { self.setValue(newValue, forKey: kCustomSupportDirectoryEnabledKey) }
@@ -54,6 +60,7 @@ extension UserDefaults {
     /// Register the default NSUserDefault values.
     func registerDeveloperDiskImagesDefaultValues() {
         UserDefaults.standard.register(defaults: [
+            kDevDiskDefinitionUpdateKey: 0.0,
             kCustomSupportDirectoryKey: URL(fileURLWithPath: ""),
             kCustomSupportDirectoryEnabledKey: false
         ])

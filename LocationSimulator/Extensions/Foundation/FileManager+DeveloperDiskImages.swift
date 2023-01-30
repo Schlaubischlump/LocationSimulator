@@ -47,6 +47,13 @@ extension FileManager {
         return customSupportDirEnabled && customSupportDir != nil
     }
 
+    public var developerDiskImageDownloadDefinitionsFile: URL? {
+        guard let supportDir = self.getSupportDirectory(create: true) else {
+            return nil
+        }
+        return supportDir.appendingPathComponent("DeveloperDiskImages.json", isDirectory: false)
+    }
+
     /// Get the path to the systems Application Support directory for this application.
     /// - Parameter create: True: try to create the folder if it does not exist, False: just return the path
     /// - Return: Path to the Application Support directory for this application.

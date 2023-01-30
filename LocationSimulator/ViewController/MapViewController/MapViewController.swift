@@ -371,7 +371,7 @@ class MapViewController: NSViewController {
         self.contentView?.showErrorInidcator()
 
         // Run the pairing in a background thread
-        // We do not use a DispatchQueue here on purpose ! Nesting to DispatchQueue.main.async calls will block, since
+        // We do not use a DispatchQueue here on purpose ! Nesting two DispatchQueue.main.async calls will block, since
         // since the inner call will wait for the outer call to finish. When we present the Alert we already use a
         // DispatchQueue, thats why we use performSelector(inBackground:) here.
         self.performSelector(inBackground: #selector(self.startPairing), with: nil)

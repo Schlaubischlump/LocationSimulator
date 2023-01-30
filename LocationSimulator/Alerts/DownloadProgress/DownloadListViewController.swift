@@ -11,6 +11,7 @@ import AppKit
 import Downloader
 import CLogger
 
+let kUpdateDevTaskID = "UpdateDev"
 let kDevDiskTaskID = "DevDisk"
 let kDevSignTaskID = "DevSign"
 
@@ -30,6 +31,9 @@ class DownloadListViewController: NSViewController {
 
     /// The downloader instance to manage.
     public let downloader: Downloader = Downloader()
+
+    /// The action to perform when the update of the developer disk image links is finished.
+    public var updateFinishedAction: DownloadCompletionHandler?
 
     /// The action to perform when the download is finished.
     public var downloadFinishedAction: DownloadCompletionHandler?
@@ -63,10 +67,8 @@ class DownloadListViewController: NSViewController {
     /// - Parameter version: version string for the iOS device, e.g. 13.0
     /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
     private func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> [String: [URL]] {
-        // TODO: This should just access the file from the disk
-        // TODO: We should first start a task to download the file
         // Check if the plist file and the platform inside the file can be found.
-        guard let jsonPath = URL(string: kDeveloperDiskImagesInfo),
+        guard let jsonPath = FileManager.default.developerDiskImageDownloadDefinitionsFile,
               let jsonData = try? Data(contentsOf: jsonPath, options: .mappedIfSafe),
               let jsonResult = try? JSONSerialization.jsonObject(with: jsonData) as? JSonType else {
             logError("DeveloperDiskImages.json not found!")
@@ -90,6 +92,45 @@ class DownloadListViewController: NSViewController {
         }
     }
 
+    /// Update the DeveloperDiskImage download links if required.
+    /// - Return: true on success, false otherwise
+    @discardableResult
+    @objc func updateDeveloperDiskImageDownloadLinks() -> Bool {
+        // Only update once an hour
+        let lastUpdateDate = UserDefaults.standard.lastDeveloperDiskDefinitionUpdate
+        guard abs(lastUpdateDate.timeIntervalSinceNow) >= 300 else {
+            DispatchQueue.main.async {
+                self.updateFinishedAction?(.success)
+            }
+            return true
+        }
+
+        // If we can not get the path to store the definition file we just fail right here
+        guard let src = URL(string: kDeveloperDiskImagesInfo),
+              let dest = FileManager.default.developerDiskImageDownloadDefinitionsFile else {
+            DispatchQueue.main.async {
+                self.updateFinishedAction?(.failure)
+            }
+            return false
+        }
+
+        // Start the update process
+        let descr = "DEVDISK_UPDATE_DESC".localized
+        let updateTask = DownloadTask(dID: kUpdateDevTaskID, source: src, destination: dest, description: descr)
+        self.progressListView?.add(task: updateTask)
+
+        self.isAccessingSupportDir = FileManager.default.startAccessingSupportDirectory()
+        self.isDownloading = true
+        self.downloader.start(updateTask)
+
+        return true
+    }
+
+    /// Prepare the download of a DeveloperDiskImage and the correspondign signature file.
+    /// - Parameter os: the platform or operating system e.g. iPhone OS
+    /// - Parameter version: version string for the iOS device, e.g. 13.0
+    /// - Return: true on success, false otherwise
+    @discardableResult
     @objc func prepareDownload(os: String, iOSVersion: String) -> Bool {
         // Check if the path for the image and signature file can be created.
         let manager = FileManager.default
@@ -97,7 +138,6 @@ class DownloadListViewController: NSViewController {
               let devSignPath = manager.getDeveloperDiskImageSignature(os: os, version: iOSVersion) else {
             return false
         }
-
         // Get the download links from the internal plist file.
         let links = self.getDeveloperDiskImageDownloadLinks(os: os, version: iOSVersion)
 
@@ -105,19 +145,29 @@ class DownloadListViewController: NSViewController {
         let signLinks = links["Signature"] ?? []
 
         // We use the first download link. In theory we could add multiple links for the same image.
-        guard !diskLinks.isEmpty && !signLinks.isEmpty else {
-            return false
+        var diskLink: URL!
+        var signLink: URL!
+        var res: Bool = true
+
+        if diskLinks.isEmpty || signLinks.isEmpty {
+            // Add some dummy task to make the UI look nicer
+            diskLink = URL(string: kProjectWebsite)!
+            signLink = URL(string: kProjectWebsite)!
+            res = false
+        } else {
+            diskLink = diskLinks[0]
+            signLink = signLinks[0]
         }
 
-        let dmgTask = DownloadTask(dID: kDevDiskTaskID, source: diskLinks[0], destination: devDmgPath,
+        let dmgTask = DownloadTask(dID: kDevDiskTaskID, source: diskLink, destination: devDmgPath,
                                    description: "DEVDISK_DOWNLOAD_DESC".localized)
-        let sigTask = DownloadTask(dID: kDevSignTaskID, source: signLinks[0], destination: devSignPath,
+        let sigTask = DownloadTask(dID: kDevSignTaskID, source: signLink, destination: devSignPath,
                                    description: "DEVSIGN_DOWNLOAD_DESC".localized)
 
         self.progressListView?.add(task: dmgTask)
         self.progressListView?.add(task: sigTask)
 
-        return true
+        return res
     }
 
     /// Start the download of the DeveloperDiskImages.
@@ -166,7 +216,13 @@ extension DownloadListViewController: DownloaderDelegate {
         guard downloader.tasks.count == 0 else { return }
 
         if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
-        self.downloadFinishedAction?(.cancel)
+        self.isDownloading = false
+
+        if task.dID == kUpdateDevTaskID {
+            self.updateFinishedAction?(.cancel)
+        } else {
+            self.downloadFinishedAction?(.cancel)
+        }
     }
 
     func downloadFinished(downloader: Downloader, task: DownloadTask) {
@@ -180,12 +236,26 @@ extension DownloadListViewController: DownloaderDelegate {
 
         // Give the remove animation some time to finish
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.downloadFinishedAction?(.success)
+            self.isDownloading = false
+
+            if task.dID == kUpdateDevTaskID {
+                UserDefaults.standard.lastDeveloperDiskDefinitionUpdate = Date()
+                UserDefaults.standard.synchronize()
+                self.updateFinishedAction?(.success)
+            } else {
+                self.downloadFinishedAction?(.success)
+            }
         }
     }
 
     func downloadError(downloader: Downloader, task: DownloadTask, error: Error) {
         if self.isAccessingSupportDir { FileManager.default.stopAccessingSupportDirectory() }
-        self.downloadFinishedAction?(.failure)
+        self.isDownloading = false
+
+        if task.dID == kUpdateDevTaskID {
+            self.updateFinishedAction?(.failure)
+        } else {
+            self.downloadFinishedAction?(.failure)
+        }
     }
 }

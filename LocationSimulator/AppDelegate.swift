@@ -13,15 +13,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var menubarController: MenubarController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Register all the default setting values for this application.
-        let defaults = UserDefaults.standard
-        defaults.registerInfoDefaultValues()
-        defaults.registerGeneralDefaultValues()
-        defaults.registerNetworkDefaultValues()
-        defaults.registerMapTypeDefaultValue()
-        defaults.registerRecentLocationDefaultValues()
-        defaults.registerDeveloperDiskImagesDefaultValues()
-
         self.menubarController.loadDefaults()
     }
 

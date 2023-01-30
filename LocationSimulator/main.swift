@@ -14,6 +14,15 @@ import LocationSpoofer
 // Init the logger before we start the application.
 FileManager.default.initLogger()
 
+// Register all the default setting values for this application.
+let defaults = UserDefaults.standard
+defaults.registerInfoDefaultValues()
+defaults.registerGeneralDefaultValues()
+defaults.registerNetworkDefaultValues()
+defaults.registerMapTypeDefaultValue()
+defaults.registerRecentLocationDefaultValues()
+defaults.registerDeveloperDiskImagesDefaultValues()
+
 /// Start the application without any UI and without any dock or menubar entry. This is useful if you want to use the
 /// application as an AppleScript service.
 func launchWithoutUI() {

@@ -61,11 +61,6 @@ class DownloadProgressAlert: NSAlert {
     /// block until the operation is finished.
     /// - Parameter window: the window to present the alert in.
     func runSheetModal(forWindow window: NSWindow) -> NSApplication.ModalResponse {
-        // Prepare the download
-        guard self.downloadListViewController.prepareDownload(os: self.os, iOSVersion: self.version) else {
-            return .failed
-        }
-
         // Add a callback when the download finished to dismiss the window.
         self.downloadListViewController.downloadFinishedAction = { [weak self] status in
             var response: NSApplication.ModalResponse = .failed
@@ -76,18 +71,40 @@ class DownloadProgressAlert: NSAlert {
             }
 
             // Stop the modal. Make sure we use the correct runloop and thread by using performSelector.
-            guard let strongSelf = self else { return }
-            strongSelf.performSelector(onMainThread: #selector(strongSelf.stopModal(_:)),
-                                       with: NSNumber(value: response.rawValue), waitUntilDone: true)
+            guard let `self` = self else { return }
+            self.performSelector(onMainThread: #selector(self.stopModal(_:)),
+                                 with: NSNumber(value: response.rawValue), waitUntilDone: true)
         }
+
+        // Update the download links for the developer disk images. This is allowed to fail
+        self.downloadListViewController.updateFinishedAction = { [weak self] status in
+            guard let `self` = self else { return }
+
+            var response: NSApplication.ModalResponse?
+            if status == .cancel {
+                // Update was canceled
+                response = .cancel
+            } else if !self.downloadListViewController.prepareDownload(os: self.os, iOSVersion: self.version) {
+                // Prepare the download
+                response = .failed
+            } else {
+                self.downloadListViewController.startDownload()
+            }
+
+            if let response = response {
+                // Stop the modal. Make sure we use the correct runloop and thread by using performSelector.
+                self.performSelector(onMainThread: #selector(self.stopModal(_:)),
+                                     with: NSNumber(value: response.rawValue), waitUntilDone: true)
+            }
+        }
+
+        // Update the download links for the developer disk images. This is allowed to fail
+        self.downloadListViewController.updateDeveloperDiskImageDownloadLinks()
 
         // Show the sheet. Make sure we use the correct runloop and thread by using performSelector.
         self.performSelector(onMainThread: #selector(showModal(forWindow:)), with: window, waitUntilDone: true)
         // Just grab the last sheet... let's hope that no other sheet for some reason came in between.
         let sheet = window.sheets.last
-
-        // Start the download. This can not fail, because we prepared the download.
-        self.downloadListViewController.startDownload()
 
         // Wait till modal completion.
         let response = NSApp.runModal(for: window)

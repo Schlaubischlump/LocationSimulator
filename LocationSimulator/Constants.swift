@@ -9,8 +9,9 @@
 import Foundation
 
 // let kAppName = Bundle.main.infoDictionary?["CFBundleName"] as? String
-let kAppVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-// let kAppVersionTag = kAppVersion != nil ? "v\(kAppVersion!)" : nil
+let kAppShortVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0.0"
+let kAppBuildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0"
+let kAppVersion = "v\(kAppShortVersion).\(kAppBuildVersion)"
 
 let kUser = "Schlaubischlump"
 let kRepo = "LocationSimulator"
