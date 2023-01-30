@@ -96,7 +96,7 @@ class DownloadListViewController: NSViewController {
     /// - Return: true on success, false otherwise
     @discardableResult
     @objc func updateDeveloperDiskImageDownloadLinks() -> Bool {
-        // Only update once an hour
+        // Only update once every 5 minutes
         let lastUpdateDate = UserDefaults.standard.lastDeveloperDiskDefinitionUpdate
         guard abs(lastUpdateDate.timeIntervalSinceNow) >= 300 else {
             DispatchQueue.main.async {
