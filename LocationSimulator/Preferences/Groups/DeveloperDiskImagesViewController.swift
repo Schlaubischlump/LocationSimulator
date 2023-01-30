@@ -60,7 +60,7 @@ extension UserDefaults {
     /// Register the default NSUserDefault values.
     func registerDeveloperDiskImagesDefaultValues() {
         UserDefaults.standard.register(defaults: [
-            kDevDiskDefinitionUpdateKey: 0.0,
+            kDevDiskDefinitionUpdateKey: Date(timeIntervalSince1970: 0),
             kCustomSupportDirectoryKey: URL(fileURLWithPath: ""),
             kCustomSupportDirectoryEnabledKey: false
         ])
