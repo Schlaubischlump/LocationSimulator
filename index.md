@@ -34,6 +34,14 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.1.9.8
+⚠️ Language support other than english, german and czech is partially incomplete
+- 'Set Speed...' menu item
+- Support to dynamically update download links 
+- Fixes a critical bug that crashes the app when changing the location via the menu item
+- Fixes a bug where network devices are not detected on first app launch
+- iOS 16.3 support
+
 ### v0.1.9.7
 ⚠️ Language support other than english, german and czech is partially incomplete
 - iOS 16.2 support
