@@ -32,7 +32,7 @@ enum DeviceStatus {
 
     /// List with all MenubarItems to enable for this state.
     public var enabledMenubarItems: [MenubarItem] {
-        var navigationItems: [NavigationMenubarItem] = [.walk, .cycle, .drive]
+        var navigationItems: [NavigationMenubarItem] = [.walk, .cycle, .drive, .setSpeed]
         let fileMenuItems: [FileMenubarItem] = [.openGPXFile]
         var viewMenuItems: [ViewMenubarItem] = [.toggleSidebar, .explore, .hybrid, .satellite]
 

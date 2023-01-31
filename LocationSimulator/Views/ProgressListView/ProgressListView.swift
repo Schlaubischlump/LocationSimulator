@@ -39,7 +39,9 @@ class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
         self.scrollView.backgroundColor = .clear
         self.scrollView.drawsBackground = false
         self.tableView.backgroundColor = .clear
-        self.tableView.gridStyleMask = .solidHorizontalGridLineMask
+        if #available(OSX 11.0, *) {
+            self.tableView.gridStyleMask = .solidHorizontalGridLineMask
+        }
 
         let col = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "col"))
         self.tableView.addTableColumn(col)
@@ -47,6 +49,7 @@ class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
         self.scrollView.documentView = self.tableView
         self.scrollView.hasHorizontalScroller = false
         self.scrollView.hasVerticalScroller = true
+        self.scrollView.autohidesScrollers = true
         self.scrollView.borderType = .noBorder
 
         self.addSubview(self.scrollView)

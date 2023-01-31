@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -43,16 +43,17 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.long" id="waT-Z3-5fx">
+                        <binding destination="-2" name="value" keyPath="self.long" id="wPP-mL-U3p">
                             <dictionary key="options">
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                 <bool key="NSValidatesImmediately" value="YES"/>
+                                <string key="NSValueTransformerName">LSLongitudeValueTransformer</string>
                             </dictionary>
                         </binding>
                     </connections>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5SX-XR-2LT" userLabel="Stepper Long" customClass="LongStepper" customModule="LocationSimulator" customModuleProvider="target">
-                    <rect key="frame" x="312" y="-2" width="19" height="27"/>
+                    <rect key="frame" x="312" y="-3" width="19" height="29"/>
                     <stepperCell key="cell" continuous="YES" alignment="left" minValue="-180" maxValue="180" id="kCI-jH-kf7"/>
                     <connections>
                         <binding destination="-2" name="value" keyPath="self.long" id="Bv3-gS-3sm">
@@ -86,16 +87,17 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="self.lat" id="gFB-EY-5tE">
+                        <binding destination="-2" name="value" keyPath="self.lat" id="pA2-Om-Mmn">
                             <dictionary key="options">
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                 <bool key="NSValidatesImmediately" value="YES"/>
+                                <string key="NSValueTransformerName">LSLatitudeValueTransformer</string>
                             </dictionary>
                         </binding>
                     </connections>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CUV-Km-pVe" userLabel="Stepper Lat" customClass="LatStepper" customModule="LocationSimulator" customModuleProvider="target">
-                    <rect key="frame" x="130" y="-2" width="19" height="27"/>
+                    <rect key="frame" x="130" y="-3" width="19" height="29"/>
                     <stepperCell key="cell" continuous="YES" alignment="left" minValue="-85" maxValue="85" id="C04-xh-M4v"/>
                     <connections>
                         <binding destination="-2" name="value" keyPath="self.lat" id="dYN-FP-5RR">

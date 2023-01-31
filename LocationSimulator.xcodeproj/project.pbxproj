@@ -74,6 +74,14 @@
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
 		6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */; };
+		636FD9DF2989A8F7004FBFFF /* SpeedSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FD9DB2989A8F7004FBFFF /* SpeedSelectionView.swift */; };
+		636FD9E02989A8F7004FBFFF /* SpeedFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FD9DC2989A8F7004FBFFF /* SpeedFormatter.swift */; };
+		636FD9E12989A8F7004FBFFF /* SpeedStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FD9DD2989A8F7004FBFFF /* SpeedStepper.swift */; };
+		636FD9E22989A8F7004FBFFF /* SpeedSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636FD9DE2989A8F7004FBFFF /* SpeedSelectionView.xib */; };
+		636FD9E42989ADF3004FBFFF /* SpeedSelectionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FD9E32989ADF2004FBFFF /* SpeedSelectionAlert.swift */; };
+		636FD9E62989B717004FBFFF /* SpeedValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FD9E52989B717004FBFFF /* SpeedValueTransformer.swift */; };
+		636FD9E82989B840004FBFFF /* CoordinateValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FD9E72989B840004FBFFF /* CoordinateValueTransformer.swift */; };
+		636FD9EA2989BBAB004FBFFF /* CLLocationSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636FD9E92989BBAB004FBFFF /* CLLocationSpeed.swift */; };
 		637169D627FD880200386021 /* LocationSpoofer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D527FD880200386021 /* LocationSpoofer+Extension.swift */; };
 		637169D827FD8D0A00386021 /* Device+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D727FD8D0A00386021 /* Device+Extension.swift */; };
 		637169DA27FF1C2400386021 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637169D927FF1C2400386021 /* main.swift */; };
@@ -220,6 +228,15 @@
 		6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
 		6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMultiPoint+Extension.swift"; sourceTree = "<group>"; };
 		6367802D27FA37BC00233CC7 /* PreferenceViewControllerBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewControllerBase.swift; sourceTree = "<group>"; };
+		636FD9CE29887EBA004FBFFF /* LocationSimulator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LocationSimulator-Bridging-Header.h"; sourceTree = "<group>"; };
+		636FD9DB2989A8F7004FBFFF /* SpeedSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedSelectionView.swift; sourceTree = "<group>"; };
+		636FD9DC2989A8F7004FBFFF /* SpeedFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedFormatter.swift; sourceTree = "<group>"; };
+		636FD9DD2989A8F7004FBFFF /* SpeedStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedStepper.swift; sourceTree = "<group>"; };
+		636FD9DE2989A8F7004FBFFF /* SpeedSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeedSelectionView.xib; sourceTree = "<group>"; };
+		636FD9E32989ADF2004FBFFF /* SpeedSelectionAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedSelectionAlert.swift; sourceTree = "<group>"; };
+		636FD9E52989B717004FBFFF /* SpeedValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedValueTransformer.swift; sourceTree = "<group>"; };
+		636FD9E72989B840004FBFFF /* CoordinateValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateValueTransformer.swift; sourceTree = "<group>"; };
+		636FD9E92989BBAB004FBFFF /* CLLocationSpeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationSpeed.swift; sourceTree = "<group>"; };
 		637169D527FD880200386021 /* LocationSpoofer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationSpoofer+Extension.swift"; sourceTree = "<group>"; };
 		637169D727FD8D0A00386021 /* Device+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Extension.swift"; sourceTree = "<group>"; };
 		637169D927FF1C2400386021 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -342,6 +359,7 @@
 		13BA350D20A433ED00A0431C = {
 			isa = PBXGroup;
 			children = (
+				636FD9CE29887EBA004FBFFF /* LocationSimulator-Bridging-Header.h */,
 				6347E1F5281ACACA00A7F9C9 /* Help */,
 				635722FE28EDD27A00E20D58 /* Localization */,
 				13BA351820A433EE00A0431C /* LocationSimulator */,
@@ -475,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				633C74C225AA293300161DB4 /* CoordinateSelectionView.xib */,
+				636FD9E72989B840004FBFFF /* CoordinateValueTransformer.swift */,
 				632C466023F4CC6A004E5092 /* CoordinateFormatter.swift */,
 				632C466223F4D9C8004E5092 /* CoordinateStepper.swift */,
 				632C465823F4B611004E5092 /* CoordinateSelectionView.swift */,
@@ -576,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */,
+				636FD9E92989BBAB004FBFFF /* CLLocationSpeed.swift */,
 			);
 			path = CoreLocation;
 			sourceTree = "<group>";
@@ -584,12 +604,13 @@
 			isa = PBXGroup;
 			children = (
 				63525957258E8FC80031F289 /* Common */,
-				63D5DF3627D8F0F400F2DCD3 /* AddDeveloperDiskImageView */,
-				632C466623F76881004E5092 /* CoordinateSelectionView */,
-				63FDE21B258F9D2400917412 /* GPXSelectionView */,
 				630C0C9B27DE6DF400C3D5A9 /* HUD */,
 				63720622259121C600293EA8 /* MapView */,
 				637206262591418F00293EA8 /* ProgressListView */,
+				63D5DF3627D8F0F400F2DCD3 /* AddDeveloperDiskImageView */,
+				636FD9D22989A8CC004FBFFF /* SpeedSelectionView */,
+				632C466623F76881004E5092 /* CoordinateSelectionView */,
+				63FDE21B258F9D2400917412 /* GPXSelectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -649,6 +670,18 @@
 			path = Downloader;
 			sourceTree = "<group>";
 		};
+		636FD9D22989A8CC004FBFFF /* SpeedSelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				636FD9DE2989A8F7004FBFFF /* SpeedSelectionView.xib */,
+				636FD9E52989B717004FBFFF /* SpeedValueTransformer.swift */,
+				636FD9DC2989A8F7004FBFFF /* SpeedFormatter.swift */,
+				636FD9DD2989A8F7004FBFFF /* SpeedStepper.swift */,
+				636FD9DB2989A8F7004FBFFF /* SpeedSelectionView.swift */,
+			);
+			path = SpeedSelectionView;
+			sourceTree = "<group>";
+		};
 		63720622259121C600293EA8 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +708,7 @@
 				635F9BA8297D4EB300F0B2E1 /* DownloadProgress */,
 				6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */,
 				6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */,
+				636FD9E32989ADF2004FBFFF /* SpeedSelectionAlert.swift */,
 				63D5DF3B27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift */,
 			);
 			path = Alerts;
@@ -949,7 +983,7 @@
 				TargetAttributes = {
 					13BA351520A433EE00A0431C = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1420;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
@@ -1013,6 +1047,7 @@
 				6357231028EDD27A00E20D58 /* MainMenuTranslations.plist in Resources */,
 				6357231128EDD27A00E20D58 /* MainMenuTranslate.py in Resources */,
 				6357230E28EDD27A00E20D58 /* LICENSE in Resources */,
+				636FD9E22989A8F7004FBFFF /* SpeedSelectionView.xib in Resources */,
 				633C750D25AA8C6800161DB4 /* Main.storyboard in Resources */,
 				63D5DF3A27D8F14B00F2DCD3 /* AddDeveloperDiskImageView.xib in Resources */,
 				635F9BBE298075DE00F0B2E1 /* DeveloperDiskImages.json in Resources */,
@@ -1107,6 +1142,8 @@
 				635CF723280EC3D30092A99B /* HelpMenubarItem.swift in Sources */,
 				63D7350027EB74F10044918C /* Constants.swift in Sources */,
 				6311B799230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift in Sources */,
+				636FD9E02989A8F7004FBFFF /* SpeedFormatter.swift in Sources */,
+				636FD9DF2989A8F7004FBFFF /* SpeedSelectionView.swift in Sources */,
 				63C799FD259659740099B794 /* InfoViewController.swift in Sources */,
 				633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */,
 				63525922258B74290031F289 /* NavigationMenuabrItem.swift in Sources */,
@@ -1120,6 +1157,7 @@
 				63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */,
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				635F9B9B2978A7A700F0B2E1 /* ProgressListView.swift in Sources */,
+				636FD9E42989ADF3004FBFFF /* SpeedSelectionAlert.swift in Sources */,
 				638B909F254B514C00A520E0 /* PreferenceWindowController.swift in Sources */,
 				63D5DF4027D969E800F2DCD3 /* DragAndDropBox.swift in Sources */,
 				6372E3762824772F00188416 /* Application.swift in Sources */,
@@ -1132,6 +1170,7 @@
 				630C0C9A27DE4CC500C3D5A9 /* Float+Extension.swift in Sources */,
 				6372063C25915F0900293EA8 /* CoordinateSelectionAlert.swift in Sources */,
 				6372063F25916BEE00293EA8 /* GPXSelectionAlert.swift in Sources */,
+				636FD9E12989A8F7004FBFFF /* SpeedStepper.swift in Sources */,
 				630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */,
 				630C0C9E27DE72A600C3D5A9 /* FileManager+License.swift in Sources */,
 				633A460122F996DE005B3BE0 /* MapViewController.swift in Sources */,
@@ -1155,8 +1194,10 @@
 				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
 				634069D829343F580045673A /* NSTextField+Extension.swift in Sources */,
 				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
+				636FD9E82989B840004FBFFF /* CoordinateValueTransformer.swift in Sources */,
 				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
+				636FD9EA2989BBAB004FBFFF /* CLLocationSpeed.swift in Sources */,
 				63525927258B74750031F289 /* RecentLocationMenubarItem.swift in Sources */,
 				6382B57F2939686F0061D484 /* ProgressBar.swift in Sources */,
 				635CF71B280E03AB0092A99B /* DonateDetailViewController.swift in Sources */,
@@ -1176,6 +1217,7 @@
 				63D5DF3827D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift in Sources */,
 				631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */,
 				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,
+				636FD9E62989B717004FBFFF /* SpeedValueTransformer.swift in Sources */,
 				631EC00B2594C1D60066D5BB /* NSViewController+Extension.swift in Sources */,
 				637169D627FD880200386021 /* LocationSpoofer+Extension.swift in Sources */,
 				638B90A7254B5A4400A520E0 /* NetworkViewController.swift in Sources */,
@@ -1297,6 +1339,7 @@
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1355,6 +1398,7 @@
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
@@ -1386,7 +1430,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LocationSimulator-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1419,7 +1463,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.davidklopp.locationsimulator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LocationSimulator-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -1478,6 +1522,7 @@
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Homebrew;
@@ -1510,7 +1555,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LocationSimulator-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Homebrew;

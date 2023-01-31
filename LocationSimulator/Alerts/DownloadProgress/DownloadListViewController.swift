@@ -68,7 +68,8 @@ class DownloadListViewController: NSViewController {
     /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
     private func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> [String: [URL]] {
         // Check if the plist file and the platform inside the file can be found.
-        guard let jsonPath = FileManager.default.developerDiskImageDownloadDefinitionsFile,
+        let manager = FileManager.default
+        guard let jsonPath = manager.developerDiskImageDownloadDefinitionsFile,
               let jsonData = try? Data(contentsOf: jsonPath, options: .mappedIfSafe),
               let jsonResult = try? JSONSerialization.jsonObject(with: jsonData) as? JSonType else {
             logError("DeveloperDiskImages.json not found!")

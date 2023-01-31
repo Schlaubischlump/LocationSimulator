@@ -85,22 +85,7 @@ class MenubarController: NSResponder {
                   let windowController = viewController.view.window?.windowController,
                   windowController == self?.windowController,
                   let newState = notification.userInfo?["status"] as? DeviceStatus else { return }
-            // Enable the items relevant for this state.
-            newState.allMenubarItems.forEach { $0.disable() }
-            newState.enabledMenubarItems.forEach { $0.enable() }
-            // Save the current state.
-            self?.deviceStatus = newState
-            // Disable the movement controls if we are searching.
-            if self?.isSearching ?? false {
-                self?.disableMoveControls()
-            }
-            // Change the naming of the right and left arrow according to our use case
-            let traditional = userDefaults.movementControlBehaviour == .traditional
-            if newState == .auto || traditional {
-                NavigationMenubarItem.useClockwiseCounterClockwiseLabels()
-            } else {
-                NavigationMenubarItem.useLeftRightLabels()
-            }
+            self?.apply(status: newState)
         }
 
         // Observe the search status.
@@ -132,7 +117,30 @@ class MenubarController: NSResponder {
 
     // MARK: - Load defaults
 
+    /// Apply a new device status and update all menubar items.
+    private func apply(status: DeviceStatus) {
+        let userDefaults =  UserDefaults.standard
+
+        // Enable the items relevant for this state.
+        status.allMenubarItems.forEach { $0.disable() }
+        status.enabledMenubarItems.forEach { $0.enable() }
+        // Save the current state.
+        self.deviceStatus = status
+        // Disable the movement controls if we are searching.
+        if self.isSearching {
+            self.disableMoveControls()
+        }
+        // Change the naming of the right and left arrow according to our use case
+        let traditional = userDefaults.movementControlBehaviour == .traditional
+        if status == .auto || traditional {
+            NavigationMenubarItem.useClockwiseCounterClockwiseLabels()
+        } else {
+            NavigationMenubarItem.useLeftRightLabels()
+        }
+    }
+
     public func loadDefaults() {
+        self.apply(status: self.deviceStatus)
         self.loadRecentLocations()
         NavigationMenubarItem.selectMoveItem(forMoveType: .walk)
         ViewMenubarItem.selectMapTypeItem(forMapType: UserDefaults.standard.mapType)
@@ -162,6 +170,11 @@ class MenubarController: NSResponder {
         default: return
         }
         self.windowController?.setMoveType(moveType)
+    }
+
+    /// Change the current speed
+    @IBAction func setSpeed(_ sender: NSMenuItem) {
+        self.windowController?.requestSpeedChange()
     }
 
     /// Show the `Go to Location` view.

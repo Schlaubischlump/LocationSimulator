@@ -148,6 +148,28 @@ class WindowController: NSWindowController {
         }
     }
 
+    /// Present an alert to the user to allow him to change the speed.
+    public func requestSpeedChange() {
+        guard let window = self.window, !(self.mapViewController?.isShowingAlert ?? false) else {
+            // We already present a sheet
+            NSSound.beep()
+            return
+        }
+
+        self.mapViewController?.isShowingAlert = true
+        let currentSpeed = max(self.mapViewController?.speed ?? 0, CLLocationSpeed(inKmH: kMinSpeed))
+
+        let changeSpeedAlert = SpeedSelectionAlert(defaultValue: currentSpeed)
+        changeSpeedAlert.beginSheetModal(for: window) { [weak self] (response, speed) in
+            self?.mapViewController?.isShowingAlert = false
+            if response == .OK {
+                let speedInMS = CLLocationSpeed(inKmH: speed)
+                self?.setSpeed(speedInMS)
+                self?.toolbarController.speed = speedInMS
+            }
+        }
+    }
+
     /// Request a location change to the give coordinates. If no coordinates are specified, a coordinate selection
     /// view will be shown to the user.
     /// - Parameter coord: the new coordinates.
@@ -179,7 +201,7 @@ class WindowController: NSWindowController {
 
     /// Change the current movement speed.
     /// - Parameter speed: new speed value in m/s
-    public func setSpeed(_ speed: Double) {
+    public func setSpeed(_ speed: CLLocationSpeed) {
         self.mapViewController?.speed = speed
     }
 

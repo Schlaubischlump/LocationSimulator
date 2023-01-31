@@ -55,7 +55,7 @@ class MapViewController: NSViewController {
         }
     }
 
-    var speed: Double {
+    var speed: CLLocationSpeed {
         get { return self.spoofer?.speed ?? 0 }
         set { self.spoofer?.speed = newValue }
     }

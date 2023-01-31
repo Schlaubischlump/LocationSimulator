@@ -48,7 +48,8 @@ extension FileManager {
     }
 
     public var developerDiskImageDownloadDefinitionsFile: URL? {
-        guard let supportDir = self.getSupportDirectory(create: true) else {
+        // Note: Do not store this file in the custom support directory
+        guard let supportDir = self.getAppSupportDirectory(create: true) else {
             return nil
         }
         return supportDir.appendingPathComponent("DeveloperDiskImages.json", isDirectory: false)

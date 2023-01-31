@@ -140,7 +140,7 @@ extension MapViewController: LocationSpooferDelegate {
         // Update the current application status.
         NotificationCenter.default.post(name: .StatusChanged, object: self, userInfo: [
             "device": spoofer.device,
-            "status": status
+            "status": (spoofer.currentLocation != nil) ? status : .connected
         ])
     }
 

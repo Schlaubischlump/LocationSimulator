@@ -27,6 +27,7 @@ enum NavigationMenubarItem: Int, CaseIterable, MenubarItem {
     case resetLocation          = 13
     case recentLocation         = 14
     case useMacLocation         = 15
+    case setSpeed               = 17
 
     static public var menu: NSMenu? {
         return NSApp.menu?.item(withTag: kNavigationMenuTag)?.submenu

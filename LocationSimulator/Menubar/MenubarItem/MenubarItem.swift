@@ -56,9 +56,15 @@ extension MenubarItem {
 
     /// Trigger the action of the menu item.
     @discardableResult
-    func triggerAction() -> Bool {
+    func triggerAction(highlight: Bool = false) -> Bool {
         if let item = self.item, let index = Self.menu?.index(of: item) {
-            Self.menu?.performActionForItem(at: index)
+            if !highlight && item.responds(to: #selector(item._corePerformAction)) {
+                // Internal method to trigger an action without highlight
+                item._corePerformAction()
+            } else {
+                Self.menu?.performActionForItem(at: index)
+            }
+            item._corePerformAction()
             return true
         }
         return false

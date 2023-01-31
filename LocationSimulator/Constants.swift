@@ -26,3 +26,10 @@ let kDeveloperDiskImagesInfo = "\(kGithubWebsite)/raw/info/DeveloperDiskImages.j
 // The variance to add to the movement speed. The lower bound is the minimum factor, the upper bounds the maximum
 // factor to apply to the current speed. See LocationSpoofer for more details.
 let kDefaultMovementSpeedVariance = 0.8..<1.2
+
+// Configure min and maximum speed
+let kSpeedSliderLogBase = 16.0
+let kSpeedSliderMaxExponent = 2.0
+
+let kMinSpeed = 1.0
+let kMaxSpeed = 256.0 // kSpeedSliderLogBase ^ kSpeedSliderMaxExponent

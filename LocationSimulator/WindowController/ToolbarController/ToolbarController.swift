@@ -11,9 +11,6 @@ import MapKit
 import SuggestionPopup
 import LocationSpoofer
 
-let kSpeedSliderLogBase = 16.0
-let kSpeedSliderMaxExponent = 2.0
-
 class ToolbarController: NSResponder {
     /// The corresponding windowController for this toolbar controller.
     @IBOutlet weak var windowController: WindowController?
@@ -116,10 +113,14 @@ class ToolbarController: NSResponder {
     // MARK: - Helper
 
     /// The current speed value in meters per second.
-    public var speed: Double {
-        let speedInKmH = pow(kSpeedSliderLogBase, self.speedSlider.doubleValue)
-        let speedInMS = (speedInKmH * 1000)/(60*60)
-        return speedInMS
+    public var speed: CLLocationSpeed {
+        get {
+            let speedInKmH = pow(kSpeedSliderLogBase, self.speedSlider.doubleValue)
+            return CLLocationSpeed(inKmH: speedInKmH)
+        }
+        set {
+            self.speedSlider.doubleValue = log(newValue.inKmH)/log(kSpeedSliderLogBase)
+        }
     }
 
     /// Get or set the currently selected moveType.
