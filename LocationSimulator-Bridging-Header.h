@@ -13,7 +13,6 @@
 
 @interface NSMenuItem(Private)
 - (void)_corePerformAction;
-- (BOOL)_viewHandlesEvents;
 @end
 
 #endif /* LocationSimulator_Bridging_Header_h */

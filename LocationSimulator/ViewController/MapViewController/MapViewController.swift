@@ -305,7 +305,7 @@ class MapViewController: NSViewController {
         // Download was successfull
         case .OK: return true
         // No download link available
-        case .failed: window.showError("DEVDISK_DOWNLOAD_FAILED_ERROR", message: "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG")
+        case .failed: return false
         default: break
         }
         return false
@@ -332,6 +332,8 @@ class MapViewController: NSViewController {
             let version = device.majorMinorVersion!
             if self.downloadDeveloperDiskImage(os: os, iOSVersion: version) {
                 self.connectDevice()
+            } else {
+                window.showError("DEVDISK_DOWNLOAD_FAILED_ERROR", message: "DEVDISK_DOWNLOAD_FAILED_ERROR_MSG")
             }
         case DeviceError.devMode:
             device.enabledDeveloperModeToggleInSettings()

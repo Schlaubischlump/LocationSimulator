@@ -12,7 +12,7 @@ class ProgressEntryView: NSTableCellView {
     // Use our custom progressBar, since the animations are working even when running with a different Runloop mode
     private let progressBar = ProgressBar()
 
-    private let progressSpinner: NSProgressIndicator = {
+    private lazy var progressSpinner: NSProgressIndicator = {
         let spinner = NSProgressIndicator()
         spinner.isIndeterminate = true
         spinner.style = .spinning
@@ -58,7 +58,7 @@ class ProgressEntryView: NSTableCellView {
         }
     }
 
-    private let label: NSTextField = {
+    private lazy var label: NSTextField = {
         let label = NSTextField()
         label.drawsBackground = false
         label.isEditable = false
@@ -90,7 +90,6 @@ class ProgressEntryView: NSTableCellView {
         self.addSubview(self.progressBar)
 
         self.progressBar.trackTintColor = NSColor(name: nil) { appearance in
-            // TODO: How does this look on catalina ?
             let isDarkMode = appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua
             let colorValue = isDarkMode ? 0.28 : 0.98
             return NSColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1.0)

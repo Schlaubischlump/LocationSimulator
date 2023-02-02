@@ -59,4 +59,22 @@ extension NSWindow {
         dialog.allowedFileTypes        = extensions
         return (dialog.runModal(), dialog.url)
     }
+
+    public func center(inWindow window: NSWindow, animate: Bool = false) {
+        let center = CGPoint(x: window.frame.midX, y: window.frame.midY)
+
+        let onboardSize = self.frame.size
+        let onboardOrigin = CGPoint(x: center.x - onboardSize.width / 2, y: center.y - onboardSize.height / 2)
+        let destinationFrame = CGRect(origin: onboardOrigin, size: onboardSize)
+
+        if animate {
+            NSAnimationContext.runAnimationGroup { ctx in
+                ctx.duration = 0.15
+                ctx.timingFunction = CAMediaTimingFunction(name: .linear)
+                self.animator().setFrame(destinationFrame, display: false, animate: true)
+            }
+        } else {
+            self.setFrame(destinationFrame, display: false, animate: false)
+        }
+    }
 }

@@ -9,9 +9,15 @@
 import AppKit
 
 let kLastAppVersion: String = "com.schlaubischlump.locationsimulator.lastappversion"
+let kFirstLaunch: String = "com.schlaubischlump.locationsimulator.firstlaunch"
 
 // Extend the UserDefaults with all keys relevant for this tab.
 extension UserDefaults {
+    @objc dynamic var firstLaunch: Bool {
+        get { return self.bool(forKey: kFirstLaunch) }
+        set { self.setValue(newValue, forKey: kFirstLaunch) }
+    }
+
     @objc dynamic var lastAppVersion: String? {
         get { return self.string(forKey: kLastAppVersion) }
         set { self.setValue(newValue, forKey: kLastAppVersion) }
@@ -20,6 +26,9 @@ extension UserDefaults {
     /// Register the default NSUserDefault values.
     func registerInfoDefaultValues() {
         // Nothing to do here yet, since nil is a valid lastAppVersion value
+        UserDefaults.standard.register(defaults: [
+            kFirstLaunch: true,
+        ])
     }
 }
 
@@ -71,7 +80,7 @@ class InfoViewController: PreferenceViewControllerBase {
         infoField.isBezeled = false
         infoField.preferredMaxLayoutWidth = kMaxPreferenceViewWidth - padX*2
 
-        infoField.stringValue = "WELCOME".localized
+        infoField.stringValue = "WELCOME_TEXT".localized
         infoField.frame.size = infoField.fittingSize
         infoField.frame.origin.x = padX
         infoField.frame.origin.y = self.donateProgress.frame.maxY + spacingY * 2
