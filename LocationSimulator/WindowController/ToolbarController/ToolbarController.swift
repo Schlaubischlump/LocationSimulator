@@ -218,4 +218,11 @@ class ToolbarController: NSResponder {
 
         self.windowController?.setSpeed(speedInMS)
     }
+
+    /// Toggle the visibility of the sidebar.
+    /// - Parameter sender: the button which triggered the action
+    @IBAction func toggleSidebar(_ sender: NSButton) {
+        self.windowController?.toggleSidebar()
+    }
+
 }

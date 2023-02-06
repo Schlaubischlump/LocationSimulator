@@ -27,7 +27,7 @@ extension UserDefaults {
     func registerInfoDefaultValues() {
         // Nothing to do here yet, since nil is a valid lastAppVersion value
         UserDefaults.standard.register(defaults: [
-            kFirstLaunch: true,
+            kFirstLaunch: true
         ])
     }
 }
