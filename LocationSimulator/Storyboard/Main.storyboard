@@ -1655,13 +1655,13 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="AUTOFOCUS_TOOLBARITEM_PALETTELABEL"/>
                                     </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="25BBC41B-5198-4FA2-BD77-79DFF9A8D8EC" explicitItemIdentifier="autoFocus" label="" paletteLabel="" image="sidebar.left" catalog="system" bordered="YES" autovalidates="NO" id="fOP-7S-2Qr" userLabel="Toggle Sidebar">
+                                <toolbarItem implicitItemIdentifier="25BBC41B-5198-4FA2-BD77-79DFF9A8D8EC" explicitItemIdentifier="toggleSidebar" label="" paletteLabel="" image="NSTouchBarSidebarTemplate" bordered="YES" autovalidates="NO" id="fOP-7S-2Qr" userLabel="Toggle Sidebar">
                                     <size key="minSize" width="37" height="25"/>
                                     <size key="maxSize" width="38" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="3Jf-3R-V8u" userLabel="Toggle Sidebar Button">
                                         <rect key="frame" x="0.0" y="14" width="38" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="sidebar.left" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aIE-3v-snW">
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aIE-3v-snW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -3082,10 +3082,10 @@
         <image name="NSShareTemplate" width="19" height="22"/>
         <image name="NSStopProgressTemplate" width="17" height="16"/>
         <image name="NSTouchBarDeleteTemplate" width="19" height="22"/>
+        <image name="NSTouchBarSidebarTemplate" width="24" height="18"/>
         <image name="Play" width="72" height="80"/>
         <image name="Reverse" width="100" height="100"/>
         <image name="Tortoise" width="136" height="68"/>
-        <image name="sidebar.left" catalog="system" width="18" height="14"/>
         <namedColor name="HighlightColor">
             <color red="0.3919999897480011" green="0.60799998044967651" blue="0.97299998998641968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
