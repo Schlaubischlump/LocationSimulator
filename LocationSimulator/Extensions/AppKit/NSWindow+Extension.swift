@@ -13,8 +13,7 @@ extension NSWindow {
     /// - Parameter title: alert title
     /// - Parameter message: alert message
     /// - Parameter localize: true to localize the title and message
-    /// - Return: the modal response
-    // @discardableResult
+    /// - Returns: the modal response
     func showError(_ title: String, message: String, localize: Bool = true) {// -> NSApplication.ModalResponse {
         let alert = NSAlert()
         alert.messageText = localize ? title.localized : title
@@ -45,7 +44,7 @@ extension NSWindow {
     /// Show the open panel to select a file.
     /// - Parameter title: panel title
     /// - Parameter extensions: permitted file extensions
-    /// - Return: the modal response
+    /// - Returns: the modal response
     @discardableResult
     func showOpenPanel(_ tilte: String, extensions: [String], localize: Bool = true)
     -> (NSApplication.ModalResponse, URL?) {

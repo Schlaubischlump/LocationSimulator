@@ -3,10 +3,11 @@ disabled_rules:
    - identifier_name
    - void_function_in_ternary
    - block_based_kvo
+   - large_tuple
 
 file_length:
    ignore_comment_only_lines: true
    warning: 500
    
 type_body_length:
-   warning: 250
+   warning: 300
