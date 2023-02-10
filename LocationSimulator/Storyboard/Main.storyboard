@@ -2455,7 +2455,7 @@
         <scene sceneID="TJM-Z5-sck">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="ctE-mA-MGX" userLabel="Preferences Window Controller Scene" customClass="PreferenceWindowController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="gTw-tO-wCd">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" toolbarStyle="preference" id="gTw-tO-wCd">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <rect key="contentRect" x="358" y="380" width="797" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
