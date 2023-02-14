@@ -8,27 +8,6 @@
 
 import AppKit
 
-enum SidebarStyle {
-    /// The default sidebar style where the content behind the window is shown.
-    case standard
-    /// A sidebar style where the sidebar is drawn in front of the MapView.
-    case inFrontOfMap
-
-    var blendingMode: NSVisualEffectView.BlendingMode {
-        switch self {
-        case .standard: return .behindWindow
-        case .inFrontOfMap: return .withinWindow
-        }
-    }
-
-    var material: NSVisualEffectView.Material {
-        switch self {
-        case .standard: return .sidebar
-        case .inFrontOfMap: return .titlebar
-        }
-    }
-}
-
 class SplitViewController: NSSplitViewController {
     @IBOutlet var sidebarSplitViewItem: NSSplitViewItem!
 
@@ -66,9 +45,9 @@ class SplitViewController: NSSplitViewController {
     }
 
     /// Readonly sidebar view controller
-    public var sidebarViewController: NSViewController? {
+    public var sidebarViewController: SidebarViewController? {
         let items = self.splitViewItems
-        return items.count >= 1 ? items[0].viewController : nil
+        return items.count >= 1 ? items[0].viewController as? SidebarViewController : nil
     }
 
     /// True if the sidebar is collapse, false otherwise.
@@ -90,6 +69,19 @@ class SplitViewController: NSSplitViewController {
         self.sidebarSplitViewItem.maximumThickness = 250
     }
 
+    // MARK: - Sidebar style
+
+    func updateForDeviceStatus(_ status: DeviceStatus) {
+        let deviceConnected = (status == .connected)
+        let deviceDisconnected = (status == .disconnected)
+        self.sidebarViewController?.searchEnabled = !deviceDisconnected
+
+        // Clear the searchField.
+        if deviceDisconnected || deviceConnected {
+            self.sidebarViewController?.clearSearchField()
+        }
+    }
+
     /// Apply a specific custom style to the sidebar.
     /// Note: This functions is obsolete if Apple provides a default way to overlay a sidebar.
     /// - Parameter style: the style to apply to the sidebar
@@ -109,9 +101,7 @@ class SplitViewController: NSSplitViewController {
         }
 
         // Change the effectView to our liking
-        let effectView = self.sidebarViewController?.view.superview as? NSVisualEffectView
-        effectView?.blendingMode = sidebarStyle.blendingMode
-        effectView?.material = sidebarStyle.material
+        self.sidebarViewController?.apply(sidebarStyle: sidebarStyle)
 
         // configure the mapView to always fill the complete splitView
         let leading = mapView.leadingAnchor.constraint(equalTo: self.splitView.leadingAnchor)

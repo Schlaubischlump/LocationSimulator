@@ -64,6 +64,9 @@
 		635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C13882596EA9800BEB53B /* Array+Extension.swift */; };
 		635C95B2298C7405002FB162 /* OnboardPageToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B1298C7405002FB162 /* OnboardPageToolbarViewController.swift */; };
 		635C95B4298C74CF002FB162 /* OnboardPageFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B3298C74CF002FB162 /* OnboardPageFinishViewController.swift */; };
+		635C95B6299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B5299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift */; };
+		635C95B8299AF2FE002FB162 /* SidebarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B7299AF2FE002FB162 /* SidebarStyle.swift */; };
+		635C95BA299C378B002FB162 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B9299C378B002FB162 /* SearchBarView.swift */; };
 		635CF717280E03820092A99B /* DonateWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF716280E03820092A99B /* DonateWindowController.swift */; };
 		635CF719280E039B0092A99B /* DonateSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF718280E039B0092A99B /* DonateSidebarViewController.swift */; };
 		635CF71B280E03AB0092A99B /* DonateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */; };
@@ -229,6 +232,9 @@
 		635C13882596EA9800BEB53B /* Array+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		635C95B1298C7405002FB162 /* OnboardPageToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPageToolbarViewController.swift; sourceTree = "<group>"; };
 		635C95B3298C74CF002FB162 /* OnboardPageFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPageFinishViewController.swift; sourceTree = "<group>"; };
+		635C95B5299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarController+NSToolbarDelegate.swift"; sourceTree = "<group>"; };
+		635C95B7299AF2FE002FB162 /* SidebarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarStyle.swift; sourceTree = "<group>"; };
+		635C95B9299C378B002FB162 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		635CF716280E03820092A99B /* DonateWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateWindowController.swift; sourceTree = "<group>"; };
 		635CF718280E039B0092A99B /* DonateSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateSidebarViewController.swift; sourceTree = "<group>"; };
 		635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateDetailViewController.swift; sourceTree = "<group>"; };
@@ -500,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				631EBFF325941C880066D5BB /* ToolbarController.swift */,
+				635C95B5299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift */,
 			);
 			path = ToolbarController;
 			sourceTree = "<group>";
@@ -798,6 +805,8 @@
 			children = (
 				63888DD82592B8ED00B1DFC9 /* SidebarDataSource */,
 				63888DCD2592AECE00B1DFC9 /* SidebarViewController.swift */,
+				635C95B9299C378B002FB162 /* SearchBarView.swift */,
+				635C95B7299AF2FE002FB162 /* SidebarStyle.swift */,
 			);
 			path = SidebarViewController;
 			sourceTree = "<group>";
@@ -1179,6 +1188,7 @@
 				63DBFFE225961563005EAB02 /* NSResponder+Extension.swift in Sources */,
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
 				635CF717280E03820092A99B /* DonateWindowController.swift in Sources */,
+				635C95B8299AF2FE002FB162 /* SidebarStyle.swift in Sources */,
 				632A962C254811AC0078B8DD /* ContentView.swift in Sources */,
 				6390AB3E2593CB9900B0CABA /* SidebarItem.swift in Sources */,
 				635CF71F280E15F00092A99B /* DonateMethod.swift in Sources */,
@@ -1245,6 +1255,7 @@
 				634069D829343F580045673A /* NSTextField+Extension.swift in Sources */,
 				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
 				636FD9E82989B840004FBFFF /* CoordinateValueTransformer.swift in Sources */,
+				635C95B6299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift in Sources */,
 				6372061D25911CED00293EA8 /* MapView.swift in Sources */,
 				633A45FF22F996DA005B3BE0 /* WindowController.swift in Sources */,
 				636FD9EA2989BBAB004FBFFF /* CLLocationSpeed.swift in Sources */,
@@ -1254,6 +1265,7 @@
 				638B90A3254B5A1800A520E0 /* GeneralViewController.swift in Sources */,
 				630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */,
 				63767563258EA684000DCEF3 /* NSColor+Extension.swift in Sources */,
+				635C95BA299C378B002FB162 /* SearchBarView.swift in Sources */,
 				632C466123F4CC6A004E5092 /* CoordinateFormatter.swift in Sources */,
 				63525959258E8FC80031F289 /* HUDView.swift in Sources */,
 				63864C0B27DC3405005F94F3 /* LogWindowController.swift in Sources */,

@@ -13,7 +13,11 @@ import LocationSpoofer
 
 class ToolbarController: NSResponder {
     /// The corresponding windowController for this toolbar controller.
-    @IBOutlet weak var windowController: WindowController?
+    @IBOutlet weak var windowController: WindowController? {
+        didSet {
+            self.windowController?.window?.toolbar?.delegate = self
+        }
+    }
 
     /// A reference to the current mapViewController if available.
     private var mapViewController: MapViewController? {
@@ -53,25 +57,16 @@ class ToolbarController: NSResponder {
     @IBOutlet weak var searchField: NSSearchField! {
         didSet {
             self.searchCompleter = LocationSearchCompleter(searchField: self.searchField)
-            self.searchCompleter.onSelect = { [weak self] _, suggestion in
-                // Disable autofocus since we want to zoom on the searched location and not on the current position
-                self?.windowController?.setAutofocusEnabled(false)
-                // Zoom into the map at the searched location.
-                guard let comp = suggestion as? MKLocalSearchCompletion else { return }
-                let request: MKLocalSearch.Request = MKLocalSearch.Request(completion: comp)
-                let localSearch: MKLocalSearch = MKLocalSearch(request: request)
-                localSearch.start { (response, error) in
-                    if error == nil, let res: MKLocalSearch.Response = response {
-                        self?.mapViewController?.zoomTo(region: res.boundingRegion)
-                    }
-               }
-            }
+
             // Listen for the searchField first responder status to update the search status.
+            self.searchCompleter.onSelect = { [weak self] text, suggestion in
+                self?.windowController?.searchBarOnSelect(text: text, suggestion: suggestion)
+            }
             self.searchCompleter.onBecomeFirstReponder = { [weak self] in
-                NotificationCenter.default.post(name: .SearchDidStart, object: self?.windowController?.window)
+                self?.windowController?.searchBarOnBecomeFirstReponder()
             }
             self.searchCompleter.onResignFirstReponder = { [weak self] in
-                NotificationCenter.default.post(name: .SearchDidEnd, object: self?.windowController?.window)
+                self?.windowController?.searchBarOnBecomeFirstReponder()
             }
         }
     }

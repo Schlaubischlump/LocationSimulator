@@ -9,6 +9,13 @@
 import AppKit
 
 extension NSWindow {
+    /// Get the height of the titlebar.
+    var titlebarHeight: CGFloat {
+        let windowFrameHeight = self.contentView?.frame.height ?? 0
+        let contentLayoutRectHeight = self.contentLayoutRect.height
+        return windowFrameHeight - contentLayoutRectHeight
+    }
+
     /// Show error sheet for this window.
     /// - Parameter title: alert title
     /// - Parameter message: alert message

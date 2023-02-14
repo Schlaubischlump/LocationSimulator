@@ -12,6 +12,7 @@ import MapKit
 import CoreLocation
 import GPXParser
 import LocationSpoofer
+import SuggestionPopup
 
 /// The main window controller instance which hosts the map view and the toolbar.
 class WindowController: NSWindowController {
@@ -79,8 +80,7 @@ class WindowController: NSWindowController {
         self.setMoveType(.walk)
 
         // Disable the touchbar and toolbar.
-        self.toolbarController.updateForDeviceStatus(.disconnected)
-        self.touchbarController.updateForDeviceStatus(.disconnected)
+        self.updateForDeviceStatus(.disconnected)
 
         // Request the permission to access the mac's location.
         // Otherwise the current location button won't work.
@@ -98,8 +98,7 @@ class WindowController: NSWindowController {
                   windowController == self,
                   let newState = notification.userInfo?["status"] as? DeviceStatus else { return }
             // Update the UI for the new status
-            self?.toolbarController.updateForDeviceStatus(newState)
-            self?.touchbarController.updateForDeviceStatus(newState)
+            self?.updateForDeviceStatus(newState)
         }
     }
 
@@ -111,7 +110,36 @@ class WindowController: NSWindowController {
         self.statusObserver = nil
     }
 
+    // MARK: - Search
+    func searchBarOnSelect(text: String, suggestion: Suggestion) {
+        // Disable autofocus since we want to zoom on the searched location and not on the current position
+        self.setAutofocusEnabled(false)
+        // Zoom into the map at the searched location.
+        guard let comp = suggestion as? MKLocalSearchCompletion else { return }
+        let request: MKLocalSearch.Request = MKLocalSearch.Request(completion: comp)
+        let localSearch: MKLocalSearch = MKLocalSearch(request: request)
+        localSearch.start { (response, error) in
+            if error == nil, let res: MKLocalSearch.Response = response {
+                self.mapViewController?.zoomTo(region: res.boundingRegion)
+            }
+       }
+    }
+
+    func searchBarOnBecomeFirstReponder() {
+        NotificationCenter.default.post(name: .SearchDidStart, object: self.window)
+    }
+
+    func searchBarOnResignFirstReponder() {
+        NotificationCenter.default.post(name: .SearchDidEnd, object: self.window)
+    }
+
     // MARK: - Helper
+
+    private func updateForDeviceStatus(_ status: DeviceStatus) {
+        self.toolbarController.updateForDeviceStatus(status)
+        self.touchbarController.updateForDeviceStatus(status)
+        self.splitViewController?.updateForDeviceStatus(status)
+    }
 
     /// Toggle the sidebar visibility.
     public func toggleSidebar() {

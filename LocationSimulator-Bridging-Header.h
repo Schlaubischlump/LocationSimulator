@@ -15,4 +15,8 @@
 - (void)_corePerformAction;
 @end
 
+@interface NSToolbar(Private)
+- (NSView *)_toolbarView;
+@end
+
 #endif /* LocationSimulator_Bridging_Header_h */
