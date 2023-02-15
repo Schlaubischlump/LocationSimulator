@@ -1792,6 +1792,9 @@
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems/>
+                            <connections>
+                                <outlet property="delegate" destination="NQO-h4-qY4" id="kx2-k7-8as"/>
+                            </connections>
                         </toolbar>
                         <contentBorderThickness minY="22"/>
                         <connections>

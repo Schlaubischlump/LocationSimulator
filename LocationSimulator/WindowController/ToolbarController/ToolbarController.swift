@@ -13,11 +13,7 @@ import LocationSpoofer
 
 class ToolbarController: NSResponder {
     /// The corresponding windowController for this toolbar controller.
-    @IBOutlet weak var windowController: WindowController? {
-        didSet {
-            self.windowController?.window?.toolbar?.delegate = self
-        }
-    }
+    @IBOutlet weak var windowController: WindowController?
 
     /// A reference to the current mapViewController if available.
     private var mapViewController: MapViewController? {

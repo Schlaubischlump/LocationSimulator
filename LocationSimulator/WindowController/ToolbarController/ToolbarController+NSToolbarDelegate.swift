@@ -38,6 +38,8 @@ extension ToolbarController: NSToolbarDelegate {
         ]
     }
 
+    /*
+    // Called to late... Interface builder already added all of those
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         let items: [NSToolbarItem.Identifier] = [
             .toggleSidebar, .autoFocus, .autoReverse,
@@ -48,12 +50,14 @@ extension ToolbarController: NSToolbarDelegate {
             return items
         }
         return items + [.search]
-    }
+    }*/
 
-    /*
-    /// Items in this set cannot be dragged or removed by the user
+    /** Disable the search item on macOS 13.0.
+     * We would need to generate the search item in code to disable it on > macOS 11.0 in general.
+     * The toolbar delegate only appends to the allowed items of interface builder.
+     */
     @available(macOS 13.0, *)
     func toolbarImmovableItemIdentifiers(_ toolbar: NSToolbar) -> Set<NSToolbarItem.Identifier> {
         return [.search]
-    }*/
+    }
 }

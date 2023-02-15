@@ -98,6 +98,7 @@ class HUDView: NSView {
             effectView.material = .titlebar
         }
 
+        effectView.blendingMode = .withinWindow
         effectView.isEmphasized = true
         effectView.state = self.activeEffectStateFollowsWindow ? .followsWindowActiveState : .active
     }
