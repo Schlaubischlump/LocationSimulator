@@ -9,6 +9,9 @@ import AppKit
 
 let kRemoveDelay = 5.0
 
+/**
+ A list view that display tasks with a progressbar. 
+ */
 class ProgressListView: NSView, NSTableViewDelegate, NSTableViewDataSource {
     private(set) var tasks: [any ProgressTask] = []
 

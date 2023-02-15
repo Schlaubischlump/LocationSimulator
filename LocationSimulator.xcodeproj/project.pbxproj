@@ -449,9 +449,9 @@
 			isa = PBXGroup;
 			children = (
 				63525958258E8FC80031F289 /* HUDView.swift */,
-				6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */,
 				6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */,
 				6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */,
+				6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -654,10 +654,6 @@
 				630C0C9B27DE6DF400C3D5A9 /* HUD */,
 				63720622259121C600293EA8 /* MapView */,
 				637206262591418F00293EA8 /* ProgressListView */,
-				63D5DF3627D8F0F400F2DCD3 /* AddDeveloperDiskImageView */,
-				636FD9D22989A8CC004FBFFF /* SpeedSelectionView */,
-				632C466623F76881004E5092 /* CoordinateSelectionView */,
-				63FDE21B258F9D2400917412 /* GPXSelectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -666,9 +662,9 @@
 			isa = PBXGroup;
 			children = (
 				6304FF8C298B1F0E002DE6CD /* ArrowView.swift */,
+				63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */,
 				6304FF92298B3DFD002DE6CD /* PageControl.swift */,
 				6382B57E2939686F0061D484 /* ProgressBar.swift */,
-				63D5DF3F27D969E800F2DCD3 /* DragAndDropBox.swift */,
 				6376756A258EC809000DCEF3 /* SeparatorLine.swift */,
 				63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */,
 			);
@@ -754,11 +750,11 @@
 		637206342591479800293EA8 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
+				63C4FF33299CE3540037928F /* AddDeveloperDiskImage */,
+				63C4FF31299CE30F0037928F /* CoordinateSelection */,
 				635F9BA8297D4EB300F0B2E1 /* DownloadProgress */,
-				6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */,
-				6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */,
-				636FD9E32989ADF2004FBFFF /* SpeedSelectionAlert.swift */,
-				63D5DF3B27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift */,
+				63C4FF30299CE2EC0037928F /* GPXSelection */,
+				63C4FF32299CE3490037928F /* SpeedSelection */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -842,6 +838,42 @@
 				630C0C9C27DE71FB00C3D5A9 /* Groups */,
 			);
 			path = Preferences;
+			sourceTree = "<group>";
+		};
+		63C4FF30299CE2EC0037928F /* GPXSelection */ = {
+			isa = PBXGroup;
+			children = (
+				63FDE21B258F9D2400917412 /* GPXSelectionView */,
+				6372063E25916BEE00293EA8 /* GPXSelectionAlert.swift */,
+			);
+			path = GPXSelection;
+			sourceTree = "<group>";
+		};
+		63C4FF31299CE30F0037928F /* CoordinateSelection */ = {
+			isa = PBXGroup;
+			children = (
+				632C466623F76881004E5092 /* CoordinateSelectionView */,
+				6372063B25915F0900293EA8 /* CoordinateSelectionAlert.swift */,
+			);
+			path = CoordinateSelection;
+			sourceTree = "<group>";
+		};
+		63C4FF32299CE3490037928F /* SpeedSelection */ = {
+			isa = PBXGroup;
+			children = (
+				636FD9D22989A8CC004FBFFF /* SpeedSelectionView */,
+				636FD9E32989ADF2004FBFFF /* SpeedSelectionAlert.swift */,
+			);
+			path = SpeedSelection;
+			sourceTree = "<group>";
+		};
+		63C4FF33299CE3540037928F /* AddDeveloperDiskImage */ = {
+			isa = PBXGroup;
+			children = (
+				63D5DF3627D8F0F400F2DCD3 /* AddDeveloperDiskImageView */,
+				63D5DF3B27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift */,
+			);
+			path = AddDeveloperDiskImage;
 			sourceTree = "<group>";
 		};
 		63CA733F281E0588007747D3 /* _English.lproj */ = {

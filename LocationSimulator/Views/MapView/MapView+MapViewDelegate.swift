@@ -32,7 +32,7 @@ extension MapView: MKMapViewDelegate {
 
             return renderer
         }
-        // This should never be the case. If apple sometimes in the future decides to add some overlays we should
+        // This should never be the case. If apple sometime in the future decides to add some overlays we should
         // provide a default and not crash.
         return MKOverlayRenderer(overlay: overlay)
     }
