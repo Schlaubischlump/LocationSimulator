@@ -10,6 +10,8 @@ import AppKit
 import LocationSpoofer
 import SuggestionPopup
 
+let kMinimumSidebarWidth = 150.0
+
 class SidebarViewController: NSViewController {
 
     @IBOutlet var outlineView: NSOutlineView!
@@ -98,6 +100,7 @@ class SidebarViewController: NSViewController {
 
         // We use closures instead of linkin the function, because the windowController is still nil on viewDidLoad
         let searchCompleter = LocationSearchCompleter(searchField: searchbarView.searchField)
+        searchCompleter.minimumWindowWidth = kMinimumSidebarWidth + 15
         searchCompleter.onSelect = { [weak self] text, suggestion in
             self?.windowController?.searchBarOnSelect(text: text, suggestion: suggestion)
         }

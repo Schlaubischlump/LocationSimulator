@@ -65,7 +65,7 @@ class SplitViewController: NSSplitViewController {
             self.sidebarSplitViewItem.allowsFullHeightLayout = true
             self.sidebarSplitViewItem.titlebarSeparatorStyle = .none
         }
-        self.sidebarSplitViewItem.minimumThickness = 150
+        self.sidebarSplitViewItem.minimumThickness = kMinimumSidebarWidth
         self.sidebarSplitViewItem.maximumThickness = 250
     }
 

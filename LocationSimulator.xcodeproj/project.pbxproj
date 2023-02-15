@@ -67,6 +67,7 @@
 		635C95B6299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B5299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift */; };
 		635C95B8299AF2FE002FB162 /* SidebarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B7299AF2FE002FB162 /* SidebarStyle.swift */; };
 		635C95BA299C378B002FB162 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B9299C378B002FB162 /* SearchBarView.swift */; };
+		635C95C4299D931A002FB162 /* SuggestionPopup in Frameworks */ = {isa = PBXBuildFile; productRef = 635C95C3299D931A002FB162 /* SuggestionPopup */; };
 		635CF717280E03820092A99B /* DonateWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF716280E03820092A99B /* DonateWindowController.swift */; };
 		635CF719280E039B0092A99B /* DonateSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF718280E039B0092A99B /* DonateSidebarViewController.swift */; };
 		635CF71B280E03AB0092A99B /* DonateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */; };
@@ -127,7 +128,6 @@
 		6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB412593D63000B0CABA /* SplitviewController.swift */; };
 		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
 		63A1ABC827E7832100C9EDE0 /* ValueTrackingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */; };
-		63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */ = {isa = PBXBuildFile; productRef = 63AEA2F1259AB41D0084F74B /* SuggestionPopup */; };
 		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
 		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
 		63C799FD259659740099B794 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799FC259659740099B794 /* InfoViewController.swift */; };
@@ -348,7 +348,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63AEA2F2259AB41D0084F74B /* SuggestionPopup in Frameworks */,
+				635C95C4299D931A002FB162 /* SuggestionPopup in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
 				635F9BBC297F3BE300F0B2E1 /* Downloader in Frameworks */,
 				635F9BB0297F36D100F0B2E1 /* LocationSpoofer in Frameworks */,
@@ -1028,10 +1028,10 @@
 			name = LocationSimulator;
 			packageProductDependencies = (
 				635C13802596EA5700BEB53B /* GPXParser */,
-				63AEA2F1259AB41D0084F74B /* SuggestionPopup */,
 				63D734FD27E90C800044918C /* CLogger */,
 				635F9BAF297F36D100F0B2E1 /* LocationSpoofer */,
 				635F9BBB297F3BE300F0B2E1 /* Downloader */,
+				635C95C3299D931A002FB162 /* SuggestionPopup */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -1106,10 +1106,10 @@
 			mainGroup = 13BA350D20A433ED00A0431C;
 			packageReferences = (
 				635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */,
-				63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
 				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
 				63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 				635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */,
+				635C95C2299D931A002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -1787,17 +1787,17 @@
 				minimumVersion = 0.0.2;
 			};
 		};
+		635C95C2299D931A002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Schlaubischlump/SuggestionPopup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
 		635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/Downloader.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
-		63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Schlaubischlump/SuggestionPopup";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.3;
@@ -1819,6 +1819,11 @@
 			package = 635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */;
 			productName = GPXParser;
 		};
+		635C95C3299D931A002FB162 /* SuggestionPopup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 635C95C2299D931A002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */;
+			productName = SuggestionPopup;
+		};
 		635F9BAF297F36D100F0B2E1 /* LocationSpoofer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
@@ -1828,11 +1833,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */;
 			productName = Downloader;
-		};
-		63AEA2F1259AB41D0084F74B /* SuggestionPopup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 63AEA2F0259AB41D0084F74B /* XCRemoteSwiftPackageReference "SuggestionPopup" */;
-			productName = SuggestionPopup;
 		};
 		63D734FD27E90C800044918C /* CLogger */ = {
 			isa = XCSwiftPackageProductDependency;
