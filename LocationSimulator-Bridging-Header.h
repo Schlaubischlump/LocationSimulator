@@ -10,6 +10,7 @@
 #define LocationSimulator_Bridging_Header_h
 
 #import <AppKit/AppKit.h>
+#import <MapKit/MKMapView.h>
 
 @interface NSMenuItem(Private)
 - (void)_corePerformAction;

@@ -1636,9 +1636,7 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="4Ka-D3-6mZ"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="KId-ag-A2U"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="eCp-9n-poY"/>
-                                <toolbarItem implicitItemIdentifier="C8C77EE4-7F6C-4EB8-ACFC-3DDF4BF944FF" explicitItemIdentifier="autoFocus" label="" paletteLabel="" image="CurrentLocation" autovalidates="NO" id="HdA-HT-jQN" userLabel="Autofocus Location">
-                                    <size key="minSize" width="37" height="25"/>
-                                    <size key="maxSize" width="38" height="25"/>
+                                <toolbarItem implicitItemIdentifier="C8C77EE4-7F6C-4EB8-ACFC-3DDF4BF944FF" explicitItemIdentifier="autoFocus" label="" paletteLabel="" image="CurrentLocation" sizingBehavior="auto" autovalidates="NO" id="HdA-HT-jQN" userLabel="Autofocus Location">
                                     <button key="view" verticalHuggingPriority="750" id="MDz-N6-VAD" userLabel="Autofocus Location Button">
                                         <rect key="frame" x="0.0" y="14" width="38" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1655,9 +1653,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="AUTOFOCUS_TOOLBARITEM_PALETTELABEL"/>
                                     </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="E08BA17C-7A1A-4FE7-8967-5C9E98076224" explicitItemIdentifier="autoReverse" label="" paletteLabel="" image="Reverse" bordered="YES" autovalidates="NO" id="rRr-qy-y0e" userLabel="Autoreverse">
-                                    <size key="minSize" width="37" height="25"/>
-                                    <size key="maxSize" width="38" height="25"/>
+                                <toolbarItem implicitItemIdentifier="E08BA17C-7A1A-4FE7-8967-5C9E98076224" explicitItemIdentifier="autoReverse" label="" paletteLabel="" image="Reverse" bordered="YES" sizingBehavior="auto" autovalidates="NO" id="rRr-qy-y0e" userLabel="Autoreverse">
                                     <button key="view" verticalHuggingPriority="750" id="kze-x3-meA" userLabel="Autofocus Location Button">
                                         <rect key="frame" x="0.0" y="14" width="38" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1674,9 +1670,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="AUTOREVERSE_TOOLBARITEM_PALETTELABEL"/>
                                     </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="AB403377-7212-4E7B-9260-EC465F38CB7E" explicitItemIdentifier="currentLocation" label="" paletteLabel="" image="NSHomeTemplate" autovalidates="NO" id="Gar-ru-IyF" userLabel="Mac Location">
-                                    <size key="minSize" width="37" height="24"/>
-                                    <size key="maxSize" width="39" height="25"/>
+                                <toolbarItem implicitItemIdentifier="AB403377-7212-4E7B-9260-EC465F38CB7E" explicitItemIdentifier="currentLocation" label="" paletteLabel="" image="NSHomeTemplate" sizingBehavior="auto" autovalidates="NO" id="Gar-ru-IyF" userLabel="Mac Location">
                                     <button key="view" verticalHuggingPriority="750" id="dNN-xU-QRQ">
                                         <rect key="frame" x="0.0" y="14" width="39" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1696,14 +1690,14 @@
                                 <toolbarItem implicitItemIdentifier="05896384-9377-47D8-8616-24434D2F77DB" explicitItemIdentifier="moveType" label="" paletteLabel="Move Types" sizingBehavior="auto" autovalidates="NO" id="d4p-ja-QrK">
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="JrU-V8-kbc">
-                                        <rect key="frame" x="0.0" y="14" width="136" height="23"/>
+                                        <rect key="frame" x="0.0" y="14" width="151" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="Mrg-VI-6Bg">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment label="Walk" imageScaling="proportionallyUpOrDown" width="42" selected="YES"/>
-                                                <segment label="Cycle" imageScaling="proportionallyUpOrDown" tag="1"/>
-                                                <segment label="Drive" imageScaling="proportionallyUpOrDown"/>
+                                                <segment label="Walk" imageScaling="proportionallyUpOrDown" width="45" selected="YES"/>
+                                                <segment label="Cycle" imageScaling="proportionallyUpOrDown" width="45" tag="1"/>
+                                                <segment label="Drive" imageScaling="proportionallyUpOrDown" width="45"/>
                                             </segments>
                                         </segmentedCell>
                                         <userDefinedRuntimeAttributes>
@@ -1717,9 +1711,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="MOVETYPES_TOOLBARITEM_PALETTELABEL"/>
                                     </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="95B0582C-0FFC-4954-AD9E-5D6F61A2C2EE" explicitItemIdentifier="reset" label="" paletteLabel="" image="NSStopProgressTemplate" autovalidates="NO" id="K12-Gb-eXb" userLabel="Reset">
-                                    <size key="minSize" width="37" height="24"/>
-                                    <size key="maxSize" width="38" height="25"/>
+                                <toolbarItem implicitItemIdentifier="95B0582C-0FFC-4954-AD9E-5D6F61A2C2EE" explicitItemIdentifier="reset" label="" paletteLabel="" image="NSStopProgressTemplate" sizingBehavior="auto" autovalidates="NO" id="K12-Gb-eXb" userLabel="Reset">
                                     <button key="view" verticalHuggingPriority="750" id="4PY-kR-qhe">
                                         <rect key="frame" x="0.0" y="14" width="38" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
@@ -1754,9 +1746,9 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localePaletteLabelKey" value="SEARCH_TOOLBARITEM_PALETTELABEL"/>
                                     </userDefinedRuntimeAttributes>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="FD6FCF4B-B9C9-46D1-BEDF-F3BA0F331319" explicitItemIdentifier="speed" label="Custom View" paletteLabel="Custom View" tag="-1" id="DtP-9S-bsL">
+                                <toolbarItem implicitItemIdentifier="FD6FCF4B-B9C9-46D1-BEDF-F3BA0F331319" explicitItemIdentifier="speed" label="Custom View" paletteLabel="Custom View" tag="-1" id="DtP-9S-bsL" userLabel="Speed slider">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="120" height="30"/>
+                                    <size key="minSize" width="150" height="30"/>
                                     <size key="maxSize" width="150" height="30"/>
                                     <customView key="view" id="Qam-nM-edY">
                                         <rect key="frame" x="0.0" y="14" width="150" height="30"/>
@@ -2745,14 +2737,14 @@
         <scene sceneID="R3p-Uy-B7j">
             <objects>
                 <viewController id="ToF-vt-NtF" customClass="DeveloperDiskImagesViewController" customModule="LocationSimulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="YfJ-uP-0xM">
+                    <view key="view" id="YfJ-uP-0xM">
                         <rect key="frame" x="0.0" y="0.0" width="107" height="457"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-tL-iw9">
-                                <rect key="frame" x="20" y="35" width="127" height="250"/>
+                                <rect key="frame" x="20" y="35" width="87" height="250"/>
                                 <clipView key="contentView" id="3ld-57-Iej">
-                                    <rect key="frame" x="1" y="1" width="125" height="248"/>
+                                    <rect key="frame" x="1" y="1" width="85" height="248"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="cnR-eo-JKu">
@@ -2806,7 +2798,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="C3E-8o-9An">
-                                    <rect key="frame" x="1" y="233" width="125" height="16"/>
+                                    <rect key="frame" x="1" y="233" width="85" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="cLO-Jm-K3v">
@@ -2815,7 +2807,7 @@
                                 </scroller>
                             </scrollView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-KZ-F6L">
-                                <rect key="frame" x="20" y="283" width="107" height="23"/>
+                                <rect key="frame" x="20" y="283" width="67" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="bBe-oX-oAl">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -2846,7 +2838,7 @@
                                 </connections>
                             </segmentedControl>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BHm-g2-ImW">
-                                <rect key="frame" x="18" y="404" width="109" height="18"/>
+                                <rect key="frame" x="18" y="420" width="69" height="18"/>
                                 <buttonCell key="cell" type="check" title="Custom DeveloperDiskImagePath" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WMO-1M-pcy">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2859,7 +2851,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="phO-ig-4IY">
-                                <rect key="frame" x="18" y="330" width="111" height="32"/>
+                                <rect key="frame" x="18" y="330" width="71" height="48"/>
                                 <textFieldCell key="cell" selectable="YES" enabled="NO" title="Image and signature path." id="ZJ5-bb-28Y">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -2870,7 +2862,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JWA-9P-4D0" userLabel="Select button">
-                                <rect key="frame" x="20" y="369" width="47" height="27"/>
+                                <rect key="frame" x="20" y="385" width="47" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="kbi-i4-FPo"/>
                                 </constraints>
@@ -2886,7 +2878,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0t-cb-vDt">
-                                <rect key="frame" x="66" y="370" width="61" height="25"/>
+                                <rect key="frame" x="66" y="386" width="21" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" drawsBackground="YES" id="Qge-O6-1Wz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

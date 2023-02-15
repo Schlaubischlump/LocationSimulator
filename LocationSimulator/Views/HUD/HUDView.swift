@@ -40,6 +40,9 @@ class HUDView: NSView {
         return effectView
     }()
 
+    /// Should the effectView follow the windows active state.
+    var activeEffectStateFollowsWindow: Bool = true
+
     // MARK: - Constructor
 
     private func setup() {
@@ -96,7 +99,7 @@ class HUDView: NSView {
         }
 
         effectView.isEmphasized = true
-        effectView.state = .active
+        effectView.state = self.activeEffectStateFollowsWindow ? .followsWindowActiveState : .active
     }
 
     /// Change the corner radius of the effectView and this view depending on the OS Version and dark / light mode.

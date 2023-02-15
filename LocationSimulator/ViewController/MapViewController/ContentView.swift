@@ -38,6 +38,11 @@ class ContentView: NSView {
                     // Assign the new zoom controls
                     self.zoomControl = zoomControl
                 }
+
+                NotificationCenter.default.addObserver(
+                    self, selector: #selector(mapViewFrameChanged(_:)),
+                    name: NSView.frameDidChangeNotification, object: nil
+                )
             }
         }
 
@@ -82,6 +87,7 @@ class ContentView: NSView {
 
     // MARK: - MACOS 11.0
 
+    /// Background for the footer bar on macOS > 11
     @IBOutlet var labelHUD: HUDView! {
         didSet {
             // Show a nice HUD background on macOS 11
@@ -116,6 +122,11 @@ class ContentView: NSView {
 
     /// MacOS 11 > only: The custom zoom control.
     private var zoomControl: NSView?
+
+    /// MacOS 11 > only: The predefined scale view.
+    private var scaleView: NSView? {
+        return self.mapView.subviews.first(where: { $0.className == "MKScaleView" })
+    }
 
     // MARK: - Interaction
 
@@ -152,6 +163,14 @@ class ContentView: NSView {
     }
 
     // MARK: - Layout
+
+    @objc func mapViewFrameChanged(_ notification: Notification) {
+        guard notification.object as? NSView == self.scaleView else { return }
+        // Ugly hack to move the predefined scale view whenever the system tries to position it
+        // MKScaleView is private on macOS for whatever reason...
+        let mapOverlayWidthBehindSidebar = self.mapView.frame.width - self.frame.width
+        self.scaleView?.frame.origin.x = mapOverlayWidthBehindSidebar
+    }
 
     override func layout() {
         if #available(OSX 11.0, *) {

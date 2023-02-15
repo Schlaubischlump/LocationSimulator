@@ -41,6 +41,8 @@ class MovementDirectionHUDView: HUDView {
         // I'm not a fan of autolayout, but otherwise the rotation will break.
         self.directionOverlay.frame = self.bounds
         self.directionOverlay.autoresizingMask = [.width, .height]
+
+        self.activeEffectStateFollowsWindow = false
     }
 
     override init() {

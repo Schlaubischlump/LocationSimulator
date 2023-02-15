@@ -28,6 +28,7 @@ class SpinnerHUDView: HUDView {
         self.contentView.addSubview(self.spinner)
         // Hide the spinner on default
         self.isHidden = true
+        self.activeEffectStateFollowsWindow = false
     }
 
     override init() {

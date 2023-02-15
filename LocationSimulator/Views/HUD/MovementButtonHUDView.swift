@@ -49,6 +49,8 @@ class MovementButtonHUDView: HUDView, NSGestureRecognizerDelegate {
         clickGesture.delegate = self
         self.addGestureRecognizer(clickGesture)
 
+        self.activeEffectStateFollowsWindow = false
+
         // Add the imageView to the view hierachy
         self.imageView.tint(color: .highlight)
         self.imageView.frame = self.bounds
