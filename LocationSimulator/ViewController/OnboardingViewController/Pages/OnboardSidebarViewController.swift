@@ -15,6 +15,7 @@ class OnboardPageSidebarViewController: OnboardPageViewController {
         imageView.image = NSImage(named: "Sidebar")
         imageView.wantsLayer = true
         imageView.imageScaling = .scaleProportionallyDown
+
         let headerLabel = self.createHeaderLabel(text: "ONBOARD_SIDEBAR_HEADER".localized)
         let messageLabel = self.createMessageLabel(text: "ONBOARD_SIDEBAR_MESSAGE".localized)
 
