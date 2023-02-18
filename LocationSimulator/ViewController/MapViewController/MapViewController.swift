@@ -90,6 +90,9 @@ class MapViewController: NSViewController {
     /// True if a alert is visible, false otherwise.
     var isShowingAlert: Bool = false
 
+    /// The current geocoder if one exists
+    var geocodingTask: GeocodingTask?
+
     /// True if the current device is connected, false otherwise.
     public private(set) var deviceIsConnectd: Bool = false {
         didSet {
@@ -189,6 +192,12 @@ class MapViewController: NSViewController {
         self.registerControlsHUDActions()
         // Listen for setting changes
         self.registerSettingsObservers()
+        // Update the window title on macOS 11 and up.
+        if #available(macOS 11.0, *) {
+            self.geocodingTask = GeocodingTask { [weak self] name in
+                self?.view.window?.title = name
+            }
+        }
     }
 
     override func viewDidAppear() {

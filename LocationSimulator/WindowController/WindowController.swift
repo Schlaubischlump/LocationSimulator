@@ -76,6 +76,11 @@ class WindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
+        if #available(macOS 11.0, *) {
+            self.window?.title = ""
+            self.window?.titleVisibility = .visible
+        }
+
         // Set the default move type
         self.setMoveType(.walk)
 
@@ -84,7 +89,7 @@ class WindowController: NSWindowController {
 
         // Request the permission to access the mac's location.
         // Otherwise the current location button won't work.
-        if #available(OSX 10.15, *) {
+        if #available(macOS 10.15, *) {
             self.locationManager.requestAlwaysAuthorization()
         }
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest

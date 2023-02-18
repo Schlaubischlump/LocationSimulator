@@ -20,7 +20,7 @@ extension FloatingPoint {
 extension CLLocationCoordinate2D {
     /// Calculate the distance from this location to the given one.
     /// - Parameter coordinate: coordinate to which the distance should be calculated to
-    /// - Return: distance between the two locations
+    /// - Return: distance between the two locations in meter
     func distanceTo(coordinate: CLLocationCoordinate2D) -> CLLocationDistance {
         let thisLocation = CLLocation(latitude: self.latitude, longitude: self.longitude)
         let otherLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
@@ -58,7 +58,8 @@ extension CLLocationCoordinate2D {
     }
 
     /// Get the location name based on the current coordinates.
-    func getLocationName(completion: @escaping (_ location: CLLocation, _ name: String) -> Void) {
+    @discardableResult
+    func getLocationName(completion: @escaping (_ location: CLLocation, _ name: String) -> Void) -> CLGeocoder {
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: self.latitude, longitude: self.longitude)
         geoCoder.reverseGeocodeLocation(location, completionHandler: { placemarks, _ -> Void in
@@ -78,5 +79,6 @@ extension CLLocationCoordinate2D {
 
             completion(location, components.joined(separator: " - "))
         })
+        return geoCoder
     }
 }

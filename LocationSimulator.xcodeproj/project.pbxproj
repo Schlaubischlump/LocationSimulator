@@ -68,6 +68,7 @@
 		635C95B8299AF2FE002FB162 /* SidebarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B7299AF2FE002FB162 /* SidebarStyle.swift */; };
 		635C95BA299C378B002FB162 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B9299C378B002FB162 /* SearchBarView.swift */; };
 		635C95C4299D931A002FB162 /* SuggestionPopup in Frameworks */ = {isa = PBXBuildFile; productRef = 635C95C3299D931A002FB162 /* SuggestionPopup */; };
+		635C95C629A19A98002FB162 /* GeocodingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95C529A19A98002FB162 /* GeocodingTask.swift */; };
 		635CF717280E03820092A99B /* DonateWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF716280E03820092A99B /* DonateWindowController.swift */; };
 		635CF719280E039B0092A99B /* DonateSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF718280E039B0092A99B /* DonateSidebarViewController.swift */; };
 		635CF71B280E03AB0092A99B /* DonateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */; };
@@ -235,6 +236,7 @@
 		635C95B5299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolbarController+NSToolbarDelegate.swift"; sourceTree = "<group>"; };
 		635C95B7299AF2FE002FB162 /* SidebarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarStyle.swift; sourceTree = "<group>"; };
 		635C95B9299C378B002FB162 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		635C95C529A19A98002FB162 /* GeocodingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingTask.swift; sourceTree = "<group>"; };
 		635CF716280E03820092A99B /* DonateWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateWindowController.swift; sourceTree = "<group>"; };
 		635CF718280E039B0092A99B /* DonateSidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateSidebarViewController.swift; sourceTree = "<group>"; };
 		635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateDetailViewController.swift; sourceTree = "<group>"; };
@@ -789,6 +791,7 @@
 		63888DCC2592AEB000B1DFC9 /* MapViewController */ = {
 			isa = PBXGroup;
 			children = (
+				635C95C529A19A98002FB162 /* GeocodingTask.swift */,
 				632A962B254811AC0078B8DD /* ContentView.swift */,
 				13BA351B20A433EE00A0431C /* MapViewController.swift */,
 				63FC479C23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift */,
@@ -1202,6 +1205,7 @@
 				63FC479F2305653000BBB2E8 /* MapView+MapViewDelegate.swift in Sources */,
 				63FC479D23055E0200BBB2E8 /* MapViewController+LocationSpooferDelegate.swift in Sources */,
 				6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */,
+				635C95C629A19A98002FB162 /* GeocodingTask.swift in Sources */,
 				63720636259147AB00293EA8 /* DownloadProgressAlert.swift in Sources */,
 				63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */,
 				6304FF8D298B1F0E002DE6CD /* ArrowView.swift in Sources */,

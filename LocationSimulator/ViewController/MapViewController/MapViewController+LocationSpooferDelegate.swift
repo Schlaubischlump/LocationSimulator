@@ -16,6 +16,8 @@ import CLogger
 extension MapViewController: LocationSpooferDelegate {
 
     func willChangeLocation(spoofer: LocationSpoofer, toCoordinate: CLLocationCoordinate2D?) {
+        // Update the window title on macOS 11.0 and up
+        self.geocodingTask?.update(toLocation: toCoordinate)
         // Show a progress spinner when we request a location change
         self.contentView?.startSpinner()
         // Make sure the spoofer is setup
