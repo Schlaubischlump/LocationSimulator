@@ -90,7 +90,7 @@ class MapViewController: NSViewController {
     /// True if a alert is visible, false otherwise.
     var isShowingAlert: Bool = false
 
-    /// The current geocoder if one exists
+    /// The current geocoding task for the window title if one exists
     var geocodingTask: GeocodingTask?
 
     /// True if the current device is connected, false otherwise.
