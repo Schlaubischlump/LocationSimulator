@@ -124,6 +124,8 @@ class SplitViewController: NSSplitViewController {
             }
             return .orderedAscending
         }, context: nil)
+
+        self.splitView.setNeedsDisplay(self.splitView.bounds)
     }
 
     // MARK: - Toggle Sidebar
@@ -142,5 +144,44 @@ class SplitViewController: NSSplitViewController {
 
     override func splitView(_ splitView: NSSplitView, canCollapseSubview subview: NSView) -> Bool {
         return false
+    }
+
+    // Ugly fix to show the divider on macOS 11 and 12
+    override func splitView(_ splitView: NSSplitView, effectiveRect proposedEffectiveRect: NSRect,
+                            forDrawnRect drawnRect: NSRect, ofDividerAt dividerIndex: Int) -> NSRect {
+
+        // Don't do anything for macOS versions lower than 11.0
+        guard #available(macOS 11.0, *) else { return drawnRect }
+        // Don't do anything for macOS versions greater than 13.0
+        guard #unavailable(macOS 13.0) else { return drawnRect }
+
+        // Get a reference to the content view
+        let mapViewController = self.detailViewController as? MapViewController
+        guard let mapView = mapViewController?.mapView else {
+            return drawnRect
+        }
+
+        // This assume the mapView has the same frame as the splitView
+        let rect = drawnRect
+        if rect.minX < kMinimumSidebarWidth {
+            mapView.layer?.mask = nil
+        } else {
+            let width = self.splitView.bounds.width
+            let leftSide = CGRect(x: 0, y: 0, width: rect.minX, height: rect.height)
+            let rightSide = CGRect(x: rect.minX+rect.width, y: 0, width: width - rect.minX, height: rect.height)
+
+            // Cut out a line from the mapView, where the border is
+            let path = CGMutablePath(rect: leftSide, transform: .none)
+            path.addPath(CGPath(rect: rightSide, transform: .none))
+
+            let maskLayer = CAShapeLayer()
+            maskLayer.path = path
+            maskLayer.backgroundColor = .black
+            maskLayer.fillRule = .evenOdd
+
+            mapView.layer?.mask = maskLayer
+        }
+
+        return drawnRect
     }
 }

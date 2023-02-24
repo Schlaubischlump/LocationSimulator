@@ -67,8 +67,8 @@
 		635C95B6299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B5299AE7A6002FB162 /* ToolbarController+NSToolbarDelegate.swift */; };
 		635C95B8299AF2FE002FB162 /* SidebarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B7299AF2FE002FB162 /* SidebarStyle.swift */; };
 		635C95BA299C378B002FB162 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95B9299C378B002FB162 /* SearchBarView.swift */; };
-		635C95C4299D931A002FB162 /* SuggestionPopup in Frameworks */ = {isa = PBXBuildFile; productRef = 635C95C3299D931A002FB162 /* SuggestionPopup */; };
 		635C95C629A19A98002FB162 /* GeocodingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C95C529A19A98002FB162 /* GeocodingTask.swift */; };
+		635C95D529A83A2E002FB162 /* SuggestionPopup in Frameworks */ = {isa = PBXBuildFile; productRef = 635C95D429A83A2E002FB162 /* SuggestionPopup */; };
 		635CF717280E03820092A99B /* DonateWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF716280E03820092A99B /* DonateWindowController.swift */; };
 		635CF719280E039B0092A99B /* DonateSidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF718280E039B0092A99B /* DonateSidebarViewController.swift */; };
 		635CF71B280E03AB0092A99B /* DonateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635CF71A280E03AB0092A99B /* DonateDetailViewController.swift */; };
@@ -350,7 +350,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635C95C4299D931A002FB162 /* SuggestionPopup in Frameworks */,
+				635C95D529A83A2E002FB162 /* SuggestionPopup in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
 				635F9BBC297F3BE300F0B2E1 /* Downloader in Frameworks */,
 				635F9BB0297F36D100F0B2E1 /* LocationSpoofer in Frameworks */,
@@ -1034,7 +1034,7 @@
 				63D734FD27E90C800044918C /* CLogger */,
 				635F9BAF297F36D100F0B2E1 /* LocationSpoofer */,
 				635F9BBB297F3BE300F0B2E1 /* Downloader */,
-				635C95C3299D931A002FB162 /* SuggestionPopup */,
+				635C95D429A83A2E002FB162 /* SuggestionPopup */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -1112,7 +1112,7 @@
 				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
 				63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 				635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */,
-				635C95C2299D931A002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
+				635C95D329A83A2E002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -1791,12 +1791,12 @@
 				minimumVersion = 0.0.2;
 			};
 		};
-		635C95C2299D931A002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */ = {
+		635C95D329A83A2E002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/SuggestionPopup.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.4;
+				minimumVersion = 0.0.6;
 			};
 		};
 		635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */ = {
@@ -1823,9 +1823,9 @@
 			package = 635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */;
 			productName = GPXParser;
 		};
-		635C95C3299D931A002FB162 /* SuggestionPopup */ = {
+		635C95D429A83A2E002FB162 /* SuggestionPopup */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 635C95C2299D931A002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */;
+			package = 635C95D329A83A2E002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */;
 			productName = SuggestionPopup;
 		};
 		635F9BAF297F36D100F0B2E1 /* LocationSpoofer */ = {

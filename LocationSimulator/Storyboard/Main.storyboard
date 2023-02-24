@@ -2745,9 +2745,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrm-tL-iw9">
-                                <rect key="frame" x="20" y="35" width="227" height="250"/>
+                                <rect key="frame" x="20" y="35" width="207" height="250"/>
                                 <clipView key="contentView" id="3ld-57-Iej">
-                                    <rect key="frame" x="1" y="1" width="225" height="248"/>
+                                    <rect key="frame" x="1" y="1" width="205" height="248"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" id="cnR-eo-JKu">
@@ -2800,8 +2800,8 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="C3E-8o-9An">
-                                    <rect key="frame" x="1" y="233" width="85" height="16"/>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="C3E-8o-9An">
+                                    <rect key="frame" x="1" y="233" width="205" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="cLO-Jm-K3v">
@@ -2810,7 +2810,7 @@
                                 </scroller>
                             </scrollView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-KZ-F6L">
-                                <rect key="frame" x="20" y="283" width="305" height="23"/>
+                                <rect key="frame" x="20" y="283" width="187" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="bBe-oX-oAl">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -2824,7 +2824,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VaG-O8-E1G" userLabel="Add Remove Segment">
-                                <rect key="frame" x="20" y="14" width="305" height="23"/>
+                                <rect key="frame" x="20" y="14" width="207" height="23"/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="momentary" id="5v1-mC-Drn">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -2841,7 +2841,7 @@
                                 </connections>
                             </segmentedControl>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BHm-g2-ImW">
-                                <rect key="frame" x="18" y="388" width="307" height="18"/>
+                                <rect key="frame" x="18" y="388" width="189" height="18"/>
                                 <buttonCell key="cell" type="check" title="Custom DeveloperDiskImagePath" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="WMO-1M-pcy">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -2881,7 +2881,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0t-cb-vDt">
-                                <rect key="frame" x="66" y="354" width="259" height="25"/>
+                                <rect key="frame" x="66" y="354" width="141" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" drawsBackground="YES" id="Qge-O6-1Wz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
