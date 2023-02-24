@@ -124,8 +124,6 @@ class SplitViewController: NSSplitViewController {
             }
             return .orderedAscending
         }, context: nil)
-
-        self.splitView.setNeedsDisplay(self.splitView.bounds)
     }
 
     // MARK: - Toggle Sidebar
