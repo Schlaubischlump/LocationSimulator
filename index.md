@@ -34,6 +34,10 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.2.0
+⚠️ Language support other than english, german and czech is partially incomplete
+- Updated UI for macOS 10.11 and up
+
 ### v0.1.9.8
 ⚠️ Language support other than english, german and czech is partially incomplete
 - 'Set Speed...' menu item
