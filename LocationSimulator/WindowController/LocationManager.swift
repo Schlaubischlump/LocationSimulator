@@ -11,6 +11,8 @@ import CoreLocation
 
 enum LocationError: Error {
     case unknown
+    case restricted
+    case denied
 }
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -30,21 +32,34 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func requestLocationAndPermissionIfRequired() {
-        self.requestPermissionIfRequired()
-        self.manager.requestLocation()
+        if self.requestPermissionIfRequired() {
+            self.manager.requestLocation()
+        }
     }
 
-    private func requestPermissionIfRequired(status: CLAuthorizationStatus = .notDetermined) {
-        guard status != .authorized else {
-            return
+    @discardableResult
+    private func requestPermissionIfRequired(status: CLAuthorizationStatus = .notDetermined) -> Bool {
+        switch status {
+        case .authorized, .authorizedAlways:
+            return true
+        case .notDetermined:
+            // Request permission
+            if #available(macOS 11.0, *) {
+                self.manager.requestWhenInUseAuthorization()
+            } else if #available(macOS 10.15, *) {
+                self.manager.requestAlwaysAuthorization()
+            }
+            self.manager.desiredAccuracy = kCLLocationAccuracyBest
+            return true
+        case .restricted:
+            self.onError?(LocationError.restricted)
+            return false
+        case .denied:
+            self.onError?(LocationError.denied)
+            return false
+        @unknown default:
+            return false
         }
-
-        if #available(macOS 11.0, *) {
-            self.manager.requestWhenInUseAuthorization()
-        } else if #available(macOS 10.15, *) {
-            self.manager.requestAlwaysAuthorization()
-        }
-        self.manager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
     // MARK: - Delegate
