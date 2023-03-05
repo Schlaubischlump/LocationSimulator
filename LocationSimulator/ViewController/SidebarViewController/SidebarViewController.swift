@@ -12,6 +12,14 @@ import SuggestionPopup
 
 let kMinimumSidebarWidth = 150.0
 
+let kEnableSidebarSearchField = {
+    if #available(OSX 11.0, *) {
+        return true
+    } else {
+        return false
+    }
+}()
+
 class SidebarViewController: NSViewController {
 
     @IBOutlet var outlineView: NSOutlineView!
@@ -60,7 +68,7 @@ class SidebarViewController: NSViewController {
         SimulatorDevice.startGeneratingDeviceNotifications()
 
         // Add a searchbar to the sidebar in macOS 11 and up
-        if #available(OSX 11.0, *) {
+        if kEnableSidebarSearchField {
             self.setupSearchField()
         }
     }

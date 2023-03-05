@@ -51,12 +51,13 @@ extension ToolbarController: NSToolbarDelegate {
         return items + [.search]
     }*/
 
-    /** Disable the search item on macOS 13.0.
+    /**
+     * Disable the search item if we added the search to the sidebar.
      * We would need to generate the search item in code to disable it on > macOS 11.0 in general.
      * The toolbar delegate only appends to the allowed items of interface builder.
      */
     @available(macOS 13.0, *)
     func toolbarImmovableItemIdentifiers(_ toolbar: NSToolbar) -> Set<NSToolbarItem.Identifier> {
-        return [.search]
+        return kEnableSidebarSearchField ? [.search] : []
     }
 }

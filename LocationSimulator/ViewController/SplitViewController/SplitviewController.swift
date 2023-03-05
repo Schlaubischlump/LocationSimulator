@@ -130,7 +130,6 @@ class SplitViewController: NSSplitViewController {
 
     public override func toggleSidebar(_ sender: Any?) {
         self.isSidebarCollapsed = !self.isSidebarCollapsed
-
         super.toggleSidebar(nil)
     }
 

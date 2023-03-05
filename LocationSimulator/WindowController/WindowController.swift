@@ -53,7 +53,7 @@ class WindowController: NSWindowController {
     // MARK: - Model
 
     /// Internal reference to a location manager for this mac's location
-    private let locationManager = CLLocationManager()
+    private let locationManager = LocationManager()
 
     /// The device status observer used to update toolbar and touchbar.
     private var statusObserver: NSObjectProtocol?
@@ -81,18 +81,15 @@ class WindowController: NSWindowController {
             self.window?.titleVisibility = .visible
         }
 
+        // Add callbacks for the `Get Mac location` button
+        self.locationManager.onLocation = self.didGetMacLocation(_:)
+        self.locationManager.onError = self.failedToGetMacLocation(_:)
+
         // Set the default move type
         self.setMoveType(.walk)
 
         // Disable the touchbar and toolbar.
         self.updateForDeviceStatus(.disconnected)
-
-        // Request the permission to access the mac's location.
-        // Otherwise the current location button won't work.
-        if #available(macOS 10.15, *) {
-            self.locationManager.requestAlwaysAuthorization()
-        }
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
         // Listen for state changes to update the toolbar and touchbar.
         self.statusObserver = NotificationCenter.default.addObserver(forName: .StatusChanged, object: nil,
@@ -170,15 +167,22 @@ class WindowController: NSWindowController {
 
     /// Set the currentlocation of this mac to the spoofed location.
     public func setLocationToCurrentLocation() {
-        if !CLLocationManager.locationServicesEnabled() {
+        guard self.locationManager.locationServicesEnabled else {
             // Check if location services are enabled.
             self.window?.showError("LOCATION_SERVICE_DISABLED", message: "LOCATION_SERVICE_DISABLED_MSG")
-        } else if let coord = locationManager.location?.coordinate {
-            self.requestLocationChange(coord: coord)
-        } else {
-            // Can not read the current user location.
-            self.window?.showError("GET_LOCATION_ERROR", message: "GET_LOCATION_ERROR_MSG")
+            return
         }
+        // Request the permission to access the mac's location and call the callback functions with the new
+        // location.
+        self.locationManager.requestLocationAndPermissionIfRequired()
+    }
+
+    func didGetMacLocation(_ coordinate: CLLocationCoordinate2D) {
+        self.requestLocationChange(coord: coordinate)
+    }
+
+    func failedToGetMacLocation(_ error: Error) {
+        self.window?.showError("GET_LOCATION_ERROR", message: "GET_LOCATION_ERROR_MSG")
     }
 
     /// Present an alert to the user to allow him to change the speed.
