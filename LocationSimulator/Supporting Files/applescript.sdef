@@ -369,6 +369,10 @@
         <class name="gpx file" code="LSGX" description="A GPX file" inherits="item" plural="gpx files">
             <cocoa class="ASGPXFile"/>
 
+            <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the window." hidden="yes">
+                <cocoa key="uniqueID"/>
+            </property>
+
             <property name="path" code="LSpa" type="file" access="r" description="The file path.">
                 <cocoa key="file"/>
             </property>
