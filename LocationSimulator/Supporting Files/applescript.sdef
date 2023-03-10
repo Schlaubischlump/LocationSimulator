@@ -84,6 +84,38 @@
             <responds-to command="quit">
                 <cocoa method="handleQuitScriptCommand:"/>
             </responds-to>
+
+            <element type="device" access="r">
+                <cocoa key="devices"/>
+            </element>
+
+            <!--
+                Just a dummy value hidden from the user, so that we get the correct class communicated to apple script
+            -->
+            <element type="gpx file" access="r" hidden="yes">
+                <cocoa key="gpxFiles"/>
+            </element>
+
+            <responds-to command="load gpx">
+                <cocoa method="loadGPXFile:"/>
+            </responds-to>
+
+            <!-- Coordinate helper -->
+            <responds-to command="distance">
+                <cocoa method="distanceBetween:"/>
+            </responds-to>
+
+            <responds-to command="sin">
+                <cocoa method="sinOf:"/>
+            </responds-to>
+
+            <responds-to command="cos">
+                <cocoa method="cosOf:"/>
+            </responds-to>
+
+            <responds-to command="atan2">
+                <cocoa method="atanOf:"/>
+            </responds-to>
         </class>
 
         <class name="window" code="cwin" description="A window.">
@@ -151,13 +183,6 @@
             <direct-parameter description="The device to interact with." type="device"/>
         </command>
 
-        <class name="application" code="capp" description="LocationSimulator’s top level scripting object." plural="applications" inherits="application">
-            <cocoa class="LSApplication"/>
-            <element type="device" access="r">
-                <cocoa key="devices"/>
-            </element>
-        </class>
-
         <class name="device" code="LSDE" description="A device" inherits="item" plural="devices">
             <cocoa class="ASDevice"/>
             <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the device.">
@@ -186,6 +211,182 @@
 
             <responds-to command="pair">
                 <cocoa method="pair:"/>
+            </responds-to>
+        </class>
+    </suite>
+
+    <suite name="Coordinate Framework" code="LSCS" description="Common classes and commands to work with coordinates.">
+        <command name="distance" code="LSheadbe" description="Distance between two coordinates in meters.">
+            <parameter name="from" code="Lspo" type="list of real" description="The start coordinate {lat, lon}.">
+                <cocoa key="from"/>
+            </parameter>
+            <parameter name="to" code="Lsat" type="list of real" description="The end coordinate {lat, lon}.">
+                <cocoa key="to"/>
+            </parameter>
+
+            <result type="real" description="The distance between the two coordinates in meters "/>
+
+        </command>
+
+        <command name="sin" code="LSsinfun" description="Calculates the sine of a number x.">
+            <parameter name="of" code="Lssi" type="real" description="x">
+                <cocoa key="of"/>
+            </parameter>
+
+            <result type="real" description="sin(x)"/>
+        </command>
+
+        <command name="cos" code="LScosfun" description="Calculates the cosine of a number x.">
+            <parameter name="of" code="Lsco" type="real" description="x.">
+                <cocoa key="of"/>
+            </parameter>
+
+            <result type="real" description="cos(x)"/>
+        </command>
+
+        <command name="atan2" code="LSatafun" description="Calculates the atan2 of x + i*y.">
+            <parameter name="y" code="Lsyp" type="real" description="y input.">
+                <cocoa key="y"/>
+            </parameter>
+
+            <parameter name="x" code="Lsxp" type="real" description="x input.">
+                <cocoa key="x"/>
+            </parameter>
+
+            <result type="real" description="atan2(y, x)"/>
+        </command>
+    </suite>
+
+    <suite name="GPX Framework" code="LSGS" description="Common classes and commands to interact with GPX files.">
+        <command name="load gpx" code="LSldgpxf" description="Load a GPX file.">
+            <parameter name="file" code="Lsfl" type="file" description="The gpx file.">
+                <cocoa key="file"/>
+            </parameter>
+
+            <result type="gpx file" description="The loaded gpx file."/>
+        </command>
+
+        <command name="close" code="LSclogpx" description="Close an open GPX file.">
+            <direct-parameter description="The GPX file to close." type="gpx file"/>
+        </command>
+
+        <class name="route point" code="LSRP" description="A route point" inherits="item" plural="route points">
+            <cocoa class="ASRoutePoint"/>
+
+            <property name="longitude" code="LSlo" type="real" access="r" description="The longitute coordinate.">
+                <cocoa key="longitude"/>
+            </property>
+
+            <property name="latitude" code="LSla" type="real" access="r" description="The latitute coordinate.">
+                <cocoa key="latitude"/>
+            </property>
+
+            <property name="coordinate" code="LScn" type="list of real" access="r" description="The coordinate of the route point.">
+                <cocoa key="coordinate"/>
+            </property>
+
+            <property name="name" code="LSpn" type="text" access="r" description="The name of the route point.">
+                <cocoa key="name"/>
+            </property>
+        </class>
+
+        <class name="route" code="LSRO" description="A route" inherits="item" plural="routes">
+            <cocoa class="ASRoute"/>
+
+            <property name="name" code="LSrn" type="text" access="r" description="The name of the route.">
+                <cocoa key="name"/>
+            </property>
+
+            <element type="route point" access="r">
+                <cocoa key="points"/>
+            </element>
+        </class>
+
+        <class name="waypoint" code="LSWP" description="A waypoint" inherits="item" plural="waypoints">
+            <cocoa class="ASWayPoint"/>
+
+            <property name="longitude" code="LSlo" type="real" access="r" description="The longitute coordinate.">
+                <cocoa key="longitude"/>
+            </property>
+
+            <property name="latitude" code="LSla" type="real" access="r" description="The latitute coordinate.">
+                <cocoa key="latitude"/>
+            </property>
+
+            <property name="name" code="LSpn" type="text" access="r" description="The name of the waypoint.">
+                <cocoa key="name"/>
+            </property>
+
+            <property name="coordinate" code="LScn" type="list of real" access="r" description="The coordinate of the waypoint.">
+                <cocoa key="coordinate"/>
+            </property>
+        </class>
+
+        <class name="track point" code="LSTP" description="A point of a track segment" inherits="item" plural="track points">
+            <cocoa class="ASTrackPoint"/>
+
+            <property name="longitude" code="LSlo" type="real" access="r" description="The longitute coordinate.">
+                <cocoa key="longitude"/>
+            </property>
+
+            <property name="latitude" code="LSla" type="real" access="r" description="The latitute coordinate.">
+                <cocoa key="latitude"/>
+            </property>
+
+            <property name="name" code="LSpn" type="text" access="r" description="The name of the track point.">
+                <cocoa key="name"/>
+            </property>
+
+            <property name="coordinate" code="LScn" type="list of real" access="r" description="The coordinate of the track point.">
+                <cocoa key="coordinate"/>
+            </property>
+        </class>
+
+        <class name="segment" code="LSSG" description="A segment of a track" inherits="item" plural="segments">
+            <cocoa class="ASTrackSegment"/>
+
+            <property name="name" code="LSsn" type="text" access="r" description="The name of the segment.">
+                <cocoa key="name"/>
+            </property>
+
+            <element type="track point" access="r">
+                <cocoa key="points"/>
+            </element>
+        </class>
+
+        <class name="track" code="LSTR" description="A track" inherits="item" plural="tracks">
+            <cocoa class="ASTrack"/>
+
+            <property name="name" code="LStn" type="text" access="r" description="The name of the track.">
+                <cocoa key="name"/>
+            </property>
+
+            <element type="segment" access="r">
+                <cocoa key="segments"/>
+            </element>
+        </class>
+
+        <class name="gpx file" code="LSGX" description="A GPX file" inherits="item" plural="gpx files">
+            <cocoa class="ASGPXFile"/>
+
+            <property name="path" code="LSpa" type="file" access="r" description="The file path.">
+                <cocoa key="file"/>
+            </property>
+
+            <element type="waypoint" access="r">
+                <cocoa key="waypoints"/>
+            </element>
+
+            <element type="track" access="r">
+                <cocoa key="tracks"/>
+            </element>
+
+            <element type="route" access="r">
+                <cocoa key="routes"/>
+            </element>
+
+            <responds-to command="close">
+                <cocoa method="close:"/>
             </responds-to>
         </class>
     </suite>

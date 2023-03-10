@@ -129,6 +129,9 @@
 		6390AB422593D63000B0CABA /* SplitviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB412593D63000B0CABA /* SplitviewController.swift */; };
 		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
 		63A1ABC827E7832100C9EDE0 /* ValueTrackingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */; };
+		63C6F89D29BB7A36005CED5D /* ASGPXFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F89C29BB7A36005CED5D /* ASGPXFile.swift */; };
+		63C6F89F29BBADD3005CED5D /* IndexedContainerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F89E29BBADD3005CED5D /* IndexedContainerItem.swift */; };
+		63C6F8A129BBAEAA005CED5D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F8A029BBAEAA005CED5D /* Error.swift */; };
 		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
 		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
 		63C799FD259659740099B794 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799FC259659740099B794 /* InfoViewController.swift */; };
@@ -301,6 +304,9 @@
 		63ACAEB625FED97400DE389D /* libimobiledevice-1.0.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libimobiledevice-1.0.6.dylib"; path = "../../../../../usr/local/Cellar/libimobiledevice/1.3.0/lib/libimobiledevice-1.0.6.dylib"; sourceTree = "<group>"; };
 		63ACAEB925FED98E00DE389D /* libplist++-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist++-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist++-2.0.3.dylib"; sourceTree = "<group>"; };
 		63ACAEBB25FED9A300DE389D /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
+		63C6F89C29BB7A36005CED5D /* ASGPXFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASGPXFile.swift; sourceTree = "<group>"; };
+		63C6F89E29BBADD3005CED5D /* IndexedContainerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedContainerItem.swift; sourceTree = "<group>"; };
+		63C6F8A029BBAEAA005CED5D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		63C799F12596291F0099B794 /* ViewMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenubarItem.swift; sourceTree = "<group>"; };
 		63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTouchbarItem+Extension.swift"; sourceTree = "<group>"; };
 		63C799FC259659740099B794 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -766,8 +772,10 @@
 		6372E37728247B9500188416 /* AppleScript */ = {
 			isa = PBXGroup;
 			children = (
+				63C6F8A229BBAEB5005CED5D /* Common */,
 				6372E3842824F79100188416 /* Application+AppleScript.swift */,
 				6372E37828247BA800188416 /* ASDevice.swift */,
+				63C6F89C29BB7A36005CED5D /* ASGPXFile.swift */,
 			);
 			path = AppleScript;
 			sourceTree = "<group>";
@@ -879,6 +887,15 @@
 				63D5DF3B27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift */,
 			);
 			path = AddDeveloperDiskImage;
+			sourceTree = "<group>";
+		};
+		63C6F8A229BBAEB5005CED5D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				63C6F8A029BBAEAA005CED5D /* Error.swift */,
+				63C6F89E29BBADD3005CED5D /* IndexedContainerItem.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		63CA733F281E0588007747D3 /* _English.lproj */ = {
@@ -1221,6 +1238,7 @@
 				633A45FE22F996D9005B3BE0 /* AppDelegate.swift in Sources */,
 				635C13892596EA9900BEB53B /* Array+Extension.swift in Sources */,
 				6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */,
+				63C6F89F29BBADD3005CED5D /* IndexedContainerItem.swift in Sources */,
 				63D7350227EDACA90044918C /* NavigationRenderer.swift in Sources */,
 				63FDE22D258FA42200917412 /* GPXSelectionView+NSBrowserDelegate.swift in Sources */,
 				637FD228259578B700E84EDB /* TouchbarController.swift in Sources */,
@@ -1246,9 +1264,11 @@
 				6352592B258B75190031F289 /* FileMenubarItem.swift in Sources */,
 				631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */,
 				630BC72027DCFFBE00675426 /* LogToolbarController.swift in Sources */,
+				63C6F89D29BB7A36005CED5D /* ASGPXFile.swift in Sources */,
 				63A1ABC827E7832100C9EDE0 /* ValueTrackingSlider.swift in Sources */,
 				632C466323F4D9C8004E5092 /* CoordinateStepper.swift in Sources */,
 				63864C0D27DC343A005F94F3 /* LogViewController.swift in Sources */,
+				63C6F8A129BBAEAA005CED5D /* Error.swift in Sources */,
 				63888DD42592B23D00B1DFC9 /* SidebarDataSource.swift in Sources */,
 				63767569258EADC0000DCEF3 /* NSBezierPath+Extension.swift in Sources */,
 				63FA263029B3613700D7032A /* LocationManager.swift in Sources */,
