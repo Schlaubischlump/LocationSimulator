@@ -17,4 +17,8 @@ extension Application {
     @objc private var gpxFiles: [ASGPXFile] {
         return ASGPXFile.openFiles
     }
+
+    @objc private var storages: [ASStorage] {
+        return ASStorage.openStorages
+    }
 }

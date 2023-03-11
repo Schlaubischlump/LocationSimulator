@@ -90,15 +90,25 @@
                 <cocoa key="devices"/>
             </element>
 
-            <!--
-                Just a dummy value hidden from the user, so that we get the correct class communicated to apple script
-            -->
+            <!-- Dummy to allow access from applescript -->
             <element type="gpx file" access="r" hidden="yes">
                 <cocoa key="gpxFiles"/>
             </element>
 
+            <!-- GPX -->
+
             <responds-to command="load gpx">
                 <cocoa method="loadGPXFile:"/>
+            </responds-to>
+
+            <!-- Storage -->
+
+            <element type="storage" access="r">
+                <cocoa key="storages"/>
+            </element>
+
+            <responds-to command="open storage">
+                <cocoa method="openStorage:"/>
             </responds-to>
 
             <!-- Coordinate helper -->
@@ -274,6 +284,76 @@
         </command>
     </suite>
 
+    <!--- Storage Suite -->
+    <suite name="Storage Suite" code="LSSS" description="In memory storage.">
+        <command name="open storage" code="LSopemem" description="Open a storage container.">
+            <parameter name="name" code="Lsmn" type="text" description="name">
+                <cocoa key="name"/>
+            </parameter>
+
+            <result type="storage" description="The opened storage container."/>
+        </command>
+
+        <command name="store" code="LSmemsto" description="Store a value in the storage container.">
+            <direct-parameter description="The storage container to interact with." type="storage"/>
+            <parameter name="key" code="Lsst" type="integer" description="key">
+                <cocoa key="key"/>
+            </parameter>
+
+            <parameter name="value" code="Lsgt" type="any" description="value">
+                <cocoa key="value"/>
+            </parameter>
+
+            <result type="boolean" description="True if the value did not exist, false otherwise."/>
+        </command>
+
+        <command name="read" code="LSmemred" description="Get a value from the storage container.">
+            <direct-parameter description="The storage container to interact with." type="storage"/>
+            <parameter name="key" code="Lsgt" type="integer" description="key">
+                <cocoa key="key"/>
+            </parameter>
+
+            <result type="any" description="The stored value."/>
+        </command>
+
+        <command name="remove" code="LSmemrem" description="Remove a value from the storage container.">
+            <direct-parameter description="The storage container to interact with." type="storage"/>
+            <parameter name="key" code="Lsrm" type="integer" description="key">
+                <cocoa key="key"/>
+            </parameter>
+
+            <result type="boolean" description="True if the value was removed, false otherwise."/>
+        </command>
+
+        <command name="close" code="LSclosto" description="Close an open storage container.">
+            <direct-parameter description="The storage container to close" type="storage"/>
+        </command>
+
+        <class name="storage" code="LSST" description="A storage container" inherits="item" plural="storages">
+            <cocoa class="ASStorage"/>
+
+            <property name="name" code="pnam" type="text" access="r" description="The name of the storage.">
+                <cocoa key="name"/>
+            </property>
+
+            <responds-to command="store">
+                <cocoa method="storeData:"/>
+            </responds-to>
+
+            <responds-to command="read">
+                <cocoa method="getData:"/>
+            </responds-to>
+
+            <responds-to command="remove">
+                <cocoa method="removeData:"/>
+            </responds-to>
+
+            <responds-to command="close">
+                <cocoa method="close:"/>
+            </responds-to>
+        </class>
+    </suite>
+
     <!--- GPX Suite -->
     <suite name="GPX Suite" code="LSGS" description="Common classes and commands to interact with GPX files.">
         <command name="load gpx" code="LSldgpxf" description="Load a GPX file.">
@@ -387,7 +467,7 @@
         <class name="gpx file" code="LSGX" description="A GPX file" inherits="item" plural="gpx files">
             <cocoa class="ASGPXFile"/>
 
-            <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the window." hidden="yes">
+            <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the gpx file." hidden="yes">
                 <cocoa key="uniqueID"/>
             </property>
 
