@@ -3,6 +3,7 @@
 
 <dictionary title="LocationSimulator Terminology">
 
+    <!--- Standard Suite -->
     <suite name="Standard Suite" code="????" description="Common classes and commands for all applications.">
 
         <command name="quit" code="aevtquit" description="Quit the application.">
@@ -105,6 +106,10 @@
                 <cocoa method="distanceBetween:"/>
             </responds-to>
 
+            <responds-to command="is valid">
+                <cocoa method="isValid:"/>
+            </responds-to>
+
             <responds-to command="sin">
                 <cocoa method="sinOf:"/>
             </responds-to>
@@ -160,7 +165,8 @@
 
     </suite>
 
-    <suite name="Device Framework" code="LSDS" description="Common classes and commands to interact with devices.">
+    <!--- Device Suite -->
+    <suite name="Device Suite" code="LSDS" description="Common classes and commands to interact with devices.">
         <command name="change location" code="LSsetloc" description="Change the location of a device.">
             <direct-parameter description="The device to interact with." type="device"/>
 
@@ -215,7 +221,8 @@
         </class>
     </suite>
 
-    <suite name="Coordinate Framework" code="LSCS" description="Common classes and commands to work with coordinates.">
+    <!--- Coordinate Suite -->
+    <suite name="Coordinate Suite" code="LSCS" description="Common classes and commands to work with coordinates.">
         <command name="distance" code="LSheadbe" description="Distance between two coordinates in meters.">
             <parameter name="from" code="Lspo" type="list of real" description="The start coordinate {lat, lon}.">
                 <cocoa key="from"/>
@@ -225,7 +232,14 @@
             </parameter>
 
             <result type="real" description="The distance between the two coordinates in meters "/>
+        </command>
 
+        <command name="is valid" code="LSisvald" description="Check if a coordinate is valid.">
+            <parameter name="coordinate" code="Lscd" type="list of real" description="The start coordinate {lat, lon}.">
+                <cocoa key="coordinate"/>
+            </parameter>
+
+            <result type="boolean" description="True if the coordinate is valid, false otehrwise."/>
         </command>
 
         <command name="sin" code="LSsinfun" description="Calculates the sine of a number x.">
@@ -257,7 +271,8 @@
         </command>
     </suite>
 
-    <suite name="GPX Framework" code="LSGS" description="Common classes and commands to interact with GPX files.">
+    <!--- GPX Suite -->
+    <suite name="GPX Suite" code="LSGS" description="Common classes and commands to interact with GPX files.">
         <command name="load gpx" code="LSldgpxf" description="Load a GPX file.">
             <parameter name="file" code="Lsfl" type="file" description="The gpx file.">
                 <cocoa key="file"/>
@@ -270,7 +285,7 @@
             <direct-parameter description="The GPX file to close." type="gpx file"/>
         </command>
 
-        <class name="route point" code="LSRP" description="A route point" inherits="item" plural="route points">
+        <class name="route point" code="LSRP" description="A point of a route" inherits="item" plural="route points">
             <cocoa class="ASRoutePoint"/>
 
             <property name="longitude" code="LSlo" type="real" access="r" description="The longitute coordinate.">

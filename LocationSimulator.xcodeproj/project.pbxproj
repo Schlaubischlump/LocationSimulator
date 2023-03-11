@@ -106,7 +106,7 @@
 		6372E3742824708200188416 /* applescript.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 6372E3732824708200188416 /* applescript.sdef */; };
 		6372E3762824772F00188416 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E3752824772F00188416 /* Application.swift */; };
 		6372E37928247BA900188416 /* ASDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E37828247BA800188416 /* ASDevice.swift */; };
-		6372E3852824F79100188416 /* Application+AppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E3842824F79100188416 /* Application+AppleScript.swift */; };
+		6372E3852824F79100188416 /* Application+General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E3842824F79100188416 /* Application+General.swift */; };
 		6376755D258E9F32000DCEF3 /* SpinnerHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */; };
 		63767560258EA61E000DCEF3 /* MovementButtonHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */; };
 		63767561258EA61E000DCEF3 /* MovementDirectionHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */; };
@@ -133,6 +133,8 @@
 		63C6F89F29BBADD3005CED5D /* IndexedContainerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F89E29BBADD3005CED5D /* IndexedContainerItem.swift */; };
 		63C6F8A129BBAEAA005CED5D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F8A029BBAEAA005CED5D /* Error.swift */; };
 		63C6F8A429BBE5EE005CED5D /* UUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F8A329BBE5EE005CED5D /* UUID.swift */; };
+		63C6F8A629BBFD1C005CED5D /* Application+CoordinateSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F8A529BBFD1C005CED5D /* Application+CoordinateSuite.swift */; };
+		63C6F8A829BBFD7F005CED5D /* Application+GPXSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F8A729BBFD7F005CED5D /* Application+GPXSuite.swift */; };
 		63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F12596291F0099B794 /* ViewMenubarItem.swift */; };
 		63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */; };
 		63C799FD259659740099B794 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C799FC259659740099B794 /* InfoViewController.swift */; };
@@ -278,7 +280,7 @@
 		6372E3732824708200188416 /* applescript.sdef */ = {isa = PBXFileReference; lastKnownFileType = text; name = applescript.sdef; path = "Supporting Files/applescript.sdef"; sourceTree = "<group>"; };
 		6372E3752824772F00188416 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		6372E37828247BA800188416 /* ASDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASDevice.swift; sourceTree = "<group>"; };
-		6372E3842824F79100188416 /* Application+AppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+AppleScript.swift"; sourceTree = "<group>"; };
+		6372E3842824F79100188416 /* Application+General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+General.swift"; sourceTree = "<group>"; };
 		6376755C258E9F32000DCEF3 /* SpinnerHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerHUDView.swift; sourceTree = "<group>"; };
 		6376755E258EA61E000DCEF3 /* MovementButtonHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementButtonHUDView.swift; sourceTree = "<group>"; };
 		6376755F258EA61E000DCEF3 /* MovementDirectionHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementDirectionHUDView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,8 @@
 		63C6F89E29BBADD3005CED5D /* IndexedContainerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedContainerItem.swift; sourceTree = "<group>"; };
 		63C6F8A029BBAEAA005CED5D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		63C6F8A329BBE5EE005CED5D /* UUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUID.swift; sourceTree = "<group>"; };
+		63C6F8A529BBFD1C005CED5D /* Application+CoordinateSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+CoordinateSuite.swift"; sourceTree = "<group>"; };
+		63C6F8A729BBFD7F005CED5D /* Application+GPXSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Application+GPXSuite.swift"; sourceTree = "<group>"; };
 		63C799F12596291F0099B794 /* ViewMenubarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenubarItem.swift; sourceTree = "<group>"; };
 		63C799F8259656F20099B794 /* NSTouchbarItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTouchbarItem+Extension.swift"; sourceTree = "<group>"; };
 		63C799FC259659740099B794 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -774,10 +778,11 @@
 		6372E37728247B9500188416 /* AppleScript */ = {
 			isa = PBXGroup;
 			children = (
+				6372E3842824F79100188416 /* Application+General.swift */,
 				63C6F8A229BBAEB5005CED5D /* Common */,
-				6372E3842824F79100188416 /* Application+AppleScript.swift */,
-				6372E37828247BA800188416 /* ASDevice.swift */,
-				63C6F89C29BB7A36005CED5D /* ASGPXFile.swift */,
+				63C6F8AB29BBFE12005CED5D /* CoordinateSuite */,
+				63C6F8AA29BBFDF5005CED5D /* DeviceSuite */,
+				63C6F8A929BBFDE8005CED5D /* GPXSuite */,
 			);
 			path = AppleScript;
 			sourceTree = "<group>";
@@ -899,6 +904,31 @@
 				63C6F8A329BBE5EE005CED5D /* UUID.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		63C6F8A929BBFDE8005CED5D /* GPXSuite */ = {
+			isa = PBXGroup;
+			children = (
+				63C6F8A729BBFD7F005CED5D /* Application+GPXSuite.swift */,
+				63C6F89C29BB7A36005CED5D /* ASGPXFile.swift */,
+			);
+			path = GPXSuite;
+			sourceTree = "<group>";
+		};
+		63C6F8AA29BBFDF5005CED5D /* DeviceSuite */ = {
+			isa = PBXGroup;
+			children = (
+				6372E37828247BA800188416 /* ASDevice.swift */,
+			);
+			path = DeviceSuite;
+			sourceTree = "<group>";
+		};
+		63C6F8AB29BBFE12005CED5D /* CoordinateSuite */ = {
+			isa = PBXGroup;
+			children = (
+				63C6F8A529BBFD1C005CED5D /* Application+CoordinateSuite.swift */,
+			);
+			path = CoordinateSuite;
 			sourceTree = "<group>";
 		};
 		63CA733F281E0588007747D3 /* _English.lproj */ = {
@@ -1314,7 +1344,7 @@
 				635CF71D280E03B80092A99B /* DonateSplitViewController.swift in Sources */,
 				635C95B2298C7405002FB162 /* OnboardPageToolbarViewController.swift in Sources */,
 				637169DA27FF1C2400386021 /* main.swift in Sources */,
-				6372E3852824F79100188416 /* Application+AppleScript.swift in Sources */,
+				6372E3852824F79100188416 /* Application+General.swift in Sources */,
 				631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */,
 				634069D829343F580045673A /* NSTextField+Extension.swift in Sources */,
 				63C799F9259656F20099B794 /* NSTouchbarItem+Extension.swift in Sources */,
@@ -1336,6 +1366,7 @@
 				6304FF93298B3DFD002DE6CD /* PageControl.swift in Sources */,
 				635F9BAA297D503A00F0B2E1 /* DownloadListViewController.swift in Sources */,
 				63FDE224258F9E3300917412 /* GPXSelectionView.swift in Sources */,
+				63C6F8A829BBFD7F005CED5D /* Application+GPXSuite.swift in Sources */,
 				63C799F22596291F0099B794 /* ViewMenubarItem.swift in Sources */,
 				63525910258AC0950031F289 /* LicenseViewController.swift in Sources */,
 				63D5DF3C27D8F29200F2DCD3 /* AddDeveloperDiskImageAlert.swift in Sources */,
@@ -1344,6 +1375,7 @@
 				637169D827FD8D0A00386021 /* Device+Extension.swift in Sources */,
 				63D5DF3827D8F12E00F2DCD3 /* AddDeveloperDiskImageView.swift in Sources */,
 				631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */,
+				63C6F8A629BBFD1C005CED5D /* Application+CoordinateSuite.swift in Sources */,
 				6376756B258EC809000DCEF3 /* SeparatorLine.swift in Sources */,
 				636FD9E62989B717004FBFFF /* SpeedValueTransformer.swift in Sources */,
 				631EC00B2594C1D60066D5BB /* NSViewController+Extension.swift in Sources */,

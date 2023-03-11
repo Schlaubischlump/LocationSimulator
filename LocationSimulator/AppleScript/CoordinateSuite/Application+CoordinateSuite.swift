@@ -1,50 +1,22 @@
 //
-//  LSApplication+AppleScript.swift
+//  Application.swift
 //  LocationSimulator
 //
-//  Created by David Klopp on 06.05.22.
-//  Copyright © 2022 David Klopp. All rights reserved.
+//  Created by David Klopp on 11.03.23.
+//  Copyright © 2023 David Klopp. All rights reserved.
 //
 
 import Foundation
 import CoreLocation
 
-func arrayToCoordinate(_ arr: [CGFloat]) throws -> CLLocationCoordinate2D {
+private func arrayToCoordinate(_ arr: [CGFloat]) throws -> CLLocationCoordinate2D {
     guard arr.count == 2 else {
         throw ASError.InvalidCoordinate
     }
     return CLLocationCoordinate2D(latitude: arr[0], longitude: arr[1])
 }
 
-/// Extension to the main Application class to support apple script
 extension Application {
-    @objc private var devices: [ASDevice] {
-        return ASDevice.availableDevices
-    }
-
-    @objc private var gpxFiles: [ASGPXFile] {
-        return ASGPXFile.openFiles
-    }
-
-    @objc(loadGPXFile:) private func loadGPXFile(_ command: NSScriptCommand) -> Any? {
-        guard let params = command.evaluatedArguments,
-                let gpxFileURL = params["file"] as? URL else {
-            return false
-        }
-
-        // Load and parse the input file.
-        do {
-            return try ASGPXFile(file: gpxFileURL)
-        } catch let error {
-            command.scriptErrorNumber = (error as NSError).code
-            command.scriptErrorString = error.localizedDescription
-        }
-
-        return nil
-    }
-
-    // MARK: - Coordinate helper functions
-
     @objc(distanceBetween:) private func distanceBetween(_ command: NSScriptCommand) -> Any? {
         guard let params = command.evaluatedArguments,
                 let position = params["from"] as? [CGFloat],
@@ -56,6 +28,22 @@ extension Application {
             let positionCoord = try arrayToCoordinate(position)
             let lookAtCoord = try arrayToCoordinate(lookAt)
             return positionCoord.distanceTo(coordinate: lookAtCoord)
+        } catch let error {
+            command.scriptErrorNumber = (error as NSError).code
+            command.scriptErrorString = error.localizedDescription
+        }
+        return -1
+    }
+
+    @objc(isValid:) private func isValid(_ command: NSScriptCommand) -> Any? {
+        guard let params = command.evaluatedArguments,
+              let coordValues = params["coordinate"] as? [CGFloat] else {
+            return false
+        }
+
+        do {
+            let coord = try arrayToCoordinate(coordValues)
+            return CLLocationCoordinate2DIsValid(coord)
         } catch let error {
             command.scriptErrorNumber = (error as NSError).code
             command.scriptErrorString = error.localizedDescription
