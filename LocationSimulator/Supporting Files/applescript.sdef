@@ -222,7 +222,7 @@
     </suite>
 
     <!--- Coordinate Suite -->
-    <suite name="Coordinate Suite" code="LSCS" description="Common classes and commands to work with coordinates.">
+    <suite name="Coordinate Suite" code="LSCS" description="Common commands to work with coordinates.">
         <command name="distance" code="LSheadbe" description="Distance between two coordinates in meters.">
             <parameter name="from" code="Lspo" type="list of real" description="The start coordinate {lat, lon}.">
                 <cocoa key="from"/>
@@ -235,13 +235,16 @@
         </command>
 
         <command name="is valid" code="LSisvald" description="Check if a coordinate is valid.">
-            <parameter name="coordinate" code="Lscd" type="list of real" description="The start coordinate {lat, lon}.">
+            <parameter name="coordinate" code="Lscd" type="list of real" description="The coordinate {lat, lon}.">
                 <cocoa key="coordinate"/>
             </parameter>
 
             <result type="boolean" description="True if the coordinate is valid, false otehrwise."/>
         </command>
+    </suite>
 
+    <!--- Math Suite -->
+    <suite name="Math Suite" code="LSMS" description="Common math functions.">
         <command name="sin" code="LSsinfun" description="Calculates the sine of a number x.">
             <parameter name="of" code="Lssi" type="real" description="x">
                 <cocoa key="of"/>

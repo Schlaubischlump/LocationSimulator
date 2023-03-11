@@ -50,29 +50,4 @@ extension Application {
         }
         return -1
     }
-
-    @objc(sinOf:) private func sinOf(_ command: NSScriptCommand) -> Any? {
-        guard let params = command.evaluatedArguments,
-                let num = params["of"] as? CGFloat else {
-            return false
-        }
-        return sin(num)
-    }
-
-    @objc(cosOf:) private func cosOf(_ command: NSScriptCommand) -> Any? {
-        guard let params = command.evaluatedArguments,
-                let num = params["of"] as? CGFloat else {
-            return false
-        }
-        return cos(num)
-    }
-
-    @objc(atanOf:) private func atanOf(_ command: NSScriptCommand) -> Any? {
-        guard let params = command.evaluatedArguments,
-                let y = params["y"] as? CGFloat,
-                let x = params["x"] as? CGFloat else {
-            return false
-        }
-        return atan2(y, x)
-    }
 }
