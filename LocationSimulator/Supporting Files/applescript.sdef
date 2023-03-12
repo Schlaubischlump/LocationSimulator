@@ -296,7 +296,7 @@
 
         <command name="store" code="LSmemsto" description="Store a value in the storage container.">
             <direct-parameter description="The storage container to interact with." type="storage"/>
-            <parameter name="key" code="Lsst" type="integer" description="key">
+            <parameter name="key" code="Lsst" type="any" description="key">
                 <cocoa key="key"/>
             </parameter>
 
@@ -309,7 +309,7 @@
 
         <command name="read" code="LSmemred" description="Get a value from the storage container.">
             <direct-parameter description="The storage container to interact with." type="storage"/>
-            <parameter name="key" code="Lsgt" type="integer" description="key">
+            <parameter name="key" code="Lsgt" type="any" description="key">
                 <cocoa key="key"/>
             </parameter>
 
@@ -318,7 +318,7 @@
 
         <command name="remove" code="LSmemrem" description="Remove a value from the storage container.">
             <direct-parameter description="The storage container to interact with." type="storage"/>
-            <parameter name="key" code="Lsrm" type="integer" description="key">
+            <parameter name="key" code="Lsrm" type="any" description="key">
                 <cocoa key="key"/>
             </parameter>
 

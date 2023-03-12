@@ -22,7 +22,7 @@ import Foundation
                                key: "storages", name: self.name)
     }
 
-    private var data: [Int: Any] = [:]
+    private var data: [Data: NSAppleEventDescriptor] = [:]
 
     init(name: String) throws {
         self.name = name
@@ -31,31 +31,30 @@ import Foundation
     }
 
     @objc(storeData:) private func storeData(_ command: NSScriptCommand) -> Any? {
-        print("Store the data...")
         guard let params = command.evaluatedArguments,
-                let key = params["key"] as? Int,
-                let value = params["value"] else {
+                let key = params["key"] as? NSAppleEventDescriptor,
+                let value = params["value"] as? NSAppleEventDescriptor else {
             return false
         }
-        let hasData = self.data[key] != nil
-        self.data[key] = value
+        let hasData = self.data[key.data] != nil
+        self.data[key.data] = value
         return hasData
     }
 
     @objc(getData:) private func getData(_ command: NSScriptCommand) -> Any? {
         guard let params = command.evaluatedArguments,
-              let key = params["key"] as? Int else {
+              let key = params["key"] as? NSAppleEventDescriptor else {
             return nil
         }
-        return self.data[key]
+        return self.data[key.data]
     }
 
     @objc(removeData:) private func removeData(_ command: NSScriptCommand) -> Any? {
         guard let params = command.evaluatedArguments,
-              let key = params["key"] as? Int else {
+              let key = params["key"] as? NSAppleEventDescriptor else {
             return false
         }
-        return self.data.removeValue(forKey: key) != nil
+        return self.data.removeValue(forKey: key.data) != nil
     }
 
     @objc(close:) private func close(_ command: NSScriptCommand) {
