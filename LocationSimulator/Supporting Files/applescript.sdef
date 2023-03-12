@@ -95,23 +95,13 @@
                 <cocoa key="gpxFiles"/>
             </element>
 
-            <!-- GPX -->
+            <!-- GPX Suite -->
 
             <responds-to command="load gpx">
                 <cocoa method="loadGPXFile:"/>
             </responds-to>
 
-            <!-- Storage -->
-
-            <element type="storage" access="r">
-                <cocoa key="storages"/>
-            </element>
-
-            <responds-to command="open storage">
-                <cocoa method="openStorage:"/>
-            </responds-to>
-
-            <!-- Coordinate helper -->
+            <!-- Coordinate Suite -->
             <responds-to command="distance">
                 <cocoa method="distanceBetween:"/>
             </responds-to>
@@ -120,6 +110,7 @@
                 <cocoa method="isValid:"/>
             </responds-to>
 
+            <!-- Math Suite -->
             <responds-to command="sin">
                 <cocoa method="sinOf:"/>
             </responds-to>
@@ -130,6 +121,15 @@
 
             <responds-to command="atan2">
                 <cocoa method="atanOf:"/>
+            </responds-to>
+
+            <!-- Storage Suite -->
+            <element type="storage" access="r">
+                <cocoa key="storages"/>
+            </element>
+
+            <responds-to command="open storage">
+                <cocoa method="openStorage:"/>
             </responds-to>
         </class>
 
@@ -176,7 +176,7 @@
     </suite>
 
     <!--- Device Suite -->
-    <suite name="Device Suite" code="LSDS" description="Common classes and commands to interact with devices.">
+    <suite name="Device Suite" code="LSDS" description="Common classes and commands to interact with iOS or Simulator devices.">
         <command name="change location" code="LSsetloc" description="Change the location of a device.">
             <direct-parameter description="The device to interact with." type="device"/>
 
@@ -251,107 +251,6 @@
 
             <result type="boolean" description="True if the coordinate is valid, false otehrwise."/>
         </command>
-    </suite>
-
-    <!--- Math Suite -->
-    <suite name="Math Suite" code="LSMS" description="Common math functions.">
-        <command name="sin" code="LSsinfun" description="Calculates the sine of a number x.">
-            <parameter name="of" code="Lssi" type="real" description="x">
-                <cocoa key="of"/>
-            </parameter>
-
-            <result type="real" description="sin(x)"/>
-        </command>
-
-        <command name="cos" code="LScosfun" description="Calculates the cosine of a number x.">
-            <parameter name="of" code="Lsco" type="real" description="x.">
-                <cocoa key="of"/>
-            </parameter>
-
-            <result type="real" description="cos(x)"/>
-        </command>
-
-        <command name="atan2" code="LSatafun" description="Calculates the atan2 of x + i*y.">
-            <parameter name="y" code="Lsyp" type="real" description="y input.">
-                <cocoa key="y"/>
-            </parameter>
-
-            <parameter name="x" code="Lsxp" type="real" description="x input.">
-                <cocoa key="x"/>
-            </parameter>
-
-            <result type="real" description="atan2(y, x)"/>
-        </command>
-    </suite>
-
-    <!--- Storage Suite -->
-    <suite name="Storage Suite" code="LSSS" description="In memory storage.">
-        <command name="open storage" code="LSopemem" description="Open a storage container.">
-            <parameter name="name" code="Lsmn" type="text" description="name">
-                <cocoa key="name"/>
-            </parameter>
-
-            <result type="storage" description="The opened storage container."/>
-        </command>
-
-        <command name="store" code="LSmemsto" description="Store a value in the storage container.">
-            <direct-parameter description="The storage container to interact with." type="storage"/>
-            <parameter name="key" code="Lsst" type="any" description="key">
-                <cocoa key="key"/>
-            </parameter>
-
-            <parameter name="value" code="Lsgt" type="any" description="value">
-                <cocoa key="value"/>
-            </parameter>
-
-            <result type="boolean" description="True if the value did not exist, false otherwise."/>
-        </command>
-
-        <command name="read" code="LSmemred" description="Get a value from the storage container.">
-            <direct-parameter description="The storage container to interact with." type="storage"/>
-            <parameter name="key" code="Lsgt" type="any" description="key">
-                <cocoa key="key"/>
-            </parameter>
-
-            <result type="any" description="The stored value."/>
-        </command>
-
-        <command name="remove" code="LSmemrem" description="Remove a value from the storage container.">
-            <direct-parameter description="The storage container to interact with." type="storage"/>
-            <parameter name="key" code="Lsrm" type="any" description="key">
-                <cocoa key="key"/>
-            </parameter>
-
-            <result type="boolean" description="True if the value was removed, false otherwise."/>
-        </command>
-
-        <command name="close" code="LSclosto" description="Close an open storage container.">
-            <direct-parameter description="The storage container to close" type="storage"/>
-        </command>
-
-        <class name="storage" code="LSST" description="A storage container" inherits="item" plural="storages">
-            <cocoa class="ASStorage"/>
-
-            <property name="name" code="pnam" type="text" access="r" description="The name of the storage.">
-                <cocoa key="name"/>
-            </property>
-
-            <responds-to command="store">
-                <cocoa method="storeData:"/>
-            </responds-to>
-
-            <responds-to command="read">
-                <cocoa method="getData:"/>
-            </responds-to>
-
-            <responds-to command="remove">
-                <cocoa method="removeData:"/>
-            </responds-to>
-
-            <responds-to command="close">
-                <cocoa method="close:"/>
-            </responds-to>
-        </class>
     </suite>
 
     <!--- GPX Suite -->
@@ -486,6 +385,111 @@
             <element type="route" access="r">
                 <cocoa key="routes"/>
             </element>
+
+            <responds-to command="close">
+                <cocoa method="close:"/>
+            </responds-to>
+        </class>
+    </suite>
+
+    <!--- Math Suite -->
+    <suite name="Math Suite" code="LSMS" description="Common math functions.">
+        <command name="sin" code="LSsinfun" description="Calculates the sine of a number x.">
+            <parameter name="of" code="Lssi" type="real" description="x">
+                <cocoa key="of"/>
+            </parameter>
+
+            <result type="real" description="sin(x)"/>
+        </command>
+
+        <command name="cos" code="LScosfun" description="Calculates the cosine of a number x.">
+            <parameter name="of" code="Lsco" type="real" description="x.">
+                <cocoa key="of"/>
+            </parameter>
+
+            <result type="real" description="cos(x)"/>
+        </command>
+
+        <command name="atan2" code="LSatafun" description="Calculates the atan2 of x + i*y.">
+            <parameter name="y" code="Lsyp" type="real" description="y input.">
+                <cocoa key="y"/>
+            </parameter>
+
+            <parameter name="x" code="Lsxp" type="real" description="x input.">
+                <cocoa key="x"/>
+            </parameter>
+
+            <result type="real" description="atan2(y, x)"/>
+        </command>
+    </suite>
+
+    <!--- Storage Suite -->
+    <suite name="Storage Suite" code="LSSS" description="In-memory storage you can use to share data between different scripts or multiple runs of a script.">
+        <command name="open storage" code="LSopemem" description="Open an new storage container. If a container with the given name already exists it will be reused.">
+            <parameter name="name" code="Lsmn" type="text" description="name">
+                <cocoa key="name"/>
+            </parameter>
+
+            <result type="storage" description="The opened storage container."/>
+        </command>
+
+        <command name="store" code="LSmemsto" description="Store a value in the storage container.">
+            <direct-parameter description="The storage container to interact with." type="storage"/>
+            <parameter name="key" code="Lsst" type="any" description="key">
+                <cocoa key="key"/>
+            </parameter>
+
+            <parameter name="value" code="Lsgt" type="any" description="value">
+                <cocoa key="value"/>
+            </parameter>
+
+            <result type="boolean" description="True if the value did not exist, false otherwise."/>
+        </command>
+
+        <command name="read" code="LSmemred" description="Get a value from the storage container.">
+            <direct-parameter description="The storage container to interact with." type="storage"/>
+            <parameter name="key" code="Lsgt" type="any" description="key">
+                <cocoa key="key"/>
+            </parameter>
+
+            <parameter name="default" code="Lsdf" type="any" optional="yes" description="The default value if the key is not found.">
+                <cocoa key="default"/>
+            </parameter>
+
+            <result type="any" description="The stored value."/>
+        </command>
+
+        <command name="remove" code="LSmemrem" description="Remove a value from the storage container.">
+            <direct-parameter description="The storage container to interact with." type="storage"/>
+            <parameter name="key" code="Lsrm" type="any" description="key">
+                <cocoa key="key"/>
+            </parameter>
+
+            <result type="boolean" description="True if the value was removed, false otherwise."/>
+        </command>
+
+        <command name="close" code="LSclosto" description="Close an open storage container. This closes the container for all scripts, not only the executing one. Trying to open it again will create a new container.">
+            <direct-parameter description="The storage container to close." type="storage"/>
+        </command>
+
+        <class name="storage" code="LSST" description="A in-memory storage container that holds key-value pairs." inherits="item" plural="storages">
+            <cocoa class="ASStorage"/>
+
+            <property name="name" code="pnam" type="text" access="r" description="The name of the storage.">
+                <cocoa key="name"/>
+            </property>
+
+            <responds-to command="store">
+                <cocoa method="storeData:"/>
+            </responds-to>
+
+            <responds-to command="read">
+                <cocoa method="getData:"/>
+            </responds-to>
+
+            <responds-to command="remove">
+                <cocoa method="removeData:"/>
+            </responds-to>
 
             <responds-to command="close">
                 <cocoa method="close:"/>

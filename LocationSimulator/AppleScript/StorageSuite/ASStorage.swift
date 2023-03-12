@@ -46,7 +46,7 @@ import Foundation
               let key = params["key"] as? NSAppleEventDescriptor else {
             return nil
         }
-        return self.data[key.data]
+        return self.data[key.data] ?? params["default"]
     }
 
     @objc(removeData:) private func removeData(_ command: NSScriptCommand) -> Any? {
