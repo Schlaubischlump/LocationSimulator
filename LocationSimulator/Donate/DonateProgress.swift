@@ -50,18 +50,18 @@ private func createLabel(kind: Kind, side: Side) -> NSTextField {
 class DonateProgress: NSView {
     var currencySymbol: String = "€"
 
-    var hasAmount: Float = 0 {
+    var hasAmount: Float? {
         didSet {
-            guard oldValue != self.hasAmount else { return }
-            self.hasAmountLabel.setStringValue("\(self.hasAmount)\(self.currencySymbol)", animated: true)
+            guard let hasAmount = self.hasAmount, oldValue != hasAmount else { return }
+            self.hasAmountLabel.setStringValue("\(hasAmount)\(self.currencySymbol)", animated: true)
             self.updatePercentage()
         }
     }
 
-    var goalAmount: Float = 100 {
+    var goalAmount: Float? {
         didSet {
-            guard oldValue != self.goalAmount else { return }
-            let text = "OF".localized + " \(self.goalAmount)\(self.currencySymbol)"
+            guard let goalAmount = self.goalAmount, oldValue != self.goalAmount else { return }
+            let text = "OF".localized + " \(goalAmount)\(self.currencySymbol)"
             self.goalAmountLabel.setStringValue(text, animated: true)
             self.updatePercentage()
         }
@@ -103,7 +103,8 @@ class DonateProgress: NSView {
     }
 
     private func updatePercentage() {
-        self.percentage = self.hasAmount/self.goalAmount
+        guard let hasAmount = self.hasAmount, let goalAmount = self.goalAmount else { return }
+        self.percentage = hasAmount/goalAmount
     }
 
     func setup() {

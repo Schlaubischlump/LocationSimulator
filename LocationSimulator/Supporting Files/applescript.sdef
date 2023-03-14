@@ -110,6 +110,10 @@
                 <cocoa method="isValid:"/>
             </responds-to>
 
+            <responds-to command="calculate route">
+                <cocoa method="route:"/>
+            </responds-to>
+
             <!-- Math Suite -->
             <responds-to command="sin">
                 <cocoa method="sinOf:"/>
@@ -233,6 +237,12 @@
 
     <!--- Coordinate Suite -->
     <suite name="Coordinate Suite" code="LSCS" description="Common commands to work with coordinates.">
+        <enumeration name="transport type" code="Lstr" description="A transport type." inline="3">
+            <enumerator name="walk" code="Lswa" description="Walk."/>
+            <enumerator name="cycle" code="Lscy" description="Cycle."/>
+            <enumerator name="drive" code="Lsdr" description="Drive."/>
+        </enumeration>
+
         <command name="distance" code="LSheadbe" description="Distance between two coordinates in meters.">
             <parameter name="from" code="Lspo" type="list of real" description="The start coordinate {lat, lon}.">
                 <cocoa key="from"/>
@@ -250,6 +260,25 @@
             </parameter>
 
             <result type="boolean" description="True if the coordinate is valid, false otehrwise."/>
+        </command>
+
+        <command name="calculate route" code="LScroute" description="Calculate the route from a source to a destination coordinate.">
+            <parameter name="from" code="Lsfc" type="list of real" description="The source coordinate {lat, lon}.">
+                <cocoa key="from"/>
+            </parameter>
+
+            <parameter name="to" code="Lstc" type="list of real" description="The destination coordinate {lat, lon}.">
+                <cocoa key="to"/>
+            </parameter>
+
+            <parameter name="transport type" code="Lstt" type="transport type" description="The transport type." optional="yes">
+                <cocoa key="transportType"/>
+            </parameter>
+
+            <result description="List of coordinates of the calculated route. A coordinate is a list of {lat, lon}.">
+                <!-- list of list of real, but AppleScript does not allow nested lists... -->
+                <type type="list of any" />
+            </result>
         </command>
     </suite>
 
