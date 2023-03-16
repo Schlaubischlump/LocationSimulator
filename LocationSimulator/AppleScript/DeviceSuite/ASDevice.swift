@@ -13,7 +13,7 @@ import LocationSpoofer
 
 /// A wrapper around the device protocol for apple script interaction.
 @objc(ASDevice) class ASDevice: NSObject {
-    private var device: Device
+    internal var device: Device
 
     // MARK: - Properties
 
@@ -50,7 +50,7 @@ import LocationSpoofer
         return (IOSDevice.availableDevices + SimulatorDevice.availableDevices).map { ASDevice(device: $0) }
     }
 
-    private init(device: Device) {
+    internal init(device: Device) {
         self.device = device
     }
 

@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import LocationSpoofer
 
-class MapViewController: NSViewController {
+@objc(LSMapViewController) class MapViewController: NSViewController {
     // MARK: - UI
 
     /// The main mapView.

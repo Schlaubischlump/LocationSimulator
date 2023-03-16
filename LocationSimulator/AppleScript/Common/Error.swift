@@ -20,7 +20,7 @@ extension ASError: LocalizedError {
         case .MissingClassDescription:
             return NSLocalizedString("MissingClassDescription", comment: "MissingClassDescription")
         case .InvalidCoordinate:
-            return NSLocalizedString("InvalidCoordinate: Expected {lat, lon}!", comment: "InvalidCoordinate")
+            return NSLocalizedString("InvalidCoordinate: Expected {latitude, longitude}!", comment: "InvalidCoordinate")
         case .Timeout:
             return NSLocalizedString("Timeout: Operation timed out!", comment: "Timeout")
         }

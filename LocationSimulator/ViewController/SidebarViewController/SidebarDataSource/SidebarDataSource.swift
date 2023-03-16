@@ -21,17 +21,33 @@ class SidebarDataSource: NSObject {
 
     /// The currently selected device.
     public var selectedDevice: Device? {
-        let numIOSDevices = self.realDevices.count
-        let numSimDevices = self.simDevices.count
-        let row = (self.sidebarView?.selectedRow ?? 0)
-        if row <= numIOSDevices {
-            // A real iOS Device was selected
-            return row >= 1 ? self.realDevices[row-1] : nil
-        } else if row > numIOSDevices && row < numIOSDevices + numSimDevices + 2 {
-            // A simulator device was selected
-            return row > numIOSDevices+1 ? self.simDevices[row-numIOSDevices-2] : nil
+        get {
+            let numIOSDevices = self.realDevices.count
+            let numSimDevices = self.simDevices.count
+            let row = (self.sidebarView?.selectedRow ?? 0)
+            if row <= numIOSDevices {
+                // A real iOS Device was selected
+                return row >= 1 ? self.realDevices[row-1] : nil
+            } else if row > numIOSDevices && row < numIOSDevices + numSimDevices + 2 {
+                // A simulator device was selected
+                return row > numIOSDevices+1 ? self.simDevices[row-numIOSDevices-2] : nil
+            }
+            return nil
         }
-        return nil
+        set {
+            if let iosDevice = newValue as? IOSDevice,
+                let iosDeviceIndex = self.realDevices.firstIndex(of: iosDevice) {
+                self.sidebarView?.selectRowIndexes(IndexSet(integer: 1 + iosDeviceIndex), byExtendingSelection: false)
+            } else if let simDevice = newValue as? SimulatorDevice,
+                        let simDeviceIndex = self.simDevices.firstIndex(of: simDevice) {
+                let numIOSDevices = self.realDevices.count
+
+                self.sidebarView?.selectRowIndexes(IndexSet(integer: 2 + numIOSDevices + simDeviceIndex),
+                                                   byExtendingSelection: false)
+            } else {
+                self.sidebarView?.deselectAll(nil)
+            }
+        }
     }
 
     // MARK: - Constructor

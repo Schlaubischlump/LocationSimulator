@@ -72,6 +72,10 @@
             </parameter>
         </command>
 
+        <command name="clear device selection" code="LSclears" description="Clear the currently selected device.">
+            <direct-parameter description="The window to interact with." type="window"/>
+        </command>
+
         <class name="application" code="capp" description="The application's top-level scripting object.">
             <cocoa class="LSApplication"/>
             <property name="name" code="pnam" type="text" access="r" description="The name of the application."/>
@@ -96,7 +100,6 @@
             </element>
 
             <!-- GPX Suite -->
-
             <responds-to command="load gpx">
                 <cocoa method="loadGPXFile:"/>
             </responds-to>
@@ -138,7 +141,7 @@
         </class>
 
         <class name="window" code="cwin" description="A window.">
-            <cocoa class="NSWindow"/>
+            <cocoa class="LSWindow"/>
             <property name="name" code="pnam" type="text" access="r" description="The title of the window.">
                 <cocoa key="title"/>
             </property>
@@ -174,6 +177,21 @@
             </property>
             <responds-to command="close">
                 <cocoa method="handleCloseScriptCommand:"/>
+            </responds-to>
+
+            <!-- Extension -->
+            <property name="map view" code="LSma" type="map" access="r" description="The main map view if a device is selected.">
+                <cocoa key="mapViewController"/>
+            </property>
+            <property name="selected device" code="LSsl" type="device" access="rw" description="The currently selected device.">
+                <cocoa key="selectedDevice"/>
+            </property>
+            <property name="speed" code="LSsp" type="real" access="rw" description="The current speed in km/h.">
+                <cocoa key="speed"/>
+            </property>
+
+            <responds-to command="clear device selection">
+                <cocoa method="clearDeviceSelection:"/>
             </responds-to>
         </class>
 
@@ -451,6 +469,16 @@
             <result type="real" description="atan2(y, x)"/>
         </command>
     </suite>
+
+
+    <!--- UI Suite -->
+    <suite name="UI Suite" code="LSUI" description="Common UI functions.">
+        <class name="map" code="LSMA" description="A map view.">
+            <cocoa class="LSMapViewController"/>
+
+        </class>
+    </suite>
+
 
     <!--- Storage Suite -->
     <suite name="Storage Suite" code="LSSS" description="In-memory storage you can use to share data between different scripts or multiple runs of a script.">

@@ -91,6 +91,11 @@ class SidebarViewController: NSViewController {
         self.scrollView?.findBarView?.layout()
     }
 
+    // MARK: - AppleScript Helper
+    func select(device: Device?) {
+        self.dataSource?.selectedDevice = device
+    }
+
     // MARK: - macOS 11.0 SearchField
 
     var searchEnabled: Bool = false {
