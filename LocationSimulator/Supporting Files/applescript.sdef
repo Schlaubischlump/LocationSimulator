@@ -6,6 +6,12 @@
     <!--- Standard Suite -->
     <suite name="Standard Suite" code="????" description="Common classes and commands for all applications.">
 
+        <enumeration name="map type" code="Lstr" description="A transport type." inline="3">
+            <enumerator name="explore" code="Lsex" description="Explore."/>
+            <enumerator name="satellite" code="Lssa" description="Satellite."/>
+            <enumerator name="hybrid" code="Lshy" description="Hybrid."/>
+        </enumeration>
+
         <command name="quit" code="aevtquit" description="Quit the application.">
             <cocoa class="NSQuitCommand"/>
         </command>
@@ -188,6 +194,15 @@
             </property>
             <property name="speed" code="LSsp" type="real" access="rw" description="The current speed in km/h.">
                 <cocoa key="speed"/>
+            </property>
+            <property name="sidebar is collapsed" code="LSsc" type="boolean" access="rw" description="True if the sidebar is collapsed, False otherwise.">
+                <cocoa key="sidebarIsCollapsed"/>
+            </property>
+            <property name="transport type" code="LStt" type="transport type" access="rw" description="The currently selected transport type.">
+                <cocoa key="moveType"/>
+            </property>
+            <property name="map type" code="LSmt" type="map type" access="rw" description="The currently selected map type.">
+                <cocoa key="mapType"/>
             </property>
 
             <responds-to command="clear device selection">
@@ -471,11 +486,11 @@
     </suite>
 
 
-    <!--- UI Suite -->
-    <suite name="UI Suite" code="LSUI" description="Common UI functions.">
+    <!--- Map Suite -->
+    <suite name="Map Suite" code="LSUI" description="Common UI functions.">
         <class name="map" code="LSMA" description="A map view.">
             <cocoa class="LSMapViewController"/>
-
+                
         </class>
     </suite>
 

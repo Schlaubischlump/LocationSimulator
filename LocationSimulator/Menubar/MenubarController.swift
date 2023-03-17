@@ -174,7 +174,7 @@ class MenubarController: NSResponder {
 
     /// Change the current speed
     @IBAction func setSpeed(_ sender: NSMenuItem) {
-        self.windowController?.requestSpeedChange()
+        self.windowController?.requestAndApplySpeedChange()
     }
 
     /// Show the `Go to Location` view.

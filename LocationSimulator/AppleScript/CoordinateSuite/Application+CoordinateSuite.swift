@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import MapKit
 
-public enum TransportType: UInt32 {
+public enum ASTransportType: UInt32 {
     case walk  = 0x4C737761 // Lswa
     case cycle = 0x4C736379 // Lscy
     case drive = 0x4C736472 // Lsdr
@@ -73,9 +73,9 @@ extension Application {
             return []
         }
 
-        var transportType: TransportType = .walk
+        var transportType: ASTransportType = .walk
         if let transportTypeRawValue = params["transportType"] as? UInt32 {
-            transportType = TransportType(rawValue: transportTypeRawValue)!
+            transportType = ASTransportType(rawValue: transportTypeRawValue)!
         }
 
         do {

@@ -67,6 +67,10 @@ class WindowController: NSWindowController {
         return self.toolbarController.moveType
     }
 
+    public var mapType: MKMapType {
+        return self.mapViewController?.mapType ?? .standard
+    }
+
     public var speed: Double {
         return self.toolbarController.speed
     }
@@ -186,7 +190,7 @@ class WindowController: NSWindowController {
     }
 
     /// Present an alert to the user to allow him to change the speed.
-    public func requestSpeedChange() {
+    public func requestAndApplySpeedChange() {
         guard let window = self.window, !(self.mapViewController?.isShowingAlert ?? false) else {
             // We already present a sheet
             NSSound.beep()

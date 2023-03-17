@@ -130,7 +130,7 @@
 		6390AB452593E23700B0CABA /* NoDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390AB442593E23700B0CABA /* NoDeviceViewController.swift */; };
 		63A1ABC827E7832100C9EDE0 /* ValueTrackingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A1ABC727E7832100C9EDE0 /* ValueTrackingSlider.swift */; };
 		63BDAF5B29C3CC9F00EEF36F /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDAF5A29C3CC9F00EEF36F /* Window.swift */; };
-		63BDAF5E29C3CD7800EEF36F /* Window+UISuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDAF5D29C3CD7800EEF36F /* Window+UISuite.swift */; };
+		63BDAF5E29C3CD7800EEF36F /* Window+StandardSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BDAF5D29C3CD7800EEF36F /* Window+StandardSuite.swift */; };
 		63C6F89D29BB7A36005CED5D /* ASGPXFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F89C29BB7A36005CED5D /* ASGPXFile.swift */; };
 		63C6F89F29BBADD3005CED5D /* IndexedContainerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F89E29BBADD3005CED5D /* IndexedContainerItem.swift */; };
 		63C6F8A129BBAEAA005CED5D /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6F8A029BBAEAA005CED5D /* Error.swift */; };
@@ -312,7 +312,7 @@
 		63ACAEB925FED98E00DE389D /* libplist++-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist++-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist++-2.0.3.dylib"; sourceTree = "<group>"; };
 		63ACAEBB25FED9A300DE389D /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		63BDAF5A29C3CC9F00EEF36F /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
-		63BDAF5D29C3CD7800EEF36F /* Window+UISuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+UISuite.swift"; sourceTree = "<group>"; };
+		63BDAF5D29C3CD7800EEF36F /* Window+StandardSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+StandardSuite.swift"; sourceTree = "<group>"; };
 		63C6F89C29BB7A36005CED5D /* ASGPXFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASGPXFile.swift; sourceTree = "<group>"; };
 		63C6F89E29BBADD3005CED5D /* IndexedContainerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedContainerItem.swift; sourceTree = "<group>"; };
 		63C6F8A029BBAEAA005CED5D /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -792,8 +792,8 @@
 				63C6F8AA29BBFDF5005CED5D /* DeviceSuite */,
 				63C6F8A929BBFDE8005CED5D /* GPXSuite */,
 				63C6F8AC29BC07BC005CED5D /* MathSuite */,
+				63BDAF5C29C3CD0E00EEF36F /* StandardSuite */,
 				63C6F8AF29BC696C005CED5D /* StorageSuite */,
-				63BDAF5C29C3CD0E00EEF36F /* UISuite */,
 			);
 			path = AppleScript;
 			sourceTree = "<group>";
@@ -871,12 +871,12 @@
 			path = Preferences;
 			sourceTree = "<group>";
 		};
-		63BDAF5C29C3CD0E00EEF36F /* UISuite */ = {
+		63BDAF5C29C3CD0E00EEF36F /* StandardSuite */ = {
 			isa = PBXGroup;
 			children = (
-				63BDAF5D29C3CD7800EEF36F /* Window+UISuite.swift */,
+				63BDAF5D29C3CD7800EEF36F /* Window+StandardSuite.swift */,
 			);
-			path = UISuite;
+			path = StandardSuite;
 			sourceTree = "<group>";
 		};
 		63C4FF30299CE2EC0037928F /* GPXSelection */ = {
@@ -1371,7 +1371,7 @@
 				635CF725280EC6CF0092A99B /* AppMenubarItem.swift in Sources */,
 				635F9B9D2978A9A400F0B2E1 /* ProgressTask.swift in Sources */,
 				63D5DF3427D6720000F2DCD3 /* DeveloperDiskImagesViewController.swift in Sources */,
-				63BDAF5E29C3CD7800EEF36F /* Window+UISuite.swift in Sources */,
+				63BDAF5E29C3CD7800EEF36F /* Window+StandardSuite.swift in Sources */,
 				6367802E27FA37BC00233CC7 /* PreferenceViewControllerBase.swift in Sources */,
 				635CF721280EBF4D0092A99B /* DonateWindow.swift in Sources */,
 				63888DCE2592AECE00B1DFC9 /* SidebarViewController.swift in Sources */,
