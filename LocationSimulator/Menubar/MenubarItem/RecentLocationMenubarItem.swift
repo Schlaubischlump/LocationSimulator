@@ -43,7 +43,7 @@ extension UserDefaults {
     /// Register the default values.
     func registerRecentLocationDefaultValues() {
         UserDefaults.standard.register(defaults: [
-            kRecentLocationKey: []
+            kRecentLocationKey: [Location]()
         ])
     }
 }

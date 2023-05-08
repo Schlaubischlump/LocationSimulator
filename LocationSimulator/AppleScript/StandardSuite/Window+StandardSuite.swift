@@ -54,7 +54,15 @@ extension ASTransportType {
 
 extension Window {
     @objc private var mapViewController: MapViewController? {
-        (self.windowController as? WindowController)?.mapViewController
+        return (self.windowController as? WindowController)?.mapViewController
+    }
+
+    // Used internally to make mapViewController an element. We might also need this in the future if we introduce tabs.
+    @objc private var mapViewControllers: [MapViewController] {
+        guard let mapViewController = self.mapViewController else {
+            return []
+        }
+        return [mapViewController]
     }
 
     @objc private var selectedDevice: ASDevice? {
@@ -69,7 +77,6 @@ extension Window {
             if let device = newValue?.device {
                 splitViewController?.sidebarViewController?.select(device: device)
             }
-
         }
     }
 

@@ -65,6 +65,10 @@ import LocationSpoofer
         set { self.mapView.mapType = newValue }
     }
 
+    var isAutoMoving: Bool {
+        return self.spoofer?.isAutoUpdating ?? false
+    }
+
     /// Observe the vary movement speed setting
     var varyMovementSpeedSettingObserver: NSKeyValueObservation?
     /// Observe move when standing still observer

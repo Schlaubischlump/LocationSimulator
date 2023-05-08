@@ -185,10 +185,16 @@
                 <cocoa method="handleCloseScriptCommand:"/>
             </responds-to>
 
+            <!-- internal value to represent mapview as element -->
+            <element type="mapview" access="r" hidden="yes">
+                <cocoa key="mapViewControllers"/>
+            </element>
+
             <!-- Extension -->
-            <property name="map view" code="LSma" type="map" access="r" description="The main map view if a device is selected.">
+            <property name="map view" code="LSma" type="mapview" access="r" description="The main map view if a device is selected.">
                 <cocoa key="mapViewController"/>
             </property>
+
             <property name="selected device" code="LSsl" type="device" access="rw" description="The currently selected device.">
                 <cocoa key="selectedDevice"/>
             </property>
@@ -488,9 +494,40 @@
 
     <!--- Map Suite -->
     <suite name="Map Suite" code="LSUI" description="Common UI functions.">
-        <class name="map" code="LSMA" description="A map view.">
+        <command name="reset location" code="LSresetl" description="Reset the current location.">
+            <direct-parameter description="The map view to interact with." type="mapview"/>
+        </command>
+
+        <command name="move in direction of heading" code="LSresetl" description="Move in the direction of heading.">
+            <direct-parameter description="The map view to interact with." type="mapview"/>
+        </command>
+
+        <class name="mapview" code="LSMV" description="A map view." inherits="item" plural="map views">
             <cocoa class="LSMapViewController"/>
-                
+
+            <property name="id" code="ID  " type="integer" access="r" description="The unique identifier of the map.">
+                <cocoa key="uniqueID"/>
+            </property>
+
+            <property name="heading" code="LShe" type="real" access="rw" description="The current heading.">
+                <cocoa key="heading"/>
+            </property>
+
+            <property name="current location" code="LSlc" type="list of real" access="rw" description="The current location.">
+                <cocoa key="location"/>
+            </property>
+
+            <property name="automatic movement" code="LSam" type="boolean" access="rw" description="The automatic movement.">
+                <cocoa key="automove"/>
+            </property>
+
+            <responds-to command="reset location">
+                <cocoa method="resetLocation:"/>
+            </responds-to>
+
+            <responds-to command="move in direction of heading">
+                <cocoa method="move:"/>
+            </responds-to>
         </class>
     </suite>
 
