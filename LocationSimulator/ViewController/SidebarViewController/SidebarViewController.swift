@@ -121,7 +121,7 @@ class SidebarViewController: NSViewController {
             self?.windowController?.searchBarOnBecomeFirstReponder()
         }
         searchCompleter.onResignFirstReponder = { [weak self] in
-            self?.windowController?.searchBarOnBecomeFirstReponder()
+            self?.windowController?.searchBarOnResignFirstReponder()
         }
         self.searchCompleter = searchCompleter
     }
