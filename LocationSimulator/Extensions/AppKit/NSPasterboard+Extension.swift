@@ -20,7 +20,8 @@ extension NSPasteboard {
         }
 
         // Try to split the component in lat and long.
-        let components = pasteboardItem.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: false)
+        let strippedString = pasteboardItem.trimmingCharacters(in: .whitespacesAndNewlines)
+        let components = strippedString.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: false)
         if components.count == 2 {
             // Trim the whitespace and interpret the coordinates as location coordinates
             let first = String(components.first!).trimmingCharacters(in: .whitespaces)
