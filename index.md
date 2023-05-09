@@ -34,6 +34,13 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.2.1
+⚠️ Language support other than english, german and czech is partially incomplete
+- Fix: searching disables manual movement
+- Fix: manual movement ignores the speed slider
+- Fix: Coordinates are not parsed if they contain leading or trailing whitespaces or new lines
+- Feature: AppleScript support to automate the UI
+
 ### v0.2.0
 ⚠️ Language support other than english, german and czech is partially incomplete
 - Updated UI for macOS 10.11 and up
