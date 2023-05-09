@@ -12,7 +12,8 @@ extension Application {
     @objc(openStorage:) private func openStorage(_ command: NSScriptCommand) -> Any? {
         guard let params = command.evaluatedArguments,
                 let name = params["name"] as? String else {
-            return false
+            command.setScriptASError(.InvalidArgument(expected: "name: text"))
+            return nil
         }
         do {
             if let storage = ASStorage.openStorages.first(where: { $0.name == name }) {
@@ -21,8 +22,7 @@ extension Application {
                 return try ASStorage(name: name)
             }
         } catch let error {
-            command.scriptErrorNumber = (error as NSError).code
-            command.scriptErrorString = error.localizedDescription
+            command.setScriptError(error)
         }
         return nil
     }

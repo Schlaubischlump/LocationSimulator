@@ -69,13 +69,20 @@ import LocationSpoofer
         return self.spoofer?.isAutoUpdating ?? false
     }
 
+    @objc var isNavigating: Bool {
+        switch self.spoofer?.moveState {
+        case .navigation: return true
+        default: return false
+        }
+    }
+
     /// Observe the vary movement speed setting
     var varyMovementSpeedSettingObserver: NSKeyValueObservation?
     /// Observe move when standing still observer
     var moveOnStandingStillSettingObserver: NSKeyValueObservation?
 
     /// True to autofocus current location when the location changes, false otherwise.
-    var autofocusCurrentLocation = false {
+    @objc var autofocusCurrentLocation = false {
         didSet {
             // Zoom to the current Location
             if self.autofocusCurrentLocation == true, let currentLocation = self.spoofer?.currentLocation {
@@ -89,10 +96,17 @@ import LocationSpoofer
     }
 
     /// True to autoreverse a route if the navigation destination is reached.
-    var autoreverseRoute = false
+    @objc var autoreverseRoute = false {
+        didSet {
+            // Send a notification
+            NotificationCenter.default.post(name: .AutoReverseChanged, object: self, userInfo: [
+                "autoreverse": self.autoreverseRoute
+            ])
+        }
+    }
 
     /// True if a alert is visible, false otherwise.
-    var isShowingAlert: Bool = false
+    @objc var isShowingAlert: Bool = false
 
     /// The current geocoding task for the window title if one exists
     var geocodingTask: GeocodingTask?
@@ -424,6 +438,12 @@ import LocationSpoofer
         }
     }
 
+    func teleportToStartAndNavigate(route: [CLLocationCoordinate2D]) {
+        guard let start = route.first else { return }
+        self.menubarController?.addLocation(start)
+        self.spoofer?.switchToNavigationState(route)
+    }
+
     /// Spoof the current location to the specified coordinates. If no coordinates are provided a user dialog is
     /// presented to enter the new coordinates. The user can then choose to navigate or teleport to the new location.
     /// If no current location is set, this function will always teleport to the selected location.
@@ -477,8 +497,7 @@ import LocationSpoofer
             // Teleport to the start of the route and contiune the navigation from there on.
             case .teleport:
                 // Update the recent location menu.
-                self?.menubarController?.addLocation(route.first!)
-                self?.spoofer?.switchToNavigationState(route)
+                self?.teleportToStartAndNavigate(route: route)
             // Navigate to the first coordinate and continue the navigation with the rest of the route.
             case .navigate:
                 self?.navigate(toCoordinate: route.first!, additionalRoute: route)

@@ -18,8 +18,7 @@ extension Application {
         do {
             return try ASGPXFile(file: gpxFileURL)
         } catch let error {
-            command.scriptErrorNumber = (error as NSError).code
-            command.scriptErrorString = error.localizedDescription
+            command.setScriptError(error)
         }
         return nil
     }

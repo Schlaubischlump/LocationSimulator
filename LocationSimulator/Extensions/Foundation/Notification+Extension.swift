@@ -12,6 +12,8 @@ import Foundation
 public extension Notification.Name {
     /// Called whenever the autofocus status changes
     static let AutoFocusChanged = Notification.Name("com.schlaubiSchlump.LocationSimulator.autoFoucusChanged")
+    /// Called whenever the autorevers status changes
+    static let AutoReverseChanged = Notification.Name("com.schlaubiSchlump.LocationSimulator.autoReverseChanged")
     /// Called whenever the application status changes.
     static let StatusChanged = Notification.Name("com.schlaubiSchlump.LocationSimulator.deviceStatusChanged")
     /// Called whenever the search begins.

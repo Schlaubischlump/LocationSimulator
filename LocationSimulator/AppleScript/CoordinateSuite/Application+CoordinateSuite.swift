@@ -36,7 +36,8 @@ extension Application {
         guard let params = command.evaluatedArguments,
                 let position = params["from"] as? [CGFloat],
                 let lookAt = params["to"] as? [CGFloat] else {
-            return false
+            command.setScriptASError(.InvalidCoordinate)
+            return nil
         }
 
         do {
@@ -44,24 +45,23 @@ extension Application {
             let lookAtCoord = try arrayToCoordinate(lookAt)
             return positionCoord.distanceTo(coordinate: lookAtCoord)
         } catch let error {
-            command.scriptErrorNumber = (error as NSError).code
-            command.scriptErrorString = error.localizedDescription
+            command.setScriptError(error)
         }
-        return -1
+        return nil
     }
 
     @objc(isValid:) private func isValid(_ command: NSScriptCommand) -> Any? {
         guard let params = command.evaluatedArguments,
               let coordValues = params["coordinate"] as? [CGFloat] else {
-            return false
+            command.setScriptASError(.InvalidCoordinate)
+            return nil
         }
 
         do {
             let coord = try arrayToCoordinate(coordValues)
             return CLLocationCoordinate2DIsValid(coord)
         } catch let error {
-            command.scriptErrorNumber = (error as NSError).code
-            command.scriptErrorString = error.localizedDescription
+            command.setScriptError(error)
         }
         return -1
     }
@@ -70,7 +70,8 @@ extension Application {
         guard let params = command.evaluatedArguments,
               let from = params["from"] as? [CGFloat],
               let to = params["to"] as? [CGFloat] else {
-            return []
+            command.setScriptASError(.InvalidCoordinate)
+            return nil
         }
 
         var transportType: ASTransportType = .walk
@@ -110,8 +111,7 @@ extension Application {
 
             return result ?? []
         } catch let error {
-            command.scriptErrorNumber = (error as NSError).code
-            command.scriptErrorString = error.localizedDescription
+            command.setScriptError(error)
         }
         return []
     }

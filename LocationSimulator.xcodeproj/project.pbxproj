@@ -23,6 +23,7 @@
 		630C0C9E27DE72A600C3D5A9 /* FileManager+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9D27DE72A600C3D5A9 /* FileManager+License.swift */; };
 		630C0CA027DFFB3700C3D5A9 /* UserLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C0C9F27DFFB3600C3D5A9 /* UserLocationView.swift */; };
 		630C4A152593ECD100442713 /* NoDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C4A142593ECD100442713 /* NoDeviceView.swift */; };
+		630D63472A0AF55400235CF4 /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 630D63462A0AF55400235CF4 /* LocationSpoofer */; };
 		6311B799230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311B798230C150D00AABF3E /* FileManager+DeveloperDiskImages.swift */; };
 		631EBFE3259409190066D5BB /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE2259409190066D5BB /* Notification+Extension.swift */; };
 		631EBFE9259415250066D5BB /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EBFE8259415250066D5BB /* DeviceStatus.swift */; };
@@ -83,7 +84,6 @@
 		635F9B9F2978A9D200F0B2E1 /* ProgressListEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9B9E2978A9D200F0B2E1 /* ProgressListEntryView.swift */; };
 		635F9BAA297D503A00F0B2E1 /* DownloadListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9BA9297D503A00F0B2E1 /* DownloadListViewController.swift */; };
 		635F9BAC297D506000F0B2E1 /* DownloadTask+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635F9BAB297D506000F0B2E1 /* DownloadTask+Extension.swift */; };
-		635F9BB0297F36D100F0B2E1 /* LocationSpoofer in Frameworks */ = {isa = PBXBuildFile; productRef = 635F9BAF297F36D100F0B2E1 /* LocationSpoofer */; };
 		635F9BBC297F3BE300F0B2E1 /* Downloader in Frameworks */ = {isa = PBXBuildFile; productRef = 635F9BBB297F3BE300F0B2E1 /* Downloader */; };
 		6361BA332302272B002986BF /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA322302272B002986BF /* CLLocationCoordinate2D+Extension.swift */; };
 		6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361BA3423022C3A002986BF /* MKMultiPoint+Extension.swift */; };
@@ -374,10 +374,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				630D63472A0AF55400235CF4 /* LocationSpoofer in Frameworks */,
 				635C95D529A83A2E002FB162 /* SuggestionPopup in Frameworks */,
 				63D734FE27E90C800044918C /* CLogger in Frameworks */,
 				635F9BBC297F3BE300F0B2E1 /* Downloader in Frameworks */,
-				635F9BB0297F36D100F0B2E1 /* LocationSpoofer in Frameworks */,
 				635C13812596EA5700BEB53B /* GPXParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1132,9 +1132,9 @@
 			packageProductDependencies = (
 				635C13802596EA5700BEB53B /* GPXParser */,
 				63D734FD27E90C800044918C /* CLogger */,
-				635F9BAF297F36D100F0B2E1 /* LocationSpoofer */,
 				635F9BBB297F3BE300F0B2E1 /* Downloader */,
 				635C95D429A83A2E002FB162 /* SuggestionPopup */,
+				630D63462A0AF55400235CF4 /* LocationSpoofer */,
 			);
 			productName = LocationSimulator;
 			productReference = 13BA351620A433EE00A0431C /* LocationSimulator.app */;
@@ -1164,8 +1164,9 @@
 		13BA350E20A433ED00A0431C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "David Klopp";
 				TargetAttributes = {
 					13BA351520A433EE00A0431C = {
@@ -1210,9 +1211,9 @@
 			packageReferences = (
 				635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */,
 				63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */,
-				63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 				635F9BBA297F3BE300F0B2E1 /* XCRemoteSwiftPackageReference "Downloader" */,
 				635C95D329A83A2E002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */,
+				6367FF562A0AF4CA00595552 /* XCRemoteSwiftPackageReference "LocationSpoofer" */,
 			);
 			productRefGroup = 13BA351720A433EE00A0431C /* Products */;
 			projectDirPath = "";
@@ -1887,14 +1888,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Schlaubischlump/LocationSpoofer.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
 		635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/GPXParser";
@@ -1919,6 +1912,14 @@
 				minimumVersion = 0.0.3;
 			};
 		};
+		6367FF562A0AF4CA00595552 /* XCRemoteSwiftPackageReference "LocationSpoofer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Schlaubischlump/LocationSpoofer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
 		63D734FC27E90C800044918C /* XCRemoteSwiftPackageReference "CLogger" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Schlaubischlump/CLogger";
@@ -1930,6 +1931,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		630D63462A0AF55400235CF4 /* LocationSpoofer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6367FF562A0AF4CA00595552 /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
+			productName = LocationSpoofer;
+		};
 		635C13802596EA5700BEB53B /* GPXParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 635C137F2596EA5700BEB53B /* XCRemoteSwiftPackageReference "GPXParser" */;
@@ -1939,11 +1945,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 635C95D329A83A2E002FB162 /* XCRemoteSwiftPackageReference "SuggestionPopup" */;
 			productName = SuggestionPopup;
-		};
-		635F9BAF297F36D100F0B2E1 /* LocationSpoofer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 63016FAE2915CB0F00785E9B /* XCRemoteSwiftPackageReference "LocationSpoofer" */;
-			productName = LocationSpoofer;
 		};
 		635F9BBB297F3BE300F0B2E1 /* Downloader */ = {
 			isa = XCSwiftPackageProductDependency;

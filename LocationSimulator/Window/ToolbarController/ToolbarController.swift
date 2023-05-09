@@ -22,8 +22,8 @@ class ToolbarController: NSResponder {
 
     // MARK: - Observer
 
-    /// The notification observer for autofocus changes.
     private var autofocusObserver: NSObjectProtocol?
+    private var autoreverseObserver: NSObjectProtocol?
 
     /// The search completer instance to handle the search and displaying the results.
     var searchCompleter: LocationSearchCompleter!
@@ -136,7 +136,13 @@ class ToolbarController: NSResponder {
                                                     queue: .main) { [weak self] notification in
             guard notification.object as? MapViewController == self?.mapViewController else { return }
             guard let isOn = notification.userInfo?["autofocus"] as? Bool else { return }
-            self?.autofocusButton.state =  isOn ? .on : .off
+            self?.autofocusButton.state = isOn ? .on : .off
+        }
+        self.autoreverseObserver = NotificationCenter.default.addObserver(forName: .AutoReverseChanged, object: nil,
+                                                    queue: .main) { [weak self] notification in
+            guard notification.object as? MapViewController == self?.mapViewController else { return }
+            guard let isOn = notification.userInfo?["autoreverse"] as? Bool else { return }
+            self?.autoreverseButton.state = isOn ? .on : .off
         }
     }
 
@@ -146,6 +152,11 @@ class ToolbarController: NSResponder {
             NotificationCenter.default.removeObserver(observer)
         }
         self.autofocusObserver = nil
+
+        if let observer = self.autoreverseObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
+        self.autoreverseObserver = nil
     }
 
     // MARK: - Helper

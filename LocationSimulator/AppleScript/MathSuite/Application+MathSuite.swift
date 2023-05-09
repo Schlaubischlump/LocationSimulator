@@ -13,7 +13,8 @@ extension Application {
     @objc(sinOf:) private func sinOf(_ command: NSScriptCommand) -> Any? {
         guard let params = command.evaluatedArguments,
                 let num = params["of"] as? CGFloat else {
-            return false
+            command.setScriptASError(.InvalidArgument(expected: "of: real"))
+            return nil
         }
         return sin(num)
     }
@@ -21,7 +22,8 @@ extension Application {
     @objc(cosOf:) private func cosOf(_ command: NSScriptCommand) -> Any? {
         guard let params = command.evaluatedArguments,
                 let num = params["of"] as? CGFloat else {
-            return false
+            command.setScriptASError(.InvalidArgument(expected: "of: real"))
+            return nil
         }
         return cos(num)
     }
@@ -30,7 +32,8 @@ extension Application {
         guard let params = command.evaluatedArguments,
                 let y = params["y"] as? CGFloat,
                 let x = params["x"] as? CGFloat else {
-            return false
+            command.setScriptASError(.InvalidArgument(expected: "y: real, x: real"))
+            return nil
         }
         return atan2(y, x)
     }

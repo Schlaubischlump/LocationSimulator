@@ -74,8 +74,7 @@ import LocationSpoofer
         do {
             try self.device.pair()
         } catch let error {
-            command.scriptErrorNumber = (error as NSError).code
-            command.scriptErrorString = error.localizedDescription
+            command.setScriptError(error)
         }
     }
 }

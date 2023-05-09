@@ -502,6 +502,22 @@
             <direct-parameter description="The map view to interact with." type="mapview"/>
         </command>
 
+        <command name="follow" code="LSfollow" description="Follow a predefined route.">
+            <direct-parameter description="The map view to interact with." type="mapview"/>
+
+            <parameter name="route" code="Lsfr" type="list of any" description="The route to follow as coordinate list {{lat1, lon1}, ...}.">
+                <cocoa key="route"/>
+            </parameter>
+        </command>
+
+        <command name="request location change" code="LSreqloc" description="Request a change from the user to the target location.">
+            <direct-parameter description="The map view to interact with." type="mapview"/>
+
+            <parameter name="to" code="Lsto" type="list of real" description="The target location {lat, lon}.">
+                <cocoa key="to"/>
+            </parameter>
+        </command>
+
         <class name="mapview" code="LSMV" description="A map view." inherits="item" plural="map views">
             <cocoa class="LSMapViewController"/>
 
@@ -513,12 +529,28 @@
                 <cocoa key="heading"/>
             </property>
 
+            <property name="follows route" code="LSin" type="boolean" access="r" description="True if a navigation is ongoing, false otherwise.">
+                <cocoa key="isNavigating"/>
+            </property>
+
             <property name="current location" code="LSlc" type="list of real" access="rw" description="The current location.">
                 <cocoa key="location"/>
             </property>
 
-            <property name="automatic movement" code="LSam" type="boolean" access="rw" description="The automatic movement.">
+            <property name="shows user alert" code="LSua" type="boolean" access="r" description="True if a user alert is currently visible, false otherwise.">
+                <cocoa key="isShowingAlert"/>
+            </property>
+
+            <property name="move automatically" code="LSam" type="boolean" access="rw" description="Automatically move in the direction of heading without user interaction.">
                 <cocoa key="automove"/>
+            </property>
+
+            <property name="navigate back automatically" code="LSrr" type="boolean" access="rw" description="Automatically walk back to the start of the route.">
+                <cocoa key="autoreverseRoute"/>
+            </property>
+
+            <property name="focus automatically" code="LSaf" type="boolean" access="rw" description="Automatically focus on the current location.">
+                <cocoa key="autofocusCurrentLocation"/>
             </property>
 
             <responds-to command="reset location">
@@ -527,6 +559,14 @@
 
             <responds-to command="move in direction of heading">
                 <cocoa method="move:"/>
+            </responds-to>
+
+            <responds-to command="follow">
+                <cocoa method="followRoute:"/>
+            </responds-to>
+
+            <responds-to command="request location change">
+                <cocoa method="requestLocationChange:"/>
             </responds-to>
         </class>
     </suite>
