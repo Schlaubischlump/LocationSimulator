@@ -34,6 +34,10 @@ Alternatively you can use homebrew to install LocationSimulator. The version can
 
 # Changelog
 
+### v0.2.2
+⚠️ Language support other than english, german and czech is partially incomplete
+- Fix: searching (on macOS Catalina) disables manual movement
+
 ### v0.2.1
 ⚠️ Language support other than english, german and czech is partially incomplete
 - Fix: searching disables manual movement
