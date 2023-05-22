@@ -62,7 +62,7 @@ class ToolbarController: NSResponder {
                 self?.windowController?.searchBarOnBecomeFirstReponder()
             }
             self.searchCompleter.onResignFirstReponder = { [weak self] in
-                self?.windowController?.searchBarOnBecomeFirstReponder()
+                self?.windowController?.searchBarOnResignFirstReponder()
             }
         }
     }
