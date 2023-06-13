@@ -68,119 +68,149 @@
 		},
 		"12.4":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12/12.4/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12/12.4/DeveloperDiskImage.dmg.signature"]
 		},
 		"12.5":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12.4/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12/12.4/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/12/12.4/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.0":
 		{
-			"Image": ["https://github.com/luannguyenkhoa/LocationSimulator/raw/master/LocationSimulator/13.0/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/luannguyenkhoa/LocationSimulator/raw/master/LocationSimulator/13.0/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.0/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.0/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.1":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.1/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.1/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.1/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.1/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.2":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.2/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.2/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.2/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.2/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.3":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.3/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.3/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.3/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.3/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.4":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.4/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.4/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.4/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.4/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.5":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.5/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.5/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.5/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.6":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.6/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.6/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.6/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.6/DeveloperDiskImage.dmg.signature"]
 		},
 		"13.7":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.7/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13.7/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.7/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/13/13.7/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.0":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.0/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.0/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.0/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.0/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.1":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.1/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.1/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.1/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.1/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.2":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.2/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.2/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.2/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.2/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.3":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.3/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.3/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.3/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.3/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.4":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.4/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.4/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.4/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.4/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.5":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg"]
 		},
 		"14.6":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.7":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg.signature"]
 		},
 		"14.8":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14.5/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/14/14.5/DeveloperDiskImage.dmg.signature"]
+		},
+		"15.0":
+		{
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.0/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.0/DeveloperDiskImage.dmg.signature"]
 		},
 		"15.1":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.0/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.0/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.0/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.0/DeveloperDiskImage.dmg.signature"]
+		},
+		"15.2":
+		{
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.2/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.2/DeveloperDiskImage.dmg.signature"]
 		},
 		"15.3":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.2/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.2/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.2/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.2/DeveloperDiskImage.dmg.signature"]
+		},
+		"15.4":
+		{
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.4/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.4/DeveloperDiskImage.dmg.signature"]
+		},
+		"15.5":
+		{
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.5/DeveloperDiskImage.dmg.signature"]
 		},
 		"15.6":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.5/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.5/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.6/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.6/DeveloperDiskImage.dmg.signature"]
 		},
 		"15.7":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.5/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15.5/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.7/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.7/DeveloperDiskImage.dmg.signature"]
 		},
+		"16.0":
+		{
+			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.0/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.0/DeveloperDiskImage.dmg.signature"]
+		},
+		"16.1":
+		{
+			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.1/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.1/DeveloperDiskImage.dmg.signature"]
+		},	
 		"16.2":
 		{
 			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.2/DeveloperDiskImage.dmg"],
@@ -193,18 +223,18 @@
 		},
 		"16.4":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/16.4/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/16.4/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.4/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.4/DeveloperDiskImage.dmg.signature"]
 		},
 		"16.5":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/16.4/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/16.4/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.5/DeveloperDiskImage.dmg.signature"]
 		},
 		"Fallback":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/%@/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/%@/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/%@/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/%@/DeveloperDiskImage.dmg.signature"]
 		}
 	}
 }
