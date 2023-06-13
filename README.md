@@ -1,5 +1,6 @@
+
 > **Warning**:    
-> I do not support beta versions of iOS or macOS ! You can nevertheless try [the following](https://github.com/Schlaubischlump/LocationSimulator/issues/128#issuecomment-1179526935) to fix your problems. Replace iOS 16.0 with whatever iOS version you are using.
+> According to [this issue](https://github.com/jkcoxson/JitStreamer/issues/28) iOS 17 changes a lot of things in regards to how Develoepr Disk Images are handled. That means, it is not clear if iOS 17 can ever be supported by LocationSimulator. In every case libimobiledevice needs to be updated before I can even try to support iOS 17. This will probably not be the case before iOS 17 is officially released to the public. 
 
 > **Note**:   
 > If you use iOS 16 or greater you need to enable Developer Mode first. The Developer Mode option should show up in settings the first time you try to use your device with LocationSimulator, after you received the warning, that you must enable Developer Mode. You can read the following [issue](https://github.com/Schlaubischlump/LocationSimulator/issues/128) for more informations.
