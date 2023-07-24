@@ -24,6 +24,9 @@ class MovementDirectionHUDView: HUDView {
     /// Callback when the heading changes.
     var headingChangedAction: MovementControlAction?
 
+    /// Disable or enable user interaction.
+    var isUserInteractionEnabled: Bool = true
+
     // MARK: - Constructor
 
     private func setup() {
@@ -58,7 +61,7 @@ class MovementDirectionHUDView: HUDView {
     // MARK: - Gesture Recognizer
 
     @objc private func rotateByTouch(sender: NSGestureRecognizer) {
-        guard sender.state == .changed || sender.state == .ended else { return }
+        guard self.isUserInteractionEnabled, sender.state == .changed || sender.state == .ended else { return }
 
         // We need to use self here, not the overlay, because the overlay rotates.
         let loc = sender.location(in: self)

@@ -21,13 +21,17 @@ extension MapViewController: LocationSpooferDelegate {
         // Show a progress spinner when we request a location change
         self.contentView?.startSpinner()
         // Make sure the spoofer is setup
-        guard let coord = toCoordinate, let spoofer = self.spoofer else { return }
+        guard let coord = toCoordinate, coord != spoofer.currentLocation else { return }
 
         // Update the overlay if we are currently navigating
         if case .navigation(let route) = spoofer.moveState {
             let traveledRoute = Array(route.traveledCoordinates) + [coord]
             let upcomingRoute = [coord] + Array(route.upcomingCoordinates)
             self.mapView.updateNavigationOverlay(withInactiveRoute: traveledRoute, activeRoute: upcomingRoute)
+
+            // Update the heading according to the current navigation
+            let heading = spoofer.currentLocation?.heading(toLocation: coord) ?? 0
+            self.rotateDirectionViewTo(heading)
         }
     }
 
@@ -113,6 +117,7 @@ extension MapViewController: LocationSpooferDelegate {
 
         switch spoofer.moveState {
         case .manual:
+            self.contentView?.movementDirectionHUD.isUserInteractionEnabled = true
             // Remove the movebutton highlight
             self.contentView?.movementButtonHUD.highlight = false
             // Allow all movement to navigate manual
@@ -122,6 +127,7 @@ extension MapViewController: LocationSpooferDelegate {
             // Start moving on standing still
             self.startMoveOnStandingStill()
         case .auto:
+            self.contentView?.movementDirectionHUD.isUserInteractionEnabled = true
             // Highlight the move button
             self.contentView?.movementButtonHUD.highlight = true
             // Update the status to disable all manual navigation elements
@@ -130,6 +136,7 @@ extension MapViewController: LocationSpooferDelegate {
             self.contentView?.showPauseIndicator()
             spoofer.startAutoUpdate()
         case .navigation(let route):
+            self.contentView?.movementDirectionHUD.isUserInteractionEnabled = false
             self.contentView?.movementButtonHUD.highlight = true
             status = .navigation
             self.contentView?.showPauseIndicator()
@@ -147,7 +154,7 @@ extension MapViewController: LocationSpooferDelegate {
     }
 
     func didChangeAutoUpdate(spoofer: LocationSpoofer, fromValue: Bool) {
-        guard case .navigation(let route) = self.spoofer?.moveState else {
+        guard case .navigation(let route) = spoofer.moveState else {
             return
         }
 
@@ -161,10 +168,10 @@ extension MapViewController: LocationSpooferDelegate {
                 if self.autoreverseRoute {
                     var coords = route.coordinates
                     coords.reverse()
-                    self.spoofer?.switchToNavigationState(coords)
-                    self.spoofer?.startAutoUpdate()
+                    spoofer.switchToNavigationState(coords)
+                    spoofer.startAutoUpdate()
                 } else {
-                    self.spoofer?.switchToInteractiveMoveState()
+                    spoofer.switchToInteractiveMoveState()
                 }
             }
         }

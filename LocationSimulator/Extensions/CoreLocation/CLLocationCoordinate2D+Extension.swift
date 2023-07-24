@@ -81,4 +81,23 @@ extension CLLocationCoordinate2D {
         })
         return geoCoder
     }
+
+    /// Calculate the heading from this location to the target location in degrees
+    /// See: https://stackoverflow.com/questions/6924742/valid-way-to-calculate-angle-between-2-cllocations
+    /// - Parameter to: target location
+    /// - Return: heading in degrees
+    func heading(toLocation: CLLocationCoordinate2D) -> CLLocationDegrees {
+        let lat1 = self.latitude.degreesToRadians
+        let lon1 = self.longitude.degreesToRadians
+
+        let lat2 = toLocation.latitude.degreesToRadians
+        let lon2 = toLocation.longitude.degreesToRadians
+
+        let dLon = lon2 - lon1
+        let yVal = sin(dLon) * cos(lat2)
+        let xVal = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+
+        let headingDegrees = atan2(yVal, xVal).radiansToDegrees
+        return headingDegrees >= 0 ? headingDegrees : headingDegrees + 360
+    }
 }
