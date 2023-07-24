@@ -128,6 +128,11 @@ class ContentView: NSView {
         return self.mapView.subviews.first(where: { $0.className == "MKScaleView" })
     }
 
+    /// The heading of the mapView
+    var cameraHeading: CLLocationDirection {
+        self.mapView.camera.heading
+    }
+
     // MARK: - Interaction
 
     /// Show or hide the navigation controls in the lower left corner.

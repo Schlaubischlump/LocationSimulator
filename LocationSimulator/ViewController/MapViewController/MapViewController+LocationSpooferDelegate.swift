@@ -31,7 +31,7 @@ extension MapViewController: LocationSpooferDelegate {
 
             // Update the heading according to the current navigation
             let heading = spoofer.currentLocation?.heading(toLocation: coord) ?? 0
-            self.rotateDirectionViewTo(heading)
+            self.rotateDirectionViewTo(heading, relativeToCamera: true)
         }
     }
 

@@ -297,8 +297,13 @@ import LocationSpoofer
 
     /// Set a new heading given by an angle.
     /// - Parameter angle: the angle in degree
-    public func rotateDirectionViewTo(_ angle: Double) {
-        self.contentView?.rotateDirectionHUD(toAngleInDegrees: angle)
+    public func rotateDirectionViewTo(_ angle: Double, relativeToCamera: Bool = false) {
+        if relativeToCamera {
+            let cameraHeading = self.contentView?.cameraHeading ?? 0
+            self.contentView?.rotateDirectionHUD(toAngleInDegrees: cameraHeading - angle)
+        } else {
+            self.contentView?.rotateDirectionHUD(toAngleInDegrees: angle)
+        }
     }
 
     /// Start automovement when standing still.
