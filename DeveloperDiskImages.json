@@ -231,6 +231,11 @@
 			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.5/DeveloperDiskImage.dmg"],
 			"Signature": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.5/DeveloperDiskImage.dmg.signature"]
 		},
+		"16.6":
+		{
+			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/16.5/DeveloperDiskImage.dmg.signature"]
+		},
 		"Fallback":
 		{
 			"Image": ["https://github.com/mspvirajpatel/Xcode_Developer_Disk_Images/raw/master/Developer%20Disk%20Image/%@/DeveloperDiskImage.dmg"],
