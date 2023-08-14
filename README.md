@@ -187,7 +187,7 @@ Donations are always welcome! I will use the money to further develop the softwa
 <summary>
 <b>3. Target: Hopper Disassembler (<i>Current</i>)</b>
 </summary></br>
-	Hopper is a disassembler for macOS and linux. You need to disassemble a program if the source code for the program is not open source, but you still want to figure out how the program is working. I often need a disassembler to reverse engineer Apples source code, e.g. if they change the API to interact with the iOS Simulator. Currently I'm using the free version of Hopper. That is, every 30 minutes I need to restart Hopper and have to reload everything. The comerical version does not have this limitation.
+	Hopper is a disassembler for macOS and linux. You need to disassemble a program if the source code for the program is not open source, but you still want to figure out how the program is working. I often need a disassembler to reverse engineer Apples source code, e.g. if they change the API to interact with the iOS Simulator. Currently I'm using the free version of Hopper. That is, every 30 minutes I need to restart Hopper and have to reload everything. The commercial version does not have this limitation.
 </details>
 
 ## Enhancement ideas
