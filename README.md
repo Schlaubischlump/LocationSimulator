@@ -171,21 +171,21 @@ Donations are always welcome! I will use the money to further develop the softwa
 
 <details>
 <summary>
-<b>1. Donation target: Apple Developer License (recurring)</b>
+<b>1. Target: Apple Developer License (recurring)</b>
 </summary></br>
 	Each year every Apple Developer needs to pay a fee to Apple in order to sign his applications and to gain access to certain developer resoures. If your application is not signed, the user will see a lot of warnings about the program being malicious and the user might need to grant special permissions to start the app.
 </details>
 
 <details>
 <summary>
-<b>2. Donation target: Parallels Desktop 18</b>
+<b>2. Target: Parallels Desktop 18</b>
 </summary></br>
 	In order to verify that LocationSimulator is working on older MacOS versions, I need to be able to run all of them. Since I only have a single MacBook, I use Parallels Desktop to run multiple older versions of MacOS simultaneously on a single Mac.
 </details>
 
 <details>
 <summary>
-<b>3. Donation Target: Hopper Disassembler (<i>Current</i>)</b>
+<b>3. Target: Hopper Disassembler (<i>Current</i>)</b>
 </summary></br>
 	Hopper is a disassembler for macOS and linux. You need to disassemble a program if the source code for the program is not open source, but you still want to figure out how the program is working. I often need a disassembler to reverse engineer Apples source code, e.g. if they change the API to interact with the iOS Simulator. Currently I'm using the free version of Hopper. That is, every 30 minutes I need to restart Hopper and have to reload everything. The comerical version does not have this limitation.
 </details>
