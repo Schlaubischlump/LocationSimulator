@@ -10,13 +10,6 @@ import Foundation
 import AppKit.NSWorkspace
 import CLogger
 
-public struct BackupToken {
-    let os: String
-    let version: String
-    let devDiskId: UUID
-    let devSignId: UUID
-}
-
 enum FileError: Error {
     case invalidPermission
     case notFound
@@ -117,8 +110,7 @@ extension FileManager {
 
             if let value = try? url.resourceValues(forKeys: [.isDirectoryKey]), value.isDirectory ?? false {
                 let devDisk = url.appendingPathComponent("DeveloperDiskImage.dmg")
-                let devDiskSig = url.appendingPathComponent("DeveloperDiskImage.dmg.signature")
-                if self.fileExists(atPath: devDisk.path) && self.fileExists(atPath: devDiskSig.path) {
+                if self.fileExists(atPath: devDisk.path) {
                     return url.lastPathComponent
                 } else {
                     logWarning("DeveloperDiskImage directory \(url.path): Skipping. Reason: Missing support files.")
@@ -216,51 +208,45 @@ extension FileManager {
         return nil
     }
 
+    /// Get the path to the DeveloperDiskImage.dmg.trustcache inside the applications Support directory.
+    /// - Parameter os: the platform or operating system e.g. iPhone OS
+    /// - Parameter version: version string for the iOS device, e.g. 13.0
+    /// - Return: path to DeveloperDiskImage.dmg.signature
+    public func getDeveloperDiskImageTrustcache(os: String, version: String) -> URL? {
+        // get the path to the DeveloperDiskImage.dmg.trustcache
+        if let devDisk: URL = self.getDeveloperDiskImage(os: os, version: version) {
+            return URL(fileURLWithPath: devDisk.path + ".trustcache")
+        }
+        return nil
+    }
+
+    /// Get the path to the BuildManifest.plist inside the applications Support directory.
+    /// - Parameter os: the platform or operating system e.g. iPhone OS
+    /// - Parameter version: version string for the iOS device, e.g. 13.0
+    /// - Return: path to DeveloperDiskImage.dmg.signature
+    public func getDeveloperDiskImageBuildManifest(os: String, version: String) -> URL? {
+        // get the path to the DeveloperDiskImage.dmg.trustcache
+        if let versionFolder = self.getDeveloperDiskImage(os: os, version: version)?.deletingLastPathComponent() {
+            return versionFolder.appendingPathComponent("BuildManifest.plist", isDirectory: false)
+        }
+        return nil
+    }
+
     /// Backup the DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files to a temporary directory.
     /// - Parameter os: the platform or operating system e.g. iPhone OS
     /// - Parameter version: version string for the iOS device, e.g. 13.0
     /// - Return: BackupToken with a unique id for each backuped file
-    public func backupSupportFiles(os: String, version: String) throws -> BackupToken? {
-        guard let devDisk = self.getDeveloperDiskImage(os: os, version: version),
-              let devDiskSig = self.getDeveloperDiskImageSignature(os: os, version: version) else { return nil }
-
-        let token = BackupToken(os: os, version: version, devDiskId: UUID(), devSignId: UUID())
-
-        let tmpDir = self.temporaryDirectory
-        let devDiskTmp = tmpDir.appendingPathComponent(token.devDiskId.uuidString)
-        let devDiskSigTmp = tmpDir.appendingPathComponent(token.devSignId.uuidString)
-
+    public func backup(developerDiskImage: DeveloperDiskImage) throws {
         try self.accessSupportDirectory {
-            try self.copyItem(at: devDisk, to: devDiskTmp)
-            try self.copyItem(at: devDiskSig, to: devDiskSigTmp)
+            try developerDiskImage.backup()
         }
-
-        return token
     }
 
     /// Restore the DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files from a temporary directory.
     /// - Parameter token: the backup token
-    public func restoreSupportFiles(token: BackupToken) throws {
-        guard let devDisk = self.getDeveloperDiskImage(os: token.os, version: token.version),
-              let devDiskSig = self.getDeveloperDiskImageSignature(os: token.os, version: token.version) else {
-                  throw FileError.invalidPermission
-              }
-
-        let tmpDir = self.temporaryDirectory
-        let devDiskTmp = tmpDir.appendingPathComponent(token.devDiskId.uuidString)
-        let devDiskSigTmp = tmpDir.appendingPathComponent(token.devSignId.uuidString)
-
-        var isDir: ObjCBool = false
-        let hasDevDiskTmp = self.fileExists(atPath: devDiskTmp.path, isDirectory: &isDir) && !isDir.boolValue
-        let hasDevDiskSignTmp = self.fileExists(atPath: devDiskSigTmp.path, isDirectory: &isDir) && !isDir.boolValue
-
-        if !hasDevDiskTmp || !hasDevDiskSignTmp {
-            throw FileError.notFound
-        }
-
+    public func restore(developerDiskImage: DeveloperDiskImage) throws {
         try self.accessSupportDirectory {
-            _ = try self.replaceItemAt(devDisk, withItemAt: devDiskTmp)
-            _ = try self.replaceItemAt(devDiskSig, withItemAt: devDiskSigTmp)
+            try developerDiskImage.restore()
         }
     }
 

@@ -12,8 +12,6 @@ import Downloader
 import CLogger
 
 let kUpdateDevTaskID = "UpdateDev"
-let kDevDiskTaskID = "DevDisk"
-let kDevSignTaskID = "DevSign"
 
 public enum DownloadStatus: Int {
     case failure
@@ -24,11 +22,6 @@ public enum DownloadStatus: Int {
 typealias DownloadCompletionHandler = (DownloadStatus) -> Void
 
 class DownloadListViewController: NSViewController {
-    typealias Platform = String
-    typealias Version = String
-    typealias FileType = String
-    typealias JSonType = [Platform: [Version: [FileType: [String]]]]
-
     /// The downloader instance to manage.
     public let downloader: Downloader = Downloader()
 
@@ -59,38 +52,6 @@ class DownloadListViewController: NSViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    /// Parse the DeveloperDiskImages.json and return the download links for all DeveloperDiskImages files for every
-    /// iOS version.
-    /// - Parameter os: the platform or operating system e.g. iPhone OS
-    /// - Parameter version: version string for the iOS device, e.g. 13.0
-    /// - Return: [[DeveloperDiskImage.dmg download links], [DeveloperDiskImage.dmg.signature download links]]
-    private func getDeveloperDiskImageDownloadLinks(os: String, version: String) -> [String: [URL]] {
-        // Check if the plist file and the platform inside the file can be found.
-        let manager = FileManager.default
-        guard let jsonPath = manager.developerDiskImageDownloadDefinitionsFile,
-              let jsonData = try? Data(contentsOf: jsonPath, options: .mappedIfSafe),
-              let jsonResult = try? JSONSerialization.jsonObject(with: jsonData) as? JSonType else {
-            logError("DeveloperDiskImages.json not found!")
-            return [:]
-        }
-
-        let osLinks = jsonResult[os] ?? [:]
-        let versionLinks = osLinks[version] ?? [:]
-        let fallbackLinks = osLinks["Fallback"] ?? [:]
-        let resolvedFallbackLinks = fallbackLinks.mapValues { $0.map { String(format: $0, version) } }
-
-        let downloadLinks = versionLinks.merging(resolvedFallbackLinks) { $0 + $1 }
-        if downloadLinks.isEmpty {
-            logError("DeveloperDiskImages.json does not contain any download links!")
-        }
-
-        return downloadLinks.mapValues { links in
-            links.compactMap {
-                URL(string: $0)
-            }
-        }
     }
 
     /// Update the DeveloperDiskImage download links if required.
@@ -127,7 +88,16 @@ class DownloadListViewController: NSViewController {
         return true
     }
 
-    /// Prepare the download of a DeveloperDiskImage and the correspondign signature file.
+    private func downloadDescription(file: DeveloperDiskImage.File) -> String {
+        switch file {
+        case .image: return "DEVDISK_DOWNLOAD_DESC".localized
+        case .signature: return "DEVSIGN_DOWNLOAD_DESC".localized
+        case .trustcache: return "DEVTRUST_DOWNLOAD_DESC".localized
+        case .buildManifest: return "DEVMANIFEST_DOWNLOAD_DESC".localized
+        }
+    }
+
+    /// Prepare the download of a DeveloperDiskImage and all corresponding files.
     /// - Parameter os: the platform or operating system e.g. iPhone OS
     /// - Parameter version: version string for the iOS device, e.g. 13.0
     /// - Return: true on success, false otherwise
@@ -135,38 +105,36 @@ class DownloadListViewController: NSViewController {
     @objc func prepareDownload(os: String, iOSVersion: String) -> Bool {
         // Check if the path for the image and signature file can be created.
         let manager = FileManager.default
-        guard let devDmgPath = manager.getDeveloperDiskImage(os: os, version: iOSVersion),
-              let devSignPath = manager.getDeveloperDiskImageSignature(os: os, version: iOSVersion) else {
-            return false
-        }
         // Get the download links from the internal plist file.
-        let links = self.getDeveloperDiskImageDownloadLinks(os: os, version: iOSVersion)
+        let developerDiskImage = DeveloperDiskImage(os: os, version: iOSVersion)
 
-        let diskLinks = links["Image"] ?? []
-        let signLinks = links["Signature"] ?? []
-
-        // We use the first download link. In theory we could add multiple links for the same image.
-        var diskLink: URL!
-        var signLink: URL!
         var res: Bool = true
 
-        if diskLinks.isEmpty || signLinks.isEmpty {
-            // Add some dummy task to make the UI look nicer
-            diskLink = URL(string: kProjectWebsite)!
-            signLink = URL(string: kProjectWebsite)!
-            res = false
-        } else {
-            diskLink = diskLinks[0]
-            signLink = signLinks[0]
+        var downloadTasks = developerDiskImage.downloadLinks.compactMap { (file, link) in
+            if let destFile = file.url {
+                let desc = downloadDescription(file: file)
+                return DownloadTask(dID: file.description, source: link, destination: destFile, description: desc)
+            } else {
+                return nil
+            }
         }
 
-        let dmgTask = DownloadTask(dID: kDevDiskTaskID, source: diskLink, destination: devDmgPath,
-                                   description: "DEVDISK_DOWNLOAD_DESC".localized)
-        let sigTask = DownloadTask(dID: kDevSignTaskID, source: signLink, destination: devSignPath,
-                                   description: "DEVSIGN_DOWNLOAD_DESC".localized)
+        if downloadTasks.isEmpty {
+            res = false
 
-        self.progressListView?.add(task: dmgTask)
-        self.progressListView?.add(task: sigTask)
+            // Add dummy tasks to make the UI nicer
+            let dummyURL = URL(string: kProjectWebsite)!
+            let tmpDir = FileManager.default.temporaryDirectory
+            let dummyFile = tmpDir.appendingPathComponent(UUID().uuidString, isDirectory: false)
+            downloadTasks = [
+                DownloadTask(dID: "dummy1", source: dummyURL, destination: dummyFile),
+                DownloadTask(dID: "dummy2", source: dummyURL, destination: dummyFile)
+            ]
+        }
+
+        downloadTasks.forEach {
+            self.progressListView?.add(task: $0)
+        }
 
         return res
     }

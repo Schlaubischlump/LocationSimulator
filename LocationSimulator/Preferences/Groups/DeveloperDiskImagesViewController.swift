@@ -158,9 +158,28 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         FileManager.default.showDeveloperDiskImageInFinder(os: self.selectedPlatform, version: version)
     }
 
-    /// Add a new DeveleoperDiskImage.dmg + signature combination to the list by asking the user to download one or
-    /// by selecting them from the file system.
-    private func addNewDeveloperDiskImageFiles() {
+    /// Add a new DeveleoperDiskImage or a personalized DeveloperDiskImage to the list by selecting the correspondig
+    /// files them from the file system.
+    private func addNewDeveloperDiskImageFiles(_ sender: NSSegmentedControl) {
+        let openMenu = NSMenu()
+
+        let firstItem = NSMenuItem(title: "ADD_DEVELOPER_DISK_IMAGE".localized,
+                                   action: #selector(showAddDeveloperDiskImageFilesAlert),
+                                   keyEquivalent: "")
+        firstItem.target = self
+        let secondItem = NSMenuItem(title: "ADD_PERSONALIZED_DEVELOPER_DISK_IMAGE".localized,
+                                   action: #selector(showAddPersonalizedDeveloperDiskImageFilesAlert),
+                                   keyEquivalent: "")
+        secondItem.target = self
+
+        openMenu.addItem(firstItem)
+        openMenu.addItem(secondItem)
+
+        let location = NSPoint(x: 0, y: sender.frame.height + 5)
+        openMenu.popUp(positioning: nil, at: location, in: sender)
+    }
+
+    @objc private func showAddDeveloperDiskImageFilesAlert() {
         guard let window = self.view.window else { return }
 
         let alert = AddDeveloperDiskImageAlert(os: self.selectedPlatform)
@@ -182,8 +201,35 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         }
     }
 
+    @objc private func showAddPersonalizedDeveloperDiskImageFilesAlert() {
+        guard let window = self.view.window else { return }
+
+        let alert = AddPersonalizedDeveloperDiskImageAlert(os: self.selectedPlatform)
+        window.beginSheet(alert) { response in
+            guard response == .OK else { return }
+
+            let manager = FileManager.default
+
+            let os = alert.os
+            let version = alert.version
+            if let devDiskPath = manager.getDeveloperDiskImage(os: os, version: version),
+                let devDiskTrustCachePath = manager.getDeveloperDiskImageTrustcache(os: os, version: version),
+                let devDiskBuildManifestPath = manager.getDeveloperDiskImageBuildManifest(os: os, version: version) {
+
+                try? manager.accessSupportDirectory {
+                    try? manager.copyItem(at: alert.developerDiskImageFile, to: devDiskPath)
+                    try? manager.copyItem(at: alert.developerDiskImageTrustcacheFile, to: devDiskTrustCachePath)
+                    try? manager.copyItem(at: alert.developerDiskImageBuildManifestFile, to: devDiskBuildManifestPath)
+                }
+
+                self.reloadData()
+            }
+        }
+
+    }
+
     /// Delete the currently selected DeveleoperDiskImage.dmg + signature combination.
-    private func deleteSelectedDeveloperDiskImageFiles() {
+    private func deleteSelectedDeveloperDiskImageFiles(_ sender: NSSegmentedControl) {
         guard let version = self.selectedVersion else { return }
 
         let fileManager = FileManager.default
@@ -196,18 +242,19 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
     }
 
     /// Redownload the currently selected DeveleoperDiskImage.dmg + signature combination.
-    private func refreshSelectedDeveloperDiskImageFiles() {
+    private func refreshSelectedDeveloperDiskImageFiles(_ sender: NSSegmentedControl) {
         guard let version = self.selectedVersion, let window = self.view.window else { return }
 
         let platform = self.selectedPlatform
         let fileManager = FileManager.default
 
         // Backup the existing files
-        var token: BackupToken?
+        let developerDiskImage = DeveloperDiskImage(os: platform, version: version)
         do {
-            token = try fileManager.backupSupportFiles(os: platform, version: version)
+            try fileManager.backup(developerDiskImage: developerDiskImage)
         } catch {
             window.showError("DEVDISK_REFRESH_FAILED_ERROR", message: "DEVDISK_BACKUP_FAILED_ERROR_MSG")
+            return
         }
 
         // Download the new files
@@ -219,9 +266,9 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         }
 
         // The download failed or it was canceled => restore the original files
-        if result != .OK, let token = token {
+        if result != .OK {
             do {
-                try fileManager.restoreSupportFiles(token: token)
+                try fileManager.restore(developerDiskImage: developerDiskImage)
             } catch {
                 logError("\(platform) \(version): Could not rollback DeveloperDiskImage files.")
             }
@@ -243,9 +290,9 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
 
     @IBAction func toolbarItemSelected(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
-        case 0: self.addNewDeveloperDiskImageFiles()          // Add
-        case 1: self.deleteSelectedDeveloperDiskImageFiles()  // Remove
-        case 2: self.refreshSelectedDeveloperDiskImageFiles() // Refresh
+        case 0: self.addNewDeveloperDiskImageFiles(sender)          // Add
+        case 1: self.deleteSelectedDeveloperDiskImageFiles(sender)  // Remove
+        case 2: self.refreshSelectedDeveloperDiskImageFiles(sender) // Refresh
         default:
             break
         }
