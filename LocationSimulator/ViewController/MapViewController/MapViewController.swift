@@ -331,7 +331,7 @@ import LocationSpoofer
     func downloadDeveloperDiskImage(os: String, iOSVersion: String) -> Bool {
         guard let window = self.view.window else { return false }
         // Show the alert and thereby start the download progress.
-        let alert = DownloadProgressAlert(os: os, version: iOSVersion)
+        let alert = DownloadProgressAlert(developerDiskImage: DeveloperDiskImage(os: os, version: iOSVersion))
         let response = alert.runSheetModal(forWindow: window)
         switch response {
         // Download was successfull

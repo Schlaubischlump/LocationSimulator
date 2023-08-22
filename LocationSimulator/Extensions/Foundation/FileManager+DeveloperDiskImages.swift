@@ -232,24 +232,6 @@ extension FileManager {
         return nil
     }
 
-    /// Backup the DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files to a temporary directory.
-    /// - Parameter os: the platform or operating system e.g. iPhone OS
-    /// - Parameter version: version string for the iOS device, e.g. 13.0
-    /// - Return: BackupToken with a unique id for each backuped file
-    public func backup(developerDiskImage: DeveloperDiskImage) throws {
-        try self.accessSupportDirectory {
-            try developerDiskImage.backup()
-        }
-    }
-
-    /// Restore the DeveloperDiskImage.dmg and DeveloperDiskImage.dmg.signature files from a temporary directory.
-    /// - Parameter token: the backup token
-    public func restore(developerDiskImage: DeveloperDiskImage) throws {
-        try self.accessSupportDirectory {
-            try developerDiskImage.restore()
-        }
-    }
-
     /// Show the DeveloperDiskImage.dmg file in the finder.
     /// - Parameter os: the platform or operating system e.g. iPhone OS
     /// - Parameter version: version string for the iOS device, e.g. 13.0

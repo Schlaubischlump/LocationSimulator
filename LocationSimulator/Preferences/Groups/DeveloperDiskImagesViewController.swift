@@ -187,17 +187,11 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
             guard response == .OK else { return }
 
             let manager = FileManager.default
+            let developerDiskImage = DeveloperDiskImage(os: alert.os, version: alert.version)
+            try? developerDiskImage.storeImage(alert.developerDiskImageFile)
+            try? developerDiskImage.storeSignature(alert.developerDiskImageSignatureFile)
 
-            if let devDiskPath = manager.getDeveloperDiskImage(os: alert.os, version: alert.version),
-                let devDiskSigPath = manager.getDeveloperDiskImageSignature(os: alert.os, version: alert.version) {
-
-                try? manager.accessSupportDirectory {
-                    try? manager.copyItem(at: alert.developerDiskImageFile, to: devDiskPath)
-                    try? manager.copyItem(at: alert.developerDiskImageSignatureFile, to: devDiskSigPath)
-                }
-
-                self.reloadData()
-            }
+            self.reloadData()
         }
     }
 
@@ -210,20 +204,12 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
 
             let manager = FileManager.default
 
-            let os = alert.os
-            let version = alert.version
-            if let devDiskPath = manager.getDeveloperDiskImage(os: os, version: version),
-                let devDiskTrustCachePath = manager.getDeveloperDiskImageTrustcache(os: os, version: version),
-                let devDiskBuildManifestPath = manager.getDeveloperDiskImageBuildManifest(os: os, version: version) {
+            let developerDiskImage = DeveloperDiskImage(os: alert.os, version: alert.version)
+            try? developerDiskImage.storeImage(alert.developerDiskImageFile)
+            try? developerDiskImage.storeTrustcache(alert.developerDiskImageTrustcacheFile)
+            try? developerDiskImage.storeBuildManifest(alert.developerDiskImageBuildManifestFile)
 
-                try? manager.accessSupportDirectory {
-                    try? manager.copyItem(at: alert.developerDiskImageFile, to: devDiskPath)
-                    try? manager.copyItem(at: alert.developerDiskImageTrustcacheFile, to: devDiskTrustCachePath)
-                    try? manager.copyItem(at: alert.developerDiskImageBuildManifestFile, to: devDiskBuildManifestPath)
-                }
-
-                self.reloadData()
-            }
+            self.reloadData()
         }
 
     }
@@ -251,14 +237,14 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         // Backup the existing files
         let developerDiskImage = DeveloperDiskImage(os: platform, version: version)
         do {
-            try fileManager.backup(developerDiskImage: developerDiskImage)
+            try developerDiskImage.backup()
         } catch {
             window.showError("DEVDISK_REFRESH_FAILED_ERROR", message: "DEVDISK_BACKUP_FAILED_ERROR_MSG")
             return
         }
 
         // Download the new files
-        let alert = DownloadProgressAlert(os: platform, version: version)
+        let alert = DownloadProgressAlert(developerDiskImage: developerDiskImage)
         let result = alert.runSheetModal(forWindow: window)
 
         if result == .failed {
@@ -268,7 +254,7 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         // The download failed or it was canceled => restore the original files
         if result != .OK {
             do {
-                try fileManager.restore(developerDiskImage: developerDiskImage)
+                try developerDiskImage.restore()
             } catch {
                 logError("\(platform) \(version): Could not rollback DeveloperDiskImage files.")
             }

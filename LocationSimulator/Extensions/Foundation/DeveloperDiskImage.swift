@@ -9,7 +9,7 @@
 import Foundation
 import CLogger
 
-public class DeveloperDiskImage {
+@objc public class DeveloperDiskImage: NSObject {
     typealias Platform = String
     typealias Version = String
     typealias FileType = String
@@ -140,32 +140,73 @@ public class DeveloperDiskImage {
         }
     }
 
+    private func store(_ file: File, fromFileURL: URL) throws -> Bool {
+        let fileManager = FileManager.default
+        var isDir: ObjCBool = false
+        guard let url = file.url else {
+            return false
+        }
+        try fileManager.accessSupportDirectory {
+            if fileManager.fileExists(atPath: url.path, isDirectory: &isDir) && !isDir.boolValue {
+                try _ = fileManager.replaceItemAt(url, withItemAt: fromFileURL)
+            } else {
+                try fileManager.copyItem(at: fromFileURL, to: url)
+            }
+        }
+
+        return true
+    }
+
+    @discardableResult
+    func storeImage(_ file: URL) throws -> Bool {
+        try self.store(.image(os: self.os, version: self.version), fromFileURL: file)
+    }
+
+    @discardableResult
+    func storeSignature(_ file: URL) throws -> Bool {
+        try self.store(.signature(os: self.os, version: self.version), fromFileURL: file)
+    }
+
+    @discardableResult
+    func storeTrustcache(_ file: URL) throws -> Bool {
+        try self.store(.trustcache(os: self.os, version: self.version), fromFileURL: file)
+    }
+
+    @discardableResult
+    func storeBuildManifest(_ file: URL) throws -> Bool {
+        try self.store(.buildManifest(os: self.os, version: self.version), fromFileURL: file)
+    }
+
     func backup() throws {
         let fileManager = FileManager.default
-        try self.backupFiles.forEach { (originalFile, backupFile) in
-            var isDir: ObjCBool = false
-            if fileManager.fileExists(atPath: originalFile.path, isDirectory: &isDir) && !isDir.boolValue {
-                if fileManager.fileExists(atPath: backupFile.path, isDirectory: &isDir) && !isDir.boolValue {
-                    // Replace existing backup files
-                    try _ = fileManager.replaceItemAt(originalFile, withItemAt: backupFile)
+        try fileManager.accessSupportDirectory {
+            try self.backupFiles.forEach { (originalFile, backupFile) in
+                var isDir: ObjCBool = false
+                if fileManager.fileExists(atPath: originalFile.path, isDirectory: &isDir) && !isDir.boolValue {
+                    if fileManager.fileExists(atPath: backupFile.path, isDirectory: &isDir) && !isDir.boolValue {
+                        // Replace existing backup files
+                        try _ = fileManager.replaceItemAt(originalFile, withItemAt: backupFile)
+                    } else {
+                        try fileManager.copyItem(at: originalFile, to: backupFile)
+                    }
                 } else {
-                    try fileManager.copyItem(at: originalFile, to: backupFile)
+                    // Silently skip the file if it does not exist for this type of DeveloperDiskImage
                 }
-            } else {
-                // Silently skip the file if it does not exist for this type of DeveloperDiskImage
             }
         }
     }
 
     func restore() throws {
         let fileManager = FileManager.default
-        var isDir: ObjCBool = false
-        try self.backupFiles.forEach { (originalFile, backupFile) in
-            let hasFile = fileManager.fileExists(atPath: originalFile.path, isDirectory: &isDir) && !isDir.boolValue
-            if !hasFile {
-                throw FileError.notFound
+        try fileManager.accessSupportDirectory {
+            var isDir: ObjCBool = false
+            try self.backupFiles.forEach { (originalFile, backupFile) in
+                let hasFile = fileManager.fileExists(atPath: originalFile.path, isDirectory: &isDir) && !isDir.boolValue
+                if !hasFile {
+                    throw FileError.notFound
+                }
+                _ = try fileManager.replaceItemAt(originalFile, withItemAt: backupFile)
             }
-            _ = try fileManager.replaceItemAt(originalFile, withItemAt: backupFile)
         }
     }
 }

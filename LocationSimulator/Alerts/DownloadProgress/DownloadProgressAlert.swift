@@ -22,14 +22,10 @@ class DownloadProgressAlert: NSAlert {
 
     public var downloadListViewController = DownloadListViewController()
 
-    /// The os to download the files for e.g iPhone OS
-    public private(set) var os: String
-    /// The iOS version to download the file for e.g 15.2
-    public private(set) var version: String
+    public private(set) var developerDiskImage: DeveloperDiskImage
 
-    init(os: String, version: String) {
-        self.os = os
-        self.version = version
+    init(developerDiskImage: DeveloperDiskImage) {
+        self.developerDiskImage = developerDiskImage
 
         super.init()
 
@@ -84,7 +80,7 @@ class DownloadProgressAlert: NSAlert {
             if status == .cancel {
                 // Update was canceled
                 response = .cancel
-            } else if !self.downloadListViewController.prepareDownload(os: self.os, iOSVersion: self.version) {
+            } else if !self.downloadListViewController.prepareDownload(developerDiskImage) {
                 // Prepare the download
                 response = .failed
             } else {

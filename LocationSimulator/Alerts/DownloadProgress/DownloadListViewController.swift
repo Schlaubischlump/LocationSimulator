@@ -98,15 +98,13 @@ class DownloadListViewController: NSViewController {
     }
 
     /// Prepare the download of a DeveloperDiskImage and all corresponding files.
-    /// - Parameter os: the platform or operating system e.g. iPhone OS
-    /// - Parameter version: version string for the iOS device, e.g. 13.0
+    /// - Parameter developerDiskImage: the DeveloperDiskImage to download
     /// - Return: true on success, false otherwise
     @discardableResult
-    @objc func prepareDownload(os: String, iOSVersion: String) -> Bool {
+    @objc func prepareDownload(_ developerDiskImage: DeveloperDiskImage) -> Bool {
         // Check if the path for the image and signature file can be created.
         let manager = FileManager.default
         // Get the download links from the internal plist file.
-        let developerDiskImage = DeveloperDiskImage(os: os, version: iOSVersion)
 
         var res: Bool = true
 
