@@ -238,9 +238,9 @@
 		},
 		"17.0":
 		{
-			"Image": ["https://github.com/doronz88/DeveloperDiskImage/main/PersonalizedImages/Xcode_iOS_DDI_Personalized/Image.dmg"],
-			"Trustcache": ["https://github.com/doronz88/DeveloperDiskImage/main/PersonalizedImages/Xcode_iOS_DDI_Personalized/Image.dmg.trustcache"],
-			"BuildManifest": ["https://github.com/doronz88/DeveloperDiskImage/main/PersonalizedImages/Xcode_iOS_DDI_Personalized/BuildManifest.plist"]
+			"Image": ["https://github.com/doronz88/DeveloperDiskImage/raw/main/PersonalizedImages/Xcode_iOS_DDI_Personalized/Image.dmg"],
+			"Trustcache": ["https://github.com/doronz88/DeveloperDiskImage/raw/main/PersonalizedImages/Xcode_iOS_DDI_Personalized/Image.dmg.trustcache"],
+			"BuildManifest": ["https://github.com/doronz88/DeveloperDiskImage/raw/main/PersonalizedImages/Xcode_iOS_DDI_Personalized/BuildManifest.plist"]
 		},
 		"Fallback":
 		{
