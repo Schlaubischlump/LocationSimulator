@@ -26,20 +26,16 @@ extension Device {
 
     /// Pair a new device by uploading the developer disk image if required.
     /// - Throws:
-    ///    * `DeviceError.devDiskImageNotFound`: No DeveloperDiskImage.dmg or Signature file found in the support folder
-    ///    * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage.dmg file
+    ///    * `DeviceError.devDiskImageNotFound`: Required DeveloperDiskImage support file not found
+    ///    * `DeviceError.devDiskImageMount`: Error mounting the DeveloperDiskImage file
     ///    * `DeviceError.devMode`: Developer mode is not enabled
     ///    * `DeviceError.permisson`: Permission error while accessing the App Support folder
     ///    * `DeviceError.productInfo`: Could not read the devices product version or name
     public func pair() throws {
-        // Only real iOS Devices require a pairing
-        guard let device = self as? IOSDevice else { return }
+        // Only real iOS Devices require a pairing if the DeveloperDiskImage is not already mounted
+        guard let device = self as? IOSDevice, !device.developerDiskImageIsMounted else { return }
 
-        // Only continue if the DeveloperDiskImage is not already mounted
-        guard !device.developerDiskImageIsMounted else {
-            return
-        }
-
+        // Make sure the C-backend can read the files
         let fileManager = FileManager.default
         let startAcccess = fileManager.startAccessingSupportDirectory()
 
@@ -56,16 +52,35 @@ extension Device {
         }
 
         // Read the developer disk images
-        if let devDiskImage = fileManager.getDeveloperDiskImage(os: productName, version: productVersion),
-           let devDiskSig = fileManager.getDeveloperDiskImageSignature(os: productName, version: productVersion) {
+        let developerDiskImage = DeveloperDiskImage(os: productName, version: productVersion)
 
-            // Make sure the files are downlaod
-            guard fileManager.hasDownloadedSupportFiles(os: productName, version: productVersion) else {
+        // Make sure the developer disk image exists
+        guard let devDiskImage = developerDiskImage.imageFile else {
+            throw DeviceError.devDiskImageNotFound("DeveloperDiskImage.dmg not found!")
+        }
+
+        do {
+            if developerDiskImage.hasDownloadedPersonalizedImageFiles {
+                // Upload personalized image
+                guard let devDiskTrust = developerDiskImage.trustcacheFile else {
+                    throw DeviceError.devDiskImageNotFound("DeveloperDiskImage.dmg.trustcache not found!")
+                }
+
+                guard let devDiskManifest = developerDiskImage.buildManifestFile else {
+                    throw DeviceError.devDiskImageNotFound("BuildManifest.plist not found!")
+                }
+                // TODO: Upload the personalized image
+            } else if developerDiskImage.hasDownloadedImageFiles {
+                // Upload traditional DeveloperDiskImage
+                guard let devDiskSig = developerDiskImage.signatureFile else {
+                    throw DeviceError.devDiskImageNotFound("DeveloperDiskImage.dmg.signature not found!")
+                }
+
+                try device.pair(devImage: devDiskImage, devImageSig: devDiskSig)
+            } else {
                 throw DeviceError.devDiskImageNotFound("DeveloperDiskImage not found!")
             }
-
-            try device.pair(devImage: devDiskImage, devImageSig: devDiskSig)
-        } else {
+        } catch {
             throw DeviceError.permisson("Wrong file permission!")
         }
     }

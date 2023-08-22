@@ -69,7 +69,7 @@ class DownloadListViewController: NSViewController {
 
         // If we can not get the path to store the definition file we just fail right here
         guard let src = URL(string: kDeveloperDiskImagesInfo),
-              let dest = FileManager.default.developerDiskImageDownloadDefinitionsFile else {
+              let dest = DeveloperDiskImage.downloadDefinitionsFile else {
             DispatchQueue.main.async {
                 self.updateFinishedAction?(.failure)
             }
@@ -88,7 +88,7 @@ class DownloadListViewController: NSViewController {
         return true
     }
 
-    private func downloadDescription(file: DeveloperDiskImage.File) -> String {
+    private func downloadDescription(file: DeveloperDiskImage.SupportFile) -> String {
         switch file {
         case .image: return "DEVDISK_DOWNLOAD_DESC".localized
         case .signature: return "DEVSIGN_DOWNLOAD_DESC".localized

@@ -155,7 +155,10 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         guard row >= 0 else { return }
 
         let version = self.cachedOsVersions[row]
-        FileManager.default.showDeveloperDiskImageInFinder(os: self.selectedPlatform, version: version)
+        let devDiskImage = DeveloperDiskImage.SupportFile.image(os: self.selectedPlatform, version: version)
+        if let url = devDiskImage.url {
+            FileManager.default.showFileInFinder(url)
+        }
     }
 
     /// Add a new DeveleoperDiskImage or a personalized DeveloperDiskImage to the list by selecting the correspondig
@@ -186,10 +189,9 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         window.beginSheet(alert) { response in
             guard response == .OK else { return }
 
-            let manager = FileManager.default
             let developerDiskImage = DeveloperDiskImage(os: alert.os, version: alert.version)
-            try? developerDiskImage.storeImage(alert.developerDiskImageFile)
-            try? developerDiskImage.storeSignature(alert.developerDiskImageSignatureFile)
+            _ = try? developerDiskImage.storeImage(alert.developerDiskImageFile)
+            _ = try? developerDiskImage.storeSignature(alert.developerDiskImageSignatureFile)
 
             self.reloadData()
         }
@@ -202,12 +204,10 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         window.beginSheet(alert) { response in
             guard response == .OK else { return }
 
-            let manager = FileManager.default
-
             let developerDiskImage = DeveloperDiskImage(os: alert.os, version: alert.version)
-            try? developerDiskImage.storeImage(alert.developerDiskImageFile)
-            try? developerDiskImage.storeTrustcache(alert.developerDiskImageTrustcacheFile)
-            try? developerDiskImage.storeBuildManifest(alert.developerDiskImageBuildManifestFile)
+            _ = try? developerDiskImage.storeImage(alert.developerDiskImageFile)
+            _ = try? developerDiskImage.storeTrustcache(alert.developerDiskImageTrustcacheFile)
+            _ = try? developerDiskImage.storeBuildManifest(alert.developerDiskImageBuildManifestFile)
 
             self.reloadData()
         }
@@ -218,9 +218,8 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
     private func deleteSelectedDeveloperDiskImageFiles(_ sender: NSSegmentedControl) {
         guard let version = self.selectedVersion else { return }
 
-        let fileManager = FileManager.default
-
-        if fileManager.removeDownload(os: self.selectedPlatform, version: version) {
+        let devDiskImage = DeveloperDiskImage(os: self.selectedPlatform, version: version)
+        if devDiskImage.removeDownload() {
             self.reloadData()
         } else {
             self.view.window?.showError("DEVDISK_DELETE_FAILED_ERROR", message: "DEVDISK_DELETE_FAILED_ERROR_MSG")
@@ -232,7 +231,6 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
         guard let version = self.selectedVersion, let window = self.view.window else { return }
 
         let platform = self.selectedPlatform
-        let fileManager = FileManager.default
 
         // Backup the existing files
         let developerDiskImage = DeveloperDiskImage(os: platform, version: version)
@@ -263,7 +261,7 @@ class DeveloperDiskImagesViewController: PreferenceViewControllerBase {
 
     /// Reload the data list with all currently downloaded os versions.
     private func reloadData() {
-        let osVersions = FileManager.default.getAvailableVersions(os: self.selectedPlatform)
+        let osVersions = DeveloperDiskImage.getAvailableVersions(forOS: self.selectedPlatform)
         self.cachedOsVersions = osVersions
 
         self.tableView.reloadData()

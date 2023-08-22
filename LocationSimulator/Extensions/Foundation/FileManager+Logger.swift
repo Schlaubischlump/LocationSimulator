@@ -16,7 +16,7 @@ let kLogFileName = "log.txt"
 @objc public extension FileManager {
     /// Create a new folder at the specified URL.
     /// - Return: True if the folder was created or did already exist. False otherwise.
-    func createFolder(atUrl url: URL) -> Bool {
+    func createFolder(atUrl url: URL, withIntermediateDirectories intermediateDirectories: Bool = false) -> Bool {
         // if the folder does exist just return
         var isDir: ObjCBool = false
         if self.fileExists(atPath: url.path, isDirectory: &isDir) && isDir.boolValue {
@@ -24,7 +24,7 @@ let kLogFileName = "log.txt"
         }
         // try to create the directory
         do {
-            try self.createDirectory(at: url, withIntermediateDirectories: false, attributes: .none)
+            try self.createDirectory(at: url, withIntermediateDirectories: intermediateDirectories, attributes: .none)
         } catch {
             logError("Folder \(url.path): Could not be created. Reason: \(error.localizedDescription)")
             return false

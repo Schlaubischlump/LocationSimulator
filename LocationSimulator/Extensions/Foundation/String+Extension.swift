@@ -51,7 +51,7 @@ extension String {
 // MARK: - Number
 
 extension String {
-    /// Currently we only allow version with the format major.minor. Normally apple does increase the minor number when
+    /// Currently we only allow version with the format major.minor. Usually apple does increase the minor number when
     /// changing the DeveloperDiskImage. We therefore ignore the revision in version numbers (major.minor.revision).
     var isVersionString: Bool {
         return self ~= "^\\d{1,2}\\.\\d{1,2}$"
