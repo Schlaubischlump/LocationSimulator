@@ -1,6 +1,7 @@
 
 > **Warning**:    
-> I do not support beta versions of iOS. It is not clear if I will be able to support iOS 17. For more details click [here](https://github.com/Schlaubischlump/LocationSimulator/issues/171).
+> It is not clear if I will be able to support iOS 17. For more details click [here](https://github.com/Schlaubischlump/LocationSimulator/issues/171).   
+> I do not support beta versions of iOS.
 
 > **Note**:   
 > If you use iOS 16 or greater you need to enable Developer Mode first. The Developer Mode option should show up in settings the first time you try to use your device with LocationSimulator, after you received the warning, that you must enable Developer Mode. You can read the following [issue](https://github.com/Schlaubischlump/LocationSimulator/issues/128) for more informations.
