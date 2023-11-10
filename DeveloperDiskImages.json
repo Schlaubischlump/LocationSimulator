@@ -203,8 +203,8 @@
 		},
 		"15.8":
 		{
-			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.7/DeveloperDiskImage.dmg"],
-			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.7/DeveloperDiskImage.dmg.signature"]
+			"Image": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.5/DeveloperDiskImage.dmg"],
+			"Signature": ["https://github.com/pdso/DeveloperDiskImage/raw/master/15/15.5/DeveloperDiskImage.dmg.signature"]
 		},		
 		"16.0":
 		{
