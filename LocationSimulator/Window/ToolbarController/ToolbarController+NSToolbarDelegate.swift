@@ -25,6 +25,7 @@ extension ToolbarController: NSToolbarDelegate {
             return [
                 .flexibleSpace, .toggleSidebar, .sidebarTrackingSeparator,
                 .reset, .currentLocation, .autoFocus, .autoReverse, .flexibleSpace,
+                .speed, .flexibleSpace,
                 .moveType
             ]
         }
