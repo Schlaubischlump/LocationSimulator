@@ -182,14 +182,14 @@ import LocationSpoofer
     /// Register all observers to respond to users setting changes.
     private func registerSettingsObservers() {
         // Listen for changes of the varyMovementSpeed settings
-        let userDefaults = UserDefaults.standard
-        self.varyMovementSpeedSettingObserver = userDefaults.observe(\.varyMovementSpeed,
+        self.varyMovementSpeedSettingObserver = UserDefaults.standard.observe(\.varyMovementSpeed,
                                                                       options: [.initial, .new]) { [weak self ](_, _) in
-            self?.spoofer?.movementSpeedVariance = userDefaults.varyMovementSpeed ? kDefaultMovementSpeedVariance : nil
+            let defaults = UserDefaults.standard
+            self?.spoofer?.movementSpeedVariance = defaults.varyMovementSpeed ? kDefaultMovementSpeedVariance : nil
         }
-        self.moveOnStandingStillSettingObserver = userDefaults.observe(\.moveWhenStandingStill,
+        self.moveOnStandingStillSettingObserver = UserDefaults.standard.observe(\.moveWhenStandingStill,
                                                                       options: [.initial, .new]) { [weak self ](_, _) in
-            if userDefaults.moveWhenStandingStill {
+            if UserDefaults.standard.moveWhenStandingStill {
                 self?.startMoveOnStandingStill()
             } else {
                 self?.stopMoveOnStandingStill()

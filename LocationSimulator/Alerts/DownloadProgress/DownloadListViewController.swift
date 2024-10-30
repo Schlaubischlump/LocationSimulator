@@ -102,10 +102,7 @@ class DownloadListViewController: NSViewController {
     /// - Return: true on success, false otherwise
     @discardableResult
     @objc func prepareDownload(_ developerDiskImage: DeveloperDiskImage) -> Bool {
-        // Check if the path for the image and signature file can be created.
-        let manager = FileManager.default
         // Get the download links from the internal plist file.
-
         var res: Bool = true
 
         var downloadTasks = developerDiskImage.downloadLinks.compactMap { (file, link) in

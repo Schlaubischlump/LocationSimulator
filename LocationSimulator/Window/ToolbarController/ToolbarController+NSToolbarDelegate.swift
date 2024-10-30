@@ -23,7 +23,7 @@ extension ToolbarController: NSToolbarDelegate {
         if #available(macOS 11.0, *) {
             // add the searchbar to the left side of the toolbar
             return [
-                .toggleSidebar, .flexibleSpace,
+                .flexibleSpace, .toggleSidebar, .sidebarTrackingSeparator,
                 .reset, .currentLocation, .autoFocus, .autoReverse, .flexibleSpace,
                 .moveType
             ]
@@ -58,6 +58,6 @@ extension ToolbarController: NSToolbarDelegate {
      */
     @available(macOS 13.0, *)
     func toolbarImmovableItemIdentifiers(_ toolbar: NSToolbar) -> Set<NSToolbarItem.Identifier> {
-        return kEnableSidebarSearchField ? [.search] : []
+        return kEnableSidebarSearchField ? [.search, .toggleSidebar] : [.toggleSidebar]
     }
 }

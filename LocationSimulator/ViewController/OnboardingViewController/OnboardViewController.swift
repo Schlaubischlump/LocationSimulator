@@ -45,6 +45,11 @@ class OnboardViewController: NSViewController {
     override func loadView() {
         self.view = NSView(frame: .zero)
 
+        // Fix weird layout bugs on macOS 14
+        self.pageControl.clipsToBounds = true
+        self.leftArrow.clipsToBounds = true
+        self.rightArrow.clipsToBounds = true
+
         self.pageController.view = pageView
 
         self.doLayout()
@@ -89,6 +94,11 @@ class OnboardViewController: NSViewController {
         self.rightArrow.isUserInteractionEnabled = !isOnLastPage
     }
 
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.doLayout()
+    }
+
     private func doLayout() {
         let bounds = self.view.bounds
 
@@ -102,16 +112,17 @@ class OnboardViewController: NSViewController {
         self.pageControl.frame = CGRect(x: 0, y: 0, width: bounds.width, height: kPageControlHeight)
 
         self.pageController.view.frame = bounds
-        self.updateArrows()
-
         // Set the initial frame size of the first page
         self.pageController.view.subviews.forEach {
             $0.frame = self.pageController.view.bounds
         }
+
+        self.updateArrows()
     }
 
     override func viewDidLayout() {
         super.viewDidLayout()
+        print("DO the layout")
         self.doLayout()
     }
 }

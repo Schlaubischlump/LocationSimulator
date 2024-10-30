@@ -10,7 +10,7 @@ import Foundation
 import AppKit
 
 /// Generic speed formatter subclass to match double values between min and max value.
-class SpeedFormatter: NumberFormatter {
+class SpeedFormatter: NumberFormatter, @unchecked Sendable {
 
     override init() {
         super.init()

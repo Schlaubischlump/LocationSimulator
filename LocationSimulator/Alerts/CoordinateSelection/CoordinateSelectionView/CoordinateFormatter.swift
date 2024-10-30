@@ -11,7 +11,7 @@ import AppKit
 
 /// Generic coodinate formatter subclass to match coordinates strings. Do not use this class directly. Use the
 /// corresponding `LatFormatter` and `LongFormatter` subclasses.
-class CoodinateFormatter: NumberFormatter {
+class CoodinateFormatter: NumberFormatter, @unchecked Sendable {
 
     override init() {
         super.init()
@@ -58,7 +58,7 @@ class CoodinateFormatter: NumberFormatter {
 }
 
 /// Formatter to match latitude coordinates.
-class LatFormatter: CoodinateFormatter {
+class LatFormatter: CoodinateFormatter, @unchecked Sendable {
     override func commonInit() {
         super.commonInit()
         self.minimum = -85
@@ -67,7 +67,7 @@ class LatFormatter: CoodinateFormatter {
 }
 
 /// Formatter to match longitude coordinates.
-class LongFormatter: CoodinateFormatter {
+class LongFormatter: CoodinateFormatter, @unchecked Sendable {
     override func commonInit() {
         super.commonInit()
         self.minimum = -180

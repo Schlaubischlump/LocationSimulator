@@ -76,8 +76,6 @@ class MenubarController: NSResponder {
 
     /// Listen for state changes
     public func registerNotifications() {
-        let userDefaults =  UserDefaults.standard
-
         self.statusObserver = NotificationCenter.default.addObserver(forName: .StatusChanged, object: nil,
                                                                      queue: .main) { [weak self] notification in
             // Make sure the request is send from the key window subview.
@@ -104,9 +102,9 @@ class MenubarController: NSResponder {
         }
 
         // Change the menubar item naming based on the movement control behaviour
-        self.movementControlBehaviourObserver = userDefaults.observe(\.movementControlBehaviour,
-                                                                      options: [.initial, .new]) { [weak self ](_, _) in
-            let traditional = userDefaults.movementControlBehaviour == .traditional
+        self.movementControlBehaviourObserver = UserDefaults.standard.observe(\.movementControlBehaviour,
+                                                                      options: [.initial, .new]) { [weak self](_, _) in
+            let traditional = UserDefaults.standard.movementControlBehaviour == .traditional
             if self?.deviceStatus == .auto || traditional {
                 NavigationMenubarItem.useClockwiseCounterClockwiseLabels()
             } else {

@@ -43,7 +43,7 @@ import GPXParser
 
 @objc(ASTrackSegment) class ASTrackSegment: IndexedContainerItem {
     @objc let name: String
-    @objc private (set) var points: [ASTrackPoint] = []
+    @objc private(set) var points: [ASTrackPoint] = []
 
     init(segment: TrackSegment, atIndex: Int, inContainer: NSScriptObjectSpecifier?) {
         self.name = segment.name ?? ""
@@ -57,7 +57,7 @@ import GPXParser
 
 @objc(ASTrack) class ASTrack: IndexedContainerItem {
     @objc let name: String
-    @objc private (set) var segments: [ASTrackSegment] = []
+    @objc private(set) var segments: [ASTrackSegment] = []
 
     init(track: Track, atIndex: Int, inContainer: NSScriptObjectSpecifier?) {
         self.name = track.name ?? ""
@@ -87,7 +87,7 @@ import GPXParser
 
 @objc(ASRoute) class ASRoute: IndexedContainerItem {
     @objc let name: String
-    @objc private (set) var points: [ASRoutePoint] = []
+    @objc private(set) var points: [ASRoutePoint] = []
 
     init(route: Route, atIndex: Int, inContainer: NSScriptObjectSpecifier?) {
         self.name = route.name ?? ""
