@@ -1,0 +1,74 @@
+name: Bug Report
+title: "[BUG] - [Short description of the bug]"
+description: Create a report to help us improve.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Before reporting a bug make sure that:**
+        1. You are not using a beta version of iOS — beta versions are not supported.
+        2. You can access your iOS device from Finder.
+        3. You tried both the USB and Wi-Fi connection.
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: To reproduce
+      description: |
+        Steps to reproduce the behavior, e.g.:
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+  - type: markdown
+    attributes:
+      value: "### Desktop"
+  - type: input
+    attributes:
+      label: macOS version
+      placeholder: "e.g. 12.3 Monterey"
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: LocationSimulator version
+      placeholder: "e.g. 0.1.9.2"
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Xcode version
+      description: If installed. If you don't know what this is, you can skip it.
+      placeholder: "e.g. 13.3"
+  - type: markdown
+    attributes:
+      value: "### Smartphone"
+  - type: input
+    attributes:
+      label: Device
+      placeholder: "e.g. iPhone 6"
+  - type: input
+    attributes:
+      label: iOS version
+      placeholder: "e.g. iOS 14.3"
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
