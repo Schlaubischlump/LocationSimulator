@@ -1,0 +1,27 @@
+name: Question
+title: "[Question] - [Short description of your question]"
+description: Describe the question you have.
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Before asking a question:**
+        1. Read the Help menu entry of LocationSimulator. Start `LocationSimulator` and choose `Help` → `LocationSimulator Help` in the menubar.
+        2. Check the already closed issues on GitHub.
+
+        Beta versions of macOS or iOS are not supported. The Help entry explains how to manually manage DeveloperDiskImages in this case.
+  - type: checkboxes
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I have read the Help menu entry.
+          required: true
+        - label: I have checked the GitHub issues.
+          required: true
+  - type: textarea
+    attributes:
+      label: Your question
+      description: A clear and concise description of what you'd like to know.
+    validations:
+      required: true
