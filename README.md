@@ -130,7 +130,7 @@ Since this project has grown quite large over time, I have exported some of the 
 > If you use iOS 16 or later, you need to enable Developer Mode first. The Developer Mode option should appear in Settings the first time you try to use your device with LocationSimulator, after you receive a warning that you must enable Developer Mode. You can read the following [issue](https://github.com/Schlaubischlump/LocationSimulator/issues/128) for more information.
 
 <details>
-<summary><a name="start-spoofing"></a> 🏁 <b>Start Spoofing</b></summary><br>
+<summary><a name="start-spoofing"></a><b>Start Spoofing</b></summary><br>
 
 - Connect the iOS device to your computer via USB or Wi-Fi.
 
