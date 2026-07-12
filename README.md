@@ -19,7 +19,7 @@ LocationSimulator is a macOS app that allows spoofing the location of an Apple d
 ![LocationSimulator screenshot](Preview/screenshot.png)
 
 <details>
-<summary><b>📚 Table of Contents</b></summary>
+<summary><b>Table of Contents</b></summary>
 
 - [Background](#background)
 - [Features](#features)
@@ -141,7 +141,7 @@ Since this project has grown quite large over time, I have exported some of the 
 </details>
 
 <details>
-<summary><a name="moving"></a> 👟 <b>Moving</b></summary><br>
+<summary><a name="moving"></a><b>Moving</b></summary><br>
 
 - Click the walk button at the bottom left corner of the map. Drag the blue triangle to change the direction of movement.
 
@@ -160,7 +160,7 @@ Since this project has grown quite large over time, I have exported some of the 
 </details>
 
 <details>
-<summary><a name="stop-spoofing"></a> 🛑 <b>Stop Spoofing</b></summary><br>
+<summary><a name="stop-spoofing"></a><b>Stop Spoofing</b></summary><br>
 
 - Click the reset button.
 
@@ -172,7 +172,7 @@ Since this project has grown quite large over time, I have exported some of the 
 > Follow the provided steps to enable spoofing over Wi-Fi.
 
 <details>
-<summary> 📶 <b>Network Access</b></summary><br>
+<summary><b>Network Access</b></summary><br>
 
 After you set up syncing with the Finder over USB, you can configure the Finder to sync to your device over Wi-Fi instead of USB.
 
@@ -182,7 +182,7 @@ After you set up syncing with the Finder over USB, you can configure the Finder 
 
 When the computer and the device are on the same Wi-Fi network, the device appears in the Finder. The device syncs automatically whenever it's plugged in to power.
 
-> ⚙️ Make sure that **LocationSimulator → Preferences... → Network → Allow network devices** is enabled.
+> Make sure that **LocationSimulator → Preferences... → Network → Allow network devices** is enabled.
 
 <img src="Preview/network_settings.png" width="200">
 
@@ -202,11 +202,11 @@ While you are here, consider leaving a GitHub star - it keeps me motivated.
 
 Donations are always welcome! I will use the money to develop the software in my free time further and to fund the Apple Developer Membership to notarize the app. You can donate via [PayPal](https://www.paypal.com/donate/?hosted_button_id=9NR3CLRUG22SJ) or Ethereum, either from inside the app (`Help → Donate...` or `LocationSimulator → Preferences → Info → Donate`) or via the GitHub sponsor button on this page.
 
-**🔑 Apple Developer Program** - Each year, every Apple Developer must pay a fee to Apple to sign their applications and access certain developer resources. If your application is not signed, the user will see numerous warnings that the program is malicious, and might need to grant special permissions to start the app.
+**Apple Developer Program** - Each year, every Apple Developer must pay a fee to Apple to sign their applications and access certain developer resources. If your application is not signed, the user will see numerous warnings that the program is malicious, and might need to grant special permissions to start the app.
 
-**🖥️ Parallels Desktop for Mac** - To verify that LocationSimulator works on older macOS versions, I need to be able to run it on all of them. Since I only have a single Mac, I use Parallels Desktop for Mac to run multiple older versions of macOS simultaneously.
+**Parallels Desktop for Mac** - To verify that LocationSimulator works on older macOS versions, I need to be able to run it on all of them. Since I only have a single Mac, I use Parallels Desktop for Mac to run multiple older versions of macOS simultaneously.
 
-**🔍 Hopper Disassembler** - Hopper is a disassembler for macOS and Linux. You need to disassemble a program if the source code is closed-source, but you still want to figure out how it works. I often need a disassembler to reverse-engineer Apple's source code, e.g., when they change the API to interact with the iOS Simulator. Currently, I'm using the free version of Hopper, which requires a restart every 30 minutes. The commercial version does not have this limitation.
+**Hopper Disassembler** - Hopper is a disassembler for macOS and Linux. You need to disassemble a program if the source code is closed-source, but you still want to figure out how it works. I often need a disassembler to reverse-engineer Apple's source code, e.g., when they change the API to interact with the iOS Simulator. Currently, I'm using the free version of Hopper, which requires a restart every 30 minutes. The commercial version does not have this limitation.
 
 ## Enhancements
 
