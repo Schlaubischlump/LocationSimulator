@@ -1,9 +1,9 @@
-> [!WARNING]
-> iOS 17 and later are not currently supported.
-> For more details, click [here](https://github.com/Schlaubischlump/LocationSimulator/issues/171).
-
 > [!NOTE]
-> Beta versions of iOS/iPadOS/tvOS are not supported.
+> You can now beta test LocationSimulator2 (close source for now). Please read [this](https://github.com/Schlaubischlump/LocationSimulator2/discussions/1) for more information.
+
+> [!WARNING]
+> iOS 17 and later are not supported by the LocationSimulator source code in this repo.
+> For more details, click [here](https://github.com/Schlaubischlump/LocationSimulator/issues/171).
 
 <p align="center">
   <img src="LocationSimulator/Assets.xcassets/AppIcon.appiconset/AppIcon_256.png" width="128">
