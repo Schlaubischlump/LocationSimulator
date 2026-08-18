@@ -1,5 +1,5 @@
 > [!NOTE]
-> You can now beta test LocationSimulator2 (close source for now). Please read [this](https://github.com/Schlaubischlump/LocationSimulator2/discussions/1) for more information.
+> You can now beta test LocationSimulator2 (closed source for now). Please read [this](https://github.com/Schlaubischlump/LocationSimulator2/discussions/1) for more information.
 
 > [!WARNING]
 > iOS 17 and later are not supported by the LocationSimulator source code in this repo.
